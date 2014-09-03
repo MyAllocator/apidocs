@@ -262,6 +262,7 @@ pre.language-json .pun {
   font-family: "Source Sans Pro", sans-serif;
   font-weight: 400;
   font-size: 14px;
+  color: #e85b36;
 }
 
 .sidenav > li.nav-header > a {
@@ -494,7 +495,7 @@ tr.del td {
 
   a {
     text-decoration: none;
-    color: #e85b36;
+    color: inherit;
   }
 
   a:after {
