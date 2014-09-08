@@ -142,6 +142,35 @@ define({ api: [
   },
   {
     "type": "get",
+    "url": "/ChannelList",
+    "title": "ChannelList",
+    "name": "ChannelList",
+    "group": "PMS",
+    "description": "<p>Use this to get a list of available channels.</p>",
+    "success": {
+      "fields": {
+        "Response": [
+          {
+            "group": "Response",
+            "type": "String",
+            "field": "Channels",
+            "optional": false,
+            "description": ""
+          }
+        ]
+      }
+    },
+    "examples": [
+      {
+        "title": "XML ChannelList Request",
+        "content": "<?xml version=\"1.0\" encoding=\"UTF-8\" ?>\n<ChannelList>\n</ChannelList>\n"
+      }
+    ],
+    "version": "0.0.0",
+    "filename": "perllib/MAAPI.pm"
+  },
+  {
+    "type": "get",
     "url": "/GetBookings",
     "title": "GetBookings",
     "name": "GetBookings",
@@ -1967,6 +1996,13 @@ define({ api: [
             "field": "CustomerEmail",
             "optional": false,
             "description": "<p>Customer&#39;s email address.</p>"
+          },
+          {
+            "group": "Request",
+            "type": "String",
+            "field": "SendWelcome",
+            "optional": false,
+            "description": "<p>1|0</p>"
           }
         ]
       }
