@@ -9,11 +9,13 @@
       "examples": [
         {
           "title": "JSON error response",
-          "content": "{\n  \"Error\": {\n      \"Id\": 3,\n      \"Message\": \"Invalid user or user password\"\n  }\n}\n"
+          "content": "JSON error response\n{\n  \"Error\": {\n      \"Id\": 3,\n      \"Message\": \"Invalid user or user password\"\n  }\n}\n",
+          "type": "json"
         },
         {
           "title": "XML error response",
-          "content": "<MethodResponse>\n <Errors>\n  <Error>\n    <ErrorId>3</ErrorId>\n    <ErrorMsg>Invalid user or user password</ErrorMsg>\n  </Error>\n </Errors>\n</MethodResponse>\n"
+          "content": "XML error response\n<MethodResponse>\n <Errors>\n  <Error>\n    <ErrorId>3</ErrorId>\n    <ErrorMsg>Invalid user or user password</ErrorMsg>\n  </Error>\n </Errors>\n</MethodResponse>\n",
+          "type": "json"
         }
       ]
     },
@@ -30,14 +32,16 @@
     "examples": [
       {
         "title": "Example of a JSON booking",
-        "content": "{\n \"Customers\":[\n    {\n       \"CustomerLName\":\"Schmidt\",\n       \"CustomerCompany\":\"\",\n       \"CustomerNote\":\" \",\n       \"CustomerEmail\":\"mo@mx2solutions.co.uk\",\n       \"CustomerFName\":\"Mo\",\n       \"CustomerCity\":\"Stirling\",\n       \"CustomerCountry\":\"GB\"\n    }\n ],\n \"IsCancellation\":false,\n \"OrderAdults\":1,\n \"OrderChildren\":0,\n \"OrderDate\":\"2012-09-18\",\n \"OrderId\":\"13597636\",\n \"OrderModifDate\":null,\n \"OrderModifTime\":null,\n \"OrderSource\":\"booking.com\",\n \"OrderSourceId\":\"726122988\",\n \"OrderTime\":\"16:22:14\",\n \"Rooms\":[\n    {\n       \"EndDate\":\"2012-09-18\",\n       \"Currency\":\"EUR\",\n       \"RoomTypeIds\":[\n          \"832\"\n       ],\n       \"Price\":\"16.80\",\n       \"RoomDesc\":\"3 person mixed shared bed\",\n       \"Units\":\"1\",\n       \"StartDate\":\"2012-09-18\"\n    }\n ],\n \"TotalCurrency\":\"EUR\",\n \"TotalPrice\":\"16.80\",\n \"MyallocatorId\":\"5058a1bd921f120061010000\",\n \"Channel\":\"ct\",\n \"PropertyId\":264,\n \"StartDate\":\"2012-09-18\",\n \"EndDate\":\"2012-09-18\",\n \"MyallocatorCreationDate\":\"2012-09-18\",\n \"MyallocatorCreationTime\":\"17:32:16\",\n \"MyallocatorModificationDate\":\"2012-09-18\",\n \"MyallocatorModificationTime\":\"17:32:16\"\n}\n"
+        "content": "Example of a JSON booking\n{\n \"Customers\":[\n    {\n       \"CustomerLName\":\"Schmidt\",\n       \"CustomerCompany\":\"\",\n       \"CustomerNote\":\" \",\n       \"CustomerEmail\":\"mo@mx2solutions.co.uk\",\n       \"CustomerFName\":\"Mo\",\n       \"CustomerCity\":\"Stirling\",\n       \"CustomerCountry\":\"GB\"\n    }\n ],\n \"IsCancellation\":false,\n \"OrderAdults\":1,\n \"OrderChildren\":0,\n \"OrderDate\":\"2012-09-18\",\n \"OrderId\":\"13597636\",\n \"OrderModifDate\":null,\n \"OrderModifTime\":null,\n \"OrderSource\":\"booking.com\",\n \"OrderSourceId\":\"726122988\",\n \"OrderTime\":\"16:22:14\",\n \"Rooms\":[\n    {\n       \"EndDate\":\"2012-09-18\",\n       \"Currency\":\"EUR\",\n       \"RoomTypeIds\":[\n          \"832\"\n       ],\n       \"Price\":\"16.80\",\n       \"RoomDesc\":\"3 person mixed shared bed\",\n       \"Units\":\"1\",\n       \"StartDate\":\"2012-09-18\"\n    }\n ],\n \"TotalCurrency\":\"EUR\",\n \"TotalPrice\":\"16.80\",\n \"MyallocatorId\":\"5058a1bd921f120061010000\",\n \"Channel\":\"ct\",\n \"PropertyId\":264,\n \"StartDate\":\"2012-09-18\",\n \"EndDate\":\"2012-09-18\",\n \"MyallocatorCreationDate\":\"2012-09-18\",\n \"MyallocatorCreationTime\":\"17:32:16\",\n \"MyallocatorModificationDate\":\"2012-09-18\",\n \"MyallocatorModificationTime\":\"17:32:16\"\n}\n",
+        "type": "json"
       }
     ],
     "success": {
       "examples": [
         {
           "title": "Example of a successful JSON response",
-          "content": "{ \"success\": true }\n"
+          "content": "Example of a successful JSON response\n",
+          "type": " \"success\": true "
         }
       ]
     },
@@ -45,7 +49,8 @@
       "examples": [
         {
           "title": "Example of an unsuccessful JSON response",
-          "content": "{\n \"error\":{\n    \"code\":31,\n    \"msg\":\"Could not find property on this system for myallocator PropertyId: 603\"\n },\n \"success\":false\n}\n"
+          "content": "Example of an unsuccessful JSON response\n{\n \"error\":{\n    \"code\":31,\n    \"msg\":\"Could not find property on this system for myallocator PropertyId: 603\"\n },\n \"success\":false\n}\n",
+          "type": "json"
         }
       ]
     },
@@ -130,11 +135,13 @@
     "examples": [
       {
         "title": "JSON AssociateUserToPMS",
-        "content": "{\n'Auth/UserId':'login on myallocator.com',\n'Auth/UserPassword':'password for myallocator.com',\n'Auth/PropertyId':0,\n'Auth/VendorId':'your vendor id',\n'Auth/VendorPassword':'your vendor password',\n'PMSUserId':'username-on-the-remote-pms-system',\n'PMSPropertyId':'propertyid-on-the-remote-pms-system',\n}\n"
+        "content": "JSON AssociateUserToPMS\n{\n'Auth/UserId':'login on myallocator.com',\n'Auth/UserPassword':'password for myallocator.com',\n'Auth/PropertyId':0,\n'Auth/VendorId':'your vendor id',\n'Auth/VendorPassword':'your vendor password',\n'PMSUserId':'username-on-the-remote-pms-system',\n'PMSPropertyId':'propertyid-on-the-remote-pms-system',\n}\n",
+        "type": "json"
       },
       {
         "title": "XML AssociateUserToPMS",
-        "content": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<GetRoomTypes>\n<Auth>\n <UserId>Customer User ID</UserId>\n <UserPassword>Customer Password</UserPassword>\n <PropertyId>Property ID on myallocator.com</PropertyId>\n <VendorId>Your Vendor ID</VendorId>\n <VendorPassword>Your Vendor Password</VendorPassword>\n</Auth>\n<PMSUserId>username-on-the-remote-pms-system</PMSUserId>\n<PMSPropertyId>propertyid-on-the-remote-pms-system</PMSPropertyId>\n</GetRoomTypes>\n"
+        "content": "XML AssociateUserToPMS\n<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<GetRoomTypes>\n<Auth>\n <UserId>Customer User ID</UserId>\n <UserPassword>Customer Password</UserPassword>\n <PropertyId>Property ID on myallocator.com</PropertyId>\n <VendorId>Your Vendor ID</VendorId>\n <VendorPassword>Your Vendor Password</VendorPassword>\n</Auth>\n<PMSUserId>username-on-the-remote-pms-system</PMSUserId>\n<PMSPropertyId>propertyid-on-the-remote-pms-system</PMSPropertyId>\n</GetRoomTypes>\n",
+        "type": "json"
       }
     ],
     "version": "0.0.0",
@@ -163,7 +170,8 @@
     "examples": [
       {
         "title": "XML ChannelList Request",
-        "content": "<?xml version=\"1.0\" encoding=\"UTF-8\" ?>\n<ChannelList>\n</ChannelList>\n"
+        "content": "XML ChannelList Request\n<?xml version=\"1.0\" encoding=\"UTF-8\" ?>\n<ChannelList>\n</ChannelList>\n",
+        "type": "json"
       }
     ],
     "version": "0.0.0",
@@ -255,14 +263,16 @@
     "examples": [
       {
         "title": "XML Example of querying for bookings",
-        "content": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<GetBookings>\n<Auth>\n  <UserId>Customer User ID</UserId>\n  <UserPassword>Customer Password</UserPassword>\n  <PropertyId>Property ID on myallocator.com</PropertyId>\n  <VendorId>Your Vendor ID</VendorId>\n  <VendorPassword>Your Vendor Password</VendorPassword>\n</Auth>\n<!-- NOTE: Arrival, Creation, Modification cannot *actually* be used together -->\n<ArrivalStartDate>2010-01-01</ArrivalStartDate>\n<ArrivalEndDate>2013-01-01</ArrivalEndDate>\n<CreationStartDate>2010-01-01</CreationStartDate>\n<CreationEndDate>2013-01-01</CreationEndDate>\n<ModifcationStartDate>2010-01-01</ModifcationStartDate>\n<ModifcationEndDate>2013-01-01</ModifcationEndDate>\n</GetBookings>\n"
+        "content": "XML Example of querying for bookings\n<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<GetBookings>\n<Auth>\n  <UserId>Customer User ID</UserId>\n  <UserPassword>Customer Password</UserPassword>\n  <PropertyId>Property ID on myallocator.com</PropertyId>\n  <VendorId>Your Vendor ID</VendorId>\n  <VendorPassword>Your Vendor Password</VendorPassword>\n</Auth>\n<!-- NOTE: Arrival, Creation, Modification cannot *actually* be used together -->\n<ArrivalStartDate>2010-01-01</ArrivalStartDate>\n<ArrivalEndDate>2013-01-01</ArrivalEndDate>\n<CreationStartDate>2010-01-01</CreationStartDate>\n<CreationEndDate>2013-01-01</CreationEndDate>\n<ModifcationStartDate>2010-01-01</ModifcationStartDate>\n<ModifcationEndDate>2013-01-01</ModifcationEndDate>\n</GetBookings>\n",
+        "type": "json"
       }
     ],
     "success": {
       "examples": [
         {
           "title": "Response - Querying for bookings",
-          "content": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<GetBookingsResponse>\n<Bookings>\n  <Booking>\n    <Channel>hb</Channel>\n    <StartDate>2012-01-01</StartDate>\n    <EndDate>2012-01-03</EndDate>\n    <IsCancellation>false</IsCancellation>\n    <MyallocatorId>4d7e47e467458b927c000000</MyallocatorId>\n    <MyallocatorCreationDate>2011-03-14</MyallocatorCreationDate>\n    <MyallocatorCreationTime>16:52:52</MyallocatorCreationTime>      \n    <MyallocatorModificationDate>2011-03-14</MyallocatorModificationDate>\n    <MyallocatorModificationTime>16:52:52</MyallocatorModificationTime>\n    <OrderId>1234</OrderId>\n    <OrderDate>2011-11-11</OrderDate>      \n    <OrderTime>11:11:00</OrderTime>\n    <OrderSource>Hostelbookers.com</OrderSource>\n    <OrderAdults>2</OrderAdults>\n    <OrderChildren>2</OrderChildren>\n    <Deposit>12.00</Deposit>\n    <TotalPrice>82.00</TotalPrice>\n    <TotalCurrency>GBP</TotalCurrency>\n     <Customers>\n      <Customer>\n        <CustomerFName>John</CustomerFName>\n        <CustomerLName>Smith</CustomerLName>\n        <CustomerAddress>522 Main Rd</CustomerAddress>\n        <CustomerArrivalTime>13:00</CustomerArrivalTime>\n        <CustomerEmail>john@googlemail.com</CustomerEmail>\n        <CustomerNationality>UK</CustomerNationality>\n        <CustomerPhone>+44 1234567890</CustomerPhone>\n        <CustomerCompany>Johnston Ltd.</CustomerCompany>\n        <CustomerCity>Stirling</CustomerCity>\n        <CustomerState>Stirlingshire</CustomerState>\n        <CustomerPostCode>FK8 2HE</CustomerPostCode>\n        <CustomerCountry>UK</CustomerCountry>\n        <CustomerNote>Bringing a dog</CustomerNote>\n      </Customer>\n    </Customers>\n     <Rooms>\n      <Room>\n        <StartDate>2012-01-01</StartDate>\n        <EndDate>2012-01-03</EndDate>\n        <Price>40.00</Price>\n        <Currency>GBP</Currency>\n        <RoomTypeIds>\n          <RoomTypeId>117</RoomTypeId>\n        </RoomTypeIds>\n        <RoomDesc>2 peoples (1Double bed)</RoomDesc>\n        <Units>2</Units>\n      </Room>\n      <Room>\n        <StartDate>2012-01-02</StartDate>\n        <EndDate>2012-01-02</EndDate>\n        <Price>42.00</Price>\n        <Currency>GBP</Currency>\n        <RoomTypeIds>\n          <RoomTypeId>119</RoomTypeId>\n        </RoomTypeIds>          \n        <RoomDesc>Dormitory Room</RoomDesc>\n        <Units>4</Units>\n      </Room>\n    </Rooms>\n   </Booking>\n</Bookings>\n</GetBookingsResponse>\n"
+          "content": "Response - Querying for bookings\n<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<GetBookingsResponse>\n<Bookings>\n  <Booking>\n    <Channel>hb</Channel>\n    <StartDate>2012-01-01</StartDate>\n    <EndDate>2012-01-03</EndDate>\n    <IsCancellation>false</IsCancellation>\n    <MyallocatorId>4d7e47e467458b927c000000</MyallocatorId>\n    <MyallocatorCreationDate>2011-03-14</MyallocatorCreationDate>\n    <MyallocatorCreationTime>16:52:52</MyallocatorCreationTime>      \n    <MyallocatorModificationDate>2011-03-14</MyallocatorModificationDate>\n    <MyallocatorModificationTime>16:52:52</MyallocatorModificationTime>\n    <OrderId>1234</OrderId>\n    <OrderDate>2011-11-11</OrderDate>      \n    <OrderTime>11:11:00</OrderTime>\n    <OrderSource>Hostelbookers.com</OrderSource>\n    <OrderAdults>2</OrderAdults>\n    <OrderChildren>2</OrderChildren>\n    <Deposit>12.00</Deposit>\n    <TotalPrice>82.00</TotalPrice>\n    <TotalCurrency>GBP</TotalCurrency>\n     <Customers>\n      <Customer>\n        <CustomerFName>John</CustomerFName>\n        <CustomerLName>Smith</CustomerLName>\n        <CustomerAddress>522 Main Rd</CustomerAddress>\n        <CustomerArrivalTime>13:00</CustomerArrivalTime>\n        <CustomerEmail>john@googlemail.com</CustomerEmail>\n        <CustomerNationality>UK</CustomerNationality>\n        <CustomerPhone>+44 1234567890</CustomerPhone>\n        <CustomerCompany>Johnston Ltd.</CustomerCompany>\n        <CustomerCity>Stirling</CustomerCity>\n        <CustomerState>Stirlingshire</CustomerState>\n        <CustomerPostCode>FK8 2HE</CustomerPostCode>\n        <CustomerCountry>UK</CustomerCountry>\n        <CustomerNote>Bringing a dog</CustomerNote>\n      </Customer>\n    </Customers>\n     <Rooms>\n      <Room>\n        <StartDate>2012-01-01</StartDate>\n        <EndDate>2012-01-03</EndDate>\n        <Price>40.00</Price>\n        <Currency>GBP</Currency>\n        <RoomTypeIds>\n          <RoomTypeId>117</RoomTypeId>\n        </RoomTypeIds>\n        <RoomDesc>2 peoples (1Double bed)</RoomDesc>\n        <Units>2</Units>\n      </Room>\n      <Room>\n        <StartDate>2012-01-02</StartDate>\n        <EndDate>2012-01-02</EndDate>\n        <Price>42.00</Price>\n        <Currency>GBP</Currency>\n        <RoomTypeIds>\n          <RoomTypeId>119</RoomTypeId>\n        </RoomTypeIds>          \n        <RoomDesc>Dormitory Room</RoomDesc>\n        <Units>4</Units>\n      </Room>\n    </Rooms>\n   </Booking>\n</Bookings>\n</GetBookingsResponse>\n",
+          "type": "json"
         }
       ],
       "fields": {
@@ -731,7 +741,8 @@
       "examples": [
         {
           "title": "JSON GetPaymentsForBooking",
-          "content": "  {\n      \"CreditCards\": [\n          {\n              \"CardType\": \"VI\",\n              \"CardNumber\": \"4111111111111111\",\n              \"CardCVV\": \"123\",\n              \"CardExpiryYear\": \"2018\",\n              \"CardExpiryMonth\": \"11\",\n              \"CardHolderName\": \"Martin Seamus McFly\"\n          },\n          {\n              \"CardType\": \"VI\",\n              \"CardNumber\": \"4123123412341234\",\n              \"CardCVV\": \"234\",\n              \"CardExpiryYear\": \"2013\",\n              \"CardExpiryMonth\": \"12\",\n              \"CardHolderName\": \"Emmett Lathrop Brown\"\n          }\n      ]\n  }\n"
+          "content": "JSON GetPaymentsForBooking\n  {\n      \"CreditCards\": [\n          {\n              \"CardType\": \"VI\",\n              \"CardNumber\": \"4111111111111111\",\n              \"CardCVV\": \"123\",\n              \"CardExpiryYear\": \"2018\",\n              \"CardExpiryMonth\": \"11\",\n              \"CardHolderName\": \"Martin Seamus McFly\"\n          },\n          {\n              \"CardType\": \"VI\",\n              \"CardNumber\": \"4123123412341234\",\n              \"CardCVV\": \"234\",\n              \"CardExpiryYear\": \"2013\",\n              \"CardExpiryMonth\": \"12\",\n              \"CardHolderName\": \"Emmett Lathrop Brown\"\n          }\n      ]\n  }\n",
+          "type": "json"
         }
       ]
     },
@@ -789,11 +800,13 @@
     "examples": [
       {
         "title": "XML GetProperties Request",
-        "content": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<GetProperties>\n<Auth>\n<UserId>Customer User ID</UserId>\n<UserPassword>Customer Password</UserPassword>\n<VendorId>Your Vendor ID</VendorId>\n<VendorPassword>Your Vendor Password</VendorPassword>\n</Auth>\n</GetProperties>\n"
+        "content": "XML GetProperties Request\n<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<GetProperties>\n<Auth>\n<UserId>Customer User ID</UserId>\n<UserPassword>Customer Password</UserPassword>\n<VendorId>Your Vendor ID</VendorId>\n<VendorPassword>Your Vendor Password</VendorPassword>\n</Auth>\n</GetProperties>\n",
+        "type": "json"
       },
       {
         "title": "JSON GetProperties Request",
-        "content": "{}\n"
+        "content": "JSON GetProperties Request\n{}\n",
+        "type": "json"
       }
     ],
     "success": {
@@ -853,7 +866,8 @@
       "examples": [
         {
           "title": "XML GetProperties Response Success",
-          "content": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<GetPropertiesResponse>\n<Properties>\n  <Property>\n    <Id>19</Id>\n    <Name>Property 1</Name>\n    <Breakfast></Breakfast>\n    <Currency>GBP</Currency>\n    <Country>GB</Country>\n    <PaidUntil>2011-11-11</PaidUntil>\n    <Weekend>\n      <Day name=\"Friday\">5</Day>\n      <Day name=\"Saturday\">6</Day>\n    </Weekend>\n  </Property>\n  \n  <Property>\n    <Id>13</Id>\n    <Name>Property 2</Name>\n    <Breakfast>IN</Breakfast>\n    <Currency>EUR</Currency>\n    <Country>DE</Country>\n    <PaidUntil>2011-11-11</PaidUntil>\n    <Weekend>\n    </Weekend>\n  </Property>\n  \n  <Property>\n    <Id>15</Id>\n    <Name>Property 3</Name>\n    <Breakfast>EX</Breakfast>\n    <Currency>GBP</Currency>\n    <Country>GB</Country>\n    <PaidUntil>2011-11-11</PaidUntil>\n    <Weekend>\n      <Day name=\"Friday\">5</Day>\n      <Day name=\"Saturday\">6</Day>\n      <Day name=\"Sunday\">7</Day>\n    </Weekend>\n  </Property>\n</Properties>\n</GetPropertiesResponse>\n"
+          "content": "XML GetProperties Response Success\n<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<GetPropertiesResponse>\n<Properties>\n  <Property>\n    <Id>19</Id>\n    <Name>Property 1</Name>\n    <Breakfast></Breakfast>\n    <Currency>GBP</Currency>\n    <Country>GB</Country>\n    <PaidUntil>2011-11-11</PaidUntil>\n    <Weekend>\n      <Day name=\"Friday\">5</Day>\n      <Day name=\"Saturday\">6</Day>\n    </Weekend>\n  </Property>\n  \n  <Property>\n    <Id>13</Id>\n    <Name>Property 2</Name>\n    <Breakfast>IN</Breakfast>\n    <Currency>EUR</Currency>\n    <Country>DE</Country>\n    <PaidUntil>2011-11-11</PaidUntil>\n    <Weekend>\n    </Weekend>\n  </Property>\n  \n  <Property>\n    <Id>15</Id>\n    <Name>Property 3</Name>\n    <Breakfast>EX</Breakfast>\n    <Currency>GBP</Currency>\n    <Country>GB</Country>\n    <PaidUntil>2011-11-11</PaidUntil>\n    <Weekend>\n      <Day name=\"Friday\">5</Day>\n      <Day name=\"Saturday\">6</Day>\n      <Day name=\"Sunday\">7</Day>\n    </Weekend>\n  </Property>\n</Properties>\n</GetPropertiesResponse>\n",
+          "type": "json"
         }
       ]
     },
@@ -910,7 +924,8 @@
     "examples": [
       {
         "title": "XML GetPropertyChannels",
-        "content": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<GetPropertyChannels>\n<Auth>\n  <UserId>Customer User ID</UserId>\n  <UserPassword>Customer Password</UserPassword>\n  <PropertyId>Property ID on myallocator.com</PropertyId>\n  <VendorId>Your Vendor ID</VendorId>\n  <VendorPassword>Your Vendor Password</VendorPassword>\n</Auth>\n</GetPropertyChannels>\n"
+        "content": "XML GetPropertyChannels\n<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<GetPropertyChannels>\n<Auth>\n  <UserId>Customer User ID</UserId>\n  <UserPassword>Customer Password</UserPassword>\n  <PropertyId>Property ID on myallocator.com</PropertyId>\n  <VendorId>Your Vendor ID</VendorId>\n  <VendorPassword>Your Vendor Password</VendorPassword>\n</Auth>\n</GetPropertyChannels>\n",
+        "type": "json"
       }
     ],
     "version": "0.0.0",
@@ -982,7 +997,8 @@
       "examples": [
         {
           "title": "JSON GetPropertyRooms",
-          "content": "  {\n  \"Rooms\": [\n        {\n   \t  \"RoomId\": 48,\n        \"PropertyId\": 1234,\n        \"RoomName\": \"1-person private\",\n        \"Data\": [\n          {\n            \"Date\": \"2014-03-15\",\n            \"Units\": 2,\n            \"Price\": 33,\n            \"MinStay\": 1,\n            \"MaxStay\": 7,\n            \"Closed\": false,\n            \"ClosedForArrival\": false,\n            \"ClosedForDeparture\": false\n          },\n          {\n            \"Date\": \"2014-03-16\",\n            \"Units\": 2,\n            \"Price\": 33,\n            \"MinStay\": 1,\n            \"MaxStay\": 7,\n            \"Closed\": false,\n            \"ClosedForArrival\": false,\n            \"ClosedForDeparture\": false\n          }\n        ]\n      },\n      {\n        \"RoomId\": 49,\n        \"PropertyId\": 1,\n        \"RoomName\": \"5-person male shared\",\n        \"Data\": [\n          {\n            \"Date\": \"2014-03-15\",\n            \"Units\": 0,\n            \"Price\": 0,\n            \"MinStay\": 1,\n            \"MaxStay\": 7,\n            \"Closed\": false,\n            \"ClosedForArrival\": false,\n            \"ClosedForDeparture\": false\n          },\n          {\n            \"Date\": \"2014-03-16\",\n            \"Units\": 0,\n            \"Price\": 0,\n            \"MinStay\": 1,\n            \"MaxStay\": 7,\n            \"Closed\": false,\n            \"ClosedForArrival\": false,\n            \"ClosedForDeparture\": false\n          }\n        ]\n      }\n    }\n  }\n"
+          "content": "JSON GetPropertyRooms\n  {\n  \"Rooms\": [\n        {\n   \t  \"RoomId\": 48,\n        \"PropertyId\": 1234,\n        \"RoomName\": \"1-person private\",\n        \"Data\": [\n          {\n            \"Date\": \"2014-03-15\",\n            \"Units\": 2,\n            \"Price\": 33,\n            \"MinStay\": 1,\n            \"MaxStay\": 7,\n            \"Closed\": false,\n            \"ClosedForArrival\": false,\n            \"ClosedForDeparture\": false\n          },\n          {\n            \"Date\": \"2014-03-16\",\n            \"Units\": 2,\n            \"Price\": 33,\n            \"MinStay\": 1,\n            \"MaxStay\": 7,\n            \"Closed\": false,\n            \"ClosedForArrival\": false,\n            \"ClosedForDeparture\": false\n          }\n        ]\n      },\n      {\n        \"RoomId\": 49,\n        \"PropertyId\": 1,\n        \"RoomName\": \"5-person male shared\",\n        \"Data\": [\n          {\n            \"Date\": \"2014-03-15\",\n            \"Units\": 0,\n            \"Price\": 0,\n            \"MinStay\": 1,\n            \"MaxStay\": 7,\n            \"Closed\": false,\n            \"ClosedForArrival\": false,\n            \"ClosedForDeparture\": false\n          },\n          {\n            \"Date\": \"2014-03-16\",\n            \"Units\": 0,\n            \"Price\": 0,\n            \"MinStay\": 1,\n            \"MaxStay\": 7,\n            \"Closed\": false,\n            \"ClosedForArrival\": false,\n            \"ClosedForDeparture\": false\n          }\n        ]\n      }\n    }\n  }\n",
+          "type": "json"
         }
       ]
     },
@@ -1039,7 +1055,8 @@
     "examples": [
       {
         "title": "XML GetRoomTypes Request",
-        "content": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<GetRoomTypes>\n<Auth>\n  <UserId>Customer User ID</UserId>\n  <UserPassword>Customer Password</UserPassword>\n  <PropertyId>Property ID on myallocator.com</PropertyId>\n  <VendorId>Your Vendor ID</VendorId>\n  <VendorPassword>Your Vendor Password</VendorPassword>\n</Auth>\n</GetRoomTypes>\n"
+        "content": "XML GetRoomTypes Request\n<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<GetRoomTypes>\n<Auth>\n  <UserId>Customer User ID</UserId>\n  <UserPassword>Customer Password</UserPassword>\n  <PropertyId>Property ID on myallocator.com</PropertyId>\n  <VendorId>Your Vendor ID</VendorId>\n  <VendorPassword>Your Vendor Password</VendorPassword>\n</Auth>\n</GetRoomTypes>\n",
+        "type": "json"
       }
     ],
     "success": {
@@ -1106,7 +1123,8 @@
       "examples": [
         {
           "title": "XML GetRoomTypes Success Response:",
-          "content": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<GetRoomTypesResponse>\n<RoomTypes>\n  <RoomType>\n    <Id>59</Id>\n    <Label>1-bed private ensuite</Label>\n    <Units>3</Units>\n    <Occupancy>1</Occupancy>\n    <Beds>1</Beds>\n    <Gender>MI</Gender>\n    <DoubleBed>false</DoubleBed>\n    <Ensuite>false</Ensuite>\n    <PrivateRoom>true</PrivateRoom>      \n  </RoomType>\n  \n  <RoomType>\n    <Id>63</Id>\n    <Label>2-bed private</Label>\n    <Units>4</Units>\n    <Occupancy>2</Occupancy>\n    <Beds>2</Beds>\n    <Gender>MI</Gender>\n    <DoubleBed>false</DoubleBed>\n    <Ensuite>false</Ensuite>\n    <PrivateRoom>true</PrivateRoom>    \n  </RoomType>\n  \n  <RoomType>\n    <Id>49</Id>\n    <Label>5-bed female shared</Label>\n    <Units>3</Units>\n    <Occupancy>5</Occupancy>\n    <Beds>5</Beds>\n    <Gender>FE</Gender>\n    <DoubleBed>false</DoubleBed>\n    <Ensuite>false</Ensuite>\n    <PrivateRoom>false</PrivateRoom>\n  </RoomType>\n</RoomTypes>\n</GetRoomTypesResponse>\n"
+          "content": "XML GetRoomTypes Success Response:\n<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<GetRoomTypesResponse>\n<RoomTypes>\n  <RoomType>\n    <Id>59</Id>\n    <Label>1-bed private ensuite</Label>\n    <Units>3</Units>\n    <Occupancy>1</Occupancy>\n    <Beds>1</Beds>\n    <Gender>MI</Gender>\n    <DoubleBed>false</DoubleBed>\n    <Ensuite>false</Ensuite>\n    <PrivateRoom>true</PrivateRoom>      \n  </RoomType>\n  \n  <RoomType>\n    <Id>63</Id>\n    <Label>2-bed private</Label>\n    <Units>4</Units>\n    <Occupancy>2</Occupancy>\n    <Beds>2</Beds>\n    <Gender>MI</Gender>\n    <DoubleBed>false</DoubleBed>\n    <Ensuite>false</Ensuite>\n    <PrivateRoom>true</PrivateRoom>    \n  </RoomType>\n  \n  <RoomType>\n    <Id>49</Id>\n    <Label>5-bed female shared</Label>\n    <Units>3</Units>\n    <Occupancy>5</Occupancy>\n    <Beds>5</Beds>\n    <Gender>FE</Gender>\n    <DoubleBed>false</DoubleBed>\n    <Ensuite>false</Ensuite>\n    <PrivateRoom>false</PrivateRoom>\n  </RoomType>\n</RoomTypes>\n</GetRoomTypesResponse>\n",
+          "type": "json"
         }
       ]
     },
@@ -1184,7 +1202,8 @@
     "examples": [
       {
         "title": "XML GetUpdateStatus Request",
-        "content": "<?xml version=\"1.0\" encoding=\"UTF-8\" ?>\n<GetUpdateStatus>\n<Auth>\n  <UserId>Customer User ID</UserId>\n  <UserPassword>Customer Password</UserPassword>\n  <PropertyId>Property ID on myallocator.com</PropertyId>\n  <VendorId>Your Vendor ID</VendorId>\n  <VendorPassword>Your Vendor Password</VendorPassword>\n</Auth>\n<UpdateId>832522158</UpdateId>\n</GetUpdateStatus>\n"
+        "content": "XML GetUpdateStatus Request\n<?xml version=\"1.0\" encoding=\"UTF-8\" ?>\n<GetUpdateStatus>\n<Auth>\n  <UserId>Customer User ID</UserId>\n  <UserPassword>Customer Password</UserPassword>\n  <PropertyId>Property ID on myallocator.com</PropertyId>\n  <VendorId>Your Vendor ID</VendorId>\n  <VendorPassword>Your Vendor Password</VendorPassword>\n</Auth>\n<UpdateId>832522158</UpdateId>\n</GetUpdateStatus>\n",
+        "type": "json"
       }
     ],
     "version": "0.0.0",
@@ -1200,15 +1219,18 @@
     "examples": [
       {
         "title": "XML Hello Request",
-        "content": "GET /pms/v201408/xml/Hello\nHTTP/1.1 200 OK\nContent-Type: text/xml\n<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<Hello>\n<hello>world</hello>\n</Hello>\n"
+        "content": "XML Hello Request\nGET /pms/v201408/xml/Hello\nHTTP/1.1 200 OK\nContent-Type: text/xml\n<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<Hello>\n<hello>world</hello>\n</Hello>\n",
+        "type": "json"
       },
       {
         "title": "JSON Hello Request",
-        "content": "GET /pms/v201408/json/Hello\nContent-Type: application/json\n{ 'hello':'world' }\n"
+        "content": "JSON Hello Request\nGET /pms/v201408/json/Hello\nContent-Type: application/json\n",
+        "type": " 'hello':'world' "
       },
       {
         "title": "JSON HelloVendor Request",
-        "content": "GET /pms/v201408/json/HelloVendor\nContent-Type: application/json\n{ \n'Auth/VendorId':'your vendor id',\n'Auth/VendorPassword':'your vendor password',\n'hello':'world' \n}\n"
+        "content": "JSON HelloVendor Request\nGET /pms/v201408/json/HelloVendor\nContent-Type: application/json\n{ \n'Auth/VendorId':'your vendor id',\n'Auth/VendorPassword':'your vendor password',\n'hello':'world' \n}\n",
+        "type": "json"
       }
     ],
     "version": "0.0.0",
@@ -1339,23 +1361,28 @@
       "examples": [
         {
           "title": "XML SetAllocation Response (Full Success)",
-          "content": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<SetAllocationResponse>\n<Success>true</Success>\n<Errors></Errors>\n<Warnings>\n  <Warning channel=\"hc\">\n    <WarningId>207</WarningId>\n    <WarningMsg>\n    \tSkipped room type (not setup with channel).\n    </WarningMsg>\n  </Warning>  \n</Warnings>\n</SetAllocationResponse>\n"
+          "content": "XML SetAllocation Response (Full Success)\n<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<SetAllocationResponse>\n<Success>true</Success>\n<Errors></Errors>\n<Warnings>\n  <Warning channel=\"hc\">\n    <WarningId>207</WarningId>\n    <WarningMsg>\n    \tSkipped room type (not setup with channel).\n    </WarningMsg>\n  </Warning>  \n</Warnings>\n</SetAllocationResponse>\n",
+          "type": "json"
         },
         {
           "title": "XML SetAllocation Warning Response (at least one channel succeeded)",
-          "content": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<SetAllocationResponse>\n<Success>partial</Success>\n<Errors>\n  <Error channel=\"adv\">\n    <ErrorId>15</ErrorId>\n    <ErrorMsg>\n      Missing or wrong channel credentials on myallocator.com\n    </ErrorMsg>\n  </Error>\n</Errors>\n<Warnings></Warnings>\n</SetAllocationResponse>\n"
+          "content": "XML SetAllocation Warning Response (at least one channel succeeded)\n<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<SetAllocationResponse>\n<Success>partial</Success>\n<Errors>\n  <Error channel=\"adv\">\n    <ErrorId>15</ErrorId>\n    <ErrorMsg>\n      Missing or wrong channel credentials on myallocator.com\n    </ErrorMsg>\n  </Error>\n</Errors>\n<Warnings></Warnings>\n</SetAllocationResponse>\n",
+          "type": "json"
         },
         {
           "title": "XML SetAllocation Failed Response (all channels came back with errors)",
-          "content": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<SetAllocationResponse>\n<Success>false</Success>\n<Errors>\n  <Error channel=\"adv\">\n    <ErrorId>15</ErrorId>\n    <ErrorMsg>\n    \tMissing or wrong channel credentials on myallocator.com\n    </ErrorMsg>      \n  </Error>\n</Errors>\n<Warnings></Warnings>\n</SetAllocationResponse>\n"
+          "content": "XML SetAllocation Failed Response (all channels came back with errors)\n<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<SetAllocationResponse>\n<Success>false</Success>\n<Errors>\n  <Error channel=\"adv\">\n    <ErrorId>15</ErrorId>\n    <ErrorMsg>\n    \tMissing or wrong channel credentials on myallocator.com\n    </ErrorMsg>      \n  </Error>\n</Errors>\n<Warnings></Warnings>\n</SetAllocationResponse>\n",
+          "type": "json"
         },
         {
           "title": "XML SetAllocation Failed update (error before submitting to any channel)",
-          "content": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<SetAllocationResponse>\n<Success>false</Success>\n<Errors>\n  <Error\">\n    <ErrorId>17</ErrorId>\n    <ErrorMsg>\n    \tStart date too far in the future (>2 years)\n    </ErrorMsg>      \n  </Error>\n</Errors>\n<Warnings></Warnings>\n</SetAllocationResponse>\n"
+          "content": "XML SetAllocation Failed update (error before submitting to any channel)\n<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<SetAllocationResponse>\n<Success>false</Success>\n<Errors>\n  <Error\">\n    <ErrorId>17</ErrorId>\n    <ErrorMsg>\n    \tStart date too far in the future (>2 years)\n    </ErrorMsg>      \n  </Error>\n</Errors>\n<Warnings></Warnings>\n</SetAllocationResponse>\n",
+          "type": "json"
         },
         {
           "title": "XML SetAllocation QueryForStatus=true",
-          "content": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<SetAllocationResponse>\n<Success>true</Success>\n<Errors></Errors>\n<Warnings></Warnings>\n<UpdateId>832522158</UpdateId>\n</SetAllocationResponse>\n"
+          "content": "XML SetAllocation QueryForStatus=true\n<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<SetAllocationResponse>\n<Success>true</Success>\n<Errors></Errors>\n<Warnings></Warnings>\n<UpdateId>832522158</UpdateId>\n</SetAllocationResponse>\n",
+          "type": "json"
         }
       ]
     },
@@ -1363,15 +1390,18 @@
     "examples": [
       {
         "title": "XML SetAllocationRequest",
-        "content": "<?xml version=\"1.0\" encoding=\"UTF-8\" ?>\n<SetAllocation>\n<Auth>\n  <UserId>Customer User ID</UserId>\n  <UserPassword>Customer Password</UserPassword>\n  <PropertyId>Property ID on myallocator.com</PropertyId>\n  <VendorId>Your Vendor ID</VendorId>\n  <VendorPassword>Your Vendor Password</VendorPassword>\n</Auth>\n<Channels>\n  <Channel>hc</Channel>\n  <Channel>iwb</Channel>\n</Channels>\n<Allocations>\n  <Allocation>\n    <RoomTypeId>59</RoomTypeId>\n    <StartDate>2010-06-01</StartDate>\n    <EndDate>2010-08-12</EndDate>\n    <Units>3</Units>\n    <MinStay>1</MinStay>\n    <MaxStay>30</MaxStay>\n    <Prices>\n      <Price>20.00</Price>\n      <Price weekend=\"true\">25.00</Price>\n    </Prices>\n  </Allocation>\n</Allocations>\n</SetAllocation>\n"
+        "content": "XML SetAllocationRequest\n<?xml version=\"1.0\" encoding=\"UTF-8\" ?>\n<SetAllocation>\n<Auth>\n  <UserId>Customer User ID</UserId>\n  <UserPassword>Customer Password</UserPassword>\n  <PropertyId>Property ID on myallocator.com</PropertyId>\n  <VendorId>Your Vendor ID</VendorId>\n  <VendorPassword>Your Vendor Password</VendorPassword>\n</Auth>\n<Channels>\n  <Channel>hc</Channel>\n  <Channel>iwb</Channel>\n</Channels>\n<Allocations>\n  <Allocation>\n    <RoomTypeId>59</RoomTypeId>\n    <StartDate>2010-06-01</StartDate>\n    <EndDate>2010-08-12</EndDate>\n    <Units>3</Units>\n    <MinStay>1</MinStay>\n    <MaxStay>30</MaxStay>\n    <Prices>\n      <Price>20.00</Price>\n      <Price weekend=\"true\">25.00</Price>\n    </Prices>\n  </Allocation>\n</Allocations>\n</SetAllocation>\n",
+        "type": "json"
       },
       {
         "title": "XML Request (Status Check)",
-        "content": "<?xml version=\"1.0\" encoding=\"UTF-8\" ?>\n<SetAllocation>\n<Auth>\n  ...\n</Auth>\n<Options>\n  <QueryForStatus>true</QueryForStatus>\n</Options>\n...\n</SetAllocation>\n"
+        "content": "XML Request (Status Check)\n<?xml version=\"1.0\" encoding=\"UTF-8\" ?>\n<SetAllocation>\n<Auth>\n  ...\n</Auth>\n<Options>\n  <QueryForStatus>true</QueryForStatus>\n</Options>\n...\n</SetAllocation>\n",
+        "type": "json"
       },
       {
         "title": "XML SetAllocation (Submit to all channels excluding Gomio and Hostelsclub)",
-        "content": "<?xml version=\"1.0\" encoding=\"UTF-8\" ?>\n<SetAllocation>\n<Auth>\n  <UserId>Customer User ID</UserId>\n  <UserPassword>Customer Password</UserPassword>\n  <PropertyId>Property ID on myallocator.com</PropertyId>\n  <VendorId>Your Vendor ID</VendorId>\n  <VendorPassword>Your Vendor Password</VendorPassword>\n</Auth>\n<Channels>\n  <Channel>all</Channel>\n  <Channel exclude=\"true\">gom</Channel>\n  <Channel exclude=\"true\">hc</Channel>\n</Channels>\n<Allocations>\n  ...\n</Allocations>\n</SetAllocation>\n"
+        "content": "XML SetAllocation (Submit to all channels excluding Gomio and Hostelsclub)\n<?xml version=\"1.0\" encoding=\"UTF-8\" ?>\n<SetAllocation>\n<Auth>\n  <UserId>Customer User ID</UserId>\n  <UserPassword>Customer Password</UserPassword>\n  <PropertyId>Property ID on myallocator.com</PropertyId>\n  <VendorId>Your Vendor ID</VendorId>\n  <VendorPassword>Your Vendor Password</VendorPassword>\n</Auth>\n<Channels>\n  <Channel>all</Channel>\n  <Channel exclude=\"true\">gom</Channel>\n  <Channel exclude=\"true\">hc</Channel>\n</Channels>\n<Allocations>\n  ...\n</Allocations>\n</SetAllocation>\n",
+        "type": "json"
       }
     ],
     "version": "0.0.0",
@@ -1470,7 +1500,8 @@
     "examples": [
       {
         "title": "XML Request:",
-        "content": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<SetRoomTypes>\n<Auth>\n  <UserId>Customer User ID</UserId>\n  <UserPassword>Customer Password</UserPassword>\n  <PropertyId>Property ID on myallocator.com</PropertyId>\n  <VendorId>Your Vendor ID</VendorId>\n  <VendorPassword>Your Vendor Password</VendorPassword>\n</Auth>\n<CreateRooms>\n\t<RoomTypes>\n    <RoomType>\n      <Label>2-bed private with sea-view</Label>\n      <Units>4</Units>\n      <Occupancy>2</Occupancy>\n      <PrivateRoom>true</PrivateRoom>    \n    </RoomType>\n    <RoomType>\n      <Label>6-bed female dorm</Label>\n      <Units>3</Units>\n      <Occupancy>6</Occupancy>\n      <Gender>FE</Gender>\n      <PrivateRoom>false</PrivateRoom>    \n    </RoomType>\n  </RoomTypes>\n</CreateRooms>\n</SetRoomTypes>\n"
+        "content": "XML Request:\n<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<SetRoomTypes>\n<Auth>\n  <UserId>Customer User ID</UserId>\n  <UserPassword>Customer Password</UserPassword>\n  <PropertyId>Property ID on myallocator.com</PropertyId>\n  <VendorId>Your Vendor ID</VendorId>\n  <VendorPassword>Your Vendor Password</VendorPassword>\n</Auth>\n<CreateRooms>\n\t<RoomTypes>\n    <RoomType>\n      <Label>2-bed private with sea-view</Label>\n      <Units>4</Units>\n      <Occupancy>2</Occupancy>\n      <PrivateRoom>true</PrivateRoom>    \n    </RoomType>\n    <RoomType>\n      <Label>6-bed female dorm</Label>\n      <Units>3</Units>\n      <Occupancy>6</Occupancy>\n      <Gender>FE</Gender>\n      <PrivateRoom>false</PrivateRoom>    \n    </RoomType>\n  </RoomTypes>\n</CreateRooms>\n</SetRoomTypes>\n",
+        "type": "json"
       }
     ],
     "success": {
@@ -1537,19 +1568,23 @@
       "examples": [
         {
           "title": "XML Response (creating a room):",
-          "content": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<SetRoomTypesResponse>\n<Success>true</Success>\n<RoomTypeIds>\n\t<RoomTypeId>35</RoomTypeId>\n\t<RoomTypeId>36</RoomTypeId>\n</RoomTypeIds>\n</SetRoomTypesResponse>\n"
+          "content": "XML Response (creating a room):\n<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<SetRoomTypesResponse>\n<Success>true</Success>\n<RoomTypeIds>\n\t<RoomTypeId>35</RoomTypeId>\n\t<RoomTypeId>36</RoomTypeId>\n</RoomTypeIds>\n</SetRoomTypesResponse>\n",
+          "type": "json"
         },
         {
           "title": "XML Response (success SetRooms response)",
-          "content": "<SetRoomTypesResponse>\n<Success>true</Succes s>\n<RoomTypeIds>\n\t<RoomTypeId>35</RoomTypeId>\n\t<RoomTypeId>36</RoomTypeId>\n</RoomTypeIds>\n</SetRoomTypesResponse>\n"
+          "content": "XML Response (success SetRooms response)\n<SetRoomTypesResponse>\n<Success>true</Succes s>\n<RoomTypeIds>\n\t<RoomTypeId>35</RoomTypeId>\n\t<RoomTypeId>36</RoomTypeId>\n</RoomTypeIds>\n</SetRoomTypesResponse>\n",
+          "type": "json"
         },
         {
           "title": "XML Request (Removing a room)",
-          "content": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<SetRoomTypes>\n<Auth>\n  <UserId>Customer User ID</UserId>\n  <UserPassword>Customer Password</UserPassword>\n  <PropertyId>Property ID on myallocator.com</PropertyId>\n  <VendorId>Your Vendor ID</VendorId>\n  <VendorPassword>Your Vendor Password</VendorPassword>\n</Auth>\n<RemoveRooms>\n  <RoomTypeIds>\n    <RoomTypeId>35</RoomTypeId>\n    <RoomTypeId>36</RoomTypeId>\n  </RoomTypeIds>\n</RemoveRooms>\n</SetRoomTypes>\n"
+          "content": "XML Request (Removing a room)\n<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<SetRoomTypes>\n<Auth>\n  <UserId>Customer User ID</UserId>\n  <UserPassword>Customer Password</UserPassword>\n  <PropertyId>Property ID on myallocator.com</PropertyId>\n  <VendorId>Your Vendor ID</VendorId>\n  <VendorPassword>Your Vendor Password</VendorPassword>\n</Auth>\n<RemoveRooms>\n  <RoomTypeIds>\n    <RoomTypeId>35</RoomTypeId>\n    <RoomTypeId>36</RoomTypeId>\n  </RoomTypeIds>\n</RemoveRooms>\n</SetRoomTypes>\n",
+          "type": "json"
         },
         {
           "title": "XML Response SetRooms (Success)",
-          "content": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<SetRoomTypesResponse>\n<Success>true</Success>\n</SetRoomTypesResponse>\n"
+          "content": "XML Response SetRooms (Success)\n<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<SetRoomTypesResponse>\n<Success>true</Success>\n</SetRoomTypesResponse>\n",
+          "type": "json"
         }
       ]
     },
@@ -1609,11 +1644,13 @@
     "examples": [
       {
         "title": "XML SetVendor",
-        "content": "<?xml version=\"1.0\" encoding=\"UTF-8\" ?>\n<SetVendor>\n<Auth>\n  <VendorId>Your Vendor ID</VendorId>\n  <VendorPassword>Your Vendor Password</VendorPassword>\n</Auth>\n<Callback>\n  <URL>http://www.yourdomain.com/myallocator/callback.cgi</URL>\n  <Password>very secret password</Password>\n</Callback>\n</SetVendor>\n"
+        "content": "XML SetVendor\n<?xml version=\"1.0\" encoding=\"UTF-8\" ?>\n<SetVendor>\n<Auth>\n  <VendorId>Your Vendor ID</VendorId>\n  <VendorPassword>Your Vendor Password</VendorPassword>\n</Auth>\n<Callback>\n  <URL>http://www.yourdomain.com/myallocator/callback.cgi</URL>\n  <Password>very secret password</Password>\n</Callback>\n</SetVendor>\n",
+        "type": "json"
       },
       {
         "title": "JSON SetVendor",
-        "content": "{\n  'Auth/VendorId':'Your Vendor ID',\n  'Auth/VendorPassword':'Your Vendor Password',\n  'Callback/URL':'http://www.yourdomain.com/myallocator/callback.cgi',\n  'Callback/Password':'very secret password',\n}\n"
+        "content": "JSON SetVendor\n{\n  'Auth/VendorId':'Your Vendor ID',\n  'Auth/VendorPassword':'Your Vendor Password',\n  'Callback/URL':'http://www.yourdomain.com/myallocator/callback.cgi',\n  'Callback/Password':'very secret password',\n}\n",
+        "type": "json"
       }
     ],
     "version": "0.0.0",
@@ -1662,11 +1699,13 @@
     "examples": [
       {
         "title": "XML UserLogin Request",
-        "content": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<UserLogin>\n<Auth>\n <UserId>Customer User ID</UserId>\n <UserPassword>Customer Password</UserPassword>\n</Auth>\n</UserLogin>\n"
+        "content": "XML UserLogin Request\n<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<UserLogin>\n<Auth>\n <UserId>Customer User ID</UserId>\n <UserPassword>Customer Password</UserPassword>\n</Auth>\n</UserLogin>\n",
+        "type": "json"
       },
       {
         "title": "JSON Hello Request",
-        "content": "Content-Type: application/json\n{ \n'Auth/UserId':'your username',\n'Auth/UserPassword':'your password'\n}\n"
+        "content": "JSON Hello Request\nContent-Type: application/json\n{ \n'Auth/UserId':'your username',\n'Auth/UserPassword':'your password'\n}\n",
+        "type": "json"
       }
     ],
     "version": "0.0.0",
@@ -1702,11 +1741,13 @@
     "examples": [
       {
         "title": "XML UserPasswordRecover Request",
-        "content": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<UserPasswordRecover>\n<Auth>\n <UserId>Customer User ID</UserId>\n <UserPassword>Customer Password</UserPassword>\n</Auth>\n</UserPasswordRecover>\n"
+        "content": "XML UserPasswordRecover Request\n<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<UserPasswordRecover>\n<Auth>\n <UserId>Customer User ID</UserId>\n <UserPassword>Customer Password</UserPassword>\n</Auth>\n</UserPasswordRecover>\n",
+        "type": "json"
       },
       {
         "title": "JSON Hello Request",
-        "content": "Content-Type: application/json\n{ \n'Auth/UserId':'your username',\n'Auth/UserPassword':'your password'\n}\n"
+        "content": "JSON Hello Request\nContent-Type: application/json\n{ \n'Auth/UserId':'your username',\n'Auth/UserPassword':'your password'\n}\n",
+        "type": "json"
       }
     ],
     "version": "0.0.0",
@@ -1805,14 +1846,16 @@
     "examples": [
       {
         "title": "XML Request - Creating a NEW property (and attaching it to a user account)",
-        "content": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<VendorPropertyCreate>\n<Auth>\n  <VendorId>Your Vendor ID</VendorId>\n  <VendorPassword>Your Vendor Password</VendorPassword>\n</Auth>\n<UserId>UserId</UserId>\n<PropertyName>Name of property</PropertyName>\n<ExpiryDate>2012-05-05</ExpiryDate>\n<Currency>EUR</Currency>\n<Country>DE</Country>\n<Breakfast>IN</Breakfast>\n</VendorPropertyCreate>\n"
+        "content": "XML Request - Creating a NEW property (and attaching it to a user account)\n<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<VendorPropertyCreate>\n<Auth>\n  <VendorId>Your Vendor ID</VendorId>\n  <VendorPassword>Your Vendor Password</VendorPassword>\n</Auth>\n<UserId>UserId</UserId>\n<PropertyName>Name of property</PropertyName>\n<ExpiryDate>2012-05-05</ExpiryDate>\n<Currency>EUR</Currency>\n<Country>DE</Country>\n<Breakfast>IN</Breakfast>\n</VendorPropertyCreate>\n",
+        "type": "json"
       }
     ],
     "success": {
       "examples": [
         {
           "title": "Response - Updating a login and property",
-          "content": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<UserPropertyResponse> \n<Success>true</Success>\n<PropertyId>1234</PropertyId>\n</UserPropertyResponse>\n"
+          "content": "Response - Updating a login and property\n<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<UserPropertyResponse> \n<Success>true</Success>\n<PropertyId>1234</PropertyId>\n</UserPropertyResponse>\n",
+          "type": "json"
         }
       ]
     },
@@ -1911,14 +1954,16 @@
     "examples": [
       {
         "title": "XML Request - Modifying a property",
-        "content": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<VendorPropertyModify>\n<Auth>\n  <VendorId>Your Vendor ID</VendorId>\n  <VendorPassword>Your Vendor Password</VendorPassword>\n</Auth>\n<UserId>UserId</UserId>\n<PropertyName>Name of property</PropertyName>\n<ExpiryDate>2012-05-05</ExpiryDate>\n<Currency>EUR</Currency>\n<Country>DE</Country>\n<Breakfast>IN</Breakfast>\n</VendorPropertyModify>\n"
+        "content": "XML Request - Modifying a property\n<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<VendorPropertyModify>\n<Auth>\n  <VendorId>Your Vendor ID</VendorId>\n  <VendorPassword>Your Vendor Password</VendorPassword>\n</Auth>\n<UserId>UserId</UserId>\n<PropertyName>Name of property</PropertyName>\n<ExpiryDate>2012-05-05</ExpiryDate>\n<Currency>EUR</Currency>\n<Country>DE</Country>\n<Breakfast>IN</Breakfast>\n</VendorPropertyModify>\n",
+        "type": "json"
       }
     ],
     "success": {
       "examples": [
         {
           "title": "Response - Updating a login and property",
-          "content": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<VendorPropertyModifyResponse>\n<Success>true</Success>\n<PropertyId>70</PropertyId>\n</VendorPropertyModifyResponse>\n"
+          "content": "Response - Updating a login and property\n<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<VendorPropertyModifyResponse>\n<Success>true</Success>\n<PropertyId>70</PropertyId>\n</VendorPropertyModifyResponse>\n",
+          "type": "json"
         }
       ]
     },
@@ -2011,14 +2056,16 @@
     "examples": [
       {
         "title": "XML Request - Creating a customer account",
-        "content": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<VendorUserCreate>\n<Auth>\n  <VendorId>Your Vendor ID</VendorId>\n  <VendorPassword>Your Vendor Password</VendorPassword>\n</Auth>\n<UserId>New Customer Id</UserId>\n<UserPassword>New Customer Password</UserPassword>\n<CustomerFirstName>Customer first name</CustomerFirstName>\n<CustomerLastName>Customer family name</CustomerLastName>\n<CustomerEmail>Customer email address</CustomerEmail>\n</VendorUserCreate>\n"
+        "content": "XML Request - Creating a customer account\n<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<VendorUserCreate>\n<Auth>\n  <VendorId>Your Vendor ID</VendorId>\n  <VendorPassword>Your Vendor Password</VendorPassword>\n</Auth>\n<UserId>New Customer Id</UserId>\n<UserPassword>New Customer Password</UserPassword>\n<CustomerFirstName>Customer first name</CustomerFirstName>\n<CustomerLastName>Customer family name</CustomerLastName>\n<CustomerEmail>Customer email address</CustomerEmail>\n</VendorUserCreate>\n",
+        "type": "json"
       }
     ],
     "success": {
       "examples": [
         {
           "title": "Response - Updating a login and property",
-          "content": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<VendorUserCreateResponse> \n<Success>true</Success>\n</VendorUserCreateResponse>\n"
+          "content": "Response - Updating a login and property\n<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<VendorUserCreateResponse> \n<Success>true</Success>\n</VendorUserCreateResponse>\n",
+          "type": "json"
         }
       ]
     },
@@ -2103,11 +2150,13 @@
     "examples": [
       {
         "title": "XML UserManager Exists Request ",
-        "content": "<?xml version=\"1.0\" encoding=\"UTF-8\" ?>\n<VendorUserExists>\n<Auth>\n  <VendorId>Your Vendor ID</VendorId>\n  <VendorPassword>Your Vendor Password</VendorPassword>\n</Auth>\n<Method>Exists</Method>\n<UserId>requested-username</UserId>\n<Email>user@domain.com</EmailId>\n</VendorUserExists>\n"
+        "content": "XML UserManager Exists Request \n<?xml version=\"1.0\" encoding=\"UTF-8\" ?>\n<VendorUserExists>\n<Auth>\n  <VendorId>Your Vendor ID</VendorId>\n  <VendorPassword>Your Vendor Password</VendorPassword>\n</Auth>\n<Method>Exists</Method>\n<UserId>requested-username</UserId>\n<Email>user@domain.com</EmailId>\n</VendorUserExists>\n",
+        "type": "json"
       },
       {
         "title": "JSON VendorUserExists Request",
-        "content": "{\n'Auth/VendorId':'Your Vendor ID',\n'Auth/VendorPassword':'Your Vendor Password',\n'UserId':'requested-username',\n'Email':'user@domain.com'\n}\n"
+        "content": "JSON VendorUserExists Request\n{\n'Auth/VendorId':'Your Vendor ID',\n'Auth/VendorPassword':'Your Vendor Password',\n'UserId':'requested-username',\n'Email':'user@domain.com'\n}\n",
+        "type": "json"
       }
     ],
     "version": "0.0.0",
@@ -2192,14 +2241,16 @@
     "examples": [
       {
         "title": "XML Request - Creating a user account.",
-        "content": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<VendorUserModify>\n<Auth>\n  <VendorId>Your Vendor ID</VendorId>\n  <VendorPassword>Your Vendor Password</VendorPassword>\n</Auth>\n<UserId>New Customer Id</UserId>\n<UserPassword>New Customer Password</UserPassword>\n<CustomerFirstName>Customer first name</CustomerFirstName>\n<CustomerLastName>Customer family name</CustomerLastName>\n<CustomerEmail>Customer email address</CustomerEmail>\n</VendorUserModify>\n"
+        "content": "XML Request - Creating a user account.\n<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<VendorUserModify>\n<Auth>\n  <VendorId>Your Vendor ID</VendorId>\n  <VendorPassword>Your Vendor Password</VendorPassword>\n</Auth>\n<UserId>New Customer Id</UserId>\n<UserPassword>New Customer Password</UserPassword>\n<CustomerFirstName>Customer first name</CustomerFirstName>\n<CustomerLastName>Customer family name</CustomerLastName>\n<CustomerEmail>Customer email address</CustomerEmail>\n</VendorUserModify>\n",
+        "type": "json"
       }
     ],
     "success": {
       "examples": [
         {
           "title": "Response - Updating a login and property",
-          "content": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<VendorUserModifyResponse> \n<Success>true</Success>\n</VendorUserModifyResponse>\n"
+          "content": "Response - Updating a login and property\n<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<VendorUserModifyResponse> \n<Success>true</Success>\n</VendorUserModifyResponse>\n",
+          "type": "json"
         }
       ]
     },
@@ -2223,7 +2274,8 @@
     "examples": [
       {
         "title": "To do this, send a POST request to this URL:",
-        "content": "https://myallocator.com/callbacks/plogin.xt\n"
+        "content": "To do this, send a POST request to this URL:\nhttps://myallocator.com/callbacks/plogin.xt\n",
+        "type": "json"
       }
     ],
     "parameter": {
@@ -2273,7 +2325,8 @@
     "examples": [
       {
         "title": "To do this, send a POST request to this URL:",
-        "content": "https://myallocator.com/callbacks/plogin.xt\n"
+        "content": "To do this, send a POST request to this URL:\nhttps://myallocator.com/callbacks/plogin.xt\n",
+        "type": "json"
       }
     ],
     "parameter": {
@@ -2385,15 +2438,18 @@
       "examples": [
         {
           "title": "Example: Could not parse XML",
-          "content": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<Errors>\n<Error>\n  <ErrorId>1</ErrorId>\n  <ErrorMsg>Could not parse XML</ErrorMsg>\n</Error>\n</Errors>\n"
+          "content": "Example: Could not parse XML\n<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<Errors>\n<Error>\n  <ErrorId>1</ErrorId>\n  <ErrorMsg>Could not parse XML</ErrorMsg>\n</Error>\n</Errors>\n",
+          "type": "json"
         },
         {
           "title": "Example: XML API method specific error",
-          "content": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<GetRoomTypes>\n<Errors>\n  <Error>\n    <ErrorId>3</ErrorId>\n    <ErrorMsg>Invalid user or user password</ErrorMsg>\n  </Error>\n</Errors>\n</GetRoomTypes>\n"
+          "content": "Example: XML API method specific error\n<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<GetRoomTypes>\n<Errors>\n  <Error>\n    <ErrorId>3</ErrorId>\n    <ErrorMsg>Invalid user or user password</ErrorMsg>\n  </Error>\n</Errors>\n</GetRoomTypes>\n",
+          "type": "json"
         },
         {
           "title": "Example: XML Channel specific error ",
-          "content": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<SetAllocationResponse>\n<Errors>\n  <Error channel=\"hc\">\n    <ErrorMsg>\n      Provider not responding. Please try again later.\n    </ErrorMsg>\n  </Error>\n  <Error channel=\"iwb\">\n    <ErrorMsg>\n      Provider not responding. Please try again later.\n    </ErrorMsg>\n  </Error>\n</Errors>\n<Success>false</Success>\n<Warnings></Warnings>\n</SetAllocationResponse>\n"
+          "content": "Example: XML Channel specific error \n<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<SetAllocationResponse>\n<Errors>\n  <Error channel=\"hc\">\n    <ErrorMsg>\n      Provider not responding. Please try again later.\n    </ErrorMsg>\n  </Error>\n  <Error channel=\"iwb\">\n    <ErrorMsg>\n      Provider not responding. Please try again later.\n    </ErrorMsg>\n  </Error>\n</Errors>\n<Success>false</Success>\n<Warnings></Warnings>\n</SetAllocationResponse>\n",
+          "type": "json"
         }
       ]
     },

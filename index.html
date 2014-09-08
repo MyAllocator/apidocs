@@ -13,6 +13,7 @@
 <body>
 
 <script id="template-sidenav" type="text/x-handlebars-template">
+<nav id="scrollingNav">
   <ul class="sidenav nav nav-list">
   {{#each nav}}
     {{#if title}}
@@ -23,11 +24,14 @@
           <li class="nav-header" data-group="{{group}}"><a href="#api-{{group}}">{{underscoreToSpace title}}</a></li>
         {{/if}}
       {{else}}
-        <li {{#if hidden}}class="hide" {{/if}}data-group="{{group}}" data-name="{{name}}" data-version="{{version}}"><a href="#api-{{group}}-{{name}}">{{title}}</a></li>
+        <li {{#if hidden}}class="hide" {{/if}}data-group="{{group}}" data-name="{{name}}" data-version="{{version}}">
+          <a href="#api-{{group}}-{{name}}">{{title}}</a>
+        </li>
       {{/if}}
     {{/if}}
   {{/each}}
   </ul>
+</nav>
 </script>
 
 <script id="template-project" type="text/x-handlebars-template">
@@ -136,16 +140,30 @@
       {{/if}}
     {{/if}}
 
+    <ul class="nav nav-tabs nav-tabs-examples">
+      {{#each article.examples}}
+        <li{{#if_eq @index compare=0}} class="active"{{/if_eq}}>
+          <a href="#examples-{{../id}}-{{@index}}">{{title}}</a>
+        </li>
+      {{/each}}
+    </ul>
+ 
+    <div class="tab-content">
     {{#each article.examples}}
-      <h3>{{title}}</h3>
-      <pre class="prettyprint language-json" data-type="json"><code>{{content}}</code></pre>
+      <div class="tab-pane{{#if_eq @index compare=0}} active{{/if_eq}}" id="examples-{{../id}}-{{@index}}">
+        <pre class="prettyprint language-json" data-type="{{type}}"><code>{{content}}</code></pre>
+      </div>
     {{/each}}
+    </div>
 
-    {{subTemplate "article-param-block" params=article.header _hasType=_hasTypeInHeaderFields}}
-    {{subTemplate "article-param-block" params=article.parameter _hasType=_hasTypeInParameterFields}}
-    {{subTemplate "article-param-block" params=article.success _hasType=_hasTypeInSuccessFields}}
-    {{subTemplate "article-param-block" params=article.info _hasType=_hasTypeInInfoFields}}
-    {{subTemplate "article-param-block" params=article.error _col1="Name" _hasType=_hasTypeInErrorFields}}
+    {{subTemplate "article-param-block" params=article.header _hasType=_hasTypeInHeaderFields section="header"}}
+    {{subTemplate "article-param-block" params=article.parameter _hasType=_hasTypeInParameterFields section="parameter"}}
+    {{subTemplate "article-param-block" params=article.success _hasType=_hasTypeInSuccessFields section="success"}}
+    {{subTemplate "article-param-block" params=article.info _hasType=_hasTypeInInfoFields section="info"}}
+    {{subTemplate "article-param-block" params=article.error _col1="Name" _hasType=_hasTypeInErrorFields section="error"}}
+
+    {{subTemplate "article-sample-request" article=article}}
+
   </article>
 </script>
 
@@ -175,11 +193,69 @@
         </tbody>
       </table>
     {{/each}}
+
+    <ul class="nav nav-tabs nav-tabs-examples">
+      {{#each params.examples}}
+        <li{{#if_eq @index compare=0}} class="active"{{/if_eq}}>
+          <a href="#{{../section}}-examples-{{../id}}-{{@index}}">{{title}}</a>
+        </li>
+      {{/each}}
+    </ul>
+ 
+    <div class="tab-content">
     {{#each params.examples}}
-      <h3>{{title}}</h3>
-      <pre class="prettyprint language-json" data-type="json"><code>{{content}}</code></pre>
+      <div class="tab-pane{{#if_eq @index compare=0}} active{{/if_eq}}" id="{{../section}}-examples-{{../id}}-{{@index}}">
+        <pre class="prettyprint language-json" data-type="{{type}}"><code>{{content}}</code></pre>
+      </div>
     {{/each}}
+    </div>
+
   {{/if}}
+</script>
+
+<script id="template-article-sample-request" type="text/x-handlebars-template">
+    {{#if article.sampleRequest}}
+      <h2>{{__ "Send a Sample Request"}}</h2>
+      <form class="form-horizontal">
+        <fieldset>
+          <div class="control-group">
+            <div class="controls">
+              <div class="input-prepend">>
+                <span class="add-on">{{__ "url"}}</span>
+                <input type="text" class="sample-request-url" value="{{article.sampleRequest.0.url}}" />
+              </div>
+            </div>
+          </div>
+ 
+      {{#each article.parameter.fields.Parameter}}
+          <div class="control-group">
+            <label class="control-label" for="sample-request-field-{{field}}">{{field}}</label>
+            <div class="controls">
+              <div class="input-append">>
+                <input type="text" placeholder="{{field}}" class="sample-request-param" data-name="{{field}}">
+                <span class="add-on">{{type}}</span>
+              </div>
+            </div>
+          </div>
+      {{/each}}
+
+          <div class="control-group">
+            <div class="controls">
+              <button class="btn btn-default sample-request-send" data-sample-request-type="{{article.type}}">{{__ "Send"}}</button>
+            </div>
+          </div>
+
+          <div class="sample-request-response" style="display: none;">
+            <h3>
+              {{__ "Response"}}
+              <button class="btn btn-small btn-default pull-right sample-request-clear">X</button>
+            </h3>
+            <pre class="prettyprint language-json" data-type="json"><code class="sample-request-response-json"></code></pre>
+          </div>
+
+        </fieldset>
+      </form>
+    {{/if}}    
 </script>
 
 <script id="template-compare-article" type="text/x-handlebars-template">
@@ -219,29 +295,61 @@
 
     {{subTemplate "article-compare-permission" article=article compare=compare}}
 
+    <ul class="nav nav-tabs nav-tabs-examples">
     {{#each_compare_title article.examples compare.examples}}
 
       {{#if typeSame}}
-      <h3>{{{showDiff source.title compare.title}}}</h3>
-      <pre class="prettyprint language-json" data-type="json"><code>{{{showDiff source.content compare.content}}}</code></pre>
+        <li{{#if_eq index compare=0}} class="active"{{/if_eq}}>
+          <a href="#compare-examples-{{../../article.id}}-{{index}}">{{{showDiff source.title compare.title}}}</a>
+        </li>
       {{/if}}
 
       {{#if typeIns}}
-      <h3><ins>{{{source.title}}}</ins></h3>
-      <pre class="ins prettyprint language-json" data-type="json"><code>{{{source.content}}}</code></pre>
+        <li{{#if_eq index compare=0}} class="active"{{/if_eq}}>
+          <a href="#compare-examples-{{../../article.id}}-{{index}}"><ins>{{{source.title}}}</ins></a>
+        </li>
       {{/if}}
 
       {{#if typeDel}}
-      <h3><del>{{{compare.title}}}</del></h3>
-      <pre class="del prettyprint language-json" data-type="json"><code>{{{compare.content}}}</code></pre>
+        <li{{#if_eq index compare=0}} class="active"{{/if_eq}}>
+          <a href="#compare-examples-{{../../article.id}}-{{index}}"><del>{{{compare.title}}}</del></a>
+        </li>
       {{/if}}
 
     {{/each_compare_title}}
+    </ul>
 
-    {{subTemplate "article-compare-param-block" source=article.parameter compare=compare.parameter _hasType=_hasTypeInParameterFields}}
-    {{subTemplate "article-compare-param-block" source=article.success compare=compare.success _hasType=_hasTypeInSuccessFields}}
-    {{subTemplate "article-compare-param-block" source=article.info compare=compare.info _hasType=_hasTypeInInfoFields}}
-    {{subTemplate "article-compare-param-block" source=article.error compare=compare.error _col1="Name" _hasType=_hasTypeInErrorFields}}
+    <div class="tab-content">
+    {{#each_compare_title article.examples compare.examples}}
+
+      {{#if typeSame}}
+        <div class="tab-pane{{#if_eq index compare=0}} active{{/if_eq}}" id="compare-examples-{{../../article.id}}-{{index}}">
+          <pre class="prettyprint language-json" data-type="{{source.type}}"><code>{{{showDiff source.content compare.content}}}</code></pre>
+        </div>
+      {{/if}}
+
+      {{#if typeIns}}
+        <div class="tab-pane{{#if_eq index compare=0}} active{{/if_eq}}" id="compare-examples-{{../../article.id}}-{{index}}">
+          <pre class="prettyprint language-json" data-type="{{source.type}}"><code>{{{source.content}}}</code></pre>
+        </div>
+      {{/if}}
+
+      {{#if typeDel}}
+        <div class="tab-pane{{#if_eq index compare=0}} active{{/if_eq}}" id="compare-examples-{{../../article.id}}-{{index}}">
+          <pre class="prettyprint language-json" data-type="{{compare.type}}"><code>{{{compare.content}}}</code></pre>
+        </div>
+      {{/if}}
+
+    {{/each_compare_title}}
+    </div>
+
+    {{subTemplate "article-compare-param-block" source=article.parameter compare=compare.parameter _hasType=_hasTypeInParameterFields section="parameter"}}
+    {{subTemplate "article-compare-param-block" source=article.success compare=compare.success _hasType=_hasTypeInSuccessFields section="success"}}
+    {{subTemplate "article-compare-param-block" source=article.info compare=compare.info _hasType=_hasTypeInInfoFields section="info"}}
+    {{subTemplate "article-compare-param-block" source=article.error compare=compare.error _col1="Name" _hasType=_hasTypeInErrorFields section="error"}}
+
+    {{subTemplate "article-sample-request" article=article}}
+
   </article>
 </script>
 
@@ -369,24 +477,55 @@
         </table>
       {{/if}}
     {{/each_compare_keys}}
+
+    <ul class="nav nav-tabs nav-tabs-examples">
     {{#each_compare_title source.examples compare.examples}}
 
       {{#if typeSame}}
-      <h3>{{{showDiff source.title compare.title}}}</h3>
-      <pre class="prettyprint language-json" data-type="json"><code>{{{showDiff source.content compare.content}}}</code></pre>
+        <li{{#if_eq index compare=0}} class="active"{{/if_eq}}>
+          <a href="#{{../../section}}-compare-examples-{{../../article.id}}-{{index}}">{{{showDiff source.title compare.title}}}</a>
+        </li>
       {{/if}}
 
       {{#if typeIns}}
-      <h3><ins>{{{source.title}}}</ins></h3>
-      <pre class="ins prettyprint language-json" data-type="json"><code>{{{source.content}}}</code></pre>
+        <li{{#if_eq index compare=0}} class="active"{{/if_eq}}>
+          <a href="#{{../../section}}-compare-examples-{{../../article.id}}-{{index}}"><ins>{{{source.title}}}</ins></a>
+        </li>
       {{/if}}
 
       {{#if typeDel}}
-      <h3><del>{{{compare.title}}}</del></h3>
-      <pre class="del prettyprint language-json" data-type="json"><code>{{{compare.content}}}</code></pre>
+        <li{{#if_eq index compare=0}} class="active"{{/if_eq}}>
+          <a href="#{{../../section}}-compare-examples-{{../../article.id}}-{{index}}"><del>{{{compare.title}}}</del></a>
+        </li>
       {{/if}}
 
     {{/each_compare_title}}
+    </ul>
+
+    <div class="tab-content">
+    {{#each_compare_title source.examples compare.examples}}
+
+      {{#if typeSame}}
+        <div class="tab-pane{{#if_eq index compare=0}} active{{/if_eq}}" id="{{../../section}}-compare-examples-{{../../article.id}}-{{index}}">
+          <pre class="prettyprint language-json" data-type="{{source.type}}"><code>{{{showDiff source.content compare.content}}}</code></pre>
+        </div>
+      {{/if}}
+
+      {{#if typeIns}}
+        <div class="tab-pane{{#if_eq index compare=0}} active{{/if_eq}}" id="{{../../section}}-compare-examples-{{../../article.id}}-{{index}}">
+          <pre class="prettyprint language-json" data-type="{{source.type}}"><code>{{{source.content}}}</code></pre>
+        </div>
+      {{/if}}
+
+      {{#if typeDel}}
+        <div class="tab-pane{{#if_eq index compare=0}} active{{/if_eq}}" id="{{../../section}}-compare-examples-{{../../article.id}}-{{index}}">
+          <pre class="prettyprint language-json" data-type="{{compare.type}}"><code>{{{compare.content}}}</code></pre>
+        </div>
+      {{/if}}
+
+    {{/each_compare_title}}
+    </div>
+
   {{/if}}
 </script>
 

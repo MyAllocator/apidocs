@@ -7,7 +7,8 @@ require.config({
 		jquery: "./vendor/jquery.min",
 		locales: "./locales/locale",
 		lodash: "./vendor/lodash.min",
-		prettify: "./vendor/prettify/prettify"
+		prettify: "./vendor/prettify/prettify",
+		utilsSampleRequest: "utils/send_sample_request"
 	},
 	shim: {
 		bootstrap: {
@@ -31,20 +32,6 @@ require.config({
 	waitSeconds: 15
 });
 
-function loadGoogleFontCss($){
-    var host = document.location.hostname.toLowerCase();
-    var protocol = document.location.protocol.toLowerCase();
-    var googleCss = '//fonts.googleapis.com/css?family=Source+Code+Pro|Source+Sans+Pro:400,600,700';
-    if (host == "localhost" || !host.length || protocol === 'file:'){
-        googleCss = 'http:' + googleCss;
-    }
-    $("<link/>", {
-        rel: "stylesheet",
-        type: "text/css",
-        href: googleCss
-    }).appendTo("head");
-}
-
 require([
 	"jquery",
 	"lodash",
@@ -53,11 +40,14 @@ require([
 	"./api_project.js",
 	"./api_data.js",
 	"prettify",
-	"bootstrap"
-], function($, _, locale, Handlebars, apiProject, apiData, prettyPrint) {
+	"utilsSampleRequest",
+	"bootstrap",
+], function($, _, locale, Handlebars, apiProject, apiData, prettyPrint, sampleRequest) {
 
-    loadGoogleFontCss($);
-
+	/**
+	 * Load google web fonts.
+	 */
+  loadGoogleFontCss($);
 
 	var api = apiData.api;
 
@@ -102,7 +92,7 @@ require([
 	var newList = [];
 	var umlauts = { "ä": "ae", "ü": "ue", "ö": "oe", "ß": "ss" };
 	$.each(apiByGroupAndName, function(index, groupEntries) {
-		// Titel der ersten Einträge von group[].name[] ermitteln (name hat Versionsliste)
+		// get titles from the first entry of group[].name[] (name has versioning)
 		var titles = {};
 		$.each(groupEntries, function(index, entries) {
 			var title = entries[0].title;
@@ -112,11 +102,11 @@ require([
 				titles[title + " #~#" + index] = 1;
 			}
 		}); // each
-		// Sortieren
+		// Sort
 		var values = Object.keys(titles);
 		values.sort();
 
-		// Einzelne Elemente der neuen Liste hinzufügen.
+		// Add single elements to the new list
 		values.forEach(function(name) {
 			var values = name.split( "#~#");
 			groupEntries[values[1]].forEach(function(entry) {
@@ -124,7 +114,7 @@ require([
 			}); // forEach
 		}); // forEach
 	}); // each
-	// api überschreiben mit sortierter Liste.
+	// api overwrite with ordered list
 	api = newList;
 
 	/**
@@ -314,7 +304,10 @@ require([
 	/**
 	 * Bootstrap Scrollspy.
 	 */
-	$("body").scrollspy({ offset: 25 });
+	var $scrollSpy = $(this).scrollspy({ target: "#scrollingNav", offset: 25 });
+	$('[data-spy="scroll"]').each(function () {
+		$scrollSpy('refresh');
+	}); 
 
 	// Content-Scroll on Navigation click.
 	$(".sidenav").find("a").on("click", function(e) {
@@ -355,7 +348,7 @@ require([
 	 */
 	function initDynamic()
 	{
-	  // Bootstrap Popover.
+	  	// Bootstrap Popover.
 		$("a[data-toggle=popover]")
 			.popover()
 			.click(function(e) {
@@ -378,6 +371,21 @@ require([
 				}
 			});
 		}
+		
+		// Tabs
+		$('.nav-tabs-examples a').click(function (e) {
+	  		e.preventDefault();
+	  		$(this).tab('show');
+		});
+		// TODO: check to remove this silly timeout problem, tabs not activate but it is rendered
+		//setTimeout(function() {
+			$('.nav-tabs-examples').find('a:first').tab('show');	
+		//}, 10);
+
+	    /**
+	     * Init Modules
+	     */
+	    sampleRequest.initDynamic();
 	} // initDynamic
 	initDynamic();
 
@@ -385,7 +393,7 @@ require([
 	 * Pre- / Code-Format.
 	 */
 	prettyPrint();
-
+	
 	/**
 	 * HTML-Template specific jQuery-Functions
 	 */
@@ -492,6 +500,14 @@ require([
 				versions: articleVersions[group][name]
 			};
 
+			// Add unique id
+			// TODO: replace all group-name-version in template with id.
+			fields.article.id = fields.article.group + '-' + fields.article.name + '-' + fields.article.version;
+			fields.article.id = fields.article.id.replace(/\./g, '_');
+
+			fields.compare.id = fields.compare.group + '-' + fields.compare.name + '-' + fields.compare.version;
+			fields.compare.id = fields.compare.id.replace(/\./g, '_');
+
 			var entry = sourceEntry;
 			if(entry.parameter && entry.parameter.fields) fields._hasTypeInParameterFields = _hasTypeInFields(entry.parameter.fields);
 			if(entry.error && entry.error.fields) fields._hasTypeInErrorFields = _hasTypeInFields(entry.error.fields);
@@ -555,11 +571,16 @@ require([
 	 */
 	function addArticleSettings(fields, entry)
 	{
-		if(entry.header && entry.header.fields) fields._hasTypeInHeaderFields = _hasTypeInFields(entry.header.fields);
+		// Add unique id
+		// TODO: replace all group-name-version in template with id.
+		fields.id = fields.article.group + '-' + fields.article.name + '-' + fields.article.version;
+		fields.id = fields.id.replace(/\./g, '_');
+
+		if(entry.header && entry.header.fields)       fields._hasTypeInHeaderFields    = _hasTypeInFields(entry.header.fields);
 		if(entry.parameter && entry.parameter.fields) fields._hasTypeInParameterFields = _hasTypeInFields(entry.parameter.fields);
-		if(entry.error && entry.error.fields)         fields._hasTypeInErrorFields = _hasTypeInFields(entry.error.fields);
-		if(entry.success && entry.success.fields)     fields._hasTypeInSuccessFields = _hasTypeInFields(entry.success.fields);
-		if(entry.info && entry.info.fields)           fields._hasTypeInInfoFields = _hasTypeInFields(entry.info.fields);
+		if(entry.error && entry.error.fields)         fields._hasTypeInErrorFields     = _hasTypeInFields(entry.error.fields);
+		if(entry.success && entry.success.fields)     fields._hasTypeInSuccessFields   = _hasTypeInFields(entry.success.fields);
+		if(entry.info && entry.info.fields)           fields._hasTypeInInfoFields      = _hasTypeInFields(entry.info.fields);
 
 		// Add template settings
 		fields.template = apiProject.template;
@@ -603,4 +624,20 @@ require([
 		$root.remove(); 
 		return;
 	} // resetArticle
+	
+
+	function loadGoogleFontCss($){
+	    var host = document.location.hostname.toLowerCase();
+	    var protocol = document.location.protocol.toLowerCase();
+	    var googleCss = '//fonts.googleapis.com/css?family=Source+Code+Pro|Source+Sans+Pro:400,600,700';
+	    if (host == "localhost" || !host.length || protocol === 'file:'){
+	        googleCss = 'http:' + googleCss;
+	    }
+	    $("<link/>", {
+	        rel: "stylesheet",
+	        type: "text/css",
+	        href: googleCss
+	    }).appendTo("head");
+	} // loadGoogleFontCss
+
 });
