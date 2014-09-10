@@ -933,9 +933,9 @@
   },
   {
     "type": "get",
-    "url": "/GetPropertyRooms",
-    "title": "GetPropertyRooms",
-    "name": "GetPropertyRooms",
+    "url": "/GetRoomAvailability",
+    "title": "GetRoomAvailability",
+    "name": "GetRoomAvailability",
     "group": "PMS",
     "description": "<p>This call can be used to query for all data that we hold for a specific property and date range.  The date range can only be 31 days as the maximum. You can query multiple times if you need a longer date range.</p><p> A MaxStay setting of 0 means &quot;unrestricted&quot;.  The 48 and 49 in the response example below refer to the room ID as returned by GetRooms (XML API).</p><p> <strong> Compatibility: </strong>  this was formerly available at: <a href=\"https://myallocator.com/en/api/data\">https://myallocator.com/en/api/data</a></p>",
     "parameter": {
@@ -996,8 +996,8 @@
     "success": {
       "examples": [
         {
-          "title": "JSON GetPropertyRooms",
-          "content": "JSON GetPropertyRooms\n  {\n  \"Rooms\": [\n        {\n   \t  \"RoomId\": 48,\n        \"PropertyId\": 1234,\n        \"RoomName\": \"1-person private\",\n        \"Data\": [\n          {\n            \"Date\": \"2014-03-15\",\n            \"Units\": 2,\n            \"Price\": 33,\n            \"MinStay\": 1,\n            \"MaxStay\": 7,\n            \"Closed\": false,\n            \"ClosedForArrival\": false,\n            \"ClosedForDeparture\": false\n          },\n          {\n            \"Date\": \"2014-03-16\",\n            \"Units\": 2,\n            \"Price\": 33,\n            \"MinStay\": 1,\n            \"MaxStay\": 7,\n            \"Closed\": false,\n            \"ClosedForArrival\": false,\n            \"ClosedForDeparture\": false\n          }\n        ]\n      },\n      {\n        \"RoomId\": 49,\n        \"PropertyId\": 1,\n        \"RoomName\": \"5-person male shared\",\n        \"Data\": [\n          {\n            \"Date\": \"2014-03-15\",\n            \"Units\": 0,\n            \"Price\": 0,\n            \"MinStay\": 1,\n            \"MaxStay\": 7,\n            \"Closed\": false,\n            \"ClosedForArrival\": false,\n            \"ClosedForDeparture\": false\n          },\n          {\n            \"Date\": \"2014-03-16\",\n            \"Units\": 0,\n            \"Price\": 0,\n            \"MinStay\": 1,\n            \"MaxStay\": 7,\n            \"Closed\": false,\n            \"ClosedForArrival\": false,\n            \"ClosedForDeparture\": false\n          }\n        ]\n      }\n    }\n  }\n",
+          "title": "JSON GetRoomAvailability",
+          "content": "JSON GetRoomAvailability\n  {\n  \"Rooms\": [\n        {\n   \t  \"RoomId\": 48,\n        \"PropertyId\": 1234,\n        \"RoomName\": \"1-person private\",\n        \"Data\": [\n          {\n            \"Date\": \"2014-03-15\",\n            \"Units\": 2,\n            \"Price\": 33,\n            \"MinStay\": 1,\n            \"MaxStay\": 7,\n            \"Closed\": false,\n            \"ClosedForArrival\": false,\n            \"ClosedForDeparture\": false\n          },\n          {\n            \"Date\": \"2014-03-16\",\n            \"Units\": 2,\n            \"Price\": 33,\n            \"MinStay\": 1,\n            \"MaxStay\": 7,\n            \"Closed\": false,\n            \"ClosedForArrival\": false,\n            \"ClosedForDeparture\": false\n          }\n        ]\n      },\n      {\n        \"RoomId\": 49,\n        \"PropertyId\": 1,\n        \"RoomName\": \"5-person male shared\",\n        \"Data\": [\n          {\n            \"Date\": \"2014-03-15\",\n            \"Units\": 0,\n            \"Price\": 0,\n            \"MinStay\": 1,\n            \"MaxStay\": 7,\n            \"Closed\": false,\n            \"ClosedForArrival\": false,\n            \"ClosedForDeparture\": false\n          },\n          {\n            \"Date\": \"2014-03-16\",\n            \"Units\": 0,\n            \"Price\": 0,\n            \"MinStay\": 1,\n            \"MaxStay\": 7,\n            \"Closed\": false,\n            \"ClosedForArrival\": false,\n            \"ClosedForDeparture\": false\n          }\n        ]\n      }\n    }\n  }\n",
           "type": "json"
         }
       ]
