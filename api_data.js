@@ -914,6 +914,115 @@ define({ api: [
   },
   {
     "type": "get",
+    "url": "/PropertyCreate",
+    "title": "PropertyCreate",
+    "name": "PropertyCreate",
+    "group": "PMS",
+    "parameter": {
+      "fields": {
+        "Request": [
+          {
+            "group": "Request",
+            "type": "String",
+            "field": "Auth/UserId",
+            "optional": true,
+            "description": "<p>Users unique ID  (required if not linked to vendor)</p>"
+          },
+          {
+            "group": "Request",
+            "type": "String",
+            "field": "Auth/UserPassword",
+            "optional": true,
+            "description": "<p>Users password (required if not linked to vendor)</p>"
+          },
+          {
+            "group": "Request",
+            "type": "String",
+            "field": "Auth/PropertyId",
+            "optional": false,
+            "description": "<p>Property ID on myallocator.com</p>"
+          },
+          {
+            "group": "Request",
+            "type": "String",
+            "field": "Auth/VendorId",
+            "optional": false,
+            "description": "<p>Your Vendor ID</p>"
+          },
+          {
+            "group": "Request",
+            "type": "String",
+            "field": "Auth/VendorPassword",
+            "optional": false,
+            "description": "<p>Your Vendor Password</p>"
+          },
+          {
+            "group": "Request",
+            "type": "String",
+            "field": "UserId",
+            "optional": false,
+            "description": "<p>Requested UserId</p>"
+          },
+          {
+            "group": "Request",
+            "type": "String",
+            "field": "PropertyName",
+            "optional": false,
+            "description": "<p>Name of hotel/hostel/B\\&amp;B/...</p>"
+          },
+          {
+            "group": "Request",
+            "type": "String",
+            "field": "ExpiryDate",
+            "optional": false,
+            "description": "<p>Day on which the login to myallocator.com expires. No availability update (even through the API) can be made after this date. Format: YYYY-MM-DD. \\</p>"
+          },
+          {
+            "group": "Request",
+            "type": "String",
+            "field": "Currency",
+            "optional": false,
+            "description": "<p>3-letter ISO 4217 currency code. This is the default currency of the property.</p>"
+          },
+          {
+            "group": "Request",
+            "type": "String",
+            "field": "Country",
+            "optional": false,
+            "description": "<p>2-letter ISO 3166-1 alpha-2 country code. This is the country the property located in.</p>"
+          },
+          {
+            "group": "Request",
+            "type": "String",
+            "field": "Breakfast",
+            "optional": false,
+            "description": "<p>Can be \\textit{IN} (included), \\textit{EX} (excluded) or empty.</p>"
+          }
+        ]
+      }
+    },
+    "description": "<p>This method allows you to create customer accounts on myallocator.com.Before you can use this method we&#39;ll have to explicitly enable you forthis functionality, as some aspects with regards to customer payment will needto be discussed.    previously known as SetLogin/CreateLogin</p>",
+    "examples": [
+      {
+        "title": "XML Request - Creating a NEW property (and attaching it to a user account)",
+        "content": "XML Request - Creating a NEW property (and attaching it to a user account)\n<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<PropertyCreate>\n<Auth>\n  <VendorId>Your Vendor ID</VendorId>\n  <VendorPassword>Your Vendor Password</VendorPassword>\n</Auth>\n<UserId>UserId</UserId>\n<PropertyName>Name of property</PropertyName>\n<ExpiryDate>2012-05-05</ExpiryDate>\n<Currency>EUR</Currency>\n<Country>DE</Country>\n<Breakfast>IN</Breakfast>\n</PropertyCreate>\n",
+        "type": "json"
+      }
+    ],
+    "success": {
+      "examples": [
+        {
+          "title": "Response - Updating a login and property",
+          "content": "Response - Updating a login and property\n<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<UserPropertyResponse> \n<Success>true</Success>\n<PropertyId>1234</PropertyId>\n</UserPropertyResponse>\n",
+          "type": "json"
+        }
+      ]
+    },
+    "version": "0.0.0",
+    "filename": "perllib/MAAPI.pm"
+  },
+  {
+    "type": "get",
     "url": "/PropertyList",
     "title": "PropertyList",
     "name": "PropertyList",
@@ -1030,6 +1139,114 @@ define({ api: [
         {
           "title": "XML PropertyList Response Success",
           "content": "XML PropertyList Response Success\n<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<PropertyListResponse>\n<Properties>\n  <Property>\n    <Id>19</Id>\n    <Name>Property 1</Name>\n    <Breakfast></Breakfast>\n    <Currency>GBP</Currency>\n    <Country>GB</Country>\n    <PaidUntil>2011-11-11</PaidUntil>\n    <Weekend>\n      <Day name=\"Friday\">5</Day>\n      <Day name=\"Saturday\">6</Day>\n    </Weekend>\n  </Property>\n  \n  <Property>\n    <Id>13</Id>\n    <Name>Property 2</Name>\n    <Breakfast>IN</Breakfast>\n    <Currency>EUR</Currency>\n    <Country>DE</Country>\n    <PaidUntil>2011-11-11</PaidUntil>\n    <Weekend>\n    </Weekend>\n  </Property>\n  \n  <Property>\n    <Id>15</Id>\n    <Name>Property 3</Name>\n    <Breakfast>EX</Breakfast>\n    <Currency>GBP</Currency>\n    <Country>GB</Country>\n    <PaidUntil>2011-11-11</PaidUntil>\n    <Weekend>\n      <Day name=\"Friday\">5</Day>\n      <Day name=\"Saturday\">6</Day>\n      <Day name=\"Sunday\">7</Day>\n    </Weekend>\n  </Property>\n</Properties>\n</PropertyListResponse>\n",
+          "type": "json"
+        }
+      ]
+    },
+    "version": "0.0.0",
+    "filename": "perllib/MAAPI.pm"
+  },
+  {
+    "type": "get",
+    "url": "/PropertyModify",
+    "title": "PropertyModify",
+    "name": "PropertyModify",
+    "group": "PMS",
+    "parameter": {
+      "fields": {
+        "Request": [
+          {
+            "group": "Request",
+            "type": "String",
+            "field": "Auth/UserId",
+            "optional": true,
+            "description": "<p>Users unique ID  (required if not linked to vendor)</p>"
+          },
+          {
+            "group": "Request",
+            "type": "String",
+            "field": "Auth/UserPassword",
+            "optional": true,
+            "description": "<p>Users password (required if not linked to vendor)</p>"
+          },
+          {
+            "group": "Request",
+            "type": "String",
+            "field": "Auth/VendorId",
+            "optional": false,
+            "description": "<p>Your Vendor ID</p>"
+          },
+          {
+            "group": "Request",
+            "type": "String",
+            "field": "Auth/VendorPassword",
+            "optional": false,
+            "description": "<p>Your Vendor Password</p>"
+          },
+          {
+            "group": "Request",
+            "type": "String",
+            "field": "UserId",
+            "optional": false,
+            "description": "<p>Requested UserId</p>"
+          },
+          {
+            "group": "Request",
+            "type": "String",
+            "field": "PropertyId",
+            "optional": false,
+            "description": "<p>Requested PropertyId</p>"
+          },
+          {
+            "group": "Request",
+            "type": "String",
+            "field": "PropertyName",
+            "optional": false,
+            "description": "<p>Name of hotel/hostel/B\\&amp;B/...</p>"
+          },
+          {
+            "group": "Request",
+            "type": "String",
+            "field": "ExpiryDate",
+            "optional": false,
+            "description": "<p>Day on which the login to myallocator.com expires. No availability update (even through the API) can be made after this date. Format: YYYY-MM-DD. \\</p>"
+          },
+          {
+            "group": "Request",
+            "type": "String",
+            "field": "Currency",
+            "optional": false,
+            "description": "<p>3-letter ISO 4217 currency code. This is the default currency of the property.</p>"
+          },
+          {
+            "group": "Request",
+            "type": "String",
+            "field": "Country",
+            "optional": false,
+            "description": "<p>2-letter ISO 3166-1 alpha-2 country code. This is the country the property located in.</p>"
+          },
+          {
+            "group": "Request",
+            "type": "String",
+            "field": "Breakfast",
+            "optional": false,
+            "description": "<p>Can be \\textit{IN} (included), \\textit{EX} (excluded) or empty.</p>"
+          }
+        ]
+      }
+    },
+    "examples": [
+      {
+        "title": "XML Request - Modifying a property",
+        "content": "XML Request - Modifying a property\n<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<PropertyModify>\n<Auth>\n  <VendorId>Your Vendor ID</VendorId>\n  <VendorPassword>Your Vendor Password</VendorPassword>\n</Auth>\n<UserId>UserId</UserId>\n<PropertyName>Name of property</PropertyName>\n<ExpiryDate>2012-05-05</ExpiryDate>\n<Currency>EUR</Currency>\n<Country>DE</Country>\n<Breakfast>IN</Breakfast>\n</PropertyModify>\n",
+        "type": "json"
+      }
+    ],
+    "success": {
+      "examples": [
+        {
+          "title": "Response - Updating a login and property",
+          "content": "Response - Updating a login and property\n<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<PropertyModifyResponse>\n<Success>true</Success>\n<PropertyId>70</PropertyId>\n</PropertyModifyResponse>\n",
           "type": "json"
         }
       ]
@@ -1595,388 +1812,9 @@ define({ api: [
   },
   {
     "type": "get",
-    "url": "/UserLogin",
-    "title": "UserLogin",
-    "name": "UserLogin",
-    "group": "PMS",
-    "description": "<p><strong> EXPERIMENTAL </strong></p>",
-    "parameter": {
-      "fields": {
-        "Request": [
-          {
-            "group": "Request",
-            "type": "String",
-            "field": "Auth/UserId",
-            "optional": false,
-            "description": "<p>Users unique ID</p>"
-          },
-          {
-            "group": "Request",
-            "type": "String",
-            "field": "Auth/UserPassword",
-            "optional": false,
-            "description": "<p>Users password</p>"
-          }
-        ]
-      }
-    },
-    "success": {
-      "fields": {
-        "Response": [
-          {
-            "group": "Response",
-            "type": "String",
-            "field": "session",
-            "optional": false,
-            "description": "<p>a session token</p>"
-          }
-        ]
-      }
-    },
-    "examples": [
-      {
-        "title": "XML UserLogin Request",
-        "content": "XML UserLogin Request\n<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<UserLogin>\n<Auth>\n <UserId>Customer User ID</UserId>\n <UserPassword>Customer Password</UserPassword>\n</Auth>\n</UserLogin>\n",
-        "type": "json"
-      },
-      {
-        "title": "JSON Hello Request",
-        "content": "JSON Hello Request\nContent-Type: application/json\n{ \n'Auth/UserId':'your username',\n'Auth/UserPassword':'your password'\n}\n",
-        "type": "json"
-      }
-    ],
-    "version": "0.0.0",
-    "filename": "perllib/MAAPI.pm"
-  },
-  {
-    "type": "get",
-    "url": "/UserPasswordRecover",
-    "title": "UserPasswordRecover",
-    "name": "UserPasswordRecover",
-    "group": "PMS",
-    "description": "<p><strong> EXPERIMENTAL </strong></p>",
-    "parameter": {
-      "fields": {
-        "Request": [
-          {
-            "group": "Request",
-            "type": "String",
-            "field": "Auth/UserId",
-            "optional": false,
-            "description": "<p>Users unique ID</p>"
-          },
-          {
-            "group": "Request",
-            "type": "String",
-            "field": "Auth/UserPassword",
-            "optional": false,
-            "description": "<p>Users password</p>"
-          }
-        ]
-      }
-    },
-    "examples": [
-      {
-        "title": "XML UserPasswordRecover Request",
-        "content": "XML UserPasswordRecover Request\n<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<UserPasswordRecover>\n<Auth>\n <UserId>Customer User ID</UserId>\n <UserPassword>Customer Password</UserPassword>\n</Auth>\n</UserPasswordRecover>\n",
-        "type": "json"
-      },
-      {
-        "title": "JSON Hello Request",
-        "content": "JSON Hello Request\nContent-Type: application/json\n{ \n'Auth/UserId':'your username',\n'Auth/UserPassword':'your password'\n}\n",
-        "type": "json"
-      }
-    ],
-    "version": "0.0.0",
-    "filename": "perllib/MAAPI.pm"
-  },
-  {
-    "type": "get",
-    "url": "/VendorPropertyCreate",
-    "title": "VendorPropertyCreate",
-    "name": "VendorPropertyCreate",
-    "group": "PMS",
-    "parameter": {
-      "fields": {
-        "Request": [
-          {
-            "group": "Request",
-            "type": "String",
-            "field": "Auth/UserId",
-            "optional": true,
-            "description": "<p>Users unique ID  (required if not linked to vendor)</p>"
-          },
-          {
-            "group": "Request",
-            "type": "String",
-            "field": "Auth/UserPassword",
-            "optional": true,
-            "description": "<p>Users password (required if not linked to vendor)</p>"
-          },
-          {
-            "group": "Request",
-            "type": "String",
-            "field": "Auth/PropertyId",
-            "optional": false,
-            "description": "<p>Property ID on myallocator.com</p>"
-          },
-          {
-            "group": "Request",
-            "type": "String",
-            "field": "Auth/VendorId",
-            "optional": false,
-            "description": "<p>Your Vendor ID</p>"
-          },
-          {
-            "group": "Request",
-            "type": "String",
-            "field": "Auth/VendorPassword",
-            "optional": false,
-            "description": "<p>Your Vendor Password</p>"
-          },
-          {
-            "group": "Request",
-            "type": "String",
-            "field": "UserId",
-            "optional": false,
-            "description": "<p>Requested UserId</p>"
-          },
-          {
-            "group": "Request",
-            "type": "String",
-            "field": "PropertyName",
-            "optional": false,
-            "description": "<p>Name of hotel/hostel/B\\&amp;B/...</p>"
-          },
-          {
-            "group": "Request",
-            "type": "String",
-            "field": "ExpiryDate",
-            "optional": false,
-            "description": "<p>Day on which the login to myallocator.com expires. No availability update (even through the API) can be made after this date. Format: YYYY-MM-DD. \\</p>"
-          },
-          {
-            "group": "Request",
-            "type": "String",
-            "field": "Currency",
-            "optional": false,
-            "description": "<p>3-letter ISO 4217 currency code. This is the default currency of the property.</p>"
-          },
-          {
-            "group": "Request",
-            "type": "String",
-            "field": "Country",
-            "optional": false,
-            "description": "<p>2-letter ISO 3166-1 alpha-2 country code. This is the country the property located in.</p>"
-          },
-          {
-            "group": "Request",
-            "type": "String",
-            "field": "Breakfast",
-            "optional": false,
-            "description": "<p>Can be \\textit{IN} (included), \\textit{EX} (excluded) or empty.</p>"
-          }
-        ]
-      }
-    },
-    "description": "<p>This method allows you to create customer accounts on myallocator.com.Before you can use this method we&#39;ll have to explicitly enable you forthis functionality, as some aspects with regards to customer payment will needto be discussed.    previously known as SetLogin/CreateLogin</p>",
-    "examples": [
-      {
-        "title": "XML Request - Creating a NEW property (and attaching it to a user account)",
-        "content": "XML Request - Creating a NEW property (and attaching it to a user account)\n<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<VendorPropertyCreate>\n<Auth>\n  <VendorId>Your Vendor ID</VendorId>\n  <VendorPassword>Your Vendor Password</VendorPassword>\n</Auth>\n<UserId>UserId</UserId>\n<PropertyName>Name of property</PropertyName>\n<ExpiryDate>2012-05-05</ExpiryDate>\n<Currency>EUR</Currency>\n<Country>DE</Country>\n<Breakfast>IN</Breakfast>\n</VendorPropertyCreate>\n",
-        "type": "json"
-      }
-    ],
-    "success": {
-      "examples": [
-        {
-          "title": "Response - Updating a login and property",
-          "content": "Response - Updating a login and property\n<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<UserPropertyResponse> \n<Success>true</Success>\n<PropertyId>1234</PropertyId>\n</UserPropertyResponse>\n",
-          "type": "json"
-        }
-      ]
-    },
-    "version": "0.0.0",
-    "filename": "perllib/MAAPI.pm"
-  },
-  {
-    "type": "get",
-    "url": "/VendorPropertyModify",
-    "title": "VendorPropertyModify",
-    "name": "VendorPropertyModify",
-    "group": "PMS",
-    "parameter": {
-      "fields": {
-        "Request": [
-          {
-            "group": "Request",
-            "type": "String",
-            "field": "Auth/UserId",
-            "optional": true,
-            "description": "<p>Users unique ID  (required if not linked to vendor)</p>"
-          },
-          {
-            "group": "Request",
-            "type": "String",
-            "field": "Auth/UserPassword",
-            "optional": true,
-            "description": "<p>Users password (required if not linked to vendor)</p>"
-          },
-          {
-            "group": "Request",
-            "type": "String",
-            "field": "Auth/VendorId",
-            "optional": false,
-            "description": "<p>Your Vendor ID</p>"
-          },
-          {
-            "group": "Request",
-            "type": "String",
-            "field": "Auth/VendorPassword",
-            "optional": false,
-            "description": "<p>Your Vendor Password</p>"
-          },
-          {
-            "group": "Request",
-            "type": "String",
-            "field": "UserId",
-            "optional": false,
-            "description": "<p>Requested UserId</p>"
-          },
-          {
-            "group": "Request",
-            "type": "String",
-            "field": "PropertyId",
-            "optional": false,
-            "description": "<p>Requested PropertyId</p>"
-          },
-          {
-            "group": "Request",
-            "type": "String",
-            "field": "PropertyName",
-            "optional": false,
-            "description": "<p>Name of hotel/hostel/B\\&amp;B/...</p>"
-          },
-          {
-            "group": "Request",
-            "type": "String",
-            "field": "ExpiryDate",
-            "optional": false,
-            "description": "<p>Day on which the login to myallocator.com expires. No availability update (even through the API) can be made after this date. Format: YYYY-MM-DD. \\</p>"
-          },
-          {
-            "group": "Request",
-            "type": "String",
-            "field": "Currency",
-            "optional": false,
-            "description": "<p>3-letter ISO 4217 currency code. This is the default currency of the property.</p>"
-          },
-          {
-            "group": "Request",
-            "type": "String",
-            "field": "Country",
-            "optional": false,
-            "description": "<p>2-letter ISO 3166-1 alpha-2 country code. This is the country the property located in.</p>"
-          },
-          {
-            "group": "Request",
-            "type": "String",
-            "field": "Breakfast",
-            "optional": false,
-            "description": "<p>Can be \\textit{IN} (included), \\textit{EX} (excluded) or empty.</p>"
-          }
-        ]
-      }
-    },
-    "examples": [
-      {
-        "title": "XML Request - Modifying a property",
-        "content": "XML Request - Modifying a property\n<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<VendorPropertyModify>\n<Auth>\n  <VendorId>Your Vendor ID</VendorId>\n  <VendorPassword>Your Vendor Password</VendorPassword>\n</Auth>\n<UserId>UserId</UserId>\n<PropertyName>Name of property</PropertyName>\n<ExpiryDate>2012-05-05</ExpiryDate>\n<Currency>EUR</Currency>\n<Country>DE</Country>\n<Breakfast>IN</Breakfast>\n</VendorPropertyModify>\n",
-        "type": "json"
-      }
-    ],
-    "success": {
-      "examples": [
-        {
-          "title": "Response - Updating a login and property",
-          "content": "Response - Updating a login and property\n<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<VendorPropertyModifyResponse>\n<Success>true</Success>\n<PropertyId>70</PropertyId>\n</VendorPropertyModifyResponse>\n",
-          "type": "json"
-        }
-      ]
-    },
-    "version": "0.0.0",
-    "filename": "perllib/MAAPI.pm"
-  },
-  {
-    "type": "get",
-    "url": "/VendorSet",
-    "title": "VendorSet",
-    "name": "VendorSet",
-    "group": "PMS",
-    "parameter": {
-      "fields": {
-        "Request": [
-          {
-            "group": "Request",
-            "type": "String",
-            "field": "Auth/VendorId",
-            "optional": false,
-            "description": "<p>Your Vendor ID</p>"
-          },
-          {
-            "group": "Request",
-            "type": "String",
-            "field": "Auth/VendorPassword",
-            "optional": false,
-            "description": "<p>Your Vendor Password</p>"
-          },
-          {
-            "group": "Request",
-            "type": "String",
-            "field": "Callback/URL",
-            "optional": false,
-            "description": "<p>Vendor Callback URL</p>"
-          },
-          {
-            "group": "Request",
-            "type": "String",
-            "field": "Callback/Password",
-            "optional": false,
-            "description": "<p>Callback Passwords</p>"
-          }
-        ],
-        "Response": [
-          {
-            "group": "Response",
-            "type": "Boolean",
-            "field": "Success",
-            "optional": false,
-            "description": ""
-          }
-        ]
-      }
-    },
-    "description": "<p>this is a utility which can be used to easily update vendor properties. most PMS systems will NOT use call on a regular basis.  (Please note: after an update of callback properties old requests which are already in queue may continue to arrive for up to an hour).</p><p> set Callback/URL to blank to disable callbacks.</p>",
-    "examples": [
-      {
-        "title": "XML VendorSet",
-        "content": "XML VendorSet\n<?xml version=\"1.0\" encoding=\"UTF-8\" ?>\n<VendorSet>\n<Auth>\n  <VendorId>Your Vendor ID</VendorId>\n  <VendorPassword>Your Vendor Password</VendorPassword>\n</Auth>\n<Callback>\n  <URL>http://www.yourdomain.com/myallocator/callback.cgi</URL>\n  <Password>very secret password</Password>\n</Callback>\n</VendorSet>\n",
-        "type": "json"
-      },
-      {
-        "title": "JSON VendorSet",
-        "content": "JSON VendorSet\n{\n  'Auth/VendorId':'Your Vendor ID',\n  'Auth/VendorPassword':'Your Vendor Password',\n  'Callback/URL':'http://www.yourdomain.com/myallocator/callback.cgi',\n  'Callback/Password':'very secret password',\n}\n",
-        "type": "json"
-      }
-    ],
-    "version": "0.0.0",
-    "filename": "perllib/MAAPI.pm"
-  },
-  {
-    "type": "get",
-    "url": "/VendorUserCreate",
-    "title": "VendorUserCreate",
-    "name": "VendorUserCreate",
+    "url": "/UserCreate",
+    "title": "UserCreate",
+    "name": "UserCreate",
     "group": "PMS",
     "parameter": {
       "fields": {
@@ -2058,7 +1896,7 @@ define({ api: [
     "examples": [
       {
         "title": "XML Request - Creating a customer account",
-        "content": "XML Request - Creating a customer account\n<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<VendorUserCreate>\n<Auth>\n  <VendorId>Your Vendor ID</VendorId>\n  <VendorPassword>Your Vendor Password</VendorPassword>\n</Auth>\n<UserId>New Customer Id</UserId>\n<UserPassword>New Customer Password</UserPassword>\n<CustomerFirstName>Customer first name</CustomerFirstName>\n<CustomerLastName>Customer family name</CustomerLastName>\n<CustomerEmail>Customer email address</CustomerEmail>\n</VendorUserCreate>\n",
+        "content": "XML Request - Creating a customer account\n<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<UserCreate>\n<Auth>\n  <VendorId>Your Vendor ID</VendorId>\n  <VendorPassword>Your Vendor Password</VendorPassword>\n</Auth>\n<UserId>New Customer Id</UserId>\n<UserPassword>New Customer Password</UserPassword>\n<CustomerFirstName>Customer first name</CustomerFirstName>\n<CustomerLastName>Customer family name</CustomerLastName>\n<CustomerEmail>Customer email address</CustomerEmail>\n</UserCreate>\n",
         "type": "json"
       }
     ],
@@ -2066,7 +1904,7 @@ define({ api: [
       "examples": [
         {
           "title": "Response - Updating a login and property",
-          "content": "Response - Updating a login and property\n<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<VendorUserCreateResponse> \n<Success>true</Success>\n</VendorUserCreateResponse>\n",
+          "content": "Response - Updating a login and property\n<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<UserCreateResponse> \n<Success>true</Success>\n</UserCreateResponse>\n",
           "type": "json"
         }
       ]
@@ -2076,9 +1914,9 @@ define({ api: [
   },
   {
     "type": "get",
-    "url": "/VendorUserExists",
-    "title": "VendorUserExists",
-    "name": "VendorUserExists",
+    "url": "/UserExists",
+    "title": "UserExists",
+    "name": "UserExists",
     "group": "PMS",
     "description": "<p>This method checks to see if a User or Email is already registered.</p>",
     "parameter": {
@@ -2152,12 +1990,12 @@ define({ api: [
     "examples": [
       {
         "title": "XML UserManager Exists Request ",
-        "content": "XML UserManager Exists Request \n<?xml version=\"1.0\" encoding=\"UTF-8\" ?>\n<VendorUserExists>\n<Auth>\n  <VendorId>Your Vendor ID</VendorId>\n  <VendorPassword>Your Vendor Password</VendorPassword>\n</Auth>\n<Method>Exists</Method>\n<UserId>requested-username</UserId>\n<Email>user@domain.com</EmailId>\n</VendorUserExists>\n",
+        "content": "XML UserManager Exists Request \n<?xml version=\"1.0\" encoding=\"UTF-8\" ?>\n<UserExists>\n<Auth>\n  <VendorId>Your Vendor ID</VendorId>\n  <VendorPassword>Your Vendor Password</VendorPassword>\n</Auth>\n<Method>Exists</Method>\n<UserId>requested-username</UserId>\n<Email>user@domain.com</EmailId>\n</UserExists>\n",
         "type": "json"
       },
       {
-        "title": "JSON VendorUserExists Request",
-        "content": "JSON VendorUserExists Request\n{\n'Auth/VendorId':'Your Vendor ID',\n'Auth/VendorPassword':'Your Vendor Password',\n'UserId':'requested-username',\n'Email':'user@domain.com'\n}\n",
+        "title": "JSON UserExists Request",
+        "content": "JSON UserExists Request\n{\n'Auth/VendorId':'Your Vendor ID',\n'Auth/VendorPassword':'Your Vendor Password',\n'UserId':'requested-username',\n'Email':'user@domain.com'\n}\n",
         "type": "json"
       }
     ],
@@ -2166,9 +2004,64 @@ define({ api: [
   },
   {
     "type": "get",
-    "url": "/VendorUserModify",
-    "title": "VendorUserModify",
-    "name": "VendorUserModify",
+    "url": "/UserLogin",
+    "title": "UserLogin",
+    "name": "UserLogin",
+    "group": "PMS",
+    "description": "<p><strong> EXPERIMENTAL </strong></p>",
+    "parameter": {
+      "fields": {
+        "Request": [
+          {
+            "group": "Request",
+            "type": "String",
+            "field": "Auth/UserId",
+            "optional": false,
+            "description": "<p>Users unique ID</p>"
+          },
+          {
+            "group": "Request",
+            "type": "String",
+            "field": "Auth/UserPassword",
+            "optional": false,
+            "description": "<p>Users password</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "fields": {
+        "Response": [
+          {
+            "group": "Response",
+            "type": "String",
+            "field": "session",
+            "optional": false,
+            "description": "<p>a session token</p>"
+          }
+        ]
+      }
+    },
+    "examples": [
+      {
+        "title": "XML UserLogin Request",
+        "content": "XML UserLogin Request\n<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<UserLogin>\n<Auth>\n <UserId>Customer User ID</UserId>\n <UserPassword>Customer Password</UserPassword>\n</Auth>\n</UserLogin>\n",
+        "type": "json"
+      },
+      {
+        "title": "JSON Hello Request",
+        "content": "JSON Hello Request\nContent-Type: application/json\n{ \n'Auth/UserId':'your username',\n'Auth/UserPassword':'your password'\n}\n",
+        "type": "json"
+      }
+    ],
+    "version": "0.0.0",
+    "filename": "perllib/MAAPI.pm"
+  },
+  {
+    "type": "get",
+    "url": "/UserModify",
+    "title": "UserModify",
+    "name": "UserModify",
     "group": "PMS",
     "description": "<p>This method allows you to create customer accounts on myallocator.com.Before you can use this method we&#39;ll have to explicitly enable you forthis functionality, as some aspects with regards to customer payment will needto be discussed.    previously known as SetLogin/CreateLogin</p>",
     "parameter": {
@@ -2243,7 +2136,7 @@ define({ api: [
     "examples": [
       {
         "title": "XML Request - Creating a user account.",
-        "content": "XML Request - Creating a user account.\n<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<VendorUserModify>\n<Auth>\n  <VendorId>Your Vendor ID</VendorId>\n  <VendorPassword>Your Vendor Password</VendorPassword>\n</Auth>\n<UserId>New Customer Id</UserId>\n<UserPassword>New Customer Password</UserPassword>\n<CustomerFirstName>Customer first name</CustomerFirstName>\n<CustomerLastName>Customer family name</CustomerLastName>\n<CustomerEmail>Customer email address</CustomerEmail>\n</VendorUserModify>\n",
+        "content": "XML Request - Creating a user account.\n<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<UserModify>\n<Auth>\n  <VendorId>Your Vendor ID</VendorId>\n  <VendorPassword>Your Vendor Password</VendorPassword>\n</Auth>\n<UserId>New Customer Id</UserId>\n<UserPassword>New Customer Password</UserPassword>\n<CustomerFirstName>Customer first name</CustomerFirstName>\n<CustomerLastName>Customer family name</CustomerLastName>\n<CustomerEmail>Customer email address</CustomerEmail>\n</UserModify>\n",
         "type": "json"
       }
     ],
@@ -2251,11 +2144,118 @@ define({ api: [
       "examples": [
         {
           "title": "Response - Updating a login and property",
-          "content": "Response - Updating a login and property\n<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<VendorUserModifyResponse> \n<Success>true</Success>\n</VendorUserModifyResponse>\n",
+          "content": "Response - Updating a login and property\n<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<UserModifyResponse> \n<Success>true</Success>\n</UserModifyResponse>\n",
           "type": "json"
         }
       ]
     },
+    "version": "0.0.0",
+    "filename": "perllib/MAAPI.pm"
+  },
+  {
+    "type": "get",
+    "url": "/UserPasswordRecover",
+    "title": "UserPasswordRecover",
+    "name": "UserPasswordRecover",
+    "group": "PMS",
+    "description": "<p><strong> EXPERIMENTAL </strong></p>",
+    "parameter": {
+      "fields": {
+        "Request": [
+          {
+            "group": "Request",
+            "type": "String",
+            "field": "Auth/UserId",
+            "optional": false,
+            "description": "<p>Users unique ID</p>"
+          },
+          {
+            "group": "Request",
+            "type": "String",
+            "field": "Auth/UserPassword",
+            "optional": false,
+            "description": "<p>Users password</p>"
+          }
+        ]
+      }
+    },
+    "examples": [
+      {
+        "title": "XML UserPasswordRecover Request",
+        "content": "XML UserPasswordRecover Request\n<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<UserPasswordRecover>\n<Auth>\n <UserId>Customer User ID</UserId>\n <UserPassword>Customer Password</UserPassword>\n</Auth>\n</UserPasswordRecover>\n",
+        "type": "json"
+      },
+      {
+        "title": "JSON Hello Request",
+        "content": "JSON Hello Request\nContent-Type: application/json\n{ \n'Auth/UserId':'your username',\n'Auth/UserPassword':'your password'\n}\n",
+        "type": "json"
+      }
+    ],
+    "version": "0.0.0",
+    "filename": "perllib/MAAPI.pm"
+  },
+  {
+    "type": "get",
+    "url": "/VendorSet",
+    "title": "VendorSet",
+    "name": "VendorSet",
+    "group": "PMS",
+    "parameter": {
+      "fields": {
+        "Request": [
+          {
+            "group": "Request",
+            "type": "String",
+            "field": "Auth/VendorId",
+            "optional": false,
+            "description": "<p>Your Vendor ID</p>"
+          },
+          {
+            "group": "Request",
+            "type": "String",
+            "field": "Auth/VendorPassword",
+            "optional": false,
+            "description": "<p>Your Vendor Password</p>"
+          },
+          {
+            "group": "Request",
+            "type": "String",
+            "field": "Callback/URL",
+            "optional": false,
+            "description": "<p>Vendor Callback URL</p>"
+          },
+          {
+            "group": "Request",
+            "type": "String",
+            "field": "Callback/Password",
+            "optional": false,
+            "description": "<p>Callback Passwords</p>"
+          }
+        ],
+        "Response": [
+          {
+            "group": "Response",
+            "type": "Boolean",
+            "field": "Success",
+            "optional": false,
+            "description": ""
+          }
+        ]
+      }
+    },
+    "description": "<p>this is a utility which can be used to easily update vendor properties. most PMS systems will NOT use call on a regular basis.  (Please note: after an update of callback properties old requests which are already in queue may continue to arrive for up to an hour).</p><p> set Callback/URL to blank to disable callbacks.</p>",
+    "examples": [
+      {
+        "title": "XML VendorSet",
+        "content": "XML VendorSet\n<?xml version=\"1.0\" encoding=\"UTF-8\" ?>\n<VendorSet>\n<Auth>\n  <VendorId>Your Vendor ID</VendorId>\n  <VendorPassword>Your Vendor Password</VendorPassword>\n</Auth>\n<Callback>\n  <URL>http://www.yourdomain.com/myallocator/callback.cgi</URL>\n  <Password>very secret password</Password>\n</Callback>\n</VendorSet>\n",
+        "type": "json"
+      },
+      {
+        "title": "JSON VendorSet",
+        "content": "JSON VendorSet\n{\n  'Auth/VendorId':'Your Vendor ID',\n  'Auth/VendorPassword':'Your Vendor Password',\n  'Callback/URL':'http://www.yourdomain.com/myallocator/callback.cgi',\n  'Callback/Password':'very secret password',\n}\n",
+        "type": "json"
+      }
+    ],
     "version": "0.0.0",
     "filename": "perllib/MAAPI.pm"
   },
