@@ -140,7 +140,7 @@
       },
       {
         "title": "XML AssociateUserToPMS",
-        "content": "XML AssociateUserToPMS\n<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<GetRoomTypes>\n<Auth>\n <UserId>Customer User ID</UserId>\n <UserPassword>Customer Password</UserPassword>\n <PropertyId>Property ID on myallocator.com</PropertyId>\n <VendorId>Your Vendor ID</VendorId>\n <VendorPassword>Your Vendor Password</VendorPassword>\n</Auth>\n<PMSUserId>username-on-the-remote-pms-system</PMSUserId>\n<PMSPropertyId>propertyid-on-the-remote-pms-system</PMSPropertyId>\n</GetRoomTypes>\n",
+        "content": "XML AssociateUserToPMS\n<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<RoomList>\n<Auth>\n <UserId>Customer User ID</UserId>\n <UserPassword>Customer Password</UserPassword>\n <PropertyId>Property ID on myallocator.com</PropertyId>\n <VendorId>Your Vendor ID</VendorId>\n <VendorPassword>Your Vendor Password</VendorPassword>\n</Auth>\n<PMSUserId>username-on-the-remote-pms-system</PMSUserId>\n<PMSPropertyId>propertyid-on-the-remote-pms-system</PMSPropertyId>\n</RoomList>\n",
         "type": "json"
       }
     ],
@@ -149,39 +149,9 @@
   },
   {
     "type": "get",
-    "url": "/ChannelList",
-    "title": "ChannelList",
-    "name": "ChannelList",
-    "group": "PMS",
-    "description": "<p>Use this to get a list of available channels.</p>",
-    "success": {
-      "fields": {
-        "Response": [
-          {
-            "group": "Response",
-            "type": "String",
-            "field": "Channels",
-            "optional": false,
-            "description": ""
-          }
-        ]
-      }
-    },
-    "examples": [
-      {
-        "title": "XML ChannelList Request",
-        "content": "XML ChannelList Request\n<?xml version=\"1.0\" encoding=\"UTF-8\" ?>\n<ChannelList>\n</ChannelList>\n",
-        "type": "json"
-      }
-    ],
-    "version": "0.0.0",
-    "filename": "perllib/MAAPI.pm"
-  },
-  {
-    "type": "get",
-    "url": "/GetBookings",
-    "title": "GetBookings",
-    "name": "GetBookings",
+    "url": "/BookingList",
+    "title": "BookingList",
+    "name": "BookingList",
     "group": "PMS",
     "parameter": {
       "fields": {
@@ -259,11 +229,11 @@
         ]
       }
     },
-    "description": "<p>This method allows you to query for bookings made to a specific property by booking date, modification date or arrival date.</p><p> It is important to know that not every booking that is returned through the API neccessarily resulted in an adjustment of the other channels. If the booking is not mapped to any rooms on our system, or if the channel has just been setup, the adjustment will not be carried out. The requests consists of search criteria by date. Only specify the StartDate/EndDate of one criteria.</p><p> <strong> Data Formatting </strong> Different channels return a different amount of information about a booking, therefore many fields are optional.</p>",
+    "description": "<p>This method allows you to query for bookings made to a specific property by booking date, modification date or arrival date.</p><p> It is important to know that not every booking that is returned through the API neccessarily resulted in an adjustment of the other channels. If the booking is not mapped to any rooms on our system, or if the channel has just been setup, the adjustment will not be carried out. The requests consists of search criteria by date. Only specify the StartDate/EndDate of one criteria. note: formerly BookingList (v1).</p><p> <strong> Data Formatting </strong> Different channels return a different amount of information about a booking, therefore many fields are optional.</p>",
     "examples": [
       {
         "title": "XML Example of querying for bookings",
-        "content": "XML Example of querying for bookings\n<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<GetBookings>\n<Auth>\n  <UserId>Customer User ID</UserId>\n  <UserPassword>Customer Password</UserPassword>\n  <PropertyId>Property ID on myallocator.com</PropertyId>\n  <VendorId>Your Vendor ID</VendorId>\n  <VendorPassword>Your Vendor Password</VendorPassword>\n</Auth>\n<!-- NOTE: Arrival, Creation, Modification cannot *actually* be used together -->\n<ArrivalStartDate>2010-01-01</ArrivalStartDate>\n<ArrivalEndDate>2013-01-01</ArrivalEndDate>\n<CreationStartDate>2010-01-01</CreationStartDate>\n<CreationEndDate>2013-01-01</CreationEndDate>\n<ModifcationStartDate>2010-01-01</ModifcationStartDate>\n<ModifcationEndDate>2013-01-01</ModifcationEndDate>\n</GetBookings>\n",
+        "content": "XML Example of querying for bookings\n<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<BookingList>\n<Auth>\n  <UserId>Customer User ID</UserId>\n  <UserPassword>Customer Password</UserPassword>\n  <PropertyId>Property ID on myallocator.com</PropertyId>\n  <VendorId>Your Vendor ID</VendorId>\n  <VendorPassword>Your Vendor Password</VendorPassword>\n</Auth>\n<!-- NOTE: Arrival, Creation, Modification cannot *actually* be used together -->\n<ArrivalStartDate>2010-01-01</ArrivalStartDate>\n<ArrivalEndDate>2013-01-01</ArrivalEndDate>\n<CreationStartDate>2010-01-01</CreationStartDate>\n<CreationEndDate>2013-01-01</CreationEndDate>\n<ModifcationStartDate>2010-01-01</ModifcationStartDate>\n<ModifcationEndDate>2013-01-01</ModifcationEndDate>\n</BookingList>\n",
         "type": "json"
       }
     ],
@@ -271,7 +241,7 @@
       "examples": [
         {
           "title": "Response - Querying for bookings",
-          "content": "Response - Querying for bookings\n<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<GetBookingsResponse>\n<Bookings>\n  <Booking>\n    <Channel>hb</Channel>\n    <StartDate>2012-01-01</StartDate>\n    <EndDate>2012-01-03</EndDate>\n    <IsCancellation>false</IsCancellation>\n    <MyallocatorId>4d7e47e467458b927c000000</MyallocatorId>\n    <MyallocatorCreationDate>2011-03-14</MyallocatorCreationDate>\n    <MyallocatorCreationTime>16:52:52</MyallocatorCreationTime>      \n    <MyallocatorModificationDate>2011-03-14</MyallocatorModificationDate>\n    <MyallocatorModificationTime>16:52:52</MyallocatorModificationTime>\n    <OrderId>1234</OrderId>\n    <OrderDate>2011-11-11</OrderDate>      \n    <OrderTime>11:11:00</OrderTime>\n    <OrderSource>Hostelbookers.com</OrderSource>\n    <OrderAdults>2</OrderAdults>\n    <OrderChildren>2</OrderChildren>\n    <Deposit>12.00</Deposit>\n    <TotalPrice>82.00</TotalPrice>\n    <TotalCurrency>GBP</TotalCurrency>\n     <Customers>\n      <Customer>\n        <CustomerFName>John</CustomerFName>\n        <CustomerLName>Smith</CustomerLName>\n        <CustomerAddress>522 Main Rd</CustomerAddress>\n        <CustomerArrivalTime>13:00</CustomerArrivalTime>\n        <CustomerEmail>john@googlemail.com</CustomerEmail>\n        <CustomerNationality>UK</CustomerNationality>\n        <CustomerPhone>+44 1234567890</CustomerPhone>\n        <CustomerCompany>Johnston Ltd.</CustomerCompany>\n        <CustomerCity>Stirling</CustomerCity>\n        <CustomerState>Stirlingshire</CustomerState>\n        <CustomerPostCode>FK8 2HE</CustomerPostCode>\n        <CustomerCountry>UK</CustomerCountry>\n        <CustomerNote>Bringing a dog</CustomerNote>\n      </Customer>\n    </Customers>\n     <Rooms>\n      <Room>\n        <StartDate>2012-01-01</StartDate>\n        <EndDate>2012-01-03</EndDate>\n        <Price>40.00</Price>\n        <Currency>GBP</Currency>\n        <RoomTypeIds>\n          <RoomTypeId>117</RoomTypeId>\n        </RoomTypeIds>\n        <RoomDesc>2 peoples (1Double bed)</RoomDesc>\n        <Units>2</Units>\n      </Room>\n      <Room>\n        <StartDate>2012-01-02</StartDate>\n        <EndDate>2012-01-02</EndDate>\n        <Price>42.00</Price>\n        <Currency>GBP</Currency>\n        <RoomTypeIds>\n          <RoomTypeId>119</RoomTypeId>\n        </RoomTypeIds>          \n        <RoomDesc>Dormitory Room</RoomDesc>\n        <Units>4</Units>\n      </Room>\n    </Rooms>\n   </Booking>\n</Bookings>\n</GetBookingsResponse>\n",
+          "content": "Response - Querying for bookings\n<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<BookingListResponse>\n<Bookings>\n  <Booking>\n    <Channel>hb</Channel>\n    <StartDate>2012-01-01</StartDate>\n    <EndDate>2012-01-03</EndDate>\n    <IsCancellation>false</IsCancellation>\n    <MyallocatorId>4d7e47e467458b927c000000</MyallocatorId>\n    <MyallocatorCreationDate>2011-03-14</MyallocatorCreationDate>\n    <MyallocatorCreationTime>16:52:52</MyallocatorCreationTime>      \n    <MyallocatorModificationDate>2011-03-14</MyallocatorModificationDate>\n    <MyallocatorModificationTime>16:52:52</MyallocatorModificationTime>\n    <OrderId>1234</OrderId>\n    <OrderDate>2011-11-11</OrderDate>      \n    <OrderTime>11:11:00</OrderTime>\n    <OrderSource>Hostelbookers.com</OrderSource>\n    <OrderAdults>2</OrderAdults>\n    <OrderChildren>2</OrderChildren>\n    <Deposit>12.00</Deposit>\n    <TotalPrice>82.00</TotalPrice>\n    <TotalCurrency>GBP</TotalCurrency>\n     <Customers>\n      <Customer>\n        <CustomerFName>John</CustomerFName>\n        <CustomerLName>Smith</CustomerLName>\n        <CustomerAddress>522 Main Rd</CustomerAddress>\n        <CustomerArrivalTime>13:00</CustomerArrivalTime>\n        <CustomerEmail>john@googlemail.com</CustomerEmail>\n        <CustomerNationality>UK</CustomerNationality>\n        <CustomerPhone>+44 1234567890</CustomerPhone>\n        <CustomerCompany>Johnston Ltd.</CustomerCompany>\n        <CustomerCity>Stirling</CustomerCity>\n        <CustomerState>Stirlingshire</CustomerState>\n        <CustomerPostCode>FK8 2HE</CustomerPostCode>\n        <CustomerCountry>UK</CustomerCountry>\n        <CustomerNote>Bringing a dog</CustomerNote>\n      </Customer>\n    </Customers>\n     <Rooms>\n      <Room>\n        <StartDate>2012-01-01</StartDate>\n        <EndDate>2012-01-03</EndDate>\n        <Price>40.00</Price>\n        <Currency>GBP</Currency>\n        <RoomTypeIds>\n          <RoomTypeId>117</RoomTypeId>\n        </RoomTypeIds>\n        <RoomDesc>2 peoples (1Double bed)</RoomDesc>\n        <Units>2</Units>\n      </Room>\n      <Room>\n        <StartDate>2012-01-02</StartDate>\n        <EndDate>2012-01-02</EndDate>\n        <Price>42.00</Price>\n        <Currency>GBP</Currency>\n        <RoomTypeIds>\n          <RoomTypeId>119</RoomTypeId>\n        </RoomTypeIds>          \n        <RoomDesc>Dormitory Room</RoomDesc>\n        <Units>4</Units>\n      </Room>\n    </Rooms>\n   </Booking>\n</Bookings>\n</BookingListResponse>\n",
           "type": "json"
         }
       ],
@@ -677,6 +647,94 @@
   },
   {
     "type": "get",
+    "url": "/ChannelList",
+    "title": "ChannelList",
+    "name": "ChannelList",
+    "group": "PMS",
+    "description": "<p>Use this to get a list of available channels.</p>",
+    "success": {
+      "fields": {
+        "Response": [
+          {
+            "group": "Response",
+            "type": "String",
+            "field": "Channels",
+            "optional": false,
+            "description": ""
+          }
+        ]
+      }
+    },
+    "examples": [
+      {
+        "title": "XML ChannelList Request",
+        "content": "XML ChannelList Request\n<?xml version=\"1.0\" encoding=\"UTF-8\" ?>\n<ChannelList>\n</ChannelList>\n",
+        "type": "json"
+      }
+    ],
+    "version": "0.0.0",
+    "filename": "perllib/MAAPI.pm"
+  },
+  {
+    "type": "get",
+    "url": "/ChannelMappingList",
+    "title": "ChannelMappingList",
+    "name": "ChannelMappingList",
+    "group": "PMS",
+    "description": "<p>Lists the channel details associated with a property. Formerly (v1) GetProperties</p>",
+    "parameter": {
+      "fields": {
+        "Request": [
+          {
+            "group": "Request",
+            "type": "String",
+            "field": "Auth/UserId",
+            "optional": true,
+            "description": "<p>Users unique ID  (required if not linked to vendor)</p>"
+          },
+          {
+            "group": "Request",
+            "type": "String",
+            "field": "Auth/UserPassword",
+            "optional": true,
+            "description": "<p>Users password (required if not linked to vendor)</p>"
+          },
+          {
+            "group": "Request",
+            "type": "String",
+            "field": "Auth/PropertyId",
+            "optional": false,
+            "description": "<p>Property ID on myallocator.com</p>"
+          },
+          {
+            "group": "Request",
+            "type": "String",
+            "field": "Auth/VendorId",
+            "optional": false,
+            "description": "<p>Your Vendor ID</p>"
+          },
+          {
+            "group": "Request",
+            "type": "String",
+            "field": "Auth/VendorPassword",
+            "optional": false,
+            "description": "<p>Your Vendor Password</p>"
+          }
+        ]
+      }
+    },
+    "examples": [
+      {
+        "title": "XML ChannelMappingList",
+        "content": "XML ChannelMappingList\n<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<ChannelMappingList>\n<Auth>\n  <UserId>Customer User ID</UserId>\n  <UserPassword>Customer Password</UserPassword>\n  <PropertyId>Property ID on myallocator.com</PropertyId>\n  <VendorId>Your Vendor ID</VendorId>\n  <VendorPassword>Your Vendor Password</VendorPassword>\n</Auth>\n</ChannelMappingList>\n",
+        "type": "json"
+      }
+    ],
+    "version": "0.0.0",
+    "filename": "perllib/MAAPI.pm"
+  },
+  {
+    "type": "get",
     "url": "/GetPaymentsForBooking",
     "title": "GetPaymentsForBooking",
     "name": "GetPaymentsForBooking",
@@ -742,388 +800,6 @@
         {
           "title": "JSON GetPaymentsForBooking",
           "content": "JSON GetPaymentsForBooking\n  {\n      \"CreditCards\": [\n          {\n              \"CardType\": \"VI\",\n              \"CardNumber\": \"4111111111111111\",\n              \"CardCVV\": \"123\",\n              \"CardExpiryYear\": \"2018\",\n              \"CardExpiryMonth\": \"11\",\n              \"CardHolderName\": \"Martin Seamus McFly\"\n          },\n          {\n              \"CardType\": \"VI\",\n              \"CardNumber\": \"4123123412341234\",\n              \"CardCVV\": \"234\",\n              \"CardExpiryYear\": \"2013\",\n              \"CardExpiryMonth\": \"12\",\n              \"CardHolderName\": \"Emmett Lathrop Brown\"\n          }\n      ]\n  }\n",
-          "type": "json"
-        }
-      ]
-    },
-    "version": "0.0.0",
-    "filename": "perllib/MAAPI.pm"
-  },
-  {
-    "type": "get",
-    "url": "/GetProperties",
-    "title": "GetProperties",
-    "name": "GetProperties",
-    "group": "PMS",
-    "description": "<p>Users on myallocator.com might have more than one property attached to their username. This request lists which properties are associated with the customer and provides a property ID, needed to update the availability of this property.</p>",
-    "parameter": {
-      "fields": {
-        "Request": [
-          {
-            "group": "Request",
-            "type": "String",
-            "field": "Auth/UserId",
-            "optional": true,
-            "description": "<p>Users unique ID  (required if not linked to vendor)</p>"
-          },
-          {
-            "group": "Request",
-            "type": "String",
-            "field": "Auth/UserPassword",
-            "optional": true,
-            "description": "<p>Users password (required if not linked to vendor)</p>"
-          },
-          {
-            "group": "Request",
-            "type": "String",
-            "field": "Auth/PropertyId",
-            "optional": false,
-            "description": "<p>Property ID on myallocator.com</p>"
-          },
-          {
-            "group": "Request",
-            "type": "String",
-            "field": "Auth/VendorId",
-            "optional": false,
-            "description": "<p>Your Vendor ID</p>"
-          },
-          {
-            "group": "Request",
-            "type": "String",
-            "field": "Auth/VendorPassword",
-            "optional": false,
-            "description": "<p>Your Vendor Password</p>"
-          }
-        ]
-      }
-    },
-    "examples": [
-      {
-        "title": "XML GetProperties Request",
-        "content": "XML GetProperties Request\n<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<GetProperties>\n<Auth>\n<UserId>Customer User ID</UserId>\n<UserPassword>Customer Password</UserPassword>\n<VendorId>Your Vendor ID</VendorId>\n<VendorPassword>Your Vendor Password</VendorPassword>\n</Auth>\n</GetProperties>\n",
-        "type": "json"
-      },
-      {
-        "title": "JSON GetProperties Request",
-        "content": "JSON GetProperties Request\n{}\n",
-        "type": "json"
-      }
-    ],
-    "success": {
-      "fields": {
-        "Response": [
-          {
-            "group": "Response",
-            "type": "String",
-            "field": "Id",
-            "optional": false,
-            "description": "<p>The property ID which will reference the property.</p>"
-          },
-          {
-            "group": "Response",
-            "type": "String",
-            "field": "Name",
-            "optional": false,
-            "description": "<p>The name of this property as set by the customer.</p>"
-          },
-          {
-            "group": "Response",
-            "type": "String",
-            "field": "Breakfast",
-            "optional": false,
-            "description": "<p>Can be \\textit{IN} (included), \\textit{EX} (excluded) or empty.</p>"
-          },
-          {
-            "group": "Response",
-            "type": "String",
-            "field": "Currency",
-            "optional": false,
-            "description": "<p>3-letter currency code of the default currency set by the customer according to ISO 4217. Informational.</p>"
-          },
-          {
-            "group": "Response",
-            "type": "String",
-            "field": "Country",
-            "optional": false,
-            "description": "<p>2-letter country code of the country the property is situated in according to ISO 3166-1 alpha-2 standard. Might be empty as it wasn&#39;t recorded for early customers. Informational.</p>"
-          },
-          {
-            "group": "Response",
-            "type": "String",
-            "field": "PaidUntil",
-            "optional": false,
-            "description": "<p>Usage of myallocator.com paid for until this date. Informational. Format: YYYY-MM-DD.</p>"
-          },
-          {
-            "group": "Response",
-            "type": "String",
-            "field": "Weekend",
-            "optional": false,
-            "description": "<p>Day &amp; Shows which days are marked as weekend days by the customer on Myallocator. Monday = 1, Sunday = 7. The name of the weekday is also given in the \\textit{name} property. See SetAllocation for information on when this is used.</p>"
-          }
-        ]
-      },
-      "examples": [
-        {
-          "title": "XML GetProperties Response Success",
-          "content": "XML GetProperties Response Success\n<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<GetPropertiesResponse>\n<Properties>\n  <Property>\n    <Id>19</Id>\n    <Name>Property 1</Name>\n    <Breakfast></Breakfast>\n    <Currency>GBP</Currency>\n    <Country>GB</Country>\n    <PaidUntil>2011-11-11</PaidUntil>\n    <Weekend>\n      <Day name=\"Friday\">5</Day>\n      <Day name=\"Saturday\">6</Day>\n    </Weekend>\n  </Property>\n  \n  <Property>\n    <Id>13</Id>\n    <Name>Property 2</Name>\n    <Breakfast>IN</Breakfast>\n    <Currency>EUR</Currency>\n    <Country>DE</Country>\n    <PaidUntil>2011-11-11</PaidUntil>\n    <Weekend>\n    </Weekend>\n  </Property>\n  \n  <Property>\n    <Id>15</Id>\n    <Name>Property 3</Name>\n    <Breakfast>EX</Breakfast>\n    <Currency>GBP</Currency>\n    <Country>GB</Country>\n    <PaidUntil>2011-11-11</PaidUntil>\n    <Weekend>\n      <Day name=\"Friday\">5</Day>\n      <Day name=\"Saturday\">6</Day>\n      <Day name=\"Sunday\">7</Day>\n    </Weekend>\n  </Property>\n</Properties>\n</GetPropertiesResponse>\n",
-          "type": "json"
-        }
-      ]
-    },
-    "version": "0.0.0",
-    "filename": "perllib/MAAPI.pm"
-  },
-  {
-    "type": "get",
-    "url": "/GetPropertyChannels",
-    "title": "GetPropertyChannels",
-    "name": "GetPropertyChannels",
-    "group": "PMS",
-    "parameter": {
-      "fields": {
-        "Request": [
-          {
-            "group": "Request",
-            "type": "String",
-            "field": "Auth/UserId",
-            "optional": true,
-            "description": "<p>Users unique ID  (required if not linked to vendor)</p>"
-          },
-          {
-            "group": "Request",
-            "type": "String",
-            "field": "Auth/UserPassword",
-            "optional": true,
-            "description": "<p>Users password (required if not linked to vendor)</p>"
-          },
-          {
-            "group": "Request",
-            "type": "String",
-            "field": "Auth/PropertyId",
-            "optional": false,
-            "description": "<p>Property ID on myallocator.com</p>"
-          },
-          {
-            "group": "Request",
-            "type": "String",
-            "field": "Auth/VendorId",
-            "optional": false,
-            "description": "<p>Your Vendor ID</p>"
-          },
-          {
-            "group": "Request",
-            "type": "String",
-            "field": "Auth/VendorPassword",
-            "optional": false,
-            "description": "<p>Your Vendor Password</p>"
-          }
-        ]
-      }
-    },
-    "examples": [
-      {
-        "title": "XML GetPropertyChannels",
-        "content": "XML GetPropertyChannels\n<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<GetPropertyChannels>\n<Auth>\n  <UserId>Customer User ID</UserId>\n  <UserPassword>Customer Password</UserPassword>\n  <PropertyId>Property ID on myallocator.com</PropertyId>\n  <VendorId>Your Vendor ID</VendorId>\n  <VendorPassword>Your Vendor Password</VendorPassword>\n</Auth>\n</GetPropertyChannels>\n",
-        "type": "json"
-      }
-    ],
-    "version": "0.0.0",
-    "filename": "perllib/MAAPI.pm"
-  },
-  {
-    "type": "get",
-    "url": "/GetRoomAvailability",
-    "title": "GetRoomAvailability",
-    "name": "GetRoomAvailability",
-    "group": "PMS",
-    "description": "<p>This call can be used to query for all data that we hold for a specific property and date range.  The date range can only be 31 days as the maximum. You can query multiple times if you need a longer date range.</p><p> A MaxStay setting of 0 means &quot;unrestricted&quot;.  The 48 and 49 in the response example below refer to the room ID as returned by GetRooms (XML API).</p><p> <strong> Compatibility: </strong>  this was formerly available at: <a href=\"https://myallocator.com/en/api/data\">https://myallocator.com/en/api/data</a></p>",
-    "parameter": {
-      "fields": {
-        "Request": [
-          {
-            "group": "Request",
-            "type": "String",
-            "field": "Auth/UserId",
-            "optional": true,
-            "description": "<p>Users unique ID  (required if not linked to vendor)</p>"
-          },
-          {
-            "group": "Request",
-            "type": "String",
-            "field": "Auth/UserPassword",
-            "optional": true,
-            "description": "<p>Users password (required if not linked to vendor)</p>"
-          },
-          {
-            "group": "Request",
-            "type": "String",
-            "field": "Auth/PropertyId",
-            "optional": false,
-            "description": ""
-          },
-          {
-            "group": "Request",
-            "type": "String",
-            "field": "Auth/VendorId",
-            "optional": false,
-            "description": "<p>Your Vendor ID</p>"
-          },
-          {
-            "group": "Request",
-            "type": "String",
-            "field": "Auth/VendorPassword",
-            "optional": false,
-            "description": "<p>Your Vendor Password</p>"
-          },
-          {
-            "group": "Request",
-            "type": "Date",
-            "field": "StartDate",
-            "optional": false,
-            "description": "<p>(YYYY-MM-DD)</p>"
-          },
-          {
-            "group": "Request",
-            "type": "Date",
-            "field": "EndDate",
-            "optional": false,
-            "description": "<p>(YYYY-MM-DD)</p>"
-          }
-        ]
-      }
-    },
-    "success": {
-      "examples": [
-        {
-          "title": "JSON GetRoomAvailability",
-          "content": "JSON GetRoomAvailability\n  {\n  \"Rooms\": [\n        {\n   \t  \"RoomId\": 48,\n        \"PropertyId\": 1234,\n        \"RoomName\": \"1-person private\",\n        \"Data\": [\n          {\n            \"Date\": \"2014-03-15\",\n            \"Units\": 2,\n            \"Price\": 33,\n            \"MinStay\": 1,\n            \"MaxStay\": 7,\n            \"Closed\": false,\n            \"ClosedForArrival\": false,\n            \"ClosedForDeparture\": false\n          },\n          {\n            \"Date\": \"2014-03-16\",\n            \"Units\": 2,\n            \"Price\": 33,\n            \"MinStay\": 1,\n            \"MaxStay\": 7,\n            \"Closed\": false,\n            \"ClosedForArrival\": false,\n            \"ClosedForDeparture\": false\n          }\n        ]\n      },\n      {\n        \"RoomId\": 49,\n        \"PropertyId\": 1,\n        \"RoomName\": \"5-person male shared\",\n        \"Data\": [\n          {\n            \"Date\": \"2014-03-15\",\n            \"Units\": 0,\n            \"Price\": 0,\n            \"MinStay\": 1,\n            \"MaxStay\": 7,\n            \"Closed\": false,\n            \"ClosedForArrival\": false,\n            \"ClosedForDeparture\": false\n          },\n          {\n            \"Date\": \"2014-03-16\",\n            \"Units\": 0,\n            \"Price\": 0,\n            \"MinStay\": 1,\n            \"MaxStay\": 7,\n            \"Closed\": false,\n            \"ClosedForArrival\": false,\n            \"ClosedForDeparture\": false\n          }\n        ]\n      }\n    }\n  }\n",
-          "type": "json"
-        }
-      ]
-    },
-    "version": "0.0.0",
-    "filename": "perllib/MAAPI.pm"
-  },
-  {
-    "type": "get",
-    "url": "/GetRoomTypes",
-    "title": "GetRoomTypes",
-    "name": "GetRoomTypes",
-    "group": "PMS",
-    "parameter": {
-      "fields": {
-        "Request": [
-          {
-            "group": "Request",
-            "type": "String",
-            "field": "Auth/UserId",
-            "optional": true,
-            "description": "<p>Users unique ID  (required if not linked to vendor)</p>"
-          },
-          {
-            "group": "Request",
-            "type": "String",
-            "field": "Auth/UserPassword",
-            "optional": true,
-            "description": "<p>Users password (required if not linked to vendor)</p>"
-          },
-          {
-            "group": "Request",
-            "type": "String",
-            "field": "Auth/PropertyId",
-            "optional": false,
-            "description": "<p>Property ID on myallocator.com</p>"
-          },
-          {
-            "group": "Request",
-            "type": "String",
-            "field": "Auth/VendorId",
-            "optional": false,
-            "description": "<p>Your Vendor ID</p>"
-          },
-          {
-            "group": "Request",
-            "type": "String",
-            "field": "Auth/VendorPassword",
-            "optional": false,
-            "description": "<p>Your Vendor Password</p>"
-          }
-        ]
-      }
-    },
-    "examples": [
-      {
-        "title": "XML GetRoomTypes Request",
-        "content": "XML GetRoomTypes Request\n<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<GetRoomTypes>\n<Auth>\n  <UserId>Customer User ID</UserId>\n  <UserPassword>Customer Password</UserPassword>\n  <PropertyId>Property ID on myallocator.com</PropertyId>\n  <VendorId>Your Vendor ID</VendorId>\n  <VendorPassword>Your Vendor Password</VendorPassword>\n</Auth>\n</GetRoomTypes>\n",
-        "type": "json"
-      }
-    ],
-    "success": {
-      "fields": {
-        "XML": [
-          {
-            "group": "XML",
-            "type": "String",
-            "field": "Id",
-            "optional": false,
-            "description": "<p>The room type ID which will reference the room type.</p>"
-          },
-          {
-            "group": "XML",
-            "type": "String",
-            "field": "Units",
-            "optional": false,
-            "description": "<p>Number of rooms of this type.</p>"
-          },
-          {
-            "group": "XML",
-            "type": "String",
-            "field": "Occupancy",
-            "optional": false,
-            "description": "<p>Number of persons that can stay in this room.</p>"
-          },
-          {
-            "group": "XML",
-            "type": "String",
-            "field": "Beds",
-            "optional": false,
-            "description": "<p>!!Obsolete!! Replaced with Occupancy (see above).</p>"
-          },
-          {
-            "group": "XML",
-            "type": "String",
-            "field": "Gender",
-            "optional": false,
-            "description": "<p>Gender restriction for shared rooms. MA for males, FE for females, MI if mixed. Always set to &#39;MI&#39; for private rooms.</p>"
-          },
-          {
-            "group": "XML",
-            "type": "String",
-            "field": "DoubleBed",
-            "optional": false,
-            "description": "<p>!!Obsolete!! Option removed from Myallocator. Now always defaults to false.</p>"
-          },
-          {
-            "group": "XML",
-            "type": "String",
-            "field": "Ensuite",
-            "optional": false,
-            "description": "<p>!!Obsolete!! Option removed from Myallocator. Now always defaults to false;</p>"
-          },
-          {
-            "group": "XML",
-            "type": "String",
-            "field": "PrivateRooms",
-            "optional": false,
-            "description": "<p>Whether this room is private or shared/dorm (\\textit{true} or \\textit{false}).</p>"
-          }
-        ]
-      },
-      "examples": [
-        {
-          "title": "XML GetRoomTypes Success Response:",
-          "content": "XML GetRoomTypes Success Response:\n<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<GetRoomTypesResponse>\n<RoomTypes>\n  <RoomType>\n    <Id>59</Id>\n    <Label>1-bed private ensuite</Label>\n    <Units>3</Units>\n    <Occupancy>1</Occupancy>\n    <Beds>1</Beds>\n    <Gender>MI</Gender>\n    <DoubleBed>false</DoubleBed>\n    <Ensuite>false</Ensuite>\n    <PrivateRoom>true</PrivateRoom>      \n  </RoomType>\n  \n  <RoomType>\n    <Id>63</Id>\n    <Label>2-bed private</Label>\n    <Units>4</Units>\n    <Occupancy>2</Occupancy>\n    <Beds>2</Beds>\n    <Gender>MI</Gender>\n    <DoubleBed>false</DoubleBed>\n    <Ensuite>false</Ensuite>\n    <PrivateRoom>true</PrivateRoom>    \n  </RoomType>\n  \n  <RoomType>\n    <Id>49</Id>\n    <Label>5-bed female shared</Label>\n    <Units>3</Units>\n    <Occupancy>5</Occupancy>\n    <Beds>5</Beds>\n    <Gender>FE</Gender>\n    <DoubleBed>false</DoubleBed>\n    <Ensuite>false</Ensuite>\n    <PrivateRoom>false</PrivateRoom>\n  </RoomType>\n</RoomTypes>\n</GetRoomTypesResponse>\n",
           "type": "json"
         }
       ]
@@ -1238,6 +914,332 @@
   },
   {
     "type": "get",
+    "url": "/PropertyList",
+    "title": "PropertyList",
+    "name": "PropertyList",
+    "group": "PMS",
+    "description": "<p>Users on myallocator.com might have more than one property attached to their username. This request lists which properties are associated with the customer and provides a property ID, needed to update the availability of this property.This request was formerly known as GetProperties (v1)</p>",
+    "parameter": {
+      "fields": {
+        "Request": [
+          {
+            "group": "Request",
+            "type": "String",
+            "field": "Auth/UserId",
+            "optional": true,
+            "description": "<p>Users unique ID  (required if not linked to vendor)</p>"
+          },
+          {
+            "group": "Request",
+            "type": "String",
+            "field": "Auth/UserPassword",
+            "optional": true,
+            "description": "<p>Users password (required if not linked to vendor)</p>"
+          },
+          {
+            "group": "Request",
+            "type": "String",
+            "field": "Auth/PropertyId",
+            "optional": false,
+            "description": "<p>Property ID on myallocator.com</p>"
+          },
+          {
+            "group": "Request",
+            "type": "String",
+            "field": "Auth/VendorId",
+            "optional": false,
+            "description": "<p>Your Vendor ID</p>"
+          },
+          {
+            "group": "Request",
+            "type": "String",
+            "field": "Auth/VendorPassword",
+            "optional": false,
+            "description": "<p>Your Vendor Password</p>"
+          }
+        ]
+      }
+    },
+    "examples": [
+      {
+        "title": "XML PropertyList Request",
+        "content": "XML PropertyList Request\n<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<PropertyList>\n<Auth>\n<UserId>Customer User ID</UserId>\n<UserPassword>Customer Password</UserPassword>\n<VendorId>Your Vendor ID</VendorId>\n<VendorPassword>Your Vendor Password</VendorPassword>\n</Auth>\n</PropertyList>\n",
+        "type": "json"
+      },
+      {
+        "title": "JSON PropertyList Request",
+        "content": "JSON PropertyList Request\n{}\n",
+        "type": "json"
+      }
+    ],
+    "success": {
+      "fields": {
+        "Response": [
+          {
+            "group": "Response",
+            "type": "String",
+            "field": "Id",
+            "optional": false,
+            "description": "<p>The property ID which will reference the property.</p>"
+          },
+          {
+            "group": "Response",
+            "type": "String",
+            "field": "Name",
+            "optional": false,
+            "description": "<p>The name of this property as set by the customer.</p>"
+          },
+          {
+            "group": "Response",
+            "type": "String",
+            "field": "Breakfast",
+            "optional": false,
+            "description": "<p>Can be \\textit{IN} (included), \\textit{EX} (excluded) or empty.</p>"
+          },
+          {
+            "group": "Response",
+            "type": "String",
+            "field": "Currency",
+            "optional": false,
+            "description": "<p>3-letter currency code of the default currency set by the customer according to ISO 4217. Informational.</p>"
+          },
+          {
+            "group": "Response",
+            "type": "String",
+            "field": "Country",
+            "optional": false,
+            "description": "<p>2-letter country code of the country the property is situated in according to ISO 3166-1 alpha-2 standard. Might be empty as it wasn&#39;t recorded for early customers. Informational.</p>"
+          },
+          {
+            "group": "Response",
+            "type": "String",
+            "field": "PaidUntil",
+            "optional": false,
+            "description": "<p>Usage of myallocator.com paid for until this date. Informational. Format: YYYY-MM-DD.</p>"
+          },
+          {
+            "group": "Response",
+            "type": "String",
+            "field": "Weekend",
+            "optional": false,
+            "description": "<p>Day &amp; Shows which days are marked as weekend days by the customer on Myallocator. Monday = 1, Sunday = 7. The name of the weekday is also given in the \\textit{name} property. See SetAllocation for information on when this is used.</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "XML PropertyList Response Success",
+          "content": "XML PropertyList Response Success\n<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<PropertyListResponse>\n<Properties>\n  <Property>\n    <Id>19</Id>\n    <Name>Property 1</Name>\n    <Breakfast></Breakfast>\n    <Currency>GBP</Currency>\n    <Country>GB</Country>\n    <PaidUntil>2011-11-11</PaidUntil>\n    <Weekend>\n      <Day name=\"Friday\">5</Day>\n      <Day name=\"Saturday\">6</Day>\n    </Weekend>\n  </Property>\n  \n  <Property>\n    <Id>13</Id>\n    <Name>Property 2</Name>\n    <Breakfast>IN</Breakfast>\n    <Currency>EUR</Currency>\n    <Country>DE</Country>\n    <PaidUntil>2011-11-11</PaidUntil>\n    <Weekend>\n    </Weekend>\n  </Property>\n  \n  <Property>\n    <Id>15</Id>\n    <Name>Property 3</Name>\n    <Breakfast>EX</Breakfast>\n    <Currency>GBP</Currency>\n    <Country>GB</Country>\n    <PaidUntil>2011-11-11</PaidUntil>\n    <Weekend>\n      <Day name=\"Friday\">5</Day>\n      <Day name=\"Saturday\">6</Day>\n      <Day name=\"Sunday\">7</Day>\n    </Weekend>\n  </Property>\n</Properties>\n</PropertyListResponse>\n",
+          "type": "json"
+        }
+      ]
+    },
+    "version": "0.0.0",
+    "filename": "perllib/MAAPI.pm"
+  },
+  {
+    "type": "get",
+    "url": "/RoomAvailabilityList",
+    "title": "RoomAvailabilityList",
+    "name": "RoomAvailabilityList",
+    "group": "PMS",
+    "description": "<p>This call can be used to query for all data that we hold for a specific property and date range.  The date range can only be 31 days as the maximum. You can query multiple times if you need a longer date range.</p><p> A MaxStay setting of 0 means &quot;unrestricted&quot;.  The 48 and 49 in the response example below refer to the room ID as returned by GetRooms (XML API).</p><p> <strong> Compatibility: </strong>  this was formerly available at: <a href=\"https://myallocator.com/en/api/data\">https://myallocator.com/en/api/data</a></p>",
+    "parameter": {
+      "fields": {
+        "Request": [
+          {
+            "group": "Request",
+            "type": "String",
+            "field": "Auth/UserId",
+            "optional": true,
+            "description": "<p>Users unique ID  (required if not linked to vendor)</p>"
+          },
+          {
+            "group": "Request",
+            "type": "String",
+            "field": "Auth/UserPassword",
+            "optional": true,
+            "description": "<p>Users password (required if not linked to vendor)</p>"
+          },
+          {
+            "group": "Request",
+            "type": "String",
+            "field": "Auth/PropertyId",
+            "optional": false,
+            "description": ""
+          },
+          {
+            "group": "Request",
+            "type": "String",
+            "field": "Auth/VendorId",
+            "optional": false,
+            "description": "<p>Your Vendor ID</p>"
+          },
+          {
+            "group": "Request",
+            "type": "String",
+            "field": "Auth/VendorPassword",
+            "optional": false,
+            "description": "<p>Your Vendor Password</p>"
+          },
+          {
+            "group": "Request",
+            "type": "Date",
+            "field": "StartDate",
+            "optional": false,
+            "description": "<p>(YYYY-MM-DD)</p>"
+          },
+          {
+            "group": "Request",
+            "type": "Date",
+            "field": "EndDate",
+            "optional": false,
+            "description": "<p>(YYYY-MM-DD)</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "examples": [
+        {
+          "title": "JSON RoomAvailabilityList",
+          "content": "JSON RoomAvailabilityList\n  {\n  \"Rooms\": [\n        {\n   \t  \"RoomId\": 48,\n        \"PropertyId\": 1234,\n        \"RoomName\": \"1-person private\",\n        \"Data\": [\n          {\n            \"Date\": \"2014-03-15\",\n            \"Units\": 2,\n            \"Price\": 33,\n            \"MinStay\": 1,\n            \"MaxStay\": 7,\n            \"Closed\": false,\n            \"ClosedForArrival\": false,\n            \"ClosedForDeparture\": false\n          },\n          {\n            \"Date\": \"2014-03-16\",\n            \"Units\": 2,\n            \"Price\": 33,\n            \"MinStay\": 1,\n            \"MaxStay\": 7,\n            \"Closed\": false,\n            \"ClosedForArrival\": false,\n            \"ClosedForDeparture\": false\n          }\n        ]\n      },\n      {\n        \"RoomId\": 49,\n        \"PropertyId\": 1,\n        \"RoomName\": \"5-person male shared\",\n        \"Data\": [\n          {\n            \"Date\": \"2014-03-15\",\n            \"Units\": 0,\n            \"Price\": 0,\n            \"MinStay\": 1,\n            \"MaxStay\": 7,\n            \"Closed\": false,\n            \"ClosedForArrival\": false,\n            \"ClosedForDeparture\": false\n          },\n          {\n            \"Date\": \"2014-03-16\",\n            \"Units\": 0,\n            \"Price\": 0,\n            \"MinStay\": 1,\n            \"MaxStay\": 7,\n            \"Closed\": false,\n            \"ClosedForArrival\": false,\n            \"ClosedForDeparture\": false\n          }\n        ]\n      }\n    }\n  }\n",
+          "type": "json"
+        }
+      ]
+    },
+    "version": "0.0.0",
+    "filename": "perllib/MAAPI.pm"
+  },
+  {
+    "type": "get",
+    "url": "/RoomList",
+    "title": "RoomList",
+    "name": "RoomList",
+    "group": "PMS",
+    "description": "<p>returns a list of configured room types for a property. Formerly GetRoomTypes (v1).</p>",
+    "parameter": {
+      "fields": {
+        "Request": [
+          {
+            "group": "Request",
+            "type": "String",
+            "field": "Auth/UserId",
+            "optional": true,
+            "description": "<p>Users unique ID  (required if not linked to vendor)</p>"
+          },
+          {
+            "group": "Request",
+            "type": "String",
+            "field": "Auth/UserPassword",
+            "optional": true,
+            "description": "<p>Users password (required if not linked to vendor)</p>"
+          },
+          {
+            "group": "Request",
+            "type": "String",
+            "field": "Auth/PropertyId",
+            "optional": false,
+            "description": "<p>Property ID on myallocator.com</p>"
+          },
+          {
+            "group": "Request",
+            "type": "String",
+            "field": "Auth/VendorId",
+            "optional": false,
+            "description": "<p>Your Vendor ID</p>"
+          },
+          {
+            "group": "Request",
+            "type": "String",
+            "field": "Auth/VendorPassword",
+            "optional": false,
+            "description": "<p>Your Vendor Password</p>"
+          }
+        ]
+      }
+    },
+    "examples": [
+      {
+        "title": "XML RoomList Request",
+        "content": "XML RoomList Request\n<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<RoomList>\n<Auth>\n  <UserId>Customer User ID</UserId>\n  <UserPassword>Customer Password</UserPassword>\n  <PropertyId>Property ID on myallocator.com</PropertyId>\n  <VendorId>Your Vendor ID</VendorId>\n  <VendorPassword>Your Vendor Password</VendorPassword>\n</Auth>\n</RoomList>\n",
+        "type": "json"
+      }
+    ],
+    "success": {
+      "fields": {
+        "XML": [
+          {
+            "group": "XML",
+            "type": "String",
+            "field": "Id",
+            "optional": false,
+            "description": "<p>The room type ID which will reference the room type.</p>"
+          },
+          {
+            "group": "XML",
+            "type": "String",
+            "field": "Units",
+            "optional": false,
+            "description": "<p>Number of rooms of this type.</p>"
+          },
+          {
+            "group": "XML",
+            "type": "String",
+            "field": "Occupancy",
+            "optional": false,
+            "description": "<p>Number of persons that can stay in this room.</p>"
+          },
+          {
+            "group": "XML",
+            "type": "String",
+            "field": "Beds",
+            "optional": false,
+            "description": "<p>!!Obsolete!! Replaced with Occupancy (see above).</p>"
+          },
+          {
+            "group": "XML",
+            "type": "String",
+            "field": "Gender",
+            "optional": false,
+            "description": "<p>Gender restriction for shared rooms. MA for males, FE for females, MI if mixed. Always set to &#39;MI&#39; for private rooms.</p>"
+          },
+          {
+            "group": "XML",
+            "type": "String",
+            "field": "DoubleBed",
+            "optional": false,
+            "description": "<p>!!Obsolete!! Option removed from Myallocator. Now always defaults to false.</p>"
+          },
+          {
+            "group": "XML",
+            "type": "String",
+            "field": "Ensuite",
+            "optional": false,
+            "description": "<p>!!Obsolete!! Option removed from Myallocator. Now always defaults to false;</p>"
+          },
+          {
+            "group": "XML",
+            "type": "String",
+            "field": "PrivateRooms",
+            "optional": false,
+            "description": "<p>Whether this room is private or shared/dorm (\\textit{true} or \\textit{false}).</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "XML RoomList Success Response:",
+          "content": "XML RoomList Success Response:\n<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<RoomListResponse>\n<RoomTypes>\n  <RoomType>\n    <Id>59</Id>\n    <Label>1-bed private ensuite</Label>\n    <Units>3</Units>\n    <Occupancy>1</Occupancy>\n    <Beds>1</Beds>\n    <Gender>MI</Gender>\n    <DoubleBed>false</DoubleBed>\n    <Ensuite>false</Ensuite>\n    <PrivateRoom>true</PrivateRoom>      \n  </RoomType>\n  \n  <RoomType>\n    <Id>63</Id>\n    <Label>2-bed private</Label>\n    <Units>4</Units>\n    <Occupancy>2</Occupancy>\n    <Beds>2</Beds>\n    <Gender>MI</Gender>\n    <DoubleBed>false</DoubleBed>\n    <Ensuite>false</Ensuite>\n    <PrivateRoom>true</PrivateRoom>    \n  </RoomType>\n  \n  <RoomType>\n    <Id>49</Id>\n    <Label>5-bed female shared</Label>\n    <Units>3</Units>\n    <Occupancy>5</Occupancy>\n    <Beds>5</Beds>\n    <Gender>FE</Gender>\n    <DoubleBed>false</DoubleBed>\n    <Ensuite>false</Ensuite>\n    <PrivateRoom>false</PrivateRoom>\n  </RoomType>\n</RoomTypes>\n</RoomListResponse>\n",
+          "type": "json"
+        }
+      ]
+    },
+    "version": "0.0.0",
+    "filename": "perllib/MAAPI.pm"
+  },
+  {
+    "type": "get",
     "url": "/SetAllocation",
     "title": "SetAllocation",
     "name": "SetAllocation",
@@ -1292,7 +1294,7 @@
             "type": "String",
             "field": "RoomTypeId",
             "optional": false,
-            "description": "<p>Room type id as returned by GetRoomTypes.</p>"
+            "description": "<p>Room type id as returned by RoomList.</p>"
           },
           {
             "group": "Request",
@@ -1327,7 +1329,7 @@
             "type": "String",
             "field": "Prices/Price",
             "optional": false,
-            "description": "<p>Price per person for shared/dorm rooms or per room for private rooms. You can submit two Price tags. The default one and one with the attribute \\textit{weekend=&quot;true&quot;}. If a Price tag with this attribute has been submitted the rate only applies to weekdays set by the customer as weekends (see \\textit{GetProperties} for which days are set as weekend days).</p>"
+            "description": "<p>Price per person for shared/dorm rooms or per room for private rooms. You can submit two Price tags. The default one and one with the attribute \\textit{weekend=&quot;true&quot;}. If a Price tag with this attribute has been submitted the rate only applies to weekdays set by the customer as weekends (see PropertyList for which days are set as weekend days).</p>"
           }
         ]
       }
@@ -1588,71 +1590,6 @@
         }
       ]
     },
-    "version": "0.0.0",
-    "filename": "perllib/MAAPI.pm"
-  },
-  {
-    "type": "get",
-    "url": "/SetVendor",
-    "title": "SetVendor",
-    "name": "SetVendor",
-    "group": "PMS",
-    "parameter": {
-      "fields": {
-        "Request": [
-          {
-            "group": "Request",
-            "type": "String",
-            "field": "Auth/VendorId",
-            "optional": false,
-            "description": "<p>Your Vendor ID</p>"
-          },
-          {
-            "group": "Request",
-            "type": "String",
-            "field": "Auth/VendorPassword",
-            "optional": false,
-            "description": "<p>Your Vendor Password</p>"
-          },
-          {
-            "group": "Request",
-            "type": "String",
-            "field": "Callback/URL",
-            "optional": false,
-            "description": "<p>Vendor Callback URL</p>"
-          },
-          {
-            "group": "Request",
-            "type": "String",
-            "field": "Callback/Password",
-            "optional": false,
-            "description": "<p>Callback Passwords</p>"
-          }
-        ],
-        "Response": [
-          {
-            "group": "Response",
-            "type": "Boolean",
-            "field": "Success",
-            "optional": false,
-            "description": ""
-          }
-        ]
-      }
-    },
-    "description": "<p>this is a utility which can be used to easily update vendor properties. most PMS systems will NOT use call on a regular basis.  (Please note: after an update of callback properties old requests which are already in queue may continue to arrive for up to an hour).</p><p> set Callback/URL to blank to disable callbacks.</p>",
-    "examples": [
-      {
-        "title": "XML SetVendor",
-        "content": "XML SetVendor\n<?xml version=\"1.0\" encoding=\"UTF-8\" ?>\n<SetVendor>\n<Auth>\n  <VendorId>Your Vendor ID</VendorId>\n  <VendorPassword>Your Vendor Password</VendorPassword>\n</Auth>\n<Callback>\n  <URL>http://www.yourdomain.com/myallocator/callback.cgi</URL>\n  <Password>very secret password</Password>\n</Callback>\n</SetVendor>\n",
-        "type": "json"
-      },
-      {
-        "title": "JSON SetVendor",
-        "content": "JSON SetVendor\n{\n  'Auth/VendorId':'Your Vendor ID',\n  'Auth/VendorPassword':'Your Vendor Password',\n  'Callback/URL':'http://www.yourdomain.com/myallocator/callback.cgi',\n  'Callback/Password':'very secret password',\n}\n",
-        "type": "json"
-      }
-    ],
     "version": "0.0.0",
     "filename": "perllib/MAAPI.pm"
   },
@@ -1967,6 +1904,71 @@
         }
       ]
     },
+    "version": "0.0.0",
+    "filename": "perllib/MAAPI.pm"
+  },
+  {
+    "type": "get",
+    "url": "/VendorSet",
+    "title": "VendorSet",
+    "name": "VendorSet",
+    "group": "PMS",
+    "parameter": {
+      "fields": {
+        "Request": [
+          {
+            "group": "Request",
+            "type": "String",
+            "field": "Auth/VendorId",
+            "optional": false,
+            "description": "<p>Your Vendor ID</p>"
+          },
+          {
+            "group": "Request",
+            "type": "String",
+            "field": "Auth/VendorPassword",
+            "optional": false,
+            "description": "<p>Your Vendor Password</p>"
+          },
+          {
+            "group": "Request",
+            "type": "String",
+            "field": "Callback/URL",
+            "optional": false,
+            "description": "<p>Vendor Callback URL</p>"
+          },
+          {
+            "group": "Request",
+            "type": "String",
+            "field": "Callback/Password",
+            "optional": false,
+            "description": "<p>Callback Passwords</p>"
+          }
+        ],
+        "Response": [
+          {
+            "group": "Response",
+            "type": "Boolean",
+            "field": "Success",
+            "optional": false,
+            "description": ""
+          }
+        ]
+      }
+    },
+    "description": "<p>this is a utility which can be used to easily update vendor properties. most PMS systems will NOT use call on a regular basis.  (Please note: after an update of callback properties old requests which are already in queue may continue to arrive for up to an hour).</p><p> set Callback/URL to blank to disable callbacks.</p>",
+    "examples": [
+      {
+        "title": "XML VendorSet",
+        "content": "XML VendorSet\n<?xml version=\"1.0\" encoding=\"UTF-8\" ?>\n<VendorSet>\n<Auth>\n  <VendorId>Your Vendor ID</VendorId>\n  <VendorPassword>Your Vendor Password</VendorPassword>\n</Auth>\n<Callback>\n  <URL>http://www.yourdomain.com/myallocator/callback.cgi</URL>\n  <Password>very secret password</Password>\n</Callback>\n</VendorSet>\n",
+        "type": "json"
+      },
+      {
+        "title": "JSON VendorSet",
+        "content": "JSON VendorSet\n{\n  'Auth/VendorId':'Your Vendor ID',\n  'Auth/VendorPassword':'Your Vendor Password',\n  'Callback/URL':'http://www.yourdomain.com/myallocator/callback.cgi',\n  'Callback/Password':'very secret password',\n}\n",
+        "type": "json"
+      }
+    ],
     "version": "0.0.0",
     "filename": "perllib/MAAPI.pm"
   },
