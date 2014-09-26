@@ -24,7 +24,7 @@ define({ api: [
   },
   {
     "group": "Callbacks",
-    "groupDescription": "<p>Instead of polling for new bookings every few minutes you can also use our booking callback. With this feature we will send the bookings to your server at a URL you provide to us.</p>",
+    "groupDescription": "<p>Callbacks data format matches the BookingList api call. </p><p> Instead of polling for new bookings every few minutes you should register to receive a booking callback. With this feature we will send the bookings to your server via HTTP/HTTPS or SQS. </p><p> <strong> Amazon Web Services Simple Queuing Service Delivery (an alternative to HTTP/HTTPS) </strong> Maintaining a public URL to receive callbacks is often difficult (especially during development),  if this is the case then you should consider using an AWS SQS and polling the queue for updates  (rather than processing ranges of dates via BookingList).  AWS SQS libraries are available in nearly every language and provide a very straightforward, low latency way to rapidly process incoming data. </p><p> If you are interested in using non-HTTP/HTTPS delivery callbacks please let us know. You will need to have your own Amazon Account, just setup a SQS queue and assign read/write permissions to aws account id# 210409647864. callback messages can be delivered in XML or JSON.  (We request read permission so we can verify a write during setup).</p><p><strong> AWS SQS Sample Policy </strong> { &quot;Version&quot;: &quot;2012-10-17&quot;, &quot;Id&quot;: &quot;Queue1_Policy_UUID&quot;, &quot;Statement&quot;: {         &quot;Sid&quot;:&quot;Queue1_Send_Receive&quot;, &quot;Effect&quot;: &quot;Allow&quot;,         &quot;Principal&quot;: { &quot;AWS&quot;: &quot;210409647864&quot; },         &quot;Action&quot;: [&quot;sqs:SendMessage&quot;,&quot;sqs:ReceiveMessage&quot;],&quot;Resource&quot;: &quot;arn:aws:sqs:*:444455556666:queue1&quot; }} replace 444455556666:queue1 with your AWS account/Queue Name.</p>",
     "type": "",
     "url": "{}",
     "title": "Bookings",
@@ -208,16 +208,9 @@ define({ api: [
           {
             "group": "Request",
             "type": "String",
-            "field": "CreationStartDate",
-            "optional": true,
-            "description": "<p>Query for date of the booking creation on myallocator.com.</p>"
-          },
-          {
-            "group": "Request",
-            "type": "String",
             "field": "ModifcationStartDate",
             "optional": true,
-            "description": "<p>Query for date of the book modification on myallocator.com. A modification can occur if the booking has been cancelled.</p>"
+            "description": "<p>Query for date of the book modification on myallocator.com. A modification timestamp will occur if the booking has been cancelled or changes.When a new Booking is received the ModificationDate will be initially set to the creation date.</p>"
           },
           {
             "group": "Request",
@@ -225,11 +218,25 @@ define({ api: [
             "field": "ModifcationEndDate",
             "optional": true,
             "description": ""
+          },
+          {
+            "group": "Request",
+            "type": "String",
+            "field": "CreationStartDate",
+            "optional": true,
+            "description": "<p>Creation date of booking on MyAllocator (probably only useful for testing - use ModificationStartDate for production)</p>"
+          },
+          {
+            "group": "Request",
+            "type": "String",
+            "field": "CreationEndDate",
+            "optional": true,
+            "description": ""
           }
         ]
       }
     },
-    "description": "<p>This method allows you to query for bookings made to a specific property by booking date, modification date or arrival date.</p><p> It is important to know that not every booking that is returned through the API neccessarily resulted in an adjustment of the other channels. If the booking is not mapped to any rooms on our system, or if the channel has just been setup, the adjustment will not be carried out. The requests consists of search criteria by date. Only specify the StartDate/EndDate of one criteria. note: formerly BookingList (v1).</p><p> <strong> Data Formatting </strong> Different channels return a different amount of information about a booking, therefore many fields are optional.</p>",
+    "description": "<p>This method allows you to query for bookings made to a specific property by booking date, modification date or arrival date.</p><p> It is important to know that not every booking that is returned through the API neccessarily resulted in an adjustment of the other channels. If the booking is not mapped to any rooms on our system, or if the channel has just been setup, the adjustment will not be carried out. The requests consists of search criteria by date. Only specify the StartDate/EndDate of one criteria. note: formerly BookingList (v1).</p><p> <strong> Data Formatting </strong> Different channels return a different amount of information about a booking, therefore many fields are optional.</p><p><strong> Best Pratices </strong></p><ul><li>Callbacks are the fastest, best, and preferred way of receiving Booking data. </li><li>Every effort will be made to synchronize the callback data format and this format. (You can/should use the same data parsing code)</li><li>BookingList method should only be used as a backup to correct errors or lost callbacks. Or to periodically verify integrity of data. </li><li>Always use ModificationStartDate ModificationEndDate in production. </li><li>There a revision counter (Version) which will be present when a modification has been made. However if a change/cancellation is received then the modification date will also be different from the creation date)</li><li>Do not frequently poll this API, one call, per property, every 30 minutes is considered &quot;Acceptable Usage&quot;.</li></ul>",
     "examples": [
       {
         "title": "XML Example of querying for bookings",
@@ -647,6 +654,80 @@ define({ api: [
   },
   {
     "type": "get",
+    "url": "/BookingPaymentDownload",
+    "title": "BookingPaymentDownload",
+    "name": "BookingPaymentDownload",
+    "group": "PMS",
+    "description": "<p>This call can be used to retrieve credit card details from specific bookings. This applies only to channels that currently send us the credit card details (booking.com, Expedia, BookNow) and only for bookings that were created after connection with myallocator has been made.</p><p> This API call is not enabled for vendors by default. You need to send us your PCI compliance certification before this can be done. It&#39;s also neccessary to send along the credit card viewing password (different from the user login). For best practise do not store this password in your system but rather get it from the customer and send it on directly. This way the password will only be in the memory and not as accessible.</p><p> The credit card viewing password needs to be changed ever 365 by the property. It can happen that the property has reset their password in which case our support team needs to reencrypt the existing details. This is not an automatic process and can take between 1 and 3 business days.</p><p> Applicable error codes are 26 - 30. Even though logically this would be a GET call, we use POST for this one to prevent the password from going to the webserver log files.</p><p> Bookings can have multiple credit card details stored within them, as they have been updated by the guest. The response will list credit card details with the most recent credit card first.</p><p> <strong> Compatibility </strong> <a href=\"https://myallocator.com/en/api/cc\">https://myallocator.com/en/api/cc</a></p><p> PropertyId, MyallocatorId, CreditCardPassword</p>",
+    "parameter": {
+      "fields": {
+        "Request": [
+          {
+            "group": "Request",
+            "type": "String",
+            "field": "Auth/UserId",
+            "optional": true,
+            "description": "<p>Users unique ID  (required if not linked to vendor)</p>"
+          },
+          {
+            "group": "Request",
+            "type": "String",
+            "field": "Auth/UserPassword",
+            "optional": true,
+            "description": "<p>Users password (required if not linked to vendor)</p>"
+          },
+          {
+            "group": "Request",
+            "type": "String",
+            "field": "Auth/PropertyId",
+            "optional": false,
+            "description": ""
+          },
+          {
+            "group": "Request",
+            "type": "String",
+            "field": "Auth/VendorId",
+            "optional": false,
+            "description": "<p>Your Vendor ID</p>"
+          },
+          {
+            "group": "Request",
+            "type": "String",
+            "field": "Auth/VendorPassword",
+            "optional": false,
+            "description": "<p>Your Vendor Password</p>"
+          },
+          {
+            "group": "Request",
+            "type": "String",
+            "field": "CreditCardPassword",
+            "optional": false,
+            "description": ""
+          },
+          {
+            "group": "Request",
+            "type": "String",
+            "field": "BookingId",
+            "optional": false,
+            "description": ""
+          }
+        ]
+      }
+    },
+    "success": {
+      "examples": [
+        {
+          "title": "JSON BookingPaymentDownload",
+          "content": "JSON BookingPaymentDownload\n  {\n      \"CreditCards\": [\n          {\n              \"CardType\": \"VI\",\n              \"CardNumber\": \"4111111111111111\",\n              \"CardCVV\": \"123\",\n              \"CardExpiryYear\": \"2018\",\n              \"CardExpiryMonth\": \"11\",\n              \"CardHolderName\": \"Martin Seamus McFly\"\n          },\n          {\n              \"CardType\": \"VI\",\n              \"CardNumber\": \"4123123412341234\",\n              \"CardCVV\": \"234\",\n              \"CardExpiryYear\": \"2013\",\n              \"CardExpiryMonth\": \"12\",\n              \"CardHolderName\": \"Emmett Lathrop Brown\"\n          }\n      ]\n  }\n",
+          "type": "json"
+        }
+      ]
+    },
+    "version": "0.0.0",
+    "filename": "perllib/MAAPI.pm"
+  },
+  {
+    "type": "get",
     "url": "/ChannelList",
     "title": "ChannelList",
     "name": "ChannelList",
@@ -730,80 +811,6 @@ define({ api: [
         "type": "json"
       }
     ],
-    "version": "0.0.0",
-    "filename": "perllib/MAAPI.pm"
-  },
-  {
-    "type": "get",
-    "url": "/GetPaymentsForBooking",
-    "title": "GetPaymentsForBooking",
-    "name": "GetPaymentsForBooking",
-    "group": "PMS",
-    "description": "<p>This call can be used to retrieve credit card details from specific bookings. This applies only to channels that currently send us the credit card details (booking.com, Expedia, BookNow) and only for bookings that were created after connection with myallocator has been made.</p><p> This API call is not enabled for vendors by default. You need to send us your PCI compliance certification before this can be done. It&#39;s also neccessary to send along the credit card viewing password (different from the user login). For best practise do not store this password in your system but rather get it from the customer and send it on directly. This way the password will only be in the memory and not as accessible.</p><p> The credit card viewing password needs to be changed ever 365 by the property. It can happen that the property has reset their password in which case our support team needs to reencrypt the existing details. This is not an automatic process and can take between 1 and 3 business days.</p><p> Applicable error codes are 26 - 30. Even though logically this would be a GET call, we use POST for this one to prevent the password from going to the webserver log files.</p><p> Bookings can have multiple credit card details stored within them, as they have been updated by the guest. The response will list credit card details with the most recent credit card first.</p><p> <strong> Compatibility </strong> <a href=\"https://myallocator.com/en/api/cc\">https://myallocator.com/en/api/cc</a></p><p> PropertyId, MyallocatorId, CreditCardPassword</p>",
-    "parameter": {
-      "fields": {
-        "Request": [
-          {
-            "group": "Request",
-            "type": "String",
-            "field": "Auth/UserId",
-            "optional": true,
-            "description": "<p>Users unique ID  (required if not linked to vendor)</p>"
-          },
-          {
-            "group": "Request",
-            "type": "String",
-            "field": "Auth/UserPassword",
-            "optional": true,
-            "description": "<p>Users password (required if not linked to vendor)</p>"
-          },
-          {
-            "group": "Request",
-            "type": "String",
-            "field": "Auth/PropertyId",
-            "optional": false,
-            "description": ""
-          },
-          {
-            "group": "Request",
-            "type": "String",
-            "field": "Auth/VendorId",
-            "optional": false,
-            "description": "<p>Your Vendor ID</p>"
-          },
-          {
-            "group": "Request",
-            "type": "String",
-            "field": "Auth/VendorPassword",
-            "optional": false,
-            "description": "<p>Your Vendor Password</p>"
-          },
-          {
-            "group": "Request",
-            "type": "String",
-            "field": "CreditCardPassword",
-            "optional": false,
-            "description": ""
-          },
-          {
-            "group": "Request",
-            "type": "String",
-            "field": "BookingId",
-            "optional": false,
-            "description": ""
-          }
-        ]
-      }
-    },
-    "success": {
-      "examples": [
-        {
-          "title": "JSON GetPaymentsForBooking",
-          "content": "JSON GetPaymentsForBooking\n  {\n      \"CreditCards\": [\n          {\n              \"CardType\": \"VI\",\n              \"CardNumber\": \"4111111111111111\",\n              \"CardCVV\": \"123\",\n              \"CardExpiryYear\": \"2018\",\n              \"CardExpiryMonth\": \"11\",\n              \"CardHolderName\": \"Martin Seamus McFly\"\n          },\n          {\n              \"CardType\": \"VI\",\n              \"CardNumber\": \"4123123412341234\",\n              \"CardCVV\": \"234\",\n              \"CardExpiryYear\": \"2013\",\n              \"CardExpiryMonth\": \"12\",\n              \"CardHolderName\": \"Emmett Lathrop Brown\"\n          }\n      ]\n  }\n",
-          "type": "json"
-        }
-      ]
-    },
     "version": "0.0.0",
     "filename": "perllib/MAAPI.pm"
   },
@@ -1608,6 +1615,11 @@ define({ api: [
     "description": "<p>An allocation sets the number of rooms or beds (depending on whether the room type is a private room or shared/dorm) available during any specific time frame. For more details see below.</p><p> <strong> Handling Errors &amp; Warnings </strong></p><p> The response will always include the Success, Errors and Warnings tags. If Success is set to &quot;true&quot; the Errors tag will be empty. If Success is set to &quot;partial&quot; or &quot;false&quot; at least one Error tag is included.</p><p> <strong> Submitting to ALL channels </strong></p><p> You can also submit to all available channels without specifying explicity which channels to update. Use the channel code &quot;all&quot; to do this. Channels that are not  set up by the user will be skipped as indicated by a warning. </p><p> It is also possible to submit to all channels while excluding certain channels. Add the attribute exclude=&quot;true&quot; to skip a channel. See example below. Use the channel code &quot;all&quot; to do this.</p><p> <strong> Running Jobs in the Background (GetUpdateStatus) </strong></p><p> You can also run the SetAllocation update in the background and query for the updates using GetUpdateStatus. This enables you to show the update progress to the user while it&#39;s still running. To enable this feature you need to add the node QueryForStatus (see example)</p><p> If QueryForStatus is true then the SetAllocationResponse will contain the additional parameter UpdateId, which is needed for GetUpdateStatus</p>",
     "examples": [
       {
+        "title": "JSON SetAllocation",
+        "content": "JSON SetAllocation\n{ \n'Auth/UserId':'your username',\n'Auth/UserPassword':'your password'\n'Channels': [ 'hc','iwb' ],\n'Allocations: [\n\t{\n\t'RoomTypeId':'59',\n\t'StartDate':'2010-06-01',\n\t'EndDate':'2010-06-01',\n\t'Units':'3',\n\t'MinStay':'1',\n\t'MaxStay':'30',\n\t'Price':'20.00',\n\t'Price-Weekday':'15.00',\n\t'Price-Weekend':'20.00',\n\t}\n]\n}\n",
+        "type": "json"
+      },
+      {
         "title": "XML SetAllocationRequest",
         "content": "XML SetAllocationRequest\n<?xml version=\"1.0\" encoding=\"UTF-8\" ?>\n<SetAllocation>\n<Auth>\n  <UserId>Customer User ID</UserId>\n  <UserPassword>Customer Password</UserPassword>\n  <PropertyId>Property ID on myallocator.com</PropertyId>\n  <VendorId>Your Vendor ID</VendorId>\n  <VendorPassword>Your Vendor Password</VendorPassword>\n</Auth>\n<Channels>\n  <Channel>hc</Channel>\n  <Channel>iwb</Channel>\n</Channels>\n<Allocations>\n  <Allocation>\n    <RoomTypeId>59</RoomTypeId>\n    <StartDate>2010-06-01</StartDate>\n    <EndDate>2010-08-12</EndDate>\n    <Units>3</Units>\n    <MinStay>1</MinStay>\n    <MaxStay>30</MaxStay>\n    <Prices>\n      <Price>20.00</Price>\n      <Price weekend=\"true\">25.00</Price>\n    </Prices>\n  </Allocation>\n</Allocations>\n</SetAllocation>\n",
         "type": "json"
@@ -2407,7 +2419,7 @@ define({ api: [
     "name": "Global_Error_codes",
     "description": "<p>Errors are divided into three categories. A global error will have a single Errors tag with no further encapsulation and only a single Error tag.</p><p> An API method specific error will be included in the method name. Again, there will only be a single Error tag. The third type of error is channel specific. The Errors tag is included in the method name and there may be multiple Error tags.</p><table><thead><tr><th>Code</th><th>Description</th></tr></thead><tbody><tr><td>2</td><td>Missing authentication tags</td></tr><tr><td>3</td><td>Invalid user or user password</td></tr><tr><td>4</td><td>Invalid vendor or vendor password</td></tr><tr><td>5</td><td>Vendor disabled</td></tr><tr><td>6</td><td>User has no credit left</td></tr><tr><td>7</td><td>User has no permission to change availability for this property</td></tr><tr><td>8</td><td>No such API method</td></tr><tr><td>9</td><td>Unsupported channel</td></tr><tr><td>10</td><td>No channels selected</td></tr><tr><td>11</td><td>No allocations submitted</td></tr><tr><td>12</td><td>Invalid room type id (does not exist or not assigned to this property)</td></tr><tr><td>13</td><td>Missing allocation info (price, dates, units)</td></tr><tr><td>14</td><td>Internal error. Support has been notified!</td></tr><tr><td>15</td><td>Missing or wrong channel credentials on myallocator.com</td></tr><tr><td>16</td><td>End date before start date</td></tr><tr><td>17</td><td>Start date too far in the future (&gt;2 years)</td></tr><tr><td>18</td><td>Invalid property id</td></tr><tr><td>19</td><td>Vendor not enabled to use this method</td></tr><tr><td>20</td><td>Missing required XML fields</td></tr><tr><td>21</td><td>No applicable dates submitted</td></tr><tr><td>22</td><td>Invalid update id</td></tr><tr><td>301</td><td>Invalid characters in new username</td></tr><tr><td>302</td><td>Username exists already</td></tr><tr><td>303</td><td>Invalid values (check Breakfast, Currency, ExpiryDate)</td></tr><tr><td>401</td><td>Invalid date forma</td></tr><tr><td>402</td><td>Missing or invalid search criteri</td></tr></tbody></table><p><em>Channel Specific errors</em></p><table><thead><tr><th>Code</th><th>Description</th></tr></thead><tbody><tr><td>202</td><td>Channel skipped (not setup)</td></tr><tr><td>203</td><td>Channel did not respond</td></tr><tr><td>204</td><td>Channel skipped (no applicable rooms)</td></tr><tr><td>205</td><td>Incorrect room setup. The room type mapping needs to be updated on myallocator.com.</td></tr><tr><td>206</td><td>Channel only updates up to a certain period in the future. Some dates were skipped.</td></tr><tr><td>207</td><td>Skipped room type (not setup with channel)</td></tr><tr><td>208</td><td>Partial success: ...</td></tr><tr><td>99</td><td>Check/Display ErrMsg or WarningMsg content</td></tr></tbody></table>",
     "version": "0.0.0",
-    "filename": "htdocs/apidoc.pm"
+    "filename": "perllib/MAAPI.pm"
   },
   {
     "group": "_Appendix",
