@@ -127,7 +127,7 @@
 
     {{#if article.permission.name}}
       <p>
-        {{__ "Permission:"}} 
+        {{__ "Permission:"}}
         {{article.permission.name}}
 
         {{#if article.permission.description}}
@@ -140,21 +140,23 @@
       {{/if}}
     {{/if}}
 
-    <ul class="nav nav-tabs nav-tabs-examples">
+    {{#if_gt article.examples.length compare=0}}
+      <ul class="nav nav-tabs nav-tabs-examples">
+        {{#each article.examples}}
+          <li{{#if_eq @index compare=0}} class="active"{{/if_eq}}>
+            <a href="#examples-{{../id}}-{{@index}}">{{title}}</a>
+          </li>
+        {{/each}}
+      </ul>
+
+      <div class="tab-content">
       {{#each article.examples}}
-        <li{{#if_eq @index compare=0}} class="active"{{/if_eq}}>
-          <a href="#examples-{{../id}}-{{@index}}">{{title}}</a>
-        </li>
+        <div class="tab-pane{{#if_eq @index compare=0}} active{{/if_eq}}" id="examples-{{../id}}-{{@index}}">
+          <pre class="prettyprint language-json" data-type="{{type}}"><code>{{content}}</code></pre>
+        </div>
       {{/each}}
-    </ul>
- 
-    <div class="tab-content">
-    {{#each article.examples}}
-      <div class="tab-pane{{#if_eq @index compare=0}} active{{/if_eq}}" id="examples-{{../id}}-{{@index}}">
-        <pre class="prettyprint language-json" data-type="{{type}}"><code>{{content}}</code></pre>
       </div>
-    {{/each}}
-    </div>
+    {{/if_gt}}
 
     {{subTemplate "article-param-block" params=article.header _hasType=_hasTypeInHeaderFields section="header"}}
     {{subTemplate "article-param-block" params=article.parameter _hasType=_hasTypeInParameterFields section="parameter"}}
@@ -183,10 +185,15 @@
       {{#each this}}
           <tr>
             <td class="code">{{{splitFill field "." "&nbsp;&nbsp;"}}}{{#if optional}} <span class="label label-optional">{{__ "optional"}}</span>{{/if}}</td>
-            {{#if ../../_hasType}}<td>{{{type}}}</td>{{/if}}
+            {{#if ../../_hasType}}
+              <td>
+                {{{type}}}
+              </td>
+            {{/if}}
           <td>
             {{{nl2br description}}}
             {{#if defaultValue}}<p class="default-value">{{__ "Default value:"}} <code>{{{defaultValue}}}</code></p>{{/if}}
+            {{#if size}}<p class="type-size">{{__ "Size range:"}} <code>{{{size}}}</code></p>{{/if}}
           </td>
           </tr>
       {{/each}}
@@ -194,21 +201,23 @@
       </table>
     {{/each}}
 
-    <ul class="nav nav-tabs nav-tabs-examples">
+    {{#if_gt params.examples.length compare=0}}
+      <ul class="nav nav-tabs nav-tabs-examples">
+        {{#each params.examples}}
+          <li{{#if_eq @index compare=0}} class="active"{{/if_eq}}>
+            <a href="#{{../section}}-examples-{{../id}}-{{@index}}">{{title}}</a>
+          </li>
+        {{/each}}
+      </ul>
+
+      <div class="tab-content">
       {{#each params.examples}}
-        <li{{#if_eq @index compare=0}} class="active"{{/if_eq}}>
-          <a href="#{{../section}}-examples-{{../id}}-{{@index}}">{{title}}</a>
-        </li>
+        <div class="tab-pane{{#if_eq @index compare=0}} active{{/if_eq}}" id="{{../section}}-examples-{{../id}}-{{@index}}">
+          <pre class="prettyprint language-json" data-type="{{type}}"><code>{{content}}</code></pre>
+        </div>
       {{/each}}
-    </ul>
- 
-    <div class="tab-content">
-    {{#each params.examples}}
-      <div class="tab-pane{{#if_eq @index compare=0}} active{{/if_eq}}" id="{{../section}}-examples-{{../id}}-{{@index}}">
-        <pre class="prettyprint language-json" data-type="{{type}}"><code>{{content}}</code></pre>
       </div>
-    {{/each}}
-    </div>
+    {{/if_gt}}
 
   {{/if}}
 </script>
@@ -226,7 +235,7 @@
               </div>
             </div>
           </div>
- 
+
       {{#each article.parameter.fields.Parameter}}
           <div class="control-group">
             <label class="control-label" for="sample-request-field-{{field}}">{{field}}</label>
@@ -255,7 +264,7 @@
 
         </fieldset>
       </form>
-    {{/if}}    
+    {{/if}}
 </script>
 
 <script id="template-compare-article" type="text/x-handlebars-template">
@@ -356,7 +365,7 @@
 <script id="template-article-compare-permission" type="text/x-handlebars-template">
   {{#if article.permission.name}}
     <p>
-      {{__ "Permission:"}} 
+      {{__ "Permission:"}}
       {{#if compare.permission.name}}
 
         {{{showDiff article.permission.name compare.permission.name}}}
@@ -386,7 +395,7 @@
   {{else}}
     {{#if article.permission}}
       <p>
-        {{__ "Permission:"}} 
+        {{__ "Permission:"}}
         {{#if compare.permission.name}}
           <ins>
             {{{article.permission}}}
@@ -407,7 +416,7 @@
     {{else}}
       {{#if compare.permission.name}}
         <p>
-          {{__ "Permission:"}} 
+          {{__ "Permission:"}}
 
           <del>
           <br>
@@ -425,7 +434,7 @@
             <del>
             {{{compare.permission}}}
             </del>
-          </p> 
+          </p>
         {{/if}}
       {{/if}}
     {{/if}}

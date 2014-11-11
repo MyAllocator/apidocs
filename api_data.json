@@ -66,54 +66,54 @@
     "description": "<p>Creates a permanent link between an existing myallocator user and a PMS Vendor.  The PMS Vendor should securely obtain the users myallocator user-id and password (but do not store them),  then in the background pass the user credentials to AssociateUserToPMS and a link will be created. Any future API calls will not require UserPassword. </p><p> NOTE: *Users and Properties created by a PMS Vendor will automatically be linked to that PMS (this call is not necessary)</p><p> NOTE: Although Auth/UserPassword is identified in this call as <em>required</em> if a prior AssociateUserToPMS call has been made then it is not actually required.</p>",
     "parameter": {
       "fields": {
-        "Request": [
+        "": [
           {
             "group": "Request",
             "type": "String",
-            "field": "Auth/UserId",
             "optional": false,
+            "field": "Auth/UserId",
             "description": "<p>Users unique ID</p>"
           },
           {
             "group": "Request",
             "type": "String",
-            "field": "Auth/UserPassword",
             "optional": false,
+            "field": "Auth/UserPassword",
             "description": "<p>Users password</p>"
           },
           {
             "group": "Request",
             "type": "String",
-            "field": "Auth/PropertyId",
             "optional": true,
+            "field": "Auth/PropertyId]",
             "description": "<p>PropertyId (use 0 for all)</p>"
           },
           {
             "group": "Request",
             "type": "String",
-            "field": "Auth/VendorId",
             "optional": false,
+            "field": "Auth/VendorId",
             "description": "<p>Your Vendor ID</p>"
           },
           {
             "group": "Request",
             "type": "String",
-            "field": "Auth/VendorPassword",
             "optional": false,
+            "field": "Auth/VendorPassword",
             "description": "<p>Your Vendor Password</p>"
           },
           {
             "group": "Request",
             "type": "String",
-            "field": "PMSUserId",
             "optional": true,
+            "field": "PMSUserId]",
             "description": "<p>The Unique UserId on the PMS (for reference 128 character max) - will be included in callbacks</p>"
           },
           {
             "group": "Request",
             "type": "String",
-            "field": "PMSPropertyId",
             "optional": true,
+            "field": "PMSPropertyId]",
             "description": "<p>The Unique UserId on the PMS (for reference 128 cahracter max) - will be included in callbacks (only stored if Auth/PropertyId was set)</p>"
           }
         ]
@@ -121,12 +121,12 @@
     },
     "success": {
       "fields": {
-        "Response": [
+        "": [
           {
             "group": "Response",
             "type": "String",
-            "field": "secret",
             "optional": false,
+            "field": "secret",
             "description": "<p>A 48 character shared secret reserve for future HMAC Public calls (<a href=\"http://tools.ietf.org/html/rfc2104\">http://tools.ietf.org/html/rfc2104</a>). *NOTE: It is not necessary to store this unless you actually plan to use it - because the token can be reset by simply calling AssociateUserToPMS.</p>"
           }
         ]
@@ -155,82 +155,82 @@
     "group": "PMS",
     "parameter": {
       "fields": {
-        "Request": [
+        "": [
           {
             "group": "Request",
             "type": "String",
-            "field": "Auth/UserId",
             "optional": true,
+            "field": "Auth/UserId]",
             "description": "<p>Users unique ID  (required if not linked to vendor)</p>"
           },
           {
             "group": "Request",
             "type": "String",
-            "field": "Auth/UserPassword",
             "optional": true,
+            "field": "Auth/UserPassword]",
             "description": "<p>Users password (required if not linked to vendor)</p>"
           },
           {
             "group": "Request",
             "type": "String",
-            "field": "Auth/PropertyId",
             "optional": false,
+            "field": "Auth/PropertyId",
             "description": "<p>Property ID on myallocator.com</p>"
           },
           {
             "group": "Request",
             "type": "String",
-            "field": "Auth/VendorId",
             "optional": false,
+            "field": "Auth/VendorId",
             "description": "<p>Your Vendor ID</p>"
           },
           {
             "group": "Request",
             "type": "String",
-            "field": "Auth/VendorPassword",
             "optional": false,
+            "field": "Auth/VendorPassword",
             "description": "<p>Your Vendor Password</p>"
           },
           {
             "group": "Request",
             "type": "String",
-            "field": "ArrivalStartDate",
             "optional": true,
+            "field": "ArrivalStartDate]",
             "description": "<p>Query for date of arrival (first day of staying).</p>"
           },
           {
             "group": "Request",
             "type": "String",
-            "field": "ArrivalEndDate",
             "optional": true,
+            "field": "ArrivalEndDate]",
             "description": ""
           },
           {
             "group": "Request",
             "type": "String",
-            "field": "ModifcationStartDate",
             "optional": true,
+            "field": "ModifcationStartDate]",
             "description": "<p>Query for date of the book modification on myallocator.com. A modification timestamp will occur if the booking has been cancelled or changes.When a new Booking is received the ModificationDate will be initially set to the creation date.</p>"
           },
           {
             "group": "Request",
             "type": "String",
-            "field": "ModifcationEndDate",
             "optional": true,
+            "field": "ModifcationEndDate]",
             "description": ""
           },
           {
             "group": "Request",
             "type": "String",
-            "field": "CreationStartDate",
             "optional": true,
+            "field": "CreationStartDate]",
             "description": "<p>Creation date of booking on MyAllocator (probably only useful for testing - use ModificationStartDate for production)</p>"
           },
           {
             "group": "Request",
             "type": "String",
-            "field": "CreationEndDate",
             "optional": true,
+            "field": "CreationEndDate]",
             "description": ""
           }
         ]
@@ -253,397 +253,397 @@
         }
       ],
       "fields": {
-        "Response": [
+        "": [
           {
             "group": "Response",
             "type": "String",
-            "field": "Channel",
             "optional": false,
+            "field": "Channel",
             "description": "<p>2-3 letter channel code</p>"
           },
           {
             "group": "Response",
             "type": "String",
-            "field": "StartDate",
             "optional": false,
+            "field": "StartDate",
             "description": "<p>Date of arrival (YYYY-MM-DD)</p>"
           },
           {
             "group": "Response",
             "type": "String",
-            "field": "EndDate",
             "optional": false,
+            "field": "EndDate",
             "description": "<p>Date before day of departure (YYYY-MM-DD)</p>"
           },
           {
             "group": "Response",
             "type": "String",
-            "field": "IsCancellation",
             "optional": false,
+            "field": "IsCancellation",
             "description": "<p>\\textit{true} or \\textit{false}</p>"
           },
           {
             "group": "Response",
             "type": "String",
-            "field": "MyallocatorId",
             "optional": false,
+            "field": "MyallocatorId",
             "description": "<p>Booking ID on myallocator.com (hexadecimal number)</p>"
           },
           {
             "group": "Response",
             "type": "String",
-            "field": "MyallocatorCreationDate",
             "optional": false,
+            "field": "MyallocatorCreationDate",
             "description": "<p>Date of booking creation on myallocator.com</p>"
           },
           {
             "group": "Response",
             "type": "String",
-            "field": "MyallocatorCreationTime",
             "optional": false,
+            "field": "MyallocatorCreationTime",
             "description": "<p>Time of booking creation on myallocator.com</p>"
           },
           {
             "group": "Response",
             "type": "String",
-            "field": "MyallocatorModificationDate",
             "optional": false,
+            "field": "MyallocatorModificationDate",
             "description": "<p>Date of booking modification on myallocator (in case of a cancellation the modification date is different from the creation date)</p>"
           },
           {
             "group": "Response",
             "type": "String",
-            "field": "MyallocatorModificationTime",
             "optional": false,
+            "field": "MyallocatorModificationTime",
             "description": "<p>Time of booking modification on myallocator.com</p>"
           },
           {
             "group": "Response",
             "type": "String",
-            "field": "OrderId",
             "optional": false,
+            "field": "OrderId",
             "description": "<p>Booking ID on the channel</p>"
           },
           {
             "group": "Response",
             "type": "String",
-            "field": "Rooms/Room",
             "optional": false,
+            "field": "Rooms/Room",
             "description": "<p>List of booked room</p>"
           },
           {
             "group": "Response",
             "type": "String",
-            "field": "RoomTypeId",
             "optional": false,
+            "field": "RoomTypeId",
             "description": "<p>&amp; List of booked myallocator.com room IDs. Several channel room can mapped to one myallocator.com room. If \\textit{-1} it means that we couldn&#39;t match the channel room to one of our rooms.</p>"
           },
           {
             "group": "Response",
             "type": "String",
-            "field": "Units",
             "optional": false,
+            "field": "Units",
             "description": "<p>Number of booked rooms (for private rooms) or beds (for shared rooms</p>"
           },
           {
             "group": "Response",
             "type": "String",
-            "field": "OrderSource",
             "optional": false,
+            "field": "OrderSource",
             "description": "<p>Which website the booking originates from</p>"
           },
           {
             "group": "Response",
             "type": "String",
-            "field": "OrderDate",
             "optional": false,
+            "field": "OrderDate",
             "description": "<p>The date the booking has been created on the channel</p>"
           },
           {
             "group": "Response",
             "type": "String",
-            "field": "OrderTime",
             "optional": false,
+            "field": "OrderTime",
             "description": "<p>The time the booking has been created on the channel</p>"
           },
           {
             "group": "Response",
             "type": "String",
-            "field": "OrderAdults",
             "optional": false,
+            "field": "OrderAdults",
             "description": "<p>Number of adults</p>"
           },
           {
             "group": "Response",
             "type": "String",
-            "field": "OrderChildren",
             "optional": false,
+            "field": "OrderChildren",
             "description": "<p>Number of children</p>"
           },
           {
             "group": "Response",
             "type": "String",
-            "field": "Deposit",
             "optional": false,
+            "field": "Deposit",
             "description": "<p>Amount of money already taken as a deposit</p>"
           },
           {
             "group": "Response",
             "type": "String",
-            "field": "DepositCurrency",
             "optional": false,
+            "field": "DepositCurrency",
             "description": "<p>Currency of deposit</p>"
           },
           {
             "group": "Response",
             "type": "String",
-            "field": "Commission",
             "optional": false,
+            "field": "Commission",
             "description": "<p>Fee taken by the channel</p>"
           },
           {
             "group": "Response",
             "type": "String",
-            "field": "CommissionCurrency",
             "optional": false,
+            "field": "CommissionCurrency",
             "description": "<p>Currency of fee taken by the channel</p>"
           },
           {
             "group": "Response",
             "type": "String",
-            "field": "CommissionIncludedInTotal",
             "optional": false,
+            "field": "CommissionIncludedInTotal",
             "description": "<p>Whether the commission is included in the TotalPrice. Can be \\textit{true} or \\textit{false}.</p>"
           },
           {
             "group": "Response",
             "type": "String",
-            "field": "TotalPrice",
             "optional": false,
+            "field": "TotalPrice",
             "description": "<p>Total cost of booking</p>"
           },
           {
             "group": "Response",
             "type": "String",
-            "field": "TotalCurrency",
             "optional": false,
+            "field": "TotalCurrency",
             "description": "<p>Currency for total cost of booking</p>"
           },
           {
             "group": "Response",
             "type": "String",
-            "field": "Customers/Customer",
             "optional": false,
+            "field": "Customers/Customer",
             "description": "<p>Customer details (can be more than one)</p>"
           },
           {
             "group": "Response",
             "type": "String",
-            "field": "CustomerFName",
             "optional": false,
+            "field": "CustomerFName",
             "description": "<p>First name</p>"
           },
           {
             "group": "Response",
             "type": "String",
-            "field": "CustomerLName",
             "optional": false,
+            "field": "CustomerLName",
             "description": "<p>Family name (or if CustomerFName is empty, both first and last name)</p>"
           },
           {
             "group": "Response",
             "type": "String",
-            "field": "CustomerEmail",
             "optional": false,
+            "field": "CustomerEmail",
             "description": "<p>Email address</p>"
           },
           {
             "group": "Response",
             "type": "String",
-            "field": "CustomerGender",
             "optional": false,
+            "field": "CustomerGender",
             "description": "<p>Gender</p>"
           },
           {
             "group": "Response",
             "type": "String",
-            "field": "CustomerSmoker",
             "optional": false,
+            "field": "CustomerSmoker",
             "description": "<p>Whether customer is a smoker. Can be \\textit{true} or \\textit{false}.</p>"
           },
           {
             "group": "Response",
             "type": "String",
-            "field": "CustomerPhone",
             "optional": false,
+            "field": "CustomerPhone",
             "description": "<p>Phone number</p>"
           },
           {
             "group": "Response",
             "type": "String",
-            "field": "CustomerPhoneMobile",
             "optional": false,
+            "field": "CustomerPhoneMobile",
             "description": "<p>Mobile phone number</p>"
           },
           {
             "group": "Response",
             "type": "String",
-            "field": "CustomerFax",
             "optional": false,
+            "field": "CustomerFax",
             "description": "<p>Fax number</p>"
           },
           {
             "group": "Response",
             "type": "String",
-            "field": "CustomerAddress",
             "optional": false,
+            "field": "CustomerAddress",
             "description": "<p>Address</p>"
           },
           {
             "group": "Response",
             "type": "String",
-            "field": "CustomerCompany",
             "optional": false,
+            "field": "CustomerCompany",
             "description": "<p>Company name</p>"
           },
           {
             "group": "Response",
             "type": "String",
-            "field": "CustomerCompanyDepartment",
             "optional": false,
+            "field": "CustomerCompanyDepartment",
             "description": "<p>Company deparment name</p>"
           },
           {
             "group": "Response",
             "type": "String",
-            "field": "CustomerCity",
             "optional": false,
+            "field": "CustomerCity",
             "description": "<p>City</p>"
           },
           {
             "group": "Response",
             "type": "String",
-            "field": "CustomerState",
             "optional": false,
+            "field": "CustomerState",
             "description": "<p>State</p>"
           },
           {
             "group": "Response",
             "type": "String",
-            "field": "CustomerPostCode",
             "optional": false,
+            "field": "CustomerPostCode",
             "description": "<p>Post code</p>"
           },
           {
             "group": "Response",
             "type": "String",
-            "field": "CustomerCountry",
             "optional": false,
+            "field": "CustomerCountry",
             "description": "<p>Address country name (not neccessarily a 2/3-letter code).</p>"
           },
           {
             "group": "Response",
             "type": "String",
-            "field": "CustomerNationality",
             "optional": false,
+            "field": "CustomerNationality",
             "description": "<p>Nationality (not neccessarily a 3-letter code)</p>"
           },
           {
             "group": "Response",
             "type": "String",
-            "field": "CustomerArrivalTime",
             "optional": false,
+            "field": "CustomerArrivalTime",
             "description": "<p>Time of arrival</p>"
           },
           {
             "group": "Response",
             "type": "String",
-            "field": "CustomerNote",
             "optional": false,
+            "field": "CustomerNote",
             "description": "<p>Note to the property owner</p>"
           },
           {
             "group": "Response",
             "type": "String",
-            "field": "Price",
             "optional": false,
+            "field": "Price",
             "description": "<p>Price for this room and stay</p>"
           },
           {
             "group": "Response",
             "type": "String",
-            "field": "Currency",
             "optional": false,
+            "field": "Currency",
             "description": "<p>Currency for the price</p>"
           },
           {
             "group": "Response",
             "type": "String",
-            "field": "RoomDesc",
             "optional": false,
+            "field": "RoomDesc",
             "description": "<p>Room description on the channel</p>"
           },
           {
             "group": "Response",
             "type": "String",
-            "field": "RateDesc",
             "optional": false,
+            "field": "RateDesc",
             "description": "<p>Rate description on the channel</p>"
           },
           {
             "group": "Response",
             "type": "String",
-            "field": "Occupancy",
             "optional": false,
+            "field": "Occupancy",
             "description": "<p>Number of persons this room is booked for</p>"
           },
           {
             "group": "Response",
             "type": "String",
-            "field": "OccupantFName",
             "optional": false,
+            "field": "OccupantFName",
             "description": "<p>First name of occupant of this room</p>"
           },
           {
             "group": "Response",
             "type": "String",
-            "field": "OccupantLName",
             "optional": false,
+            "field": "OccupantLName",
             "description": "<p>Family name of occupant of this room (or if OccupantFName is empty, both first and last name)</p>"
           },
           {
             "group": "Response",
             "type": "String",
-            "field": "OccupantSmoker",
             "optional": false,
+            "field": "OccupantSmoker",
             "description": "<p>whether occupant is a smoker. Can be \\textit{true} or \\textit{false}.</p>"
           },
           {
             "group": "Response",
             "type": "String",
-            "field": "OccupantNote",
             "optional": false,
+            "field": "OccupantNote",
             "description": "<p>Note to the property owner</p>"
           },
           {
             "group": "Response",
             "type": "String",
-            "field": "Adults",
             "optional": false,
+            "field": "Adults",
             "description": "<p>Number of adults staying in this room</p>"
           },
           {
             "group": "Response",
             "type": "String",
-            "field": "Children",
             "optional": false,
+            "field": "Children",
             "description": "<p>Number of children staying in this room</p>"
           },
           {
             "group": "Response",
             "type": "String",
-            "field": "Breakfast",
             "optional": false,
+            "field": "Breakfast",
             "description": "<p>Wheter breakfast was ordered alogn with the booking. Can be \\textit{true} or \\textit{false}.\\</p>"
           }
         ]
@@ -661,54 +661,54 @@
     "description": "<p>This call can be used to retrieve credit card details from specific bookings. This applies only to channels that currently send us the credit card details (booking.com, Expedia, BookNow) and only for bookings that were created after connection with myallocator has been made.</p><p> This API call is not enabled for vendors by default. You need to send us your PCI compliance certification before this can be done. It&#39;s also neccessary to send along the credit card viewing password (different from the user login). For best practise do not store this password in your system but rather get it from the customer and send it on directly. This way the password will only be in the memory and not as accessible.</p><p> The credit card viewing password needs to be changed ever 365 by the property. It can happen that the property has reset their password in which case our support team needs to reencrypt the existing details. This is not an automatic process and can take between 1 and 3 business days.</p><p> Applicable error codes are 26 - 30. Even though logically this would be a GET call, we use POST for this one to prevent the password from going to the webserver log files.</p><p> Bookings can have multiple credit card details stored within them, as they have been updated by the guest. The response will list credit card details with the most recent credit card first.</p><p> <strong> Compatibility </strong> <a href=\"https://myallocator.com/en/api/cc\">https://myallocator.com/en/api/cc</a></p><p> PropertyId, MyallocatorId, CreditCardPassword</p>",
     "parameter": {
       "fields": {
-        "Request": [
+        "": [
           {
             "group": "Request",
             "type": "String",
-            "field": "Auth/UserId",
             "optional": true,
+            "field": "Auth/UserId]",
             "description": "<p>Users unique ID  (required if not linked to vendor)</p>"
           },
           {
             "group": "Request",
             "type": "String",
-            "field": "Auth/UserPassword",
             "optional": true,
+            "field": "Auth/UserPassword]",
             "description": "<p>Users password (required if not linked to vendor)</p>"
           },
           {
             "group": "Request",
             "type": "String",
-            "field": "Auth/PropertyId",
             "optional": false,
+            "field": "Auth/PropertyId",
             "description": ""
           },
           {
             "group": "Request",
             "type": "String",
-            "field": "Auth/VendorId",
             "optional": false,
+            "field": "Auth/VendorId",
             "description": "<p>Your Vendor ID</p>"
           },
           {
             "group": "Request",
             "type": "String",
-            "field": "Auth/VendorPassword",
             "optional": false,
+            "field": "Auth/VendorPassword",
             "description": "<p>Your Vendor Password</p>"
           },
           {
             "group": "Request",
             "type": "String",
-            "field": "CreditCardPassword",
             "optional": false,
+            "field": "CreditCardPassword",
             "description": ""
           },
           {
             "group": "Request",
             "type": "String",
-            "field": "BookingId",
             "optional": false,
+            "field": "BookingId",
             "description": ""
           }
         ]
@@ -735,12 +735,12 @@
     "description": "<p>Use this to get a list of available channels.</p>",
     "success": {
       "fields": {
-        "Response": [
+        "": [
           {
             "group": "Response",
             "type": "String",
-            "field": "Channels",
             "optional": false,
+            "field": "Channels",
             "description": ""
           }
         ]
@@ -765,40 +765,40 @@
     "description": "<p>Lists the channel details associated with a property. Formerly (v1) GetProperties</p>",
     "parameter": {
       "fields": {
-        "Request": [
+        "": [
           {
             "group": "Request",
             "type": "String",
-            "field": "Auth/UserId",
             "optional": true,
+            "field": "Auth/UserId]",
             "description": "<p>Users unique ID  (required if not linked to vendor)</p>"
           },
           {
             "group": "Request",
             "type": "String",
-            "field": "Auth/UserPassword",
             "optional": true,
+            "field": "Auth/UserPassword]",
             "description": "<p>Users password (required if not linked to vendor)</p>"
           },
           {
             "group": "Request",
             "type": "String",
-            "field": "Auth/PropertyId",
             "optional": false,
+            "field": "Auth/PropertyId",
             "description": "<p>Property ID on myallocator.com</p>"
           },
           {
             "group": "Request",
             "type": "String",
-            "field": "Auth/VendorId",
             "optional": false,
+            "field": "Auth/VendorId",
             "description": "<p>Your Vendor ID</p>"
           },
           {
             "group": "Request",
             "type": "String",
-            "field": "Auth/VendorPassword",
             "optional": false,
+            "field": "Auth/VendorPassword",
             "description": "<p>Your Vendor Password</p>"
           }
         ]
@@ -822,40 +822,40 @@
     "group": "PMS",
     "parameter": {
       "fields": {
-        "Request": [
+        "": [
           {
             "group": "Request",
             "type": "String",
-            "field": "Auth/UserId",
             "optional": true,
+            "field": "Auth/UserId]",
             "description": "<p>Users unique ID  (required if not linked to vendor)</p>"
           },
           {
             "group": "Request",
             "type": "String",
-            "field": "Auth/UserPassword",
             "optional": true,
+            "field": "Auth/UserPassword]",
             "description": "<p>Users password (required if not linked to vendor)</p>"
           },
           {
             "group": "Request",
             "type": "String",
-            "field": "Auth/PropertyId",
             "optional": false,
+            "field": "Auth/PropertyId",
             "description": "<p>Property ID on myallocator.com</p>"
           },
           {
             "group": "Request",
             "type": "String",
-            "field": "Auth/VendorId",
             "optional": false,
+            "field": "Auth/VendorId",
             "description": "<p>Your Vendor ID</p>"
           },
           {
             "group": "Request",
             "type": "String",
-            "field": "Auth/VendorPassword",
             "optional": false,
+            "field": "Auth/VendorPassword",
             "description": "<p>Your Vendor Password</p>"
           }
         ]
@@ -864,19 +864,19 @@
     "description": "<p>Use this GetUpdateStatus to query for the status of a SetAllocation update. It will list the results by channel. Big updates are split into several parts which is reflected in the Parts and ActivePart parameter.</p>",
     "success": {
       "fields": {
-        "Response": [
+        "": [
           {
             "group": "Response",
             "type": "String",
-            "field": "Parts",
             "optional": false,
+            "field": "Parts",
             "description": "<p>A big update can be split into smaller parts. This can be used as a progress indicator. 0 parts mean that the update is completed (or aborted due to an error).</p>"
           },
           {
             "group": "Response",
             "type": "String",
-            "field": "ActivePart",
             "optional": false,
+            "field": "ActivePart",
             "description": "<p>The current part number being submitted to the channel.</p>"
           }
         ]
@@ -927,82 +927,82 @@
     "group": "PMS",
     "parameter": {
       "fields": {
-        "Request": [
+        "": [
           {
             "group": "Request",
             "type": "String",
-            "field": "Auth/UserId",
             "optional": true,
+            "field": "Auth/UserId]",
             "description": "<p>Users unique ID  (required if not linked to vendor)</p>"
           },
           {
             "group": "Request",
             "type": "String",
-            "field": "Auth/UserPassword",
             "optional": true,
+            "field": "Auth/UserPassword]",
             "description": "<p>Users password (required if not linked to vendor)</p>"
           },
           {
             "group": "Request",
             "type": "String",
-            "field": "Auth/PropertyId",
             "optional": false,
+            "field": "Auth/PropertyId",
             "description": "<p>Property ID on myallocator.com</p>"
           },
           {
             "group": "Request",
             "type": "String",
-            "field": "Auth/VendorId",
             "optional": false,
+            "field": "Auth/VendorId",
             "description": "<p>Your Vendor ID</p>"
           },
           {
             "group": "Request",
             "type": "String",
-            "field": "Auth/VendorPassword",
             "optional": false,
+            "field": "Auth/VendorPassword",
             "description": "<p>Your Vendor Password</p>"
           },
           {
             "group": "Request",
             "type": "String",
-            "field": "UserId",
             "optional": false,
+            "field": "UserId",
             "description": "<p>Requested UserId</p>"
           },
           {
             "group": "Request",
             "type": "String",
-            "field": "PropertyName",
             "optional": false,
+            "field": "PropertyName",
             "description": "<p>Name of hotel/hostel/B\\&amp;B/...</p>"
           },
           {
             "group": "Request",
             "type": "String",
-            "field": "ExpiryDate",
             "optional": false,
+            "field": "ExpiryDate",
             "description": "<p>Day on which the login to myallocator.com expires. No availability update (even through the API) can be made after this date. Format: YYYY-MM-DD. \\</p>"
           },
           {
             "group": "Request",
             "type": "String",
-            "field": "Currency",
             "optional": false,
+            "field": "Currency",
             "description": "<p>3-letter ISO 4217 currency code. This is the default currency of the property.</p>"
           },
           {
             "group": "Request",
             "type": "String",
-            "field": "Country",
             "optional": false,
+            "field": "Country",
             "description": "<p>2-letter ISO 3166-1 alpha-2 country code. This is the country the property located in.</p>"
           },
           {
             "group": "Request",
             "type": "String",
-            "field": "Breakfast",
             "optional": false,
+            "field": "Breakfast",
             "description": "<p>Can be \\textit{IN} (included), \\textit{EX} (excluded) or empty.</p>"
           }
         ]
@@ -1037,40 +1037,40 @@
     "description": "<p>Users on myallocator.com might have more than one property attached to their username. This request lists which properties are associated with the customer and provides a property ID, needed to update the availability of this property.This request was formerly known as GetProperties (v1)</p>",
     "parameter": {
       "fields": {
-        "Request": [
+        "": [
           {
             "group": "Request",
             "type": "String",
-            "field": "Auth/UserId",
             "optional": true,
+            "field": "Auth/UserId]",
             "description": "<p>Users unique ID  (required if not linked to vendor)</p>"
           },
           {
             "group": "Request",
             "type": "String",
-            "field": "Auth/UserPassword",
             "optional": true,
+            "field": "Auth/UserPassword]",
             "description": "<p>Users password (required if not linked to vendor)</p>"
           },
           {
             "group": "Request",
             "type": "String",
-            "field": "Auth/PropertyId",
             "optional": false,
+            "field": "Auth/PropertyId",
             "description": "<p>Property ID on myallocator.com</p>"
           },
           {
             "group": "Request",
             "type": "String",
-            "field": "Auth/VendorId",
             "optional": false,
+            "field": "Auth/VendorId",
             "description": "<p>Your Vendor ID</p>"
           },
           {
             "group": "Request",
             "type": "String",
-            "field": "Auth/VendorPassword",
             "optional": false,
+            "field": "Auth/VendorPassword",
             "description": "<p>Your Vendor Password</p>"
           }
         ]
@@ -1090,54 +1090,54 @@
     ],
     "success": {
       "fields": {
-        "Response": [
+        "": [
           {
             "group": "Response",
             "type": "String",
-            "field": "Id",
             "optional": false,
+            "field": "Id",
             "description": "<p>The property ID which will reference the property.</p>"
           },
           {
             "group": "Response",
             "type": "String",
-            "field": "Name",
             "optional": false,
+            "field": "Name",
             "description": "<p>The name of this property as set by the customer.</p>"
           },
           {
             "group": "Response",
             "type": "String",
-            "field": "Breakfast",
             "optional": false,
+            "field": "Breakfast",
             "description": "<p>Can be \\textit{IN} (included), \\textit{EX} (excluded) or empty.</p>"
           },
           {
             "group": "Response",
             "type": "String",
-            "field": "Currency",
             "optional": false,
+            "field": "Currency",
             "description": "<p>3-letter currency code of the default currency set by the customer according to ISO 4217. Informational.</p>"
           },
           {
             "group": "Response",
             "type": "String",
-            "field": "Country",
             "optional": false,
+            "field": "Country",
             "description": "<p>2-letter country code of the country the property is situated in according to ISO 3166-1 alpha-2 standard. Might be empty as it wasn&#39;t recorded for early customers. Informational.</p>"
           },
           {
             "group": "Response",
             "type": "String",
-            "field": "PaidUntil",
             "optional": false,
+            "field": "PaidUntil",
             "description": "<p>Usage of myallocator.com paid for until this date. Informational. Format: YYYY-MM-DD.</p>"
           },
           {
             "group": "Response",
             "type": "String",
-            "field": "Weekend",
             "optional": false,
+            "field": "Weekend",
             "description": "<p>Day &amp; Shows which days are marked as weekend days by the customer on Myallocator. Monday = 1, Sunday = 7. The name of the weekday is also given in the \\textit{name} property. See SetAllocation for information on when this is used.</p>"
           }
         ]
@@ -1161,82 +1161,82 @@
     "group": "PMS",
     "parameter": {
       "fields": {
-        "Request": [
+        "": [
           {
             "group": "Request",
             "type": "String",
-            "field": "Auth/UserId",
             "optional": true,
+            "field": "Auth/UserId]",
             "description": "<p>Users unique ID  (required if not linked to vendor)</p>"
           },
           {
             "group": "Request",
             "type": "String",
-            "field": "Auth/UserPassword",
             "optional": true,
+            "field": "Auth/UserPassword]",
             "description": "<p>Users password (required if not linked to vendor)</p>"
           },
           {
             "group": "Request",
             "type": "String",
-            "field": "Auth/VendorId",
             "optional": false,
+            "field": "Auth/VendorId",
             "description": "<p>Your Vendor ID</p>"
           },
           {
             "group": "Request",
             "type": "String",
-            "field": "Auth/VendorPassword",
             "optional": false,
+            "field": "Auth/VendorPassword",
             "description": "<p>Your Vendor Password</p>"
           },
           {
             "group": "Request",
             "type": "String",
-            "field": "UserId",
             "optional": false,
+            "field": "UserId",
             "description": "<p>Requested UserId</p>"
           },
           {
             "group": "Request",
             "type": "String",
-            "field": "PropertyId",
             "optional": false,
+            "field": "PropertyId",
             "description": "<p>Requested PropertyId</p>"
           },
           {
             "group": "Request",
             "type": "String",
-            "field": "PropertyName",
             "optional": false,
+            "field": "PropertyName",
             "description": "<p>Name of hotel/hostel/B\\&amp;B/...</p>"
           },
           {
             "group": "Request",
             "type": "String",
-            "field": "ExpiryDate",
             "optional": false,
+            "field": "ExpiryDate",
             "description": "<p>Day on which the login to myallocator.com expires. No availability update (even through the API) can be made after this date. Format: YYYY-MM-DD. \\</p>"
           },
           {
             "group": "Request",
             "type": "String",
-            "field": "Currency",
             "optional": false,
+            "field": "Currency",
             "description": "<p>3-letter ISO 4217 currency code. This is the default currency of the property.</p>"
           },
           {
             "group": "Request",
             "type": "String",
-            "field": "Country",
             "optional": false,
+            "field": "Country",
             "description": "<p>2-letter ISO 3166-1 alpha-2 country code. This is the country the property located in.</p>"
           },
           {
             "group": "Request",
             "type": "String",
-            "field": "Breakfast",
             "optional": false,
+            "field": "Breakfast",
             "description": "<p>Can be \\textit{IN} (included), \\textit{EX} (excluded) or empty.</p>"
           }
         ]
@@ -1270,54 +1270,54 @@
     "description": "<p>This call can be used to query for all data that we hold for a specific property and date range.  The date range can only be 31 days as the maximum. You can query multiple times if you need a longer date range.</p><p> A MaxStay setting of 0 means &quot;unrestricted&quot;.  The 48 and 49 in the response example below refer to the room ID as returned by GetRooms (XML API).</p><p> <strong> Compatibility: </strong>  this was formerly available at: <a href=\"https://myallocator.com/en/api/data\">https://myallocator.com/en/api/data</a></p>",
     "parameter": {
       "fields": {
-        "Request": [
+        "": [
           {
             "group": "Request",
             "type": "String",
-            "field": "Auth/UserId",
             "optional": true,
+            "field": "Auth/UserId]",
             "description": "<p>Users unique ID  (required if not linked to vendor)</p>"
           },
           {
             "group": "Request",
             "type": "String",
-            "field": "Auth/UserPassword",
             "optional": true,
+            "field": "Auth/UserPassword]",
             "description": "<p>Users password (required if not linked to vendor)</p>"
           },
           {
             "group": "Request",
             "type": "String",
-            "field": "Auth/PropertyId",
             "optional": false,
+            "field": "Auth/PropertyId",
             "description": ""
           },
           {
             "group": "Request",
             "type": "String",
-            "field": "Auth/VendorId",
             "optional": false,
+            "field": "Auth/VendorId",
             "description": "<p>Your Vendor ID</p>"
           },
           {
             "group": "Request",
             "type": "String",
-            "field": "Auth/VendorPassword",
             "optional": false,
+            "field": "Auth/VendorPassword",
             "description": "<p>Your Vendor Password</p>"
           },
           {
             "group": "Request",
             "type": "Date",
-            "field": "StartDate",
             "optional": false,
+            "field": "StartDate",
             "description": "<p>(YYYY-MM-DD)</p>"
           },
           {
             "group": "Request",
             "type": "Date",
-            "field": "EndDate",
             "optional": false,
+            "field": "EndDate",
             "description": "<p>(YYYY-MM-DD)</p>"
           }
         ]
@@ -1344,40 +1344,40 @@
     "description": "<p>returns a list of configured room types for a property. Formerly GetRoomTypes (v1).</p>",
     "parameter": {
       "fields": {
-        "Request": [
+        "": [
           {
             "group": "Request",
             "type": "String",
-            "field": "Auth/UserId",
             "optional": true,
+            "field": "Auth/UserId]",
             "description": "<p>Users unique ID  (required if not linked to vendor)</p>"
           },
           {
             "group": "Request",
             "type": "String",
-            "field": "Auth/UserPassword",
             "optional": true,
+            "field": "Auth/UserPassword]",
             "description": "<p>Users password (required if not linked to vendor)</p>"
           },
           {
             "group": "Request",
             "type": "String",
-            "field": "Auth/PropertyId",
             "optional": false,
+            "field": "Auth/PropertyId",
             "description": "<p>Property ID on myallocator.com</p>"
           },
           {
             "group": "Request",
             "type": "String",
-            "field": "Auth/VendorId",
             "optional": false,
+            "field": "Auth/VendorId",
             "description": "<p>Your Vendor ID</p>"
           },
           {
             "group": "Request",
             "type": "String",
-            "field": "Auth/VendorPassword",
             "optional": false,
+            "field": "Auth/VendorPassword",
             "description": "<p>Your Vendor Password</p>"
           }
         ]
@@ -1392,61 +1392,61 @@
     ],
     "success": {
       "fields": {
-        "XML": [
+        "": [
           {
             "group": "XML",
             "type": "String",
-            "field": "Id",
             "optional": false,
+            "field": "Id",
             "description": "<p>The room type ID which will reference the room type.</p>"
           },
           {
             "group": "XML",
             "type": "String",
-            "field": "Units",
             "optional": false,
+            "field": "Units",
             "description": "<p>Number of rooms of this type.</p>"
           },
           {
             "group": "XML",
             "type": "String",
-            "field": "Occupancy",
             "optional": false,
+            "field": "Occupancy",
             "description": "<p>Number of persons that can stay in this room.</p>"
           },
           {
             "group": "XML",
             "type": "String",
-            "field": "Beds",
             "optional": false,
+            "field": "Beds",
             "description": "<p>!!Obsolete!! Replaced with Occupancy (see above).</p>"
           },
           {
             "group": "XML",
             "type": "String",
-            "field": "Gender",
             "optional": false,
+            "field": "Gender",
             "description": "<p>Gender restriction for shared rooms. MA for males, FE for females, MI if mixed. Always set to &#39;MI&#39; for private rooms.</p>"
           },
           {
             "group": "XML",
             "type": "String",
-            "field": "DoubleBed",
             "optional": false,
+            "field": "DoubleBed",
             "description": "<p>!!Obsolete!! Option removed from Myallocator. Now always defaults to false.</p>"
           },
           {
             "group": "XML",
             "type": "String",
-            "field": "Ensuite",
             "optional": false,
+            "field": "Ensuite",
             "description": "<p>!!Obsolete!! Option removed from Myallocator. Now always defaults to false;</p>"
           },
           {
             "group": "XML",
             "type": "String",
-            "field": "PrivateRooms",
             "optional": false,
+            "field": "PrivateRooms",
             "description": "<p>Whether this room is private or shared/dorm (\\textit{true} or \\textit{false}).</p>"
           }
         ]
@@ -1470,89 +1470,89 @@
     "group": "PMS",
     "parameter": {
       "fields": {
-        "Request": [
+        "": [
           {
             "group": "Request",
             "type": "String",
-            "field": "Auth/UserId",
             "optional": true,
+            "field": "Auth/UserId]",
             "description": "<p>Users unique ID  (required if not linked to vendor)</p>"
           },
           {
             "group": "Request",
             "type": "String",
-            "field": "Auth/UserPassword",
             "optional": true,
+            "field": "Auth/UserPassword]",
             "description": "<p>Users password (required if not linked to vendor)</p>"
           },
           {
             "group": "Request",
             "type": "String",
-            "field": "Auth/VendorId",
             "optional": false,
+            "field": "Auth/VendorId",
             "description": "<p>Your Vendor ID</p>"
           },
           {
             "group": "Request",
             "type": "String",
-            "field": "Auth/VendorPassword",
             "optional": false,
+            "field": "Auth/VendorPassword",
             "description": "<p>Your Vendor Password</p>"
           },
           {
             "group": "Request",
             "type": "String",
-            "field": "Channels/Channel",
             "optional": false,
+            "field": "Channels/Channel",
             "description": "<p>A list of channels that the customer wants to update. See below for channel codes.</p>"
           },
           {
             "group": "Request",
             "type": "String",
-            "field": "Allocations/Allocation",
             "optional": false,
+            "field": "Allocations/Allocation",
             "description": "<p>Individual allocations. There can be as many as you like, but a the date ranges should never overlap (within one room id).</p>"
           },
           {
             "group": "Request",
             "type": "String",
-            "field": "RoomTypeId",
             "optional": false,
+            "field": "RoomTypeId",
             "description": "<p>Room type id as returned by RoomList.</p>"
           },
           {
             "group": "Request",
             "type": "String",
-            "field": "StartDate/EndDate",
             "optional": false,
+            "field": "StartDate/EndDate",
             "description": "<p>Format: YYYY-MM-DD.</p>"
           },
           {
             "group": "Request",
             "type": "String",
-            "field": "Units",
             "optional": false,
+            "field": "Units",
             "description": "<p>How many beds or rooms should be available on this day. Whether it&#39;s beds or rooms depends on whether the room is a dorm or a private room. To remove allocation set Units to 0.</p>"
           },
           {
             "group": "Request",
             "type": "String",
-            "field": "MinStay",
             "optional": false,
+            "field": "MinStay",
             "description": "<p>Specify the minumum number of days a customer is allowed to stay. Not all channels support this feature. Needs to be 1 or higher. (optional)</p>"
           },
           {
             "group": "Request",
             "type": "String",
-            "field": "MaxStay",
             "optional": false,
+            "field": "MaxStay",
             "description": "<p>Specify the maximum number of days a customer is allowed to stay. Not all channels support this feature. Needs to be 1 or higher. (optional)</p>"
           },
           {
             "group": "Request",
             "type": "String",
-            "field": "Prices/Price",
             "optional": false,
+            "field": "Prices/Price",
             "description": "<p>Price per person for shared/dorm rooms or per room for private rooms. You can submit two Price tags. The default one and one with the attribute \\textit{weekend=&quot;true&quot;}. If a Price tag with this attribute has been submitted the rate only applies to weekdays set by the customer as weekends (see PropertyList for which days are set as weekend days).</p>"
           }
         ]
@@ -1560,26 +1560,26 @@
     },
     "success": {
       "fields": {
-        "Response": [
+        "": [
           {
             "group": "Response",
             "type": "String",
-            "field": "Success",
             "optional": false,
+            "field": "Success",
             "description": "<p>Can be \\textit{true} (all channel updates succeeded), \\textit{partial} (not all channels succeeded) or \\textit{false} (all channel updates failed).</p>"
           },
           {
             "group": "Response",
             "type": "String",
-            "field": "Errors/Error",
             "optional": false,
+            "field": "Errors/Error",
             "description": "<p>Check with the list of errors below. Might contain the attribute \\textit{channel=&quot;..&quot;} to indicate whether the error only applies to a specific channel.</p>"
           },
           {
             "group": "Response",
             "type": "String",
-            "field": "Warnings/Warning",
             "optional": false,
+            "field": "Warnings/Warning",
             "description": "<p>Check with the list of errors below. Might contain the attribute \\textit{channel=&quot;..&quot;} to indicate whether the warning only applies to a specific channel.</p>"
           }
         ]
@@ -1647,82 +1647,82 @@
     "description": "<p>This method allows you to create, update or remove rooms on myallocator.com.Please note that you can only send a single CreateRoomsOR UpdateRooms OR RemoveRooms.</p>",
     "parameter": {
       "fields": {
-        "Request": [
+        "": [
           {
             "group": "Request",
             "type": "String",
-            "field": "Auth/UserId",
             "optional": true,
+            "field": "Auth/UserId]",
             "description": "<p>Users unique ID  (required if not linked to vendor)</p>"
           },
           {
             "group": "Request",
             "type": "String",
-            "field": "Auth/UserPassword",
             "optional": true,
+            "field": "Auth/UserPassword]",
             "description": "<p>Users password (required if not linked to vendor)</p>"
           },
           {
             "group": "Request",
             "type": "String",
-            "field": "Auth/PropertyId",
             "optional": false,
+            "field": "Auth/PropertyId",
             "description": "<p>Property ID on myallocator.com</p>"
           },
           {
             "group": "Request",
             "type": "String",
-            "field": "Auth/VendorId",
             "optional": false,
+            "field": "Auth/VendorId",
             "description": "<p>Your Vendor ID</p>"
           },
           {
             "group": "Request",
             "type": "String",
-            "field": "Auth/VendorPassword",
             "optional": false,
+            "field": "Auth/VendorPassword",
             "description": "<p>Your Vendor Password</p>"
           },
           {
             "group": "Request",
             "type": "String",
-            "field": "Label",
             "optional": false,
+            "field": "Label",
             "description": "<p>String that describes the room, usually provided by the customer. If omitted, a label will automatically be created from the other properties. (optional)</p>"
           },
           {
             "group": "Request",
             "type": "String",
-            "field": "Units",
             "optional": false,
+            "field": "Units",
             "description": "<p>How many rooms of this type there are. This option doesn&#39;t actually limit how many rooms can be set as available, it&#39;s only informational.</p>"
           },
           {
             "group": "Request",
             "type": "String",
-            "field": "Occupancy",
             "optional": false,
+            "field": "Occupancy",
             "description": "<p>Number of many people that can stay in this room.</p>"
           },
           {
             "group": "Request",
             "type": "String",
-            "field": "PrivateRoom",
             "optional": false,
+            "field": "PrivateRoom",
             "description": "<p>\\textit{true} if it&#39;s a private room, \\textit{false} for dormitories.</p>"
           },
           {
             "group": "Request",
             "type": "String",
-            "field": "Gender",
             "optional": false,
+            "field": "Gender",
             "description": "<p>Only needed for dormitories. \\textit{MA} for males, \\textit{FE} for females, \\textit{MI} if mixed.</p>"
           },
           {
             "group": "Request",
             "type": "String",
-            "field": "RoomTypeIdId",
             "optional": false,
+            "field": "RoomTypeIdId",
             "description": "<p>of room to be removed.</p>"
           }
         ]
@@ -1737,61 +1737,61 @@
     ],
     "success": {
       "fields": {
-        "XML": [
+        "": [
           {
             "group": "XML",
             "type": "String",
-            "field": "Id",
             "optional": false,
+            "field": "Id",
             "description": "<p>The room type ID which will reference the room type.</p>"
           },
           {
             "group": "XML",
             "type": "String",
-            "field": "Units",
             "optional": false,
+            "field": "Units",
             "description": "<p>Number of rooms of this type.</p>"
           },
           {
             "group": "XML",
             "type": "String",
-            "field": "Occupancy",
             "optional": false,
+            "field": "Occupancy",
             "description": "<p>Number of persons that can stay in this room.</p>"
           },
           {
             "group": "XML",
             "type": "String",
-            "field": "Beds",
             "optional": false,
+            "field": "Beds",
             "description": "<p>!!Obsolete!! Replaced with Occupancy (see above).</p>"
           },
           {
             "group": "XML",
             "type": "String",
-            "field": "Gender",
             "optional": false,
+            "field": "Gender",
             "description": "<p>Gender restriction for shared rooms. MA for males, FE for females, MI if mixed. Always set to &#39;MI&#39; for private rooms.</p>"
           },
           {
             "group": "XML",
             "type": "String",
-            "field": "DoubleBed",
             "optional": false,
+            "field": "DoubleBed",
             "description": "<p>!!Obsolete!! Option removed from Myallocator. Now always defaults to false.</p>"
           },
           {
             "group": "XML",
             "type": "String",
-            "field": "Ensuite",
             "optional": false,
+            "field": "Ensuite",
             "description": "<p>!!Obsolete!! Option removed from Myallocator. Now always defaults to false;</p>"
           },
           {
             "group": "XML",
             "type": "String",
-            "field": "PrivateRooms",
             "optional": false,
+            "field": "PrivateRooms",
             "description": "<p>Whether this room is private or shared/dorm (\\textit{true} or \\textit{false}).</p>"
           }
         ]
@@ -1830,75 +1830,75 @@
     "group": "PMS",
     "parameter": {
       "fields": {
-        "Request": [
+        "": [
           {
             "group": "Request",
             "type": "String",
-            "field": "Auth/UserId",
             "optional": true,
+            "field": "Auth/UserId]",
             "description": "<p>Users unique ID  (required if not linked to vendor)</p>"
           },
           {
             "group": "Request",
             "type": "String",
-            "field": "Auth/UserPassword",
             "optional": true,
+            "field": "Auth/UserPassword]",
             "description": "<p>Users password (required if not linked to vendor)</p>"
           },
           {
             "group": "Request",
             "type": "String",
-            "field": "Auth/VendorId",
             "optional": false,
+            "field": "Auth/VendorId",
             "description": "<p>Your Vendor ID</p>"
           },
           {
             "group": "Request",
             "type": "String",
-            "field": "Auth/VendorPassword",
             "optional": false,
+            "field": "Auth/VendorPassword",
             "description": "<p>Your Vendor Password</p>"
           },
           {
             "group": "Request",
             "type": "String",
-            "field": "UserId",
             "optional": false,
+            "field": "UserId",
             "description": "<p>Requested UserId</p>"
           },
           {
             "group": "Request",
             "type": "String",
-            "field": "Email",
             "optional": false,
+            "field": "Email",
             "description": "<p>Requested Email</p>"
           },
           {
             "group": "Request",
             "type": "String",
-            "field": "CustomerFirstName",
             "optional": false,
+            "field": "CustomerFirstName",
             "description": "<p>Customer&#39;s first name (optional).</p>"
           },
           {
             "group": "Request",
             "type": "String",
-            "field": "CustomerLastName",
             "optional": false,
+            "field": "CustomerLastName",
             "description": "<p>Customer&#39;s family name (optional).</p>"
           },
           {
             "group": "Request",
             "type": "String",
-            "field": "CustomerEmail",
             "optional": false,
+            "field": "CustomerEmail",
             "description": "<p>Customer&#39;s email address.</p>"
           },
           {
             "group": "Request",
             "type": "String",
-            "field": "SendWelcome",
             "optional": false,
+            "field": "SendWelcome",
             "description": "<p>1|0</p>"
           }
         ]
@@ -1933,47 +1933,47 @@
     "description": "<p>This method checks to see if a User or Email is already registered.</p>",
     "parameter": {
       "fields": {
-        "Request": [
+        "": [
           {
             "group": "Request",
             "type": "String",
-            "field": "Auth/UserId",
             "optional": true,
+            "field": "Auth/UserId]",
             "description": "<p>Users unique ID  (required if not linked to vendor)</p>"
           },
           {
             "group": "Request",
             "type": "String",
-            "field": "Auth/UserPassword",
             "optional": true,
+            "field": "Auth/UserPassword]",
             "description": "<p>Users password (required if not linked to vendor)</p>"
           },
           {
             "group": "Request",
             "type": "String",
-            "field": "Auth/VendorId",
             "optional": false,
+            "field": "Auth/VendorId",
             "description": "<p>Your Vendor ID</p>"
           },
           {
             "group": "Request",
             "type": "String",
-            "field": "Auth/VendorPassword",
             "optional": false,
+            "field": "Auth/VendorPassword",
             "description": "<p>Your Vendor Password</p>"
           },
           {
             "group": "Request",
             "type": "String",
-            "field": "UserId",
             "optional": false,
+            "field": "UserId",
             "description": "<p>Requested UserId</p>"
           },
           {
             "group": "Request",
             "type": "String",
-            "field": "Email",
             "optional": false,
+            "field": "Email",
             "description": "<p>Requested Email</p>"
           }
         ]
@@ -1981,19 +1981,19 @@
     },
     "success": {
       "fields": {
-        "Response": [
+        "": [
           {
             "group": "Response",
             "type": "String",
-            "field": "UserIdExists",
             "optional": false,
+            "field": "UserIdExists",
             "description": "<p>0|1</p>"
           },
           {
             "group": "Response",
             "type": "String",
-            "field": "EmailExists",
             "optional": false,
+            "field": "EmailExists",
             "description": "<p>0|1</p>"
           }
         ]
@@ -2023,19 +2023,19 @@
     "description": "<p><strong> EXPERIMENTAL </strong></p>",
     "parameter": {
       "fields": {
-        "Request": [
+        "": [
           {
             "group": "Request",
             "type": "String",
-            "field": "Auth/UserId",
             "optional": false,
+            "field": "Auth/UserId",
             "description": "<p>Users unique ID</p>"
           },
           {
             "group": "Request",
             "type": "String",
-            "field": "Auth/UserPassword",
             "optional": false,
+            "field": "Auth/UserPassword",
             "description": "<p>Users password</p>"
           }
         ]
@@ -2043,12 +2043,12 @@
     },
     "success": {
       "fields": {
-        "Response": [
+        "": [
           {
             "group": "Response",
             "type": "String",
-            "field": "session",
             "optional": false,
+            "field": "session",
             "description": "<p>a session token</p>"
           }
         ]
@@ -2078,68 +2078,68 @@
     "description": "<p>This method allows you to create customer accounts on myallocator.com.Before you can use this method we&#39;ll have to explicitly enable you forthis functionality, as some aspects with regards to customer payment will needto be discussed.    previously known as SetLogin/CreateLogin</p>",
     "parameter": {
       "fields": {
-        "Request": [
+        "": [
           {
             "group": "Request",
             "type": "String",
-            "field": "Auth/UserId",
             "optional": true,
+            "field": "Auth/UserId]",
             "description": "<p>Users unique ID  (required if not linked to vendor)</p>"
           },
           {
             "group": "Request",
             "type": "String",
-            "field": "Auth/UserPassword",
             "optional": true,
+            "field": "Auth/UserPassword]",
             "description": "<p>Users password (required if not linked to vendor)</p>"
           },
           {
             "group": "Request",
             "type": "String",
-            "field": "Auth/VendorId",
             "optional": false,
+            "field": "Auth/VendorId",
             "description": "<p>Your Vendor ID</p>"
           },
           {
             "group": "Request",
             "type": "String",
-            "field": "Auth/VendorPassword",
             "optional": false,
+            "field": "Auth/VendorPassword",
             "description": "<p>Your Vendor Password</p>"
           },
           {
             "group": "Request",
             "type": "String",
-            "field": "UserId",
             "optional": false,
+            "field": "UserId",
             "description": "<p>Requested UserId</p>"
           },
           {
             "group": "Request",
             "type": "String",
-            "field": "Email",
             "optional": false,
+            "field": "Email",
             "description": "<p>Requested Email</p>"
           },
           {
             "group": "Request",
             "type": "String",
-            "field": "CustomerFirstName",
             "optional": false,
+            "field": "CustomerFirstName",
             "description": "<p>Customer&#39;s first name (optional).</p>"
           },
           {
             "group": "Request",
             "type": "String",
-            "field": "CustomerLastName",
             "optional": false,
+            "field": "CustomerLastName",
             "description": "<p>Customer&#39;s family name (optional).</p>"
           },
           {
             "group": "Request",
             "type": "String",
-            "field": "CustomerEmail",
             "optional": false,
+            "field": "CustomerEmail",
             "description": "<p>Customer&#39;s email address.</p>"
           }
         ]
@@ -2173,19 +2173,19 @@
     "description": "<p><strong> EXPERIMENTAL </strong></p>",
     "parameter": {
       "fields": {
-        "Request": [
+        "": [
           {
             "group": "Request",
             "type": "String",
-            "field": "Auth/UserId",
             "optional": false,
+            "field": "Auth/UserId",
             "description": "<p>Users unique ID</p>"
           },
           {
             "group": "Request",
             "type": "String",
-            "field": "Auth/UserPassword",
             "optional": false,
+            "field": "Auth/UserPassword",
             "description": "<p>Users password</p>"
           }
         ]
@@ -2214,42 +2214,40 @@
     "group": "PMS",
     "parameter": {
       "fields": {
-        "Request": [
+        "": [
           {
             "group": "Request",
             "type": "String",
-            "field": "Auth/VendorId",
             "optional": false,
+            "field": "Auth/VendorId",
             "description": "<p>Your Vendor ID</p>"
           },
           {
             "group": "Request",
             "type": "String",
-            "field": "Auth/VendorPassword",
             "optional": false,
+            "field": "Auth/VendorPassword",
             "description": "<p>Your Vendor Password</p>"
           },
           {
             "group": "Request",
             "type": "String",
-            "field": "Callback/URL",
             "optional": false,
+            "field": "Callback/URL",
             "description": "<p>Vendor Callback URL</p>"
           },
           {
             "group": "Request",
             "type": "String",
-            "field": "Callback/Password",
             "optional": false,
+            "field": "Callback/Password",
             "description": "<p>Callback Passwords</p>"
-          }
-        ],
-        "Response": [
+          },
           {
             "group": "Response",
             "type": "Boolean",
-            "field": "Success",
             "optional": false,
+            "field": "Success",
             "description": ""
           }
         ]
@@ -2294,33 +2292,33 @@
     ],
     "parameter": {
       "fields": {
-        "Parameter": [
+        "": [
           {
             "group": "Parameter",
             "type": "String",
-            "field": "UserId",
             "optional": false,
+            "field": "UserId",
             "description": "<p>The customer id on myallocator.com</p>"
           },
           {
             "group": "Parameter",
             "type": "String",
-            "field": "UserPassword",
             "optional": false,
+            "field": "UserPassword",
             "description": "<p>The customer password on myallocator.com</p>"
           },
           {
             "group": "Parameter",
             "type": "String",
-            "field": "PropertyId",
             "optional": false,
+            "field": "PropertyId",
             "description": "<p>The property ID on myallocator.com</p>"
           },
           {
             "group": "Parameter",
             "type": "String",
-            "field": "Destination",
             "optional": false,
+            "field": "Destination",
             "description": "<ul><li><em>room_setup</em> - Setup page for rooms and property settings.</li><li><em>channel_setup</em> - Setup page to map channel rooms to Myallocator rooms</li></ul>"
           }
         ]
@@ -2345,33 +2343,33 @@
     ],
     "parameter": {
       "fields": {
-        "Parameter": [
+        "": [
           {
             "group": "Parameter",
             "type": "String",
-            "field": "UserId",
             "optional": false,
+            "field": "UserId",
             "description": "<p>The customer id on myallocator.com</p>"
           },
           {
             "group": "Parameter",
             "type": "String",
-            "field": "UserPassword",
             "optional": false,
+            "field": "UserPassword",
             "description": "<p>The customer password on myallocator.com</p>"
           },
           {
             "group": "Parameter",
             "type": "String",
-            "field": "PropertyId",
             "optional": false,
+            "field": "PropertyId",
             "description": "<p>The property ID on myallocator.com</p>"
           },
           {
             "group": "Parameter",
             "type": "String",
-            "field": "Destination",
             "optional": false,
+            "field": "Destination",
             "description": "<ul><li><em>room_setup</em> - Setup page for rooms and property settings.</li><li><em>channel_setup</em> - Setup page to map channel rooms to Myallocator rooms</li></ul>"
           }
         ]
