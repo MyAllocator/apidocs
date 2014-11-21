@@ -150,16 +150,16 @@
           {
             "group": "Request",
             "type": "String",
-            "optional": false,
+            "optional": true,
             "field": "Auth/UserId",
-            "description": "<p>Users unique ID</p> "
+            "description": "<p>Users unique ID     (required with Auth/UserPassword)</p> "
           },
           {
             "group": "Request",
             "type": "String",
-            "optional": false,
+            "optional": true,
             "field": "Auth/UserPassword",
-            "description": "<p>Users password</p> "
+            "description": "<p>Users password        (required with Auth/UserId)</p> "
           },
           {
             "group": "Request",
@@ -228,21 +228,21 @@
             "type": "String",
             "optional": true,
             "field": "Auth/UserId",
-            "description": "<p>Users unique ID  (required if not linked to vendor)</p> "
+            "description": "<p>Users unique ID     (required with Auth/UserPassword)</p> "
           },
           {
             "group": "Request",
             "type": "String",
             "optional": true,
             "field": "Auth/UserPassword",
-            "description": "<p>Users password (required if not linked to vendor)</p> "
+            "description": "<p>Users password        (required with Auth/UserId)</p> "
           },
           {
             "group": "Request",
             "type": "String",
-            "optional": false,
-            "field": "Auth/PropertyId",
-            "description": "<p>Property ID on myallocator.com</p> "
+            "optional": true,
+            "field": "Auth/UserToken",
+            "description": "<p>Users auth token (see AssociateUserToPMS call to generate a Token)@apiParam (Request) {String} Auth/PropertyId         Property ID on myallocator.com</p> "
           },
           {
             "group": "Request",
@@ -735,21 +735,21 @@
             "type": "String",
             "optional": true,
             "field": "Auth/UserId",
-            "description": "<p>Users unique ID  (required if not linked to vendor)</p> "
+            "description": "<p>Users unique ID     (required with Auth/UserPassword)</p> "
           },
           {
             "group": "Request",
             "type": "String",
             "optional": true,
             "field": "Auth/UserPassword",
-            "description": "<p>Users password (required if not linked to vendor)</p> "
+            "description": "<p>Users password        (required with Auth/UserId)</p> "
           },
           {
             "group": "Request",
             "type": "String",
-            "optional": false,
-            "field": "Auth/PropertyId",
-            "description": ""
+            "optional": true,
+            "field": "Auth/UserToken",
+            "description": "<p>Users auth token (see AssociateUserToPMS call to generate a Token)@apiParam (Request) {String} Auth/PropertyId</p> "
           },
           {
             "group": "Request",
@@ -817,7 +817,7 @@
       "examples": [
         {
           "title": "XML ChannelList Response",
-          "content": "<?xml version=\"1.0\" encoding=\"UTF-8\" ?>\n<ChannelListResponse>\n <Channels>\n   <Channel>\n\t\t<id>boo</id>\n\t\t<name>Booking.com</name>\n\t\t<signupLink>http://www.someurl</signuplink>\n   </Channel>\n</ChannelListResponse>",
+          "content": "<?xml version=\"1.0\" encoding=\"UTF-8\" ?>\n<ChannelListResponse>\n  <Channels>\n    <Channel>\n \t\t<id>boo</id>\n\t\t<name>Booking.com</name>\n\t\t<signupLink>http://www.someurl</signuplink>\n    </Channel>\n</ChannelListResponse>",
           "type": "json"
         }
       ]
@@ -848,21 +848,21 @@
             "type": "String",
             "optional": true,
             "field": "Auth/UserId",
-            "description": "<p>Users unique ID  (required if not linked to vendor)</p> "
+            "description": "<p>Users unique ID     (required with Auth/UserPassword)</p> "
           },
           {
             "group": "Request",
             "type": "String",
             "optional": true,
             "field": "Auth/UserPassword",
-            "description": "<p>Users password (required if not linked to vendor)</p> "
+            "description": "<p>Users password        (required with Auth/UserId)</p> "
           },
           {
             "group": "Request",
             "type": "String",
-            "optional": false,
-            "field": "Auth/PropertyId",
-            "description": "<p>Property ID on myallocator.com</p> "
+            "optional": true,
+            "field": "Auth/UserToken",
+            "description": "<p>Users auth token (see AssociateUserToPMS call to generate a Token)@apiParam (Request) {String} Auth/PropertyId         Property ID on myallocator.com</p> "
           },
           {
             "group": "Request",
@@ -906,14 +906,21 @@
             "type": "String",
             "optional": true,
             "field": "Auth/UserId",
-            "description": "<p>Users unique ID  (required if not linked to vendor)</p> "
+            "description": "<p>Users unique ID     (required with Auth/UserPassword)</p> "
           },
           {
             "group": "Request",
             "type": "String",
             "optional": true,
             "field": "Auth/UserPassword",
-            "description": "<p>Users password (required if not linked to vendor)</p> "
+            "description": "<p>Users password        (required with Auth/UserId)</p> "
+          },
+          {
+            "group": "Request",
+            "type": "String",
+            "optional": true,
+            "field": "Auth/UserToken",
+            "description": "<p>Users auth token (see AssociateUserToPMS call to generate a Token)# @apiParam (Request) {String} Auth/VendorId            Your Vendor ID</p> "
           },
           {
             "group": "Request",
@@ -1020,14 +1027,21 @@
             "type": "String",
             "optional": true,
             "field": "Auth/UserId",
-            "description": "<p>Users unique ID  (required if not linked to vendor)</p> "
+            "description": "<p>Users unique ID     (required with Auth/UserPassword)</p> "
           },
           {
             "group": "Request",
             "type": "String",
             "optional": true,
             "field": "Auth/UserPassword",
-            "description": "<p>Users password (required if not linked to vendor)</p> "
+            "description": "<p>Users password        (required with Auth/UserId)</p> "
+          },
+          {
+            "group": "Request",
+            "type": "String",
+            "optional": true,
+            "field": "Auth/UserToken",
+            "description": "<p>Users auth token (see AssociateUserToPMS call to generate a Token)# @apiParam (Request) {String} Auth/VendorId            Your Vendor ID</p> "
           },
           {
             "group": "Request",
@@ -1131,21 +1145,21 @@
             "type": "String",
             "optional": true,
             "field": "Auth/UserId",
-            "description": "<p>Users unique ID  (required if not linked to vendor)</p> "
+            "description": "<p>Users unique ID     (required with Auth/UserPassword)</p> "
           },
           {
             "group": "Request",
             "type": "String",
             "optional": true,
             "field": "Auth/UserPassword",
-            "description": "<p>Users password (required if not linked to vendor)</p> "
+            "description": "<p>Users password        (required with Auth/UserId)</p> "
           },
           {
             "group": "Request",
             "type": "String",
-            "optional": false,
-            "field": "Auth/PropertyId",
-            "description": "<p>Property ID on myallocator.com</p> "
+            "optional": true,
+            "field": "Auth/UserToken",
+            "description": "<p>Users auth token (see AssociateUserToPMS call to generate a Token)@apiParam (Request) {String} Auth/PropertyId         Property ID on myallocator.com</p> "
           },
           {
             "group": "Request",
@@ -1256,14 +1270,21 @@
             "type": "String",
             "optional": true,
             "field": "Auth/UserId",
-            "description": "<p>Users unique ID  (required if not linked to vendor)</p> "
+            "description": "<p>Users unique ID     (required with Auth/UserPassword)</p> "
           },
           {
             "group": "Request",
             "type": "String",
             "optional": true,
             "field": "Auth/UserPassword",
-            "description": "<p>Users password (required if not linked to vendor)</p> "
+            "description": "<p>Users password        (required with Auth/UserId)</p> "
+          },
+          {
+            "group": "Request",
+            "type": "String",
+            "optional": true,
+            "field": "Auth/UserToken",
+            "description": "<p>Users auth token (see AssociateUserToPMS call to generate a Token)# @apiParam (Request) {String} Auth/VendorId            Your Vendor ID</p> "
           },
           {
             "group": "Request",
@@ -1366,14 +1387,21 @@
             "type": "String",
             "optional": true,
             "field": "Auth/UserId",
-            "description": "<p>Users unique ID  (required if not linked to vendor)</p> "
+            "description": "<p>Users unique ID     (required with Auth/UserPassword)</p> "
           },
           {
             "group": "Request",
             "type": "String",
             "optional": true,
             "field": "Auth/UserPassword",
-            "description": "<p>Users password (required if not linked to vendor)</p> "
+            "description": "<p>Users password        (required with Auth/UserId)</p> "
+          },
+          {
+            "group": "Request",
+            "type": "String",
+            "optional": true,
+            "field": "Auth/UserToken",
+            "description": "<p>Users auth token (see AssociateUserToPMS call to generate a Token)</p> "
           },
           {
             "group": "Request",
@@ -1441,21 +1469,21 @@
             "type": "String",
             "optional": true,
             "field": "Auth/UserId",
-            "description": "<p>Users unique ID  (required if not linked to vendor)</p> "
+            "description": "<p>Users unique ID     (required with Auth/UserPassword)</p> "
           },
           {
             "group": "Request",
             "type": "String",
             "optional": true,
             "field": "Auth/UserPassword",
-            "description": "<p>Users password (required if not linked to vendor)</p> "
+            "description": "<p>Users password        (required with Auth/UserId)</p> "
           },
           {
             "group": "Request",
             "type": "String",
-            "optional": false,
-            "field": "Auth/PropertyId",
-            "description": "<p>Property ID on myallocator.com</p> "
+            "optional": true,
+            "field": "Auth/UserToken",
+            "description": "<p>Users auth token (see AssociateUserToPMS call to generate a Token)@apiParam (Request) {String} Auth/PropertyId         Property ID on myallocator.com</p> "
           },
           {
             "group": "Request",
@@ -1568,14 +1596,21 @@
             "type": "String",
             "optional": true,
             "field": "Auth/UserId",
-            "description": "<p>Users unique ID  (required if not linked to vendor)</p> "
+            "description": "<p>Users unique ID     (required with Auth/UserPassword)</p> "
           },
           {
             "group": "Request",
             "type": "String",
             "optional": true,
             "field": "Auth/UserPassword",
-            "description": "<p>Users password (required if not linked to vendor)</p> "
+            "description": "<p>Users password        (required with Auth/UserId)</p> "
+          },
+          {
+            "group": "Request",
+            "type": "String",
+            "optional": true,
+            "field": "Auth/UserToken",
+            "description": "<p>Users auth token (see AssociateUserToPMS call to generate a Token)# @apiParam (Request) {String} Auth/VendorId            Your Vendor ID</p> "
           },
           {
             "group": "Request",
@@ -1699,7 +1734,7 @@
         },
         {
           "title": "XML SetAllocation QueryForStatus=true",
-          "content": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<SetAllocationResponse>\n <Success>true</Success>\n <Errors></Errors>\n <Warnings></Warnings>\n <UpdateId>832522158</UpdateId>\n</SetAllocationResponse>",
+          "content": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<SetAllocationResponse>\n <Success>true</Success>\n <Errors></Errors>\n <Warnings></Warnings>\n  <UpdateId>832522158</UpdateId>\n</SetAllocationResponse>",
           "type": "json"
         }
       ]
@@ -1718,12 +1753,7 @@
       },
       {
         "title": "XML Request (Status Check)",
-        "content": "<?xml version=\"1.0\" encoding=\"UTF-8\" ?>\n<SetAllocation>\n <Auth>\n   ...\n </Auth>\n \n <Options>\n   <QueryForStatus>true</QueryForStatus>\n </Options>\n \n ...\n</SetAllocation>",
-        "type": "json"
-      },
-      {
-        "title": "XML SetAllocation (Submit to all channels excluding Gomio and Hostelsclub)",
-        "content": "<?xml version=\"1.0\" encoding=\"UTF-8\" ?>\n<SetAllocation>\n <Auth>\n   <UserId>Customer User ID</UserId>\n   <UserPassword>Customer Password</UserPassword>\n   <PropertyId>Property ID on myallocator.com</PropertyId>\n   <VendorId>Your Vendor ID</VendorId>\n   <VendorPassword>Your Vendor Password</VendorPassword>\n </Auth>\n \n <Channels>\n   <Channel>all</Channel>\n   <Channel exclude=\"true\">gom</Channel>\n   <Channel exclude=\"true\">hc</Channel>\n </Channels>\n \n <Allocations>\n   ...\n </Allocations>\n</SetAllocation>",
+        "content": "<?xml version=\"1.0\" encoding=\"UTF-8\" ?>\n<SetAllocation>\n <Auth>\n   ...\n </Auth>\n \n <Options>\n   <QueryForStatus>true</QueryForStatus>\n </Options>\n \n ...\n</SetAllocation>\n\n\napiExample XML SetAllocation (Submit to all channels excluding Gomio and Hostelsclub)\n<?xml version=\"1.0\" encoding=\"UTF-8\" ?>\n<SetAllocation>\n <Auth>\n   <UserId>Customer User ID</UserId>\n   <UserPassword>Customer Password</UserPassword>\n   <PropertyId>Property ID on myallocator.com</PropertyId>\n   <VendorId>Your Vendor ID</VendorId>\n   <VendorPassword>Your Vendor Password</VendorPassword>\n </Auth>\n \n <Channels>\n   <Channel>all</Channel>\n   <Channel exclude=\"true\">gom</Channel>\n   <Channel exclude=\"true\">hc</Channel>\n </Channels>\n \n <Allocations>\n   ...\n </Allocations>\n</SetAllocation>",
         "type": "json"
       }
     ],
@@ -1746,14 +1776,21 @@
             "type": "String",
             "optional": true,
             "field": "Auth/UserId",
-            "description": "<p>Users unique ID  (required if not linked to vendor)</p> "
+            "description": "<p>Users unique ID     (required with Auth/UserPassword)</p> "
           },
           {
             "group": "Request",
             "type": "String",
             "optional": true,
             "field": "Auth/UserPassword",
-            "description": "<p>Users password (required if not linked to vendor)</p> "
+            "description": "<p>Users password        (required with Auth/UserId)</p> "
+          },
+          {
+            "group": "Request",
+            "type": "String",
+            "optional": true,
+            "field": "Auth/UserToken",
+            "description": "<p>Users auth token (see AssociateUserToPMS call to generate a Token)# @apiParam (Request) {String} Auth/VendorId            Your Vendor ID</p> "
           },
           {
             "group": "Request",
@@ -1949,14 +1986,21 @@
             "type": "String",
             "optional": true,
             "field": "Auth/UserId",
-            "description": "<p>Users unique ID  (required if not linked to vendor)</p> "
+            "description": "<p>Users unique ID     (required with Auth/UserPassword)</p> "
           },
           {
             "group": "Request",
             "type": "String",
             "optional": true,
             "field": "Auth/UserPassword",
-            "description": "<p>Users password (required if not linked to vendor)</p> "
+            "description": "<p>Users password        (required with Auth/UserId)</p> "
+          },
+          {
+            "group": "Request",
+            "type": "String",
+            "optional": true,
+            "field": "Auth/UserToken",
+            "description": "<p>Users auth token (see AssociateUserToPMS call to generate a Token)# @apiParam (Request) {String} Auth/VendorId            Your Vendor ID</p> "
           },
           {
             "group": "Request",
@@ -2017,7 +2061,7 @@
         ]
       }
     },
-    "description": "<p>This method allows you to create customer accounts on myallocator.com. Before you can use this method we&#39;ll have to explicitly enable you for this functionality, as some aspects with regards to customer payment will need to be discussed.     previously known as SetLogin/CreateLogin</p> ",
+    "description": "<p>This method allows you to create customer accounts on myallocator.com. Before you can use this method we&#39;ll have to explicitly enable you for this functionality, as some aspects with regards to customer payment will need to be discussed.    previously known as SetLogin/CreateLogin</p> ",
     "examples": [
       {
         "title": "XML Request - Creating a customer account",
@@ -2029,7 +2073,7 @@
       "examples": [
         {
           "title": "Response - Updating a login and property",
-          "content": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<UserCreateResponse> \n <Success>true</Success>\n</UserCreateResponse>",
+          "content": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<UserCreateResponse> \n  <Success>true</Success>\n</UserCreateResponse>",
           "type": "json"
         }
       ]
@@ -2053,21 +2097,21 @@
             "type": "String",
             "optional": true,
             "field": "Auth/UserId",
-            "description": "<p>Users unique ID  (required if not linked to vendor)</p> "
+            "description": "<p>Users unique ID     (required with Auth/UserPassword)</p> "
           },
           {
             "group": "Request",
             "type": "String",
             "optional": true,
             "field": "Auth/UserPassword",
-            "description": "<p>Users password (required if not linked to vendor)</p> "
+            "description": "<p>Users password        (required with Auth/UserId)</p> "
           },
           {
             "group": "Request",
             "type": "String",
-            "optional": false,
-            "field": "Auth/VendorId",
-            "description": "<p>Your Vendor ID</p> "
+            "optional": true,
+            "field": "Auth/UserToken",
+            "description": "<p>Users auth token (see AssociateUserToPMS call to generate a Token)# @apiParam (Request) {String} Auth/VendorId            Your Vendor ID</p> "
           },
           {
             "group": "Request",
@@ -2115,7 +2159,7 @@
       "examples": [
         {
           "title": "XML UserExists Response",
-          "content": "<?xml version=\"1.0\" encoding=\"UTF-8\" ?>\n<UserExists>\n <UserIdExists>1</UserIdExists>\n <EmailExists>1</EmailExists>\n</UserExists>",
+          "content": "<?xml version=\"1.0\" encoding=\"UTF-8\" ?>\n<UserExists>\n  <UserIdExists>1</UserIdExists>\n  <EmailExists>1</EmailExists>\n</UserExists>",
           "type": "json"
         }
       ]
@@ -2123,12 +2167,12 @@
     "examples": [
       {
         "title": "XML UserManager Exists Request ",
-        "content": "<?xml version=\"1.0\" encoding=\"UTF-8\" ?>\n<UserExists>\n <Auth>\n   <VendorId>Your Vendor ID</VendorId>\n   <VendorPassword>Your Vendor Password</VendorPassword>\n </Auth>\n <Method>Exists</Method>\n <UserId>requested-username</UserId>\n <Email>user@domain.com</EmailId>\n</UserExists>",
+        "content": "<?xml version=\"1.0\" encoding=\"UTF-8\" ?>\n<UserExists>\n  <Auth>\n    <VendorId>Your Vendor ID</VendorId>\n    <VendorPassword>Your Vendor Password</VendorPassword>\n  </Auth>\n  <Method>Exists</Method>\n  <UserId>requested-username</UserId>\n  <Email>user@domain.com</EmailId>\n</UserExists>",
         "type": "json"
       },
       {
         "title": "JSON UserExists Request",
-        "content": "{\n 'Auth/VendorId':'Your Vendor ID',\n 'Auth/VendorPassword':'Your Vendor Password',\n 'UserId':'requested-username',\n 'Email':'user@domain.com'\n}",
+        "content": " {\n  'Auth/VendorId':'Your Vendor ID',\n  'Auth/VendorPassword':'Your Vendor Password',\n  'UserId':'requested-username',\n  'Email':'user@domain.com'\n }",
         "type": "json"
       }
     ],
@@ -2149,16 +2193,23 @@
           {
             "group": "Request",
             "type": "String",
-            "optional": false,
+            "optional": true,
             "field": "Auth/UserId",
-            "description": "<p>Users unique ID</p> "
+            "description": "<p>Users unique ID     (required with Auth/UserPassword)</p> "
           },
           {
             "group": "Request",
             "type": "String",
-            "optional": false,
+            "optional": true,
             "field": "Auth/UserPassword",
-            "description": "<p>Users password</p> "
+            "description": "<p>Users password        (required with Auth/UserId)</p> "
+          },
+          {
+            "group": "Request",
+            "type": "String",
+            "optional": true,
+            "field": "Auth/UserToken",
+            "description": "<p>Users auth token (see AssociateUserToPMS call to generate a Token)</p> "
           }
         ]
       }
@@ -2221,14 +2272,21 @@
             "type": "String",
             "optional": true,
             "field": "Auth/UserId",
-            "description": "<p>Users unique ID  (required if not linked to vendor)</p> "
+            "description": "<p>Users unique ID     (required with Auth/UserPassword)</p> "
           },
           {
             "group": "Request",
             "type": "String",
             "optional": true,
             "field": "Auth/UserPassword",
-            "description": "<p>Users password (required if not linked to vendor)</p> "
+            "description": "<p>Users password        (required with Auth/UserId)</p> "
+          },
+          {
+            "group": "Request",
+            "type": "String",
+            "optional": true,
+            "field": "Auth/UserToken",
+            "description": "<p>Users auth token (see AssociateUserToPMS call to generate a Token)# @apiParam (Request) {String} Auth/VendorId            Your Vendor ID</p> "
           },
           {
             "group": "Request",
@@ -2315,16 +2373,23 @@
           {
             "group": "Request",
             "type": "String",
-            "optional": false,
+            "optional": true,
             "field": "Auth/UserId",
-            "description": "<p>Users unique ID</p> "
+            "description": "<p>Users unique ID     (required with Auth/UserPassword)</p> "
           },
           {
             "group": "Request",
             "type": "String",
-            "optional": false,
+            "optional": true,
             "field": "Auth/UserPassword",
-            "description": "<p>Users password</p> "
+            "description": "<p>Users password        (required with Auth/UserId)</p> "
+          },
+          {
+            "group": "Request",
+            "type": "String",
+            "optional": true,
+            "field": "Auth/UserToken",
+            "description": "<p>Users auth token (see AssociateUserToPMS call to generate a Token)</p> "
           }
         ]
       }
