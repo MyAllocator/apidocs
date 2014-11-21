@@ -62,6 +62,83 @@ define({ api: [
   },
   {
     "type": "get",
+    "url": "/AssociatePropertyToPMS",
+    "title": "AssociatePropertyToPMS",
+    "name": "AssociatePropertyToPMS",
+    "group": "PMS",
+    "description": "<p>Creates a permanent link between an existing myallocator user and a PMS Vendor.   The PMS Vendor should securely obtain the users myallocator user-id and password (but do not store them),   then in the background pass the user credentials to AssociatePropertyToPMS and a link will be created.  Any future API calls will not require a Password. </p> <p> NOTE: *Users and Properties created by a PMS Vendor will automatically be linked to that PMS (this call is not necessary)</p> <p> NOTE: Although Auth/UserPassword is identified in this call as <em>required</em> if a prior AssociateUserToPMS call has been made then it is not actually required.</p> ",
+    "parameter": {
+      "fields": {
+        "Request": [
+          {
+            "group": "Request",
+            "type": "String",
+            "optional": false,
+            "field": "Auth/UserId",
+            "description": "<p>Users unique ID</p> "
+          },
+          {
+            "group": "Request",
+            "type": "String",
+            "optional": false,
+            "field": "Auth/UserPassword",
+            "description": "<p>Users password</p> "
+          },
+          {
+            "group": "Request",
+            "type": "String",
+            "optional": false,
+            "field": "Auth/VendorId",
+            "description": "<p>Your Vendor ID</p> "
+          },
+          {
+            "group": "Request",
+            "type": "String",
+            "optional": false,
+            "field": "Auth/VendorPassword",
+            "description": "<p>Your Vendor Password</p> "
+          },
+          {
+            "group": "Request",
+            "type": "String",
+            "optional": true,
+            "field": "PMSPropertyId",
+            "description": "<p>The Unique PropertyId on the PMS (for reference 128 character max) - will be included in callbacks</p> "
+          }
+        ]
+      }
+    },
+    "success": {
+      "fields": {
+        "Response": [
+          {
+            "group": "Response",
+            "type": "String",
+            "optional": false,
+            "field": "Auth/PropertyToken",
+            "description": "<p>A 48 character shared secret that can be passed in lieu of Auth/UserId Auth/UserPassword</p> "
+          }
+        ]
+      }
+    },
+    "examples": [
+      {
+        "title": "JSON AssociatePropertyToPMS",
+        "content": "{\n'Auth/UserId':'login on myallocator.com',\n'Auth/UserPassword':'password for myallocator.com',\n'Auth/VendorId':'your vendor id',\n'Auth/VendorPassword':'your vendor password',\n'PMSPropertyId':'username-on-the-remote-pms-system',\n}",
+        "type": "json"
+      },
+      {
+        "title": "XML AssociateUserToPMS",
+        "content": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<AssociatePropertyToPMS>\n<Auth>\n  <UserId>Customer User ID</UserId>\n  <UserPassword>Customer Password</UserPassword>\n  <VendorId>Your Vendor ID</VendorId>\n  <VendorPassword>Your Vendor Password</VendorPassword>\n</Auth>\n<PMSPropertyId>username-on-the-remote-pms-system</PMSUserId>\n</AssociatePropertyToPMS>",
+        "type": "json"
+      }
+    ],
+    "version": "0.0.0",
+    "filename": "perllib/MAAPI.pm",
+    "groupTitle": "PMS"
+  },
+  {
+    "type": "get",
     "url": "/AssociateUserToPMS",
     "title": "AssociateUserToPMS",
     "name": "AssociateUserToPMS",
@@ -87,13 +164,6 @@ define({ api: [
           {
             "group": "Request",
             "type": "String",
-            "optional": true,
-            "field": "Auth/PropertyId",
-            "description": "<p>PropertyId (use 0 for all)</p> "
-          },
-          {
-            "group": "Request",
-            "type": "String",
             "optional": false,
             "field": "Auth/VendorId",
             "description": "<p>Your Vendor ID</p> "
@@ -111,13 +181,6 @@ define({ api: [
             "optional": true,
             "field": "PMSUserId",
             "description": "<p>The Unique UserId on the PMS (for reference 128 character max) - will be included in callbacks</p> "
-          },
-          {
-            "group": "Request",
-            "type": "String",
-            "optional": true,
-            "field": "PMSPropertyId",
-            "description": "<p>The Unique UserId on the PMS (for reference 128 cahracter max) - will be included in callbacks (only stored if Auth/PropertyId was set)</p> "
           }
         ]
       }
@@ -129,8 +192,8 @@ define({ api: [
             "group": "Response",
             "type": "String",
             "optional": false,
-            "field": "secret",
-            "description": "<p>A 48 character shared secret reserve for future HMAC Public calls (<a href=\"http://tools.ietf.org/html/rfc2104\">http://tools.ietf.org/html/rfc2104</a>). *NOTE: It is not necessary to store this unless you actually plan to use it - because the token can be reset by simply calling AssociateUserToPMS.</p> "
+            "field": "Auth/UserToken",
+            "description": "<p>Return this to us instead of a Auth/UserId and Auth/UserPassword</p> "
           }
         ]
       }
@@ -138,12 +201,12 @@ define({ api: [
     "examples": [
       {
         "title": "JSON AssociateUserToPMS",
-        "content": "{\n'Auth/UserId':'login on myallocator.com',\n'Auth/UserPassword':'password for myallocator.com',\n'Auth/PropertyId':0,\n'Auth/VendorId':'your vendor id',\n'Auth/VendorPassword':'your vendor password',\n'PMSUserId':'username-on-the-remote-pms-system',\n'PMSPropertyId':'propertyid-on-the-remote-pms-system',\n}",
+        "content": "{\n'Auth/UserId':'login on myallocator.com',\n'Auth/UserPassword':'password for myallocator.com',\n'Auth/VendorId':'your vendor id',\n'Auth/VendorPassword':'your vendor password',\n'PMSUserId':'username-on-the-remote-pms-system',\n}",
         "type": "json"
       },
       {
         "title": "XML AssociateUserToPMS",
-        "content": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<RoomList>\n<Auth>\n  <UserId>Customer User ID</UserId>\n  <UserPassword>Customer Password</UserPassword>\n  <PropertyId>Property ID on myallocator.com</PropertyId>\n  <VendorId>Your Vendor ID</VendorId>\n  <VendorPassword>Your Vendor Password</VendorPassword>\n</Auth>\n<PMSUserId>username-on-the-remote-pms-system</PMSUserId>\n<PMSPropertyId>propertyid-on-the-remote-pms-system</PMSPropertyId>\n</RoomList>",
+        "content": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<AssociateUserToPMS>\n<Auth>\n  <UserId>Customer User ID</UserId>\n  <UserPassword>Customer Password</UserPassword>\n  <VendorId>Your Vendor ID</VendorId>\n  <VendorPassword>Your Vendor Password</VendorPassword>\n</Auth>\n<PMSUserId>username-on-the-remote-pms-system</PMSUserId>\n</AssociateUserToPMS>",
         "type": "json"
       }
     ],
@@ -663,7 +726,7 @@ define({ api: [
     "title": "BookingPaymentDownload",
     "name": "BookingPaymentDownload",
     "group": "PMS",
-    "description": "<p>This call can be used to retrieve credit card details from specific bookings.   This applies only to channels that currently send us the credit card details (booking.com, Expedia, BookNow) and only for bookings that were created after connection with myallocator has been made.</p> <p> This API call is not enabled for vendors by default. You need to send us your PCI compliance certification before this can be done. It&#39;s also neccessary to send along the credit card viewing password (different from the user login). For best practise do not store this password in your system but rather get it from the customer and send it on directly. This way the password will only be in the memory and not as accessible.</p> <p> The credit card viewing password needs to be changed ever 365 by the property. It can happen that the property has reset their password in which case our support team needs to reencrypt the existing details. This is not an automatic process and can take between 1 and 3 business days.</p> <p> Applicable error codes are 26 - 30. Even though logically this would be a GET call, we use POST for this one to prevent the password from going to the webserver log files.</p> <p> Bookings can have multiple credit card details stored within them, as they have been updated by the guest. The response will list credit card details with the most recent credit card first.</p> <p> <strong> Compatibility </strong>  <a href=\"https://myallocator.com/en/api/cc\">https://myallocator.com/en/api/cc</a></p> <p> PropertyId, MyallocatorId, CreditCardPassword</p> ",
+    "description": "<p>This call can be used to retrieve credit card details from specific bookings.   This applies only to channels that currently send us the credit card details (booking.com, Expedia, BookNow) and only for bookings that were created after connection with myallocator has been made.</p> <p> This API call is not enabled for vendors by default. You need to send us your PCI compliance certification before this can be done. It&#39;s also neccessary to send along the credit card viewing password (different from the user login). For best practise do not store this password in your system but rather get it from the customer and send it on directly. This way the password will only be in the memory and not as accessible.</p> <p> The credit card viewing password needs to be changed ever 365 by the property. It can happen that the property has reset their password in which case our support team needs to reencrypt the existing details. This is not an automatic process and can take between 1 and 3 business days.</p> <p> Applicable error codes are 26 - 30. Even though logically this would be a GET call, we use POST for this one to prevent the password from going to the webserver log files.</p> <p> Bookings can have multiple credit card details stored within them, as they have been updated by the guest. The response will list credit card details with the most recent credit card first.</p> ",
     "parameter": {
       "fields": {
         "Request": [
@@ -713,7 +776,7 @@ define({ api: [
             "group": "Request",
             "type": "String",
             "optional": false,
-            "field": "BookingId",
+            "field": "OrderId",
             "description": ""
           }
         ]
@@ -821,7 +884,7 @@ define({ api: [
     "examples": [
       {
         "title": "XML ChannelMappingList",
-        "content": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<ChannelMappingList>\n <Auth>\n   <UserId>Customer User ID</UserId>\n   <UserPassword>Customer Password</UserPassword>\n   <PropertyId>Property ID on myallocator.com</PropertyId>\n   <VendorId>Your Vendor ID</VendorId>\n   <VendorPassword>Your Vendor Password</VendorPassword>\n </Auth>\n</ChannelMappingList>",
+        "content": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<ChannelMappingList>\n  <Auth>\n    <UserId>Customer User ID</UserId>\n    <UserPassword>Customer Password</UserPassword>\n    <PropertyId>Property ID on myallocator.com</PropertyId>\n    <VendorId>Your Vendor ID</VendorId>\n    <VendorPassword>Your Vendor Password</VendorPassword>\n  </Auth>\n</ChannelMappingList>",
         "type": "json"
       }
     ],
@@ -1294,7 +1357,7 @@ define({ api: [
     "title": "RoomAvailabilityList",
     "name": "RoomAvailabilityList",
     "group": "PMS",
-    "description": "<p>This call can be used to query for all data that we hold for a specific property and date range.   The date range can only be 31 days as the maximum. You can query multiple times if you need a longer date range.</p> <p> A MaxStay setting of 0 means &quot;unrestricted&quot;.   The 48 and 49 in the response example below refer to the room ID as returned by GetRooms (XML API).</p> <p> <strong> Compatibility: </strong>   this was formerly available at: <a href=\"https://myallocator.com/en/api/data\">https://myallocator.com/en/api/data</a></p> ",
+    "description": "<p>This call can be used to query for all data that we hold for a specific property and date range.   The date range can only be 31 days as the maximum. You can query multiple times if you need a longer date range.</p> <p> A MaxStay setting of 0 means &quot;unrestricted&quot;.   The 48 and 49 in the response example below refer to the room ID as returned by GetRooms (XML API).</p> <p> <strong> Compatibility: </strong>    this was formerly available at: <a href=\"https://myallocator.com/en/api/data\">https://myallocator.com/en/api/data</a></p> ",
     "parameter": {
       "fields": {
         "Request": [
@@ -1354,7 +1417,7 @@ define({ api: [
       "examples": [
         {
           "title": "JSON RoomAvailabilityList",
-          "content": "   {\n   \"Rooms\": [\n         {\n    \t  \"RoomId\": 48,\n         \"PropertyId\": 1234,\n         \"RoomName\": \"1-person private\",\n         \"Data\": [\n           {\n             \"Date\": \"2014-03-15\",\n             \"Units\": 2,\n             \"Price\": 33,\n             \"MinStay\": 1,\n             \"MaxStay\": 7,\n             \"Closed\": false,\n             \"ClosedForArrival\": false,\n             \"ClosedForDeparture\": false\n           },\n           {\n             \"Date\": \"2014-03-16\",\n             \"Units\": 2,\n             \"Price\": 33,\n             \"MinStay\": 1,\n             \"MaxStay\": 7,\n             \"Closed\": false,\n             \"ClosedForArrival\": false,\n             \"ClosedForDeparture\": false\n           }\n         ]\n       },\n       {\n         \"RoomId\": 49,\n         \"PropertyId\": 1,\n         \"RoomName\": \"5-person male shared\",\n         \"Data\": [\n           {\n             \"Date\": \"2014-03-15\",\n             \"Units\": 0,\n             \"Price\": 0,\n             \"MinStay\": 1,\n             \"MaxStay\": 7,\n             \"Closed\": false,\n             \"ClosedForArrival\": false,\n             \"ClosedForDeparture\": false\n           },\n           {\n             \"Date\": \"2014-03-16\",\n             \"Units\": 0,\n             \"Price\": 0,\n             \"MinStay\": 1,\n             \"MaxStay\": 7,\n             \"Closed\": false,\n             \"ClosedForArrival\": false,\n             \"ClosedForDeparture\": false\n           }\n         ]\n       }\n     }\n   }",
+          "content": "    {\n    \"Rooms\": [\n          {\n     \t  \"RoomId\": 48,\n          \"PropertyId\": 1234,\n          \"RoomName\": \"1-person private\",\n          \"Data\": [\n            {\n              \"Date\": \"2014-03-15\",\n              \"Units\": 2,\n              \"Price\": 33,\n              \"MinStay\": 1,\n              \"MaxStay\": 7,\n              \"Closed\": false,\n              \"ClosedForArrival\": false,\n              \"ClosedForDeparture\": false\n            },\n            {\n              \"Date\": \"2014-03-16\",\n              \"Units\": 2,\n              \"Price\": 33,\n              \"MinStay\": 1,\n              \"MaxStay\": 7,\n              \"Closed\": false,\n              \"ClosedForArrival\": false,\n              \"ClosedForDeparture\": false\n            }\n          ]\n        },\n        {\n          \"RoomId\": 49,\n          \"PropertyId\": 1,\n          \"RoomName\": \"5-person male shared\",\n          \"Data\": [\n            {\n              \"Date\": \"2014-03-15\",\n              \"Units\": 0,\n              \"Price\": 0,\n              \"MinStay\": 1,\n              \"MaxStay\": 7,\n              \"Closed\": false,\n              \"ClosedForArrival\": false,\n              \"ClosedForDeparture\": false\n            },\n            {\n              \"Date\": \"2014-03-16\",\n              \"Units\": 0,\n              \"Price\": 0,\n              \"MinStay\": 1,\n              \"MaxStay\": 7,\n              \"Closed\": false,\n              \"ClosedForArrival\": false,\n              \"ClosedForDeparture\": false\n            }\n          ]\n        }\n      }\n    }",
           "type": "json"
         }
       ]
@@ -1481,8 +1544,8 @@ define({ api: [
       },
       "examples": [
         {
-          "title": "XML RoomList Success Response:",
-          "content": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<RoomListResponse>\n <RoomTypes>\n   <RoomType>\n     <Id>59</Id>\n     <Label>1-bed private ensuite</Label>\n     <Units>3</Units>\n     <Occupancy>1</Occupancy>\n     <Beds>1</Beds>\n     <Gender>MI</Gender>\n     <DoubleBed>false</DoubleBed>\n     <Ensuite>false</Ensuite>\n     <PrivateRoom>true</PrivateRoom>      \n   </RoomType>\n   \n   <RoomType>\n     <Id>63</Id>\n     <Label>2-bed private</Label>\n     <Units>4</Units>\n     <Occupancy>2</Occupancy>\n     <Beds>2</Beds>\n     <Gender>MI</Gender>\n     <DoubleBed>false</DoubleBed>\n     <Ensuite>false</Ensuite>\n     <PrivateRoom>true</PrivateRoom>    \n   </RoomType>\n   \n   <RoomType>\n     <Id>49</Id>\n     <Label>5-bed female shared</Label>\n     <Units>3</Units>\n     <Occupancy>5</Occupancy>\n     <Beds>5</Beds>\n     <Gender>FE</Gender>\n     <DoubleBed>false</DoubleBed>\n     <Ensuite>false</Ensuite>\n     <PrivateRoom>false</PrivateRoom>\n   </RoomType>\n </RoomTypes>\n</RoomListResponse>",
+          "title": "XML RoomList v1 Success Response:",
+          "content": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<RoomListResponse>\n <RoomTypes>\n   <RoomType>\n     <Id>59</Id>\n     <Label>1-bed private ensuite</Label>\n     <Units>3</Units>\n     <Occupancy>1</Occupancy>\n     <Beds>1</Beds>\n     <Gender>MI</Gender>\n     <DoubleBed>false</DoubleBed>\n     <Ensuite>false</Ensuite>\n     <PrivateRoom>true</PrivateRoom>      \n   </RoomType>\n   \n   <RoomType>\n     <Id>63</Id>\n     <Label>2-bed private</Label>\n     <Units>4</Units>\n     <Occupancy>2</Occupancy>\n     <Beds>2</Beds>\n     <Gender>MI</Gender>\n     <DoubleBed>false</DoubleBed>\n     <Ensuite>false</Ensuite>\n     <PrivateRoom>true</PrivateRoom>    \n   </RoomType>\n   \n   <RoomType>\n     <Id>49</Id>\n     <Label>5-bed female shared</Label>\n     <Units>3</Units>\n     <Occupancy>5</Occupancy>\n     <Beds>5</Beds>\n     <Gender>FE</Gender>\n     <DoubleBed>false</DoubleBed>\n     <Ensuite>false</Ensuite>\n     <PrivateRoom>false</PrivateRoom>\n   </RoomType>\n  </RoomTypes>\n</RoomListResponse>",
           "type": "json"
         }
       ]
@@ -2051,7 +2114,7 @@ define({ api: [
       },
       "examples": [
         {
-          "title": "XML GetUpdateStatus Response",
+          "title": "XML UserExists Response",
           "content": "<?xml version=\"1.0\" encoding=\"UTF-8\" ?>\n<UserExists>\n <UserIdExists>1</UserIdExists>\n <EmailExists>1</EmailExists>\n</UserExists>",
           "type": "json"
         }
@@ -2079,7 +2142,7 @@ define({ api: [
     "title": "UserLogin",
     "name": "UserLogin",
     "group": "PMS",
-    "description": "<p><strong> EXPERIMENTAL </strong></p> ",
+    "description": "<p>Creates an authentication token for inbox.myallocator.com Then redirect to <a href=\"https://inbox.myallocator.com/en/login/?token=xxxx\">https://inbox.myallocator.com/en/login/?token=xxxx</a></p> ",
     "parameter": {
       "fields": {
         "Request": [
@@ -2107,8 +2170,22 @@ define({ api: [
             "group": "Response",
             "type": "String",
             "optional": false,
-            "field": "session",
-            "description": "<p>a session token</p> "
+            "field": "cookie/id",
+            "description": ""
+          },
+          {
+            "group": "Response",
+            "type": "String",
+            "optional": false,
+            "field": "cookie/value",
+            "description": ""
+          },
+          {
+            "group": "Response",
+            "type": "String",
+            "optional": false,
+            "field": "loginurl",
+            "description": ""
           }
         ]
       }
