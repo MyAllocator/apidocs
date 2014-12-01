@@ -1314,14 +1314,7 @@ define({ "api": [
             "type": "String",
             "optional": true,
             "field": "Auth/UserToken",
-            "description": "<p>Users auth token (see AssociateUserToPMS call to generate a Token)# @apiParam (Request) {String} Auth/VendorId            Your Vendor ID</p> "
-          },
-          {
-            "group": "Request",
-            "type": "String",
-            "optional": false,
-            "field": "Auth/PropertyId",
-            "description": "<p>Property ID on myallocator.com</p> "
+            "description": "<p>Users auth token (see AssociateUserToPMS call to generate a Token)</p> "
           },
           {
             "group": "Request",
@@ -1336,13 +1329,6 @@ define({ "api": [
             "optional": false,
             "field": "Auth/VendorPassword",
             "description": "<p>Your Vendor Password</p> "
-          },
-          {
-            "group": "Request",
-            "type": "String",
-            "optional": false,
-            "field": "UserId",
-            "description": "<p>Requested UserId</p> "
           },
           {
             "group": "Request",
@@ -1386,7 +1372,7 @@ define({ "api": [
     "examples": [
       {
         "title": "XML Request - Creating a NEW property (and attaching it to a user account)",
-        "content": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<PropertyCreate>\n <Auth>\n   <VendorId>Your Vendor ID</VendorId>\n   <VendorPassword>Your Vendor Password</VendorPassword>\n </Auth>\n <UserId>UserId</UserId>\n <PropertyName>Name of property</PropertyName>\n <ExpiryDate>2012-05-05</ExpiryDate>\n <Currency>EUR</Currency>\n <Country>DE</Country>\n <Breakfast>IN</Breakfast>\n</PropertyCreate>",
+        "content": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<PropertyCreate>\n <Auth>\n   <VendorId>Your Vendor ID</VendorId>\n   <VendorPassword>Your Vendor Password</VendorPassword>\n </Auth>\n <PropertyName>Name of property</PropertyName>\n <ExpiryDate>2012-05-05</ExpiryDate>\n <Currency>EUR</Currency>\n <Country>DE</Country>\n <Breakfast>IN</Breakfast>\n</PropertyCreate>",
         "type": "json"
       }
     ],
@@ -1557,7 +1543,7 @@ define({ "api": [
             "type": "String",
             "optional": true,
             "field": "Auth/UserToken",
-            "description": "<p>Users auth token (see AssociateUserToPMS call to generate a Token)# @apiParam (Request) {String} Auth/VendorId            Your Vendor ID</p> "
+            "description": "<p>Users auth token (see AssociateUserToPMS call to generate a Token)</p> "
           },
           {
             "group": "Request",
@@ -1572,13 +1558,6 @@ define({ "api": [
             "optional": false,
             "field": "Auth/VendorPassword",
             "description": "<p>Your Vendor Password</p> "
-          },
-          {
-            "group": "Request",
-            "type": "String",
-            "optional": false,
-            "field": "UserId",
-            "description": "<p>Requested UserId</p> "
           },
           {
             "group": "Request",
@@ -1620,7 +1599,7 @@ define({ "api": [
             "type": "String",
             "optional": false,
             "field": "Breakfast",
-            "description": "<p>Can be \\textit{IN} (included), \\textit{EX} (excluded) or empty.</p> "
+            "description": "<p>Can be IN (included), EX (excluded) or empty.</p> "
           }
         ]
       }
@@ -1628,7 +1607,7 @@ define({ "api": [
     "examples": [
       {
         "title": "XML Request - Modifying a property",
-        "content": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<PropertyModify>\n <Auth>\n   <VendorId>Your Vendor ID</VendorId>\n   <VendorPassword>Your Vendor Password</VendorPassword>\n </Auth>\n <UserId>UserId</UserId>\n <PropertyName>Name of property</PropertyName>\n <ExpiryDate>2012-05-05</ExpiryDate>\n <Currency>EUR</Currency>\n <Country>DE</Country>\n <Breakfast>IN</Breakfast>\n</PropertyModify>",
+        "content": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<PropertyModify>\n <Auth>\n   <VendorId>Your Vendor ID</VendorId>\n   <VendorPassword>Your Vendor Password</VendorPassword>\n </Auth>\n <PropertyName>Name of property</PropertyName>\n <ExpiryDate>2012-05-05</ExpiryDate>\n <Currency>EUR</Currency>\n <Country>DE</Country>\n <Breakfast>IN</Breakfast>\n</PropertyModify>",
         "type": "json"
       }
     ],
@@ -2153,13 +2132,6 @@ define({ "api": [
             "group": "Request",
             "type": "String",
             "optional": false,
-            "field": "Email",
-            "description": "<p>Requested Email</p> "
-          },
-          {
-            "group": "Request",
-            "type": "String",
-            "optional": false,
             "field": "CustomerFirstName",
             "description": "<p>Customer&#39;s first name (optional).</p> "
           },
@@ -2257,7 +2229,7 @@ define({ "api": [
             "group": "Request",
             "type": "String",
             "optional": false,
-            "field": "Email",
+            "field": "CustomerEmail",
             "description": "<p>Requested Email</p> "
           }
         ]
