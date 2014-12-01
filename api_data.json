@@ -1372,6 +1372,29 @@
             "field": "Breakfast",
             "description": "<p>Can be (excluded) or empty.</p> "
           }
+        ],
+        "Response": [
+          {
+            "group": "Response",
+            "type": "Boolean",
+            "optional": false,
+            "field": "Success",
+            "description": "<p>true|false</p> "
+          },
+          {
+            "group": "Response",
+            "type": "Integer",
+            "optional": false,
+            "field": "PropertyId",
+            "description": "<p>the MyAllocator PropertyId of the freshly created property (store this to reference the property in other calls)</p> "
+          },
+          {
+            "group": "Response",
+            "type": "String",
+            "optional": false,
+            "field": "propertyToken",
+            "description": "<p>the token for the newly created property (same as returned by AssociatePropertyToPMS - for future use)</p> "
+          }
         ]
       }
     },
@@ -1387,7 +1410,7 @@
       "examples": [
         {
           "title": "Response - Updating a login and property",
-          "content": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<UserPropertyResponse> \n <Success>true</Success>\n <PropertyId>1234</PropertyId>\n</UserPropertyResponse>",
+          "content": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<UserPropertyResponse> \n <Success>true</Success>\n <PropertyId>1234</PropertyId>\n <propertyToken>23094234234234</propertyToken>\n</UserPropertyResponse>",
           "type": "json"
         }
       ]
@@ -2162,6 +2185,29 @@
             "optional": false,
             "field": "SendWelcome",
             "description": "<p>1|0</p> "
+          }
+        ],
+        "Response": [
+          {
+            "group": "Response",
+            "type": "Boolean",
+            "optional": false,
+            "field": "Success",
+            "description": "<p>true|false</p> "
+          },
+          {
+            "group": "Response",
+            "type": "Integer",
+            "optional": false,
+            "field": "UserId",
+            "description": "<p>the MyAllocator UserId of the freshly created user</p> "
+          },
+          {
+            "group": "Response",
+            "type": "String",
+            "optional": false,
+            "field": "userToken",
+            "description": "<p>the PMS Auth token (see AssociateUserToPMS)</p> "
           }
         ]
       }
