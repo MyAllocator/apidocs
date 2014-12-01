@@ -2381,8 +2381,8 @@ define({ "api": [
   },
   {
     "type": "get",
-    "url": "/UserLogin",
-    "title": "UserLogin",
+    "url": "/InboxUserLogin",
+    "title": "InboxUserLogin",
     "name": "UserLogin",
     "group": "PMS",
     "description": "<p>Creates an authentication token for inbox.myallocator.com Then redirect to <a href=\"https://inbox.myallocator.com/en/login/?token=xxxx\">https://inbox.myallocator.com/en/login/?token=xxxx</a></p> ",
@@ -2500,20 +2500,6 @@ define({ "api": [
             "optional": false,
             "field": "Auth/VendorPassword",
             "description": "<p>Your Vendor Password</p> "
-          },
-          {
-            "group": "Request",
-            "type": "String",
-            "optional": false,
-            "field": "UserId",
-            "description": "<p>Requested UserId</p> "
-          },
-          {
-            "group": "Request",
-            "type": "String",
-            "optional": false,
-            "field": "Email",
-            "description": "<p>Requested Email</p> "
           },
           {
             "group": "Request",
