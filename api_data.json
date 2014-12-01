@@ -36,6 +36,133 @@
     "groupTitle": "Callbacks"
   },
   {
+    "type": "get",
+    "url": "/ChannelList",
+    "title": "ChannelList",
+    "name": "ChannelList",
+    "group": "ChannelList",
+    "description": "<p>Dumps information about all known channels, their status, and supported fields.</p> ",
+    "parameter": {
+      "fields": {
+        "Request": [
+          {
+            "group": "Request",
+            "type": "String",
+            "optional": false,
+            "field": "Auth/VendorId",
+            "description": "<p>Your Vendor ID</p> "
+          },
+          {
+            "group": "Request",
+            "type": "String",
+            "optional": false,
+            "field": "Auth/VendorPassword",
+            "description": "<p>Your Vendor Password</p> "
+          }
+        ],
+        "Response": [
+          {
+            "group": "Response",
+            "type": "String",
+            "optional": false,
+            "field": "Channels/cid",
+            "description": "<p>a 2-4 digit code used to represent the OTA/Channel.</p> "
+          }
+        ]
+      }
+    },
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "optional": false,
+            "field": "JSON",
+            "description": "<p>ChannelList Response {     &#39;Channels&#39;:{         &#39;cid&#39;:{             &#39;name&#39;:&#39;Name of Channel (ex: Booking.com),             &#39;signupLink&#39;=&gt;&#39;<a href=\"http://domain/url.to.signup\">http://domain/url.to.signup</a>&#39;,             &#39;requireActivation&#39;:&#39;true|false&#39;,             &#39;calendarBased&#39;:&#39;true|false&#39;,             &#39;isLive&#39;=&gt;&#39;true|false&#39;,             &#39;isBeta&#39;=&gt;&#39;true|false&#39;,             &#39;PropertyInput&#39;:[                 { &#39;name&#39;:&#39;field_id&#39;, label=&gt;&#39;Name of Input&#39;, type=&gt;&#39;inputtype&#39; },                 { &#39;name&#39;:&#39;field_two&#39;, label=&gt;&#39;User Prompt&#39;, type=&gt;&#39;inputtype&#39; },                 ]             &#39;RoomInput&#39;:[                 { &#39;name&#39;:&#39;field_id&#39;, label=&gt;&#39;Name of Input&#39;, type=&gt;&#39;inputtype&#39; },                 { &#39;name&#39;:&#39;field_two&#39;, label=&gt;&#39;User Prompt&#39;, type=&gt;&#39;inputtype&#39; },                 ]             }         } }</p> "
+          }
+        ],
+        "Response": [
+          {
+            "group": "Response",
+            "type": "String",
+            "optional": false,
+            "field": "Channels",
+            "description": ""
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "XML ChannelList Response",
+          "content": "<?xml version=\"1.0\" encoding=\"UTF-8\" ?>\n<ChannelListResponse>\n  <Channels>\n    <Channel>\n \t\t<id>boo</id>\n\t\t<name>Booking.com</name>\n\t\t<signupLink>http://www.someurl</signuplink>\n    </Channel>\n</ChannelListResponse>",
+          "type": "json"
+        }
+      ]
+    },
+    "examples": [
+      {
+        "title": "XML ChannelList Request",
+        "content": "<?xml version=\"1.0\" encoding=\"UTF-8\" ?>\n<ChannelList>\n</ChannelList>",
+        "type": "json"
+      }
+    ],
+    "version": "0.0.0",
+    "filename": "perllib/MAAPI.pm",
+    "groupTitle": "ChannelList"
+  },
+  {
+    "type": "get",
+    "url": "/ChannelList",
+    "title": "ChannelList",
+    "name": "ChannelList",
+    "group": "ChannelList",
+    "description": "<p>Dumps information about all known channels, their status, and supported fields.</p> ",
+    "parameter": {
+      "fields": {
+        "Request": [
+          {
+            "group": "Request",
+            "type": "String",
+            "optional": false,
+            "field": "Auth/VendorId",
+            "description": "<p>Your Vendor ID</p> "
+          },
+          {
+            "group": "Request",
+            "type": "String",
+            "optional": false,
+            "field": "Auth/VendorPassword",
+            "description": "<p>Your Vendor Password</p> "
+          }
+        ],
+        "Response": [
+          {
+            "group": "Response",
+            "type": "String",
+            "optional": false,
+            "field": "Channels/cid",
+            "description": "<p>a 2-4 digit code used to represent the OTA/Channel.</p> "
+          }
+        ]
+      }
+    },
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "optional": false,
+            "field": "JSON",
+            "description": "<p>ChannelList Response {     &#39;Channels&#39;:{         &#39;cid&#39;:{             &#39;name&#39;:&#39;Name of Channel (ex: Booking.com),             &#39;signupLink&#39;=&gt;&#39;<a href=\"http://domain/url.to.signup\">http://domain/url.to.signup</a>&#39;,             &#39;requireActivation&#39;:&#39;true|false&#39;,             &#39;calendarBased&#39;:&#39;true|false&#39;,             &#39;isLive&#39;=&gt;&#39;true|false&#39;,             &#39;isBeta&#39;=&gt;&#39;true|false&#39;,             &#39;PropertyInput&#39;:[                 { &#39;name&#39;:&#39;field_id&#39;, label=&gt;&#39;Name of Input&#39;, type=&gt;&#39;inputtype&#39; },                 { &#39;name&#39;:&#39;field_two&#39;, label=&gt;&#39;User Prompt&#39;, type=&gt;&#39;inputtype&#39; },                 ]             &#39;RoomInput&#39;:[                 { &#39;name&#39;:&#39;field_id&#39;, label=&gt;&#39;Name of Input&#39;, type=&gt;&#39;inputtype&#39; },                 { &#39;name&#39;:&#39;field_two&#39;, label=&gt;&#39;User Prompt&#39;, type=&gt;&#39;inputtype&#39; },                 ]             }         } }</p> "
+          }
+        ]
+      }
+    },
+    "version": "0.0.0",
+    "filename": "perllib/MAAPI.pm",
+    "groupTitle": "ChannelList"
+  },
+  {
     "group": "Introduction",
     "type": "",
     "url": "{}",
@@ -59,6 +186,283 @@
     "version": "0.0.0",
     "filename": "htdocs/apidoc.pm",
     "groupTitle": "Introduction"
+  },
+  {
+    "type": "get",
+    "url": "/ARIUpdate",
+    "title": "ARIUpdate",
+    "name": "ARIUpdate",
+    "group": "PMS",
+    "parameter": {
+      "fields": {
+        "Request": [
+          {
+            "group": "Request",
+            "type": "String",
+            "optional": true,
+            "field": "Auth/UserId",
+            "description": "<p>Users unique ID     (required with Auth/UserPassword)</p> "
+          },
+          {
+            "group": "Request",
+            "type": "String",
+            "optional": true,
+            "field": "Auth/UserPassword",
+            "description": "<p>Users password        (required with Auth/UserId)</p> "
+          },
+          {
+            "group": "Request",
+            "type": "String",
+            "optional": true,
+            "field": "Auth/UserToken",
+            "description": "<p>Users auth token (see AssociateUserToPMS call to generate a Token)# @apiParam (Request) {String} Auth/VendorId            Your Vendor ID</p> "
+          },
+          {
+            "group": "Request",
+            "type": "String",
+            "optional": false,
+            "field": "Auth/VendorId",
+            "description": "<p>Your Vendor ID</p> "
+          },
+          {
+            "group": "Request",
+            "type": "String",
+            "optional": false,
+            "field": "Auth/VendorPassword",
+            "description": "<p>Your Vendor Password</p> "
+          },
+          {
+            "group": "Request",
+            "type": "String",
+            "optional": false,
+            "field": "Channels/Channel",
+            "description": "<p>A list of channels that the customer wants to update. See below for channel codes.</p> "
+          },
+          {
+            "group": "Request",
+            "type": "String",
+            "optional": false,
+            "field": "Allocations/Allocation",
+            "description": "<p>Individual allocations. There can be as many as you like, but a the date ranges should never overlap (within one room id).</p> "
+          },
+          {
+            "group": "Request",
+            "type": "String",
+            "optional": false,
+            "field": "RoomId",
+            "description": "<p>Room type id as returned by RoomList.</p> "
+          },
+          {
+            "group": "Request",
+            "type": "String",
+            "optional": false,
+            "field": "StartDate/EndDate",
+            "description": "<p>Format: YYYY-MM-DD.</p> "
+          },
+          {
+            "group": "Request",
+            "type": "String",
+            "optional": false,
+            "field": "Units",
+            "description": "<p>How many beds or rooms should be available on this day. Whether it&#39;s beds or rooms depends on whether the room is a dorm or a private room. To remove allocation set Units to 0.</p> "
+          },
+          {
+            "group": "Request",
+            "type": "String",
+            "optional": false,
+            "field": "MinStay",
+            "description": "<p>Specify the minumum number of days a customer is allowed to stay. Not all channels support this feature. Needs to be 1 or higher. (optional)</p> "
+          },
+          {
+            "group": "Request",
+            "type": "String",
+            "optional": false,
+            "field": "MaxStay",
+            "description": "<p>Specify the maximum number of days a customer is allowed to stay. Not all channels support this feature. Needs to be 1 or higher. (optional)</p> "
+          },
+          {
+            "group": "Request",
+            "type": "String",
+            "optional": false,
+            "field": "Prices/Price",
+            "description": "<p>Price per person for shared/dorm rooms or per room for private rooms. You can submit two Price tags. The default one and one with the attribute \\textit{weekend=&quot;true&quot;}. If a Price tag with this attribute has been submitted the rate only applies to weekdays set by the customer as weekends (see PropertyList for which days are set as weekend days).</p> "
+          }
+        ]
+      }
+    },
+    "success": {
+      "fields": {
+        "Response": [
+          {
+            "group": "Response",
+            "type": "String",
+            "optional": false,
+            "field": "Success",
+            "description": "<p>Can be \\textit{true} (all channel updates succeeded), \\textit{partial} (not all channels succeeded) or \\textit{false} (all channel updates failed).</p> "
+          },
+          {
+            "group": "Response",
+            "type": "String",
+            "optional": false,
+            "field": "Errors/Error",
+            "description": "<p>Check with the list of errors below. Might contain the attribute \\textit{channel=&quot;..&quot;} to indicate whether the error only applies to a specific channel.</p> "
+          },
+          {
+            "group": "Response",
+            "type": "String",
+            "optional": false,
+            "field": "Warnings/Warning",
+            "description": "<p>Check with the list of errors below. Might contain the attribute \\textit{channel=&quot;..&quot;} to indicate whether the warning only applies to a specific channel.</p> "
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "XML ARIUpdate Response (Full Success)",
+          "content": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<ARIUpdateResponse>\n <Success>true</Success>\n <Errors></Errors>\n <Warnings>\n\t<Warning channel=\"hc\">\n\t  <WarningId>207</WarningId>\n\t  <WarningMsg>\n\t  \tSkipped room type (not setup with channel).\n\t  </WarningMsg>\n\t</Warning>  \n </Warnings>\n</ARIUpdateResponse>",
+          "type": "json"
+        },
+        {
+          "title": "XML ARIUpdate Warning Response (at least one channel succeeded)",
+          "content": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<ARIUpdateResponse>\n <Success>partial</Success>\n <Errors>\n\t<Error channel=\"adv\">\n\t  <ErrorId>15</ErrorId>\n\t  <ErrorMsg>\n\t\t Missing or wrong channel credentials on myallocator.com\n\t  </ErrorMsg>\n\t</Error>\n </Errors>\n <Warnings></Warnings>\n</ARIUpdateResponse>",
+          "type": "json"
+        },
+        {
+          "title": "XML ARIUpdate Failed Response (all channels came back with errors)",
+          "content": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<ARIUpdateResponse>\n <Success>false</Success>\n <Errors>\n\t<Error channel=\"adv\">\n\t  <ErrorId>15</ErrorId>\n\t  <ErrorMsg>\n\t  \tMissing or wrong channel credentials on myallocator.com\n\t  </ErrorMsg>\t\t\n\t</Error>\n </Errors>\n <Warnings></Warnings>\n</ARIUpdateResponse>",
+          "type": "json"
+        },
+        {
+          "title": "XML ARIUpdate Failed update (error before submitting to any channel)",
+          "content": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<ARIUpdateResponse>\n <Success>false</Success>\n <Errors>\n\t<Error\">\n\t  <ErrorId>17</ErrorId>\n\t  <ErrorMsg>\n\t  \tStart date too far in the future (>2 years)\n\t  </ErrorMsg>\t\t\n\t</Error>\n </Errors>\n <Warnings></Warnings>\n</ARIUpdateResponse>",
+          "type": "json"
+        },
+        {
+          "title": "XML ARIUpdate QueryForStatus=true",
+          "content": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<ARIUpdateResponse>\n <Success>true</Success>\n <Errors></Errors>\n <Warnings></Warnings>\n  <UpdateId>832522158</UpdateId>\n</ARIUpdateResponse>",
+          "type": "json"
+        }
+      ]
+    },
+    "description": "<p>An allocation sets the number of rooms or beds (depending on whether the  room type is a private room or shared/dorm) available during  any specific time frame. For more details see below.</p> <p> <strong> Handling Errors &amp; Warnings </strong></p> <p> The response will always include the Success, Errors and Warnings tags. If  Success is set to &quot;true&quot; the Errors tag will be empty. If Success is set to  &quot;partial&quot; or &quot;false&quot; at least one Error tag is included.</p> <p> <strong> Submitting to ALL channels </strong></p> <p> You can also submit to all available channels without specifying explicity which  channels to update. Use the channel code &quot;all&quot; to do this. Channels that are not   set up by the user will be skipped as indicated by a warning. </p> <p> It is also possible to submit to all channels while excluding certain channels.  Add the attribute exclude=&quot;true&quot; to skip a channel. See example below.  Use the channel code &quot;all&quot; to do this.</p> <p> <strong> Running Jobs in the Background (ARIUpdateStatus) </strong></p> <p> You can also run the ARIUpdate update in the background and query  for the updates using ARIUpdateStatus. This enables you  to show the update progress to the user while it&#39;s still running. To enable  this feature you need to add the node QueryForStatus (see example)</p> <p> If QueryForStatus is true then the ARIUpdateResponse will contain the additional parameter UpdateId, which  is needed for ARIUpdateStatus</p> ",
+    "examples": [
+      {
+        "title": "JSON ARIUpdate",
+        "content": "{ \n 'Auth/UserId':'your username',\n 'Auth/UserPassword':'your password'\n 'Channels': [ 'hc','iwb' ],\n 'Allocations: [\n\t\t{\n\t\t'RoomId':'59',\n\t\t'StartDate':'2010-06-01',\n\t\t'EndDate':'2010-06-01',\n\t\t'Units':'3',\n\t\t'MinStay':'1',\n\t\t'MaxStay':'30',\n\t\t'Price':'20.00',\n\t\t'Price-Weekday':'15.00',\n\t\t'Price-Weekend':'20.00',\n\t\t}\n\t\t]\n \t]\n}",
+        "type": "json"
+      },
+      {
+        "title": "XML ARIUpdateRequest",
+        "content": "<?xml version=\"1.0\" encoding=\"UTF-8\" ?>\n<ARIUpdate>\n <Auth>\n   <UserId>Customer User ID</UserId>\n   <UserPassword>Customer Password</UserPassword>\n   <PropertyId>Property ID on myallocator.com</PropertyId>\n   <VendorId>Your Vendor ID</VendorId>\n   <VendorPassword>Your Vendor Password</VendorPassword>\n </Auth>\n\n <Updates> \n\t<Channels>\n\t\t<Channel>hc</Channel>\n\t\t<Channel>iwb</Channel>\n\t </Channels>\n \n\t <Allocations>\n\t\t<Allocation>\n\t\t  <RoomId>59</RoomId>\n\t\t  <StartDate>2010-06-01</StartDate>\n\t\t  <EndDate>2010-08-12</EndDate>\n\t\t  <Units>3</Units>\n\t\t  <MinStay>1</MinStay>\n\t\t  <MaxStay>30</MaxStay>\n\t\t  <Prices>\n\t\t\t <Price>20.00</Price>\n\t\t\t <Price weekend=\"true\">25.00</Price>\n\t\t  </Prices>\n\t\t</Allocation>\n\t </Allocations>\n</Updates>\n</ARIUpdate>",
+        "type": "json"
+      },
+      {
+        "title": "XML Request (Status Check)",
+        "content": "<?xml version=\"1.0\" encoding=\"UTF-8\" ?>\n<ARIUpdate>\n <Auth>\n\t...\n </Auth>\n \n <Options>\n\t<QueryForStatus>true</QueryForStatus>\n </Options>\n\t \n ...\n</ARIUpdate>",
+        "type": "json"
+      },
+      {
+        "title": "XML ARIUpdate (Submit to all channels excluding Gomio and Hostelsclub)",
+        "content": "<?xml version=\"1.0\" encoding=\"UTF-8\" ?>\n<ARIUpdate>\n <Auth>\n\t<UserId>Customer User ID</UserId>\n\t<UserPassword>Customer Password</UserPassword>\n\t<PropertyId>Property ID on myallocator.com</PropertyId>\n\t<VendorId>Your Vendor ID</VendorId>\n\t<VendorPassword>Your Vendor Password</VendorPassword>\n </Auth>\n \n <Updates>\n\t <Channels>\n\t\t<Channel>all</Channel>\n\t\t<Channel exclude=\"true\">gom</Channel>\n\t\t<Channel exclude=\"true\">hc</Channel>\n \t</Channels>\n \n\t <Allocations>\n\t\t...\n\t </Allocations>\n</Updates>\n</ARIUpdate>",
+        "type": "json"
+      }
+    ],
+    "version": "0.0.0",
+    "filename": "perllib/MAAPI.pm",
+    "groupTitle": "PMS"
+  },
+  {
+    "type": "get",
+    "url": "/ARIUpdateStatus",
+    "title": "ARIUpdateStatus",
+    "name": "ARIUpdateStatus",
+    "group": "PMS",
+    "parameter": {
+      "fields": {
+        "Request": [
+          {
+            "group": "Request",
+            "type": "String",
+            "optional": true,
+            "field": "Auth/UserId",
+            "description": "<p>Users unique ID     (required with Auth/UserPassword)</p> "
+          },
+          {
+            "group": "Request",
+            "type": "String",
+            "optional": true,
+            "field": "Auth/UserPassword",
+            "description": "<p>Users password        (required with Auth/UserId)</p> "
+          },
+          {
+            "group": "Request",
+            "type": "String",
+            "optional": true,
+            "field": "Auth/UserToken",
+            "description": "<p>Users auth token (see AssociateUserToPMS call to generate a Token)# @apiParam (Request) {String} Auth/VendorId            Your Vendor ID</p> "
+          },
+          {
+            "group": "Request",
+            "type": "String",
+            "optional": false,
+            "field": "Auth/PropertyId",
+            "description": "<p>Property ID on myallocator.com</p> "
+          },
+          {
+            "group": "Request",
+            "type": "String",
+            "optional": false,
+            "field": "Auth/VendorId",
+            "description": "<p>Your Vendor ID</p> "
+          },
+          {
+            "group": "Request",
+            "type": "String",
+            "optional": false,
+            "field": "Auth/VendorPassword",
+            "description": "<p>Your Vendor Password</p> "
+          }
+        ]
+      }
+    },
+    "description": "<p>Use this ARIUpdateStatus to query for the status of a ARIUpdate. It  will list the results by channel. Big updates are split into several  parts which is reflected in the Parts and ActivePart parameter.</p> ",
+    "success": {
+      "fields": {
+        "Response": [
+          {
+            "group": "Response",
+            "type": "String",
+            "optional": false,
+            "field": "Parts",
+            "description": "<p>A big update can be split into smaller parts. This can be used as a progress indicator. 0 parts mean that the update is completed (or aborted due to an error).</p> "
+          },
+          {
+            "group": "Response",
+            "type": "String",
+            "optional": false,
+            "field": "ActivePart",
+            "description": "<p>The current part number being submitted to the channel.</p> "
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "XML ARIUpdateStatus Response",
+          "content": "<?xml version=\"1.0\" encoding=\"UTF-8\" ?>\n<ARIUpdateStatusResponse>\n <Channels>\n   <Channel code=\"gom\">\n     <ActivePart>3</ActivePart>\n     <Parts>3</Parts>\n     <Warnings></Warnings>\n     <Errors></Errors>\n     <Success>false</Success>\n   </Channel>\n   <Channel code=\"hc\">\n     <ActivePart>3</ActivePart>\n     <Parts>0</Parts>\n     <Errors></Errors>\n     <Success>true</Success>\n     <Warnings>\n       <Warning>\n         <WarningId>207</WarningId>\n         <WarningMsg>Skipped room type (not setup with channel).</WarningMsg>\n       </Warning>\n     </Warnings>\n   </Channel>\n   <Channel code=\"iwb\">\n     <ActivePart>0</ActivePart>\n     <Errors>\n       <ErrorId>15</ErrorId>\n       <ErrorMsg>Missing or wrong channel credentials on myallocator.com</ErrorMsg>\n     </Errors>\n     <Parts>0</Parts>\n     <Success>false</Success>\n     <Warnings>\n     </Warnings>\n   </Channel>\n</ARIUpdateStatusResponse>",
+          "type": "json"
+        }
+      ]
+    },
+    "examples": [
+      {
+        "title": "XML ARIUpdateStatus Request",
+        "content": "<?xml version=\"1.0\" encoding=\"UTF-8\" ?>\n<ARIUpdateStatus>\n <Auth>\n   <UserId>Customer User ID</UserId>\n   <UserPassword>Customer Password</UserPassword>\n   <PropertyId>Property ID on myallocator.com</PropertyId>\n   <VendorId>Your Vendor ID</VendorId>\n   <VendorPassword>Your Vendor Password</VendorPassword>\n </Auth>\n \n <UpdateId>832522158</UpdateId>\n</ARIUpdateStatus>",
+        "type": "json"
+      }
+    ],
+    "version": "0.0.0",
+    "filename": "perllib/MAAPI.pm",
+    "groupTitle": "PMS"
   },
   {
     "type": "get",
@@ -797,35 +1201,25 @@
   },
   {
     "type": "get",
-    "url": "/ChannelList",
-    "title": "ChannelList",
-    "name": "ChannelList",
+    "url": "/HelloWorld",
+    "title": "HelloWorld",
+    "name": "HelloWorld",
     "group": "PMS",
-    "description": "<p>Use this to get a list of available channels.</p> ",
-    "success": {
-      "fields": {
-        "Response": [
-          {
-            "group": "Response",
-            "type": "String",
-            "optional": false,
-            "field": "Channels",
-            "description": ""
-          }
-        ]
-      },
-      "examples": [
-        {
-          "title": "XML ChannelList Response",
-          "content": "<?xml version=\"1.0\" encoding=\"UTF-8\" ?>\n<ChannelListResponse>\n  <Channels>\n    <Channel>\n \t\t<id>boo</id>\n\t\t<name>Booking.com</name>\n\t\t<signupLink>http://www.someurl</signuplink>\n    </Channel>\n</ChannelListResponse>",
-          "type": "json"
-        }
-      ]
-    },
+    "description": "<table> <thead> <tr> <th>Call</th> <th>Notes + Authentication Requirements</th> </tr> </thead> <tbody> <tr> <td>Hello</td> <td>No Authentication Required</td> </tr> <tr> <td>HelloVendor</td> <td>Requires <em>VALID</em> Vendor Credentials</td> </tr> <tr> <td>HelloUser</td> <td>Requires <em>VALID</em> User Credentials</td> </tr> <tr> <td>HelloUserVendor</td> <td>Requires <em>VALID</em> User <em>AND</em> Vendor Credentials</td> </tr> </tbody> </table> <p> This method is diagnostic in nature, it is intended to provide a simple echo/response &quot;My First API call&quot;,  <em>IT HAS NO PURPOSE</em> besides simply returning whatever parameters you send it (no authentication required).</p> ",
     "examples": [
       {
-        "title": "XML ChannelList Request",
-        "content": "<?xml version=\"1.0\" encoding=\"UTF-8\" ?>\n<ChannelList>\n</ChannelList>",
+        "title": "XML Hello Request",
+        "content": "GET /pms/v201408/xml/Hello\nHTTP/1.1 200 OK\nContent-Type: text/xml\n<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<Hello>\n <hello>world</hello>\n</Hello>",
+        "type": "json"
+      },
+      {
+        "title": "JSON Hello Request",
+        "content": "GET /pms/v201408/json/Hello\nContent-Type: application/json\n{ 'hello':'world' }",
+        "type": "json"
+      },
+      {
+        "title": "JSON HelloVendor Request",
+        "content": "GET /pms/v201408/json/HelloVendor\nContent-Type: application/json\n{ \n'Auth/VendorId':'your vendor id',\n'Auth/VendorPassword':'your vendor password',\n'hello':'world' \n}",
         "type": "json"
       }
     ],
@@ -835,9 +1229,9 @@
   },
   {
     "type": "get",
-    "url": "/ChannelMappingList",
-    "title": "ChannelMappingList",
-    "name": "ChannelMappingList",
+    "url": "/PropertyChannelList",
+    "title": "PropertyChannelList",
+    "name": "PropertyChannelList",
     "group": "PMS",
     "description": "<p>Lists the channel details associated with a property. Formerly (v1) GetProperties</p> ",
     "parameter": {
@@ -883,8 +1277,8 @@
     },
     "examples": [
       {
-        "title": "XML ChannelMappingList",
-        "content": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<ChannelMappingList>\n  <Auth>\n    <UserId>Customer User ID</UserId>\n    <UserPassword>Customer Password</UserPassword>\n    <PropertyId>Property ID on myallocator.com</PropertyId>\n    <VendorId>Your Vendor ID</VendorId>\n    <VendorPassword>Your Vendor Password</VendorPassword>\n  </Auth>\n</ChannelMappingList>",
+        "title": "XML PropertyChannelList",
+        "content": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<PropertyChannelList>\n  <Auth>\n    <UserId>Customer User ID</UserId>\n    <UserPassword>Customer Password</UserPassword>\n    <PropertyId>Property ID on myallocator.com</PropertyId>\n    <VendorId>Your Vendor ID</VendorId>\n    <VendorPassword>Your Vendor Password</VendorPassword>\n  </Auth>\n</PropertyChannelList>",
         "type": "json"
       }
     ],
@@ -894,10 +1288,11 @@
   },
   {
     "type": "get",
-    "url": "/GetUpdateStatus",
-    "title": "GetUpdateStatus",
-    "name": "GetUpdateStatus",
+    "url": "/PropertyChannelUpdate",
+    "title": "PropertyChannelUpdate",
+    "name": "PropertyChannelUpdate",
     "group": "PMS",
+    "description": "<p>Configure a property with OTA credentials (this can also be done via the myallocator interface)</p> ",
     "parameter": {
       "fields": {
         "Request": [
@@ -920,14 +1315,14 @@
             "type": "String",
             "optional": true,
             "field": "Auth/UserToken",
-            "description": "<p>Users auth token (see AssociateUserToPMS call to generate a Token)# @apiParam (Request) {String} Auth/VendorId            Your Vendor ID</p> "
+            "description": "<p>Users auth token (see AssociateUserToPMS call to generate a Token)</p> "
           },
           {
             "group": "Request",
             "type": "String",
             "optional": false,
             "field": "Auth/PropertyId",
-            "description": "<p>Property ID on myallocator.com</p> "
+            "description": ""
           },
           {
             "group": "Request",
@@ -942,70 +1337,21 @@
             "optional": false,
             "field": "Auth/VendorPassword",
             "description": "<p>Your Vendor Password</p> "
-          }
-        ]
-      }
-    },
-    "description": "<p>Use this GetUpdateStatus to query for the status of a SetAllocation update. It  will list the results by channel. Big updates are split into several  parts which is reflected in the Parts and ActivePart parameter.</p> ",
-    "success": {
-      "fields": {
-        "Response": [
-          {
-            "group": "Response",
-            "type": "String",
-            "optional": false,
-            "field": "Parts",
-            "description": "<p>A big update can be split into smaller parts. This can be used as a progress indicator. 0 parts mean that the update is completed (or aborted due to an error).</p> "
           },
           {
-            "group": "Response",
-            "type": "String",
+            "group": "Request",
+            "type": "Array",
             "optional": false,
-            "field": "ActivePart",
-            "description": "<p>The current part number being submitted to the channel.</p> "
+            "field": "Update",
+            "description": ""
           }
         ]
-      },
-      "examples": [
-        {
-          "title": "XML GetUpdateStatus Response",
-          "content": "<?xml version=\"1.0\" encoding=\"UTF-8\" ?>\n<GetUpdateStatusResponse>\n <Channels>\n   <Channel code=\"gom\">\n     <ActivePart>3</ActivePart>\n     <Parts>3</Parts>\n     <Warnings></Warnings>\n     <Errors></Errors>\n     <Success>false</Success>\n   </Channel>\n   <Channel code=\"hc\">\n     <ActivePart>3</ActivePart>\n     <Parts>0</Parts>\n     <Errors></Errors>\n     <Success>true</Success>\n     <Warnings>\n       <Warning>\n         <WarningId>207</WarningId>\n         <WarningMsg>Skipped room type (not setup with channel).</WarningMsg>\n       </Warning>\n     </Warnings>\n   </Channel>\n   <Channel code=\"iwb\">\n     <ActivePart>0</ActivePart>\n     <Errors>\n       <ErrorId>15</ErrorId>\n       <ErrorMsg>Missing or wrong channel credentials on myallocator.com</ErrorMsg>\n     </Errors>\n     <Parts>0</Parts>\n     <Success>false</Success>\n     <Warnings>\n     </Warnings>\n   </Channel>\n</GetUpdateStatusResponse>",
-          "type": "json"
-        }
-      ]
+      }
     },
     "examples": [
       {
-        "title": "XML GetUpdateStatus Request",
-        "content": "<?xml version=\"1.0\" encoding=\"UTF-8\" ?>\n<GetUpdateStatus>\n <Auth>\n   <UserId>Customer User ID</UserId>\n   <UserPassword>Customer Password</UserPassword>\n   <PropertyId>Property ID on myallocator.com</PropertyId>\n   <VendorId>Your Vendor ID</VendorId>\n   <VendorPassword>Your Vendor Password</VendorPassword>\n </Auth>\n \n <UpdateId>832522158</UpdateId>\n</GetUpdateStatus>",
-        "type": "json"
-      }
-    ],
-    "version": "0.0.0",
-    "filename": "perllib/MAAPI.pm",
-    "groupTitle": "PMS"
-  },
-  {
-    "type": "get",
-    "url": "/HelloWorld",
-    "title": "HelloWorld",
-    "name": "HelloWorld",
-    "group": "PMS",
-    "description": "<table> <thead> <tr> <th>Call</th> <th>Notes + Authentication Requirements</th> </tr> </thead> <tbody> <tr> <td>Hello</td> <td>No Authentication Required</td> </tr> <tr> <td>HelloVendor</td> <td>Requires <em>VALID</em> Vendor Credentials</td> </tr> <tr> <td>HelloUser</td> <td>Requires <em>VALID</em> User Credentials</td> </tr> <tr> <td>HelloUserVendor</td> <td>Requires <em>VALID</em> User <em>AND</em> Vendor Credentials</td> </tr> </tbody> </table> <p> This method is diagnostic in nature, it is intended to provide a simple echo/response &quot;My First API call&quot;,  <em>IT HAS NO PURPOSE</em> besides simply returning whatever parameters you send it (no authentication required).</p> ",
-    "examples": [
-      {
-        "title": "XML Hello Request",
-        "content": "GET /pms/v201408/xml/Hello\nHTTP/1.1 200 OK\nContent-Type: text/xml\n<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<Hello>\n <hello>world</hello>\n</Hello>",
-        "type": "json"
-      },
-      {
-        "title": "JSON Hello Request",
-        "content": "GET /pms/v201408/json/Hello\nContent-Type: application/json\n{ 'hello':'world' }",
-        "type": "json"
-      },
-      {
-        "title": "JSON HelloVendor Request",
-        "content": "GET /pms/v201408/json/HelloVendor\nContent-Type: application/json\n{ \n'Auth/VendorId':'your vendor id',\n'Auth/VendorPassword':'your vendor password',\n'hello':'world' \n}",
+        "title": "{",
+        "content": "{\n\t'Auth/PropertyId':'pid',\n\t'Updates':[\n\t\t{ 'cid'=>'ota', 'name'=>'ota_id', 'value'=>'new value' },\n\t\t{ 'cid'=>'ota', 'name'=>'ota_field2', 'value'=>'another value' }\n\t\t{ 'cid'=>'ota', 'roomid'=>'1234', 'name'=>'cid_room_field2', 'value'=>'another value' }\n\t\t{ 'cid'=>'ota', 'roomid'=>'1235', 'name'=>'cid_room_field2', 'value'=>'another value' }\n\t\t]\n}",
         "type": "json"
       }
     ],
@@ -1240,7 +1586,7 @@
             "type": "String",
             "optional": false,
             "field": "Weekend",
-            "description": "<p>Day &amp; Shows which days are marked as weekend days by the customer on Myallocator. Monday = 1, Sunday = 7. The name of the weekday is also given in the \\textit{name} property. See SetAllocation for information on when this is used.</p> "
+            "description": "<p>Day &amp; Shows which days are marked as weekend days by the customer on Myallocator. Monday = 1, Sunday = 7. The name of the weekday is also given in the \\textit{name} property. See ARIUpdate for information on when this is used.</p> "
           }
         ]
       },
@@ -1578,185 +1924,6 @@
         }
       ]
     },
-    "version": "0.0.0",
-    "filename": "perllib/MAAPI.pm",
-    "groupTitle": "PMS"
-  },
-  {
-    "type": "get",
-    "url": "/SetAllocation",
-    "title": "SetAllocation",
-    "name": "SetAllocation",
-    "group": "PMS",
-    "parameter": {
-      "fields": {
-        "Request": [
-          {
-            "group": "Request",
-            "type": "String",
-            "optional": true,
-            "field": "Auth/UserId",
-            "description": "<p>Users unique ID     (required with Auth/UserPassword)</p> "
-          },
-          {
-            "group": "Request",
-            "type": "String",
-            "optional": true,
-            "field": "Auth/UserPassword",
-            "description": "<p>Users password        (required with Auth/UserId)</p> "
-          },
-          {
-            "group": "Request",
-            "type": "String",
-            "optional": true,
-            "field": "Auth/UserToken",
-            "description": "<p>Users auth token (see AssociateUserToPMS call to generate a Token)# @apiParam (Request) {String} Auth/VendorId            Your Vendor ID</p> "
-          },
-          {
-            "group": "Request",
-            "type": "String",
-            "optional": false,
-            "field": "Auth/VendorId",
-            "description": "<p>Your Vendor ID</p> "
-          },
-          {
-            "group": "Request",
-            "type": "String",
-            "optional": false,
-            "field": "Auth/VendorPassword",
-            "description": "<p>Your Vendor Password</p> "
-          },
-          {
-            "group": "Request",
-            "type": "String",
-            "optional": false,
-            "field": "Channels/Channel",
-            "description": "<p>A list of channels that the customer wants to update. See below for channel codes.</p> "
-          },
-          {
-            "group": "Request",
-            "type": "String",
-            "optional": false,
-            "field": "Allocations/Allocation",
-            "description": "<p>Individual allocations. There can be as many as you like, but a the date ranges should never overlap (within one room id).</p> "
-          },
-          {
-            "group": "Request",
-            "type": "String",
-            "optional": false,
-            "field": "RoomTypeId",
-            "description": "<p>Room type id as returned by RoomList.</p> "
-          },
-          {
-            "group": "Request",
-            "type": "String",
-            "optional": false,
-            "field": "StartDate/EndDate",
-            "description": "<p>Format: YYYY-MM-DD.</p> "
-          },
-          {
-            "group": "Request",
-            "type": "String",
-            "optional": false,
-            "field": "Units",
-            "description": "<p>How many beds or rooms should be available on this day. Whether it&#39;s beds or rooms depends on whether the room is a dorm or a private room. To remove allocation set Units to 0.</p> "
-          },
-          {
-            "group": "Request",
-            "type": "String",
-            "optional": false,
-            "field": "MinStay",
-            "description": "<p>Specify the minumum number of days a customer is allowed to stay. Not all channels support this feature. Needs to be 1 or higher. (optional)</p> "
-          },
-          {
-            "group": "Request",
-            "type": "String",
-            "optional": false,
-            "field": "MaxStay",
-            "description": "<p>Specify the maximum number of days a customer is allowed to stay. Not all channels support this feature. Needs to be 1 or higher. (optional)</p> "
-          },
-          {
-            "group": "Request",
-            "type": "String",
-            "optional": false,
-            "field": "Prices/Price",
-            "description": "<p>Price per person for shared/dorm rooms or per room for private rooms. You can submit two Price tags. The default one and one with the attribute \\textit{weekend=&quot;true&quot;}. If a Price tag with this attribute has been submitted the rate only applies to weekdays set by the customer as weekends (see PropertyList for which days are set as weekend days).</p> "
-          }
-        ]
-      }
-    },
-    "success": {
-      "fields": {
-        "Response": [
-          {
-            "group": "Response",
-            "type": "String",
-            "optional": false,
-            "field": "Success",
-            "description": "<p>Can be \\textit{true} (all channel updates succeeded), \\textit{partial} (not all channels succeeded) or \\textit{false} (all channel updates failed).</p> "
-          },
-          {
-            "group": "Response",
-            "type": "String",
-            "optional": false,
-            "field": "Errors/Error",
-            "description": "<p>Check with the list of errors below. Might contain the attribute \\textit{channel=&quot;..&quot;} to indicate whether the error only applies to a specific channel.</p> "
-          },
-          {
-            "group": "Response",
-            "type": "String",
-            "optional": false,
-            "field": "Warnings/Warning",
-            "description": "<p>Check with the list of errors below. Might contain the attribute \\textit{channel=&quot;..&quot;} to indicate whether the warning only applies to a specific channel.</p> "
-          }
-        ]
-      },
-      "examples": [
-        {
-          "title": "XML SetAllocation Response (Full Success)",
-          "content": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<SetAllocationResponse>\n <Success>true</Success>\n <Errors></Errors>\n <Warnings>\n   <Warning channel=\"hc\">\n     <WarningId>207</WarningId>\n     <WarningMsg>\n     \tSkipped room type (not setup with channel).\n     </WarningMsg>\n   </Warning>  \n </Warnings>\n</SetAllocationResponse>",
-          "type": "json"
-        },
-        {
-          "title": "XML SetAllocation Warning Response (at least one channel succeeded)",
-          "content": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<SetAllocationResponse>\n <Success>partial</Success>\n <Errors>\n   <Error channel=\"adv\">\n     <ErrorId>15</ErrorId>\n     <ErrorMsg>\n       Missing or wrong channel credentials on myallocator.com\n     </ErrorMsg>\n   </Error>\n </Errors>\n <Warnings></Warnings>\n</SetAllocationResponse>",
-          "type": "json"
-        },
-        {
-          "title": "XML SetAllocation Failed Response (all channels came back with errors)",
-          "content": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<SetAllocationResponse>\n <Success>false</Success>\n <Errors>\n   <Error channel=\"adv\">\n     <ErrorId>15</ErrorId>\n     <ErrorMsg>\n     \tMissing or wrong channel credentials on myallocator.com\n     </ErrorMsg>      \n   </Error>\n </Errors>\n <Warnings></Warnings>\n</SetAllocationResponse>",
-          "type": "json"
-        },
-        {
-          "title": "XML SetAllocation Failed update (error before submitting to any channel)",
-          "content": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<SetAllocationResponse>\n <Success>false</Success>\n <Errors>\n   <Error\">\n     <ErrorId>17</ErrorId>\n     <ErrorMsg>\n     \tStart date too far in the future (>2 years)\n     </ErrorMsg>      \n   </Error>\n </Errors>\n <Warnings></Warnings>\n</SetAllocationResponse>",
-          "type": "json"
-        },
-        {
-          "title": "XML SetAllocation QueryForStatus=true",
-          "content": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<SetAllocationResponse>\n <Success>true</Success>\n <Errors></Errors>\n <Warnings></Warnings>\n  <UpdateId>832522158</UpdateId>\n</SetAllocationResponse>",
-          "type": "json"
-        }
-      ]
-    },
-    "description": "<p>An allocation sets the number of rooms or beds (depending on whether the  room type is a private room or shared/dorm) available during  any specific time frame. For more details see below.</p> <p> <strong> Handling Errors &amp; Warnings </strong></p> <p> The response will always include the Success, Errors and Warnings tags. If  Success is set to &quot;true&quot; the Errors tag will be empty. If Success is set to  &quot;partial&quot; or &quot;false&quot; at least one Error tag is included.</p> <p> <strong> Submitting to ALL channels </strong></p> <p> You can also submit to all available channels without specifying explicity which  channels to update. Use the channel code &quot;all&quot; to do this. Channels that are not   set up by the user will be skipped as indicated by a warning. </p> <p> It is also possible to submit to all channels while excluding certain channels.  Add the attribute exclude=&quot;true&quot; to skip a channel. See example below.  Use the channel code &quot;all&quot; to do this.</p> <p> <strong> Running Jobs in the Background (GetUpdateStatus) </strong></p> <p> You can also run the SetAllocation update in the background and query  for the updates using GetUpdateStatus. This enables you  to show the update progress to the user while it&#39;s still running. To enable  this feature you need to add the node QueryForStatus (see example)</p> <p> If QueryForStatus is true then the SetAllocationResponse will contain the additional parameter UpdateId, which  is needed for GetUpdateStatus</p> ",
-    "examples": [
-      {
-        "title": "JSON SetAllocation",
-        "content": "{ \n 'Auth/UserId':'your username',\n 'Auth/UserPassword':'your password'\n\t'Channels': [ 'hc','iwb' ],\n 'Allocations: [\n\t\t{\n\t\t'RoomTypeId':'59',\n\t\t'StartDate':'2010-06-01',\n\t\t'EndDate':'2010-06-01',\n\t\t'Units':'3',\n\t\t'MinStay':'1',\n\t\t'MaxStay':'30',\n\t\t'Price':'20.00',\n\t\t'Price-Weekday':'15.00',\n\t\t'Price-Weekend':'20.00',\n\t\t}\n ]\n}",
-        "type": "json"
-      },
-      {
-        "title": "XML SetAllocationRequest",
-        "content": "<?xml version=\"1.0\" encoding=\"UTF-8\" ?>\n<SetAllocation>\n <Auth>\n   <UserId>Customer User ID</UserId>\n   <UserPassword>Customer Password</UserPassword>\n   <PropertyId>Property ID on myallocator.com</PropertyId>\n   <VendorId>Your Vendor ID</VendorId>\n   <VendorPassword>Your Vendor Password</VendorPassword>\n </Auth>\n \n <Channels>\n   <Channel>hc</Channel>\n   <Channel>iwb</Channel>\n </Channels>\n \n <Allocations>\n   <Allocation>\n     <RoomTypeId>59</RoomTypeId>\n     <StartDate>2010-06-01</StartDate>\n     <EndDate>2010-08-12</EndDate>\n     <Units>3</Units>\n     <MinStay>1</MinStay>\n     <MaxStay>30</MaxStay>\n     <Prices>\n       <Price>20.00</Price>\n       <Price weekend=\"true\">25.00</Price>\n     </Prices>\n   </Allocation>\n </Allocations>\n</SetAllocation>",
-        "type": "json"
-      },
-      {
-        "title": "XML Request (Status Check)",
-        "content": "<?xml version=\"1.0\" encoding=\"UTF-8\" ?>\n<SetAllocation>\n <Auth>\n   ...\n </Auth>\n \n <Options>\n   <QueryForStatus>true</QueryForStatus>\n </Options>\n \n ...\n</SetAllocation>\n\n\napiExample XML SetAllocation (Submit to all channels excluding Gomio and Hostelsclub)\n<?xml version=\"1.0\" encoding=\"UTF-8\" ?>\n<SetAllocation>\n <Auth>\n   <UserId>Customer User ID</UserId>\n   <UserPassword>Customer Password</UserPassword>\n   <PropertyId>Property ID on myallocator.com</PropertyId>\n   <VendorId>Your Vendor ID</VendorId>\n   <VendorPassword>Your Vendor Password</VendorPassword>\n </Auth>\n \n <Channels>\n   <Channel>all</Channel>\n   <Channel exclude=\"true\">gom</Channel>\n   <Channel exclude=\"true\">hc</Channel>\n </Channels>\n \n <Allocations>\n   ...\n </Allocations>\n</SetAllocation>",
-        "type": "json"
-      }
-    ],
     "version": "0.0.0",
     "filename": "perllib/MAAPI.pm",
     "groupTitle": "PMS"
@@ -2356,56 +2523,6 @@
         }
       ]
     },
-    "version": "0.0.0",
-    "filename": "perllib/MAAPI.pm",
-    "groupTitle": "PMS"
-  },
-  {
-    "type": "get",
-    "url": "/UserPasswordRecover",
-    "title": "UserPasswordRecover",
-    "name": "UserPasswordRecover",
-    "group": "PMS",
-    "description": "<p><strong> EXPERIMENTAL </strong></p> ",
-    "parameter": {
-      "fields": {
-        "Request": [
-          {
-            "group": "Request",
-            "type": "String",
-            "optional": true,
-            "field": "Auth/UserId",
-            "description": "<p>Users unique ID     (required with Auth/UserPassword)</p> "
-          },
-          {
-            "group": "Request",
-            "type": "String",
-            "optional": true,
-            "field": "Auth/UserPassword",
-            "description": "<p>Users password        (required with Auth/UserId)</p> "
-          },
-          {
-            "group": "Request",
-            "type": "String",
-            "optional": true,
-            "field": "Auth/UserToken",
-            "description": "<p>Users auth token (see AssociateUserToPMS call to generate a Token)</p> "
-          }
-        ]
-      }
-    },
-    "examples": [
-      {
-        "title": "XML UserPasswordRecover Request",
-        "content": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<UserPasswordRecover>\n<Auth>\n  <UserId>Customer User ID</UserId>\n  <UserPassword>Customer Password</UserPassword>\n</Auth>\n</UserPasswordRecover>",
-        "type": "json"
-      },
-      {
-        "title": "JSON Hello Request",
-        "content": "Content-Type: application/json\n{ \n 'Auth/UserId':'your username',\n 'Auth/UserPassword':'your password'\n}",
-        "type": "json"
-      }
-    ],
     "version": "0.0.0",
     "filename": "perllib/MAAPI.pm",
     "groupTitle": "PMS"
