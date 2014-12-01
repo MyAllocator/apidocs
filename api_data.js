@@ -1802,6 +1802,200 @@ define({ "api": [
   },
   {
     "type": "get",
+    "url": "/RoomCreate",
+    "title": "RoomCreate",
+    "name": "RoomCreate",
+    "group": "PMS",
+    "description": "<p>This method allows you to create, update or remove rooms on myallocator.com. Please note that you can only send a single RoomCreate, RoomUpdate, or RoomRemove</p> ",
+    "parameter": {
+      "fields": {
+        "Request": [
+          {
+            "group": "Request",
+            "type": "String",
+            "optional": true,
+            "field": "Auth/UserId",
+            "description": "<p>Users unique ID     (required with Auth/UserPassword)</p> "
+          },
+          {
+            "group": "Request",
+            "type": "String",
+            "optional": true,
+            "field": "Auth/UserPassword",
+            "description": "<p>Users password        (required with Auth/UserId)</p> "
+          },
+          {
+            "group": "Request",
+            "type": "String",
+            "optional": true,
+            "field": "Auth/UserToken",
+            "description": "<p>Users auth token (see AssociateUserToPMS call to generate a Token)# @apiParam (Request) {String} Auth/VendorId            Your Vendor ID</p> "
+          },
+          {
+            "group": "Request",
+            "type": "String",
+            "optional": false,
+            "field": "Auth/PropertyId",
+            "description": "<p>Property ID on myallocator.com</p> "
+          },
+          {
+            "group": "Request",
+            "type": "String",
+            "optional": false,
+            "field": "Auth/VendorId",
+            "description": "<p>Your Vendor ID</p> "
+          },
+          {
+            "group": "Request",
+            "type": "String",
+            "optional": false,
+            "field": "Auth/VendorPassword",
+            "description": "<p>Your Vendor Password</p> "
+          },
+          {
+            "group": "Request",
+            "type": "String",
+            "optional": true,
+            "field": "RoomId",
+            "description": "<p>Room</p> "
+          },
+          {
+            "group": "Request",
+            "type": "String",
+            "optional": false,
+            "field": "Label",
+            "description": "<p>String that describes the room, usually provided by the customer. If omitted, a label will automatically be created from the other properties. (optional)</p> "
+          },
+          {
+            "group": "Request",
+            "type": "String",
+            "optional": false,
+            "field": "Units",
+            "description": "<p>How many rooms of this type there are. This option doesn&#39;t actually limit how many rooms can be set as available, it&#39;s only informational.</p> "
+          },
+          {
+            "group": "Request",
+            "type": "String",
+            "optional": false,
+            "field": "Occupancy",
+            "description": "<p>Number of many people that can stay in this room.</p> "
+          },
+          {
+            "group": "Request",
+            "type": "String",
+            "optional": false,
+            "field": "PrivateRoom",
+            "description": "<p>\\textit{true} if it&#39;s a private room, \\textit{false} for dormitories.</p> "
+          },
+          {
+            "group": "Request",
+            "type": "String",
+            "optional": false,
+            "field": "Gender",
+            "description": "<p>Only needed for dormitories. \\textit{MA} for males, \\textit{FE} for females, \\textit{MI} if mixed.</p> "
+          }
+        ]
+      }
+    },
+    "examples": [
+      {
+        "title": "XML Request:",
+        "content": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<RoomCreate>\n <Auth>\n   <UserId>Customer User ID</UserId>\n   <UserPassword>Customer Password</UserPassword>\n   <PropertyId>Property ID on myallocator.com</PropertyId>\n   <VendorId>Your Vendor ID</VendorId>\n   <VendorPassword>Your Vendor Password</VendorPassword>\n </Auth>\n <CreateRooms>\n \t<RoomTypes>\n     <RoomType>\n       <Label>2-bed private with sea-view</Label>\n       <Units>4</Units>\n       <Occupancy>2</Occupancy>\n       <PrivateRoom>true</PrivateRoom>    \n     </RoomType>\n     <RoomType>\n       <Label>6-bed female dorm</Label>\n       <Units>3</Units>\n       <Occupancy>6</Occupancy>\n       <Gender>FE</Gender>\n       <PrivateRoom>false</PrivateRoom>    \n     </RoomType>\n   </RoomTypes>\n </CreateRooms>\n</RoomCreate>",
+        "type": "json"
+      },
+      {
+        "title": "JSON Request:",
+        "content": "{\n\t'Rooms': [\n\t\t{\n\t\t\t'RoomId':1234,\n\t\t\t'PMSRoomId':'IdOfRoomOnPMS',\n\t\t\t'Label':'Name of Room',\n\t\t\t'Units':2,\n\t\t\t'Occupancy':4,\n\t\t\t'PrivateRoom':true,\n\t\t\t'Gender':'MI',\n\t\t},\n\t\t{\n\t\t\t'RoomId':1234,\n\t\t\t'PMSRoomId':'IdOfRoomOnPMS',\n\t\t\t'Label':'Name of Room',\n\t\t\t'Units':2,\n\t\t\t'Occupancy':4,\n\t\t\t'PrivateRoom':true,\n\t\t\t'Gender':'MI',\t\t\n\t\t}\n\t\t]\n}",
+        "type": "json"
+      }
+    ],
+    "success": {
+      "fields": {
+        "XML": [
+          {
+            "group": "XML",
+            "type": "String",
+            "optional": false,
+            "field": "RoomId",
+            "description": "<p>The room type ID which will reference the room type.</p> "
+          },
+          {
+            "group": "XML",
+            "type": "String",
+            "optional": false,
+            "field": "PMSRoomId",
+            "description": "<p>The room type ID which will reference the room type.</p> "
+          },
+          {
+            "group": "XML",
+            "type": "String",
+            "optional": false,
+            "field": "Units",
+            "description": "<p>Number of rooms of this type.</p> "
+          },
+          {
+            "group": "XML",
+            "type": "String",
+            "optional": false,
+            "field": "Occupancy",
+            "description": "<p>Number of persons that can stay in this room.</p> "
+          },
+          {
+            "group": "XML",
+            "type": "String",
+            "optional": false,
+            "field": "Beds",
+            "description": "<p>!!Obsolete!! Replaced with Occupancy (see above).</p> "
+          },
+          {
+            "group": "XML",
+            "type": "String",
+            "optional": false,
+            "field": "Gender",
+            "description": "<p>Gender restriction for shared rooms. MA for males, FE for females, MI if mixed. Always set to &#39;MI&#39; for private rooms.</p> "
+          },
+          {
+            "group": "XML",
+            "type": "String",
+            "optional": false,
+            "field": "DoubleBed",
+            "description": "<p>!!Obsolete!! Option removed from Myallocator. Now always defaults to false.</p> "
+          },
+          {
+            "group": "XML",
+            "type": "String",
+            "optional": false,
+            "field": "Ensuite",
+            "description": "<p>!!Obsolete!! Option removed from Myallocator. Now always defaults to false;</p> "
+          },
+          {
+            "group": "XML",
+            "type": "String",
+            "optional": false,
+            "field": "PrivateRooms",
+            "description": "<p>Whether this room is private or shared/dorm (\\textit{true} or \\textit{false}).</p> "
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "XML Response (creating a room):",
+          "content": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<CreateRoomResponse>\n <Success>true</Success>\n <RoomTypeIds>\n \t<RoomTypeId>35</RoomTypeId>\n </RoomTypeIds>\n</CreateRoomResponse>",
+          "type": "json"
+        },
+        {
+          "title": "XML Response (success SetRooms response)",
+          "content": "<CreateRoomResponse>\n <Success>true</Success>\n <RoomTypeIds>\n \t<RoomTypeId>35</RoomTypeId>\n </RoomTypeIds>\n</CreateRoomResponse>",
+          "type": "json"
+        }
+      ]
+    },
+    "version": "0.0.0",
+    "filename": "perllib/MAAPI.pm",
+    "groupTitle": "PMS"
+  },
+  {
+    "type": "get",
     "url": "/RoomList",
     "title": "RoomList",
     "name": "RoomList",
@@ -1930,98 +2124,14 @@ define({ "api": [
   },
   {
     "type": "get",
-    "url": "/SetRoomTypes",
-    "title": "SetRoomTypes",
-    "name": "SetRoomTypes",
+    "url": "/RoomRemove",
+    "title": "RoomRemove",
+    "name": "RoomRemove",
     "group": "PMS",
-    "description": "<p>This method allows you to create, update or remove rooms on myallocator.com. Please note that you can only send a single CreateRooms OR UpdateRooms OR RemoveRooms.</p> ",
+    "description": "<p>Remove a room.</p> ",
     "parameter": {
       "fields": {
         "Request": [
-          {
-            "group": "Request",
-            "type": "String",
-            "optional": true,
-            "field": "Auth/UserId",
-            "description": "<p>Users unique ID     (required with Auth/UserPassword)</p> "
-          },
-          {
-            "group": "Request",
-            "type": "String",
-            "optional": true,
-            "field": "Auth/UserPassword",
-            "description": "<p>Users password        (required with Auth/UserId)</p> "
-          },
-          {
-            "group": "Request",
-            "type": "String",
-            "optional": true,
-            "field": "Auth/UserToken",
-            "description": "<p>Users auth token (see AssociateUserToPMS call to generate a Token)# @apiParam (Request) {String} Auth/VendorId            Your Vendor ID</p> "
-          },
-          {
-            "group": "Request",
-            "type": "String",
-            "optional": false,
-            "field": "Auth/PropertyId",
-            "description": "<p>Property ID on myallocator.com</p> "
-          },
-          {
-            "group": "Request",
-            "type": "String",
-            "optional": false,
-            "field": "Auth/VendorId",
-            "description": "<p>Your Vendor ID</p> "
-          },
-          {
-            "group": "Request",
-            "type": "String",
-            "optional": false,
-            "field": "Auth/VendorPassword",
-            "description": "<p>Your Vendor Password</p> "
-          },
-          {
-            "group": "Request",
-            "type": "String",
-            "optional": true,
-            "field": "RoomId",
-            "description": "<p>Room</p> "
-          },
-          {
-            "group": "Request",
-            "type": "String",
-            "optional": false,
-            "field": "Label",
-            "description": "<p>String that describes the room, usually provided by the customer. If omitted, a label will automatically be created from the other properties. (optional)</p> "
-          },
-          {
-            "group": "Request",
-            "type": "String",
-            "optional": false,
-            "field": "Units",
-            "description": "<p>How many rooms of this type there are. This option doesn&#39;t actually limit how many rooms can be set as available, it&#39;s only informational.</p> "
-          },
-          {
-            "group": "Request",
-            "type": "String",
-            "optional": false,
-            "field": "Occupancy",
-            "description": "<p>Number of many people that can stay in this room.</p> "
-          },
-          {
-            "group": "Request",
-            "type": "String",
-            "optional": false,
-            "field": "PrivateRoom",
-            "description": "<p>\\textit{true} if it&#39;s a private room, \\textit{false} for dormitories.</p> "
-          },
-          {
-            "group": "Request",
-            "type": "String",
-            "optional": false,
-            "field": "Gender",
-            "description": "<p>Only needed for dormitories. \\textit{MA} for males, \\textit{FE} for females, \\textit{MI} if mixed.</p> "
-          },
           {
             "group": "Request",
             "type": "String",
@@ -2032,109 +2142,31 @@ define({ "api": [
         ]
       }
     },
-    "examples": [
-      {
-        "title": "XML Request:",
-        "content": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<SetRoomTypes>\n <Auth>\n   <UserId>Customer User ID</UserId>\n   <UserPassword>Customer Password</UserPassword>\n   <PropertyId>Property ID on myallocator.com</PropertyId>\n   <VendorId>Your Vendor ID</VendorId>\n   <VendorPassword>Your Vendor Password</VendorPassword>\n </Auth>\n <CreateRooms>\n \t<RoomTypes>\n     <RoomType>\n       <Label>2-bed private with sea-view</Label>\n       <Units>4</Units>\n       <Occupancy>2</Occupancy>\n       <PrivateRoom>true</PrivateRoom>    \n     </RoomType>\n     <RoomType>\n       <Label>6-bed female dorm</Label>\n       <Units>3</Units>\n       <Occupancy>6</Occupancy>\n       <Gender>FE</Gender>\n       <PrivateRoom>false</PrivateRoom>    \n     </RoomType>\n   </RoomTypes>\n </CreateRooms>\n</SetRoomTypes>",
-        "type": "json"
-      },
-      {
-        "title": "JSON Request:",
-        "content": "{\n\t'Rooms': [\n\t\t{\n\t\t\t'RoomId':1234,\n\t\t\t'PMSRoomId':'IdOfRoomOnPMS',\n\t\t\t'Label':'Name of Room',\n\t\t\t'Units':2,\n\t\t\t'Occupancy':4,\n\t\t\t'PrivateRoom':true,\n\t\t\t'Gender':'MI',\n\t\t},\n\t\t{\n\t\t\t'RoomId':1234,\n\t\t\t'PMSRoomId':'IdOfRoomOnPMS',\n\t\t\t'Label':'Name of Room',\n\t\t\t'Units':2,\n\t\t\t'Occupancy':4,\n\t\t\t'PrivateRoom':true,\n\t\t\t'Gender':'MI',\t\t\n\t\t}\n\t\t]\n}",
-        "type": "json"
-      }
-    ],
     "success": {
-      "fields": {
-        "XML": [
-          {
-            "group": "XML",
-            "type": "String",
-            "optional": false,
-            "field": "RoomId",
-            "description": "<p>The room type ID which will reference the room type.</p> "
-          },
-          {
-            "group": "XML",
-            "type": "String",
-            "optional": false,
-            "field": "PMSRoomId",
-            "description": "<p>The room type ID which will reference the room type.</p> "
-          },
-          {
-            "group": "XML",
-            "type": "String",
-            "optional": false,
-            "field": "Units",
-            "description": "<p>Number of rooms of this type.</p> "
-          },
-          {
-            "group": "XML",
-            "type": "String",
-            "optional": false,
-            "field": "Occupancy",
-            "description": "<p>Number of persons that can stay in this room.</p> "
-          },
-          {
-            "group": "XML",
-            "type": "String",
-            "optional": false,
-            "field": "Beds",
-            "description": "<p>!!Obsolete!! Replaced with Occupancy (see above).</p> "
-          },
-          {
-            "group": "XML",
-            "type": "String",
-            "optional": false,
-            "field": "Gender",
-            "description": "<p>Gender restriction for shared rooms. MA for males, FE for females, MI if mixed. Always set to &#39;MI&#39; for private rooms.</p> "
-          },
-          {
-            "group": "XML",
-            "type": "String",
-            "optional": false,
-            "field": "DoubleBed",
-            "description": "<p>!!Obsolete!! Option removed from Myallocator. Now always defaults to false.</p> "
-          },
-          {
-            "group": "XML",
-            "type": "String",
-            "optional": false,
-            "field": "Ensuite",
-            "description": "<p>!!Obsolete!! Option removed from Myallocator. Now always defaults to false;</p> "
-          },
-          {
-            "group": "XML",
-            "type": "String",
-            "optional": false,
-            "field": "PrivateRooms",
-            "description": "<p>Whether this room is private or shared/dorm (\\textit{true} or \\textit{false}).</p> "
-          }
-        ]
-      },
       "examples": [
         {
-          "title": "XML Response (creating a room):",
-          "content": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<SetRoomTypesResponse>\n <Success>true</Success>\n <RoomTypeIds>\n \t<RoomTypeId>35</RoomTypeId>\n \t<RoomTypeId>36</RoomTypeId>\n </RoomTypeIds>\n</SetRoomTypesResponse>",
-          "type": "json"
-        },
-        {
-          "title": "XML Response (success SetRooms response)",
-          "content": "<SetRoomTypesResponse>\n <Success>true</Success>\n <RoomTypeIds>\n \t<RoomTypeId>35</RoomTypeId>\n \t<RoomTypeId>36</RoomTypeId>\n </RoomTypeIds>\n</SetRoomTypesResponse>",
-          "type": "json"
-        },
-        {
           "title": "XML Request (Removing a room)",
-          "content": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<SetRoomTypes>\n <Auth>\n   <UserId>Customer User ID</UserId>\n   <UserPassword>Customer Password</UserPassword>\n   <PropertyId>Property ID on myallocator.com</PropertyId>\n   <VendorId>Your Vendor ID</VendorId>\n   <VendorPassword>Your Vendor Password</VendorPassword>\n </Auth>\n <RemoveRooms>\n   <RoomTypeIds>\n     <RoomTypeId>35</RoomTypeId>\n     <RoomTypeId>36</RoomTypeId>\n   </RoomTypeIds>\n </RemoveRooms>\n</SetRoomTypes>",
+          "content": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<RoomRemove>\n <Auth>\n   <UserId>Customer User ID</UserId>\n   <UserPassword>Customer Password</UserPassword>\n   <PropertyId>Property ID on myallocator.com</PropertyId>\n   <VendorId>Your Vendor ID</VendorId>\n   <VendorPassword>Your Vendor Password</VendorPassword>\n </Auth>\n <RemoveRooms>\n   <RoomTypeIds>\n     <RoomTypeId>35</RoomTypeId>\n     <RoomTypeId>36</RoomTypeId>\n   </RoomTypeIds>\n </RemoveRooms>\n</RoomRemove>",
           "type": "json"
         },
         {
           "title": "XML Response SetRooms (Success)",
-          "content": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<SetRoomTypesResponse>\n  <Success>true</Success>\n</SetRoomTypesResponse>",
+          "content": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<RoomRemoveResponse>\n  <Success>true</Success>\n</RoomRemoveResponse>",
           "type": "json"
         }
       ]
     },
+    "version": "0.0.0",
+    "filename": "perllib/MAAPI.pm",
+    "groupTitle": "PMS"
+  },
+  {
+    "type": "get",
+    "url": "/RoomUpdate",
+    "title": "RoomUpdate",
+    "name": "RoomUpdate",
+    "group": "PMS",
+    "description": "<p>uses the same parameters (and response) as &quot;RoomCreate&quot;</p> ",
     "version": "0.0.0",
     "filename": "perllib/MAAPI.pm",
     "groupTitle": "PMS"
