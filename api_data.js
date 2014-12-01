@@ -470,7 +470,7 @@ define({ "api": [
     "title": "AssociatePropertyToPMS",
     "name": "AssociatePropertyToPMS",
     "group": "PMS",
-    "description": "<p>Creates a permanent link between an existing myallocator user and a PMS Vendor.   The PMS Vendor should securely obtain the users myallocator user-id and password (but do not store them),   then in the background pass the user credentials to AssociatePropertyToPMS and a link will be created.  Any future API calls will not require a Password. </p> <p> NOTE: *Users and Properties created by a PMS Vendor will automatically be linked to that PMS (this call is not necessary)</p> <p> NOTE: Although Auth/UserPassword is identified in this call as <em>required</em> if a prior AssociateUserToPMS call has been made then it is not actually required.</p> ",
+    "description": "<p>This call is mostly here for future expansion in 2015.  Creates a permanent link between an existing myallocator property and a PMS Vendor.   The PMS Vendor should securely obtain the users myallocator user-id and password (but do not store them),   then in the background pass the user credentials to AssociatePropertyToPMS and a link will be created.  Any future API calls will not require a Password. </p> <p> NOTE: *Users and Properties created by a PMS Vendor will automatically be linked to that PMS (this call is not necessary)</p> <p> NOTE: Although Auth/UserPassword is identified in this call as <em>required</em> if a prior AssociateUserToPMS call has been made then it is not actually required.</p> ",
     "parameter": {
       "fields": {
         "Request": [
@@ -505,6 +505,13 @@ define({ "api": [
           {
             "group": "Request",
             "type": "String",
+            "optional": false,
+            "field": "Auth/PropertyId",
+            "description": "<p>PropertyId assigned by MyAllocator</p> "
+          },
+          {
+            "group": "Request",
+            "type": "String",
             "optional": true,
             "field": "PMSPropertyId",
             "description": "<p>The Unique PropertyId on the PMS (for reference 128 character max) - will be included in callbacks</p> "
@@ -528,7 +535,7 @@ define({ "api": [
     "examples": [
       {
         "title": "JSON AssociatePropertyToPMS",
-        "content": "{\n'Auth/UserId':'login on myallocator.com',\n'Auth/UserPassword':'password for myallocator.com',\n'Auth/VendorId':'your vendor id',\n'Auth/VendorPassword':'your vendor password',\n'PMSPropertyId':'username-on-the-remote-pms-system',\n}",
+        "content": "{\n'Auth/UserId':'login on myallocator.com',\n'Auth/UserPassword':'password for myallocator.com',\n'Auth/VendorId':'your vendor id',\n'Auth/VendorPassword':'your vendor password',\n'Auth/PropertyId':'property id from myallocator',\n'PMSPropertyId':'username-on-the-remote-pms-system',\n}",
         "type": "json"
       },
       {
