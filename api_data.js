@@ -1563,8 +1563,8 @@ define({ "api": [
             "group": "Request",
             "type": "String",
             "optional": false,
-            "field": "PropertyId",
-            "description": "<p>Requested PropertyId</p> "
+            "field": "Auth/PropertyId",
+            "description": "<p>Your PropertyId</p> "
           },
           {
             "group": "Request",
