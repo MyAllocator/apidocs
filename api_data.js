@@ -1251,7 +1251,7 @@ define({ "api": [
   {
     "type": "get",
     "url": "/LoopChannelARIList",
-    "title": "",
+    "title": "LoopChannelARIList",
     "name": "LoopChannelARIList",
     "group": "PMS",
     "description": "<p>Displays a range of Availability and Rate information for the Loopback Channel.</p> ",
@@ -1262,7 +1262,7 @@ define({ "api": [
   {
     "type": "get",
     "url": "/LoopChannelBookingCreate",
-    "title": "",
+    "title": "LoopChannelBookingCreate",
     "name": "LoopChannelBookingCreate",
     "group": "PMS",
     "description": "<p>Create a new booking in the Loopback Channel. Details</p> ",
@@ -1280,7 +1280,7 @@ define({ "api": [
   {
     "type": "get",
     "url": "/LoopChannelBookingList",
-    "title": "",
+    "title": "LoopChannelBookingList",
     "name": "LoopChannelBookingList",
     "group": "PMS",
     "description": "<p>Displays all bookings (or a range) in the Loopback Channel</p> ",
@@ -1291,7 +1291,7 @@ define({ "api": [
   {
     "type": "get",
     "url": "/LoopChannelBookingRemove",
-    "title": "",
+    "title": "LoopChannelBookingRemove",
     "name": "LoopChannelBookingRemove",
     "group": "PMS",
     "description": "<p>Removes a Booking from the loopback channel</p> ",
