@@ -348,7 +348,7 @@ define({ "api": [
     "examples": [
       {
         "title": "JSON ARIUpdate",
-        "content": "{ \n 'Auth/UserId':'your username',\n 'Auth/UserPassword':'your password'\n 'Channels': [ 'hc','iwb' ],\n 'Allocations: [\n\t\t{\n\t\t'RoomId':'59',\n\t\t'StartDate':'2010-06-01',\n\t\t'EndDate':'2010-06-01',\n\t\t'Units':'3',\n\t\t'MinStay':'1',\n\t\t'MaxStay':'30',\n\t\t'Price':'20.00',\n\t\t'Price-Weekday':'15.00',\n\t\t'Price-Weekend':'20.00',\n\t\t}\n\t\t]\n \t]\n}",
+        "content": "{ \n 'Auth/UserId':'your username',\n 'Auth/UserPassword':'your password',\n 'Updates': [\n\t 'Channels': [ 'hc','iwb' ],\n \t 'Allocations: [\n\t\t{\n\t\t'RoomId':'59',\n\t\t'StartDate':'2010-06-01',\n\t\t'EndDate':'2010-06-01',\n\t\t'Units':'3',\n\t\t'MinStay':'1',\n\t\t'MaxStay':'30',\n\t\t'Price':'20.00',\n\t\t'Price-Weekday':'15.00',\n\t\t'Price-Weekend':'20.00',\n\t\t}\n\t\t]\n\t ]\n \t]\n}",
         "type": "json"
       },
       {
@@ -1244,6 +1244,57 @@ define({ "api": [
         "type": "json"
       }
     ],
+    "version": "0.0.0",
+    "filename": "perllib/MAAPI.pm",
+    "groupTitle": "PMS"
+  },
+  {
+    "type": "get",
+    "url": "/LoopChannelARIList",
+    "title": "",
+    "name": "LoopChannelARIList",
+    "group": "PMS",
+    "description": "<p>Displays a range of Availability and Rate information for the Loopback Channel.</p> ",
+    "version": "0.0.0",
+    "filename": "perllib/MAAPI.pm",
+    "groupTitle": "PMS"
+  },
+  {
+    "type": "get",
+    "url": "/LoopChannelBookingCreate",
+    "title": "",
+    "name": "LoopChannelBookingCreate",
+    "group": "PMS",
+    "description": "<p>Create a new booking in the Loopback Channel. Details</p> ",
+    "examples": [
+      {
+        "title": "JSON LoopChannelBookingCreate Request",
+        "content": "{\n'Auth/VendorId':''\n'Auth/VendorPassword':'',\n'Auth/UserToken':'',\n'Auth/PropertyId':'',\n'SimpleBooking':{\n\t'StartDate':'YYYY-MM-DD',\n\t'EndDate':'YYYY-MM-DD',\n\t'RoomId':###,\n\t'RoomQty':##,\n\t'PricePerDay':'3.00',\n\t'PriceCurrency':'USD',\n\t}\n}",
+        "type": "json"
+      }
+    ],
+    "version": "0.0.0",
+    "filename": "perllib/MAAPI.pm",
+    "groupTitle": "PMS"
+  },
+  {
+    "type": "get",
+    "url": "/LoopChannelBookingList",
+    "title": "",
+    "name": "LoopChannelBookingList",
+    "group": "PMS",
+    "description": "<p>Displays all bookings (or a range) in the Loopback Channel</p> ",
+    "version": "0.0.0",
+    "filename": "perllib/MAAPI.pm",
+    "groupTitle": "PMS"
+  },
+  {
+    "type": "get",
+    "url": "/LoopChannelBookingRemove",
+    "title": "",
+    "name": "LoopChannelBookingRemove",
+    "group": "PMS",
+    "description": "<p>Removes a Booking from the loopback channel</p> ",
     "version": "0.0.0",
     "filename": "perllib/MAAPI.pm",
     "groupTitle": "PMS"
