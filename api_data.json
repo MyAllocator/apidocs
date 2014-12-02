@@ -1166,6 +1166,13 @@
             "group": "Request",
             "type": "String",
             "optional": false,
+            "field": "Auth/PropertyId",
+            "description": "<p>Required to download a Booking.</p> "
+          },
+          {
+            "group": "Request",
+            "type": "String",
+            "optional": false,
             "field": "Auth/VendorId",
             "description": "<p>Your Vendor ID</p> "
           },
@@ -1186,9 +1193,16 @@
           {
             "group": "Request",
             "type": "String",
-            "optional": false,
+            "optional": true,
             "field": "OrderId",
-            "description": ""
+            "description": "<p>OrderId from the OTA    (required if no MyAllocatorId)</p> "
+          },
+          {
+            "group": "Request",
+            "type": "String",
+            "optional": true,
+            "field": "MyAllocatorId",
+            "description": "<p>Id assigned by MyAllocator (required if no OrderId)</p> "
           }
         ]
       }
