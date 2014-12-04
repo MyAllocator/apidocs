@@ -211,29 +211,35 @@
           },
           {
             "group": "Request",
-            "type": "String",
+            "type": "XML_Container",
             "optional": false,
-            "field": "..Allocations.Allocation.Prices.Price",
+            "field": "..Allocations.Allocation.Prices",
             "description": "<p>(XML ONLY) Container for Price nodes.</p> "
           },
           {
             "group": "Request",
-            "type": "String",
+            "type": "XML_String",
             "optional": false,
-            "field": "..Allocations.Allocation.Prices.Price.weekend",
-            "defaultValue": "true",
+            "field": "..Allocations.Allocation.Prices.Price",
             "description": "<p>(XML ONLY) Price per person for shared/dorm rooms or per room for private rooms. In XML: You can submit two Price tags. The default one and one with the attribute \\textit{weekend=&quot;true&quot;}. If a Price tag with this attribute has been submitted the rate only applies to weekdays set by the customer as weekends (see PropertyList for which days are set as weekend days).</p> "
           },
           {
             "group": "Request",
-            "type": "String",
+            "type": "XML_Attribute",
+            "optional": false,
+            "field": "..Allocations.Allocation.Prices.Price.weekend",
+            "description": "<p>(XML ONLY) Price per person for shared/dorm rooms or per room for private rooms. In XML: You can submit two Price tags. The default one and one with the attribute \\textit{weekend=&quot;true&quot;}. If a Price tag with this attribute has been submitted the rate only applies to weekdays set by the customer as weekends (see PropertyList for which days are set as weekend days).</p> "
+          },
+          {
+            "group": "Request",
+            "type": "JSON_String",
             "optional": false,
             "field": "..Allocations.Allocation.Price-Weekend",
             "description": "<p>(JSON ONLY) price for days marked as &quot;weekday&quot; (see PropertyList for which days are considered &quot;Weekday&quot;)</p> "
           },
           {
             "group": "Request",
-            "type": "String",
+            "type": "JSON_String",
             "optional": false,
             "field": "..Allocations.Allocation.Price-Weekday",
             "description": "<p>(JSON ONLY) price for days marked as &quot;weekend&quot; (see PropertyList for which days are considered &quot;Weekends&quot;)</p> "
