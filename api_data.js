@@ -61,43 +61,6 @@ define({ "api": [
     "groupTitle": "Introduction"
   },
   {
-    "name": "Booking_Actions",
-    "group": "Objects",
-    "description": "<p>Booking Actions can ONLY be sent via the LoopChannelAction call.</p> ",
-    "parameter": {
-      "fields": {
-        "Parameter": [
-          {
-            "group": "Parameter",
-            "type": "Action",
-            "optional": false,
-            "field": "CANCEL",
-            "description": "<p>changes an order state to cancelled, sets cancellation time.. triggers notification.</p> "
-          },
-          {
-            "group": "Parameter",
-            "type": "Action",
-            "optional": false,
-            "field": ".CANCEL.reason",
-            "description": "<p>a brief explantion for why the booking is being cancelled.</p> "
-          },
-          {
-            "group": "Parameter",
-            "type": "Action",
-            "optional": false,
-            "field": "UNCANCEL",
-            "description": "<p>removes cancellation flags.</p> "
-          }
-        ]
-      }
-    },
-    "type": "",
-    "url": "",
-    "version": "0.0.0",
-    "filename": "perllib/BOOKING.pm",
-    "groupTitle": "Objects"
-  },
-  {
     "type": "get",
     "url": "/ARIUpdate",
     "title": "ARIUpdate",
@@ -1340,6 +1303,51 @@ define({ "api": [
   },
   {
     "type": "get",
+    "url": "/LoopBookingAction",
+    "title": "LoopBookingAction",
+    "name": "LoopBookingAction",
+    "version": "201408.0.0",
+    "group": "PMS",
+    "description": "<p>Loop Booking implements an incremental action model.  Currently a limited number of actions are supported, however in the future new actions will be added. Actions are processed in sequence, the first error encountered stops all future actions. After any successful modification to a booking a callback trigger is modified, and the modified timestamp is set.</p> ",
+    "examples": [
+      {
+        "title": "JSON Request",
+        "content": "{\n\t'Auth/UserToken':'',\n\t'Auth/VendorId':'',\n\t'Auth/VendorPassword':'',\n\t'OrderId':'XXXXX',\n\t'Actions':[\n\t\t'ACTION?param=value',\n\t\t'ACTIONTOO?param=value',\n\t\t'ACTIONTHREE'\n\t\t]\n}",
+        "type": "json"
+      }
+    ],
+    "filename": "perllib/MAAPI.pm",
+    "groupTitle": "PMS",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "Action",
+            "optional": false,
+            "field": "CANCEL",
+            "description": "<p>changes an order state to cancelled, sets cancellation time.. triggers notification.</p> "
+          },
+          {
+            "group": "Parameter",
+            "type": "Action",
+            "optional": false,
+            "field": ".CANCEL.reason",
+            "description": "<p>a brief explantion for why the booking is being cancelled.</p> "
+          },
+          {
+            "group": "Parameter",
+            "type": "Action",
+            "optional": false,
+            "field": "UNCANCEL",
+            "description": "<p>removes cancellation flags.</p> "
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "get",
     "url": "/LoopBookingCreate",
     "title": "LoopBookingCreate",
     "name": "LoopBookingCreate",
@@ -1364,24 +1372,6 @@ define({ "api": [
     "version": "201408.0.0",
     "group": "PMS",
     "description": "<p>Displays all bookings (or a range) in the Loopback Channel. See BookingList for examples of parameters/incoming calls and output.</p> ",
-    "filename": "perllib/MAAPI.pm",
-    "groupTitle": "PMS"
-  },
-  {
-    "type": "get",
-    "url": "/LoopBookingModify",
-    "title": "LoopBookingModify",
-    "name": "LoopBookingModify",
-    "version": "201408.0.0",
-    "group": "PMS",
-    "description": "<p>Removes a Booking from the loopback channel.</p> ",
-    "examples": [
-      {
-        "title": "JSON Request",
-        "content": "{\n\t'Auth/UserToken':'',\n\t'Auth/VendorId':'',\n\t'Auth/VendorPassword':'',\n\t'OrderId':'XXXXX',\n\t'Verbs':[\n\t\t'CANCEL'\n\t\t]\n}",
-        "type": "json"
-      }
-    ],
     "filename": "perllib/MAAPI.pm",
     "groupTitle": "PMS"
   },
