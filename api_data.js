@@ -61,6 +61,43 @@ define({ "api": [
     "groupTitle": "Introduction"
   },
   {
+    "name": "Booking_Actions",
+    "group": "Objects",
+    "description": "<p>Booking Actions can ONLY be sent via the LoopChannelAction call.</p> ",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "Action",
+            "optional": false,
+            "field": "CANCEL",
+            "description": "<p>changes an order state to cancelled, sets cancellation time.. triggers notification.</p> "
+          },
+          {
+            "group": "Parameter",
+            "type": "Action",
+            "optional": false,
+            "field": ".CANCEL.reason",
+            "description": "<p>a brief explantion for why the booking is being cancelled.</p> "
+          },
+          {
+            "group": "Parameter",
+            "type": "Action",
+            "optional": false,
+            "field": "UNCANCEL",
+            "description": "<p>removes cancellation flags.</p> "
+          }
+        ]
+      }
+    },
+    "type": "",
+    "url": "",
+    "version": "0.0.0",
+    "filename": "perllib/BOOKING.pm",
+    "groupTitle": "Objects"
+  },
+  {
     "type": "get",
     "url": "/ARIUpdate",
     "title": "ARIUpdate",
@@ -309,12 +346,12 @@ define({ "api": [
     "examples": [
       {
         "title": "JSON ARIUpdate",
-        "content": "{ \n 'Auth/UserId':'your username',\n 'Auth/UserPassword':'your password',\n 'Updates': [\n\t 'Channels': [ 'hc','iwb' ],\n \t 'Allocations': [\n\t\t{\n\t\t'RoomId':'59',\n\t\t'StartDate':'2010-06-01',\n\t\t'EndDate':'2010-06-01',\n\t\t'Units':'3',\n\t\t'MinStay':'1',\n\t\t'MaxStay':'30',\n\t\t'Price':'20.00',\n\t\t'Price-Weekday':'15.00',\n\t\t'Price-Weekend':'20.00',\n\t\t}\n\t\t]\n\t ]\n \t]\n}",
+        "content": "{ \n 'Auth/UserId':'your username',\n 'Auth/UserPassword':'your password',\n 'Channels': [ 'hc','iwb' ],\n 'Allocations': [\n\t{\n\t'RoomId':'59',\n\t'StartDate':'2010-06-01',\n\t'EndDate':'2010-06-01',\n\t'Units':'3',\n\t'MinStay':'1',\n\t'MaxStay':'30',\n\t'Price':'20.00',\n\t'Price-Weekday':'15.00',\n\t'Price-Weekend':'20.00',\n\t}\n\t]\n}",
         "type": "json"
       },
       {
         "title": "XML ARIUpdateRequest",
-        "content": "<?xml version=\"1.0\" encoding=\"UTF-8\" ?>\n<ARIUpdate>\n <Auth>\n   <UserId>Customer User ID</UserId>\n   <UserPassword>Customer Password</UserPassword>\n   <PropertyId>Property ID on myallocator.com</PropertyId>\n   <VendorId>Your Vendor ID</VendorId>\n   <VendorPassword>Your Vendor Password</VendorPassword>\n </Auth>\n\n <Updates> \n\t<Channels>\n\t\t<Channel>hc</Channel>\n\t\t<Channel>iwb</Channel>\n\t </Channels>\n \n\t <Allocations>\n\t\t<Allocation>\n\t\t  <RoomId>59</RoomId>\n\t\t  <StartDate>2010-06-01</StartDate>\n\t\t  <EndDate>2010-08-12</EndDate>\n\t\t  <Units>3</Units>\n\t\t  <MinStay>1</MinStay>\n\t\t  <MaxStay>30</MaxStay>\n\t\t  <Prices>\n\t\t\t <Price>20.00</Price>\n\t\t\t <Price weekend=\"true\">25.00</Price>\n\t\t  </Prices>\n\t\t</Allocation>\n\t </Allocations>\n</Updates>\n</ARIUpdate>",
+        "content": "<?xml version=\"1.0\" encoding=\"UTF-8\" ?>\n<ARIUpdate>\n <Auth>\n   <UserId>Customer User ID</UserId>\n   <UserPassword>Customer Password</UserPassword>\n   <PropertyId>Property ID on myallocator.com</PropertyId>\n   <VendorId>Your Vendor ID</VendorId>\n   <VendorPassword>Your Vendor Password</VendorPassword>\n </Auth>\n\n<Channels>\n\t<Channel>hc</Channel>\n\t<Channel>iwb</Channel>\n </Channels>\n \n <Allocations>\n\t<Allocation>\n\t  <RoomId>59</RoomId>\n\t  <StartDate>2010-06-01</StartDate>\n\t  <EndDate>2010-08-12</EndDate>\n\t  <Units>3</Units>\n\t  <MinStay>1</MinStay>\n\t  <MaxStay>30</MaxStay>\n\t  <Prices>\n\t\t <Price>20.00</Price>\n\t\t <Price weekend=\"true\">25.00</Price>\n\t  </Prices>\n\t</Allocation>\n </Allocations>\n</ARIUpdate>",
         "type": "json"
       },
       {
@@ -324,7 +361,7 @@ define({ "api": [
       },
       {
         "title": "XML ARIUpdate (Submit to all channels excluding Gomio and Hostelsclub)",
-        "content": "<?xml version=\"1.0\" encoding=\"UTF-8\" ?>\n<ARIUpdate>\n <Auth>\n\t<UserId>Customer User ID</UserId>\n\t<UserPassword>Customer Password</UserPassword>\n\t<PropertyId>Property ID on myallocator.com</PropertyId>\n\t<VendorId>Your Vendor ID</VendorId>\n\t<VendorPassword>Your Vendor Password</VendorPassword>\n </Auth>\n \n <Updates>\n\t <Channels>\n\t\t<Channel>all</Channel>\n\t\t<Channel exclude=\"true\">gom</Channel>\n\t\t<Channel exclude=\"true\">hc</Channel>\n \t</Channels>\n \n\t <Allocations>\n\t\t...\n\t </Allocations>\n</Updates>\n</ARIUpdate>",
+        "content": "<?xml version=\"1.0\" encoding=\"UTF-8\" ?>\n<ARIUpdate>\n <Auth>\n\t<UserId>Customer User ID</UserId>\n\t<UserPassword>Customer Password</UserPassword>\n\t<PropertyId>Property ID on myallocator.com</PropertyId>\n\t<VendorId>Your Vendor ID</VendorId>\n\t<VendorPassword>Your Vendor Password</VendorPassword>\n </Auth>\n \n <Channels>\n\t<Channel>all</Channel>\n\t<Channel exclude=\"true\">gom</Channel>\n\t<Channel exclude=\"true\">hc</Channel>\n</Channels>\n \n <Allocations>\n\t...\n </Allocations>\n</ARIUpdate>",
         "type": "json"
       }
     ],
@@ -1341,7 +1378,7 @@ define({ "api": [
     "examples": [
       {
         "title": "JSON Request",
-        "content": "{\n\t'Auth/UserToken':'',\n\t'Auth/VendorId':'',\n\t'Auth/VendorPassword':'',\n\t'OrderId':'XXXXX',\n\t'verb':'cancel'\n}",
+        "content": "{\n\t'Auth/UserToken':'',\n\t'Auth/VendorId':'',\n\t'Auth/VendorPassword':'',\n\t'OrderId':'XXXXX',\n\t'Verbs':[\n\t\t'CANCEL'\n\t\t]\n}",
         "type": "json"
       }
     ],
@@ -2584,5 +2621,27 @@ define({ "api": [
     "version": "0.0.0",
     "filename": "htdocs/apidoc.pm",
     "groupTitle": ""
+  },
+  {
+    "type": "",
+    "url": "Known",
+    "title": "Bugs",
+    "name": "Know_Bugs",
+    "version": "201408.0.0",
+    "description": "<p>This page will list known bugs.</p> ",
+    "filename": "perllib/MAAPI.pm",
+    "group": "_myallocator_perllib_MAAPI_pm",
+    "groupTitle": "_myallocator_perllib_MAAPI_pm"
+  },
+  {
+    "type": "",
+    "url": "Changes",
+    "title": "",
+    "name": "Recent_Changes",
+    "version": "201408.0.0",
+    "description": "<p>description ...</p> ",
+    "filename": "perllib/MAAPI.pm",
+    "group": "_myallocator_perllib_MAAPI_pm",
+    "groupTitle": "_myallocator_perllib_MAAPI_pm"
   }
 ] });
