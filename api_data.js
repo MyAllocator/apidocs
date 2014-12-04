@@ -106,14 +106,14 @@ define({ "api": [
           },
           {
             "group": "Request",
-            "type": "String",
+            "type": "Container",
             "optional": false,
             "field": "Updates",
             "description": "<p>Top level container node (array) containing all updates. Currently only one Update per request is supported/allowed. (See JSON/XML Examples for specific usage/formatting)</p> "
           },
           {
             "group": "Request",
-            "type": "String",
+            "type": "Container",
             "optional": false,
             "field": ".Channels",
             "description": "<p>Container node (array) containing a list of channels to be updated.</p> "
@@ -128,13 +128,16 @@ define({ "api": [
           {
             "group": "Request",
             "type": "String",
+            "allowedValues": [
+              "\"ChannelId or all\""
+            ],
             "optional": false,
             "field": "..Channels.ChannelId",
             "description": "<p>(JSON ONLY) the ChannelId of the channel to be updated. ex: &quot;loop&quot; for Loop</p> "
           },
           {
             "group": "Request",
-            "type": "String",
+            "type": "Container",
             "optional": false,
             "field": ".ExcludeChannels",
             "description": "<p>Container node (array) for Channels to be implicitly excluded (useful when Channel Id &#39;all&#39; is in)</p> "
@@ -155,7 +158,7 @@ define({ "api": [
           },
           {
             "group": "Request",
-            "type": "String",
+            "type": "Container",
             "optional": false,
             "field": ".Allocations",
             "description": "<p>Container node (array) containing a list</p> "
@@ -197,14 +200,14 @@ define({ "api": [
           },
           {
             "group": "Request",
-            "type": "String",
+            "type": "Integer",
             "optional": false,
             "field": "..Allocations.Allocation.MinStay",
             "description": "<p>Specify the minumum number of days a customer is allowed to stay. Not all channels support this feature. Needs to be 1 or higher. (optional)</p> "
           },
           {
             "group": "Request",
-            "type": "String",
+            "type": "Integer",
             "optional": false,
             "field": "..Allocations.Allocation.MaxStay",
             "description": "<p>Specify the maximum number of days a customer is allowed to stay. Not all channels support this feature. Needs to be 1 or higher. (optional)</p> "
@@ -227,8 +230,7 @@ define({ "api": [
             "group": "Request",
             "type": "Attribute",
             "allowedValues": [
-              "\"true\"",
-              "\"false\""
+              "\"true\""
             ],
             "optional": false,
             "field": "..Allocations.Allocation.Prices.Price.weekend",
@@ -246,7 +248,7 @@ define({ "api": [
             "type": "Currency",
             "optional": false,
             "field": "..Allocations.Allocation.Price-Weekend",
-            "description": "<p>(JSON ONLY) price for days marked as &quot;weekday&quot; (see PropertyList for which days are considered &quot;Weekday&quot;)</p> "
+            "description": "<p>(JSON ONLY) price for days marked as &quot;Weekend&quot;</p> "
           }
         ]
       }
@@ -259,21 +261,21 @@ define({ "api": [
             "type": "String",
             "optional": false,
             "field": "Success",
-            "description": "<p>Can be \\textit{true} (all channel updates succeeded), \\textit{partial} (not all channels succeeded) or \\textit{false} (all channel updates failed).</p> "
+            "description": "<p>Can be it{true} (all channel updates succeeded), it{partial} (not all channels succeeded) or it{false} (all channel updates failed).</p> "
           },
           {
             "group": "Response",
             "type": "String",
             "optional": false,
             "field": "Errors/Error",
-            "description": "<p>Check with the list of errors below. Might contain the attribute \\textit{channel=&quot;..&quot;} to indicate whether the error only applies to a specific channel.</p> "
+            "description": "<p>Check with the list of errors below. Might contain the attribute it{channel=&quot;..&quot;} to indicate whether the error only applies to a specific channel.</p> "
           },
           {
             "group": "Response",
             "type": "String",
             "optional": false,
             "field": "Warnings/Warning",
-            "description": "<p>Check with the list of errors below. Might contain the attribute \\textit{channel=&quot;..&quot;} to indicate whether the warning only applies to a specific channel.</p> "
+            "description": "<p>Check with the list of errors below. Might contain the attribute it{channel=&quot;..&quot;} to indicate whether the warning only applies to a specific channel.</p> "
           }
         ]
       },
@@ -305,7 +307,7 @@ define({ "api": [
         }
       ]
     },
-    "description": "<p>An allocation sets the number of rooms or beds (depending on whether the  room type is a private room or shared/dorm) available during  any specific time frame. For more details see below.</p> <p> <strong> Pricing </strong>  In both XML and JSON it is possible to submit two Prices.   A default &quot;Weekday&quot; price and one with the attribute \\textit{weekend=&quot;true&quot;}. If a Price tag with this attribute has been submitted the rate only applies to weekdays set by the customer as weekends (see PropertyList for which days are set as weekend days).</p> <p> <strong> Handling Errors &amp; Warnings </strong></p> <p> The response will always include the Success, Errors and Warnings tags. If  Success is set to &quot;true&quot; the Errors tag will be empty. If Success is set to  &quot;partial&quot; or &quot;false&quot; at least one Error tag is included.</p> <p> <strong> Submitting to ALL channels </strong></p> <p> You can also submit to all available channels without specifying explicity which  channels to update. Use the channel code &quot;all&quot; to do this. Channels that are not   set up by the user will be skipped as indicated by a warning. </p> <p> It is also possible to submit to all channels while excluding certain channels.  Add the attribute exclude=&quot;true&quot; to skip a channel. See example below.  Use the channel code &quot;all&quot; to do this.</p> <p> <strong> Running Jobs in the Background (ARIUpdateStatus) </strong></p> <p> You can also run the ARIUpdate update in the background and query  for the updates using ARIUpdateStatus. This enables you  to show the update progress to the user while it&#39;s still running. To enable  this feature you need to add the node QueryForStatus (see example)</p> <p> If QueryForStatus is true then the ARIUpdateResponse will contain the additional parameter UpdateId, which  is needed for ARIUpdateStatus</p> ",
+    "description": "<p>An allocation sets the number of rooms or beds (depending on whether the  room type is a private room or shared/dorm) available during  any specific time frame. For more details see below.</p> <p> <strong> Pricing </strong>  In both XML and JSON it is possible to submit two Prices.   A default &quot;Weekday&quot; price and one with the attribute it{weekend=&quot;true&quot;}. If a Price tag with this attribute has been submitted the rate only applies to weekdays set by the customer as weekends (see PropertyList for which days are set as weekend days).</p> <p> <strong> Handling Errors &amp; Warnings </strong></p> <p> The response will always include the Success, Errors and Warnings tags. If  Success is set to &quot;true&quot; the Errors tag will be empty. If Success is set to  &quot;partial&quot; or &quot;false&quot; at least one Error tag is included.</p> <p> <strong> Submitting to ALL channels </strong></p> <p> You can also submit to all available channels without specifying explicity which  channels to update. Use the channel code &quot;all&quot; to do this. Channels that are not   set up by the user will be skipped as indicated by a warning. </p> <p> It is also possible to submit to all channels while excluding certain channels.  Add the attribute exclude=&quot;true&quot; to skip a channel. See example below.  Use the channel code &quot;all&quot; to do this.</p> <p> <strong> Running Jobs in the Background (ARIUpdateStatus) </strong></p> <p> You can also run the ARIUpdate update in the background and query  for the updates using ARIUpdateStatus. This enables you  to show the update progress to the user while it&#39;s still running. To enable  this feature you need to add the node QueryForStatus (see example)</p> <p> If QueryForStatus is true then the ARIUpdateResponse will contain the additional parameter UpdateId, which  is needed for ARIUpdateStatus</p> ",
     "examples": [
       {
         "title": "JSON ARIUpdate",
