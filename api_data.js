@@ -1413,62 +1413,6 @@ define({ "api": [
             "optional": false,
             "field": "Booking",
             "description": "<p>(see Booking)</p> "
-          },
-          {
-            "group": "Request",
-            "type": "Date",
-            "optional": true,
-            "field": ".StartDate",
-            "description": "<p>YYYY-MM-DD</p> "
-          },
-          {
-            "group": "Request",
-            "type": "Date",
-            "optional": true,
-            "field": ".EndDate",
-            "description": "<p>YYYY-MM-DD</p> "
-          },
-          {
-            "group": "Request",
-            "type": "Integer",
-            "optional": true,
-            "field": ".Units",
-            "description": "<p>number of Rooms</p> "
-          },
-          {
-            "group": "Request",
-            "type": "Integer",
-            "optional": true,
-            "field": ".RoomTypeId",
-            "description": "<p>MyAllocator Room Id</p> "
-          },
-          {
-            "group": "Request",
-            "type": "Integer",
-            "optional": true,
-            "field": ".RateId",
-            "description": "<p>MyAllocator Rate Id</p> "
-          },
-          {
-            "group": "Request",
-            "type": "Currency",
-            "optional": true,
-            "field": ".RoomDayRate",
-            "description": "<p>MyAllocator Room Price (if not specified then a random, incrementing by $10 per day number will be used)</p> "
-          },
-          {
-            "group": "Request",
-            "type": "String",
-            "optional": true,
-            "field": ".CustomerFName",
-            "description": "<p>Customer First Name</p> "
-          },
-          {
-            "group": "Request",
-            "type": "String",
-            "optional": true,
-            "field": ".CustomerLName",
-            "description": "<p>Customer Last Name</p> "
           }
         ],
         "Booking": [
