@@ -1406,6 +1406,13 @@
             "optional": false,
             "field": "Auth/PropertyId",
             "description": "<p>Property Id associated to user.</p> "
+          },
+          {
+            "group": "Request",
+            "type": "Container",
+            "optional": false,
+            "field": "Booking",
+            "description": ""
           }
         ],
         "Parameter": [
@@ -1413,42 +1420,56 @@
             "group": "Parameter",
             "type": "Date",
             "optional": true,
-            "field": "StartDate",
+            "field": ".StartDate",
             "description": "<p>YYYY-MM-DD</p> "
           },
           {
             "group": "Parameter",
             "type": "Date",
             "optional": true,
-            "field": "EndDate",
+            "field": ".EndDate",
             "description": "<p>YYYY-MM-DD</p> "
           },
           {
             "group": "Parameter",
             "type": "Integer",
             "optional": true,
-            "field": "Units",
+            "field": ".Units",
             "description": "<h1 id=\"of-rooms\">of Rooms</h1> "
+          },
+          {
+            "group": "Parameter",
+            "type": "Integer",
+            "optional": true,
+            "field": ".RoomTypeId",
+            "description": "<p>MyAllocator Room Id</p> "
+          },
+          {
+            "group": "Parameter",
+            "type": "Integer",
+            "optional": true,
+            "field": ".RateId",
+            "description": "<p>MyAllocator Rate Id</p> "
           },
           {
             "group": "Parameter",
             "type": "Currency",
             "optional": true,
-            "field": "Price",
-            "description": "<p>MyAllocator Room Id</p> "
+            "field": ".RoomDayRate",
+            "description": "<p>MyAllocator Room Price (if not specified then a random, incrementing by $10 per day number will be used)</p> "
           },
           {
             "group": "Parameter",
             "type": "String",
             "optional": true,
-            "field": "CustomerFName",
+            "field": ".CustomerFName",
             "description": "<p>Customer First Name</p> "
           },
           {
             "group": "Parameter",
             "type": "String",
             "optional": true,
-            "field": "CustomerLName",
+            "field": ".CustomerLName",
             "description": "<p>Customer Last Name</p> "
           }
         ]
@@ -1457,7 +1478,7 @@
     "examples": [
       {
         "title": "JSON LoopBookingCreate Request",
-        "content": "{\n'Auth/VendorId':''\n'Auth/VendorPassword':'',\n'Auth/UserToken':'',\n'Auth/PropertyId':'',\n'SimpleBooking':{\n\t'StartDate':'YYYY-MM-DD',\n\t'EndDate':'YYYY-MM-DD',\n\t'RoomId':###,\n\t'Units':##,\n\t'Price':'3.00',\n\t}\n}",
+        "content": "{\n'Auth/VendorId':''\n'Auth/VendorPassword':'',\n'Auth/UserToken':'',\n'Auth/PropertyId':'',\n'Booking':{\n\t'StartDate':'YYYY-MM-DD',\n\t'EndDate':'YYYY-MM-DD',\n\t'RoomId':###,\n\t'Units':##,\n\t'Price':'3.00',\n\t}\n}",
         "type": "json"
       }
     ],
