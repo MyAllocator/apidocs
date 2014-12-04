@@ -80,81 +80,6 @@
             "field": "JSON",
             "description": "<p>ChannelList Response {     &#39;Channels&#39;:{         &#39;cid&#39;:{             &#39;name&#39;:&#39;Name of Channel (ex: Booking.com),             &#39;signupLink&#39;=&gt;&#39;<a href=\"http://domain/url.to.signup\">http://domain/url.to.signup</a>&#39;,             &#39;requireActivation&#39;:&#39;true|false&#39;,             &#39;calendarBased&#39;:&#39;true|false&#39;,             &#39;isLive&#39;=&gt;&#39;true|false&#39;,             &#39;isBeta&#39;=&gt;&#39;true|false&#39;,             &#39;PropertyInput&#39;:[                 { &#39;name&#39;:&#39;field_id&#39;, label=&gt;&#39;Name of Input&#39;, type=&gt;&#39;inputtype&#39; },                 { &#39;name&#39;:&#39;field_two&#39;, label=&gt;&#39;User Prompt&#39;, type=&gt;&#39;inputtype&#39; },                 ]             &#39;RoomInput&#39;:[                 { &#39;name&#39;:&#39;field_id&#39;, label=&gt;&#39;Name of Input&#39;, type=&gt;&#39;inputtype&#39; },                 { &#39;name&#39;:&#39;field_two&#39;, label=&gt;&#39;User Prompt&#39;, type=&gt;&#39;inputtype&#39; },                 ]             }         } }</p> "
           }
-        ],
-        "Response": [
-          {
-            "group": "Response",
-            "type": "String",
-            "optional": false,
-            "field": "Channels",
-            "description": ""
-          }
-        ]
-      },
-      "examples": [
-        {
-          "title": "XML ChannelList Response",
-          "content": "<?xml version=\"1.0\" encoding=\"UTF-8\" ?>\n<ChannelListResponse>\n  <Channels>\n    <Channel>\n \t\t<id>boo</id>\n\t\t<name>Booking.com</name>\n\t\t<signupLink>http://www.someurl</signuplink>\n    </Channel>\n</ChannelListResponse>",
-          "type": "json"
-        }
-      ]
-    },
-    "examples": [
-      {
-        "title": "XML ChannelList Request",
-        "content": "<?xml version=\"1.0\" encoding=\"UTF-8\" ?>\n<ChannelList>\n</ChannelList>",
-        "type": "json"
-      }
-    ],
-    "version": "0.0.0",
-    "filename": "perllib/MAAPI.pm",
-    "groupTitle": "ChannelList"
-  },
-  {
-    "type": "get",
-    "url": "/ChannelList",
-    "title": "ChannelList",
-    "name": "ChannelList",
-    "group": "ChannelList",
-    "description": "<p>Dumps information about all known channels, their status, and supported fields.</p> ",
-    "parameter": {
-      "fields": {
-        "Request": [
-          {
-            "group": "Request",
-            "type": "String",
-            "optional": false,
-            "field": "Auth/VendorId",
-            "description": "<p>Your Vendor ID</p> "
-          },
-          {
-            "group": "Request",
-            "type": "String",
-            "optional": false,
-            "field": "Auth/VendorPassword",
-            "description": "<p>Your Vendor Password</p> "
-          }
-        ],
-        "Response": [
-          {
-            "group": "Response",
-            "type": "String",
-            "optional": false,
-            "field": "Channels/cid",
-            "description": "<p>a 2-4 digit code used to represent the OTA/Channel.</p> "
-          }
-        ]
-      }
-    },
-    "success": {
-      "fields": {
-        "Success 200": [
-          {
-            "group": "Success 200",
-            "optional": false,
-            "field": "JSON",
-            "description": "<p>ChannelList Response {     &#39;Channels&#39;:{         &#39;cid&#39;:{             &#39;name&#39;:&#39;Name of Channel (ex: Booking.com),             &#39;signupLink&#39;=&gt;&#39;<a href=\"http://domain/url.to.signup\">http://domain/url.to.signup</a>&#39;,             &#39;requireActivation&#39;:&#39;true|false&#39;,             &#39;calendarBased&#39;:&#39;true|false&#39;,             &#39;isLive&#39;=&gt;&#39;true|false&#39;,             &#39;isBeta&#39;=&gt;&#39;true|false&#39;,             &#39;PropertyInput&#39;:[                 { &#39;name&#39;:&#39;field_id&#39;, label=&gt;&#39;Name of Input&#39;, type=&gt;&#39;inputtype&#39; },                 { &#39;name&#39;:&#39;field_two&#39;, label=&gt;&#39;User Prompt&#39;, type=&gt;&#39;inputtype&#39; },                 ]             &#39;RoomInput&#39;:[                 { &#39;name&#39;:&#39;field_id&#39;, label=&gt;&#39;Name of Input&#39;, type=&gt;&#39;inputtype&#39; },                 { &#39;name&#39;:&#39;field_two&#39;, label=&gt;&#39;User Prompt&#39;, type=&gt;&#39;inputtype&#39; },                 ]             }         } }</p> "
-          }
         ]
       }
     },
@@ -235,57 +160,71 @@
             "group": "Request",
             "type": "String",
             "optional": false,
-            "field": "Channels/Channel",
-            "description": "<p>A list of channels that the customer wants to update. See below for channel codes.</p> "
+            "field": "Updates",
+            "description": "<p>[]    Top level node containing all updates. Currently only one Update per request is supported/allowed. (See JSON/XML Examples for specific usage/formatting)</p> "
           },
           {
             "group": "Request",
             "type": "String",
             "optional": false,
-            "field": "Allocations/Allocation",
-            "description": "<p>Individual allocations. There can be as many as you like, but a the date ranges should never overlap (within one room id).</p> "
-          },
-          {
-            "group": "Request",
-            "type": "String",
-            "optional": false,
-            "field": "RoomId",
+            "field": "..Allocation.RoomId",
             "description": "<p>Room type id as returned by RoomList.</p> "
           },
           {
             "group": "Request",
-            "type": "String",
+            "type": "Date",
             "optional": false,
-            "field": "StartDate/EndDate",
+            "field": "..Allocation.StartDate",
+            "description": "<p>Format: YYYY-MM-DD.</p> "
+          },
+          {
+            "group": "Request",
+            "type": "Date",
+            "optional": false,
+            "field": "..Allocation.EndDate",
             "description": "<p>Format: YYYY-MM-DD.</p> "
           },
           {
             "group": "Request",
             "type": "String",
             "optional": false,
-            "field": "Units",
+            "field": "..Allocation.Units",
             "description": "<p>How many beds or rooms should be available on this day. Whether it&#39;s beds or rooms depends on whether the room is a dorm or a private room. To remove allocation set Units to 0.</p> "
           },
           {
             "group": "Request",
             "type": "String",
             "optional": false,
-            "field": "MinStay",
+            "field": "..Allocation.MinStay",
             "description": "<p>Specify the minumum number of days a customer is allowed to stay. Not all channels support this feature. Needs to be 1 or higher. (optional)</p> "
           },
           {
             "group": "Request",
             "type": "String",
             "optional": false,
-            "field": "MaxStay",
+            "field": "..Allocation.MaxStay",
             "description": "<p>Specify the maximum number of days a customer is allowed to stay. Not all channels support this feature. Needs to be 1 or higher. (optional)</p> "
           },
           {
             "group": "Request",
             "type": "String",
             "optional": false,
-            "field": "Prices/Price",
-            "description": "<p>Price per person for shared/dorm rooms or per room for private rooms. You can submit two Price tags. The default one and one with the attribute \\textit{weekend=&quot;true&quot;}. If a Price tag with this attribute has been submitted the rate only applies to weekdays set by the customer as weekends (see PropertyList for which days are set as weekend days).</p> "
+            "field": "..Allocation.Prices",
+            "description": "<p>[].Price      (XML ONLY) Price per person for shared/dorm rooms or per room for private rooms. In XML: You can submit two Price tags. The default one and one with the attribute \\textit{weekend=&quot;true&quot;}. If a Price tag with this attribute has been submitted the rate only applies to weekdays set by the customer as weekends (see PropertyList for which days are set as weekend days).</p> "
+          },
+          {
+            "group": "Request",
+            "type": "String",
+            "optional": false,
+            "field": "..Allocation.PriceWeekend",
+            "description": "<p>(JSON ONLY) price for days marked as &quot;weekday&quot; (see PropertyList for which days are considered &quot;Weekday&quot;)</p> "
+          },
+          {
+            "group": "Request",
+            "type": "String",
+            "optional": false,
+            "field": "..Allocation.PriceWeekday",
+            "description": "<p>(JSON ONLY) price for days marked as &quot;weekend&quot; (see PropertyList for which days are considered &quot;Weekends&quot;)</p> "
           }
         ]
       }
@@ -1222,6 +1161,81 @@
   },
   {
     "type": "get",
+    "url": "/ChannelList",
+    "title": "ChannelList",
+    "name": "ChannelList",
+    "group": "PMS",
+    "description": "<p>Dumps information about all known channels, their status, and supported fields.</p> ",
+    "parameter": {
+      "fields": {
+        "Request": [
+          {
+            "group": "Request",
+            "type": "String",
+            "optional": false,
+            "field": "Auth/VendorId",
+            "description": "<p>Your Vendor ID</p> "
+          },
+          {
+            "group": "Request",
+            "type": "String",
+            "optional": false,
+            "field": "Auth/VendorPassword",
+            "description": "<p>Your Vendor Password</p> "
+          }
+        ],
+        "Response": [
+          {
+            "group": "Response",
+            "type": "String",
+            "optional": false,
+            "field": "Channels/cid",
+            "description": "<p>a 2-4 digit code used to represent the OTA/Channel.</p> "
+          }
+        ]
+      }
+    },
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "optional": false,
+            "field": "JSON",
+            "description": "<p>ChannelList Response {     &#39;Channels&#39;:{         &#39;cid&#39;:{             &#39;name&#39;:&#39;Name of Channel (ex: Booking.com),             &#39;signupLink&#39;=&gt;&#39;<a href=\"http://domain/url.to.signup\">http://domain/url.to.signup</a>&#39;,             &#39;requireActivation&#39;:&#39;true|false&#39;,             &#39;calendarBased&#39;:&#39;true|false&#39;,             &#39;isLive&#39;=&gt;&#39;true|false&#39;,             &#39;isBeta&#39;=&gt;&#39;true|false&#39;,             &#39;PropertyInput&#39;:[                 { &#39;name&#39;:&#39;field_id&#39;, label=&gt;&#39;Name of Input&#39;, type=&gt;&#39;inputtype&#39; },                 { &#39;name&#39;:&#39;field_two&#39;, label=&gt;&#39;User Prompt&#39;, type=&gt;&#39;inputtype&#39; },                 ]             &#39;RoomInput&#39;:[                 { &#39;name&#39;:&#39;field_id&#39;, label=&gt;&#39;Name of Input&#39;, type=&gt;&#39;inputtype&#39; },                 { &#39;name&#39;:&#39;field_two&#39;, label=&gt;&#39;User Prompt&#39;, type=&gt;&#39;inputtype&#39; },                 ]             }         } }</p> "
+          }
+        ],
+        "Response": [
+          {
+            "group": "Response",
+            "type": "String",
+            "optional": false,
+            "field": "Channels",
+            "description": ""
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "XML ChannelList Response",
+          "content": "<?xml version=\"1.0\" encoding=\"UTF-8\" ?>\n<ChannelListResponse>\n  <Channels>\n    <Channel>\n \t\t<id>boo</id>\n\t\t<name>Booking.com</name>\n\t\t<signupLink>http://www.someurl</signuplink>\n    </Channel>\n</ChannelListResponse>",
+          "type": "json"
+        }
+      ]
+    },
+    "examples": [
+      {
+        "title": "XML ChannelList Request",
+        "content": "<?xml version=\"1.0\" encoding=\"UTF-8\" ?>\n<ChannelList>\n</ChannelList>",
+        "type": "json"
+      }
+    ],
+    "version": "0.0.0",
+    "filename": "perllib/MAAPI.pm",
+    "groupTitle": "PMS"
+  },
+  {
+    "type": "get",
     "url": "/HelloWorld",
     "title": "HelloWorld",
     "name": "HelloWorld",
@@ -1250,25 +1264,32 @@
   },
   {
     "type": "get",
-    "url": "/LoopChannelARIList",
-    "title": "LoopChannelARIList",
-    "name": "LoopChannelARIList",
+    "url": "/LoopARIList",
+    "title": "LoopARIList",
+    "name": "LoopARIList",
     "group": "PMS",
-    "description": "<p>Displays a range of Availability and Rate information for the Loopback Channel.</p> ",
+    "description": "<p>Displays a range of Availability and Rate information for the Loopback Channel. For now, this dumps all data in the system (for the Property)</p> ",
+    "examples": [
+      {
+        "title": "JSON Request",
+        "content": "{\n\t'Auth/UserToken':'',\n\t'Auth/VendorId':'',\n\t'Auth/VendorPassword':''\n}",
+        "type": "json"
+      }
+    ],
     "version": "0.0.0",
     "filename": "perllib/MAAPI.pm",
     "groupTitle": "PMS"
   },
   {
     "type": "get",
-    "url": "/LoopChannelBookingCreate",
-    "title": "LoopChannelBookingCreate",
-    "name": "LoopChannelBookingCreate",
+    "url": "/LoopBookingCreate",
+    "title": "LoopBookingCreate",
+    "name": "LoopBookingCreate",
     "group": "PMS",
     "description": "<p>Create a new booking in the Loopback Channel. Details</p> ",
     "examples": [
       {
-        "title": "JSON LoopChannelBookingCreate Request",
+        "title": "JSON LoopBookingCreate Request",
         "content": "{\n'Auth/VendorId':''\n'Auth/VendorPassword':'',\n'Auth/UserToken':'',\n'Auth/PropertyId':'',\n'SimpleBooking':{\n\t'StartDate':'YYYY-MM-DD',\n\t'EndDate':'YYYY-MM-DD',\n\t'RoomId':###,\n\t'RoomQty':##,\n\t'PricePerDay':'3.00',\n\t'PriceCurrency':'USD',\n\t}\n}",
         "type": "json"
       }
@@ -1279,22 +1300,29 @@
   },
   {
     "type": "get",
-    "url": "/LoopChannelBookingList",
-    "title": "LoopChannelBookingList",
-    "name": "LoopChannelBookingList",
+    "url": "/LoopBookingList",
+    "title": "LoopBookingList",
+    "name": "LoopBookingList",
     "group": "PMS",
-    "description": "<p>Displays all bookings (or a range) in the Loopback Channel</p> ",
+    "description": "<p>Displays all bookings (or a range) in the Loopback Channel. See BookingList for examples of parameters/incoming calls and output.</p> ",
     "version": "0.0.0",
     "filename": "perllib/MAAPI.pm",
     "groupTitle": "PMS"
   },
   {
     "type": "get",
-    "url": "/LoopChannelBookingRemove",
-    "title": "LoopChannelBookingRemove",
-    "name": "LoopChannelBookingRemove",
+    "url": "/LoopBookingModify",
+    "title": "LoopBookingModify",
+    "name": "LoopBookingModify",
     "group": "PMS",
-    "description": "<p>Removes a Booking from the loopback channel</p> ",
+    "description": "<p>Removes a Booking from the loopback channel.</p> ",
+    "examples": [
+      {
+        "title": "JSON Request",
+        "content": "{\n\t'Auth/UserToken':'',\n\t'Auth/VendorId':'',\n\t'Auth/VendorPassword':'',\n\t'OrderId':'XXXXX',\n\t'verb':'cancel'\n}",
+        "type": "json"
+      }
+    ],
     "version": "0.0.0",
     "filename": "perllib/MAAPI.pm",
     "groupTitle": "PMS"
@@ -2389,83 +2417,6 @@
       {
         "title": "JSON UserExists Request",
         "content": " {\n  'Auth/VendorId':'Your Vendor ID',\n  'Auth/VendorPassword':'Your Vendor Password',\n  'UserId':'requested-username',\n  'Email':'user@domain.com'\n }",
-        "type": "json"
-      }
-    ],
-    "version": "0.0.0",
-    "filename": "perllib/MAAPI.pm",
-    "groupTitle": "PMS"
-  },
-  {
-    "type": "get",
-    "url": "/InboxUserLogin",
-    "title": "InboxUserLogin",
-    "name": "UserLogin",
-    "group": "PMS",
-    "description": "<p>Creates an authentication token for inbox.myallocator.com Then redirect to <a href=\"https://inbox.myallocator.com/en/login/?token=xxxx\">https://inbox.myallocator.com/en/login/?token=xxxx</a></p> ",
-    "parameter": {
-      "fields": {
-        "Request": [
-          {
-            "group": "Request",
-            "type": "String",
-            "optional": true,
-            "field": "Auth/UserId",
-            "description": "<p>Users unique ID     (required with Auth/UserPassword)</p> "
-          },
-          {
-            "group": "Request",
-            "type": "String",
-            "optional": true,
-            "field": "Auth/UserPassword",
-            "description": "<p>Users password        (required with Auth/UserId)</p> "
-          },
-          {
-            "group": "Request",
-            "type": "String",
-            "optional": true,
-            "field": "Auth/UserToken",
-            "description": "<p>Users auth token (see AssociateUserToPMS call to generate a Token)</p> "
-          }
-        ]
-      }
-    },
-    "success": {
-      "fields": {
-        "Response": [
-          {
-            "group": "Response",
-            "type": "String",
-            "optional": false,
-            "field": "cookie/id",
-            "description": ""
-          },
-          {
-            "group": "Response",
-            "type": "String",
-            "optional": false,
-            "field": "cookie/value",
-            "description": ""
-          },
-          {
-            "group": "Response",
-            "type": "String",
-            "optional": false,
-            "field": "loginurl",
-            "description": ""
-          }
-        ]
-      }
-    },
-    "examples": [
-      {
-        "title": "XML UserLogin Request",
-        "content": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<UserLogin>\n<Auth>\n  <UserId>Customer User ID</UserId>\n  <UserPassword>Customer Password</UserPassword>\n</Auth>\n</UserLogin>",
-        "type": "json"
-      },
-      {
-        "title": "JSON Hello Request",
-        "content": "Content-Type: application/json\n{ \n 'Auth/UserId':'your username',\n 'Auth/UserPassword':'your password'\n}",
         "type": "json"
       }
     ],
