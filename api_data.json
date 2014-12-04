@@ -1433,7 +1433,7 @@
             "type": "Integer",
             "optional": true,
             "field": ".Units",
-            "description": "<h1 id=\"of-rooms\">of Rooms</h1> "
+            "description": "<p>number of Rooms</p> "
           },
           {
             "group": "Request",
@@ -1491,7 +1491,7 @@
             "type": "Integer",
             "optional": true,
             "field": ".Units",
-            "description": "<h1 id=\"of-rooms\">of Rooms</h1> "
+            "description": "<p>number of Rooms</p> "
           },
           {
             "group": "Booking",
