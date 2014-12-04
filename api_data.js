@@ -65,6 +65,7 @@ define({ "api": [
     "url": "/ARIUpdate",
     "title": "ARIUpdate",
     "name": "ARIUpdate",
+    "version": "201408.0.0",
     "group": "PMS",
     "parameter": {
       "fields": {
@@ -327,7 +328,6 @@ define({ "api": [
         "type": "json"
       }
     ],
-    "version": "0.0.0",
     "filename": "perllib/MAAPI.pm",
     "groupTitle": "PMS"
   },
@@ -336,6 +336,7 @@ define({ "api": [
     "url": "/ARIUpdateStatus",
     "title": "ARIUpdateStatus",
     "name": "ARIUpdateStatus",
+    "version": "201408.0.0",
     "group": "PMS",
     "parameter": {
       "fields": {
@@ -420,7 +421,6 @@ define({ "api": [
         "type": "json"
       }
     ],
-    "version": "0.0.0",
     "filename": "perllib/MAAPI.pm",
     "groupTitle": "PMS"
   },
@@ -429,6 +429,7 @@ define({ "api": [
     "url": "/AssociatePropertyToPMS",
     "title": "AssociatePropertyToPMS",
     "name": "AssociatePropertyToPMS",
+    "version": "201408.0.0",
     "group": "PMS",
     "description": "<p>This call is mostly here for future expansion in 2015.  Creates a permanent link between an existing myallocator property and a PMS Vendor.   The PMS Vendor should securely obtain the users myallocator user-id and password (but do not store them),   then in the background pass the user credentials to AssociatePropertyToPMS and a link will be created.  Any future API calls will not require a Password. </p> <p> NOTE: *Users and Properties created by a PMS Vendor will automatically be linked to that PMS (this call is not necessary)</p> <p> NOTE: Although Auth/UserPassword is identified in this call as <em>required</em> if a prior AssociateUserToPMS call has been made then it is not actually required.</p> ",
     "parameter": {
@@ -504,7 +505,6 @@ define({ "api": [
         "type": "json"
       }
     ],
-    "version": "0.0.0",
     "filename": "perllib/MAAPI.pm",
     "groupTitle": "PMS"
   },
@@ -513,6 +513,7 @@ define({ "api": [
     "url": "/AssociateUserToPMS",
     "title": "AssociateUserToPMS",
     "name": "AssociateUserToPMS",
+    "version": "201408.0.0",
     "group": "PMS",
     "description": "<p>Creates a permanent link between an existing myallocator user and a PMS Vendor.   The PMS Vendor should securely obtain the users myallocator user-id and password (but do not store them),   then in the background pass the user credentials to AssociateUserToPMS and a link will be created.  Any future API calls will not require UserPassword. </p> <p> NOTE: *Users and Properties created by a PMS Vendor will automatically be linked to that PMS (this call is not necessary)</p> <p> NOTE: Although Auth/UserPassword is identified in this call as <em>required</em> if a prior AssociateUserToPMS call has been made then it is not actually required.</p> ",
     "parameter": {
@@ -581,7 +582,6 @@ define({ "api": [
         "type": "json"
       }
     ],
-    "version": "0.0.0",
     "filename": "perllib/MAAPI.pm",
     "groupTitle": "PMS"
   },
@@ -590,6 +590,7 @@ define({ "api": [
     "url": "/BookingList",
     "title": "BookingList",
     "name": "BookingList",
+    "version": "201408.0.0",
     "group": "PMS",
     "parameter": {
       "fields": {
@@ -1087,7 +1088,6 @@ define({ "api": [
         ]
       }
     },
-    "version": "0.0.0",
     "filename": "perllib/MAAPI.pm",
     "groupTitle": "PMS"
   },
@@ -1096,6 +1096,7 @@ define({ "api": [
     "url": "/BookingPaymentDownload",
     "title": "BookingPaymentDownload",
     "name": "BookingPaymentDownload",
+    "version": "201408.0.0",
     "group": "PMS",
     "description": "<p>This call can be used to retrieve credit card details from specific bookings.   This applies only to channels that currently send us the credit card details (booking.com, Expedia, BookNow) and only for bookings that were created after connection with myallocator has been made.</p> <p> This API call is not enabled for vendors by default. You need to send us your PCI compliance certification before this can be done. It&#39;s also neccessary to send along the credit card viewing password (different from the user login). For best practise do not store this password in your system but rather get it from the customer and send it on directly. This way the password will only be in the memory and not as accessible.</p> <p> The credit card viewing password needs to be changed ever 365 by the property. It can happen that the property has reset their password in which case our support team needs to reencrypt the existing details. This is not an automatic process and can take between 1 and 3 business days.</p> <p> Applicable error codes are 26 - 30. Even though logically this would be a GET call, we use POST for this one to prevent the password from going to the webserver log files.</p> <p> Bookings can have multiple credit card details stored within them, as they have been updated by the guest. The response will list credit card details with the most recent credit card first.</p> ",
     "parameter": {
@@ -1176,7 +1177,6 @@ define({ "api": [
         }
       ]
     },
-    "version": "0.0.0",
     "filename": "perllib/MAAPI.pm",
     "groupTitle": "PMS"
   },
@@ -1185,6 +1185,7 @@ define({ "api": [
     "url": "/ChannelList",
     "title": "ChannelList",
     "name": "ChannelList",
+    "version": "201408.0.0",
     "group": "PMS",
     "description": "<p>Dumps information about all known channels, their status, and supported fields.</p> ",
     "parameter": {
@@ -1251,7 +1252,6 @@ define({ "api": [
         "type": "json"
       }
     ],
-    "version": "0.0.0",
     "filename": "perllib/MAAPI.pm",
     "groupTitle": "PMS"
   },
@@ -1260,6 +1260,7 @@ define({ "api": [
     "url": "/HelloWorld",
     "title": "HelloWorld",
     "name": "HelloWorld",
+    "version": "201408.0.0",
     "group": "PMS",
     "description": "<table> <thead> <tr> <th>Call</th> <th>Notes + Authentication Requirements</th> </tr> </thead> <tbody> <tr> <td>Hello</td> <td>No Authentication Required</td> </tr> <tr> <td>HelloVendor</td> <td>Requires <em>VALID</em> Vendor Credentials</td> </tr> <tr> <td>HelloUser</td> <td>Requires <em>VALID</em> User Credentials</td> </tr> <tr> <td>HelloUserVendor</td> <td>Requires <em>VALID</em> User <em>AND</em> Vendor Credentials</td> </tr> </tbody> </table> <p> This method is diagnostic in nature, it is intended to provide a simple echo/response &quot;My First API call&quot;,  <em>IT HAS NO PURPOSE</em> besides simply returning whatever parameters you send it (no authentication required).</p> ",
     "examples": [
@@ -1279,7 +1280,6 @@ define({ "api": [
         "type": "json"
       }
     ],
-    "version": "0.0.0",
     "filename": "perllib/MAAPI.pm",
     "groupTitle": "PMS"
   },
@@ -1288,6 +1288,7 @@ define({ "api": [
     "url": "/LoopARIList",
     "title": "LoopARIList",
     "name": "LoopARIList",
+    "version": "201408.0.0",
     "group": "PMS",
     "description": "<p>Displays a range of Availability and Rate information for the Loopback Channel. For now, this dumps all data in the system (for the Property)</p> ",
     "examples": [
@@ -1297,7 +1298,6 @@ define({ "api": [
         "type": "json"
       }
     ],
-    "version": "0.0.0",
     "filename": "perllib/MAAPI.pm",
     "groupTitle": "PMS"
   },
@@ -1306,6 +1306,7 @@ define({ "api": [
     "url": "/LoopBookingCreate",
     "title": "LoopBookingCreate",
     "name": "LoopBookingCreate",
+    "version": "201408.0.0",
     "group": "PMS",
     "description": "<p>Create a new booking in the Loopback Channel. Details</p> ",
     "examples": [
@@ -1315,7 +1316,6 @@ define({ "api": [
         "type": "json"
       }
     ],
-    "version": "0.0.0",
     "filename": "perllib/MAAPI.pm",
     "groupTitle": "PMS"
   },
@@ -1324,9 +1324,9 @@ define({ "api": [
     "url": "/LoopBookingList",
     "title": "LoopBookingList",
     "name": "LoopBookingList",
+    "version": "201408.0.0",
     "group": "PMS",
     "description": "<p>Displays all bookings (or a range) in the Loopback Channel. See BookingList for examples of parameters/incoming calls and output.</p> ",
-    "version": "0.0.0",
     "filename": "perllib/MAAPI.pm",
     "groupTitle": "PMS"
   },
@@ -1335,6 +1335,7 @@ define({ "api": [
     "url": "/LoopBookingModify",
     "title": "LoopBookingModify",
     "name": "LoopBookingModify",
+    "version": "201408.0.0",
     "group": "PMS",
     "description": "<p>Removes a Booking from the loopback channel.</p> ",
     "examples": [
@@ -1344,7 +1345,6 @@ define({ "api": [
         "type": "json"
       }
     ],
-    "version": "0.0.0",
     "filename": "perllib/MAAPI.pm",
     "groupTitle": "PMS"
   },
@@ -1353,6 +1353,7 @@ define({ "api": [
     "url": "/PropertyChannelList",
     "title": "PropertyChannelList",
     "name": "PropertyChannelList",
+    "version": "201408.0.0",
     "group": "PMS",
     "description": "<p>Lists the channel details associated with a property. Formerly (v1) GetProperties</p> ",
     "parameter": {
@@ -1403,7 +1404,6 @@ define({ "api": [
         "type": "json"
       }
     ],
-    "version": "0.0.0",
     "filename": "perllib/MAAPI.pm",
     "groupTitle": "PMS"
   },
@@ -1412,6 +1412,7 @@ define({ "api": [
     "url": "/PropertyCreate",
     "title": "PropertyCreate",
     "name": "PropertyCreate",
+    "version": "201408.0.0",
     "group": "PMS",
     "parameter": {
       "fields": {
@@ -1529,7 +1530,6 @@ define({ "api": [
         }
       ]
     },
-    "version": "0.0.0",
     "filename": "perllib/MAAPI.pm",
     "groupTitle": "PMS"
   },
@@ -1538,6 +1538,7 @@ define({ "api": [
     "url": "/PropertyList",
     "title": "PropertyList",
     "name": "PropertyList",
+    "version": "201408.0.0",
     "group": "PMS",
     "description": "<p>Users on myallocator.com might have more than one property attached to their username.  This request lists which properties are associated with the customer and provides a property ID, needed to update the availability of this property. This request was formerly known as GetProperties (v1)</p> ",
     "parameter": {
@@ -1655,7 +1656,6 @@ define({ "api": [
         }
       ]
     },
-    "version": "0.0.0",
     "filename": "perllib/MAAPI.pm",
     "groupTitle": "PMS"
   },
@@ -1664,6 +1664,7 @@ define({ "api": [
     "url": "/PropertyModify",
     "title": "PropertyModify",
     "name": "PropertyModify",
+    "version": "201408.0.0",
     "group": "PMS",
     "parameter": {
       "fields": {
@@ -1764,7 +1765,6 @@ define({ "api": [
         }
       ]
     },
-    "version": "0.0.0",
     "filename": "perllib/MAAPI.pm",
     "groupTitle": "PMS"
   },
@@ -1773,6 +1773,7 @@ define({ "api": [
     "url": "/RoomAvailabilityList",
     "title": "RoomAvailabilityList",
     "name": "RoomAvailabilityList",
+    "version": "201408.0.0",
     "group": "PMS",
     "description": "<p>This call can be used to query for all data that we hold for a specific property and date range.   The date range can only be 31 days as the maximum. You can query multiple times if you need a longer date range.</p> <p> A MaxStay setting of 0 means &quot;unrestricted&quot;.   The 48 and 49 in the response example below refer to the room ID as returned by GetRooms (XML API).</p> <p> <strong> Compatibility: </strong>    this was formerly available at: <a href=\"https://myallocator.com/en/api/data\">https://myallocator.com/en/api/data</a></p> ",
     "parameter": {
@@ -1846,7 +1847,6 @@ define({ "api": [
         }
       ]
     },
-    "version": "0.0.0",
     "filename": "perllib/MAAPI.pm",
     "groupTitle": "PMS"
   },
@@ -1855,6 +1855,7 @@ define({ "api": [
     "url": "/RoomCreate",
     "title": "RoomCreate",
     "name": "RoomCreate",
+    "version": "201408.0.0",
     "group": "PMS",
     "description": "<p>This method allows you to create, update or remove rooms on myallocator.com. Please note that you can only send a single RoomCreate, RoomUpdate, or RoomRemove</p> ",
     "parameter": {
@@ -2040,7 +2041,6 @@ define({ "api": [
         }
       ]
     },
-    "version": "0.0.0",
     "filename": "perllib/MAAPI.pm",
     "groupTitle": "PMS"
   },
@@ -2049,6 +2049,7 @@ define({ "api": [
     "url": "/RoomList",
     "title": "RoomList",
     "name": "RoomList",
+    "version": "201408.0.0",
     "group": "PMS",
     "description": "<p>returns a list of configured room types for a property. Formerly GetRoomTypes (v1).</p> ",
     "parameter": {
@@ -2168,7 +2169,6 @@ define({ "api": [
         }
       ]
     },
-    "version": "0.0.0",
     "filename": "perllib/MAAPI.pm",
     "groupTitle": "PMS"
   },
@@ -2177,6 +2177,7 @@ define({ "api": [
     "url": "/RoomRemove",
     "title": "RoomRemove",
     "name": "RoomRemove",
+    "version": "201408.0.0",
     "group": "PMS",
     "description": "<p>Remove a room.</p> ",
     "parameter": {
@@ -2206,7 +2207,6 @@ define({ "api": [
         }
       ]
     },
-    "version": "0.0.0",
     "filename": "perllib/MAAPI.pm",
     "groupTitle": "PMS"
   },
@@ -2215,9 +2215,9 @@ define({ "api": [
     "url": "/RoomUpdate",
     "title": "RoomUpdate",
     "name": "RoomUpdate",
+    "version": "201408.0.0",
     "group": "PMS",
     "description": "<p>uses the same parameters (and response) as &quot;RoomCreate&quot;</p> ",
-    "version": "0.0.0",
     "filename": "perllib/MAAPI.pm",
     "groupTitle": "PMS"
   },
@@ -2226,6 +2226,7 @@ define({ "api": [
     "url": "/UserCreate",
     "title": "UserCreate",
     "name": "UserCreate",
+    "version": "201408.0.0",
     "group": "PMS",
     "parameter": {
       "fields": {
@@ -2343,7 +2344,6 @@ define({ "api": [
         }
       ]
     },
-    "version": "0.0.0",
     "filename": "perllib/MAAPI.pm",
     "groupTitle": "PMS"
   },
@@ -2352,6 +2352,7 @@ define({ "api": [
     "url": "/UserExists",
     "title": "UserExists",
     "name": "UserExists",
+    "version": "201408.0.0",
     "group": "PMS",
     "description": "<p>This method checks to see if a User or Email is already registered.</p> ",
     "parameter": {
@@ -2441,7 +2442,6 @@ define({ "api": [
         "type": "json"
       }
     ],
-    "version": "0.0.0",
     "filename": "perllib/MAAPI.pm",
     "groupTitle": "PMS"
   },
@@ -2450,6 +2450,7 @@ define({ "api": [
     "url": "/VendorSet",
     "title": "VendorSet",
     "name": "VendorSet",
+    "version": "201408.0.0",
     "group": "PMS",
     "parameter": {
       "fields": {
@@ -2507,7 +2508,6 @@ define({ "api": [
         "type": "json"
       }
     ],
-    "version": "0.0.0",
     "filename": "perllib/MAAPI.pm",
     "groupTitle": "PMS"
   },
