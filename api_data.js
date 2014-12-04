@@ -39,23 +39,23 @@ define({ "api": [
     "type": "",
     "url": "Known",
     "title": "Bugs",
-    "group": "INTRODUCTION",
+    "group": "Introduction",
     "name": "Know_Bugs",
     "version": "201408.0.0",
     "description": "<p>This page will list known bugs we are currently working on.</p> <ul> <li>ARIUpdates delayed</li> <li>Callback notifications may be delayed.</li> <li>Occasional ISE while bugs are being fixed.</li> </ul> ",
     "filename": "perllib/MAAPI.pm",
-    "groupTitle": "INTRODUCTION"
+    "groupTitle": "Introduction"
   },
   {
     "type": "",
     "url": "Changes",
     "title": "",
     "name": "Recent_Changes",
+    "group": "Introduction",
     "version": "201408.0.0",
-    "group": "INTRODUCTION",
     "description": "<table> <thead> <tr> <th>Version</th> <th>Notes</th> </tr> </thead> <tbody> <tr> <td>201408.0.1</td> <td>initial release</td> </tr> </tbody> </table> ",
     "filename": "perllib/MAAPI.pm",
-    "groupTitle": "INTRODUCTION"
+    "groupTitle": "Introduction"
   },
   {
     "group": "Introduction",
