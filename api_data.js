@@ -136,22 +136,15 @@ define({ "api": [
             "group": "Request",
             "type": "String",
             "optional": false,
-            "field": ".ExcludeChannels",
-            "description": "<p>Container node (array) for Channels to be implicitly excluded (useful when Channel Id &#39;all&#39; is in)</p> "
-          },
-          {
-            "group": "Request",
-            "type": "String",
-            "optional": false,
-            "field": "..ExcludedChannels.Channel",
+            "field": "..ExcludeChannel",
             "description": "<p>(XML ONLY) A XML node containing the channel that the customer wants to update. (Use ChannelList for ChannelId&#39;s)</p> "
           },
           {
             "group": "Request",
             "type": "String",
             "optional": false,
-            "field": "..ExcludedChannels.ChannelId",
-            "description": "<p>(JSON ONLY) the ChannelId of the channel to be updated. ex: &quot;loop&quot; for Loop</p> "
+            "field": "..-ChannelId",
+            "description": "<p>(JSON ONLY) the ChannelId of the channel to be updated. Literally have a minus. ex: &quot;-loop&quot; for Loop</p> "
           },
           {
             "group": "Request",
