@@ -122,14 +122,14 @@ define({ "api": [
             "group": "Request",
             "type": "String",
             "optional": false,
-            "field": "..Channel",
+            "field": "..Channels.Channel",
             "description": "<p>(XML ONLY) A XML node containing the channel that the customer wants to update. (Use ChannelList for ChannelId&#39;s)</p> "
           },
           {
             "group": "Request",
             "type": "String",
             "optional": false,
-            "field": "..ChannelId",
+            "field": "..Channels.ChannelId",
             "description": "<p>(JSON ONLY) the ChannelId of the channel to be updated. ex: &quot;loop&quot; for Loop</p> "
           },
           {
@@ -137,7 +137,21 @@ define({ "api": [
             "type": "String",
             "optional": false,
             "field": ".ExcludeChannels",
-            "description": "<p>Container node (array) containing a list of channels to be updated.</p> "
+            "description": "<p>Container node (array) for Channels to be implicitly excluded (useful when Channel Id &#39;all&#39; is in)</p> "
+          },
+          {
+            "group": "Request",
+            "type": "String",
+            "optional": false,
+            "field": "..ExcludedChannels.Channel",
+            "description": "<p>(XML ONLY) A XML node containing the channel that the customer wants to update. (Use ChannelList for ChannelId&#39;s)</p> "
+          },
+          {
+            "group": "Request",
+            "type": "String",
+            "optional": false,
+            "field": "..ExcludedChannels.ChannelId",
+            "description": "<p>(JSON ONLY) the ChannelId of the channel to be updated. ex: &quot;loop&quot; for Loop</p> "
           },
           {
             "group": "Request",
@@ -178,42 +192,42 @@ define({ "api": [
             "group": "Request",
             "type": "String",
             "optional": false,
-            "field": "..Allocation.Units",
+            "field": "..Allocations.Allocation.Units",
             "description": "<p>How many beds or rooms should be available on this day. Whether it&#39;s beds or rooms depends on whether the room is a dorm or a private room. To remove allocation set Units to 0.</p> "
           },
           {
             "group": "Request",
             "type": "String",
             "optional": false,
-            "field": "..Allocation.MinStay",
+            "field": "..Allocations.Allocation.MinStay",
             "description": "<p>Specify the minumum number of days a customer is allowed to stay. Not all channels support this feature. Needs to be 1 or higher. (optional)</p> "
           },
           {
             "group": "Request",
             "type": "String",
             "optional": false,
-            "field": "..Allocation.MaxStay",
+            "field": "..Allocations.Allocation.MaxStay",
             "description": "<p>Specify the maximum number of days a customer is allowed to stay. Not all channels support this feature. Needs to be 1 or higher. (optional)</p> "
           },
           {
             "group": "Request",
             "type": "String",
             "optional": false,
-            "field": "..Allocation.Prices",
+            "field": "..Allocations.Allocation.Prices",
             "description": "<p>[].Price      (XML ONLY) Price per person for shared/dorm rooms or per room for private rooms. In XML: You can submit two Price tags. The default one and one with the attribute \\textit{weekend=&quot;true&quot;}. If a Price tag with this attribute has been submitted the rate only applies to weekdays set by the customer as weekends (see PropertyList for which days are set as weekend days).</p> "
           },
           {
             "group": "Request",
             "type": "String",
             "optional": false,
-            "field": "..Allocation.PriceWeekend",
+            "field": "..Allocations.Allocation.PriceWeekend",
             "description": "<p>(JSON ONLY) price for days marked as &quot;weekday&quot; (see PropertyList for which days are considered &quot;Weekday&quot;)</p> "
           },
           {
             "group": "Request",
             "type": "String",
             "optional": false,
-            "field": "..Allocation.PriceWeekday",
+            "field": "..Allocations.Allocation.PriceWeekday",
             "description": "<p>(JSON ONLY) price for days marked as &quot;weekend&quot; (see PropertyList for which days are considered &quot;Weekends&quot;)</p> "
           }
         ]
