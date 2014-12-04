@@ -109,14 +109,42 @@
             "type": "String",
             "optional": false,
             "field": "Updates",
-            "description": "<p>Top level node containing all updates. Currently only one Update per request is supported/allowed. (See JSON/XML Examples for specific usage/formatting)</p> "
+            "description": "<p>Top level container node (array) containing all updates. Currently only one Update per request is supported/allowed. (See JSON/XML Examples for specific usage/formatting)</p> "
           },
           {
             "group": "Request",
             "type": "String",
             "optional": false,
-            "field": "..Channels.Channel",
-            "description": "<p>A list of channels that the customer wants to update. See below for channel codes.</p> "
+            "field": ".Channels",
+            "description": "<p>Container node (array) containing a list of channels to be updated.</p> "
+          },
+          {
+            "group": "Request",
+            "type": "String",
+            "optional": false,
+            "field": "..Channel",
+            "description": "<p>(XML ONLY) A XML node containing the channel that the customer wants to update. (Use ChannelList for ChannelId&#39;s)</p> "
+          },
+          {
+            "group": "Request",
+            "type": "String",
+            "optional": false,
+            "field": "..ChannelId",
+            "description": "<p>(JSON ONLY) the ChannelId of the channel to be updated. ex: &quot;loop&quot; for Loop</p> "
+          },
+          {
+            "group": "Request",
+            "type": "String",
+            "optional": false,
+            "field": ".ExcludeChannels",
+            "description": "<p>Container node (array) containing a list of channels to be updated.</p> "
+          },
+          {
+            "group": "Request",
+            "type": "String",
+            "optional": false,
+            "field": ".Allocations",
+            "description": "<p>Container node (array) containing a list</p> "
           },
           {
             "group": "Request",
