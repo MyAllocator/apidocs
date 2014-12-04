@@ -129,7 +129,7 @@ define({ "api": [
             "group": "Request",
             "type": "String",
             "allowedValues": [
-              "\"[cid]\"",
+              "\"valid_channelid\"",
               "\"all\""
             ],
             "optional": false,
