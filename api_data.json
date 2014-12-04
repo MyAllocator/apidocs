@@ -109,7 +109,21 @@
             "type": "String",
             "optional": false,
             "field": "Updates",
-            "description": "<p>[]    Top level node containing all updates. Currently only one Update per request is supported/allowed. (See JSON/XML Examples for specific usage/formatting)</p> "
+            "description": "<p>Top level node containing all updates. Currently only one Update per request is supported/allowed. (See JSON/XML Examples for specific usage/formatting)</p> "
+          },
+          {
+            "group": "Request",
+            "type": "String",
+            "optional": false,
+            "field": "..Channels.Channel",
+            "description": "<p>A list of channels that the customer wants to update. See below for channel codes.</p> "
+          },
+          {
+            "group": "Request",
+            "type": "String",
+            "optional": false,
+            "field": "..Allocations.Allocation",
+            "description": "<p>Individual allocations. There can be as many as you like, but a the date ranges should never overlap (within one room id).</p> "
           },
           {
             "group": "Request",
