@@ -1375,11 +1375,59 @@
     "name": "LoopBookingCreate",
     "version": "201408.0.0",
     "group": "PMS",
-    "description": "<p>Create a new booking in the Loopback Channel. Details</p> ",
+    "description": "<p>Create a new booking in the Loopback Channel.  Parameters are optional and if not specified then booking will be populated with DWIW (Do What I Want) style data.</p> ",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "Date",
+            "optional": true,
+            "field": "StartDate",
+            "description": "<p>YYYY-MM-DD</p> "
+          },
+          {
+            "group": "Parameter",
+            "type": "Date",
+            "optional": true,
+            "field": "EndDate",
+            "description": "<p>YYYY-MM-DD</p> "
+          },
+          {
+            "group": "Parameter",
+            "type": "Integer",
+            "optional": true,
+            "field": "Units",
+            "description": "<h1 id=\"of-rooms\">of Rooms</h1> "
+          },
+          {
+            "group": "Parameter",
+            "type": "Currency",
+            "optional": true,
+            "field": "Price",
+            "description": "<p>MyAllocator Room Id</p> "
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": true,
+            "field": "CustomerFName",
+            "description": "<p>Customer First Name</p> "
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": true,
+            "field": "CustomerLName",
+            "description": "<p>Customer Last Name</p> "
+          }
+        ]
+      }
+    },
     "examples": [
       {
         "title": "JSON LoopBookingCreate Request",
-        "content": "{\n'Auth/VendorId':''\n'Auth/VendorPassword':'',\n'Auth/UserToken':'',\n'Auth/PropertyId':'',\n'SimpleBooking':{\n\t'StartDate':'YYYY-MM-DD',\n\t'EndDate':'YYYY-MM-DD',\n\t'RoomId':###,\n\t'RoomQty':##,\n\t'PricePerDay':'3.00',\n\t'PriceCurrency':'USD',\n\t}\n}",
+        "content": "{\n'Auth/VendorId':''\n'Auth/VendorPassword':'',\n'Auth/UserToken':'',\n'Auth/PropertyId':'',\n'SimpleBooking':{\n\t'StartDate':'YYYY-MM-DD',\n\t'EndDate':'YYYY-MM-DD',\n\t'RoomId':###,\n\t'Units':##,\n\t'Price':'3.00',\n\t}\n}",
         "type": "json"
       }
     ],
