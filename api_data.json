@@ -128,10 +128,6 @@
           {
             "group": "Request",
             "type": "String",
-            "allowedValues": [
-              "\"valid_channelid\"",
-              "\"all\""
-            ],
             "optional": false,
             "field": "..Channels.ChannelId",
             "description": "<p>(JSON ONLY) the ChannelId of the channel to be updated. ex: &quot;loop&quot; for Loop</p> "
