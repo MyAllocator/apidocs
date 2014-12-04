@@ -129,7 +129,8 @@ define({ "api": [
             "group": "Request",
             "type": "String",
             "allowedValues": [
-              "\"ChannelId or all\""
+              "\"[cid]\"",
+              "\"all\""
             ],
             "optional": false,
             "field": "..Channels.ChannelId",
