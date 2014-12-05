@@ -32,7 +32,7 @@
       ]
     },
     "version": "0.0.0",
-    "filename": "htdocs/apidoc.pm",
+    "filename": "perllib/apidoc.pm",
     "groupTitle": "Callbacks"
   },
   {
@@ -40,16 +40,6 @@
     "name": "Our_Todo_List",
     "version": "201408.0.0",
     "description": "<p>This API is currently considered &quot;beta&quot;.  This is a list of Errata. This page will list known areas we are working on, if you have a bug please let us know. This is our internal list of stuff we know is broken, it will update throughout the day.</p> <ul> <li>NEED TO REGRESSION TEST v1</li> <li>New PHP SDK needs to be released onto github</li> <li>All calls need stricter incoming type checking, specifically at the container level. </li> <li>ARIUpdates may be slightly delayed (they are running in a staging environment)</li> <li>PMS Property ID cannot be used as an identification.</li> <li>Documentation: needs to be restructured, fix indenting, add Auth/PropertyId, designate container nodes using new syntax</li> <li>Documentation: need to add new error codes, possibly create a severity measure.</li> <li>Documentation: need to make list of channels and capabilities auto update</li> <li>Documentation: need to implement test harness in API + fix API URI parameter strings</li> <li>Documentation: need to fix title bar in API</li> <li>JSON - planning to add _method, _version to the request (which must match URI) in next release 201412</li> <li>Callback notifications for bookings cancelled via the API may be delayed, must be manually dispatched in staging environment.</li> <li>propertyTokens are not fully implemented in all calls. </li> <li>If you receive an internal server error. </li> <li>Error messaging on ARIUpdates on Channels needs to be improved. (Currently the same as legacy v1 API)</li> <li>ARIUpdate ExcludeChannels is not working in JSON</li> <li>v1 compat - Need to discuss issues with overlapping date ranges (currently allowed on v201408, not on v1)</li> <li>ARIUpdate allows negative max stay.</li> <li>ARIUpdate FailIfUpdateActive may not always fail (depending on status of next job)</li> <li>Loop Bookings: may not display properly in the interface (some date bug?)</li> <li>Backend: Need to explore internal addState/useState on channels (is this even actually used?)</li> <li>Backend: Need to move channel status logging from mysql to redis</li> <li>Backend: Need to formalize the parameters/objects passed to upload_lt in each channel module for more legible internal codepath</li> <li>Backend: Migrate MyAllocator-&gt;channel_update into the ARIUpdate framework</li> <li>Backend: need to merge channel properties list in MyAllocator.pm into Channels.pm</li> </ul> <p>If you want to see historical (recent) changes to the API our documentation is hosted on github. <a href=\"https://github.com/MyAllocator/apidocs\">https://github.com/MyAllocator/apidocs</a></p> ",
-    "type": "",
-    "url": "",
-    "filename": "perllib/MAAPI.pm",
-    "groupTitle": "Introduction"
-  },
-  {
-    "name": "Recent_Changes",
-    "group": "Introduction",
-    "version": "201408.0.0",
-    "description": "<table> <thead> <tr> <th>Version</th> <th>Notes</th> </tr> </thead> <tbody> <tr> <td>201408.0.1</td> <td>initial release</td> </tr> </tbody> </table> ",
     "type": "",
     "url": "",
     "filename": "perllib/MAAPI.pm",
@@ -77,7 +67,7 @@
       ]
     },
     "version": "0.0.0",
-    "filename": "htdocs/apidoc.pm",
+    "filename": "perllib/apidoc.pm",
     "groupTitle": "Introduction"
   },
   {
@@ -2754,7 +2744,7 @@
     "name": "Channel_Codes",
     "description": "<table> <thead> <tr> <th>Code</th> <th>Full name</th> <th>Updates up to</th> <th>Notes</th> </tr> </thead> <tbody> <tr> <td>all</td> <td>All configured channels</td> <td>see below</td> </tr> <tr> <td>loc</td> <td>myallocator.com only</td> <td>2 years</td> <td>Specify this channel if you <em>only</em> want to update to myallocator.com. Submitting to any other channel will also always save to myallocator.com</td> </tr> <tr> <td>hc</td> <td>Hostelsclub</td> <td>2 years</td> </tr> <tr> <td>hb</td> <td>Hostelbookers</td> <td>1 year</td> <td></td> </tr> <tr> <td>gom</td> <td>Gomio</td> <td>2 years</td> <td></td> </tr> <tr> <td>iwb</td> <td>InstantWorldBooking</td> <td>2 years</td> <td></td> </tr> <tr> <td>rtg</td> <td>RatesToGo</td> <td>variable</td> <td></td> </tr> <tr> <td>adv</td> <td>HotelAdvisor</td> <td>2 years</td> <td></td> </tr> <tr> <td>hrs</td> <td>HRS</td> <td>2 years</td> <td>*not live yet</td> </tr> <tr> <td>hde</td> <td>Hotel.de</td> <td>2 years</td> <td></td> </tr> <tr> <td>esc</td> <td>Escapio</td> <td>2 years</td> <td></td> </tr> <tr> <td>hi</td> <td>HIHostels</td> <td>2 years</td> <td></td> </tr> <tr> <td>rec</td> <td>Reconline (GDS)</td> <td>2 years</td> <td></td> </tr> <tr> <td>bp</td> <td>BudgetPlaces</td> <td>2 years</td> <td></td> </tr> <tr> <td>ct</td> <td>Cultuzz</td> <td>2 years</td> <td></td> </tr> <tr> <td>lmg</td> <td>BookingMarkets/LetMeGo</td> <td>2 years</td> <td></td> </tr> <tr> <td>hw</td> <td>Hostelworld</td> <td>2 years</td> <td></td> </tr> <tr> <td>bb</td> <td>BBPlanet</td> <td>1 year</td> <td></td> </tr> <tr> <td>etb</td> <td>EasyToBook</td> <td>2 years</td> <td></td> </tr> <tr> <td>ini</td> <td>InItalia</td> <td>1 year and 3 months</td> <td></td> </tr> <tr> <td>ago</td> <td>Agoda</td> <td>2 years</td> <td></td> </tr> <tr> <td>max</td> <td>MaxBooking</td> <td>2 years</td> <td></td> </tr> <tr> <td>eb</td> <td>EasyBookings</td> <td>2 years</td> <td></td> </tr> <tr> <td>ysh</td> <td>YourSpainHostel</td> <td>2 years</td> <td></td> </tr> <tr> <td>exp</td> <td>Expedia</td> <td>2 years</td> <td></td> </tr> <tr> <td>eb</td> <td>EasyBookings</td> <td>2 years</td> <td></td> </tr> <tr> <td>air</td> <td>AirBnb</td> <td>2 years</td> <td></td> </tr> <tr> <td>orb</td> <td>Orbitz</td> <td>2 years</td> <td></td> </tr> <tr> <td>rep</td> <td>TravelRepublic</td> <td>2 years</td> <td></td> </tr> <tr> <td>boo</td> <td>Booking.com</td> <td>2 years</td> <td></td> </tr> <tr> <td>(go2)</td> <td>Go2Hostels</td> <td>1 year</td> <td>Channel closed down Jan $1^{st}$ 2011</td> </tr> </tbody> </table> <p>*</p> ",
     "version": "0.0.0",
-    "filename": "htdocs/apidoc.pm",
+    "filename": "perllib/apidoc.pm",
     "groupTitle": ""
   },
   {
@@ -2765,7 +2755,7 @@
     "name": "FAQ",
     "description": "<ul> <li><p><em>How should I deal with failed channel updates?</em> If the error is noted as non-fatal on the Error Code page then retry the update after a few minutes. Failing updates are not as rare as you would think because channels do go down and become unresponsive.</p> <p>Fatal errors should not be automatically retried as they need user intervention. Make sure to show the error message to the customer._</p> <ul> <li><em>Are there any limits on how many updates can be send at once?</em></li> </ul> <p>There is (currently) no limit, but you&#39;re strongly advised to split large updates (especially full refreshes) into smaller chunks of 30-60 days. This has the advantage that you can easily re-run failed chunks and it will make debugging problems easier.</p> <ul> <li><p><em>I cannot log in to myallocator with the test credentials. Why?</em> This is to avoid the settings for the test properties from being changed. You can however just register your own test property. Should you need more than the 30-day trial period let us know and we will extend it.</p> </li> <li><p><em>Callback: how do you know which customers belong to us?</em> The first time you send an update on behalf of a customer through our API this customer will be marked as a user of your PMS. From then on you will receive callbacks for this customer.</p> </li> <li><p><em>Can I send updates in parallel?</em> You can for different properties. What you should never do is send an update for a property without waiting for the previous update for this property to succeed/fail. Otherwise you can run into race-conditions where the later update succeeds before the first update, opening up availability on the channel unintentionally.</p> </li> <li><p><em>Why can there be multiple RoomTypeIds for a booking?</em> The same channel room can be assigned to multiple myallocator rooms. For this scenario we send the sum of available rooms/beds and the highest price of any available room that is mapped to this channel room. So the list of RoomTypeIds represents all matching rooms, but it does not mean that all of them were actually booked. Check out the warning on the Automatic Adjustments developer page for more details on how to adjust for this scenario.</p> </li> </ul> </li> </ul> ",
     "version": "0.0.0",
-    "filename": "htdocs/apidoc.pm",
+    "filename": "perllib/apidoc.pm",
     "groupTitle": ""
   },
   {
@@ -2776,7 +2766,7 @@
     "name": "Terminology",
     "description": "<table> <thead> <tr> <th>Term</th> <th>Description</th> </tr> </thead> <tbody> <tr> <td>Vendor</td> <td>You as the owner and developer of the front desk software.</td> </tr> <tr> <td>User/Customer</td> <td>Someone using your product and who is also registered on myallocator.com.</td> </tr> <tr> <td>Allocation</td> <td>A number indicating how many available beds or rooms there are.</td> </tr> </tbody> </table> ",
     "version": "0.0.0",
-    "filename": "htdocs/apidoc.pm",
+    "filename": "perllib/apidoc.pm",
     "groupTitle": ""
   },
   {
@@ -2787,7 +2777,7 @@
     "name": "Test_Accounts",
     "description": "<p>Please contact us for login details to this shared developer account.</p> <p> Properties 63, 64, 64</p> <p> Only the property with ID 63 has rooms setup with the following configuration:</p> <table> <thead> <tr> <th>Units</th> <th>Beds</th> <th>IsPrivate</th> <th>Gender</th> <th>Channels</th> </tr> </thead> <tbody> <tr> <td>3</td> <td>1</td> <td>true</td> <td>n/a &amp; hc, iwb, adv</td> </tr> <tr> <td>3</td> <td>2</td> <td>true</td> <td>n/a &amp; hc, iwb, adv</td> </tr> <tr> <td>3</td> <td>5</td> <td>false</td> <td>males &amp; hc, iwb</td> </tr> <tr> <td>3</td> <td>10</td> <td>false</td> <td>males &amp; hc, iwb</td> </tr> <tr> <td>3</td> <td>10</td> <td>false</td> <td>females &amp; hc, iwb</td> </tr> <tr> <td>3</td> <td>30</td> <td>false</td> <td>mixed &amp; hc, iwb</td> </tr> </tbody> </table> <p> Channels are not specific to rooms. The only reason &#39;adv&#39; is not showing on all rooms is because they don&#39;t support shared accomodation (dormitories).</p> ",
     "version": "0.0.0",
-    "filename": "htdocs/apidoc.pm",
+    "filename": "perllib/apidoc.pm",
     "groupTitle": ""
   },
   {
@@ -2817,7 +2807,7 @@
       ]
     },
     "version": "0.0.0",
-    "filename": "htdocs/apidoc.pm",
+    "filename": "perllib/apidoc.pm",
     "groupTitle": ""
   }
 ]
