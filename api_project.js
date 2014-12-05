@@ -4,7 +4,7 @@ define({
   "description": "MyAllocator new and improved API",
   "generator": {
     "version": "0.9.0",
-    "time": "2014-12-05T06:33:24.670Z"
+    "time": "2014-12-05T06:38:05.689Z"
   },
   "apidoc": "0.2.0"
 });
