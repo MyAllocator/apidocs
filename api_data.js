@@ -37,16 +37,6 @@ define({ "api": [
   },
   {
     "group": "Introduction",
-    "name": "Our_Todo_List",
-    "version": "201408.0.0",
-    "description": "<p>This API is currently considered &quot;beta&quot;.  This is a list of Errata. This page will list known areas we are working on, if you have a bug please let us know. This is our internal list of stuff we know is broken, it will update throughout the day.</p> <ul> <li>NEED TO REGRESSION TEST v1</li> <li>New PHP SDK needs to be released onto github</li> <li>All calls need stricter incoming type checking, specifically at the container level. </li> <li>ARIUpdates may be slightly delayed (they are running in a staging environment)</li> <li>PMS Property ID cannot be used as an identification.</li> <li>Documentation: needs to be restructured, fix indenting, add Auth/PropertyId, designate container nodes using new syntax</li> <li>Documentation: need to add new error codes, possibly create a severity measure.</li> <li>Documentation: need to make list of channels and capabilities auto update</li> <li>Documentation: need to implement test harness in API + fix API URI parameter strings</li> <li>Documentation: need to fix title bar in API</li> <li>JSON - planning to add _method, _version to the request (which must match URI) in next release 201412</li> <li>Callback notifications for bookings cancelled via the API may be delayed, must be manually dispatched in staging environment.</li> <li>Callbacks need to support versioning</li> <li>propertyTokens are not fully implemented in all calls. </li> <li>If you receive an internal server error. </li> <li>Error messaging on ARIUpdates on Channels needs to be improved. (Currently the same as legacy v1 API)</li> <li>ARIUpdate ExcludeChannels is not working in JSON</li> <li>AWS SQS notifications are not available in production (and will likely need some more live testing)</li> <li>v1 compat - Need to discuss issues with overlapping date ranges (currently allowed on v201408, not on v1)</li> <li>ARIUpdate allows negative max stay.</li> <li>ARIUpdate FailIfUpdateActive may not always fail (depending on status of next job)</li> <li>Loop Bookings: may not display properly in the interface (some date bug?)</li> <li>Backend: Need to explore internal addState/useState on channels (is this even actually used?)</li> <li>Backend: Need to move channel status logging from mysql to redis</li> <li>Backend: Need to formalize the parameters/objects passed to upload_lt in each channel module for more legible internal codepath</li> <li>Backend: Migrate MyAllocator-&gt;channel_update into the ARIUpdate framework</li> <li>Backend: need to merge channel properties list in MyAllocator.pm into Channels.pm</li> </ul> <p>If you want to see historical (recent) changes to the API our documentation is hosted on github. <a href=\"https://github.com/MyAllocator/apidocs\">https://github.com/MyAllocator/apidocs</a></p> ",
-    "type": "",
-    "url": "",
-    "filename": "perllib/MAAPI.pm",
-    "groupTitle": "Introduction"
-  },
-  {
-    "group": "Introduction",
     "version": "201408.0.0",
     "type": "",
     "url": "{}",
@@ -67,6 +57,16 @@ define({ "api": [
         }
       ]
     },
+    "filename": "perllib/MAAPI.pm",
+    "groupTitle": "Introduction"
+  },
+  {
+    "group": "Introduction",
+    "name": "___Our_Todo_List",
+    "version": "201408.0.0",
+    "description": "<p>This API is currently considered &quot;beta&quot;.  This is a list of Errata. This page will list known areas we are working on, if you have a bug please let us know. This is our internal list of stuff we know is broken, it will update throughout the day.</p> <ul> <li>NEED TO REGRESSION TEST v1</li> <li>New PHP SDK needs to be released onto github</li> <li>All calls need stricter incoming type checking, specifically at the container level. </li> <li>ARIUpdates may be slightly delayed (they are running in a staging environment)</li> <li>PMS Property ID cannot be used as an identification.</li> <li>Documentation: needs to be restructured, fix indenting, add Auth/PropertyId, designate container nodes using new syntax</li> <li>Documentation: need to add new error codes, possibly create a severity measure.</li> <li>Documentation: need to make list of channels and capabilities auto update</li> <li>Documentation: need to implement test harness in API + fix API URI parameter strings</li> <li>Documentation: need to fix title bar in API</li> <li>JSON - planning to add _method, _version to the request (which must match URI) in next release 201412</li> <li>Callback notifications for bookings cancelled via the API may be delayed, must be manually dispatched in staging environment.</li> <li>Callbacks need to support versioning</li> <li>propertyTokens are not fully implemented in all calls. </li> <li>If you receive an internal server error. </li> <li>Error messaging on ARIUpdates on Channels needs to be improved. (Currently the same as legacy v1 API)</li> <li>ARIUpdate ExcludeChannels is not working in JSON</li> <li>AWS SQS notifications are not available in production (and will likely need some more live testing)</li> <li>v1 compat - Need to discuss issues with overlapping date ranges (currently allowed on v201408, not on v1)</li> <li>ARIUpdate allows negative max stay.</li> <li>ARIUpdate FailIfUpdateActive may not always fail (depending on status of next job)</li> <li>Loop Bookings: may not display properly in the interface (some date bug?)</li> <li>Backend: Need to explore internal addState/useState on channels (is this even actually used?)</li> <li>Backend: Need to move channel status logging from mysql to redis</li> <li>Backend: Need to formalize the parameters/objects passed to upload_lt in each channel module for more legible internal codepath</li> <li>Backend: Migrate MyAllocator-&gt;channel_update into the ARIUpdate framework</li> <li>Backend: need to merge channel properties list in MyAllocator.pm into Channels.pm</li> </ul> <p>If you want to see historical (recent) changes to the API our documentation is hosted on github. <a href=\"https://github.com/MyAllocator/apidocs\">https://github.com/MyAllocator/apidocs</a></p> ",
+    "type": "",
+    "url": "",
     "filename": "perllib/MAAPI.pm",
     "groupTitle": "Introduction"
   },
