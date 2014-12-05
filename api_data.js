@@ -1375,7 +1375,7 @@ define({ "api": [
     "name": "LoopBookingCreate",
     "version": "201408.0.0",
     "group": "PMS",
-    "description": "<p>Create a new booking in the Loopback Channel.  Parameters are optional and if not specified then booking will be populated with DWIW (Do What I Want) style data.</p> ",
+    "description": "<p>Create a new booking in the Loopback Channel.  Parameters are optional and if not specified then booking will be populated with DWIW (Do What I Want) style data. See the &quot;BookingList&quot; api call for a complete discussion of fields.</p> ",
     "parameter": {
       "fields": {
         "Request": [
@@ -1449,7 +1449,7 @@ define({ "api": [
             "type": "Integer",
             "optional": true,
             "field": ".RateId",
-            "description": "<p>MyAllocator Rate Id</p> "
+            "description": "<p>OTA Rate Id</p> "
           },
           {
             "group": "Booking",
@@ -1457,6 +1457,13 @@ define({ "api": [
             "optional": true,
             "field": ".RoomDayRate",
             "description": "<p>MyAllocator Room Price (if not specified then a random, incrementing by $10 per day number will be used)</p> "
+          },
+          {
+            "group": "Booking",
+            "type": "String",
+            "optional": true,
+            "field": ".RoomDayDescription",
+            "description": "<p>A description for the Room within the DayRates container.</p> "
           },
           {
             "group": "Booking",
@@ -1471,6 +1478,62 @@ define({ "api": [
             "optional": true,
             "field": ".CustomerLName",
             "description": "<p>Customer Last Name</p> "
+          },
+          {
+            "group": "Booking",
+            "type": "String",
+            "optional": true,
+            "field": ".RoomDesc",
+            "description": "<p>Room Description</p> "
+          },
+          {
+            "group": "Booking",
+            "type": "Boolean",
+            "optional": true,
+            "field": ".OccupantSmoker",
+            "description": ""
+          },
+          {
+            "group": "Booking",
+            "type": "String",
+            "optional": true,
+            "field": ".OccupantNote",
+            "description": ""
+          },
+          {
+            "group": "Booking",
+            "type": "String",
+            "optional": true,
+            "field": ".OccupantLName",
+            "description": ""
+          },
+          {
+            "group": "Booking",
+            "type": "String",
+            "optional": true,
+            "field": ".OccupantFName",
+            "description": ""
+          },
+          {
+            "group": "Booking",
+            "type": "String",
+            "optional": true,
+            "field": ".Occupancy",
+            "description": ""
+          },
+          {
+            "group": "Booking",
+            "type": "String",
+            "optional": true,
+            "field": ".Policy",
+            "description": ""
+          },
+          {
+            "group": "Booking",
+            "type": "String",
+            "optional": true,
+            "field": ".ChannelRoomType",
+            "description": ""
           }
         ]
       }
@@ -1479,6 +1542,11 @@ define({ "api": [
       {
         "title": "JSON LoopBookingCreate Request",
         "content": "{\n'Auth/VendorId':''\n'Auth/VendorPassword':'',\n'Auth/UserToken':'',\n'Auth/PropertyId':'',\n'Booking':{\n\t'StartDate':'YYYY-MM-DD',\n\t'EndDate':'YYYY-MM-DD',\n\t'RoomId':###,\n\t'Units':##,\n\t'Price':'3.00',\n\t}\n}",
+        "type": "json"
+      },
+      {
+        "title": "XML LoopBookingCreate Request",
+        "content": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<LoopBookingCreate>\n<Auth>\n\t<UserId>Customer User ID</UserId>\n\t<UserPassword>Customer Password</UserPassword>\n\t<PropertyId>###</PropertyId>\n</Auth>\n<Booking>\n\t<StartDate>YYYY-MM-DD</StartDate>\n\t<EndDate>YYYY-MM-DD</EndRate>\n</Booking>\n</LoopBookingCreate>",
         "type": "json"
       }
     ],
