@@ -36,13 +36,12 @@ define({ "api": [
     "groupTitle": "Callbacks"
   },
   {
-    "type": "",
-    "url": "Known",
-    "title": "Bugs",
     "group": "Introduction",
-    "name": "Know_Bugs",
+    "name": "Our_Todo_List",
     "version": "201408.0.0",
-    "description": "<p>This page will list known bugs we are currently working on.</p> <ul> <li>ARIUpdates delayed</li> <li>Callback notifications may be delayed.</li> <li>Occasional ISE while bugs are being fixed.</li> </ul> ",
+    "description": "<p>This API is currently considered &quot;beta&quot;.  This is a list of Errata. This page will list known areas we are working on, if you have a bug please let us know.</p> <ul> <li>New PHP SDK </li> <li>All calls need stricter incoming type checking.</li> <li>ARIUpdates may be slightly delayed (they are running in a staging environment)</li> <li>PMS Property ID cannot be used as an identification.</li> <li>Documentation: needs to be restructured, fix indenting, add Auth/PropertyId, designate container nodes using new syntax</li> <li>Documentation: need to add new error codes, possibly create a severity measure.</li> <li>JSON - planning to add _method, _version to the request (which must match URI) in next release 201412</li> <li>Callback notifications for bookings cancelled via the API may be delayed, must be manually dispatched in staging environment.</li> <li>propertyTokens are not fully implemented in all calls. </li> <li>If you receive an internal server error. </li> <li>Error messaging on ARIUpdates on Channels needs to be improved. (Currently the same as legacy v1 API)</li> <li>ARIUpdate ExcludeChannels is not working in JSON</li> <li>v1 compat - Need to discuss issues with overlapping date ranges (currently allowed on v201408, not on v1)</li> <li>ARIUpdate allows negative max stay.</li> <li>ARIUpdate FailIfUpdateActive may not always fail (depending on status of next job)</li> <li>Loop Bookings: may not display properly in the interface. </li> </ul> <p>If you want to see historical (recent) changes to the API our documentation is hosted on github. <a href=\"https://github.com/MyAllocator/apidocs\">https://github.com/MyAllocator/apidocs</a></p> ",
+    "type": "",
+    "url": "",
     "filename": "perllib/MAAPI.pm",
     "groupTitle": "Introduction"
   },
@@ -131,28 +130,49 @@ define({ "api": [
             "group": "Request",
             "type": "Container",
             "optional": false,
-            "field": "Updates",
-            "description": "<p>Top level container node (array) containing all updates. Currently only one Update per request is supported/allowed. (See JSON/XML Examples for specific usage/formatting)</p> "
+            "field": "Options",
+            "description": "<p>Container node (Hash) containing a list of channels to be updated.</p> "
+          },
+          {
+            "group": "Request",
+            "type": "Boolean",
+            "optional": false,
+            "field": ".Options.QueryForStatus",
+            "description": "<p>If true the call returns immediately, and the caller should use ARIUpdateStatus to query.</p> "
+          },
+          {
+            "group": "Request",
+            "type": "Boolean",
+            "optional": false,
+            "field": ".Options.FailIfUpdateActive",
+            "description": "<p>If true the call will fail if another update is currently running (rather than block with potentially old data)</p> "
+          },
+          {
+            "group": "Request",
+            "type": "Integer",
+            "optional": false,
+            "field": ".Options.loop_delay",
+            "description": "<p>Intentionally make the &#39;loop&#39; channel take loop_delay seconds (useful for testing with QueryForStatus)</p> "
           },
           {
             "group": "Request",
             "type": "Container",
             "optional": false,
-            "field": ".Channels",
+            "field": "Channels",
             "description": "<p>Container node (array) containing a list of channels to be updated.</p> "
           },
           {
             "group": "Request",
             "type": "String",
             "optional": false,
-            "field": "..Channels.Channel",
+            "field": ".Channels.Channel",
             "description": "<p>(XML ONLY) A XML node containing the channel that the customer wants to update. (Use ChannelList for ChannelId&#39;s)</p> "
           },
           {
             "group": "Request",
             "type": "String",
             "optional": false,
-            "field": "..Channels.ChannelId",
+            "field": ".Channels.ChannelId",
             "description": "<p>(JSON ONLY) the ChannelId of the channel to be updated. ex: &quot;loop&quot; for Loop</p> "
           },
           {
@@ -166,84 +186,84 @@ define({ "api": [
             "group": "Request",
             "type": "String",
             "optional": false,
-            "field": "..ExcludedChannels.Channel",
+            "field": ".ExcludedChannels.Channel",
             "description": "<p>(XML ONLY) A XML node containing the channel that the customer wants to update. (Use ChannelList for ChannelId&#39;s)</p> "
           },
           {
             "group": "Request",
             "type": "String",
             "optional": false,
-            "field": "..ExcludedChannels.ChannelId",
+            "field": ".ExcludedChannels.ChannelId",
             "description": "<p>(JSON ONLY) the ChannelId of the channel to be updated. ex: &quot;loop&quot; for Loop</p> "
           },
           {
             "group": "Request",
             "type": "Container",
             "optional": false,
-            "field": ".Allocations",
+            "field": "Allocations",
             "description": "<p>Container node (array) containing a list</p> "
           },
           {
             "group": "Request",
             "type": "String",
             "optional": false,
-            "field": "..Allocations.Allocation",
+            "field": ".Allocations.Allocation",
             "description": "<p>Individual allocations. There can be as many as you like, but a the date ranges should never overlap (within one room id).</p> "
           },
           {
             "group": "Request",
             "type": "String",
             "optional": false,
-            "field": "..Allocation.RoomId",
+            "field": ".Allocation.RoomId",
             "description": "<p>Room type id as returned by RoomList.</p> "
           },
           {
             "group": "Request",
             "type": "Date",
             "optional": false,
-            "field": "..Allocation.StartDate",
+            "field": ".Allocation.StartDate",
             "description": "<p>Format: YYYY-MM-DD.</p> "
           },
           {
             "group": "Request",
             "type": "Date",
             "optional": false,
-            "field": "..Allocation.EndDate",
+            "field": ".Allocation.EndDate",
             "description": "<p>Format: YYYY-MM-DD.</p> "
           },
           {
             "group": "Request",
             "type": "String",
             "optional": false,
-            "field": "..Allocations.Allocation.Units",
+            "field": ".Allocations.Allocation.Units",
             "description": "<p>How many beds or rooms should be available on this day. Whether it&#39;s beds or rooms depends on whether the room is a dorm or a private room. To remove allocation set Units to 0.</p> "
           },
           {
             "group": "Request",
             "type": "Integer",
             "optional": false,
-            "field": "..Allocations.Allocation.MinStay",
+            "field": ".Allocations.Allocation.MinStay",
             "description": "<p>Specify the minumum number of days a customer is allowed to stay. Not all channels support this feature. Needs to be 1 or higher. (optional)</p> "
           },
           {
             "group": "Request",
             "type": "Integer",
             "optional": false,
-            "field": "..Allocations.Allocation.MaxStay",
+            "field": ".Allocations.Allocation.MaxStay",
             "description": "<p>Specify the maximum number of days a customer is allowed to stay. Not all channels support this feature. Needs to be 1 or higher. (optional)</p> "
           },
           {
             "group": "Request",
             "type": "Container",
             "optional": false,
-            "field": "..Allocations.Allocation.Prices",
+            "field": ".Allocations.Allocation.Prices",
             "description": "<p>(XML ONLY) Container for Price nodes.</p> "
           },
           {
             "group": "Request",
             "type": "Currency",
             "optional": false,
-            "field": "..Allocations.Allocation.Prices.Price",
+            "field": ".Allocations.Allocation.Prices.Price",
             "description": "<p>(XML ONLY) Price per person for shared/dorm rooms or per room for private rooms.</p> "
           },
           {
@@ -253,21 +273,21 @@ define({ "api": [
               "\"true\""
             ],
             "optional": false,
-            "field": "..Allocations.Allocation.Prices.Price.weekend",
+            "field": ".Allocations.Allocation.Prices.Price.weekend",
             "description": "<p>(XML ONLY) Price per person for shared/dorm rooms or per room for private rooms. In XML: You can submit two Price tags. The default one and one with the attribute \\textit{weekend=&quot;true&quot;}. If a Price tag with this attribute has been submitted the rate only applies to weekdays set by the customer as weekends (see PropertyList for which days are set as weekend days).</p> "
           },
           {
             "group": "Request",
             "type": "Currency",
             "optional": false,
-            "field": "..Allocations.Allocation.Price",
+            "field": ".Allocations.Allocation.Price",
             "description": "<p>(JSON ONLY) Price per person for shared/dorm rooms or per room for private rooms.</p> "
           },
           {
             "group": "Request",
             "type": "Currency",
             "optional": false,
-            "field": "..Allocations.Allocation.Price-Weekend",
+            "field": ".Allocations.Allocation.Price-Weekend",
             "description": "<p>(JSON ONLY) price for days marked as &quot;Weekend&quot;</p> "
           }
         ]
@@ -331,7 +351,7 @@ define({ "api": [
     "examples": [
       {
         "title": "JSON ARIUpdate",
-        "content": "{ \n 'Auth/UserId':'your username',\n 'Auth/UserPassword':'your password',\n 'Channels': [ 'hc','iwb' ],\n 'Allocations': [\n\t{\n\t'RoomId':'59',\n\t'StartDate':'2010-06-01',\n\t'EndDate':'2010-06-01',\n\t'Units':'3',\n\t'MinStay':'1',\n\t'MaxStay':'30',\n\t'Price':'20.00',\n\t'Price-Weekday':'15.00',\n\t'Price-Weekend':'20.00',\n\t}\n\t]\n}",
+        "content": "{ \n 'Auth/UserId':'your username',\n 'Auth/UserPassword':'your password',\n 'Channels': [ 'hc','iwb' ],\n 'Allocations': [\n\t{\n\t'RoomId':'59',\n\t'StartDate':'2010-06-01',\n\t'EndDate':'2010-06-01',\n\t'Units':'3',\n\t'MinStay':'1',\n\t'MaxStay':'30',\n\t'Price':'20.00',\n\t'Price-Weekend':'20.00',\n\t}\n\t]\n}",
         "type": "json"
       },
       {
@@ -1334,7 +1354,7 @@ define({ "api": [
     "examples": [
       {
         "title": "JSON Request",
-        "content": "{\n\t'Auth/UserToken':'',\n\t'Auth/VendorId':'',\n\t'Auth/VendorPassword':'',\n\t'OrderId':'XXXXX',\n\t'Actions':[\n\t\t'ACTION?param=value',\n\t\t'ACTIONTOO?param=value',\n\t\t'ACTIONTHREE'\n\t\t]\n}",
+        "content": "{\n\t'Auth/UserToken':'',\n\t'Auth/VendorId':'',\n\t'Auth/VendorPassword':'',\n\t'OrderId':'XXXXX',\n\t'Actions':[\n\t\t'CANCEL?reason=a%20very%20good%20reason',\n\t\t]\n}",
         "type": "json"
       }
     ],
@@ -1375,7 +1395,7 @@ define({ "api": [
     "name": "LoopBookingCreate",
     "version": "201408.0.0",
     "group": "PMS",
-    "description": "<p>Create a new booking in the Loopback Channel.  Parameters are optional and if not specified then booking will be populated with DWIW (Do What I Want) style data. See the &quot;BookingList&quot; api call for a complete discussion of fields.</p> ",
+    "description": "<p>Create a new booking in the Loopback Channel.  Parameters are optional and if not specified then booking will be populated with DWIW (Do What I Want) style data. See the &quot;BookingList&quot; api call for a complete discussion of Booking related fields.</p> ",
     "parameter": {
       "fields": {
         "Request": [
