@@ -46,13 +46,12 @@ define({ "api": [
     "groupTitle": "Introduction"
   },
   {
-    "type": "",
-    "url": "Changes",
-    "title": "",
     "name": "Recent_Changes",
     "group": "Introduction",
     "version": "201408.0.0",
     "description": "<table> <thead> <tr> <th>Version</th> <th>Notes</th> </tr> </thead> <tbody> <tr> <td>201408.0.1</td> <td>initial release</td> </tr> </tbody> </table> ",
+    "type": "",
+    "url": "",
     "filename": "perllib/MAAPI.pm",
     "groupTitle": "Introduction"
   },
