@@ -1,41 +1,5 @@
 define({ "api": [
   {
-    "group": "Callbacks",
-    "type": "",
-    "url": "{}",
-    "title": "Bookings",
-    "name": "Delivery",
-    "description": "<p>The codes are as follows, the message (msg) is not parsed and can be anything you like   (we still recommend something that describes the error).</p> <table> <thead> <tr> <th>Code</th> <th>Cause</th> </tr> </thead> <tbody> <tr> <td>10</td> <td>Password wrong or not set.</td> </tr> <tr> <td>20</td> <td>Error while parsing JSON structure (including the exception message, for example position of not parsable part)</td> </tr> <tr> <td>21</td> <td>Error while parsing JSON structure (exact reason unknown)</td> </tr> <tr> <td>22</td> <td>Error while parsing JSON content</td> </tr> <tr> <td>30</td> <td>PropertyId is NULL or 0</td> </tr> <tr> <td>31</td> <td>Property not used on your PMS anymore</td> </tr> <tr> <td>35</td> <td>MyallocatorId already existing</td> </tr> <tr> <td>50+</td> <td>Internal error on your side (for debugging)</td> </tr> </tbody> </table> <p> We record every error and can give you more details if needed. The important codes  are really only 10 and 31. The JSON should always be valid and the PropertyId  always included.</p> ",
-    "examples": [
-      {
-        "title": "Example of a JSON booking",
-        "content": "{\n  \"Customers\":[\n     {\n        \"CustomerLName\":\"Schmidt\",\n        \"CustomerCompany\":\"\",\n        \"CustomerNote\":\" \",\n        \"CustomerEmail\":\"mo@mx2solutions.co.uk\",\n        \"CustomerFName\":\"Mo\",\n        \"CustomerCity\":\"Stirling\",\n        \"CustomerCountry\":\"GB\"\n     }\n  ],\n  \"IsCancellation\":false,\n  \"OrderAdults\":1,\n  \"OrderChildren\":0,\n  \"OrderDate\":\"2012-09-18\",\n  \"OrderId\":\"13597636\",\n  \"OrderModifDate\":null,\n  \"OrderModifTime\":null,\n  \"OrderSource\":\"booking.com\",\n  \"OrderSourceId\":\"726122988\",\n  \"OrderTime\":\"16:22:14\",\n  \"Rooms\":[\n     {\n        \"EndDate\":\"2012-09-18\",\n        \"Currency\":\"EUR\",\n        \"RoomTypeIds\":[\n           \"832\"\n        ],\n        \"Price\":\"16.80\",\n        \"RoomDesc\":\"3 person mixed shared bed\",\n        \"Units\":\"1\",\n        \"StartDate\":\"2012-09-18\"\n     }\n  ],\n  \"TotalCurrency\":\"EUR\",\n  \"TotalPrice\":\"16.80\",\n  \"MyallocatorId\":\"5058a1bd921f120061010000\",\n  \"Channel\":\"ct\",\n  \"PropertyId\":264,\n  \"StartDate\":\"2012-09-18\",\n  \"EndDate\":\"2012-09-18\",\n  \"MyallocatorCreationDate\":\"2012-09-18\",\n  \"MyallocatorCreationTime\":\"17:32:16\",\n  \"MyallocatorModificationDate\":\"2012-09-18\",\n  \"MyallocatorModificationTime\":\"17:32:16\"\n}",
-        "type": "json"
-      }
-    ],
-    "success": {
-      "examples": [
-        {
-          "title": "Example of a successful JSON response",
-          "content": "{ \n\t\"success\": true \n}",
-          "type": "json"
-        }
-      ]
-    },
-    "error": {
-      "examples": [
-        {
-          "title": "Example of an unsuccessful JSON response",
-          "content": "{\n  \"error\":{\n     \"code\":31,\n     \"msg\":\"Could not find property on this system for myallocator PropertyId: 603\"\n  },\n  \"success\":false\n}",
-          "type": "json"
-        }
-      ]
-    },
-    "version": "0.0.0",
-    "filename": "perllib/apidoc.pm",
-    "groupTitle": "Callbacks"
-  },
-  {
     "group": "Introduction",
     "name": "Our_Todo_List",
     "version": "201408.0.0",
@@ -43,31 +7,6 @@ define({ "api": [
     "type": "",
     "url": "",
     "filename": "perllib/MAAPI.pm",
-    "groupTitle": "Introduction"
-  },
-  {
-    "group": "Introduction",
-    "type": "",
-    "url": "{}",
-    "title": "Welcome",
-    "name": "Welcome",
-    "description": "<p><strong> Usage </strong></p> <p> If you would like to use the myallocator.com PMS API you need to request a vendor ID and password by emailing devhelp@myallocator.com.  The vendor_id + vendor_password will need to be submitted with every request.</p> <p> Your customers need to create an account on myallocator.com before they can use the API (or you need to create one for them).   The credentials (user/password) must be stored by you and sent with each request.</p> <p> <strong> The Basics </strong></p> <p> There are three API methods <em>most</em> systems will use.   The first one is GetProperties, which will return with a list of properties configured on myallocator.com.   You&#39;ll need the PropertyID from GetProperties for the other two methods.</p> <p> The second method is GetRoomTypes, which returns a list of rooms configured on myallocator.com.   These need to be mapped to the rooms in your software.  Finally, and most importantly, SetAllocation uploads availability to the channels.   The customer is required to add all their channel credentials on myallocator.com before being able to update availability.</p> <p> <strong> XML vs. JSON Requests  </strong></p> <p> The service URLs are:</p> <ul> <li>JSON - <a href=\"https://api.myallocator.com/pms/v201408/json/MethodName\">https://api.myallocator.com/pms/v201408/json/MethodName</a></li> <li><p>XML - <a href=\"https://api.myallocator.com/pms/v201408/xml/MethodName\">https://api.myallocator.com/pms/v201408/xml/MethodName</a></p> <p>In the URL above the Version is 201408, this version will periodically be changed as new features are added. The json|xml denotes the protocol for how requests/responses will be formatted. </p> <p>MyAllocator can be accessed via REST using eithe a JSON or XML syntax. </p> </li> <li>XML: Requests to our server need to be send using the POST method. The XML string should be stored in a parameter called &#39;xmlRequestString&#39;. Using standard HTML form encoding.</li> <li><p>JSON offers simplified parsing and low transport overhead and is passed in the field &#39;json&#39; using standard HTML form encoding.</p> <p><strong> Using an SDK </strong> Software Development Kits for several popular languages are available at <a href=\"http://github.com/myallocator\">http://github.com/myallocator</a>  If you don&#39;t see your language listed please let us know and we&#39;ll add it. </p> <p><strong> Following Updates </strong> We will announce major releases via github. Please &quot;watch&quot; the apidocs repo.</p> </li> </ul> ",
-    "error": {
-      "examples": [
-        {
-          "title": "JSON error response",
-          "content": "{\n   \"Error\": {\n       \"Id\": 3,\n       \"Message\": \"Invalid user or user password\"\n   }\n}",
-          "type": "json"
-        },
-        {
-          "title": "XML error response",
-          "content": " <MethodResponse>\n  <Errors>\n   <Error>\n     <ErrorId>3</ErrorId>\n     <ErrorMsg>Invalid user or user password</ErrorMsg>\n   </Error>\n  </Errors>\n </MethodResponse>",
-          "type": "json"
-        }
-      ]
-    },
-    "version": "0.0.0",
-    "filename": "perllib/apidoc.pm",
     "groupTitle": "Introduction"
   },
   {
@@ -2735,79 +2674,5 @@ define({ "api": [
     ],
     "filename": "perllib/MAAPI.pm",
     "groupTitle": "PMS"
-  },
-  {
-    "type": "",
-    "url": "{}",
-    "title": "Channel Codes",
-    "group": "_Appendix",
-    "name": "Channel_Codes",
-    "description": "<table> <thead> <tr> <th>Code</th> <th>Full name</th> <th>Updates up to</th> <th>Notes</th> </tr> </thead> <tbody> <tr> <td>all</td> <td>All configured channels</td> <td>see below</td> </tr> <tr> <td>loc</td> <td>myallocator.com only</td> <td>2 years</td> <td>Specify this channel if you <em>only</em> want to update to myallocator.com. Submitting to any other channel will also always save to myallocator.com</td> </tr> <tr> <td>hc</td> <td>Hostelsclub</td> <td>2 years</td> </tr> <tr> <td>hb</td> <td>Hostelbookers</td> <td>1 year</td> <td></td> </tr> <tr> <td>gom</td> <td>Gomio</td> <td>2 years</td> <td></td> </tr> <tr> <td>iwb</td> <td>InstantWorldBooking</td> <td>2 years</td> <td></td> </tr> <tr> <td>rtg</td> <td>RatesToGo</td> <td>variable</td> <td></td> </tr> <tr> <td>adv</td> <td>HotelAdvisor</td> <td>2 years</td> <td></td> </tr> <tr> <td>hrs</td> <td>HRS</td> <td>2 years</td> <td>*not live yet</td> </tr> <tr> <td>hde</td> <td>Hotel.de</td> <td>2 years</td> <td></td> </tr> <tr> <td>esc</td> <td>Escapio</td> <td>2 years</td> <td></td> </tr> <tr> <td>hi</td> <td>HIHostels</td> <td>2 years</td> <td></td> </tr> <tr> <td>rec</td> <td>Reconline (GDS)</td> <td>2 years</td> <td></td> </tr> <tr> <td>bp</td> <td>BudgetPlaces</td> <td>2 years</td> <td></td> </tr> <tr> <td>ct</td> <td>Cultuzz</td> <td>2 years</td> <td></td> </tr> <tr> <td>lmg</td> <td>BookingMarkets/LetMeGo</td> <td>2 years</td> <td></td> </tr> <tr> <td>hw</td> <td>Hostelworld</td> <td>2 years</td> <td></td> </tr> <tr> <td>bb</td> <td>BBPlanet</td> <td>1 year</td> <td></td> </tr> <tr> <td>etb</td> <td>EasyToBook</td> <td>2 years</td> <td></td> </tr> <tr> <td>ini</td> <td>InItalia</td> <td>1 year and 3 months</td> <td></td> </tr> <tr> <td>ago</td> <td>Agoda</td> <td>2 years</td> <td></td> </tr> <tr> <td>max</td> <td>MaxBooking</td> <td>2 years</td> <td></td> </tr> <tr> <td>eb</td> <td>EasyBookings</td> <td>2 years</td> <td></td> </tr> <tr> <td>ysh</td> <td>YourSpainHostel</td> <td>2 years</td> <td></td> </tr> <tr> <td>exp</td> <td>Expedia</td> <td>2 years</td> <td></td> </tr> <tr> <td>eb</td> <td>EasyBookings</td> <td>2 years</td> <td></td> </tr> <tr> <td>air</td> <td>AirBnb</td> <td>2 years</td> <td></td> </tr> <tr> <td>orb</td> <td>Orbitz</td> <td>2 years</td> <td></td> </tr> <tr> <td>rep</td> <td>TravelRepublic</td> <td>2 years</td> <td></td> </tr> <tr> <td>boo</td> <td>Booking.com</td> <td>2 years</td> <td></td> </tr> <tr> <td>(go2)</td> <td>Go2Hostels</td> <td>1 year</td> <td>Channel closed down Jan $1^{st}$ 2011</td> </tr> </tbody> </table> <p>*</p> ",
-    "version": "0.0.0",
-    "filename": "perllib/apidoc.pm",
-    "groupTitle": ""
-  },
-  {
-    "type": "",
-    "url": "{}",
-    "title": "FAQ",
-    "group": "_Appendix",
-    "name": "FAQ",
-    "description": "<ul> <li><p><em>How should I deal with failed channel updates?</em> If the error is noted as non-fatal on the Error Code page then retry the update after a few minutes. Failing updates are not as rare as you would think because channels do go down and become unresponsive.</p> <p>Fatal errors should not be automatically retried as they need user intervention. Make sure to show the error message to the customer._</p> <ul> <li><em>Are there any limits on how many updates can be send at once?</em></li> </ul> <p>There is (currently) no limit, but you&#39;re strongly advised to split large updates (especially full refreshes) into smaller chunks of 30-60 days. This has the advantage that you can easily re-run failed chunks and it will make debugging problems easier.</p> <ul> <li><p><em>I cannot log in to myallocator with the test credentials. Why?</em> This is to avoid the settings for the test properties from being changed. You can however just register your own test property. Should you need more than the 30-day trial period let us know and we will extend it.</p> </li> <li><p><em>Callback: how do you know which customers belong to us?</em> The first time you send an update on behalf of a customer through our API this customer will be marked as a user of your PMS. From then on you will receive callbacks for this customer.</p> </li> <li><p><em>Can I send updates in parallel?</em> You can for different properties. What you should never do is send an update for a property without waiting for the previous update for this property to succeed/fail. Otherwise you can run into race-conditions where the later update succeeds before the first update, opening up availability on the channel unintentionally.</p> </li> <li><p><em>Why can there be multiple RoomTypeIds for a booking?</em> The same channel room can be assigned to multiple myallocator rooms. For this scenario we send the sum of available rooms/beds and the highest price of any available room that is mapped to this channel room. So the list of RoomTypeIds represents all matching rooms, but it does not mean that all of them were actually booked. Check out the warning on the Automatic Adjustments developer page for more details on how to adjust for this scenario.</p> </li> </ul> </li> </ul> ",
-    "version": "0.0.0",
-    "filename": "perllib/apidoc.pm",
-    "groupTitle": ""
-  },
-  {
-    "group": "_Appendix",
-    "type": "",
-    "url": "{}",
-    "title": "Terminology",
-    "name": "Terminology",
-    "description": "<table> <thead> <tr> <th>Term</th> <th>Description</th> </tr> </thead> <tbody> <tr> <td>Vendor</td> <td>You as the owner and developer of the front desk software.</td> </tr> <tr> <td>User/Customer</td> <td>Someone using your product and who is also registered on myallocator.com.</td> </tr> <tr> <td>Allocation</td> <td>A number indicating how many available beds or rooms there are.</td> </tr> </tbody> </table> ",
-    "version": "0.0.0",
-    "filename": "perllib/apidoc.pm",
-    "groupTitle": ""
-  },
-  {
-    "type": "",
-    "url": "{}",
-    "title": "Test Accounts",
-    "group": "_Appendix",
-    "name": "Test_Accounts",
-    "description": "<p>Please contact us for login details to this shared developer account.</p> <p> Properties 63, 64, 64</p> <p> Only the property with ID 63 has rooms setup with the following configuration:</p> <table> <thead> <tr> <th>Units</th> <th>Beds</th> <th>IsPrivate</th> <th>Gender</th> <th>Channels</th> </tr> </thead> <tbody> <tr> <td>3</td> <td>1</td> <td>true</td> <td>n/a &amp; hc, iwb, adv</td> </tr> <tr> <td>3</td> <td>2</td> <td>true</td> <td>n/a &amp; hc, iwb, adv</td> </tr> <tr> <td>3</td> <td>5</td> <td>false</td> <td>males &amp; hc, iwb</td> </tr> <tr> <td>3</td> <td>10</td> <td>false</td> <td>males &amp; hc, iwb</td> </tr> <tr> <td>3</td> <td>10</td> <td>false</td> <td>females &amp; hc, iwb</td> </tr> <tr> <td>3</td> <td>30</td> <td>false</td> <td>mixed &amp; hc, iwb</td> </tr> </tbody> </table> <p> Channels are not specific to rooms. The only reason &#39;adv&#39; is not showing on all rooms is because they don&#39;t support shared accomodation (dormitories).</p> ",
-    "version": "0.0.0",
-    "filename": "perllib/apidoc.pm",
-    "groupTitle": ""
-  },
-  {
-    "type": "",
-    "url": "{}",
-    "title": "XML v1 Error Responses",
-    "group": "_Appendix",
-    "name": "XML_v1_Error_Responses",
-    "description": "<p>XML v1 is deprecated and this documentation is provided for backward compatibility.</p> ",
-    "error": {
-      "examples": [
-        {
-          "title": "Example: Could not parse XML",
-          "content": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<Errors>\n<Error>\n   <ErrorId>1</ErrorId>\n   <ErrorMsg>Could not parse XML</ErrorMsg>\n </Error>\n</Errors>",
-          "type": "json"
-        },
-        {
-          "title": "Example: XML API method specific error",
-          "content": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<GetRoomTypes>\n <Errors>\n   <Error>\n     <ErrorId>3</ErrorId>\n     <ErrorMsg>Invalid user or user password</ErrorMsg>\n   </Error>\n </Errors>\n</GetRoomTypes>",
-          "type": "json"
-        },
-        {
-          "title": "Example: XML Channel specific error ",
-          "content": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<SetAllocationResponse>\n <Errors>\n   <Error channel=\"hc\">\n     <ErrorMsg>\n       Provider not responding. Please try again later.\n     </ErrorMsg>\n   </Error>\n   <Error channel=\"iwb\">\n     <ErrorMsg>\n       Provider not responding. Please try again later.\n     </ErrorMsg>\n   </Error>\n </Errors>\n <Success>false</Success>\n <Warnings></Warnings>\n</SetAllocationResponse>",
-          "type": "json"
-        }
-      ]
-    },
-    "version": "0.0.0",
-    "filename": "perllib/apidoc.pm",
-    "groupTitle": ""
   }
 ] });
