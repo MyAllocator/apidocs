@@ -16,7 +16,7 @@ define({ "api": [
         },
         {
           "title": "XML error response",
-          "content": " <MethodResponse>\n  <Errors>\n   <Error>\n     <ErrorId>3</ErrorId>\n     <ErrorMsg>Invalid user or user password</ErrorMsg>\n   </Error>\n  </Errors>\n </MethodResponse>",
+          "content": "<MethodResponse>\n <Errors>\n  <Error>\n    <ErrorId>3</ErrorId>\n    <ErrorMsg>Invalid user or user password</ErrorMsg>\n  </Error>\n </Errors>\n</MethodResponse>",
           "type": "json"
         }
       ]
@@ -664,6 +664,13 @@ define({ "api": [
             "group": "Request",
             "type": "String",
             "optional": false,
+            "field": "Auth/PropertyId",
+            "description": "<p>Property Id associated to user.</p> "
+          },
+          {
+            "group": "Request",
+            "type": "String",
+            "optional": false,
             "field": "Auth/VendorId",
             "description": "<p>Your Vendor ID</p> "
           },
@@ -715,6 +722,20 @@ define({ "api": [
             "optional": true,
             "field": "CreationEndDate",
             "description": ""
+          },
+          {
+            "group": "Request",
+            "type": "String",
+            "optional": true,
+            "field": "OrderId",
+            "description": "<p>Query for a specific order id (assigned by OTA)</p> "
+          },
+          {
+            "group": "Request",
+            "type": "String",
+            "optional": true,
+            "field": "BookingId",
+            "description": "<p>Query for a specific booking id (also known as &quot;MyAllocatorId&quot;)</p> "
           }
         ]
       }
@@ -1216,7 +1237,7 @@ define({ "api": [
       "examples": [
         {
           "title": "JSON BookingPaymentDownload",
-          "content": "   {\n       \"Payments\": [\n           {\n               \"CardType\": \"VI\",\n               \"CardNumber\": \"4111111111111111\",\n               \"CardCVV\": \"123\",\n               \"CardExpiryYear\": \"2018\",\n               \"CardExpiryMonth\": \"11\",\n               \"CardHolderName\": \"Martin Seamus McFly\"\n           },\n           {\n               \"CardType\": \"VI\",\n               \"CardNumber\": \"4123123412341234\",\n               \"CardCVV\": \"234\",\n               \"CardExpiryYear\": \"2013\",\n               \"CardExpiryMonth\": \"12\",\n               \"CardHolderName\": \"Emmett Lathrop Brown\"\n           }\n       ]\n   }",
+          "content": "{\n    \"Payments\": [\n        {\n            \"CardType\": \"VI\",\n            \"CardNumber\": \"4111111111111111\",\n            \"CardCVV\": \"123\",\n            \"CardExpiryYear\": \"2018\",\n            \"CardExpiryMonth\": \"11\",\n            \"CardHolderName\": \"Martin Seamus McFly\"\n        },\n        {\n            \"CardType\": \"VI\",\n            \"CardNumber\": \"4123123412341234\",\n            \"CardCVV\": \"234\",\n            \"CardExpiryYear\": \"2013\",\n            \"CardExpiryMonth\": \"12\",\n            \"CardHolderName\": \"Emmett Lathrop Brown\"\n        }\n    ]\n}",
           "type": "json"
         }
       ]
@@ -1284,15 +1305,15 @@ define({ "api": [
       "examples": [
         {
           "title": "XML ChannelList Response",
-          "content": "<?xml version=\"1.0\" encoding=\"UTF-8\" ?>\n<ChannelListResponse>\n  <Channels>\n    <Channel>\n \t\t<id>boo</id>\n\t\t<name>Booking.com</name>\n\t\t<signupLink>http://www.someurl</signuplink>\n    </Channel>\n</ChannelListResponse>",
+          "content": "<?xml version=\"1.0\" encoding=\"UTF-8\" ?>\n<ChannelListResponse>\n  <Channels>\n    <Channel cid=\"hw2\">\n      <name option=\"Hostelworld v2\" />\n      <activationEmail option=\"api.property.activation@webresint.com\" />\n      <aliases option=\"Also known as Hostels.com\" />\n      <isBeta option=\"0\" />\n      <lockedLogin option=\"1\" />\n      <manual_enable option=\"1\" />\n      <module option=\"CHANNEL::Hostelworld2\" />\n      <requireActivation option=\"1\" />\n      <setupMsg option=\"Please enter your Hostelworld Inbox ID and click 'Enable'.\n                    We'll then contact Hostelworld for you to get you enabled\n                    as quickly as possible.\" />\n      <signupLink option=\"http://www.hostelworld.com/hostelsignup/stage1\" />\n    </Channel>\n    <Channel cid=\"rep\">\n      <name option=\"TravelRepublic\" />\n      <aliases option=\"\" />\n      <currencyChoice option=\"1\" />\n      <module option=\"CHANNEL::TravelRepublic\" />\n      <setupExtra name=\"option\" currency=\"1\">\n        <currencyNotFor>USD</currencyNotFor>\n        <currencyNotFor>EUR</currencyNotFor>\n      </setupExtra>\n      <signupLink option=\"https://www.travelrepublic.co.uk/Supplier/Logon.aspx\" />\n    </Channel>\n  </Channels>\n</ChannelListResponse>",
           "type": "json"
         }
       ]
     },
     "examples": [
       {
-        "title": "XML ChannelList Request",
-        "content": "<?xml version=\"1.0\" encoding=\"UTF-8\" ?>\n<ChannelList>\n</ChannelList>",
+        "title": "JSON ChannelList Response",
+        "content": "\n{\n   \"Channels\" : {\n      \"bd\" : {\n         \"RoomInput\" : [\n            {\n               \"length\" : 256,\n               \"name\" : \"bd_type\",\n               \"type\" : \"text\"\n            },\n            {\n               \"length\" : 256,\n               \"name\" : \"bd_type\",\n               \"type\" : \"text\"\n            },\n            {\n               \"name\" : \"bd_diff\",\n               \"type\" : \"currency\"\n            }\n         ],\n         \"isLive\" : \"true\",\n         \"isBeta\" : \"true\",\n         \"name\" : \"BestDay\",\n         \"isCalendarBased\" : \"false\",\n         \"signupLink\" : \"http://extranetbeta.bestday.com/HOME/REGISTER\",\n         \"isLockedLogin\" : \"false\",\n         \"PropertyInput\" : [\n            {\n               \"length\" : 256,\n               \"name\" : \"bd_id\",\n               \"type\" : \"text\",\n               \"label\" : \"User ID\",\n               \"validate\" : 1\n            },\n            {\n               \"length\" : 256,\n               \"name\" : \"bd_password\",\n               \"type\" : \"text\",\n               \"label\" : \"Password\"\n            },\n            {\n               \"length\" : 256,\n               \"name\" : \"bd_propid\",\n               \"type\" : \"text\",\n               \"label\" : \"Property ID\"\n            }\n         ]\n      },\n      \"rec\" : {\n         \"RoomInput\" : [\n            {\n               \"length\" : 50,\n               \"name\" : \"rec_type\",\n               \"type\" : \"text\"\n            },\n            {\n               \"name\" : \"rec_rate\",\n               \"type\" : \"integer\"\n            },\n            {\n               \"name\" : \"rec_diff\",\n               \"type\" : \"currency\"\n            }\n         ],\n         \"isLive\" : \"true\",\n         \"isBeta\" : \"false\",\n         \"name\" : \"Reconline\",\n         \"isCalendarBased\" : \"false\",\n         \"signupLink\" : \"http://www.reconline.com/e/hotels.html\",\n         \"isLockedLogin\" : \"true\",\n         \"PropertyInput\" : [\n            {\n               \"activation\" : 1,\n               \"name\" : \"rec_id\",\n               \"label\" : \"Hotel ID\",\n               \"validate\" : 1\n            },\n            {\n               \"activation\" : 1,\n               \"stored\" : 0,\n               \"name\" : \"rec_city\",\n               \"label\" : \"City\"\n            }\n         ]\n      }\n\t}",
         "type": "json"
       }
     ],
@@ -1316,6 +1337,11 @@ define({ "api": [
       {
         "title": "JSON Hello Request",
         "content": "GET /pms/v201408/json/Hello\nContent-Type: application/json\n{ 'hello':'world' }",
+        "type": "json"
+      },
+      {
+        "title": "curl w/json",
+        "content": "curl http://api.myallocator.com/pms/v201408/json/HelloWorld -d 'json={\"Hello\":\"World\"}'",
         "type": "json"
       },
       {
@@ -1394,6 +1420,20 @@ define({ "api": [
             "optional": false,
             "field": "Auth/PropertyId",
             "description": "<p>Property Id associated to user.</p> "
+          },
+          {
+            "group": "Request",
+            "type": "String",
+            "optional": false,
+            "field": "Auth/VendorId",
+            "description": "<p>Your Vendor ID</p> "
+          },
+          {
+            "group": "Request",
+            "type": "String",
+            "optional": false,
+            "field": "Auth/VendorPassword",
+            "description": "<p>Your Vendor Password</p> "
           },
           {
             "group": "Request",
@@ -1796,12 +1836,12 @@ define({ "api": [
     "examples": [
       {
         "title": "XML PropertyList Request",
-        "content": " <?xml version=\"1.0\" encoding=\"UTF-8\"?>\n <PropertyList>\n <Auth>\n  <UserId>Customer User ID</UserId>\n  <UserPassword>Customer Password</UserPassword>\n  <VendorId>Your Vendor ID</VendorId>\n  <VendorPassword>Your Vendor Password</VendorPassword>\n  </Auth>\n </PropertyList>",
+        "content": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<PropertyList>\n<Auth>\n <UserId>Customer User ID</UserId>\n <UserPassword>Customer Password</UserPassword>\n <VendorId>Your Vendor ID</VendorId>\n <VendorPassword>Your Vendor Password</VendorPassword>\n </Auth>\n</PropertyList>",
         "type": "json"
       },
       {
         "title": "JSON PropertyList Request",
-        "content": " {}",
+        "content": "{}",
         "type": "json"
       }
     ],
@@ -2053,7 +2093,7 @@ define({ "api": [
       "examples": [
         {
           "title": "JSON RoomAvailabilityList",
-          "content": "    {\n    \"Rooms\": [\n          {\n     \t  \"RoomId\": 48,\n          \"PropertyId\": 1234,\n          \"RoomName\": \"1-person private\",\n          \"Data\": [\n            {\n              \"Date\": \"2014-03-15\",\n              \"Units\": 2,\n              \"Price\": 33,\n              \"MinStay\": 1,\n              \"MaxStay\": 7,\n              \"Closed\": false,\n              \"ClosedForArrival\": false,\n              \"ClosedForDeparture\": false\n            },\n            {\n              \"Date\": \"2014-03-16\",\n              \"Units\": 2,\n              \"Price\": 33,\n              \"MinStay\": 1,\n              \"MaxStay\": 7,\n              \"Closed\": false,\n              \"ClosedForArrival\": false,\n              \"ClosedForDeparture\": false\n            }\n          ]\n        },\n        {\n          \"RoomId\": 49,\n          \"PropertyId\": 1,\n          \"RoomName\": \"5-person male shared\",\n          \"Data\": [\n            {\n              \"Date\": \"2014-03-15\",\n              \"Units\": 0,\n              \"Price\": 0,\n              \"MinStay\": 1,\n              \"MaxStay\": 7,\n              \"Closed\": false,\n              \"ClosedForArrival\": false,\n              \"ClosedForDeparture\": false\n            },\n            {\n              \"Date\": \"2014-03-16\",\n              \"Units\": 0,\n              \"Price\": 0,\n              \"MinStay\": 1,\n              \"MaxStay\": 7,\n              \"Closed\": false,\n              \"ClosedForArrival\": false,\n              \"ClosedForDeparture\": false\n            }\n          ]\n        }\n      }\n    }",
+          "content": "{\n\"Rooms\": [\n      {\n \t  \"RoomId\": 48,\n      \"PropertyId\": 1234,\n      \"RoomName\": \"1-person private\",\n      \"Data\": [\n        {\n          \"Date\": \"2014-03-15\",\n          \"Units\": 2,\n          \"Price\": 33,\n          \"MinStay\": 1,\n          \"MaxStay\": 7,\n          \"Closed\": false,\n          \"ClosedForArrival\": false,\n          \"ClosedForDeparture\": false\n        },\n        {\n          \"Date\": \"2014-03-16\",\n          \"Units\": 2,\n          \"Price\": 33,\n          \"MinStay\": 1,\n          \"MaxStay\": 7,\n          \"Closed\": false,\n          \"ClosedForArrival\": false,\n          \"ClosedForDeparture\": false\n        }\n      ]\n    },\n    {\n      \"RoomId\": 49,\n      \"PropertyId\": 1,\n      \"RoomName\": \"5-person male shared\",\n      \"Data\": [\n        {\n          \"Date\": \"2014-03-15\",\n          \"Units\": 0,\n          \"Price\": 0,\n          \"MinStay\": 1,\n          \"MaxStay\": 7,\n          \"Closed\": false,\n          \"ClosedForArrival\": false,\n          \"ClosedForDeparture\": false\n        },\n        {\n          \"Date\": \"2014-03-16\",\n          \"Units\": 0,\n          \"Price\": 0,\n          \"MinStay\": 1,\n          \"MaxStay\": 7,\n          \"Closed\": false,\n          \"ClosedForArrival\": false,\n          \"ClosedForDeparture\": false\n        }\n      ]\n    }\n  }\n}",
           "type": "json"
         }
       ]
@@ -2594,6 +2634,13 @@ define({ "api": [
             "group": "Request",
             "type": "String",
             "optional": false,
+            "field": "Auth/VendorId",
+            "description": "<p>Your Vendor ID</p> "
+          },
+          {
+            "group": "Request",
+            "type": "String",
+            "optional": false,
             "field": "Auth/VendorPassword",
             "description": "<p>Your Vendor Password</p> "
           },
@@ -2649,7 +2696,7 @@ define({ "api": [
       },
       {
         "title": "JSON UserExists Request",
-        "content": " {\n  'Auth/VendorId':'Your Vendor ID',\n  'Auth/VendorPassword':'Your Vendor Password',\n  'UserId':'requested-username',\n  'Email':'user@domain.com'\n }",
+        "content": "{\n 'Auth/VendorId':'Your Vendor ID',\n 'Auth/VendorPassword':'Your Vendor Password',\n 'UserId':'requested-username',\n 'Email':'user@domain.com'\n}",
         "type": "json"
       }
     ],
@@ -2693,6 +2740,27 @@ define({ "api": [
             "optional": false,
             "field": "Callback/Password",
             "description": "<p>Callback Passwords</p> "
+          },
+          {
+            "group": "Request",
+            "type": "String",
+            "optional": false,
+            "field": "Callback/NotifyBooking",
+            "description": "<p>Send notifications of Bookings</p> "
+          },
+          {
+            "group": "Request",
+            "type": "String",
+            "optional": false,
+            "field": "Callback/NotifyARIUpdate",
+            "description": "<p>Send notifications of ARIUpdate results</p> "
+          },
+          {
+            "group": "Request",
+            "type": "String",
+            "optional": false,
+            "field": "Callback/NotifyProperty",
+            "description": "<p>Send notifications of Property Configuration changes</p> "
           }
         ],
         "Response": [
@@ -2710,7 +2778,7 @@ define({ "api": [
     "examples": [
       {
         "title": "XML VendorSet",
-        "content": "<?xml version=\"1.0\" encoding=\"UTF-8\" ?>\n<VendorSet>\n <Auth>\n   <VendorId>Your Vendor ID</VendorId>\n   <VendorPassword>Your Vendor Password</VendorPassword>\n </Auth>\n <Callback>\n   <URL>http://www.yourdomain.com/myallocator/callback.cgi</URL>\n   <Password>very secret password</Password>\n </Callback>\n</VendorSet>",
+        "content": "<?xml version=\"1.0\" encoding=\"UTF-8\" ?>\n<VendorSet>\n <Auth>\n   <VendorId>Your Vendor ID</VendorId>\n   <VendorPassword>Your Vendor Password</VendorPassword>\n </Auth>\n <Callback>\n   <URL>http://www.yourdomain.com/myallocator/callback.cgi</URL>\n   <Password>very secret password</Password>\n\t<NotifyARIUpdate>true|false</NotifyARIUpdate>\n\t<NotifyBooking>true|false</NotifyBooking>\n\t<NotifyProperty>true|false</NotifyProperty>\n </Callback>\n</VendorSet>",
         "type": "json"
       },
       {
@@ -2751,7 +2819,18 @@ define({ "api": [
     "title": "Our Todo List",
     "name": "Our_Todo_List",
     "version": "201408.0.0",
-    "description": "<p>This API is currently considered &quot;beta&quot; and in active development.<br>It will be suitable for production use by mid December at which point v1 will be considered end of life.</p> <p>This is a list of Errata. This page will list known areas we are working on, if you have a bug please let us know. This is our internal list of stuff we know is broken, it will update throughout the day.</p> <ul> <li>NEED TO REGRESSION TEST v1</li> <li>New PHP SDK needs to be released onto github</li> <li>All calls need stricter incoming type checking, specifically at the container level. </li> <li>ARIUpdates may be slightly delayed (they are running in a staging environment)</li> <li>PMS Property ID cannot be used as an identification.</li> <li>Documentation: needs to be restructured, fix indenting, add Auth/PropertyId, designate container nodes using new syntax</li> <li>Documentation: need to add new error codes, possibly create a severity measure.</li> <li>Documentation: need to make list of channels and capabilities auto update</li> <li>Documentation: need to implement test harness in API + fix API URI parameter strings</li> <li>Documentation: need to fix title bar in API</li> <li>JSON - planning to add _method, _version to the request (which must match URI) in next release 201412</li> <li>Callback notifications for bookings cancelled via the API may be delayed, must be manually dispatched in staging environment.</li> <li>Callbacks need to support versioning</li> <li>propertyTokens are not fully implemented in all calls. </li> <li>If you receive an internal server error, it is not always gracefully handled.</li> <li>Error messaging on ARIUpdates on Channels needs to be improved. (Currently the same as legacy v1 API)</li> <li>ARIUpdate ExcludeChannels is not working in JSON</li> <li>AWS SQS notifications are not available in production (and will likely need some more live testing)</li> <li>v1 compat - Need to discuss issues with overlapping date ranges (currently allowed on v201408, not on v1)</li> <li>ARIUpdate allows negative max stay.</li> <li>Loop Bookings: may not display properly in the interface (some date bug?)</li> <li>Backend: Need to explore internal addState/useState on channels (is this even actually used?)</li> <li>Backend: Need to move channel status logging from mysql to redis</li> <li>Backend: Need to formalize the parameters/objects passed to upload_lt in each channel module for more legible internal codepath</li> <li>Backend: Migrate MyAllocator-&gt;channel_update into the ARIUpdate framework</li> <li>Backend: need to merge channel properties list in MyAllocator.pm into Channels.pm</li> </ul> <p>If you want to see historical (recent) changes to the API our documentation is hosted on github. <a href=\"https://github.com/MyAllocator/apidocs\">https://github.com/MyAllocator/apidocs</a></p> ",
+    "description": "<p>We are no longer allowing new clients to board under our legacy &quot;antiquity&quot; version(s) of the API.</p> <p>This is a list of Errata. This page will list known areas we are working on, if you have a bug please let us know. This is our internal list of stuff we know is broken, or stuff we&#39;re working on.</p> <ul> <li>NEED TO REGRESSION TEST v1</li> <li>All calls need stricter incoming type checking, specifically at the container level. </li> <li>PMS Property ID cannot be used as an identification.</li> <li>Documentation: needs to be restructured, fix indenting, add Auth/PropertyId, designate container nodes using new syntax</li> <li>Documentation: need to add new error codes, possibly create a severity measure.</li> <li>Documentation: need to make list of channels and capabilities auto update</li> <li>Documentation: need to implement test harness in API + fix API URI parameter strings</li> <li>Documentation: need to fix title bar in API</li> <li>JSON - planning to add _method, _version to the request (which must match URI) in next release 201412</li> <li>Callback notifications for bookings cancelled via the API may be delayed, must be manually dispatched in staging environment.</li> <li>Callbacks need to support versioning</li> <li>propertyTokens are not fully implemented in all calls. </li> <li>If you receive an internal server error, it is not always gracefully handled.</li> <li>Error messaging on ARIUpdates on Channels needs to be improved. (Currently the same as legacy v1 API)</li> <li>ARIUpdate ExcludeChannels is not working in JSON</li> <li>AWS SQS notifications are not available in production (and will likely need some more live testing)</li> <li>v1 compat - Need to discuss issues with overlapping date ranges (currently allowed on v201408, not on v1)</li> <li>Loop Bookings: may not display properly in the interface (some date bug?)</li> <li>Backend: Need to explore internal addState/useState on channels (is this even actually used?)</li> <li>Backend: Need to move channel status logging from mysql to redis</li> <li>Backend: Need to formalize the parameters/objects passed to upload_lt in each channel module for more legible internal codepath</li> <li>Backend: Migrate MyAllocator-&gt;channel_update into the ARIUpdate framework</li> <li>Backend: need to merge channel properties list in MyAllocator.pm into Channels.pm</li> </ul> <p>If you want to see historical (recent) changes to the API our documentation is hosted on github. <a href=\"https://github.com/MyAllocator/apidocs\">https://github.com/MyAllocator/apidocs</a></p> ",
+    "filename": "perllib/MAAPI.pm",
+    "groupTitle": ""
+  },
+  {
+    "group": "_Appendix",
+    "type": "",
+    "url": "{}",
+    "title": "Reporting Bugs",
+    "version": "201408.0.0",
+    "name": "Reporting_Issues_Bugs",
+    "description": "<p>If you are having an issue with a particular API call please open a ticket by emailing  devhelp@myallocator.com.  Please be sure to ALWAYS include the TicketId.</p> <p>Whenever an error is returned a &quot;TicketId&quot; is also included in the response. Error Tickets are stored for 72 hours and preserve the entire incoming request and outgoing response. Along with a variety of internal state information which is indispensable for  determining the root cause of any issue.</p> <p>Tickets are <em>always</em> generated on API error responses.</p> <p>By passing an additional parameter Auth/Debug:1 (json)  or <Auth><Debug>1</Debug></Auth> (xml) a &quot;TicketId&quot; response key/node will be stored and returned on successful requests as well.</p> <p>A TicketId will be required for any bug report and preserves a full copy of the request and response.</p> <p>PLEASE NOTE: Do not send Auth/Debug if it is not likely to be used. We are setting a recommended threshold of 1,000 error tickets per 24 hour period. If a vendor receives too many errors then their token <em>may</em> be suspended, currently this is done by hand however in the future this may be automated.</p> <p>Auth/Debug tickets count as errors, so use them only when necessary. Additionally Auth/Debug violates PCI compliance for BookingPaymentDownload  and should never be avoided except under very dire/extreme circumstances.</p> ",
     "filename": "perllib/MAAPI.pm",
     "groupTitle": ""
   },
@@ -2784,7 +2863,7 @@ define({ "api": [
     "title": "Version History",
     "name": "Version_History",
     "version": "201408.0.0",
-    "description": "<table> <thead> <tr> <th>Date</th> <th>Version</th> <th>Change</th> </tr> </thead> <tbody> <tr> <td>2014-12-15</td> <td>201408.0.2</td> <td>renamed LoopBookingAction into BookingAction</td> </tr> <tr> <td>2014-12-04</td> <td>201408.0.1</td> <td>initial release of new API</td> </tr> <tr> <td>2012-10-24</td> <td>1.6.2</td> <td>Updated booking information (new: CommissionIncludedInTotal).</td> </tr> <tr> <td>2012-10-24</td> <td>1.6.1</td> <td>Updated booking information and updated channel list (new: eb,air, orb, boo, tra).</td> </tr> <tr> <td>2012-10-24</td> <td>1.6</td> <td>New feature Booking Callback and updated channel list (new: max).</td> </tr> <tr> <td>2012-09-20</td> <td>1.5.2</td> <td>Updated channel list (new: exp, ysh, eb). Get/Set property country.</td> </tr> <tr> <td>2012-07-04</td> <td>1.5.1</td> <td>Updated channel list. Added MinStay/MaxStay example.</td> </tr> <tr> <td>2011-09-17</td> <td>1.5</td> <td>New method SetRoomTypes to add/update/remove rooms.</td> </tr> <tr> <td>2011-09-17</td> <td>1.4.1</td> <td>GetBookings: Minor correction regarding the end date. It&#39;s not the departure date but rather the departure date - 1.</td> </tr> <tr> <td>2011-01-15</td> <td>1.4</td> <td>New methods SetAllocation (non-blocking), SetLogin, GetUpdateStatus, GetBookings. Support for MinStay and MaxStay.</td> </tr> <tr> <td>2010-11-09</td> <td>1.3.1</td> <td>Updated channel list. GetRoomTypes: Obsoleted &quot;Ensuite&quot;, &quot;DoubleBed&quot; and &quot;Beds&quot; (replaced by new property &quot;Occupancy&quot;). GetProperties: shows which days are configure for weekends.</td> </tr> <tr> <td>2010-05-30</td> <td>1.3</td> <td>GetRoomTypes includes a room description (Label). Removed need to list channels to update to and ability to exclude channels. Skipped channels now warnings rather than errors.</td> </tr> <tr> <td>2010-05-05</td> <td>1.2</td> <td>Added links to XML samples. New channel: hb</td> </tr> <tr> <td>2010-04-30</td> <td>1.1</td> <td>Changed Room to \\textit{RoomType} to clarify matters</td> </tr> <tr> <td>2010-04-27</td> <td>1.0</td> <td>Initial release</td> </tr> </tbody> </table> ",
+    "description": "<table> <thead> <tr> <th>Date</th> <th>Version</th> <th>Change</th> </tr> </thead> <tbody> <tr> <td>2014-12-28</td> <td>201408.0.8</td> <td>added Auth/Debug</td> </tr> <tr> <td>2014-12-28</td> <td>201408.0.7</td> <td>fixed bug in ARIUpdate where zero unit updates would not be applied</td> </tr> <tr> <td>2014-12-26</td> <td>201408.0.6</td> <td>added more documentation to ChannelList and curl example to HelloWorld</td> </tr> <tr> <td>2014-12-24</td> <td>201408.0.5</td> <td>added error logging with ticket responses</td> </tr> <tr> <td>2014-12-23</td> <td>201408.0.4</td> <td>added VendorId to various docs, and propertyid, unified error handling</td> </tr> <tr> <td>2014-12-19</td> <td>201408.0.3</td> <td>fixed bug in RoomCreate (did not return RoomId)</td> </tr> <tr> <td>2014-12-15</td> <td>201408.0.2</td> <td>renamed LoopBookingAction into BookingAction</td> </tr> <tr> <td>2014-12-04</td> <td>201408.0.1</td> <td>initial release of new API</td> </tr> <tr> <td>2012-10-24</td> <td>1.6.2</td> <td>Updated booking information (new: CommissionIncludedInTotal).</td> </tr> <tr> <td>2012-10-24</td> <td>1.6.1</td> <td>Updated booking information and updated channel list (new: eb,air, orb, boo, tra).</td> </tr> <tr> <td>2012-10-24</td> <td>1.6</td> <td>New feature Booking Callback and updated channel list (new: max).</td> </tr> <tr> <td>2012-09-20</td> <td>1.5.2</td> <td>Updated channel list (new: exp, ysh, eb). Get/Set property country.</td> </tr> <tr> <td>2012-07-04</td> <td>1.5.1</td> <td>Updated channel list. Added MinStay/MaxStay example.</td> </tr> <tr> <td>2011-09-17</td> <td>1.5</td> <td>New method SetRoomTypes to add/update/remove rooms.</td> </tr> <tr> <td>2011-09-17</td> <td>1.4.1</td> <td>GetBookings: Minor correction regarding the end date. It&#39;s not the departure date but rather the departure date - 1.</td> </tr> <tr> <td>2011-01-15</td> <td>1.4</td> <td>New methods SetAllocation (non-blocking), SetLogin, GetUpdateStatus, GetBookings. Support for MinStay and MaxStay.</td> </tr> <tr> <td>2010-11-09</td> <td>1.3.1</td> <td>Updated channel list. GetRoomTypes: Obsoleted &quot;Ensuite&quot;, &quot;DoubleBed&quot; and &quot;Beds&quot; (replaced by new property &quot;Occupancy&quot;). GetProperties: shows which days are configure for weekends.</td> </tr> <tr> <td>2010-05-30</td> <td>1.3</td> <td>GetRoomTypes includes a room description (Label). Removed need to list channels to update to and ability to exclude channels. Skipped channels now warnings rather than errors.</td> </tr> <tr> <td>2010-05-05</td> <td>1.2</td> <td>Added links to XML samples. New channel: hb</td> </tr> <tr> <td>2010-04-30</td> <td>1.1</td> <td>Changed Room to \\textit{RoomType} to clarify matters</td> </tr> <tr> <td>2010-04-27</td> <td>1.0</td> <td>Initial release</td> </tr> </tbody> </table> ",
     "filename": "perllib/MAAPI.pm",
     "groupTitle": ""
   },
@@ -2875,6 +2954,11 @@ define({ "api": [
     },
     "filename": "perllib/MAAPI.pm",
     "groupTitle": "_Callbacks"
+  },
+  {
+    "group": "_myallocator_perllib_MAAPI_pm",
+    "groupTitle": "_myallocator_perllib_MAAPI_pm",
+    "name": "Type_not_set"
   },
   {
     "type": "",
