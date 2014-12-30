@@ -2846,17 +2846,6 @@
     "groupTitle": ""
   },
   {
-    "type": "",
-    "url": "{}",
-    "title": "Test Accounts",
-    "group": "_Appendix",
-    "version": "201408.0.0",
-    "name": "Test_Accounts",
-    "description": "<p>Please contact us for login details to this shared developer account.</p> <p> Properties 63, 64, 64</p> <p> Only the property with ID 63 has rooms setup with the following configuration:</p> <table> <thead> <tr> <th>Units</th> <th>Beds</th> <th>IsPrivate</th> <th>Gender</th> <th>Channels</th> </tr> </thead> <tbody> <tr> <td>3</td> <td>1</td> <td>true</td> <td>n/a &amp; hc, iwb, adv</td> </tr> <tr> <td>3</td> <td>2</td> <td>true</td> <td>n/a &amp; hc, iwb, adv</td> </tr> <tr> <td>3</td> <td>5</td> <td>false</td> <td>males &amp; hc, iwb</td> </tr> <tr> <td>3</td> <td>10</td> <td>false</td> <td>males &amp; hc, iwb</td> </tr> <tr> <td>3</td> <td>10</td> <td>false</td> <td>females &amp; hc, iwb</td> </tr> <tr> <td>3</td> <td>30</td> <td>false</td> <td>mixed &amp; hc, iwb</td> </tr> </tbody> </table> <p> Channels are not specific to rooms. The only reason &#39;adv&#39; is not showing on all rooms is because they don&#39;t support shared accomodation (dormitories).</p> ",
-    "filename": "perllib/MAAPI.pm",
-    "groupTitle": ""
-  },
-  {
     "group": "_Appendix",
     "type": "",
     "url": "{}",
