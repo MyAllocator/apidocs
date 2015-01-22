@@ -3247,16 +3247,5 @@ define({ "api": [
     "group": "_myallocator_perllib_MAAPI_pm",
     "groupTitle": "_myallocator_perllib_MAAPI_pm",
     "name": "Type_not_set"
-  },
-  {
-    "type": "",
-    "url": "{}",
-    "title": ". Version 1 Migration",
-    "name": "v1Upgrade",
-    "description": "<p>Below is a table if old method to new method names</p> <table> <thead> <tr> <th></th> <th>v1 Method</th> <th>New Method(s)</th> </tr> </thead> <tbody> <tr> <td></td> </tr> </tbody> </table> <p>~;     foreach my $oldmethod (sort keys %MAAPI::Methods) {         my ($func, $props) = $MAAPI::Methods-&gt;{$oldmethod};         next if (not $props-&gt;{&#39;new_method&#39;});         print &quot;| $oldmethod | $props-&gt;{&#39;new_method&#39;}\\n&quot;;         }</p> <pre><code>print q~ </code></pre>",
-    "version": "0.0.0",
-    "filename": "perllib/MAAPI.pm",
-    "group": "_myallocator_perllib_MAAPI_pm",
-    "groupTitle": "_myallocator_perllib_MAAPI_pm"
   }
 ] });
