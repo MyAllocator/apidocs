@@ -26,6 +26,96 @@
   },
   {
     "type": "get",
+    "url": "/ARIRulesUpdate",
+    "title": "ARIRulesUpdate",
+    "name": "ARIRulesList",
+    "version": "201501.0.0",
+    "group": "PMS",
+    "parameter": {
+      "fields": {
+        "Request": [
+          {
+            "group": "Request",
+            "type": "String",
+            "optional": true,
+            "field": "Auth/UserId",
+            "description": "<p>Users unique ID     (required with Auth/UserPassword)</p> "
+          },
+          {
+            "group": "Request",
+            "type": "String",
+            "optional": true,
+            "field": "Auth/UserPassword",
+            "description": "<p>Users password        (required with Auth/UserId)</p> "
+          },
+          {
+            "group": "Request",
+            "type": "String",
+            "optional": true,
+            "field": "Auth/UserToken",
+            "description": "<p>Users auth token (see AssociateUserToPMS call to generate a Token)#</p> "
+          },
+          {
+            "group": "Request",
+            "type": "String",
+            "optional": false,
+            "field": "Auth/VendorId",
+            "description": "<p>Your Vendor ID</p> "
+          },
+          {
+            "group": "Request",
+            "type": "String",
+            "optional": false,
+            "field": "Auth/VendorPassword",
+            "description": "<p>Your Vendor Password</p> "
+          }
+        ]
+      }
+    },
+    "success": {
+      "fields": {
+        "Response": [
+          {
+            "group": "Response",
+            "type": "ARIRules",
+            "optional": false,
+            "field": "List",
+            "description": "<p>of all existing ARIRules</p> "
+          },
+          {
+            "group": "Response",
+            "type": "Boolean",
+            "optional": false,
+            "field": "Success",
+            "description": "<p>true|false</p> "
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "ARIRulesActions",
+          "content": "<ARIRulesUpdate>\n\t<ARIRules Action=\"Append\">\n\t\t<Rule PMSRuleId=\"\" RoomId=\"\" Channel=\"\" Verb=\"BLOCK\" StartDate=\"YYYY-MM-DD\" EndDate=\"YYYY-MM-DD\" />\n\t\t<Rule PMSRuleId=\"\" RoomId=\"\" Channel=\"\" Verb=\"BLOCK\" StartDate=\"YYYY-MM-DD\" EndDate=\"YYYY-MM-DD\" />\n\t</ARIRules>\n\t<ARIRules Action=\"Update\">\n\t\t<Rule PMSRuleId=\"\" RoomId=\"\" Channel=\"\" Verb=\"BLOCK\" StartDate=\"YYYY-MM-DD\" EndDate=\"YYYY-MM-DD\" />\n\t\t<Rule PMSRuleId=\"\" RoomId=\"\" Channel=\"\" Verb=\"BLOCK\" StartDate=\"YYYY-MM-DD\" EndDate=\"YYYY-MM-DD\" />\n\t</ARIRules>\n\t<ARIRules Action=\"Delete\">\n\t\t<Rule PMSRuleId=\"\"/>\n\t\t<Rule RoomId=\"\"/>\n\t\t<Rule RoomId=\"\" Channel=\"\"/>\n\t</ARIRules>\n<ARIRulesUpdate>",
+          "type": "json"
+        }
+      ]
+    },
+    "examples": [
+      {
+        "title": "JSON ARIRulesUpdate",
+        "content": "{ \n\t'ARIRules':[\n\t\t{ '_Action':'Append', PMSRuleId:\"\", RoomId:\"\", Channel:\"\", Verb:\"BLOCK\", StartDate:\"YYYY-MM-DD\", EndDate:\"YYYY-MM-DD\"  },\n\t\t{ '_Action':'Update', PMSRuleId:\"\", RoomId:\"\", Channel:\"\", Verb:\"BLOCK\", StartDate:\"YYYY-MM-DD\", EndDate:\"YYYY-MM-DD\"  },\n\t\t{ '_Action':'Delete', PMSRuleId:\"\", RoomId:\"\", Channel:\"\"  },\n\t\t{ '_Action':'Delete', PMSRuleId:\"\", RoomId:\"\"  },\n\t\t{ '_Action':'Delete', PMSRuleId:\"\" },\n\t\t]\n}",
+        "type": "json"
+      },
+      {
+        "title": "JSON ARIRulesUpdate Response",
+        "content": " {\n\t'Auth/VendorId':'Your Vendor ID',\n\t'Auth/VendorPassword':'Your Vendor Password',\n\t'ARIRules':[\n\t\t{ PMSRuleId: \"\", RoomId:\"\", Channel:\"\", Verb:\"BLOCK\", StartDate:YYYY-MM-DD, EndDate:YYYY-MM-DD }\n\t\t{ PMSRuleId: \"\", RoomId:\"\", Channel:\"\", Verb:\"BLOCK\", StartDate:YYYY-MM-DD, EndDate:YYYY-MM-DD }\n\t\t]\n }",
+        "type": "json"
+      }
+    ],
+    "filename": "perllib/MAAPI.pm",
+    "groupTitle": "PMS"
+  },
+  {
+    "type": "get",
     "url": "/ARIRulesList",
     "title": "ARIRulesList",
     "name": "ARIRulesList",
@@ -77,31 +167,24 @@
         "Response": [
           {
             "group": "Response",
+            "type": "ARIRules",
+            "optional": false,
+            "field": "List",
+            "description": "<p>of all existing ARIRules</p> "
+          },
+          {
+            "group": "Response",
             "type": "Boolean",
             "optional": false,
             "field": "Success",
             "description": "<p>true|false</p> "
-          },
-          {
-            "group": "Response",
-            "type": "Integer",
-            "optional": false,
-            "field": "UserId",
-            "description": "<p>the MyAllocator UserId of the freshly created user</p> "
-          },
-          {
-            "group": "Response",
-            "type": "String",
-            "optional": false,
-            "field": "userToken",
-            "description": "<p>the PMS Auth token (see AssociateUserToPMS)</p> "
           }
         ]
       },
       "examples": [
         {
           "title": "Response - Updating a login and property",
-          "content": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<ARIRulesListResponse>\n\t<ARIRules>\n\t\t<Rule PMSRuleId=\"\" RoomId=\"\" Channel=\"\" Verb=\"BLOCK\" StartDate=\"YYYY-MM-DD\" EndDate=\"YYYY-MM-DD\" />\n\t</ARIRules>\n  <Success>true</Success>\n</ARIRulesListResponse>",
+          "content": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<ARIRulesListResponse>\n  <Success>true</Success>\n</ARIRulesListResponse>\n\n\t\n<?xml version=\"1.0\" encoding=\"utf-8\"?>\n\n<ARIRulesListResponse>\n\t<ARIRules>\n\t\t<RuleAppend PMSRuleId=\"\" RoomId=\"\" Channel=\"\" Verb=\"BLOCK\" StartDate=\"YYYY-MM-DD\" EndDate=\"YYYY-MM-DD\" />\n\t\t<RuleUpdate PMSRuleId=\"\" RoomId=\"\" Channel=\"\" Verb=\"BLOCK\" StartDate=\"YYYY-MM-DD\" EndDate=\"YYYY-MM-DD\" />\n\t\t<RuleDelete PMSRuleId=\"\"/>\n\t\t<RuleDelete RoomId=\"\"/>\n\t\t<RuleDelete RoomId=\"\" Channel=\"\"/>\n\t</ARIRules>\n  <Success>true</Success>\n</ARIRulesListResponse>",
           "type": "json"
         }
       ]
@@ -111,97 +194,6 @@
       {
         "title": "XML Request - Creating a customer account",
         "content": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<ARIRulesList>\n\t<Auth>\n\t\t<UserId>Customer User ID</UserId>\n  \t\t<UserPassword>Customer Password</UserPassword>\n\t\t<VendorId>Your Vendor ID</VendorId>\n\t\t<VendorPassword>Your Vendor Password</VendorPassword>\n\t</Auth>\n\t<ARIRules>\n\t\t<Rule PMSRuleId=\"\" RoomId=\"\" Channel=\"\" Verb=\"BLOCK\" StartDate=\"YYYY-MM-DD\" EndDate=\"YYYY-MM-DD\" />\n\t</ARIRules>\n</ARIRulesList>",
-        "type": "json"
-      }
-    ],
-    "filename": "perllib/MAAPI.pm",
-    "groupTitle": "PMS"
-  },
-  {
-    "type": "get",
-    "url": "/ARIRulesUpdate",
-    "title": "",
-    "name": "ARIRulesUpdate",
-    "version": "201501.0.0",
-    "group": "PMS",
-    "description": "<p>This method creates/deletes/manages ARI Rules.</p> ",
-    "parameter": {
-      "fields": {
-        "Request": [
-          {
-            "group": "Request",
-            "type": "String",
-            "optional": true,
-            "field": "Auth/UserId",
-            "description": "<p>Users unique ID     (required with Auth/UserPassword)</p> "
-          },
-          {
-            "group": "Request",
-            "type": "String",
-            "optional": true,
-            "field": "Auth/UserPassword",
-            "description": "<p>Users password        (required with Auth/UserId)</p> "
-          },
-          {
-            "group": "Request",
-            "type": "String",
-            "optional": true,
-            "field": "Auth/UserToken",
-            "description": "<p>Users auth token (see AssociateUserToPMS call to generate a Token)# @apiParam (Request) {String} Auth/VendorId            Your Vendor ID</p> "
-          },
-          {
-            "group": "Request",
-            "type": "String",
-            "optional": false,
-            "field": "Auth/VendorId",
-            "description": "<p>Your Vendor ID</p> "
-          },
-          {
-            "group": "Request",
-            "type": "String",
-            "optional": false,
-            "field": "Auth/VendorPassword",
-            "description": "<p>Your Vendor Password</p> "
-          },
-          {
-            "group": "Request",
-            "type": "Array",
-            "optional": false,
-            "field": "Rules",
-            "description": "<p>An array of ARI Rules</p> "
-          }
-        ]
-      }
-    },
-    "success": {
-      "fields": {
-        "Response": [
-          {
-            "group": "Response",
-            "type": "String",
-            "optional": false,
-            "field": "Rules",
-            "description": "<p>0|1</p> "
-          },
-          {
-            "group": "Response",
-            "type": "Boolean",
-            "optional": false,
-            "field": "Success",
-            "description": "<p>true|false</p> "
-          }
-        ]
-      }
-    },
-    "examples": [
-      {
-        "title": "XML ARIRulesUpdate",
-        "content": "<?xml version=\"1.0\" encoding=\"UTF-8\" ?>\n<ARIRulesUpdate>\n  <Auth>\n\t <UserId>Customer User ID</UserId>\n  \t <UserPassword>Customer Password</UserPassword>\n    <VendorId>Your Vendor ID</VendorId>\n    <VendorPassword>Your Vendor Password</VendorPassword>\n  </Auth>\n\t<ARIRules>\n\t\t<Rule PMSRuleId=\"\" RoomId=\"\" Channel=\"\" Verb=\"BLOCK\" StartDate=\"YYYY-MM-DD\" EndDate=\"YYYY-MM-DD\" />\n\t</ARIRules>\n</ARIRulesUpdate>",
-        "type": "json"
-      },
-      {
-        "title": "JSON ARIRulesUpdate",
-        "content": " {\n\t'Auth/VendorId':'Your Vendor ID',\n\t'Auth/VendorPassword':'Your Vendor Password',\n\t'ARIRules':[\n\t\t{ PMSRuleId: \"\", RoomId:\"\", Channel:\"\", Verb:\"BLOCK\", StartDate:YYYY-MM-DD, EndDate:YYYY-MM-DD }\n\t\t{ PMSRuleId: \"\", RoomId:\"\", Channel:\"\", Verb:\"BLOCK\", StartDate:YYYY-MM-DD, EndDate:YYYY-MM-DD }\n\t\t]\n }",
         "type": "json"
       }
     ],
@@ -1531,6 +1523,11 @@
       {
         "title": "JSON HelloVendor Request",
         "content": "GET /pms/v201408/json/HelloWorld\nContent-Type: application/json\n{ \n'Auth/VendorId':'your vendor id',\n'Auth/VendorPassword':'your vendor password',\n'hello':'world' \n}",
+        "type": "json"
+      },
+      {
+        "title": "curl w/XML",
+        "content": "curl http://api.myallocator.com/pms/v201408/xml/Hello --data 'xmlRequestString=\n<HelloWorld>\n<Auth>\n</Auth>\n<Foo>Bar</Foo>\n</HelloWorld>'",
         "type": "json"
       }
     ],
@@ -3196,7 +3193,7 @@
     "title": "Version History",
     "name": "Version_History",
     "version": "201501.0.0",
-    "description": "<table> <thead> <tr> <th>Date</th> <th>Version</th> <th>Change</th> </tr> </thead> <tbody> <tr> <td>2015-01-09</td> <td>201501.0.1</td> <td>Initial release of 201501[beta] (new functions: PropertyDetail, ARIRules)</td> </tr> <tr> <td>2015-01-08</td> <td>201408.0.13</td> <td>Corrected validation logic issue with ARIUpdate (properly validates Rooms)</td> </tr> <tr> <td>2015-01-07</td> <td>201408.0.12</td> <td>Corrected issue with AssociateUserToPMS requiring Auth/PropertyId</td> </tr> <tr> <td>2015-01-06</td> <td>201408.0.11</td> <td>Modified FailIfUpdateActive default to &quot;false&quot;</td> </tr> <tr> <td>2015-01-05</td> <td>201408.0.10</td> <td>fixed doc, Price-Weekend is &quot;PriceWeekend&quot;</td> </tr> <tr> <td>2015-01-05</td> <td>201408.0.9</td> <td>added JSON raw input mode - application/json</td> </tr> <tr> <td>2014-12-28</td> <td>201408.0.8</td> <td>added Auth/Debug</td> </tr> <tr> <td>2014-12-28</td> <td>201408.0.7</td> <td>fixed bug in ARIUpdate where zero unit updates would not be applied</td> </tr> <tr> <td>2014-12-26</td> <td>201408.0.6</td> <td>added more documentation to ChannelList and curl example to HelloWorld</td> </tr> <tr> <td>2014-12-24</td> <td>201408.0.5</td> <td>added error logging with ticket responses</td> </tr> <tr> <td>2014-12-23</td> <td>201408.0.4</td> <td>added VendorId to various docs, and propertyid, unified error handling</td> </tr> <tr> <td>2014-12-19</td> <td>201408.0.3</td> <td>fixed bug in RoomCreate (did not return RoomId)</td> </tr> <tr> <td>2014-12-15</td> <td>201408.0.2</td> <td>renamed LoopBookingAction into BookingAction</td> </tr> <tr> <td>2014-12-04</td> <td>201408.0.1</td> <td>initial release of new API</td> </tr> <tr> <td>2012-10-24</td> <td>1.6.2</td> <td>Updated booking information (new: CommissionIncludedInTotal).</td> </tr> <tr> <td>2012-10-24</td> <td>1.6.1</td> <td>Updated booking information and updated channel list (new: eb,air, orb, boo, tra).</td> </tr> <tr> <td>2012-10-24</td> <td>1.6</td> <td>New feature Booking Callback and updated channel list (new: max).</td> </tr> <tr> <td>2012-09-20</td> <td>1.5.2</td> <td>Updated channel list (new: exp, ysh, eb). Get/Set property country.</td> </tr> <tr> <td>2012-07-04</td> <td>1.5.1</td> <td>Updated channel list. Added MinStay/MaxStay example.</td> </tr> <tr> <td>2011-09-17</td> <td>1.5</td> <td>New method SetRoomTypes to add/update/remove rooms.</td> </tr> <tr> <td>2011-09-17</td> <td>1.4.1</td> <td>GetBookings: Minor correction regarding the end date. It&#39;s not the departure date but rather the departure date - 1.</td> </tr> <tr> <td>2011-01-15</td> <td>1.4</td> <td>New methods SetAllocation (non-blocking), SetLogin, GetUpdateStatus, GetBookings. Support for MinStay and MaxStay.</td> </tr> <tr> <td>2010-11-09</td> <td>1.3.1</td> <td>Updated channel list. GetRoomTypes: Obsoleted &quot;Ensuite&quot;, &quot;DoubleBed&quot; and &quot;Beds&quot; (replaced by new property &quot;Occupancy&quot;). GetProperties: shows which days are configure for weekends.</td> </tr> <tr> <td>2010-05-30</td> <td>1.3</td> <td>GetRoomTypes includes a room description (Label). Removed need to list channels to update to and ability to exclude channels. Skipped channels now warnings rather than errors.</td> </tr> <tr> <td>2010-05-05</td> <td>1.2</td> <td>Added links to XML samples. New channel: hb</td> </tr> <tr> <td>2010-04-30</td> <td>1.1</td> <td>Changed Room to \\textit{RoomType} to clarify matters</td> </tr> <tr> <td>2010-04-27</td> <td>1.0</td> <td>Initial release</td> </tr> </tbody> </table> <hr> <p>v201501 : ARIRules,  v201408 : new JSON format, all call names switched to NounPronounVerb format. v1 : the original api (which didn&#39;t support versioning)</p> ",
+    "description": "<table> <thead> <tr> <th>Date</th> <th>Version</th> <th>Change</th> </tr> </thead> <tbody> <tr> <td>2015-01-22</td> <td>201501.0.2</td> <td>Improved documentation with Booking samples</td> </tr> <tr> <td>2015-01-09</td> <td>201501.0.1</td> <td>Initial release of 201501[beta] (new functions: PropertyDetail, ARIRules)</td> </tr> <tr> <td>2015-01-08</td> <td>201408.0.13</td> <td>Corrected validation logic issue with ARIUpdate (properly validates Rooms)</td> </tr> <tr> <td>2015-01-07</td> <td>201408.0.12</td> <td>Corrected issue with AssociateUserToPMS requiring Auth/PropertyId</td> </tr> <tr> <td>2015-01-06</td> <td>201408.0.11</td> <td>Modified FailIfUpdateActive default to &quot;false&quot;</td> </tr> <tr> <td>2015-01-05</td> <td>201408.0.10</td> <td>fixed doc, Price-Weekend is &quot;PriceWeekend&quot;</td> </tr> <tr> <td>2015-01-05</td> <td>201408.0.9</td> <td>added JSON raw input mode - application/json</td> </tr> <tr> <td>2014-12-28</td> <td>201408.0.8</td> <td>added Auth/Debug</td> </tr> <tr> <td>2014-12-28</td> <td>201408.0.7</td> <td>fixed bug in ARIUpdate where zero unit updates would not be applied</td> </tr> <tr> <td>2014-12-26</td> <td>201408.0.6</td> <td>added more documentation to ChannelList and curl example to HelloWorld</td> </tr> <tr> <td>2014-12-24</td> <td>201408.0.5</td> <td>added error logging with ticket responses</td> </tr> <tr> <td>2014-12-23</td> <td>201408.0.4</td> <td>added VendorId to various docs, and propertyid, unified error handling</td> </tr> <tr> <td>2014-12-19</td> <td>201408.0.3</td> <td>fixed bug in RoomCreate (did not return RoomId)</td> </tr> <tr> <td>2014-12-15</td> <td>201408.0.2</td> <td>renamed LoopBookingAction into BookingAction</td> </tr> <tr> <td>2014-12-04</td> <td>201408.0.1</td> <td>initial release of new API</td> </tr> <tr> <td>2012-10-24</td> <td>1.6.2</td> <td>Updated booking information (new: CommissionIncludedInTotal).</td> </tr> <tr> <td>2012-10-24</td> <td>1.6.1</td> <td>Updated booking information and updated channel list (new: eb,air, orb, boo, tra).</td> </tr> <tr> <td>2012-10-24</td> <td>1.6</td> <td>New feature Booking Callback and updated channel list (new: max).</td> </tr> <tr> <td>2012-09-20</td> <td>1.5.2</td> <td>Updated channel list (new: exp, ysh, eb). Get/Set property country.</td> </tr> <tr> <td>2012-07-04</td> <td>1.5.1</td> <td>Updated channel list. Added MinStay/MaxStay example.</td> </tr> <tr> <td>2011-09-17</td> <td>1.5</td> <td>New method SetRoomTypes to add/update/remove rooms.</td> </tr> <tr> <td>2011-09-17</td> <td>1.4.1</td> <td>GetBookings: Minor correction regarding the end date. It&#39;s not the departure date but rather the departure date - 1.</td> </tr> <tr> <td>2011-01-15</td> <td>1.4</td> <td>New methods SetAllocation (non-blocking), SetLogin, GetUpdateStatus, GetBookings. Support for MinStay and MaxStay.</td> </tr> <tr> <td>2010-11-09</td> <td>1.3.1</td> <td>Updated channel list. GetRoomTypes: Obsoleted &quot;Ensuite&quot;, &quot;DoubleBed&quot; and &quot;Beds&quot; (replaced by new property &quot;Occupancy&quot;). GetProperties: shows which days are configure for weekends.</td> </tr> <tr> <td>2010-05-30</td> <td>1.3</td> <td>GetRoomTypes includes a room description (Label). Removed need to list channels to update to and ability to exclude channels. Skipped channels now warnings rather than errors.</td> </tr> <tr> <td>2010-05-05</td> <td>1.2</td> <td>Added links to XML samples. New channel: hb</td> </tr> <tr> <td>2010-04-30</td> <td>1.1</td> <td>Changed Room to \\textit{RoomType} to clarify matters</td> </tr> <tr> <td>2010-04-27</td> <td>1.0</td> <td>Initial release</td> </tr> </tbody> </table> <hr> <p>v201501 : ARIRules,  v201408 : new JSON format, all call names switched to NounPronounVerb format. v1 : the original api (which didn&#39;t support versioning)</p> ",
     "filename": "perllib/MAAPI.pm",
     "groupTitle": ""
   },
