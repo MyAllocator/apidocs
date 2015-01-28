@@ -99,7 +99,7 @@
         }
       ]
     },
-    "description": "<p>Lists all existing ARIRules</p> ",
+    "description": "<p>Lists all existing ARIRules.  See ARIRulesUpdate for more details.</p> ",
     "examples": [
       {
         "title": "XML Request - Creating a customer account",
