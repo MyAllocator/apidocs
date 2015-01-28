@@ -31,6 +31,7 @@ define({ "api": [
     "name": "ARIRulesList",
     "version": "201501.0.0",
     "group": "PMS",
+    "description": "<p>ARIRules allow a PMS to communicate channel/OTA business logic to MyAllocator, so auto-adjustments can be safely made by MyAllocator.</p> <p>Currently the ARIRules only support the &quot;BLOCK&quot; Verb which zeros out inventory for a specific channel  while the rule is in effect.  This can be used to close out a specific channel/OTA without disabling it.</p> <p>The ARIRulesUpdate and ARIRulesList methods were architected so in future releases  we will add additional Verbs to handle other common business cases like reserving rooms for contracted availability,  and limited availability.</p> <p>ARIRules for a property can be can be viewed using ARIRulesList or by going into inbox.myallocator.com | Manage | Rules. Each ARIRule must have a unique &quot;PMSRuleId&quot; that corresponds to the rule ID in your system and is used to identify the rule for a property. </p> <p>When new rules are sent or removed a corresponding ARIUpdate is created for the channel and date ranges specified. The UpdateId is returned in the response and can be viewed using ARIUpdateStatus.</p> <p>== Why are ARIRules so Important == Before ARIRules if a PMS developer needed to close out a specific channel for a single day it was necessary  to send a zero update for a specific channel, then send another update with real inventory for all other channels, and it was necessary to do this after each update. Not only was this incredibly resource intensive. But any AutoAdjustments would still update the closed out channels because there was no logical understanding within MyAllocator of the block.  During the time the blocked date was set to zero any booking would appear like an overbooking (making it impossible to separate signal from noise in diagnosing  overbookings) since having &quot;false zero&quot; inventory was part of normal daily operation for many PMS systems.</p> ",
     "parameter": {
       "fields": {
         "Request": [
@@ -1770,111 +1771,6 @@ define({ "api": [
     "version": "201501.0.0",
     "group": "PMS",
     "description": "<p>Displays all bookings (or a range) in the Loopback Channel. See BookingList for examples of parameters/incoming calls and output.</p> ",
-    "filename": "perllib/MAAPI.pm",
-    "groupTitle": "PMS"
-  },
-  {
-    "type": "get",
-    "url": "/ProfileDetail",
-    "title": "",
-    "name": "ProfileDetail",
-    "version": "201501.0.0",
-    "group": "PMS",
-    "description": "<p>This method creates/deletes/manages ARI Rules</p> ",
-    "parameter": {
-      "fields": {
-        "Request": [
-          {
-            "group": "Request",
-            "type": "String",
-            "optional": true,
-            "field": "Auth/UserId",
-            "description": "<p>Users unique ID     (required with Auth/UserPassword)</p> "
-          },
-          {
-            "group": "Request",
-            "type": "String",
-            "optional": true,
-            "field": "Auth/UserPassword",
-            "description": "<p>Users password        (required with Auth/UserId)</p> "
-          },
-          {
-            "group": "Request",
-            "type": "String",
-            "optional": true,
-            "field": "Auth/UserToken",
-            "description": "<p>Users auth token (see AssociateUserToPMS call to generate a Token)# @apiParam (Request) {String} Auth/VendorId            Your Vendor ID</p> "
-          },
-          {
-            "group": "Request",
-            "type": "String",
-            "optional": false,
-            "field": "Auth/VendorId",
-            "description": "<p>Your Vendor ID</p> "
-          },
-          {
-            "group": "Request",
-            "type": "String",
-            "optional": false,
-            "field": "Auth/VendorPassword",
-            "description": "<p>Your Vendor Password</p> "
-          },
-          {
-            "group": "Request",
-            "type": "Array",
-            "optional": false,
-            "field": "Rules",
-            "description": "<p>An array of ARI Rules</p> "
-          }
-        ]
-      }
-    },
-    "success": {
-      "fields": {
-        "Response": [
-          {
-            "group": "Response",
-            "type": "Integer",
-            "optional": false,
-            "field": "PropertyId",
-            "description": "<p>the property id you requested</p> "
-          },
-          {
-            "group": "Response",
-            "type": "Token",
-            "optional": false,
-            "field": "DormitoryPricing",
-            "description": "<p>&quot;person&quot; pricing is per person, &quot;room&quot; pricing is per room.</p> "
-          },
-          {
-            "group": "Response",
-            "type": "Boolean",
-            "optional": false,
-            "field": "Success",
-            "description": "<p>true|false</p> "
-          }
-        ]
-      },
-      "examples": [
-        {
-          "title": "XML ProfileDetail Response",
-          "content": "<?xml version=\"1.0\" encoding=\"UTF-8\" ?>\n<PropertyDetail>\n  <PropertyId>1</PropertyId>\n  <DormitoryPricing>person</DormitoryPricing>\n</PropertyDetail>",
-          "type": "json"
-        }
-      ]
-    },
-    "examples": [
-      {
-        "title": "XML ProfileDetail (Request)",
-        "content": "<?xml version=\"1.0\" encoding=\"UTF-8\" ?>\n<ProfileDetail>\n  <Auth>\n\t <UserId>Customer User ID</UserId>\n  \t <UserPassword>Customer Password</UserPassword>\n    <VendorId>Your Vendor ID</VendorId>\n    <VendorPassword>Your Vendor Password</VendorPassword>\n\t <PropertyId>1</PropertyId>\n  </Auth>\n</ProfileDetail>",
-        "type": "json"
-      },
-      {
-        "title": "JSON ProfileDetail (Request)",
-        "content": " {\n\t'Auth/VendorId':'Your Vendor ID',\n\t'Auth/VendorPassword':'Your Vendor Password',\n\t'Auth/UserToken':'',\n\t'Auth/PropertyId':'PropertyId'\n }",
-        "type": "json"
-      }
-    ],
     "filename": "perllib/MAAPI.pm",
     "groupTitle": "PMS"
   },
