@@ -26,97 +26,6 @@ define({ "api": [
   },
   {
     "type": "get",
-    "url": "/ARIRulesUpdate",
-    "title": "ARIRulesUpdate",
-    "name": "ARIRulesList",
-    "version": "201501.0.0",
-    "group": "PMS",
-    "description": "<p>ARIRules allow a PMS to communicate channel/OTA business logic to MyAllocator, so auto-adjustments can be safely made by MyAllocator.</p> <p>Currently the ARIRules only support the &quot;BLOCK&quot; Verb which zeros out inventory for a specific channel  while the rule is in effect.  This can be used to close out a specific channel/OTA without disabling it.</p> <p>The ARIRulesUpdate and ARIRulesList methods were architected so in future releases  we will add additional Verbs to handle other common business cases like reserving rooms for contracted availability,  and limited availability.</p> <p>ARIRules for a property can be can be viewed using ARIRulesList or by going into inbox.myallocator.com | Manage | Rules. Each ARIRule must have a unique &quot;PMSRuleId&quot; that corresponds to the rule ID in your system and is used to identify the rule for a property. </p> <p>When new rules are sent or removed a corresponding ARIUpdate is created for the channel and date ranges specified. The UpdateId is returned in the response and can be viewed using ARIUpdateStatus.</p> <p>== Why are ARIRules so Important == Before ARIRules if a PMS developer needed to close out a specific channel for a single day it was necessary  to send a zero update for a specific channel, then send another update with real inventory for all other channels, and it was necessary to do this after each update. Not only was this incredibly resource intensive. But any AutoAdjustments would still update the closed out channels because there was no logical understanding within MyAllocator of the block.  During the time the blocked date was set to zero any booking would appear like an overbooking (making it impossible to separate signal from noise in diagnosing  overbookings) since having &quot;false zero&quot; inventory was part of normal daily operation for many PMS systems.</p> ",
-    "parameter": {
-      "fields": {
-        "Request": [
-          {
-            "group": "Request",
-            "type": "String",
-            "optional": true,
-            "field": "Auth/UserId",
-            "description": "<p>Users unique ID     (required with Auth/UserPassword)</p> "
-          },
-          {
-            "group": "Request",
-            "type": "String",
-            "optional": true,
-            "field": "Auth/UserPassword",
-            "description": "<p>Users password        (required with Auth/UserId)</p> "
-          },
-          {
-            "group": "Request",
-            "type": "String",
-            "optional": true,
-            "field": "Auth/UserToken",
-            "description": "<p>Users auth token (see AssociateUserToPMS call to generate a Token)#</p> "
-          },
-          {
-            "group": "Request",
-            "type": "String",
-            "optional": false,
-            "field": "Auth/VendorId",
-            "description": "<p>Your Vendor ID</p> "
-          },
-          {
-            "group": "Request",
-            "type": "String",
-            "optional": false,
-            "field": "Auth/VendorPassword",
-            "description": "<p>Your Vendor Password</p> "
-          }
-        ]
-      }
-    },
-    "success": {
-      "fields": {
-        "Response": [
-          {
-            "group": "Response",
-            "type": "ARIRules",
-            "optional": false,
-            "field": "List",
-            "description": "<p>of all existing ARIRules</p> "
-          },
-          {
-            "group": "Response",
-            "type": "Boolean",
-            "optional": false,
-            "field": "Success",
-            "description": "<p>true|false</p> "
-          }
-        ]
-      },
-      "examples": [
-        {
-          "title": "ARIRulesActions",
-          "content": "<ARIRulesUpdate>\n\t<ARIRules Action=\"Append\">\n\t\t<Rule PMSRuleId=\"\" RoomId=\"\" Channel=\"\" Verb=\"BLOCK\" StartDate=\"YYYY-MM-DD\" EndDate=\"YYYY-MM-DD\" />\n\t\t<Rule PMSRuleId=\"\" RoomId=\"\" Channel=\"\" Verb=\"BLOCK\" StartDate=\"YYYY-MM-DD\" EndDate=\"YYYY-MM-DD\" />\n\t</ARIRules>\n\t<ARIRules Action=\"Update\">\n\t\t<Rule PMSRuleId=\"\" RoomId=\"\" Channel=\"\" Verb=\"BLOCK\" StartDate=\"YYYY-MM-DD\" EndDate=\"YYYY-MM-DD\" />\n\t\t<Rule PMSRuleId=\"\" RoomId=\"\" Channel=\"\" Verb=\"BLOCK\" StartDate=\"YYYY-MM-DD\" EndDate=\"YYYY-MM-DD\" />\n\t</ARIRules>\n\t<ARIRules Action=\"Delete\">\n\t\t<Rule PMSRuleId=\"\"/>\n\t\t<Rule RoomId=\"\"/>\n\t\t<Rule RoomId=\"\" Channel=\"\"/>\n\t</ARIRules>\n<ARIRulesUpdate>",
-          "type": "json"
-        }
-      ]
-    },
-    "examples": [
-      {
-        "title": "JSON ARIRulesUpdate",
-        "content": "{ \n\t'ARIRules':[\n\t\t{ '_Action':'Append', PMSRuleId:\"\", RoomId:\"\", Channel:\"\", Verb:\"BLOCK\", StartDate:\"YYYY-MM-DD\", EndDate:\"YYYY-MM-DD\"  },\n\t\t{ '_Action':'Update', PMSRuleId:\"\", RoomId:\"\", Channel:\"\", Verb:\"BLOCK\", StartDate:\"YYYY-MM-DD\", EndDate:\"YYYY-MM-DD\"  },\n\t\t{ '_Action':'Delete', PMSRuleId:\"\", RoomId:\"\", Channel:\"\"  },\n\t\t{ '_Action':'Delete', PMSRuleId:\"\", RoomId:\"\"  },\n\t\t{ '_Action':'Delete', PMSRuleId:\"\" },\n\t\t]\n}",
-        "type": "json"
-      },
-      {
-        "title": "JSON ARIRulesUpdate Response",
-        "content": " {\n\t'Auth/VendorId':'Your Vendor ID',\n\t'Auth/VendorPassword':'Your Vendor Password',\n\t'ARIRules':[\n\t\t{ PMSRuleId: \"\", RoomId:\"\", Channel:\"\", Verb:\"BLOCK\", StartDate:YYYY-MM-DD, EndDate:YYYY-MM-DD }\n\t\t{ PMSRuleId: \"\", RoomId:\"\", Channel:\"\", Verb:\"BLOCK\", StartDate:YYYY-MM-DD, EndDate:YYYY-MM-DD }\n\t\t]\n }",
-        "type": "json"
-      }
-    ],
-    "filename": "perllib/MAAPI.pm",
-    "groupTitle": "PMS"
-  },
-  {
-    "type": "get",
     "url": "/ARIRulesList",
     "title": "ARIRulesList",
     "name": "ARIRulesList",
@@ -195,6 +104,97 @@ define({ "api": [
       {
         "title": "XML Request - Creating a customer account",
         "content": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<ARIRulesList>\n\t<Auth>\n\t\t<UserId>Customer User ID</UserId>\n  \t\t<UserPassword>Customer Password</UserPassword>\n\t\t<VendorId>Your Vendor ID</VendorId>\n\t\t<VendorPassword>Your Vendor Password</VendorPassword>\n\t</Auth>\n\t<ARIRules>\n\t\t<Rule PMSRuleId=\"\" RoomId=\"\" Channel=\"\" Verb=\"BLOCK\" StartDate=\"YYYY-MM-DD\" EndDate=\"YYYY-MM-DD\" />\n\t</ARIRules>\n</ARIRulesList>",
+        "type": "json"
+      }
+    ],
+    "filename": "perllib/MAAPI.pm",
+    "groupTitle": "PMS"
+  },
+  {
+    "type": "get",
+    "url": "/ARIRulesUpdate",
+    "title": "ARIRulesUpdate",
+    "name": "ARIRulesUpdate",
+    "version": "201501.0.0",
+    "group": "PMS",
+    "description": "<p>ARIRules allow a PMS to communicate channel/OTA business logic to MyAllocator, so auto-adjustments can be safely made by MyAllocator.</p> <p>Currently the ARIRules only support the &quot;BLOCK&quot; Verb which zeros out inventory for a specific channel  while the rule is in effect.  This can be used to close out a specific channel/OTA without disabling it.</p> <p>The ARIRulesUpdate and ARIRulesList methods were architected so in future releases  we will add additional Verbs to handle other common business cases like reserving rooms for contracted availability,  and limited availability.</p> <p>ARIRules for a property can be can be viewed using ARIRulesList or by going into inbox.myallocator.com | Manage | Rules. Each ARIRule must have a unique &quot;PMSRuleId&quot; that corresponds to the rule ID in your system and is used to identify the rule for a property. </p> <p>When new rules are sent or removed a corresponding ARIUpdate is created for the channel and date ranges specified. The UpdateId is returned in the response and can be viewed using ARIUpdateStatus.</p> <p><em>Why are ARIRules so Important</em></p> <p>Before ARIRules if a PMS developer needed to close out a specific channel for a single day it was necessary  to send a zero update for a specific channel, then send another update with real inventory for all other channels, and it was necessary to do this after each update. Not only was this incredibly resource intensive. But any AutoAdjustments would still update the closed out channels because there was no logical understanding within MyAllocator of the block.  During the time the blocked date was set to zero any booking would appear like an overbooking (making it impossible to separate signal from noise in diagnosing  overbookings) since having &quot;false zero&quot; inventory was part of normal daily operation for many PMS systems.</p> ",
+    "parameter": {
+      "fields": {
+        "Request": [
+          {
+            "group": "Request",
+            "type": "String",
+            "optional": true,
+            "field": "Auth/UserId",
+            "description": "<p>Users unique ID     (required with Auth/UserPassword)</p> "
+          },
+          {
+            "group": "Request",
+            "type": "String",
+            "optional": true,
+            "field": "Auth/UserPassword",
+            "description": "<p>Users password        (required with Auth/UserId)</p> "
+          },
+          {
+            "group": "Request",
+            "type": "String",
+            "optional": true,
+            "field": "Auth/UserToken",
+            "description": "<p>Users auth token (see AssociateUserToPMS call to generate a Token)#</p> "
+          },
+          {
+            "group": "Request",
+            "type": "String",
+            "optional": false,
+            "field": "Auth/VendorId",
+            "description": "<p>Your Vendor ID</p> "
+          },
+          {
+            "group": "Request",
+            "type": "String",
+            "optional": false,
+            "field": "Auth/VendorPassword",
+            "description": "<p>Your Vendor Password</p> "
+          }
+        ]
+      }
+    },
+    "success": {
+      "fields": {
+        "Response": [
+          {
+            "group": "Response",
+            "type": "ARIRules",
+            "optional": false,
+            "field": "List",
+            "description": "<p>of all existing ARIRules</p> "
+          },
+          {
+            "group": "Response",
+            "type": "Boolean",
+            "optional": false,
+            "field": "Success",
+            "description": "<p>true|false</p> "
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "ARIRulesActions",
+          "content": "<ARIRulesUpdate>\n\t<ARIRules Action=\"Append\">\n\t\t<Rule PMSRuleId=\"\" RoomId=\"\" Channel=\"\" Verb=\"BLOCK\" StartDate=\"YYYY-MM-DD\" EndDate=\"YYYY-MM-DD\" />\n\t\t<Rule PMSRuleId=\"\" RoomId=\"\" Channel=\"\" Verb=\"BLOCK\" StartDate=\"YYYY-MM-DD\" EndDate=\"YYYY-MM-DD\" />\n\t</ARIRules>\n\t<ARIRules Action=\"Update\">\n\t\t<Rule PMSRuleId=\"\" RoomId=\"\" Channel=\"\" Verb=\"BLOCK\" StartDate=\"YYYY-MM-DD\" EndDate=\"YYYY-MM-DD\" />\n\t\t<Rule PMSRuleId=\"\" RoomId=\"\" Channel=\"\" Verb=\"BLOCK\" StartDate=\"YYYY-MM-DD\" EndDate=\"YYYY-MM-DD\" />\n\t</ARIRules>\n\t<ARIRules Action=\"Delete\">\n\t\t<Rule PMSRuleId=\"\"/>\n\t\t<Rule RoomId=\"\"/>\n\t\t<Rule RoomId=\"\" Channel=\"\"/>\n\t</ARIRules>\n<ARIRulesUpdate>",
+          "type": "json"
+        }
+      ]
+    },
+    "examples": [
+      {
+        "title": "JSON ARIRulesUpdate",
+        "content": "{ \n\t'ARIRules':[\n\t\t{ '_Action':'Append', PMSRuleId:\"\", RoomId:\"\", Channel:\"\", Verb:\"BLOCK\", StartDate:\"YYYY-MM-DD\", EndDate:\"YYYY-MM-DD\"  },\n\t\t{ '_Action':'Update', PMSRuleId:\"\", RoomId:\"\", Channel:\"\", Verb:\"BLOCK\", StartDate:\"YYYY-MM-DD\", EndDate:\"YYYY-MM-DD\"  },\n\t\t{ '_Action':'Delete', PMSRuleId:\"\", RoomId:\"\", Channel:\"\"  },\n\t\t{ '_Action':'Delete', PMSRuleId:\"\", RoomId:\"\"  },\n\t\t{ '_Action':'Delete', PMSRuleId:\"\" },\n\t\t]\n}",
+        "type": "json"
+      },
+      {
+        "title": "JSON ARIRulesUpdate Response",
+        "content": " {\n\t'Auth/VendorId':'Your Vendor ID',\n\t'Auth/VendorPassword':'Your Vendor Password',\n\t'ARIRules':[\n\t\t{ PMSRuleId: \"\", RoomId:\"\", Channel:\"\", Verb:\"BLOCK\", StartDate:YYYY-MM-DD, EndDate:YYYY-MM-DD }\n\t\t{ PMSRuleId: \"\", RoomId:\"\", Channel:\"\", Verb:\"BLOCK\", StartDate:YYYY-MM-DD, EndDate:YYYY-MM-DD }\n\t\t]\n }",
         "type": "json"
       }
     ],
