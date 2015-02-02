@@ -354,35 +354,35 @@
           {
             "group": "Request",
             "type": "String",
-            "optional": false,
+            "optional": true,
             "field": ".Allocations.Allocation.Units",
             "description": "<p>How many beds or rooms should be available on this day. Whether it&#39;s beds or rooms depends on whether the room is a dorm or a private room. To remove allocation set Units to 0.</p> "
           },
           {
             "group": "Request",
             "type": "Integer",
-            "optional": false,
+            "optional": true,
             "field": ".Allocations.Allocation.MinStay",
             "description": "<p>Specify the minumum number of days a customer is allowed to stay. Not all channels support this feature. Needs to be 1 or higher. (optional)</p> "
           },
           {
             "group": "Request",
             "type": "Integer",
-            "optional": false,
+            "optional": true,
             "field": ".Allocations.Allocation.MaxStay",
             "description": "<p>Specify the maximum number of days a customer is allowed to stay. Not all channels support this feature. Needs to be 1 or higher. (optional)</p> "
           },
           {
             "group": "Request",
             "type": "Container",
-            "optional": false,
+            "optional": true,
             "field": ".Allocations.Allocation.Prices",
             "description": "<p>(XML ONLY) Container for Price nodes.</p> "
           },
           {
             "group": "Request",
             "type": "Currency",
-            "optional": false,
+            "optional": true,
             "field": ".Allocations.Allocation.Prices.Price",
             "description": "<p>(XML ONLY) Price per person for shared/dorm rooms or per room for private rooms.</p> "
           },
@@ -392,21 +392,21 @@
             "allowedValues": [
               "\"true\""
             ],
-            "optional": false,
+            "optional": true,
             "field": ".Allocations.Allocation.Prices.Price.weekend",
             "description": "<p>(XML ONLY) Price per person for shared/dorm rooms or per room for private rooms. In XML: You can submit two Price tags. The default one and one with the attribute \\textit{weekend=&quot;true&quot;}. If a Price tag with this attribute has been submitted the rate only applies to weekdays set by the customer as weekends (see PropertyList for which days are set as weekend days).</p> "
           },
           {
             "group": "Request",
             "type": "Currency",
-            "optional": false,
+            "optional": true,
             "field": ".Allocations.Allocation.Price",
             "description": "<p>(JSON ONLY) Price per person for shared/dorm rooms or per room for private rooms.</p> "
           },
           {
             "group": "Request",
             "type": "Currency",
-            "optional": false,
+            "optional": true,
             "field": ".Allocations.Allocation.PriceWeekend",
             "description": "<p>(JSON ONLY) price for days marked as &quot;Weekend&quot;</p> "
           }
@@ -467,7 +467,7 @@
         }
       ]
     },
-    "description": "<p>An allocation sets the number of rooms or beds (depending on whether the  room type is a private room or shared/dorm) available during  any specific time frame. For more details see below.</p> <p> <strong> Pricing </strong>  In both XML and JSON it is possible to submit two Prices.   A default &quot;Weekday&quot; price and one with the attribute it{weekend=&quot;true&quot;}. If a Price tag with this attribute has been submitted the rate only applies to weekdays set by the customer as weekends (see PropertyList for which days are set as weekend days).</p> <p> <strong> Handling Errors &amp; Warnings </strong></p> <p> The response will always include the Success, Errors and Warnings tags. If  Success is set to &quot;true&quot; the Errors tag will be empty. If Success is set to  &quot;partial&quot; or &quot;false&quot; at least one Error tag is included.</p> <p> <strong> Submitting to ALL channels </strong></p> <p> You can also submit to all available channels without specifying explicity which  channels to update. Use the channel code &quot;all&quot; to do this. Channels that are not   set up by the user will be skipped as indicated by a warning. </p> <p> It is also possible to submit to all channels while excluding certain channels.  Add the attribute exclude=&quot;true&quot; to skip a channel. See example below.  Use the channel code &quot;all&quot; to do this.</p> <p> <strong> Running Jobs in the Background (ARIUpdateStatus) </strong></p> <p> You can also run the ARIUpdate update in the background and query  for the updates using ARIUpdateStatus. This enables you  to show the update progress to the user while it&#39;s still running. To enable  this feature you need to add the node QueryForStatus (see example)</p> <p> If QueryForStatus is true then the ARIUpdateResponse will contain the additional parameter UpdateId, which  is needed for ARIUpdateStatus</p> ",
+    "description": "<p>An allocation sets the number of rooms or beds (depending on whether the  room type is a private room or shared/dorm) available during  any specific time frame. For more details see below.</p> <p> <strong> Pricing </strong>  In both XML and JSON it is possible to submit two Prices.   A default &quot;Weekday&quot; price and one with the attribute it{weekend=&quot;true&quot;}. If a Price tag with this attribute has been submitted the rate only applies to weekdays set by the customer as weekends (see PropertyList for which days are set as weekend days).</p> <p> <strong> Handling Errors &amp; Warnings </strong></p> <p> The response will always include the Success, Errors and Warnings tags. If  Success is set to &quot;true&quot; the Errors tag will be empty. If Success is set to  &quot;partial&quot; or &quot;false&quot; at least one Error tag is included.</p> <p> <strong> Sending Overlapping Ranges / Partial updates </strong>  Overlapping ranges in an ARIUpdate are absolutely allowed.   As long as the ranges are sent in the same request body they are applied in sequence as part of the same SQL transaction.   Fields such as Units, MinStay, MaxStay, Price are optional so it is possible send different ranges for pricing and availability.</p> <p> How this works: we receive XML/JSON request body and decode it into a neutral format, then write availability directly to our internal db  and provision an updateId for a date range plus room-type9s), then create one job per channel, finally we return the updateId to you.  Each job contains ONLY the propertyid, updateId, and ota (no availability, or pricing).  Jobs are picked up one of several auto-scaling &quot;worker tier&quot; servers,   each server loads the latest availability from the db (which may have changed since the updateId was issued),   and then applies any ARIRules, then transmit to OTA, and flag their portion of the updateId as completed.  This ensures the latest availability will always be sent to the OTA.  </p> <p> Once an UpdateId has been issued it falls within the scope of my monitoring domain, it should be considered reliable by a developer.  The request is broken into a series of jobs (one for each channel).<br> Each job is logged to disk and processed by a pool of servers.<br> It would take a substantial level of failure to be lost.<br> (Jobs are not quite as durable as bookings or configuration data, but it&#39;s still highly durable).  </p> <p> <strong> Submitting to ALL channels </strong></p> <p> You can also submit to all available channels without specifying explicity which  channels to update. Use the channel code &quot;all&quot; to do this. Channels that are not   set up by the user will be skipped as indicated by a warning. </p> <p> It is also possible to submit to all channels while excluding certain channels.  Add the attribute exclude=&quot;true&quot; to skip a channel. See example below.  Use the channel code &quot;all&quot; to do this.</p> <p> <strong> Running Jobs in the Background (ARIUpdateStatus) </strong></p> <p> You can also run the ARIUpdate update in the background and query  for the updates using ARIUpdateStatus. This enables you  to show the update progress to the user while it&#39;s still running. To enable  this feature you need to add the node QueryForStatus (see example)</p> <p> If QueryForStatus is true then the ARIUpdateResponse will contain the additional parameter UpdateId, which  is needed for ARIUpdateStatus</p> <p> QueryForStatus TRUE will be much more resilient than attempting to maintain a single persistent connection,   and it will free up connection requests on our side.  In the future QueryForStatus FALSE may be removed and/or   additional timeouts will be added which may make it unusable.   New integrations should avoid using QueryForStatus FALSE.</p> <p> <strong> Weekends </strong>  Weekends will be removed in a future release, if you are currently building a new integration please avoid using the weekend functionality.</p> ",
     "examples": [
       {
         "title": "JSON ARIUpdate",
@@ -3096,11 +3096,11 @@
   {
     "type": "",
     "url": "{}",
-    "title": "XML v1 Error Responses",
+    "title": "XML v1 Information",
     "group": "_Appendix",
     "version": "201501.0.0",
     "name": "XML_v1_Error_Responses",
-    "description": "<p>XML v1 is deprecated and this documentation is provided for backward compatibility.</p> ",
+    "description": "<p>XML v1 is deprecated and this documentation is provided for backward compatibility. <a href=\"https://inbox.myallocator.com/n/myallocator.com_API_Spec.pdf\">https://inbox.myallocator.com/n/myallocator.com_API_Spec.pdf</a></p> <p>If you have specific concerns or things we can do to aid in this process please let us know at devhelp@myallocator.com.  I&#39;ve been on your side of the fence for more than 20 years, I hate when API&#39;s change too!</p> <p>The naming conventions have changed from VerbNoun to NounAdjectiveVerb,  but the data structures themselves have not changed significantly.  SetAllocation is ARIUpdate, but the request/response format for XML is the same.  We went out of our way to make the fewest number of changes possible,  but at the same time to introduce the ability to version and provide backward  compatibility starting with v1.  It&#39;s also worth mentioning all the old call names (SetAllocation) still work,  even though they aren&#39;t in this documentation just to avoid confusion to new developers.</p> <p>There is a v1 URL which runs on the new code base: <a href=\"http://api.myallocator.com/pms/v1/xml\">http://api.myallocator.com/pms/v1/xml</a></p> <p>The new codebase should (in theory) provide full v1 read/write compatibility,  with a few improvements. It should be 98% backward compatible (there some trivial differences in validation logic, but no differences in response/request format).</p> <p>Right now -- api.myallocator.com/ points at a single server running an ancient fork  of the old/original codebase. Requests to api.myallocator.com/pms/<em> are proxied  to the new api servers. At some point (once I get caught up on tickets) we&#39;re going  to turn off the old api server and send all requests to / api.myallocator.com/pms/v1/xml This </em>should* be unnoticeable to you, but you can control when this happens  by moving to <a href=\"http://api.myallocator.com/pms/v1/xml\">http://api.myallocator.com/pms/v1/xml</a> yourself.</p> <p>We will need to this at some point so we can start changing/optimizing internal data  structures, right now we&#39;re writing data in both new format and old format.</p> <p>There is no plan to deprecate v1 entirely in 2015 .. maybe someday, but no plans,  it&#39;s just not that big a deal, so we&#39;re not saying &quot;never&quot;, but we&#39;re saying don&#39;t  stress or feel rushed.</p> <p>The only changes to v1 actually impact all versions.  Specifically SetAllocation with QueryForUpdateStatus:false timeouts will be  decreased from 1 hour, to 30 minutes, to 15 minutes, to 5, and eventually  (hopefully) to 60 seconds so API requests can turn over faster. </p> <p>Certain channels which aren&#39;t live yet (ex: CTrip) require 2 minutes to do an update  and we don&#39;t want people camping on API webserver API connections.</p> <p><strong><em> BUT WAIT !!! BEFORE THAT HAPPENS </em></strong> soon you&#39;ll have the option to  receive callback notifications for both ariupdates, and configuration changes  (in addition to bookings).</p> <p>We&#39;re hoping it will be trivial for most v1 developers to move the code which  processes synchronous ARIUpdates from the HTTP response, into a callback handler on your  web-server, giving us an asynchronous update path and dramatically increasing  the reliability of the API for everybody.</p> <p>Right now it&#39;s very easy for a badly implemented rogue PMS to camp all 150 API  connections (even if it was increased to 5000 it&#39;d be easy to camp them all since the  timeout [1hr] is so large).   This wasn&#39;t as big a deal when we had 10 developers,  now there are over 150 and some of them.</p> <p>It only takes one bad implementation to take the whole system down for everybody.</p> ",
     "error": {
       "examples": [
         {
