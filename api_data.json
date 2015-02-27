@@ -932,7 +932,7 @@
             "group": "Request",
             "type": "CurrencyCode",
             "optional": true,
-            "field": "NormalizeCurrency",
+            "field": "Options/NormalizeCurrency",
             "description": "<p>Converts the booking prices into a single currency (at current exchange rates)</p> "
           }
         ]
