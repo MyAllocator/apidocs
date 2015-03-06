@@ -1899,6 +1899,11 @@
         "title": "JSON PropertyList Request",
         "content": "{}",
         "type": "json"
+      },
+      {
+        "title": "curl w/json",
+        "content": "curl http://api.myallocator.com/pms/v201408/json/PropertyList -d \n\t'json={\"Auth/VendorId\":\"\", \"Auth/VendorPassword\":\"\", \"Auth/UserId\":\"\", \"Auth/UserPassword\":\"\"}'",
+        "type": "json"
       }
     ],
     "success": {
@@ -2050,6 +2055,200 @@
   },
   {
     "type": "get",
+    "url": "/RoomCreate",
+    "title": "RoomCreate",
+    "name": "RoomCreate",
+    "version": "201501.0.0",
+    "group": "PMS",
+    "description": "<p>This method allows you to create, update or remove rooms on myallocator.com. Please note that you can only send a single RoomCreate, RoomUpdate, or RoomRemove</p> ",
+    "parameter": {
+      "fields": {
+        "Request": [
+          {
+            "group": "Request",
+            "type": "String",
+            "optional": true,
+            "field": "Auth/UserId",
+            "description": "<p>Users unique ID     (required with Auth/UserPassword)</p> "
+          },
+          {
+            "group": "Request",
+            "type": "String",
+            "optional": true,
+            "field": "Auth/UserPassword",
+            "description": "<p>Users password        (required with Auth/UserId)</p> "
+          },
+          {
+            "group": "Request",
+            "type": "String",
+            "optional": true,
+            "field": "Auth/UserToken",
+            "description": "<p>Users auth token (see AssociateUserToPMS call to generate a Token)# @apiParam (Request) {String} Auth/VendorId            Your Vendor ID</p> "
+          },
+          {
+            "group": "Request",
+            "type": "String",
+            "optional": false,
+            "field": "Auth/PropertyId",
+            "description": "<p>Property ID on myallocator.com</p> "
+          },
+          {
+            "group": "Request",
+            "type": "String",
+            "optional": false,
+            "field": "Auth/VendorId",
+            "description": "<p>Your Vendor ID</p> "
+          },
+          {
+            "group": "Request",
+            "type": "String",
+            "optional": false,
+            "field": "Auth/VendorPassword",
+            "description": "<p>Your Vendor Password</p> "
+          },
+          {
+            "group": "Request",
+            "type": "String",
+            "optional": true,
+            "field": "RoomId",
+            "description": "<p>Room</p> "
+          },
+          {
+            "group": "Request",
+            "type": "String",
+            "optional": false,
+            "field": "Label",
+            "description": "<p>String that describes the room, usually provided by the customer. If omitted, a label will automatically be created from the other properties. (optional)</p> "
+          },
+          {
+            "group": "Request",
+            "type": "String",
+            "optional": false,
+            "field": "Units",
+            "description": "<p>How many rooms of this type there are. This option doesn&#39;t actually limit how many rooms can be set as available, it&#39;s only informational.</p> "
+          },
+          {
+            "group": "Request",
+            "type": "String",
+            "optional": false,
+            "field": "Occupancy",
+            "description": "<p>Number of many people that can stay in this room.</p> "
+          },
+          {
+            "group": "Request",
+            "type": "String",
+            "optional": false,
+            "field": "PrivateRoom",
+            "description": "<p>\\textit{true} if it&#39;s a private room, \\textit{false} for dormitories.</p> "
+          },
+          {
+            "group": "Request",
+            "type": "String",
+            "optional": false,
+            "field": "Gender",
+            "description": "<p>Only needed for dormitories. \\textit{MA} for males, \\textit{FE} for females, \\textit{MI} if mixed.</p> "
+          }
+        ]
+      }
+    },
+    "examples": [
+      {
+        "title": "XML Request:",
+        "content": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<RoomCreate>\n <Auth>\n   <UserId>Customer User ID</UserId>\n   <UserPassword>Customer Password</UserPassword>\n   <PropertyId>Property ID on myallocator.com</PropertyId>\n   <VendorId>Your Vendor ID</VendorId>\n   <VendorPassword>Your Vendor Password</VendorPassword>\n </Auth>\n <CreateRooms>\n \t<RoomTypes>\n     <RoomType>\n       <Label>2-bed private with sea-view</Label>\n       <Units>4</Units>\n       <Occupancy>2</Occupancy>\n       <PrivateRoom>true</PrivateRoom>    \n     </RoomType>\n     <RoomType>\n       <Label>6-bed female dorm</Label>\n       <Units>3</Units>\n       <Occupancy>6</Occupancy>\n       <Gender>FE</Gender>\n       <PrivateRoom>false</PrivateRoom>    \n     </RoomType>\n   </RoomTypes>\n </CreateRooms>\n</RoomCreate>",
+        "type": "json"
+      },
+      {
+        "title": "JSON Request:",
+        "content": "{\n\t'Rooms': [\n\t\t{\n\t\t\t'RoomId':1234,\n\t\t\t'PMSRoomId':'IdOfRoomOnPMS',\n\t\t\t'Label':'Name of Room',\n\t\t\t'Units':2,\n\t\t\t'Occupancy':4,\n\t\t\t'PrivateRoom':true,\n\t\t\t'Gender':'MI',\n\t\t},\n\t\t{\n\t\t\t'RoomId':1234,\n\t\t\t'PMSRoomId':'IdOfRoomOnPMS',\n\t\t\t'Label':'Name of Room',\n\t\t\t'Units':2,\n\t\t\t'Occupancy':4,\n\t\t\t'PrivateRoom':true,\n\t\t\t'Gender':'MI',\t\t\n\t\t}\n\t\t]\n}",
+        "type": "json"
+      }
+    ],
+    "success": {
+      "fields": {
+        "XML": [
+          {
+            "group": "XML",
+            "type": "String",
+            "optional": false,
+            "field": "RoomId",
+            "description": "<p>The room type ID which will reference the room type.</p> "
+          },
+          {
+            "group": "XML",
+            "type": "String",
+            "optional": false,
+            "field": "PMSRoomId",
+            "description": "<p>The room type ID which will reference the room type.</p> "
+          },
+          {
+            "group": "XML",
+            "type": "String",
+            "optional": false,
+            "field": "Units",
+            "description": "<p>Number of rooms of this type.</p> "
+          },
+          {
+            "group": "XML",
+            "type": "String",
+            "optional": false,
+            "field": "Occupancy",
+            "description": "<p>Number of persons that can stay in this room.</p> "
+          },
+          {
+            "group": "XML",
+            "type": "String",
+            "optional": false,
+            "field": "Beds",
+            "description": "<p>!!Obsolete!! Replaced with Occupancy (see above).</p> "
+          },
+          {
+            "group": "XML",
+            "type": "String",
+            "optional": false,
+            "field": "Gender",
+            "description": "<p>Gender restriction for shared rooms. MA for males, FE for females, MI if mixed. Always set to &#39;MI&#39; for private rooms.</p> "
+          },
+          {
+            "group": "XML",
+            "type": "String",
+            "optional": false,
+            "field": "DoubleBed",
+            "description": "<p>!!Obsolete!! Option removed from Myallocator. Now always defaults to false.</p> "
+          },
+          {
+            "group": "XML",
+            "type": "String",
+            "optional": false,
+            "field": "Ensuite",
+            "description": "<p>!!Obsolete!! Option removed from Myallocator. Now always defaults to false;</p> "
+          },
+          {
+            "group": "XML",
+            "type": "String",
+            "optional": false,
+            "field": "PrivateRooms",
+            "description": "<p>Whether this room is private or shared/dorm (\\textit{true} or \\textit{false}).</p> "
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "XML Response (creating a room):",
+          "content": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<CreateRoomResponse>\n <Success>true</Success>\n <RoomTypeIds>\n \t<RoomTypeId>35</RoomTypeId>\n </RoomTypeIds>\n</CreateRoomResponse>",
+          "type": "json"
+        },
+        {
+          "title": "XML Response (success SetRooms response)",
+          "content": "<CreateRoomResponse>\n <Success>true</Success>\n <RoomTypeIds>\n \t<RoomTypeId>35</RoomTypeId>\n </RoomTypeIds>\n</CreateRoomResponse>",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "perllib/MAAPI.pm",
+    "groupTitle": "PMS"
+  },
+  {
+    "type": "get",
     "url": "/RoomList",
     "title": "RoomList",
     "name": "RoomList",
@@ -2173,6 +2372,65 @@
         }
       ]
     },
+    "filename": "perllib/MAAPI.pm",
+    "groupTitle": "PMS"
+  },
+  {
+    "type": "get",
+    "url": "/RoomRemove",
+    "title": "RoomRemove",
+    "name": "RoomRemove",
+    "version": "201501.0.0",
+    "group": "PMS",
+    "description": "<p>Remove a room.</p> ",
+    "parameter": {
+      "fields": {
+        "Request": [
+          {
+            "group": "Request",
+            "type": "String",
+            "optional": false,
+            "field": "RoomTypeIdId",
+            "description": "<p>of room to be removed.</p> "
+          }
+        ]
+      }
+    },
+    "success": {
+      "examples": [
+        {
+          "title": "JSON Request (Remove single room)",
+          "content": "{\n\t'Auth/UserId':'',\n\t'Auth/Userassword':'',\n\t'Auth/VendorId':'',\n\t'Auth/VendorPassword':'',\n\t'Room':###\n}",
+          "type": "json"
+        },
+        {
+          "title": "JSON Request (Remove multiple rooms)",
+          "content": "{\n\t'Auth/UserId':'',\n\t'Auth/Userassword':'',\n\t'Auth/VendorId':'',\n\t'Auth/VendorPassword':'',\n\t'Rooms': [ ##, ##, ## ]\n}",
+          "type": "json"
+        },
+        {
+          "title": "XML Request (Removing a room)",
+          "content": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<RoomRemove>\n <Auth>\n   <UserId>Customer User ID</UserId>\n   <UserPassword>Customer Password</UserPassword>\n   <PropertyId>Property ID on myallocator.com</PropertyId>\n   <VendorId>Your Vendor ID</VendorId>\n   <VendorPassword>Your Vendor Password</VendorPassword>\n </Auth>\n <RemoveRooms>\n   <RoomTypeIds>\n     <RoomTypeId>35</RoomTypeId>\n     <RoomTypeId>36</RoomTypeId>\n   </RoomTypeIds>\n </RemoveRooms>\n</RoomRemove>",
+          "type": "json"
+        },
+        {
+          "title": "XML Response SetRooms (Success)",
+          "content": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<RoomRemoveResponse>\n  <Success>true</Success>\n</RoomRemoveResponse>",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "perllib/MAAPI.pm",
+    "groupTitle": "PMS"
+  },
+  {
+    "type": "get",
+    "url": "/RoomUpdate",
+    "title": "RoomUpdate",
+    "name": "RoomUpdate",
+    "version": "201501.0.0",
+    "group": "PMS",
+    "description": "<p>uses the same parameters (and response) as &quot;RoomCreate&quot;</p> ",
     "filename": "perllib/MAAPI.pm",
     "groupTitle": "PMS"
   },
@@ -2419,7 +2677,7 @@
     "url": "{}",
     "title": "Sample Booking Data",
     "name": "Sample_Bookings",
-    "description": "<p>Sample bookings for a variety of OTA&#39;s.</p> <p><strong> Mandatory Fields </strong></p> <table> <thead> <tr> <th>Tag</th> <th>Description</th> </tr> </thead> <tbody> <tr> <td>Channel</td> <td>2-3 letter channel code</td> </tr> <tr> <td>StartDate</td> <td>Date of arrival (YYYY-MM-DD)</td> </tr> <tr> <td>EndDate</td> <td>Date before day of departure (YYYY-MM-DD)</td> </tr> <tr> <td>IsCancellation</td> <td>true or false</td> </tr> <tr> <td>MyallocatorId</td> <td>Booking ID on myallocator.com (hexadecimal number)</td> </tr> <tr> <td>MyallocatorCreationDate</td> <td>Date of booking creation on myallocator.com</td> </tr> <tr> <td>MyallocatorCreationTime</td> <td>Time of booking creation on myallocator.com</td> </tr> <tr> <td>MyallocatorModificationDate</td> <td>Date of booking modification on myallocator.com (in case of a cancellation the modification date is different from the creation date)</td> </tr> <tr> <td>MyallocatorModificationTime</td> <td>Time of booking modification on myallocator.com</td> </tr> <tr> <td>OrderId</td> <td>Booking ID on the channel</td> </tr> <tr> <td>Rooms</td> <td>Room List of booked rooms</td> </tr> <tr> <td>- RoomTypeId</td> <td>List of booked myallocator.com room IDs. Several channel room can be mapped to one myallocator.com room. If -1 it means that we couldn&#39;t match the channel room to one of our rooms.</td> </tr> <tr> <td>- Units</td> <td>Number of booked rooms (for private rooms) or beds (for shared rooms)</td> </tr> <tr> <td>- StartDate</td> <td>Staying in this room from this date on (YYYY-MM-DD)</td> </tr> <tr> <td>- EndDate</td> <td>Date before day of departure (YYYY-MM-DD)</td> </tr> </tbody> </table> <p><strong> Optional Fields </strong></p> <table> <thead> <tr> <th>Tags</th> <th>Description</th> </tr> </thead> <tbody> <tr> <td>OrderSource</td> <td>Which website the booking originates from</td> </tr> <tr> <td>OrderDate</td> <td>The date the booking has been created on the channel</td> </tr> <tr> <td>OrderTime</td> <td>The time the booking has been created on the channel</td> </tr> <tr> <td>OrderAdults</td> <td>Number of adults</td> </tr> <tr> <td>OrderChildren</td> <td>Number of children</td> </tr> <tr> <td>Deposit</td> <td>Amount of money already taken as a deposit</td> </tr> <tr> <td>DepositCurrency</td> <td>Currency of deposit</td> </tr> <tr> <td>Commission</td> <td>Fee taken by the channel</td> </tr> <tr> <td>CommissionCurrency</td> <td>Currency of fee taken by the channel</td> </tr> <tr> <td>CommissionIncludedInTotal</td> <td>Whether the commission is included in the TotalPrice. Can be true or false.</td> </tr> <tr> <td>TotalPrice</td> <td>Total cost of booking</td> </tr> <tr> <td>TotalCurrency</td> <td>Currency for total cost of booking</td> </tr> <tr> <td>Customers</td> <td>/Customer Customer details (can be more than one)</td> </tr> <tr> <td>- CustomerFName</td> <td>First name</td> </tr> <tr> <td>- CustomerLName</td> <td>Family name (or if CustomerFName is empty, both first and last name)</td> </tr> <tr> <td>- CustomerEmail</td> <td>Email address</td> </tr> <tr> <td>- CustomerGender</td> <td>Gender</td> </tr> <tr> <td>- CustomerSmoker</td> <td>Whether customer is a smoker. Can be true or false.</td> </tr> <tr> <td>- CustomerPhone</td> <td>Phone number</td> </tr> <tr> <td>- CustomerPhoneMobile</td> <td>Mobile phone number</td> </tr> <tr> <td>- CustomerFax</td> <td>Fax number</td> </tr> <tr> <td>- CustomerAddress</td> <td>Address</td> </tr> <tr> <td>- CustomerCompany</td> <td>Company name</td> </tr> <tr> <td>- CustomerCompanyDepartment</td> <td>Company deparment name</td> </tr> <tr> <td>- CustomerCity</td> <td>City</td> </tr> <tr> <td>- CustomerState</td> <td>State</td> </tr> <tr> <td>- CustomerPostCode</td> <td>Post code</td> </tr> <tr> <td>- CustomerCountry</td> <td>Address country name (not neccessarily a 2/3-letter code).</td> </tr> <tr> <td>- CustomerNationality</td> <td>Nationality (not neccessarily a 3-letter code)</td> </tr> <tr> <td>- CustomerArrivalTime</td> <td>Time of arrival</td> </tr> <tr> <td>- CustomerNote</td> <td>Note to the property owner</td> </tr> <tr> <td>Rooms</td> <td>Room Room details</td> </tr> <tr> <td>- Price</td> <td>Price for this room and stay</td> </tr> <tr> <td>- Currency</td> <td>Currency for the price</td> </tr> <tr> <td>- RoomDesc</td> <td>Room description on the channel</td> </tr> <tr> <td>- RateDesc</td> <td>Rate description on the channel</td> </tr> <tr> <td>- Occupancy</td> <td>Number of persons this room is booked for</td> </tr> <tr> <td>- OccupantFName</td> <td>First name of occupant of this room</td> </tr> <tr> <td>- OccupantLName</td> <td>Family name of occupant of this room (or if OccupantFirstName is empty, both first and last name)</td> </tr> <tr> <td>- OccupantSmoker</td> <td>whether occupant is a smoker. Can be true or false.</td> </tr> <tr> <td>- OccupantNote</td> <td>Note to the property owner</td> </tr> <tr> <td>- Adults</td> <td>Number of adults staying in this room</td> </tr> <tr> <td>- Children</td> <td>Number of children staying in this room</td> </tr> <tr> <td>- Breakfast</td> <td>Wheter breakfast was ordered alogn with the booking. Can be true or false.</td> </tr> </tbody> </table> ",
+    "description": "<p>Sample bookings for a variety of OTA&#39;s.</p> <p><strong> Mandatory Fields </strong></p> <table> <thead> <tr> <th>Tag</th> <th>Description</th> </tr> </thead> <tbody> <tr> <td>Channel</td> <td>2-3 letter channel code</td> </tr> <tr> <td>StartDate</td> <td>Date of arrival (YYYY-MM-DD)</td> </tr> <tr> <td>EndDate</td> <td>Date before day of departure (YYYY-MM-DD)</td> </tr> <tr> <td>IsCancellation</td> <td>true or false</td> </tr> <tr> <td>MyallocatorId</td> <td>Booking ID on myallocator.com (hexadecimal number)</td> </tr> <tr> <td>MyallocatorCreationDate</td> <td>Date of booking creation on myallocator.com</td> </tr> <tr> <td>MyallocatorCreationTime</td> <td>Time of booking creation on myallocator.com</td> </tr> <tr> <td>MyallocatorModificationDate</td> <td>Date of booking modification on myallocator.com (in case of a cancellation the modification date is different from the creation date)</td> </tr> <tr> <td>MyallocatorModificationTime</td> <td>Time of booking modification on myallocator.com</td> </tr> <tr> <td>OrderId</td> <td>Booking ID on the channel</td> </tr> <tr> <td>Rooms</td> <td>Room List of booked rooms</td> </tr> <tr> <td>- RoomTypeId</td> <td>List of booked myallocator.com room IDs. Several channel room can be mapped to one myallocator.com room. If -1 it means that we couldn&#39;t match the channel room to one of our rooms.</td> </tr> <tr> <td>- Units</td> <td>Number of booked rooms (for private rooms) or beds (for shared rooms)</td> </tr> <tr> <td>- StartDate</td> <td>Staying in this room from this date on (YYYY-MM-DD)</td> </tr> <tr> <td>- EndDate</td> <td>Date before day of departure (YYYY-MM-DD)</td> </tr> </tbody> </table> <p><strong> Optional Fields </strong></p> <table> <thead> <tr> <th>Tags</th> <th>Description</th> </tr> </thead> <tbody> <tr> <td>OrderSource</td> <td>Which website the booking originates from</td> </tr> <tr> <td>OrderDate</td> <td>The date the booking has been created on the channel</td> </tr> <tr> <td>OrderTime</td> <td>The time the booking has been created on the channel</td> </tr> <tr> <td>OrderAdults</td> <td>Number of adults</td> </tr> <tr> <td>OrderChildren</td> <td>Number of children</td> </tr> <tr> <td>Deposit</td> <td>Amount of money already taken as a deposit</td> </tr> <tr> <td>DepositCurrency</td> <td>Currency of deposit</td> </tr> <tr> <td>Commission</td> <td>Fee taken by the channel</td> </tr> <tr> <td>CommissionCurrency</td> <td>Currency of fee taken by the channel</td> </tr> <tr> <td>CommissionIncludedInTotal</td> <td>Whether the commission is included in the TotalPrice. Can be true or false.</td> </tr> <tr> <td>TotalPrice</td> <td>Total cost of booking</td> </tr> <tr> <td>TotalCurrency</td> <td>Currency for total cost of booking</td> </tr> <tr> <td>Customers</td> <td>/Customer Customer details (can be more than one)</td> </tr> <tr> <td>- CustomerFName</td> <td>First name</td> </tr> <tr> <td>- CustomerLName</td> <td>Family name (or if CustomerFName is empty, both first and last name)</td> </tr> <tr> <td>- CustomerEmail</td> <td>Email address</td> </tr> <tr> <td>- CustomerGender</td> <td>Gender</td> </tr> <tr> <td>- CustomerSmoker</td> <td>Whether customer is a smoker. Can be true or false.</td> </tr> <tr> <td>- CustomerPhone</td> <td>Phone number</td> </tr> <tr> <td>- CustomerPhoneMobile</td> <td>Mobile phone number</td> </tr> <tr> <td>- CustomerFax</td> <td>Fax number</td> </tr> <tr> <td>- CustomerAddress</td> <td>Address</td> </tr> <tr> <td>- CustomerCompany</td> <td>Company name</td> </tr> <tr> <td>- CustomerCompanyDepartment</td> <td>Company deparment name</td> </tr> <tr> <td>- CustomerCity</td> <td>City</td> </tr> <tr> <td>- CustomerState</td> <td>State</td> </tr> <tr> <td>- CustomerPostCode</td> <td>Post code</td> </tr> <tr> <td>- CustomerCountry</td> <td>Address country name (not neccessarily a 2/3-letter code).</td> </tr> <tr> <td>- CustomerNationality</td> <td>Nationality (not neccessarily a 3-letter code)</td> </tr> <tr> <td>- CustomerArrivalTime</td> <td>Time of arrival</td> </tr> <tr> <td>- CustomerNote</td> <td>Note to the property owner</td> </tr> <tr> <td>Rooms</td> <td>Room Room details</td> </tr> <tr> <td>- Price</td> <td>Price for this room for the entire duration of stay (not the daily rate)</td> </tr> <tr> <td>- Currency</td> <td>Currency for the price</td> </tr> <tr> <td>- RoomDesc</td> <td>Room description on the channel</td> </tr> <tr> <td>- RateDesc</td> <td>Rate description on the channel</td> </tr> <tr> <td>- Occupancy</td> <td>Number of persons this room is booked for</td> </tr> <tr> <td>- OccupantFName</td> <td>First name of occupant of this room</td> </tr> <tr> <td>- OccupantLName</td> <td>Family name of occupant of this room (or if OccupantFirstName is empty, both first and last name)</td> </tr> <tr> <td>- OccupantSmoker</td> <td>whether occupant is a smoker. Can be true or false.</td> </tr> <tr> <td>- OccupantNote</td> <td>Note to the property owner</td> </tr> <tr> <td>- Adults</td> <td>Number of adults staying in this room</td> </tr> <tr> <td>- Children</td> <td>Number of children staying in this room</td> </tr> <tr> <td>- Breakfast</td> <td>Wheter breakfast was ordered alogn with the booking. Can be true or false.</td> </tr> </tbody> </table> ",
     "success": {
       "examples": [
         {
