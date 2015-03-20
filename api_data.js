@@ -2125,7 +2125,7 @@ define({ "api": [
             "type": "String",
             "optional": false,
             "field": "Units",
-            "description": "<p>How many rooms of this type there are.</p> "
+            "description": "<p>How many rooms of this type there are. The Units parameter is very important because it actually limits the number of rooms that can be allocated. If you send more rooms via PMS it will save max the set Units value. If you use web interface it will not allow you to set more units as well. And the auto adjustment is working with this limit as well.</p> "
           },
           {
             "group": "Request",
