@@ -917,7 +917,7 @@ define({ "api": [
         ]
       }
     },
-    "description": "<p>This method allows you to query for bookings made to a specific property  by booking date, modification date or arrival date.</p> <p> It is important to know that not every booking that is returned through  the API neccessarily resulted in an adjustment of the other channels. If the  booking is not mapped to any rooms on our system, or if the channel  has just been setup, the adjustment will not be carried out.  The requests consists of search criteria by date. Only specify the  StartDate/EndDate of one criteria.  note: formerly BookingList (v1).</p> <p> <strong> Data Formatting </strong>  Different channels return a different amount of information about a booking, therefore many fields are optional. (Sorry this isn&#39;t more useful, we&#39;re working on addressing this)</p> <p><strong> Best Pratices </strong></p> <ul> <li>Callbacks are the fastest, best, and preferred way of receiving Booking data. </li> <li>Every effort will be made to synchronize the callback data format and this format. (You can/should use the same data parsing code)</li> <li>BookingList method should only be used as a backup to correct errors or lost callbacks. Or to periodically verify integrity of data. </li> <li>Always use ModificationStartDate ModificationEndDate in production. </li> <li>If a change/cancellation is received then the modification date will also be different from the creation date)</li> <li>Do not frequently poll this API, one call, per property, every 30 minutes is considered &quot;Acceptable Usage&quot;.</li> </ul> ",
+    "description": "<p>This method allows you to query for bookings made to a specific property  by booking date, modification date or arrival date.</p> <p> It is important to know that not every booking that is returned through  the API neccessarily resulted in an adjustment of the other channels. If the  booking is not mapped to any rooms on our system, or if the channel  has just been setup, the adjustment will not be carried out.  The requests consists of search criteria by date. Only specify the  StartDate/EndDate of one criteria.  note: formerly BookingList (v1).</p> <p> <strong> Data Formatting </strong>  Different channels return a different amount of information about a booking, therefore many fields are optional. (Sorry this isn&#39;t more useful, we&#39;re working on addressing this)</p> <p><strong> Best Pratices </strong></p> <ul> <li>Callbacks are the fastest, best, and preferred way of receiving Booking data. </li> <li>Every effort will be made to synchronize the callback data format and this format. (You can/should use the same data parsing code)</li> <li>BookingList method should only be used as a backup to correct errors or lost callbacks. Or to periodically verify integrity of data. </li> <li>Always use ModificationStartDate ModificationEndDate in production. </li> <li>If a change/cancellation is received then the modification date will also be different from the creation date)</li> <li>Do not frequently poll this API, one call, per property, every 30 minutes is considered &quot;Acceptable Usage&quot;. </li> <li>It is acceptable use for a PMS to burst on this API when initially pulling down data for an existing MA client.</li> </ul> ",
     "examples": [
       {
         "title": "XML Example of querying for bookings",
@@ -1504,7 +1504,7 @@ define({ "api": [
     "name": "HelloWorld",
     "version": "201501.0.0",
     "group": "PMS",
-    "description": "<table> <thead> <tr> <th>Call</th> <th>Notes + Authentication Requirements</th> </tr> </thead> <tbody> <tr> <td>HelloWorld</td> <td>No Authentication Required</td> </tr> <tr> <td>HelloVendor</td> <td>Requires <em>VALID</em> Vendor Credentials</td> </tr> <tr> <td>HelloUser</td> <td>Requires <em>VALID</em> User Credentials</td> </tr> <tr> <td>HelloUserVendor</td> <td>Requires <em>VALID</em> User <em>AND</em> Vendor Credentials</td> </tr> </tbody> </table> <p> This method is diagnostic in nature, it is intended to provide a simple echo/response &quot;My First API call&quot;,  <em>IT HAS NO PURPOSE</em> besides simply returning whatever parameters you send it (no authentication required).</p> ",
+    "description": "<table> <thead> <tr> <th>Call</th> <th>Notes + Authentication Requirements</th> </tr> </thead> <tbody> <tr> <td>HelloWorld</td> <td>No Authentication Required</td> </tr> <tr> <td>HelloUser</td> <td>Requires <em>VALID</em> User Credentials</td> </tr> <tr> <td>HelloVendor</td> <td>Requires <em>VALID</em> Vendor Credentials</td> </tr> <tr> <td>HelloVendorUser</td> <td>Requires <em>VALID</em> User <em>AND</em> Vendor Credentials</td> </tr> </tbody> </table> <p> This method is diagnostic in nature, it is intended to provide a simple echo/response &quot;My First API call&quot;,  <em>IT HAS NO PURPOSE</em> besides simply returning whatever parameters you send it (no authentication required).</p> ",
     "examples": [
       {
         "title": "XML Hello Request",
@@ -1631,14 +1631,14 @@ define({ "api": [
             "type": "Date",
             "optional": true,
             "field": ".StartDate",
-            "description": "<p>YYYY-MM-DD</p> "
+            "description": "<p>YYYY-MM-DD (Date of Arrival)</p> "
           },
           {
             "group": "Booking",
             "type": "Date",
             "optional": true,
             "field": ".EndDate",
-            "description": "<p>YYYY-MM-DD</p> "
+            "description": "<p>YYYY-MM-DD  (Date before Departure)</p> "
           },
           {
             "group": "Booking",
@@ -2400,12 +2400,12 @@ define({ "api": [
       "examples": [
         {
           "title": "JSON Request (Remove single room)",
-          "content": "{\n\t'Auth/UserId':'',\n\t'Auth/UserPassword':'',\n\t'Auth/VendorId':'',\n\t'Auth/VendorPassword':'',\n\t'Room':###\n}",
+          "content": "{\n\t'Auth/UserId':'',\n\t'Auth/UserPassword':'',\n\t'Auth/VendorId':'',\n\t'Auth/VendorPassword':'',\n\t'Room':{ 'RoomId':### }\n}",
           "type": "json"
         },
         {
           "title": "JSON Request (Remove multiple rooms)",
-          "content": "{\n\t'Auth/UserId':'',\n\t'Auth/Userassword':'',\n\t'Auth/VendorId':'',\n\t'Auth/VendorPassword':'',\n\t'Rooms': [ \n\t\t{ 'RoomId'=>## }, \n\t\t{ 'RoomId'=>## } \n\t\t]\n}",
+          "content": "{\n\t'Auth/UserId':'',\n\t'Auth/Userassword':'',\n\t'Auth/VendorId':'',\n\t'Auth/VendorPassword':'',\n\t'Rooms': [ \n\t\t{ 'RoomId':## }, \n\t\t{ 'RoomId':## } \n\t\t]\n}",
           "type": "json"
         },
         {
