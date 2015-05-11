@@ -6,7 +6,7 @@
     "url": "{}",
     "title": "Welcome",
     "name": "Welcome",
-    "description": "<p><strong> Usage </strong></p> <p> If you would like to use the myallocator.com PMS API please request a vendor id+password here:  <a href=\"https://www.myallocator.com/become-partner/\">https://www.myallocator.com/become-partner/</a>  The vendor_id + vendor_password will need to be submitted with every request, except HelloWorld (for testing).</p> <p> Your customers need to create an account on myallocator.com before they can use the API (or you need to create one for them).   The credentials (user/password) must be stored by you and sent with each request.</p> <p> <strong> The Basics </strong></p> <p> Need API Vendor Credentials?  <a href=\"https://www.myallocator.com/become-partner/\">https://www.myallocator.com/become-partner/</a></p> <p> PMS integration guide:  <a href=\"https://docs.google.com/document/d/1_OuI0Z6rTkkuA9xxlJUvhXlazJ9w_iqsp1QzIj4gb2U/edit?usp=sharing\">https://docs.google.com/document/d/1_OuI0Z6rTkkuA9xxlJUvhXlazJ9w_iqsp1QzIj4gb2U/edit?usp=sharing</a></p> <p> <strong> XML vs. JSON Requests  </strong></p> <p> The service URLs are:</p> <ul> <li>JSON - <a href=\"https://api.myallocator.com/pms/v201408/json/MethodName\">https://api.myallocator.com/pms/v201408/json/MethodName</a></li> <li><p>XML - <a href=\"https://api.myallocator.com/pms/v201408/xml/MethodName\">https://api.myallocator.com/pms/v201408/xml/MethodName</a></p> <p>In the URL above the Version is 201408, this version will periodically be changed as new features are added. The json|xml denotes the protocol for how requests/responses will be formatted. </p> <p>MyAllocator can be accessed via REST using either JSON XML form syntax, or JSON raw.</p> </li> <li>XML (form): Requests to our server need to be send using the POST method. The XML string should be stored in a parameter called &#39;xmlRequestString&#39;. Using standard HTML form (application/x-www-form-urlencoded) encoding.</li> <li>XML (raw): set the HTTP header Content-Type: application/xml and pass a raw UTF8 encoded xml body.</li> <li>JSON (form): offers simplified parsing and low transport overhead and is passed in the field &#39;json&#39; using standard HTML form encoding (application/x-www-form-urlencoded). In this example data such as space must be encoded to &#39;+&#39; or %20.</li> <li><p>JSON (raw): set the HTTP header Content-Type: application/json and pass a raw UTF8 encoded json body.</p> <p><strong> Using an SDK </strong> Software Development Kits for several popular languages are available at <a href=\"http://github.com/myallocator\">http://github.com/myallocator</a>  If you don&#39;t see your language listed please let us know and we&#39;ll add it. </p> <p><strong> Following Updates </strong> We will announce major releases via github. Please &quot;watch&quot; the apidocs repo.</p> </li> </ul> ",
+    "description": "<p><strong> Usage </strong></p> <p> If you would like to use the myallocator.com PMS API please request a vendor id+password here:  <a href=\"https://www.myallocator.com/become-partner/\">https://www.myallocator.com/become-partner/</a>  The vendor_id + vendor_password will need to be submitted with every request, except HelloWorld (for testing).</p> <p> Your customers need to create an account on myallocator.com before they can use the API (or you need to create one for them).   The credentials (user/password) must be stored by you and sent with each request.</p> <p> <strong> The Basics </strong></p> <p> Need API Vendor Credentials?  <a href=\"https://www.myallocator.com/become-partner/\">https://www.myallocator.com/become-partner/</a></p> <p> PMS integration guide:  <a href=\"https://docs.google.com/document/d/1_OuI0Z6rTkkuA9xxlJUvhXlazJ9w_iqsp1QzIj4gb2U/edit?usp=sharing\">https://docs.google.com/document/d/1_OuI0Z6rTkkuA9xxlJUvhXlazJ9w_iqsp1QzIj4gb2U/edit?usp=sharing</a></p> <p> <strong> Support </strong>  Email: devhelp@myallocator.com (please include a &quot;TicketId&quot; if it is about an API call)  Chat: <a href=\"https://www.hipchat.com/g3EsN71bk\">https://www.hipchat.com/g3EsN71bk</a> (Office hours from May 11th - June 12th will be 9am to 3pm PST)</p> <p> <strong> XML vs. JSON Requests  </strong></p> <p> The service URLs are:</p> <ul> <li>JSON - <a href=\"https://api.myallocator.com/pms/v201408/json/MethodName\">https://api.myallocator.com/pms/v201408/json/MethodName</a></li> <li><p>XML - <a href=\"https://api.myallocator.com/pms/v201408/xml/MethodName\">https://api.myallocator.com/pms/v201408/xml/MethodName</a></p> <p>In the URL above the Version is 201408, this version will periodically be changed as new features are added. The json|xml denotes the protocol for how requests/responses will be formatted. </p> <p>MyAllocator can be accessed via REST using either JSON XML form syntax, or JSON raw.</p> </li> <li>XML (form): Requests to our server need to be send using the POST method. The XML string should be stored in a parameter called &#39;xmlRequestString&#39;. Using standard HTML form (application/x-www-form-urlencoded) encoding.</li> <li>XML (raw): set the HTTP header Content-Type: application/xml and pass a raw UTF8 encoded xml body.</li> <li>JSON (form): offers simplified parsing and low transport overhead and is passed in the field &#39;json&#39; using standard HTML form encoding (application/x-www-form-urlencoded). In this example data such as space must be encoded to &#39;+&#39; or %20.</li> <li><p>JSON (raw): set the HTTP header Content-Type: application/json and pass a raw UTF8 encoded json body.</p> <p><strong> Using an SDK </strong> Software Development Kits for several popular languages are available at <a href=\"http://github.com/myallocator\">http://github.com/myallocator</a>  If you don&#39;t see your language listed please let us know and we&#39;ll add it. </p> <p><strong> Following Updates </strong> We will announce major releases via github. Please &quot;watch&quot; the apidocs repo.</p> </li> </ul> ",
     "error": {
       "examples": [
         {
@@ -1460,15 +1460,19 @@
       }
     },
     "success": {
+      "examples": [
+        {
+          "title": "JSON ChannelList Response",
+          "content": "{\n\t'Channels':{\n\t\t'cid':{\n\t\t\t'name':'Name of Channel (ex: Booking.com),\n\t\t\t'signupLink'=>'http://domain/url.to.signup',\n\t\t\t'requireActivation':'true|false',\n\t\t\t'calendarBased':'true|false',\n\t\t\t'isLive'=>'true|false',\n\t\t\t'isBeta'=>'true|false',\n\t\t\t'PropertyInput':[\n\t\t\t\t{ 'name':'field_id', label=>'Name of Input', type=>'inputtype' },\n\t\t\t\t{ 'name':'field_two', label=>'User Prompt', type=>'inputtype' },\n\t\t\t\t]\n\t\t\t'RoomInput':[\n\t\t\t\t{ 'name':'field_id', label=>'Name of Input', type=>'inputtype' },\n\t\t\t\t{ 'name':'field_two', label=>'User Prompt', type=>'inputtype' },\n\t\t\t\t]\n\t\t\t}\n\t\t}\n}",
+          "type": "json"
+        },
+        {
+          "title": "XML ChannelList Response",
+          "content": "<?xml version=\"1.0\" encoding=\"UTF-8\" ?>\n<ChannelListResponse>\n  <Channels>\n    <Channel cid=\"hw2\">\n      <name option=\"Hostelworld v2\" />\n      <activationEmail option=\"api.property.activation@webresint.com\" />\n      <aliases option=\"Also known as Hostels.com\" />\n      <isBeta option=\"0\" />\n      <lockedLogin option=\"1\" />\n      <manual_enable option=\"1\" />\n      <module option=\"CHANNEL::Hostelworld2\" />\n      <requireActivation option=\"1\" />\n      <setupMsg option=\"Please enter your Hostelworld Inbox ID and click 'Enable'.\n                    We'll then contact Hostelworld for you to get you enabled\n                    as quickly as possible.\" />\n      <signupLink option=\"http://www.hostelworld.com/hostelsignup/stage1\" />\n    </Channel>\n    <Channel cid=\"rep\">\n      <name option=\"TravelRepublic\" />\n      <aliases option=\"\" />\n      <currencyChoice option=\"1\" />\n      <module option=\"CHANNEL::TravelRepublic\" />\n      <setupExtra name=\"option\" currency=\"1\">\n        <currencyNotFor>USD</currencyNotFor>\n        <currencyNotFor>EUR</currencyNotFor>\n      </setupExtra>\n      <signupLink option=\"https://www.travelrepublic.co.uk/Supplier/Logon.aspx\" />\n    </Channel>\n  </Channels>\n</ChannelListResponse>",
+          "type": "json"
+        }
+      ],
       "fields": {
-        "Success 200": [
-          {
-            "group": "Success 200",
-            "optional": false,
-            "field": "JSON",
-            "description": "<p>ChannelList Response {     &#39;Channels&#39;:{         &#39;cid&#39;:{             &#39;name&#39;:&#39;Name of Channel (ex: Booking.com),             &#39;signupLink&#39;=&gt;&#39;<a href=\"http://domain/url.to.signup\">http://domain/url.to.signup</a>&#39;,             &#39;requireActivation&#39;:&#39;true|false&#39;,             &#39;calendarBased&#39;:&#39;true|false&#39;,             &#39;isLive&#39;=&gt;&#39;true|false&#39;,             &#39;isBeta&#39;=&gt;&#39;true|false&#39;,             &#39;PropertyInput&#39;:[                 { &#39;name&#39;:&#39;field_id&#39;, label=&gt;&#39;Name of Input&#39;, type=&gt;&#39;inputtype&#39; },                 { &#39;name&#39;:&#39;field_two&#39;, label=&gt;&#39;User Prompt&#39;, type=&gt;&#39;inputtype&#39; },                 ]             &#39;RoomInput&#39;:[                 { &#39;name&#39;:&#39;field_id&#39;, label=&gt;&#39;Name of Input&#39;, type=&gt;&#39;inputtype&#39; },                 { &#39;name&#39;:&#39;field_two&#39;, label=&gt;&#39;User Prompt&#39;, type=&gt;&#39;inputtype&#39; },                 ]             }         } }</p> "
-          }
-        ],
         "Response": [
           {
             "group": "Response",
@@ -1478,14 +1482,7 @@
             "description": ""
           }
         ]
-      },
-      "examples": [
-        {
-          "title": "XML ChannelList Response",
-          "content": "<?xml version=\"1.0\" encoding=\"UTF-8\" ?>\n<ChannelListResponse>\n  <Channels>\n    <Channel cid=\"hw2\">\n      <name option=\"Hostelworld v2\" />\n      <activationEmail option=\"api.property.activation@webresint.com\" />\n      <aliases option=\"Also known as Hostels.com\" />\n      <isBeta option=\"0\" />\n      <lockedLogin option=\"1\" />\n      <manual_enable option=\"1\" />\n      <module option=\"CHANNEL::Hostelworld2\" />\n      <requireActivation option=\"1\" />\n      <setupMsg option=\"Please enter your Hostelworld Inbox ID and click 'Enable'.\n                    We'll then contact Hostelworld for you to get you enabled\n                    as quickly as possible.\" />\n      <signupLink option=\"http://www.hostelworld.com/hostelsignup/stage1\" />\n    </Channel>\n    <Channel cid=\"rep\">\n      <name option=\"TravelRepublic\" />\n      <aliases option=\"\" />\n      <currencyChoice option=\"1\" />\n      <module option=\"CHANNEL::TravelRepublic\" />\n      <setupExtra name=\"option\" currency=\"1\">\n        <currencyNotFor>USD</currencyNotFor>\n        <currencyNotFor>EUR</currencyNotFor>\n      </setupExtra>\n      <signupLink option=\"https://www.travelrepublic.co.uk/Supplier/Logon.aspx\" />\n    </Channel>\n  </Channels>\n</ChannelListResponse>",
-          "type": "json"
-        }
-      ]
+      }
     },
     "examples": [
       {
@@ -2041,11 +2038,28 @@
         ]
       }
     },
+    "examples": [
+      {
+        "title": "JSON RoomAvailabilityList Request",
+        "content": "{\n'Auth/VendorId':''\n'Auth/VendorPassword':'',\n'Auth/UserToken':'',\n'Auth/PropertyId':'',\n'StartDate':'2015-01-01',\n'EndDate':'2017-01-01',\n}",
+        "type": "json"
+      },
+      {
+        "title": "XML RoomAvailabilityList Request",
+        "content": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<RoomAvailabilityList>\n<Auth>\n\t<UserId>Customer User ID</UserId>\n\t<UserPassword>Customer Password</UserPassword>\n\t<VendorId>Customer User ID</VendorId>\n\t<VendorPassword>Customer Password</VendorPassword>\n\t<PropertyId>###</PropertyId>\n</Auth>\n<StartDate>2015-01-01</StartDate>\n<EndDate>2017-01-01</EndDate>\n</RoomAvailabilityList>",
+        "type": "json"
+      }
+    ],
     "success": {
       "examples": [
         {
           "title": "JSON RoomAvailabilityList",
           "content": "    {\n    \"Rooms\": [\n          {\n     \t  \"RoomId\": 48,\n          \"PropertyId\": 1234,\n\t\t\t \"isPrivate\": true,\n          \"RoomName\": \"1-person private\",\n          \"Data\": [\n            {\n              \"Date\": \"2014-03-15\",\n              \"Units\": 2,\n              \"Price\": 33,\n              \"MinStay\": 1,\n              \"MaxStay\": 7,\n              \"Closed\": false,\n              \"ClosedForArrival\": false,\n              \"ClosedForDeparture\": false\n            },\n            {\n              \"Date\": \"2014-03-16\",\n              \"Units\": 2,\n              \"Price\": 33,\n              \"MinStay\": 1,\n              \"MaxStay\": 7,\n              \"Closed\": false,\n              \"ClosedForArrival\": false,\n              \"ClosedForDeparture\": false\n            }\n          ]\n        },\n        {\n          \"RoomId\": 49,\n          \"PropertyId\": 1,\n\t\t\t \"isPrivate\": false,\n\t\t\t \"PriceStrategy\":\n          \"RoomName\": \"5-person male shared\",\n          \"Data\": [\n            {\n              \"Date\": \"2014-03-15\",\n              \"Units\": 0,\n              \"Price\": 0,\n              \"MinStay\": 1,\n              \"MaxStay\": 7,\n              \"Closed\": false,\n              \"ClosedForArrival\": false,\n              \"ClosedForDeparture\": false\n            },\n            {\n              \"Date\": \"2014-03-16\",\n              \"Units\": 0,\n              \"Price\": 0,\n              \"MinStay\": 1,\n              \"MaxStay\": 7,\n              \"Closed\": false,\n              \"ClosedForArrival\": false,\n              \"ClosedForDeparture\": false\n            }\n          ]\n        }\n      }\n    }",
+          "type": "json"
+        },
+        {
+          "title": "XML RoomAvailabilityList",
+          "content": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<RoomAvailabilityListResponse Success=\"false\">\n  <Rooms PropertyId=\"1234\" RoomId=\"4567\" RoomName=\"Test Standard room\" isPrivate=\"true\">\n    <Dates Closed=\"0\" ClosedForArrival=\"0\" ClosedForDeparture=\"0\" Date=\"2015-04-01\" MaxStay=\"0\" MinStay=\"1\" Price=\"0.00\" Units=\"0\" />\n    <Dates Closed=\"0\" ClosedForArrival=\"0\" ClosedForDeparture=\"0\" Date=\"2015-04-02\" MaxStay=\"0\" MinStay=\"1\" Price=\"0.00\" Units=\"0\" />\n    <Dates Closed=\"0\" ClosedForArrival=\"0\" ClosedForDeparture=\"0\" Date=\"2015-04-03\" MaxStay=\"0\" MinStay=\"1\" Price=\"0.00\" Units=\"0\" />\n    <Dates Closed=\"0\" ClosedForArrival=\"0\" ClosedForDeparture=\"0\" Date=\"2015-04-04\" MaxStay=\"0\" MinStay=\"1\" Price=\"0.00\" Units=\"0\" />\n    <Dates Closed=\"0\" ClosedForArrival=\"0\" ClosedForDeparture=\"0\" Date=\"2015-04-05\" MaxStay=\"0\" MinStay=\"1\" Price=\"0.00\" Units=\"0\" />\n    <Dates Closed=\"0\" ClosedForArrival=\"0\" ClosedForDeparture=\"0\" Date=\"2015-04-06\" MaxStay=\"0\" MinStay=\"1\" Price=\"0.00\" Units=\"0\" />\n    <Dates Closed=\"0\" ClosedForArrival=\"0\" ClosedForDeparture=\"0\" Date=\"2015-04-07\" MaxStay=\"0\" MinStay=\"1\" Price=\"0.00\" Units=\"0\" />\n    <Dates Closed=\"0\" ClosedForArrival=\"0\" ClosedForDeparture=\"0\" Date=\"2015-04-08\" MaxStay=\"0\" MinStay=\"1\" Price=\"0.00\" Units=\"0\" />\n    <Dates Closed=\"0\" ClosedForArrival=\"0\" ClosedForDeparture=\"0\" Date=\"2015-04-09\" MaxStay=\"0\" MinStay=\"1\" Price=\"0.00\" Units=\"0\" />\n    <Dates Closed=\"0\" ClosedForArrival=\"0\" ClosedForDeparture=\"0\" Date=\"2015-04-10\" MaxStay=\"0\" MinStay=\"1\" Price=\"0.00\" Units=\"0\" />\n    <Dates Closed=\"0\" ClosedForArrival=\"0\" ClosedForDeparture=\"0\" Date=\"2015-04-11\" MaxStay=\"0\" MinStay=\"1\" Price=\"0.00\" Units=\"0\" />\n    <Dates Closed=\"0\" ClosedForArrival=\"0\" ClosedForDeparture=\"0\" Date=\"2015-04-12\" MaxStay=\"0\" MinStay=\"1\" Price=\"0.00\" Units=\"0\" />\n    <Dates Closed=\"0\" ClosedForArrival=\"0\" ClosedForDeparture=\"0\" Date=\"2015-04-13\" MaxStay=\"0\" MinStay=\"1\" Price=\"0.00\" Units=\"0\" />\n    <Dates Closed=\"0\" ClosedForArrival=\"0\" ClosedForDeparture=\"0\" Date=\"2015-04-14\" MaxStay=\"0\" MinStay=\"1\" Price=\"0.00\" Units=\"0\" />\n    <Dates Closed=\"0\" ClosedForArrival=\"0\" ClosedForDeparture=\"0\" Date=\"2015-04-15\" MaxStay=\"0\" MinStay=\"1\" Price=\"0.00\" Units=\"0\" />\n    <Dates Closed=\"0\" ClosedForArrival=\"0\" ClosedForDeparture=\"0\" Date=\"2015-04-16\" MaxStay=\"0\" MinStay=\"1\" Price=\"0.00\" Units=\"0\" />\n    <Dates Closed=\"0\" ClosedForArrival=\"0\" ClosedForDeparture=\"0\" Date=\"2015-04-17\" MaxStay=\"0\" MinStay=\"1\" Price=\"0.00\" Units=\"0\" />\n    <Dates Closed=\"0\" ClosedForArrival=\"0\" ClosedForDeparture=\"0\" Date=\"2015-04-18\" MaxStay=\"0\" MinStay=\"1\" Price=\"0.00\" Units=\"0\" />\n    <Dates Closed=\"0\" ClosedForArrival=\"0\" ClosedForDeparture=\"0\" Date=\"2015-04-19\" MaxStay=\"0\" MinStay=\"1\" Price=\"0.00\" Units=\"0\" />\n    <Dates Closed=\"0\" ClosedForArrival=\"0\" ClosedForDeparture=\"0\" Date=\"2015-04-20\" MaxStay=\"0\" MinStay=\"1\" Price=\"0.00\" Units=\"0\" />\n    <Dates Closed=\"0\" ClosedForArrival=\"0\" ClosedForDeparture=\"0\" Date=\"2015-04-21\" MaxStay=\"0\" MinStay=\"1\" Price=\"0.00\" Units=\"0\" />\n    <Dates Closed=\"0\" ClosedForArrival=\"0\" ClosedForDeparture=\"0\" Date=\"2015-04-22\" MaxStay=\"0\" MinStay=\"1\" Price=\"0.00\" Units=\"0\" />\n    <Dates Closed=\"0\" ClosedForArrival=\"0\" ClosedForDeparture=\"0\" Date=\"2015-04-23\" MaxStay=\"0\" MinStay=\"1\" Price=\"0.00\" Units=\"0\" />\n    <Dates Closed=\"0\" ClosedForArrival=\"0\" ClosedForDeparture=\"0\" Date=\"2015-04-24\" MaxStay=\"0\" MinStay=\"1\" Price=\"0.00\" Units=\"0\" />\n    <Dates Closed=\"0\" ClosedForArrival=\"0\" ClosedForDeparture=\"0\" Date=\"2015-04-25\" MaxStay=\"0\" MinStay=\"1\" Price=\"0.00\" Units=\"0\" />\n    <Dates Closed=\"0\" ClosedForArrival=\"0\" ClosedForDeparture=\"0\" Date=\"2015-04-26\" MaxStay=\"0\" MinStay=\"1\" Price=\"0.00\" Units=\"0\" />\n    <Dates Closed=\"0\" ClosedForArrival=\"0\" ClosedForDeparture=\"0\" Date=\"2015-04-27\" MaxStay=\"0\" MinStay=\"1\" Price=\"0.00\" Units=\"0\" />\n    <Dates Closed=\"0\" ClosedForArrival=\"0\" ClosedForDeparture=\"0\" Date=\"2015-04-28\" MaxStay=\"0\" MinStay=\"1\" Price=\"0.00\" Units=\"0\" />\n    <Dates Closed=\"0\" ClosedForArrival=\"0\" ClosedForDeparture=\"0\" Date=\"2015-04-29\" MaxStay=\"0\" MinStay=\"1\" Price=\"0.00\" Units=\"0\" />\n    <Dates Closed=\"0\" ClosedForArrival=\"0\" ClosedForDeparture=\"0\" Date=\"2015-04-30\" MaxStay=\"0\" MinStay=\"1\" Price=\"0.00\" Units=\"0\" />\n    <Dates Closed=\"0\" ClosedForArrival=\"0\" ClosedForDeparture=\"0\" Date=\"2015-05-01\" MaxStay=\"0\" MinStay=\"1\" Price=\"0.00\" Units=\"0\" />\n    <Dates Closed=\"0\" ClosedForArrival=\"0\" ClosedForDeparture=\"0\" Date=\"2015-05-02\" MaxStay=\"0\" MinStay=\"1\" Price=\"0.00\" Units=\"0\" />\n    <Dates Closed=\"0\" ClosedForArrival=\"0\" ClosedForDeparture=\"0\" Date=\"2015-05-03\" MaxStay=\"0\" MinStay=\"1\" Price=\"0.00\" Units=\"0\" />\n    <Dates Closed=\"0\" ClosedForArrival=\"0\" ClosedForDeparture=\"0\" Date=\"2015-05-04\" MaxStay=\"0\" MinStay=\"1\" Price=\"0.00\" Units=\"0\" />\n    <Dates Closed=\"0\" ClosedForArrival=\"0\" ClosedForDeparture=\"0\" Date=\"2015-05-05\" MaxStay=\"5\" MinStay=\"5\" Price=\"45.00\" Units=\"4\" />\n    <Dates Closed=\"0\" ClosedForArrival=\"0\" ClosedForDeparture=\"0\" Date=\"2015-05-06\" MaxStay=\"5\" MinStay=\"5\" Price=\"45.00\" Units=\"4\" />\n    <Dates Closed=\"0\" ClosedForArrival=\"0\" ClosedForDeparture=\"0\" Date=\"2015-05-07\" MaxStay=\"5\" MinStay=\"5\" Price=\"45.00\" Units=\"4\" />\n    <Dates Closed=\"0\" ClosedForArrival=\"0\" ClosedForDeparture=\"0\" Date=\"2015-05-08\" MaxStay=\"5\" MinStay=\"5\" Price=\"55.00\" Units=\"4\" />\n    <Dates Closed=\"0\" ClosedForArrival=\"0\" ClosedForDeparture=\"0\" Date=\"2015-05-09\" MaxStay=\"5\" MinStay=\"5\" Price=\"55.00\" Units=\"4\" />\n    <Dates Closed=\"0\" ClosedForArrival=\"0\" ClosedForDeparture=\"0\" Date=\"2015-05-10\" MaxStay=\"5\" MinStay=\"5\" Price=\"45.00\" Units=\"4\" />\n    <Dates Closed=\"0\" ClosedForArrival=\"0\" ClosedForDeparture=\"0\" Date=\"2015-05-11\" MaxStay=\"5\" MinStay=\"5\" Price=\"45.00\" Units=\"4\" />\n    <Dates Closed=\"0\" ClosedForArrival=\"0\" ClosedForDeparture=\"0\" Date=\"2015-05-12\" MaxStay=\"5\" MinStay=\"5\" Price=\"45.00\" Units=\"4\" />\n    <Dates Closed=\"0\" ClosedForArrival=\"0\" ClosedForDeparture=\"0\" Date=\"2015-05-13\" MaxStay=\"5\" MinStay=\"5\" Price=\"45.00\" Units=\"4\" />\n    <Dates Closed=\"0\" ClosedForArrival=\"0\" ClosedForDeparture=\"0\" Date=\"2015-05-14\" MaxStay=\"5\" MinStay=\"5\" Price=\"45.00\" Units=\"4\" />\n    <Dates Closed=\"0\" ClosedForArrival=\"0\" ClosedForDeparture=\"0\" Date=\"2015-05-15\" MaxStay=\"5\" MinStay=\"5\" Price=\"55.00\" Units=\"4\" />\n    <Dates Closed=\"0\" ClosedForArrival=\"0\" ClosedForDeparture=\"0\" Date=\"2015-05-16\" MaxStay=\"5\" MinStay=\"5\" Price=\"55.00\" Units=\"4\" />\n    <Dates Closed=\"0\" ClosedForArrival=\"0\" ClosedForDeparture=\"0\" Date=\"2015-05-17\" MaxStay=\"5\" MinStay=\"5\" Price=\"45.00\" Units=\"4\" />\n    <Dates Closed=\"0\" ClosedForArrival=\"0\" ClosedForDeparture=\"0\" Date=\"2015-05-18\" MaxStay=\"5\" MinStay=\"5\" Price=\"45.00\" Units=\"4\" />\n    <Dates Closed=\"0\" ClosedForArrival=\"0\" ClosedForDeparture=\"0\" Date=\"2015-05-19\" MaxStay=\"5\" MinStay=\"5\" Price=\"45.00\" Units=\"4\" />\n    <Dates Closed=\"0\" ClosedForArrival=\"0\" ClosedForDeparture=\"0\" Date=\"2015-05-20\" MaxStay=\"5\" MinStay=\"5\" Price=\"45.00\" Units=\"4\" />\n    <Dates Closed=\"0\" ClosedForArrival=\"0\" ClosedForDeparture=\"0\" Date=\"2015-05-21\" MaxStay=\"5\" MinStay=\"5\" Price=\"45.00\" Units=\"4\" />\n    <Dates Closed=\"0\" ClosedForArrival=\"0\" ClosedForDeparture=\"0\" Date=\"2015-05-22\" MaxStay=\"5\" MinStay=\"5\" Price=\"55.00\" Units=\"4\" />\n    <Dates Closed=\"0\" ClosedForArrival=\"0\" ClosedForDeparture=\"0\" Date=\"2015-05-23\" MaxStay=\"5\" MinStay=\"5\" Price=\"55.00\" Units=\"4\" />\n    <Dates Closed=\"0\" ClosedForArrival=\"0\" ClosedForDeparture=\"0\" Date=\"2015-05-24\" MaxStay=\"5\" MinStay=\"5\" Price=\"45.00\" Units=\"4\" />\n    <Dates Closed=\"0\" ClosedForArrival=\"0\" ClosedForDeparture=\"0\" Date=\"2015-05-25\" MaxStay=\"5\" MinStay=\"5\" Price=\"45.00\" Units=\"4\" />\n    <Dates Closed=\"0\" ClosedForArrival=\"0\" ClosedForDeparture=\"0\" Date=\"2015-05-26\" MaxStay=\"5\" MinStay=\"5\" Price=\"45.00\" Units=\"4\" />\n    <Dates Closed=\"0\" ClosedForArrival=\"0\" ClosedForDeparture=\"0\" Date=\"2015-05-27\" MaxStay=\"5\" MinStay=\"5\" Price=\"45.00\" Units=\"4\" />\n    <Dates Closed=\"0\" ClosedForArrival=\"0\" ClosedForDeparture=\"0\" Date=\"2015-05-28\" MaxStay=\"5\" MinStay=\"5\" Price=\"45.00\" Units=\"4\" />\n    <Dates Closed=\"0\" ClosedForArrival=\"0\" ClosedForDeparture=\"0\" Date=\"2015-05-29\" MaxStay=\"5\" MinStay=\"5\" Price=\"55.00\" Units=\"4\" />\n    <Dates Closed=\"0\" ClosedForArrival=\"0\" ClosedForDeparture=\"0\" Date=\"2015-05-30\" MaxStay=\"5\" MinStay=\"5\" Price=\"55.00\" Units=\"4\" />\n    <Dates Closed=\"0\" ClosedForArrival=\"0\" ClosedForDeparture=\"0\" Date=\"2015-05-31\" MaxStay=\"5\" MinStay=\"5\" Price=\"45.00\" Units=\"4\" />\n    <Dates Closed=\"0\" ClosedForArrival=\"0\" ClosedForDeparture=\"0\" Date=\"2015-06-01\" MaxStay=\"5\" MinStay=\"5\" Price=\"45.00\" Units=\"4\" />\n  </Rooms>\n</RoomAvailabilityListResponse>",
           "type": "json"
         }
       ]
@@ -2109,13 +2123,6 @@
           {
             "group": "Request",
             "type": "String",
-            "optional": true,
-            "field": "RoomId",
-            "description": "<p>Room</p> "
-          },
-          {
-            "group": "Request",
-            "type": "String",
             "optional": false,
             "field": "Label",
             "description": "<p>String that describes the room, usually provided by the customer. If omitted, a label will automatically be created from the other properties. (optional)</p> "
@@ -2139,14 +2146,14 @@
             "type": "String",
             "optional": false,
             "field": "PrivateRoom",
-            "description": "<p>\\textit{true} if it&#39;s a private room, \\textit{false} for dormitories.</p> "
+            "description": "<p>&#39;true&#39; if it&#39;s a private room, &#39;false&#39; for dormitories.</p> "
           },
           {
             "group": "Request",
             "type": "String",
             "optional": false,
             "field": "Gender",
-            "description": "<p>Only needed for dormitories. \\textit{MA} for males, \\textit{FE} for females, \\textit{MI} if mixed.</p> "
+            "description": "<p>Only needed for dormitories. &#39;MA&#39; for males, &#39;FE&#39; for females, &#39;MI&#39; if mixed.</p> "
           }
         ]
       }
@@ -2159,7 +2166,7 @@
       },
       {
         "title": "JSON Request:",
-        "content": "{\n\t'Rooms': [\n\t\t{\n\t\t\t'RoomId':1234,\n\t\t\t'PMSRoomId':'IdOfRoomOnPMS',\n\t\t\t'Label':'Name of Room',\n\t\t\t'Units':2,\n\t\t\t'Occupancy':4,\n\t\t\t'PrivateRoom':true,\n\t\t\t'Gender':'MI',\n\t\t},\n\t\t{\n\t\t\t'RoomId':1234,\n\t\t\t'PMSRoomId':'IdOfRoomOnPMS',\n\t\t\t'Label':'Name of Room',\n\t\t\t'Units':2,\n\t\t\t'Occupancy':4,\n\t\t\t'PrivateRoom':true,\n\t\t\t'Gender':'MI',\t\t\n\t\t}\n\t\t]\n}",
+        "content": "{\n    \"Auth/VendorId\":\"Your Vendor ID\",\n    \"Auth/VendorPassword\":\"Your Vendor Password\",\n    \"Auth/UserId\":\"Login on myallocator.com\",\n    \"Auth/UserPassword\":\"Password for myallocator.com\",\n    \"Auth/PropertyId\":\"Property ID on myallocator.com\",\n\t\"Rooms\": [\n\t\t{\n\t\t\t\"PMSRoomId\":\"IdOfRoomOnPMS\",\n\t\t\t\"Label\":\"Double Room\",\n\t\t\t\"Units\":4,\n\t\t\t\"Occupancy\":2,\n\t\t\t\"PrivateRoom\":true,\n\t\t\t\"Gender\":\"MI\"\n\t\t},\n\t\t{\n\t\t\t\"PMSRoomId\":\"IdOfRoomOnPMS\",\n\t\t\t\"Label\":\"Female dorm\",\n\t\t\t\"Units\":3,\n\t\t\t\"Occupancy\":6,\n\t\t\t\"PrivateRoom\":false,\n\t\t\t\"Gender\":\"FE\"\n\t\t}\n\t\t]\n}",
         "type": "json"
       }
     ],
@@ -2206,7 +2213,7 @@
             "type": "String",
             "optional": false,
             "field": "Gender",
-            "description": "<p>Gender restriction for shared rooms. MA for males, FE for females, MI if mixed. Always set to &#39;MI&#39; for private rooms.</p> "
+            "description": "<p>Gender restriction for shared rooms. &#39;MA&#39; for males, &#39;FE&#39; for females, &#39;MI&#39; if mixed. Always set to &#39;MI&#39; for private rooms.</p> "
           },
           {
             "group": "XML",
@@ -2226,8 +2233,8 @@
             "group": "XML",
             "type": "String",
             "optional": false,
-            "field": "PrivateRooms",
-            "description": "<p>Whether this room is private or shared/dorm (\\textit{true} or \\textit{false}).</p> "
+            "field": "PrivateRoom",
+            "description": "<p>Whether this room is private or shared/dorm (&#39;true&#39; or &#39;false&#39;).</p> "
           }
         ]
       },
@@ -2238,8 +2245,8 @@
           "type": "json"
         },
         {
-          "title": "XML Response (success SetRooms response)",
-          "content": "<CreateRoomResponse>\n <Success>true</Success>\n <RoomTypeIds>\n \t<RoomTypeId>35</RoomTypeId>\n </RoomTypeIds>\n</CreateRoomResponse>",
+          "title": "JSON Response (creating a room)",
+          "content": "{\n  \"Method\": \"RoomCreate\",\n  \"Rooms\": [\n    {\n      \"PrivateRoom\": \"true\",\n      \"PMSRoomId\": \"IdOfRoomOnPMS\",\n      \"RoomId\": \"31835\",\n      \"Units\": 4,\n      \"Gender\": \"MI\",\n      \"Occupancy\": 2,\n      \"Label\": \"Double Room\"\n    }\n  ],\n  \"Success\": true\n}",
           "type": "json"
         }
       ]
@@ -2430,7 +2437,7 @@
     "name": "RoomUpdate",
     "version": "201501.0.0",
     "group": "PMS",
-    "description": "<p>uses the same parameters (and response) as &quot;RoomCreate&quot;</p> ",
+    "description": "<p>uses the same parameters (and response) as &quot;RoomCreate&quot;, with the addition of RoomId to specifiy which room to update</p> ",
     "filename": "perllib/MAAPI.pm",
     "groupTitle": "PMS"
   },
