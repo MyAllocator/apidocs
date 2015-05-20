@@ -56,5 +56,7 @@ Created: $date
 | rep | TravelRepublic | 2 years |  |
 | ta | TripAdvisor | 0 years |  |
 | tom | TOMAS | 2 years | Booking system used predominantly in Germany and Switzerland on city portals |
+| user | User Channel | 0 years |  |
 | wim | Wimdu | 2 years |  |
+| wix | Wix booking | 2 years |  |
 | ysh | YourSpainHostel | 2 years | Spain Only |
