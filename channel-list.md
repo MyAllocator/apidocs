@@ -28,6 +28,7 @@ Created: $date
 | exp | Expedia | 2 years | Hotel.com |
 | fk | FlipKey | 2 years | TripAdvisor |
 | gom | Gomio | 2 years |  |
+| gr | Group Reservation | 2 years |  |
 | hb | Hostelbookers | 0 years | deprecated (do not use); Old, slow Hostelbookers interface. Obsolete. |
 | hb2 | Hostelbookers v2 | 2 years | Also known as hostelmania.com, hostelz.com, bug.co.uk, BestLondonhostels.com |
 | hbe | HotelBeds | 2 years | Liberate, TUI travel |

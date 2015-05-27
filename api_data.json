@@ -915,6 +915,34 @@
             "group": "Request",
             "type": "String",
             "optional": true,
+            "field": "CreationStartDateTime",
+            "description": "<p>Same as CreationStartDate but uses YYYY-MM-DD hh:mm:ss format</p> "
+          },
+          {
+            "group": "Request",
+            "type": "String",
+            "optional": true,
+            "field": "CreationEndDateTime",
+            "description": "<p>Same as CreationEndDate but uses YYYY-MM-DD hh:mm:ss format</p> "
+          },
+          {
+            "group": "Request",
+            "type": "String",
+            "optional": true,
+            "field": "ModificationStartDateTime",
+            "description": "<p>Same as ModificationStartDate but uses YYYY-MM-DD hh:mm:ss format</p> "
+          },
+          {
+            "group": "Request",
+            "type": "String",
+            "optional": true,
+            "field": "ModificationEndDateTime",
+            "description": "<p>Same as ModificationEndDate but uses YYYY-MM-DD hh:mm:ss format</p> "
+          },
+          {
+            "group": "Request",
+            "type": "String",
+            "optional": true,
             "field": "OrderId",
             "description": "<p>Query for a specific order id (assigned by OTA)</p> "
           },
