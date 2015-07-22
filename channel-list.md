@@ -23,9 +23,11 @@ Created: $date
 | ctr | CTrip | 1 years |  |
 | eb | EasyBookings | 2 years |  |
 | eba | Ebab | 2 years | Accommodations for gays and lesbians |
+| enz | Enzo Group | 2 years |  |
 | esc | Escapio | 2 years |  |
 | etb | EasyToBook | 2 years | Cities Only |
 | exp | Expedia | 2 years | Hotel.com |
+| fam | Famous Hostels | 2 years |  |
 | fk | FlipKey | 2 years | TripAdvisor |
 | gom | Gomio | 2 years |  |
 | gr | Group Reservation | 2 years |  |
@@ -35,7 +37,9 @@ Created: $date
 | hc | Hostelsclub | 2 years | flashbooking.com |
 | hcu | HostelCulture | 2 years |  |
 | hde | Hotel.de | 2 years | deprecated (do not use); Obsolete. Now updated through HRS. |
+| hhb | HiHostel Brazil | 2 years |  |
 | hi | HI Hostels | 2 years | For members of Hostelling International |
+| hola | Hola Hostels | 2 years |  |
 | hou | HouseTrip | 2 years |  |
 | hrs | HRS | 2 years | hotel.de |
 | ht | HostelTimes | 2 years |  |
@@ -49,7 +53,9 @@ Created: $date
 | lr | Laterooms | 2 years | AsiaRooms |
 | mal | MalaPronta | 2 years | Brazil Only |
 | max | MaxBooking | 2 years |  |
+| myb | MyBookings | 2 years |  |
 | nate | Nathan Helehini | 0 years |  |
+| net | Net Affinity | 2 years |  |
 | orb | Orbitz | 2 years | Asia-Hotels.com, Ebookers.com, Hotelclub.com, Lodging.com, RatesToGo.com |
 | ost | Ostrovok | 2 years |  |
 | ote | Open Travel Exchange | 2 years |  |
@@ -59,5 +65,5 @@ Created: $date
 | tom | TOMAS | 2 years | Booking system used predominantly in Germany and Switzerland on city portals |
 | user | User Channel | 0 years |  |
 | wim | Wimdu | 2 years |  |
-| wix | Wix booking | 2 years |  |
+| wix | Wix Hotels | 2 years |  |
 | ysh | YourSpainHostel | 2 years | Spain Only |
