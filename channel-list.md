@@ -59,10 +59,13 @@ Created: $date
 | orb | Orbitz | 2 years | Asia-Hotels.com, Ebookers.com, Hotelclub.com, Lodging.com, RatesToGo.com |
 | ost | Ostrovok | 2 years |  |
 | ote | Open Travel Exchange | 2 years |  |
+| pre | Prestigia | 2 years |  |
 | rec | Reconline | 2 years | GDS. Hotels &amp; Resorts only, 20+ rooms required. |
 | rep | TravelRepublic | 2 years |  |
+| sur | Surf Holidays | 2 years |  |
 | ta | TripAdvisor | 0 years |  |
 | tom | TOMAS | 2 years | Booking system used predominantly in Germany and Switzerland on city portals |
+| tri | Trip Masters | 2 years |  |
 | user | User Channel | 0 years |  |
 | wim | Wimdu | 2 years |  |
 | wix | Wix Hotels | 2 years |  |
