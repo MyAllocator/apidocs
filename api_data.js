@@ -421,14 +421,14 @@ define({ "api": [
             "type": "String",
             "optional": false,
             "field": "Errors/Error",
-            "description": "<p>Check with the list of errors below. Might contain the attribute it{channel=&quot;..&quot;} to indicate whether the error only applies to a specific channel.</p> "
+            "description": "<p>Might contain the attribute it{channel=&quot;..&quot;} to indicate whether the error only applies to a specific channel.</p> "
           },
           {
             "group": "Response",
             "type": "String",
             "optional": false,
             "field": "Warnings/Warning",
-            "description": "<p>Check with the list of errors below. Might contain the attribute it{channel=&quot;..&quot;} to indicate whether the warning only applies to a specific channel.</p> "
+            "description": "<p>Might contain the attribute it{channel=&quot;..&quot;} to indicate whether the warning only applies to a specific channel.</p> "
           }
         ]
       },
@@ -576,6 +576,53 @@ define({ "api": [
         "type": "json"
       }
     ],
+    "filename": "perllib/MAAPI.pm",
+    "groupTitle": "PMS"
+  },
+  {
+    "type": "get",
+    "url": "/AmenityList",
+    "title": "AmenityList",
+    "name": "AmenityList",
+    "version": "201501.0.0",
+    "group": "PMS",
+    "description": "<p>List of all supported amenities and their channel support</p> ",
+    "parameter": {
+      "fields": {
+        "Request": [
+          {
+            "group": "Request",
+            "type": "String",
+            "optional": false,
+            "field": "Auth/VendorId",
+            "description": "<p>Your Vendor ID</p> "
+          },
+          {
+            "group": "Request",
+            "type": "String",
+            "optional": false,
+            "field": "Auth/VendorPassword",
+            "description": "<p>Your Vendor Password</p> "
+          }
+        ]
+      }
+    },
+    "examples": [
+      {
+        "title": "JSON AmenityList Response",
+        "content": "{\n    \"Amenities\": [\n        {\n            \"id\": \"251\",\n            \"description\": \"Private plunge pool\",\n            \"level\": \"room\",\n            \"ChannelSupport\": [\n                {\n                    \"cid\": \"exp\",\n                    \"ota_amenity_id\": \"4525\"\n                },\n                {\n                    \"cid\": \"ta\",\n                    \"ota_amenity_id\": \"SWIMMING_POOL\"\n                }\n            ]\n        },\n        {\n            \"id\": \"252\",\n            \"description\": \"Separate dining area\",\n            \"level\": \"property\",\n            \"ChannelSupport\": [\n                {\n                    \"cid\": \"exp\",\n                    \"ota_amenity_id\": \"6732\"\n                }\n            ]\n        }\n    ]\n}",
+        "type": "json"
+      }
+    ],
+    "success": {
+      "examples": [
+        {
+          "title": "XML AmenityList Response",
+          "content": "<?xml version=\"1.0\" encoding=\"UTF-8\" ?>\n<AmenityListResponse>\n  <Amenities>\n    <Amenity id=\"251\" description=\"Private plunge pool\" level=\"room\">\n        <ChannelsSupport>\n            <ChannelSupport cid=\"exp\" ota_amenity_id=\"4525\" />\n            <ChannelSupport cid=\"ta\" ota_amenity_id=\"SWIMMING_POOL\" />\n        </ChannelsSupport>\n    </Amenity>\n    <Amenity id=\"252\" description=\"Separate dining area\" level=\"property\">\n        <ChannelsSupport>\n            <ChannelSupport cid=\"exp\" ota_amenity_id=\"6732\" />\n        </ChannelsSupport>\n    </Amenity>\n  </Amenities>\n</AmenityListResponse>",
+          "type": "json"
+        }
+      ]
+    },
     "filename": "perllib/MAAPI.pm",
     "groupTitle": "PMS"
   },
@@ -1939,11 +1986,44 @@ define({ "api": [
     "name": "PropertyChannelAction",
     "version": "201501.0.0",
     "group": "PMS",
-    "description": "<p>PropertyChannel provides the ability to send incremental &#39;intents&#39; which modify a property OTA Config.  Currently a limited number of actions are supported, however in the future new actions will be added. Actions are processed in sequence, the first error encountered stops all future actions. After any successful modification to a booking a callback trigger is modified, and the modified timestamp is set. A Response will be returned which provides insight/status on each command. If multiple commands are sent, the first error on any command will stop all further command processing.</p> <p>== Supported Actions ==</p> <ul> <li>SETCONFIG</li> <li>GETCONFIG</li> <li>SETSTATUS</li> <li>GETSTATUS</li> <li>SETRULES</li> <li>GETRULES</li> </ul> ",
+    "description": "<p>PropertyChannel provides the ability to send incremental &#39;intents&#39; which modify a property OTA Config.  Currently a limited number of actions are supported, however in the future new actions will be added. Actions are processed in sequence, the first error encountered stops all future actions. After any successful modification to a booking a callback trigger is modified, and the modified timestamp is set. A Response will be returned which provides insight/status on each command. If multiple commands are sent, the first error on any command will stop all further command processing.</p> <p>== Supported Actions ==</p> <ul> <li>SETCONFIG</li> <li>GETCONFIG  (deprecate this - use PropertyChannelConfig&quot;</li> <li>SETSTATUS</li> <li>GETSTATUS</li> <li>SETRULES</li> <li>GETRULES</li> </ul> ",
     "examples": [
       {
         "title": "JSON Request",
         "content": "{\n\t'Auth/UserToken':'',\n\t'Auth/VendorId':'',\n\t'Auth/VendorPassword':'',\n\t'Channel':'CID',\n\t'Actions':[\n\t\t[ 'SETCONFIG', { \"boo_id\":\"1234\" } ],\n        [ 'GETCONFIG', {  } ]\n\t]\n}",
+        "type": "json"
+      }
+    ],
+    "filename": "perllib/MAAPI.pm",
+    "groupTitle": "PMS"
+  },
+  {
+    "type": "GET",
+    "url": "/PropertyChannelConfig",
+    "title": "PropertyChannelConfig",
+    "name": "PropertyChannelConfig",
+    "version": "201501.0.0",
+    "group": "PMS",
+    "description": "<p>PropertyChannelConfig displays one or more OTAConfigs.<br>Use PropertyChannelAction to save settings.</p> ",
+    "examples": [
+      {
+        "title": "JSON Request",
+        "content": "{\n\t'Auth/UserToken':'',\n\t'Auth/VendorId':'',\n\t'Auth/VendorPassword':'',\n\t'Channels': ['CID']\n}",
+        "type": "json"
+      },
+      {
+        "title": "JSON Request",
+        "content": "{\n\t'Auth/UserToken':'',\n\t'Auth/VendorId':'',\n\t'Auth/VendorPassword':'',\n\t'channel': 'CID'\n}",
+        "type": "json"
+      },
+      {
+        "title": "JSON Request",
+        "content": "{\n\t'Auth/UserToken':'',\n\t'Auth/VendorId':'',\n\t'Auth/VendorPassword':'',\n\t'list':'enabled'\n}",
+        "type": "json"
+      },
+      {
+        "title": "JSON Request",
+        "content": "{\n\t'Channels':{\n\t\t'CID':{ .. config .. }\n\t\t}\n}",
         "type": "json"
       }
     ],
@@ -2142,6 +2222,243 @@ define({ "api": [
         {
           "title": "Response - Updating a login and property",
           "content": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<UserPropertyResponse> \n <Success>true</Success>\n <PropertyId>1234</PropertyId>\n <propertyToken>23094234234234</propertyToken>\n</UserPropertyResponse>",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "perllib/MAAPI.pm",
+    "groupTitle": "PMS"
+  },
+  {
+    "type": "get",
+    "url": "/PropertyImageList",
+    "title": "",
+    "name": "PropertyImageList",
+    "version": "201501.0.0",
+    "group": "PMS",
+    "description": "<p>Returns a list of uploaded images for the property-level</p> ",
+    "parameter": {
+      "fields": {
+        "Request": [
+          {
+            "group": "Request",
+            "type": "String",
+            "optional": true,
+            "field": "Auth/UserId",
+            "description": "<p>Users unique ID   (required with Auth/UserPassword)</p> "
+          },
+          {
+            "group": "Request",
+            "type": "String",
+            "optional": true,
+            "field": "Auth/UserPassword",
+            "description": "<p>Users password    (required with Auth/UserId)</p> "
+          },
+          {
+            "group": "Request",
+            "type": "String",
+            "optional": true,
+            "field": "Auth/UserToken",
+            "description": "<p>Users auth token (see AssociateUserToPMS call to generate a Token)</p> "
+          },
+          {
+            "group": "Request",
+            "type": "String",
+            "optional": false,
+            "field": "Auth/PropertyId",
+            "description": "<p>Property ID on myallocator.com</p> "
+          },
+          {
+            "group": "Request",
+            "type": "String",
+            "optional": false,
+            "field": "Auth/VendorId",
+            "description": "<p>Your Vendor ID</p> "
+          },
+          {
+            "group": "Request",
+            "type": "String",
+            "optional": false,
+            "field": "Auth/VendorPassword",
+            "description": "<p>Your Vendor Password</p> "
+          }
+        ]
+      }
+    },
+    "examples": [
+      {
+        "title": "XML PropertyImageList Request",
+        "content": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<PropertyImageList>\n <Auth>\n   <UserId>Customer User ID</UserId>\n   <UserPassword>Customer Password</UserPassword>\n   <PropertyId>Property ID on myallocator.com</PropertyId>\n   <VendorId>Your Vendor ID</VendorId>\n   <VendorPassword>Your Vendor Password</VendorPassword>\n </Auth>\n</PropertyImageList>",
+        "type": "json"
+      }
+    ],
+    "success": {
+      "fields": {
+        "XML": [
+          {
+            "group": "XML",
+            "type": "String",
+            "optional": false,
+            "field": "Id",
+            "description": "<p>The property image ID which will reference the property image.</p> "
+          },
+          {
+            "group": "XML",
+            "type": "String",
+            "optional": false,
+            "field": "SavedFilename",
+            "description": "<p>Filename in our system</p> "
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "XML PropertyImageList Success Response:",
+          "content": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<PropertyImageListResponse>\n <PropertyImages>\n   <PropertyImage>\n     <ImageId>343</ImageId>\n     <SavedFilename>d4790aaafdf4512dad0c4f2eafe72946.png</SavedFilename>\n   </PropertyImage>\n\n   <PropertyImage>\n     <ImageId>344</ImageId>\n     <SavedFilename>a92714654b7486ba6ca010f23bf4c0b6.jpg</SavedFilename>\n   </PropertyImage>\n  </PropertyImages>\n</PropertyImageListResponse>",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "perllib/MAAPI.pm",
+    "groupTitle": "PMS"
+  },
+  {
+    "type": "get",
+    "url": "/PropertyImageRemove",
+    "title": "PropertyImageRemove",
+    "name": "PropertyImageRemove",
+    "version": "201501.0.0",
+    "group": "PMS",
+    "description": "<p>Remove a property image</p> ",
+    "parameter": {
+      "fields": {
+        "Request": [
+          {
+            "group": "Request",
+            "type": "String",
+            "optional": true,
+            "field": "Auth/UserId",
+            "description": "<p>Users unique ID     (required with Auth/UserPassword)</p> "
+          },
+          {
+            "group": "Request",
+            "type": "String",
+            "optional": true,
+            "field": "Auth/UserPassword",
+            "description": "<p>Users password      (required with Auth/UserId)</p> "
+          },
+          {
+            "group": "Request",
+            "type": "String",
+            "optional": true,
+            "field": "Auth/UserToken",
+            "description": "<p>Users auth token (see AssociateUserToPMS call to generate a Token)</p> "
+          },
+          {
+            "group": "Request",
+            "type": "String",
+            "optional": false,
+            "field": "Auth/PropertyId",
+            "description": "<p>Property ID on myallocator.com</p> "
+          },
+          {
+            "group": "Request",
+            "type": "String",
+            "optional": false,
+            "field": "Auth/VendorId",
+            "description": "<p>Your Vendor ID</p> "
+          },
+          {
+            "group": "Request",
+            "type": "String",
+            "optional": false,
+            "field": "Auth/VendorPassword",
+            "description": "<p>Your Vendor Password</p> "
+          },
+          {
+            "group": "Request",
+            "type": "String",
+            "optional": false,
+            "field": "Filename",
+            "description": "<p>Will be replaced by us with a random string, but the extension is taken from this filename</p> "
+          },
+          {
+            "group": "Request",
+            "type": "String",
+            "optional": false,
+            "field": "Data",
+            "description": "<p>Base64 encoded raw image data</p> "
+          },
+          {
+            "group": "Request",
+            "type": "String",
+            "optional": false,
+            "field": "PropertyImageId",
+            "description": "<p>of image to be removed.</p> "
+          }
+        ]
+      }
+    },
+    "examples": [
+      {
+        "title": "XML Request:",
+        "content": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<PropertyImageCreate>\n <Auth>\n   <UserId>Customer User ID</UserId>\n   <UserPassword>Customer Password</UserPassword>\n   <PropertyId>Property ID on myallocator.com</PropertyId>\n   <VendorId>Your Vendor ID</VendorId>\n   <VendorPassword>Your Vendor Password</VendorPassword>\n </Auth>\n <CreatePropertyImage>\n   <PropertyImage>\n     <Filename>double-room.jpg</Filename>\n     <Data>oAAAANSUhEUgAAG2QAABPqCAYAAA[...]</Data>\n   </PropertyImage>\n </CreatePropertyImage>\n</PropertyImageCreate>",
+        "type": "json"
+      },
+      {
+        "title": "JSON Request:",
+        "content": "{\n    \"Auth/VendorId\":\"Your Vendor ID\",\n    \"Auth/VendorPassword\":\"Your Vendor Password\",\n    \"Auth/UserId\":\"Login on myallocator.com\",\n    \"Auth/UserPassword\":\"Password for myallocator.com\",\n    \"Auth/PropertyId\":\"Property ID on myallocator.com\",\n    \"PropertyImages\": [\n      {\n        \"Filename\": \"double-room.jpg\",\n        \"Data\": \"oAAAANSUhEUgAAG2QAABPqCAYAAA[...]\"\n      }\n    ]\n}",
+        "type": "json"
+      }
+    ],
+    "success": {
+      "fields": {
+        "XML": [
+          {
+            "group": "XML",
+            "type": "String",
+            "optional": false,
+            "field": "Filename",
+            "description": "<p>Will be replaced by us with a random string, but the extension is taken from this filename</p> "
+          },
+          {
+            "group": "XML",
+            "type": "String",
+            "optional": false,
+            "field": "Data",
+            "description": "<p>Base64 encoded raw image data</p> "
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "XML Response (creating a proeprty image):",
+          "content": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<CreatePropertyImageResponse>\n <Success>true</Success>\n <PropertyImage>\n    <PropertyImageId>423</PropertyImageId>\n    <SavedFilename>576421558171c7f5054966d6b637c37e.jpg</SavedFilename>\n </PropertyImage>\n</CreatePropertyImageResponse>",
+          "type": "json"
+        },
+        {
+          "title": "JSON Response (creating a property image)",
+          "content": "{\n  \"Method\": \"PropertyImageCreate\",\n  \"PropertyImage\": {\n    \"PropertyImageId\": 423,\n    \"SavedFilename\": \"576421558171c7f5054966d6b637c37e.jpg\"\n  },\n  \"Success\": true\n}",
+          "type": "json"
+        },
+        {
+          "title": "JSON Request (Remove single property image)",
+          "content": "{\n    'Auth/UserId':'',\n    'Auth/UserPassword':'',\n    'Auth/VendorId':'',\n    'Auth/VendorPassword':'',\n    'PropertyImage':{ 'PropertyImageId':### }\n}",
+          "type": "json"
+        },
+        {
+          "title": "JSON Request (Remove multiple property images)",
+          "content": "{\n    'Auth/UserId':'',\n    'Auth/Userassword':'',\n    'Auth/VendorId':'',\n    'Auth/VendorPassword':'',\n    'PropertyImages': [\n        { 'PropertyImageId':## },\n        { 'PropertyImageId':## }\n        ]\n}",
+          "type": "json"
+        },
+        {
+          "title": "XML Request (Removing a property image)",
+          "content": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<PropertyImageRemove>\n <Auth>\n   <UserId>Customer User ID</UserId>\n   <UserPassword>Customer Password</UserPassword>\n   <PropertyId>Property ID on myallocator.com</PropertyId>\n   <VendorId>Your Vendor ID</VendorId>\n   <VendorPassword>Your Vendor Password</VendorPassword>\n </Auth>\n <RemovePropertyImages>\n   <PropertyImageIds>\n     <PropertyImageId>35</PropertyImageId>\n     <PropertyImageId>36</PropertyImageId>\n   </PropertyImageIds>\n </RemovePropertyImages>\n</PropertyImageRemove>",
+          "type": "json"
+        },
+        {
+          "title": "XML Response PropertyImageRemoveResponse (Success)",
+          "content": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<PropertyImageRemoveResponse>\n  <Success>true</Success>\n</PropertyImageRemoveResponse>",
           "type": "json"
         }
       ]
@@ -2719,7 +3036,14 @@ define({ "api": [
             "type": "String",
             "optional": true,
             "field": "Auth/UserToken",
-            "description": "<p>Users auth token (see AssociateUserToPMS call to generate a Token)@apiParam (Request) {String} Auth/PropertyId    Property ID on myallocator.com</p> "
+            "description": "<p>Users auth token (see AssociateUserToPMS call to generate a Token)</p> "
+          },
+          {
+            "group": "Request",
+            "type": "String",
+            "optional": false,
+            "field": "Auth/PropertyId",
+            "description": "<p>Property ID on myallocator.com</p> "
           },
           {
             "group": "Request",
@@ -2812,7 +3136,7 @@ define({ "api": [
             "type": "String",
             "optional": true,
             "field": "Auth/UserToken",
-            "description": "<p>Users auth token (see AssociateUserToPMS call to generate a Token)# @apiParam (Request) {String} Auth/VendorId          Your Vendor ID</p> "
+            "description": "<p>Users auth token (see AssociateUserToPMS call to generate a Token)</p> "
           },
           {
             "group": "Request",
@@ -2899,12 +3223,12 @@ define({ "api": [
       },
       "examples": [
         {
-          "title": "XML Response (creating a room):",
+          "title": "XML Response (creating a room image):",
           "content": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<CreateRoomImageResponse>\n <Success>true</Success>\n <RoomImage>\n    <RoomImageId>423</RoomImageId>\n    <SavedFilename>576421558171c7f5054966d6b637c37e.jpg</SavedFilename>\n </RoomImage>\n</CreateRoomImageResponse>",
           "type": "json"
         },
         {
-          "title": "JSON Response (creating a room)",
+          "title": "JSON Response (creating a room image)",
           "content": "{\n  \"Method\": \"RoomImageCreate\",\n  \"RoomImage\": {\n    \"RoomImageId\": 423,\n    \"SavedFilename\": \"576421558171c7f5054966d6b637c37e.jpg\"\n  },\n  \"Success\": true\n}",
           "type": "json"
         },
@@ -2914,7 +3238,7 @@ define({ "api": [
           "type": "json"
         },
         {
-          "title": "JSON Request (Remove multiple room imags)",
+          "title": "JSON Request (Remove multiple room images)",
           "content": "{\n    'Auth/UserId':'',\n    'Auth/Userassword':'',\n    'Auth/VendorId':'',\n    'Auth/VendorPassword':'',\n    'RoomImages': [\n        { 'RoomImageId':## },\n        { 'RoomImageId':## }\n        ]\n}",
           "type": "json"
         },
@@ -2924,7 +3248,7 @@ define({ "api": [
           "type": "json"
         },
         {
-          "title": "XML Response SetRooms (Success)",
+          "title": "XML Response RoomImageRemoveResponse (Success)",
           "content": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<RoomImageRemoveResponse>\n  <Success>true</Success>\n</RoomImageRemoveResponse>",
           "type": "json"
         }
