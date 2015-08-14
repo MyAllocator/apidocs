@@ -36,6 +36,7 @@ Created: $date
 | hbe | HotelBeds | 2 years | Liberate, TUI travel |
 | hc | Hostelsclub | 2 years | flashbooking.com |
 | hcu | HostelCulture | 2 years |  |
+| hcu2 | HostelCulture v2 | 2 years |  |
 | hde | Hotel.de | 2 years | deprecated (do not use); Obsolete. Now updated through HRS. |
 | hhb | HiHostel Brazil | 2 years |  |
 | hi | HI Hostels | 2 years | For members of Hostelling International |

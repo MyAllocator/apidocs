@@ -421,14 +421,14 @@ define({ "api": [
             "type": "String",
             "optional": false,
             "field": "Errors/Error",
-            "description": "<p>Might contain the attribute it{channel=&quot;..&quot;} to indicate whether the error only applies to a specific channel.</p> "
+            "description": "<p>Check with the list of errors below. Might contain the attribute it{channel=&quot;..&quot;} to indicate whether the error only applies to a specific channel.</p> "
           },
           {
             "group": "Response",
             "type": "String",
             "optional": false,
             "field": "Warnings/Warning",
-            "description": "<p>Might contain the attribute it{channel=&quot;..&quot;} to indicate whether the warning only applies to a specific channel.</p> "
+            "description": "<p>Check with the list of errors below. Might contain the attribute it{channel=&quot;..&quot;} to indicate whether the warning only applies to a specific channel.</p> "
           }
         ]
       },
