@@ -2178,10 +2178,45 @@ define({ "api": [
           },
           {
             "group": "Request",
+            "type": "Integer",
+            "optional": false,
+            "field": "BookingAdjust",
+            "description": "<p>The state of booking auto-adjust config (0 = disabled, 1 = enabled).</p> "
+          },
+          {
+            "group": "Request",
+            "type": "Integer",
+            "optional": false,
+            "field": "BookingAdjustCancellation",
+            "description": "<p>The state of booking auto-adjust cancellation config (0 = HOLD, 1 = RESTORE).</p> "
+          },
+          {
+            "group": "Request",
+            "type": "Integer",
+            "optional": false,
+            "field": "BookingDownload",
+            "description": "<p>The state of channel booking download config (0 = do not download, 1 = download).</p> "
+          },
+          {
+            "group": "Request",
             "type": "String",
             "optional": false,
-            "field": "BuId",
-            "description": "<p>billing user id (??)</p> "
+            "field": "EmailDefault",
+            "description": "<p>The default property email address. Uses default user* email if not configured.</p> "
+          },
+          {
+            "group": "Request",
+            "type": "String",
+            "optional": false,
+            "field": "EmailChannelBooking",
+            "description": "<p>The email address used when forwarding channel booking emails. Uses default user* email if not configured.</p> "
+          },
+          {
+            "group": "Request",
+            "type": "String",
+            "optional": false,
+            "field": "EmailBookNow",
+            "description": "<p>The email address used when forwarding booknow booking emails. Uses default user* email if not configured.</p> "
           }
         ],
         "Response": [
@@ -2213,7 +2248,7 @@ define({ "api": [
     "examples": [
       {
         "title": "XML Request - Creating a NEW property (and attaching it to a user account)",
-        "content": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<PropertyCreate>\n <Auth>\n   <VendorId>Your Vendor ID</VendorId>\n   <VendorPassword>Your Vendor Password</VendorPassword>\n </Auth>\n <PropertyName>Name of property</PropertyName>\n <ExpiryDate>2012-05-05</ExpiryDate>\n <Currency>EUR</Currency>\n <Country>DE</Country>\n <Breakfast>IN</Breakfast>\n</PropertyCreate>",
+        "content": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<PropertyCreate>\n <Auth>\n   <VendorId>Your Vendor ID</VendorId>\n   <VendorPassword>Your Vendor Password</VendorPassword>\n </Auth>\n <PropertyName>Name of property</PropertyName>\n <ExpiryDate>2012-05-05</ExpiryDate>\n <Currency>EUR</Currency>\n <Country>DE</Country>\n <Breakfast>IN</Breakfast>\n <BookingAdjust>1</BookingAdjust>\n <BookingAdjustCancellation>1</BookingAdjustCancellation>\n <BookingDownload>1</BookingDownload>\n <EmailDefault>default@email.com</EmailDefault>\n <EmailChannelBooking>channel@email.com</EmailChannelBooking>\n <EmailBookNow>booknow@email.com</EmailBookNow>\n</PropertyCreate>",
         "type": "json"
       }
     ],
@@ -2590,13 +2625,55 @@ define({ "api": [
             "optional": false,
             "field": "Weekend",
             "description": "<p>Day &amp; Shows which days are marked as weekend days by the customer on Myallocator. Monday = 1, Sunday = 7. The name of the weekday is also given in the \\textit{name} property. See ARIUpdate for information on when this is used.</p> "
+          },
+          {
+            "group": "Response",
+            "type": "Integer",
+            "optional": false,
+            "field": "BookingAdjust",
+            "description": "<p>The state of booking auto-adjust config (0 = disabled, 1 = enabled).</p> "
+          },
+          {
+            "group": "Response",
+            "type": "Integer",
+            "optional": false,
+            "field": "BookingAdjustCancellation",
+            "description": "<p>The state of booking auto-adjust cancellation config (0 = HOLD, 1 = RESTORE).</p> "
+          },
+          {
+            "group": "Response",
+            "type": "Integer",
+            "optional": false,
+            "field": "BookingDownload",
+            "description": "<p>The state of channel booking download config (0 = do not download, 1 = download).</p> "
+          },
+          {
+            "group": "Response",
+            "type": "String",
+            "optional": false,
+            "field": "EmailDefault",
+            "description": "<p>The default property email address. Uses default user* email if not configured.</p> "
+          },
+          {
+            "group": "Response",
+            "type": "String",
+            "optional": false,
+            "field": "EmailChannelBooking",
+            "description": "<p>The email address used when forwarding channel booking emails. Uses default user* email if not configured.</p> "
+          },
+          {
+            "group": "Response",
+            "type": "String",
+            "optional": false,
+            "field": "EmailBookNow",
+            "description": "<p>The email address used when forwarding booknow booking emails. Uses default user* email if not configured.</p> "
           }
         ]
       },
       "examples": [
         {
           "title": "XML PropertyList Response Success",
-          "content": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<PropertyListResponse>\n  <Properties>\n    <Property>\n      <Id>19</Id>\n      <Name>Property 1</Name>\n      <Breakfast></Breakfast>\n      <Currency>GBP</Currency>\n      <Country>GB</Country>\n      <PaidUntil>2011-11-11</PaidUntil>\n      <Weekend>\n        <Day name=\"Friday\">5</Day>\n        <Day name=\"Saturday\">6</Day>\n      </Weekend>\n    </Property>\n    \n    <Property>\n      <Id>13</Id>\n      <Name>Property 2</Name>\n      <Breakfast>IN</Breakfast>\n      <Currency>EUR</Currency>\n      <Country>DE</Country>\n      <PaidUntil>2011-11-11</PaidUntil>\n      <Weekend>\n      </Weekend>\n    </Property>\n    \n    <Property>\n      <Id>15</Id>\n      <Name>Property 3</Name>\n      <Breakfast>EX</Breakfast>\n      <Currency>GBP</Currency>\n      <Country>GB</Country>\n      <PaidUntil>2011-11-11</PaidUntil>\n      <Weekend>\n        <Day name=\"Friday\">5</Day>\n        <Day name=\"Saturday\">6</Day>\n        <Day name=\"Sunday\">7</Day>\n      </Weekend>\n    </Property>\n  </Properties>\n</PropertyListResponse>",
+          "content": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<PropertyListResponse>\n  <Properties>\n    <Property>\n      <Id>19</Id>\n      <Name>Property 1</Name>\n      <Breakfast></Breakfast>\n      <Currency>GBP</Currency>\n      <Country>GB</Country>\n      <PaidUntil>2011-11-11</PaidUntil>\n      <Weekend>\n        <Day name=\"Friday\">5</Day>\n        <Day name=\"Saturday\">6</Day>\n      </Weekend>\n      <BookingAdjust>1</BookingAdjust>\n      <BookingAdjustCancellation>1</BookingAdjustCancellation>\n      <BookingDownload>1</BookingDownload>\n      <EmailDefault>default@email.com</EmailDefault>\n      <EmailChannelBooking>channel@email.com</EmailChannelBooking>\n      <EmailBookNow>booknow@email.com</EmailBookNow>\n    </Property>\n    \n    <Property>\n      <Id>13</Id>\n      <Name>Property 2</Name>\n      <Breakfast>IN</Breakfast>\n      <Currency>EUR</Currency>\n      <Country>DE</Country>\n      <PaidUntil>2011-11-11</PaidUntil>\n      <Weekend>\n      </Weekend>\n      <BookingAdjust>0</BookingAdjust>\n      <BookingAdjustCancellation>0</BookingAdjustCancellation>\n      <BookingDownload>0</BookingDownload>\n      <EmailDefault>default@email.com</EmailDefault>\n      <EmailChannelBooking>channel@email.com</EmailChannelBooking>\n      <EmailBookNow>booknow@email.com</EmailBookNow>\n    </Property>\n    \n    <Property>\n      <Id>15</Id>\n      <Name>Property 3</Name>\n      <Breakfast>EX</Breakfast>\n      <Currency>GBP</Currency>\n      <Country>GB</Country>\n      <PaidUntil>2011-11-11</PaidUntil>\n      <Weekend>\n        <Day name=\"Friday\">5</Day>\n        <Day name=\"Saturday\">6</Day>\n        <Day name=\"Sunday\">7</Day>\n      </Weekend>\n      <BookingAdjust>1</BookingAdjust>\n      <BookingAdjustCancellation>1</BookingAdjustCancellation>\n      <BookingDownload>1</BookingDownload>\n      <EmailDefault>default@email.com</EmailDefault>\n      <EmailChannelBooking>channel@email.com</EmailChannelBooking>\n      <EmailBookNow>booknow@email.com</EmailBookNow>\n    </Property>\n  </Properties>\n</PropertyListResponse>",
           "type": "json"
         }
       ]
@@ -2690,6 +2767,48 @@ define({ "api": [
             "optional": false,
             "field": "Breakfast",
             "description": "<p>Can be IN (included), EX (excluded) or empty.</p> "
+          },
+          {
+            "group": "Request",
+            "type": "Integer",
+            "optional": false,
+            "field": "BookingAdjust",
+            "description": "<p>The state of booking auto-adjust config (0 = disabled, 1 = enabled).</p> "
+          },
+          {
+            "group": "Request",
+            "type": "Integer",
+            "optional": false,
+            "field": "BookingAdjustCancellation",
+            "description": "<p>The state of booking auto-adjust cancellation config (0 = HOLD, 1 = RESTORE).</p> "
+          },
+          {
+            "group": "Request",
+            "type": "Integer",
+            "optional": false,
+            "field": "BookingDownload",
+            "description": "<p>The state of channel booking download config (0 = do not download, 1 = download).</p> "
+          },
+          {
+            "group": "Request",
+            "type": "String",
+            "optional": false,
+            "field": "EmailDefault",
+            "description": "<p>The default property email address. Uses default user* email if not configured.</p> "
+          },
+          {
+            "group": "Request",
+            "type": "String",
+            "optional": false,
+            "field": "EmailChannelBooking",
+            "description": "<p>The email address used when forwarding channel booking emails. Uses default user* email if not configured.</p> "
+          },
+          {
+            "group": "Request",
+            "type": "String",
+            "optional": false,
+            "field": "EmailBookNow",
+            "description": "<p>The email address used when forwarding booknow booking emails. Uses default user* email if not configured.</p> "
           }
         ]
       }
@@ -2697,7 +2816,7 @@ define({ "api": [
     "examples": [
       {
         "title": "XML Request - Modifying a property",
-        "content": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<PropertyModify>\n <Auth>\n   <VendorId>Your Vendor ID</VendorId>\n   <VendorPassword>Your Vendor Password</VendorPassword>\n </Auth>\n <PropertyName>Name of property</PropertyName>\n <ExpiryDate>2012-05-05</ExpiryDate>\n <Currency>EUR</Currency>\n <Country>DE</Country>\n <Breakfast>IN</Breakfast>\n</PropertyModify>",
+        "content": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<PropertyModify>\n <Auth>\n   <VendorId>Your Vendor ID</VendorId>\n   <VendorPassword>Your Vendor Password</VendorPassword>\n </Auth>\n <PropertyName>Name of property</PropertyName>\n <ExpiryDate>2012-05-05</ExpiryDate>\n <Currency>EUR</Currency>\n <Country>DE</Country>\n <Breakfast>IN</Breakfast>\n <BookingAdjust>1</BookingAdjust>\n <BookingAdjustCancellation>1</BookingAdjustCancellation>\n <BookingDownload>1</BookingDownload>\n <EmailDefault>default@email.com</EmailDefault>\n <EmailChannelBooking>channel@email.com</EmailChannelBooking>\n <EmailBookNow>booknow@email.com</EmailBookNow>\n</PropertyModify>",
         "type": "json"
       }
     ],
