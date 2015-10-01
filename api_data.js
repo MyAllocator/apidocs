@@ -421,14 +421,14 @@ define({ "api": [
             "type": "String",
             "optional": false,
             "field": "Errors/Error",
-            "description": "<p>Check with the list of errors below. Might contain the attribute it{channel=&quot;..&quot;} to indicate whether the error only applies to a specific channel.</p> "
+            "description": "<p>Might contain the attribute it{channel=&quot;..&quot;} to indicate whether the error only applies to a specific channel.</p> "
           },
           {
             "group": "Response",
             "type": "String",
             "optional": false,
             "field": "Warnings/Warning",
-            "description": "<p>Check with the list of errors below. Might contain the attribute it{channel=&quot;..&quot;} to indicate whether the warning only applies to a specific channel.</p> "
+            "description": "<p>Might contain the attribute it{channel=&quot;..&quot;} to indicate whether the warning only applies to a specific channel.</p> "
           }
         ]
       },
@@ -845,24 +845,6 @@ define({ "api": [
         ]
       }
     }
-  },
-  {
-    "type": "GET",
-    "url": "/BookingCreate",
-    "title": "BookingCreate",
-    "name": "BookingCreate",
-    "version": "201501.0.0",
-    "group": "PMS",
-    "description": "<p>Booking create provides a remote system (ex: Booking Widget) to create bookings in a user account  using the &quot;user&quot; channel.</p> <p>== Supported Actions ==</p> <ul> <li>CANCEL?reason=text</li> <li>UNCANCEL</li> <li>ACK        adds the acknowlegement flags</li> <li>UNACK    removes the acknowledgement flag</li> </ul> ",
-    "examples": [
-      {
-        "title": "JSON Request",
-        "content": "{\n\t'Auth/UserToken':'',\n\t'Auth/VendorId':'',\n\t'Auth/VendorPassword':'',\n\t'OrderId':'XXXXX',\n\t'Actions':[\n\t\t'CANCEL?reason=a%20very%20good%20reason',\n\t\t]\n}",
-        "type": "json"
-      }
-    ],
-    "filename": "perllib/MAAPI.pm",
-    "groupTitle": "PMS"
   },
   {
     "type": "get",
@@ -1600,28 +1582,31 @@ define({ "api": [
             "optional": false,
             "field": "CreditCardPassword",
             "description": ""
-          },
-          {
-            "group": "Request",
-            "type": "String",
-            "optional": true,
-            "field": "OrderId",
-            "description": "<p>OrderId from the OTA    (required if no MyAllocatorId)</p> "
-          },
-          {
-            "group": "Request",
-            "type": "String",
-            "optional": true,
-            "field": "MyAllocatorId",
-            "description": "<p>Id assigned by MyAllocator (required if no OrderId)</p> "
           }
         ]
       }
     },
+    "examples": [
+      {
+        "title": "XML Request",
+        "content": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<BookingPaymentPasswordValidate>\n  <Auth>\n    <UserId>Customer User ID</UserId>\n    <UserPassword>Customer Password</UserPassword>\n    <PropertyId>Property ID on myallocator.com</PropertyId>\n    <VendorId>Your Vendor ID</VendorId>\n    <VendorPassword>Your Vendor Password</VendorPassword>\n  </Auth>\n  <CreditCardPassword>some_password</CreditCardPassword>\n</BookingPaymentPasswordValidate>",
+        "type": "json"
+      },
+      {
+        "title": "JSON Request",
+        "content": "{\n    \"Auth/VendorId\":\"Your Vendor ID\",\n    \"Auth/VendorPassword\":\"Your Vendor Password\",\n    \"Auth/UserId\":\"Login on myallocator.com\",\n    \"Auth/UserPassword\":\"Password for myallocator.com\",\n    \"Auth/PropertyId\":\"Property ID on myallocator.com\",\n    \"CreditCardPassword\":\"some_password\"\n}",
+        "type": "json"
+      }
+    ],
     "success": {
       "examples": [
         {
-          "title": "JSON BookingPaymentDownload",
+          "title": "XML Response",
+          "content": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<BookingPaymentPasswordValidateResponse PasswordValid=\"true\">\n  <Success>true</Success>\n</BookingPaymentPasswordValidateResponse>",
+          "type": "json"
+        },
+        {
+          "title": "JSON Response",
           "content": "   {\n\t\"Success\":boolean,\n\t\"PasswordValid\":boolean,\n\t\"ErrorMsg\":\"Reason why password was invalid\"\n   }",
           "type": "json"
         }
@@ -1709,7 +1694,7 @@ define({ "api": [
     "name": "HelloWorld",
     "version": "201501.0.0",
     "group": "PMS",
-    "description": "<table> <thead> <tr> <th>Call</th> <th>Notes + Authentication Requirements</th> </tr> </thead> <tbody> <tr> <td>HelloWorld</td> <td>No Authentication Required</td> </tr> <tr> <td>HelloUser</td> <td>Requires <em>VALID</em> User Credentials</td> </tr> <tr> <td>HelloVendor</td> <td>Requires <em>VALID</em> Vendor Credentials</td> </tr> <tr> <td>HelloVendorUser</td> <td>Requires <em>VALID</em> User <em>AND</em> Vendor Credentials</td> </tr> </tbody> </table> <p> This method is diagnostic in nature, it is intended to provide a simple echo/response &quot;My First API call&quot;,  <em>IT HAS NO PURPOSE</em> besides simply returning whatever parameters you send it (no authentication required).</p> ",
+    "description": "<table> <thead> <tr> <th>Call</th> <th>Notes + Authentication Requirements</th> </tr> </thead> <tbody> <tr> <td>HelloWorld</td> <td>No Authentication Required</td> </tr> <tr> <td>HelloUser</td> <td>Requires <em>VALID</em> User Credentials</td> </tr> <tr> <td>HelloVendor</td> <td>Requires <em>VALID</em> Vendor Credentials</td> </tr> <tr> <td>HelloVendorUser</td> <td>Requires <em>VALID</em> User <em>AND</em> Vendor Credentials</td> </tr> </tbody> </table> <p> This method is diagnostic in nature, it is intended to provide a simple echo/response &quot;My First API call&quot;,  <em>IT HAS NO PURPOSE</em> besides simply returning whatever parameters you send it (no authentication required).  (Note: HelloVendor and HelloVendorUser return a &quot;callback_delay&quot; parameter which should be zero, any positive number indicates a problem [check your server logs])</p> ",
     "examples": [
       {
         "title": "XML Hello Request",
@@ -1728,7 +1713,7 @@ define({ "api": [
       },
       {
         "title": "JSON HelloVendor Request",
-        "content": "GET /pms/v201408/json/HelloWorld\nContent-Type: application/json\n{ \n'Auth/VendorId':'your vendor id',\n'Auth/VendorPassword':'your vendor password',\n'hello':'world' \n}",
+        "content": "GET /pms/v201408/json/HelloWorld\nContent-Type: application/json\n{ \n'Auth/VendorId':'your vendor id',\n'Auth/VendorPassword':'your vendor password',\n'hello':'world',\n'callback_delay':0\n}",
         "type": "json"
       },
       {
@@ -1980,57 +1965,6 @@ define({ "api": [
     "groupTitle": "PMS"
   },
   {
-    "type": "GET",
-    "url": "/PropertyChannelAction",
-    "title": "PropertyChannelAction",
-    "name": "PropertyChannelAction",
-    "version": "201501.0.0",
-    "group": "PMS",
-    "description": "<p>PropertyChannel provides the ability to send incremental &#39;intents&#39; which modify a property OTA Config.  Currently a limited number of actions are supported, however in the future new actions will be added. Actions are processed in sequence, the first error encountered stops all future actions. After any successful modification to a booking a callback trigger is modified, and the modified timestamp is set. A Response will be returned which provides insight/status on each command. If multiple commands are sent, the first error on any command will stop all further command processing.</p> <p>== Supported Actions ==</p> <ul> <li>SETCONFIG</li> <li>GETCONFIG  (deprecate this - use PropertyChannelConfig&quot;</li> <li>SETSTATUS</li> <li>GETSTATUS</li> <li>SETRULES</li> <li>GETRULES</li> </ul> ",
-    "examples": [
-      {
-        "title": "JSON Request",
-        "content": "{\n\t'Auth/UserToken':'',\n\t'Auth/VendorId':'',\n\t'Auth/VendorPassword':'',\n\t'Channel':'CID',\n\t'Actions':[\n\t\t[ 'SETCONFIG', { \"boo_id\":\"1234\" } ],\n        [ 'GETCONFIG', {  } ]\n\t]\n}",
-        "type": "json"
-      }
-    ],
-    "filename": "perllib/MAAPI.pm",
-    "groupTitle": "PMS"
-  },
-  {
-    "type": "GET",
-    "url": "/PropertyChannelConfig",
-    "title": "PropertyChannelConfig",
-    "name": "PropertyChannelConfig",
-    "version": "201501.0.0",
-    "group": "PMS",
-    "description": "<p>PropertyChannelConfig displays one or more OTAConfigs.<br>Use PropertyChannelAction to save settings.</p> ",
-    "examples": [
-      {
-        "title": "JSON Request",
-        "content": "{\n\t'Auth/UserToken':'',\n\t'Auth/VendorId':'',\n\t'Auth/VendorPassword':'',\n\t'Channels': ['CID']\n}",
-        "type": "json"
-      },
-      {
-        "title": "JSON Request",
-        "content": "{\n\t'Auth/UserToken':'',\n\t'Auth/VendorId':'',\n\t'Auth/VendorPassword':'',\n\t'channel': 'CID'\n}",
-        "type": "json"
-      },
-      {
-        "title": "JSON Request",
-        "content": "{\n\t'Auth/UserToken':'',\n\t'Auth/VendorId':'',\n\t'Auth/VendorPassword':'',\n\t'list':'enabled'\n}",
-        "type": "json"
-      },
-      {
-        "title": "JSON Request",
-        "content": "{\n\t'Channels':{\n\t\t'CID':{ .. config .. }\n\t\t}\n}",
-        "type": "json"
-      }
-    ],
-    "filename": "perllib/MAAPI.pm",
-    "groupTitle": "PMS"
-  },
-  {
     "type": "get",
     "url": "/PropertyChannelList",
     "title": "PropertyChannelList",
@@ -2248,7 +2182,7 @@ define({ "api": [
     "examples": [
       {
         "title": "XML Request - Creating a NEW property (and attaching it to a user account)",
-        "content": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<PropertyCreate>\n <Auth>\n   <VendorId>Your Vendor ID</VendorId>\n   <VendorPassword>Your Vendor Password</VendorPassword>\n </Auth>\n <PropertyName>Name of property</PropertyName>\n <ExpiryDate>2012-05-05</ExpiryDate>\n <Currency>EUR</Currency>\n <Country>DE</Country>\n <Breakfast>IN</Breakfast>\n <BookingAdjust>1</BookingAdjust>\n <BookingAdjustCancellation>1</BookingAdjustCancellation>\n <BookingDownload>1</BookingDownload>\n <EmailDefault>default@email.com</EmailDefault>\n <EmailChannelBooking>channel@email.com</EmailChannelBooking>\n <EmailBookNow>booknow@email.com</EmailBookNow>\n</PropertyCreate>",
+        "content": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<PropertyCreate>\n <Auth>\n   <VendorId>Your Vendor ID</VendorId>\n   <VendorPassword>Your Vendor Password</VendorPassword>\n </Auth>\n <PropertyName>Name of property</PropertyName>\n <ExpiryDate>2012-05-05</ExpiryDate>\n <Currency>EUR</Currency>\n <Country>DE</Country>\n <Breakfast>IN</Breakfast>\n <BookingAdjust>1</BookingAdjust>\n <BookingAdjustCancellation>1</BookingAdjustCancellation>\n <BookingDownload>1</BookingDownload>\n <EmailDefault>default@email.com</EmailDefault>\n <EmailChannelBooking>channel@email.com</EmailChannelBooking>\n <EmailBookNow>booknow@email.com</EmailBookNow>\n <Timezone>UTC</Timezone>\n <PaymentPassword>secret</PaymentPassword>\n</PropertyCreate>",
         "type": "json"
       }
     ],
@@ -2266,105 +2200,12 @@ define({ "api": [
   },
   {
     "type": "get",
-    "url": "/PropertyImageList",
-    "title": "",
-    "name": "PropertyImageList",
+    "url": "/PropertyImageCreate",
+    "title": "PropertyImageCreate",
+    "name": "PropertyImageCreate",
     "version": "201501.0.0",
     "group": "PMS",
-    "description": "<p>Returns a list of uploaded images for the property-level</p> ",
-    "parameter": {
-      "fields": {
-        "Request": [
-          {
-            "group": "Request",
-            "type": "String",
-            "optional": true,
-            "field": "Auth/UserId",
-            "description": "<p>Users unique ID   (required with Auth/UserPassword)</p> "
-          },
-          {
-            "group": "Request",
-            "type": "String",
-            "optional": true,
-            "field": "Auth/UserPassword",
-            "description": "<p>Users password    (required with Auth/UserId)</p> "
-          },
-          {
-            "group": "Request",
-            "type": "String",
-            "optional": true,
-            "field": "Auth/UserToken",
-            "description": "<p>Users auth token (see AssociateUserToPMS call to generate a Token)</p> "
-          },
-          {
-            "group": "Request",
-            "type": "String",
-            "optional": false,
-            "field": "Auth/PropertyId",
-            "description": "<p>Property ID on myallocator.com</p> "
-          },
-          {
-            "group": "Request",
-            "type": "String",
-            "optional": false,
-            "field": "Auth/VendorId",
-            "description": "<p>Your Vendor ID</p> "
-          },
-          {
-            "group": "Request",
-            "type": "String",
-            "optional": false,
-            "field": "Auth/VendorPassword",
-            "description": "<p>Your Vendor Password</p> "
-          }
-        ]
-      }
-    },
-    "examples": [
-      {
-        "title": "XML PropertyImageList Request",
-        "content": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<PropertyImageList>\n <Auth>\n   <UserId>Customer User ID</UserId>\n   <UserPassword>Customer Password</UserPassword>\n   <PropertyId>Property ID on myallocator.com</PropertyId>\n   <VendorId>Your Vendor ID</VendorId>\n   <VendorPassword>Your Vendor Password</VendorPassword>\n </Auth>\n</PropertyImageList>",
-        "type": "json"
-      }
-    ],
-    "success": {
-      "fields": {
-        "XML": [
-          {
-            "group": "XML",
-            "type": "String",
-            "optional": false,
-            "field": "Id",
-            "description": "<p>The property image ID which will reference the property image.</p> "
-          },
-          {
-            "group": "XML",
-            "type": "String",
-            "optional": false,
-            "field": "SavedFilename",
-            "description": "<p>Filename in our system</p> "
-          }
-        ]
-      },
-      "examples": [
-        {
-          "title": "XML PropertyImageList Success Response:",
-          "content": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<PropertyImageListResponse>\n <PropertyImages>\n   <PropertyImage>\n     <ImageId>343</ImageId>\n     <SavedFilename>d4790aaafdf4512dad0c4f2eafe72946.png</SavedFilename>\n   </PropertyImage>\n\n   <PropertyImage>\n     <ImageId>344</ImageId>\n     <SavedFilename>a92714654b7486ba6ca010f23bf4c0b6.jpg</SavedFilename>\n   </PropertyImage>\n  </PropertyImages>\n</PropertyImageListResponse>",
-          "type": "json"
-        }
-      ]
-    },
-    "filename": "perllib/MAAPI.pm",
-    "groupTitle": "PMS"
-  },
-  {
-    "type": "get",
-    "url": "/PropertyImageRemove",
-    "title": "PropertyImageRemove",
-    "name": "PropertyImageRemove",
-    "version": "201501.0.0",
-    "group": "PMS",
-    "description": "<p>Remove a property image</p> ",
+    "description": "<p>This method allows you to create or remove property images on myallocator.com. Please note that you can only send a single PropertyImageCreate or PropertyImageRemove</p> ",
     "parameter": {
       "fields": {
         "Request": [
@@ -2423,6 +2264,212 @@ define({ "api": [
             "optional": false,
             "field": "Data",
             "description": "<p>Base64 encoded raw image data</p> "
+          }
+        ]
+      }
+    },
+    "examples": [
+      {
+        "title": "XML Request:",
+        "content": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<PropertyImageCreate>\n <Auth>\n   <UserId>Customer User ID</UserId>\n   <UserPassword>Customer Password</UserPassword>\n   <PropertyId>Property ID on myallocator.com</PropertyId>\n   <VendorId>Your Vendor ID</VendorId>\n   <VendorPassword>Your Vendor Password</VendorPassword>\n </Auth>\n <CreatePropertyImage>\n   <PropertyImages>\n       <PropertyImage>\n         <Filename>double-room.jpg</Filename>\n         <Data>oAAAANSUhEUgAAG2QAABPqCAYAAA[...]</Data>\n       </PropertyImage>\n   </PropertyImages>\n </CreatePropertyImage>\n</PropertyImageCreate>",
+        "type": "json"
+      },
+      {
+        "title": "JSON Request:",
+        "content": "{\n    \"Auth/VendorId\":\"Your Vendor ID\",\n    \"Auth/VendorPassword\":\"Your Vendor Password\",\n    \"Auth/UserId\":\"Login on myallocator.com\",\n    \"Auth/UserPassword\":\"Password for myallocator.com\",\n    \"Auth/PropertyId\":\"Property ID on myallocator.com\",\n    \"PropertyImages\": [\n      {\n        \"Filename\": \"double-room.jpg\",\n        \"Data\": \"oAAAANSUhEUgAAG2QAABPqCAYAAA[...]\"\n      }\n    ]\n}",
+        "type": "json"
+      }
+    ],
+    "success": {
+      "fields": {
+        "Response": [
+          {
+            "group": "Response",
+            "type": "String",
+            "optional": false,
+            "field": "Filename",
+            "description": "<p>Will be replaced by us with a random string, but the extension is taken from this filename</p> "
+          },
+          {
+            "group": "Response",
+            "type": "String",
+            "optional": false,
+            "field": "Data",
+            "description": "<p>Base64 encoded raw image data</p> "
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "XML Response",
+          "content": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<CreatePropertyImageResponse>\n <Success>true</Success>\n <PropertyImage>\n    <PropertyImageId>423</PropertyImageId>\n    <SavedFilename>576421558171c7f5054966d6b637c37e.jpg</SavedFilename>\n </PropertyImage>\n</CreatePropertyImageResponse>",
+          "type": "json"
+        },
+        {
+          "title": "JSON Response",
+          "content": "{\n  \"Method\": \"PropertyImageCreate\",\n  \"PropertyImage\": {\n    \"PropertyImageId\": 423,\n    \"SavedFilename\": \"576421558171c7f5054966d6b637c37e.jpg\"\n  },\n  \"Success\": true\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "perllib/MAAPI.pm",
+    "groupTitle": "PMS"
+  },
+  {
+    "type": "get",
+    "url": "/PropertyImageList",
+    "title": "PropertyImageList",
+    "name": "PropertyImageList",
+    "version": "201501.0.0",
+    "group": "PMS",
+    "description": "<p>Returns a list of uploaded images for the property-level.</p> ",
+    "parameter": {
+      "fields": {
+        "Request": [
+          {
+            "group": "Request",
+            "type": "String",
+            "optional": true,
+            "field": "Auth/UserId",
+            "description": "<p>Users unique ID   (required with Auth/UserPassword)</p> "
+          },
+          {
+            "group": "Request",
+            "type": "String",
+            "optional": true,
+            "field": "Auth/UserPassword",
+            "description": "<p>Users password    (required with Auth/UserId)</p> "
+          },
+          {
+            "group": "Request",
+            "type": "String",
+            "optional": true,
+            "field": "Auth/UserToken",
+            "description": "<p>Users auth token (see AssociateUserToPMS call to generate a Token)</p> "
+          },
+          {
+            "group": "Request",
+            "type": "String",
+            "optional": false,
+            "field": "Auth/PropertyId",
+            "description": "<p>Property ID on myallocator.com</p> "
+          },
+          {
+            "group": "Request",
+            "type": "String",
+            "optional": false,
+            "field": "Auth/VendorId",
+            "description": "<p>Your Vendor ID</p> "
+          },
+          {
+            "group": "Request",
+            "type": "String",
+            "optional": false,
+            "field": "Auth/VendorPassword",
+            "description": "<p>Your Vendor Password</p> "
+          }
+        ]
+      }
+    },
+    "examples": [
+      {
+        "title": "XML Request",
+        "content": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<PropertyImageList>\n <Auth>\n   <UserId>Customer User ID</UserId>\n   <UserPassword>Customer Password</UserPassword>\n   <PropertyId>Property ID on myallocator.com</PropertyId>\n   <VendorId>Your Vendor ID</VendorId>\n   <VendorPassword>Your Vendor Password</VendorPassword>\n </Auth>\n</PropertyImageList>",
+        "type": "json"
+      },
+      {
+        "title": "JSON Request",
+        "content": "{\n    \"Auth/VendorId\":\"Your Vendor ID\",\n    \"Auth/VendorPassword\":\"Your Vendor Password\",\n    \"Auth/UserId\":\"Login on myallocator.com\",\n    \"Auth/UserPassword\":\"Password for myallocator.com\",\n    \"Auth/PropertyId\":\"Property ID on myallocator.com\",\n}",
+        "type": "json"
+      }
+    ],
+    "success": {
+      "fields": {
+        "Response": [
+          {
+            "group": "Response",
+            "type": "String",
+            "optional": false,
+            "field": "Id",
+            "description": "<p>The property image ID which will reference the property image.</p> "
+          },
+          {
+            "group": "Response",
+            "type": "String",
+            "optional": false,
+            "field": "SavedFilename",
+            "description": "<p>Filename in our system</p> "
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "XML Response",
+          "content": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<PropertyImageListResponse>\n <PropertyImages>\n   <PropertyImage>\n     <ImageId>343</ImageId>\n     <SavedFilename>d4790aaafdf4512dad0c4f2eafe72946.png</SavedFilename>\n   </PropertyImage>\n\n   <PropertyImage>\n     <ImageId>344</ImageId>\n     <SavedFilename>a92714654b7486ba6ca010f23bf4c0b6.jpg</SavedFilename>\n   </PropertyImage>\n  </PropertyImages>\n</PropertyImageListResponse>",
+          "type": "json"
+        },
+        {
+          "title": "JSON Response",
+          "content": "{\n  \"PropertyImages\" : [\n    {\n      \"URL\" : \"https://inbox.myallocator.com/n/user_image.xt?pid=4304&img=01D0FAB8-5BF6-11E5-8767-3120FD8AEA94.jpg\",\n      \"Thumbnail\" : \"https://inbox.myallocator.com/n/user_image_tb.xt?pid=4304&img=01D0FAB8-5BF6-11E5-8767-3120FD8AEA94.jpg\",\n      \"ImageId\" : \"343\",\n      \"SavedFilename\" : \"01D0FAB8-5BF6-11E5-8767-3120FD8AEA94.jpg\"\n    },\n    {\n      \"URL\" : \"https://inbox.myallocator.com/n/user_image.xt?pid=4304&img=4257D9FE-687A-11E5-B908-DDCC3C83E8DD.jpg\",\n      \"Thumbnail\" : \"https://inbox.myallocator.com/n/user_image_tb.xt?pid=4304&img=4257D9FE-687A-11E5-B908-DDCC3C83E8DD.jpg\",\n      \"ImageId\" : \"466\",\n      \"SavedFilename\" : \"4257D9FE-687A-11E5-B908-DDCC3C83E8DD.jpg\"\n    }\n  ]\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "perllib/MAAPI.pm",
+    "groupTitle": "PMS"
+  },
+  {
+    "type": "get",
+    "url": "/PropertyImageRemove",
+    "title": "PropertyImageRemove",
+    "name": "PropertyImageRemove",
+    "version": "201501.0.0",
+    "group": "PMS",
+    "description": "<p>Remove a property image.</p> ",
+    "parameter": {
+      "fields": {
+        "Request": [
+          {
+            "group": "Request",
+            "type": "String",
+            "optional": true,
+            "field": "Auth/UserId",
+            "description": "<p>Users unique ID   (required with Auth/UserPassword)</p> "
+          },
+          {
+            "group": "Request",
+            "type": "String",
+            "optional": true,
+            "field": "Auth/UserPassword",
+            "description": "<p>Users password    (required with Auth/UserId)</p> "
+          },
+          {
+            "group": "Request",
+            "type": "String",
+            "optional": true,
+            "field": "Auth/UserToken",
+            "description": "<p>Users auth token (see AssociateUserToPMS call to generate a Token)</p> "
+          },
+          {
+            "group": "Request",
+            "type": "String",
+            "optional": false,
+            "field": "Auth/PropertyId",
+            "description": "<p>Property ID on myallocator.com</p> "
+          },
+          {
+            "group": "Request",
+            "type": "String",
+            "optional": false,
+            "field": "Auth/VendorId",
+            "description": "<p>Your Vendor ID</p> "
+          },
+          {
+            "group": "Request",
+            "type": "String",
+            "optional": false,
+            "field": "Auth/VendorPassword",
+            "description": "<p>Your Vendor Password</p> "
           },
           {
             "group": "Request",
@@ -2436,64 +2483,31 @@ define({ "api": [
     },
     "examples": [
       {
-        "title": "XML Request:",
-        "content": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<PropertyImageCreate>\n <Auth>\n   <UserId>Customer User ID</UserId>\n   <UserPassword>Customer Password</UserPassword>\n   <PropertyId>Property ID on myallocator.com</PropertyId>\n   <VendorId>Your Vendor ID</VendorId>\n   <VendorPassword>Your Vendor Password</VendorPassword>\n </Auth>\n <CreatePropertyImage>\n   <PropertyImage>\n     <Filename>double-room.jpg</Filename>\n     <Data>oAAAANSUhEUgAAG2QAABPqCAYAAA[...]</Data>\n   </PropertyImage>\n </CreatePropertyImage>\n</PropertyImageCreate>",
+        "title": "JSON Request (single property image)",
+        "content": "{\n    \"Auth/VendorId\":\"Your Vendor ID\",\n    \"Auth/VendorPassword\":\"Your Vendor Password\",\n    \"Auth/UserId\":\"Login on myallocator.com\",\n    \"Auth/UserPassword\":\"Password for myallocator.com\",\n    \"Auth/PropertyId\":\"Property ID on myallocator.com\",\n    'PropertyImage':{ 'PropertyImageId':### }\n}",
         "type": "json"
       },
       {
-        "title": "JSON Request:",
-        "content": "{\n    \"Auth/VendorId\":\"Your Vendor ID\",\n    \"Auth/VendorPassword\":\"Your Vendor Password\",\n    \"Auth/UserId\":\"Login on myallocator.com\",\n    \"Auth/UserPassword\":\"Password for myallocator.com\",\n    \"Auth/PropertyId\":\"Property ID on myallocator.com\",\n    \"PropertyImages\": [\n      {\n        \"Filename\": \"double-room.jpg\",\n        \"Data\": \"oAAAANSUhEUgAAG2QAABPqCAYAAA[...]\"\n      }\n    ]\n}",
+        "title": "JSON Request (multiple property images)",
+        "content": "{\n    \"Auth/VendorId\":\"Your Vendor ID\",\n    \"Auth/VendorPassword\":\"Your Vendor Password\",\n    \"Auth/UserId\":\"Login on myallocator.com\",\n    \"Auth/UserPassword\":\"Password for myallocator.com\",\n    \"Auth/PropertyId\":\"Property ID on myallocator.com\",\n    'PropertyImages': [\n        { 'PropertyImageId':## },\n        { 'PropertyImageId':## }\n    ]\n}",
+        "type": "json"
+      },
+      {
+        "title": "XML Request",
+        "content": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<PropertyImageRemove>\n <Auth>\n   <UserId>Customer User ID</UserId>\n   <UserPassword>Customer Password</UserPassword>\n   <PropertyId>Property ID on myallocator.com</PropertyId>\n   <VendorId>Your Vendor ID</VendorId>\n   <VendorPassword>Your Vendor Password</VendorPassword>\n </Auth>\n <RemovePropertyImages>\n   <PropertyImageIds>\n     <PropertyImageId>35</PropertyImageId>\n     <PropertyImageId>36</PropertyImageId>\n   </PropertyImageIds>\n </RemovePropertyImages>\n</PropertyImageRemove>",
         "type": "json"
       }
     ],
     "success": {
-      "fields": {
-        "XML": [
-          {
-            "group": "XML",
-            "type": "String",
-            "optional": false,
-            "field": "Filename",
-            "description": "<p>Will be replaced by us with a random string, but the extension is taken from this filename</p> "
-          },
-          {
-            "group": "XML",
-            "type": "String",
-            "optional": false,
-            "field": "Data",
-            "description": "<p>Base64 encoded raw image data</p> "
-          }
-        ]
-      },
       "examples": [
         {
-          "title": "XML Response (creating a proeprty image):",
-          "content": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<CreatePropertyImageResponse>\n <Success>true</Success>\n <PropertyImage>\n    <PropertyImageId>423</PropertyImageId>\n    <SavedFilename>576421558171c7f5054966d6b637c37e.jpg</SavedFilename>\n </PropertyImage>\n</CreatePropertyImageResponse>",
-          "type": "json"
-        },
-        {
-          "title": "JSON Response (creating a property image)",
-          "content": "{\n  \"Method\": \"PropertyImageCreate\",\n  \"PropertyImage\": {\n    \"PropertyImageId\": 423,\n    \"SavedFilename\": \"576421558171c7f5054966d6b637c37e.jpg\"\n  },\n  \"Success\": true\n}",
-          "type": "json"
-        },
-        {
-          "title": "JSON Request (Remove single property image)",
-          "content": "{\n    'Auth/UserId':'',\n    'Auth/UserPassword':'',\n    'Auth/VendorId':'',\n    'Auth/VendorPassword':'',\n    'PropertyImage':{ 'PropertyImageId':### }\n}",
-          "type": "json"
-        },
-        {
-          "title": "JSON Request (Remove multiple property images)",
-          "content": "{\n    'Auth/UserId':'',\n    'Auth/Userassword':'',\n    'Auth/VendorId':'',\n    'Auth/VendorPassword':'',\n    'PropertyImages': [\n        { 'PropertyImageId':## },\n        { 'PropertyImageId':## }\n        ]\n}",
-          "type": "json"
-        },
-        {
-          "title": "XML Request (Removing a property image)",
-          "content": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<PropertyImageRemove>\n <Auth>\n   <UserId>Customer User ID</UserId>\n   <UserPassword>Customer Password</UserPassword>\n   <PropertyId>Property ID on myallocator.com</PropertyId>\n   <VendorId>Your Vendor ID</VendorId>\n   <VendorPassword>Your Vendor Password</VendorPassword>\n </Auth>\n <RemovePropertyImages>\n   <PropertyImageIds>\n     <PropertyImageId>35</PropertyImageId>\n     <PropertyImageId>36</PropertyImageId>\n   </PropertyImageIds>\n </RemovePropertyImages>\n</PropertyImageRemove>",
-          "type": "json"
-        },
-        {
-          "title": "XML Response PropertyImageRemoveResponse (Success)",
+          "title": "XML Response",
           "content": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<PropertyImageRemoveResponse>\n  <Success>true</Success>\n</PropertyImageRemoveResponse>",
+          "type": "json"
+        },
+        {
+          "title": "JSON Response",
+          "content": "{\n    \"Method\" : \"PropertyImageRemove\",\n    \"Success\" : true\n}",
           "type": "json"
         }
       ]
@@ -3127,112 +3141,12 @@ define({ "api": [
   },
   {
     "type": "get",
-    "url": "/RoomImageList",
-    "title": "RoomImageList",
-    "name": "RoomImageList",
+    "url": "/RoomImageCreate",
+    "title": "RoomImageCreate",
+    "name": "RoomImageCreate",
     "version": "201501.0.0",
     "group": "PMS",
-    "description": "<p>Returns a list of uploaded images by room type.</p> ",
-    "parameter": {
-      "fields": {
-        "Request": [
-          {
-            "group": "Request",
-            "type": "String",
-            "optional": true,
-            "field": "Auth/UserId",
-            "description": "<p>Users unique ID   (required with Auth/UserPassword)</p> "
-          },
-          {
-            "group": "Request",
-            "type": "String",
-            "optional": true,
-            "field": "Auth/UserPassword",
-            "description": "<p>Users password    (required with Auth/UserId)</p> "
-          },
-          {
-            "group": "Request",
-            "type": "String",
-            "optional": true,
-            "field": "Auth/UserToken",
-            "description": "<p>Users auth token (see AssociateUserToPMS call to generate a Token)</p> "
-          },
-          {
-            "group": "Request",
-            "type": "String",
-            "optional": false,
-            "field": "Auth/PropertyId",
-            "description": "<p>Property ID on myallocator.com</p> "
-          },
-          {
-            "group": "Request",
-            "type": "String",
-            "optional": false,
-            "field": "Auth/VendorId",
-            "description": "<p>Your Vendor ID</p> "
-          },
-          {
-            "group": "Request",
-            "type": "String",
-            "optional": false,
-            "field": "Auth/VendorPassword",
-            "description": "<p>Your Vendor Password</p> "
-          }
-        ]
-      }
-    },
-    "examples": [
-      {
-        "title": "XML RoomImageList Request",
-        "content": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<RoomImageList>\n <Auth>\n   <UserId>Customer User ID</UserId>\n   <UserPassword>Customer Password</UserPassword>\n   <PropertyId>Property ID on myallocator.com</PropertyId>\n   <VendorId>Your Vendor ID</VendorId>\n   <VendorPassword>Your Vendor Password</VendorPassword>\n </Auth>\n</RoomImageList>",
-        "type": "json"
-      }
-    ],
-    "success": {
-      "fields": {
-        "XML": [
-          {
-            "group": "XML",
-            "type": "String",
-            "optional": false,
-            "field": "Id",
-            "description": "<p>The room image ID which will reference the room image.</p> "
-          },
-          {
-            "group": "XML",
-            "type": "String",
-            "optional": false,
-            "field": "RoomId",
-            "description": "<p>Room that the image is stored for</p> "
-          },
-          {
-            "group": "XML",
-            "type": "String",
-            "optional": false,
-            "field": "SavedFilename",
-            "description": "<p>Filename in our system</p> "
-          }
-        ]
-      },
-      "examples": [
-        {
-          "title": "XML RoomImageList Success Response:",
-          "content": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<RoomImageListResponse>\n <RoomImages>\n   <RoomImage>\n     <ImageId>343</ImageId>\n     <RoomId>49</RoomId>\n     <SavedFilename>d4790aaafdf4512dad0c4f2eafe72946.png</SavedFilename>\n   </RoomImage>\n\n   <RoomImage>\n     <ImageId>344</ImageId>\n     <RoomId>49</RoomId>\n     <SavedFilename>a92714654b7486ba6ca010f23bf4c0b6.jpg</SavedFilename>\n   </RoomImage>\n  </RoomImages>\n</RoomImageListResponse>",
-          "type": "json"
-        }
-      ]
-    },
-    "filename": "perllib/MAAPI.pm",
-    "groupTitle": "PMS"
-  },
-  {
-    "type": "get",
-    "url": "/RoomImageRemove",
-    "title": "RoomImageRemove",
-    "name": "RoomImageRemove",
-    "version": "201501.0.0",
-    "group": "PMS",
-    "description": "<p>Remove a room type image</p> ",
+    "description": "<p>This method allows you to create or remove room type images on myallocator.com. Please note that you can only send a single RoomImageCreate or RoomImageRemove</p> ",
     "parameter": {
       "fields": {
         "Request": [
@@ -3298,41 +3212,34 @@ define({ "api": [
             "optional": false,
             "field": "Data",
             "description": "<p>Base64 encoded raw image data</p> "
-          },
-          {
-            "group": "Request",
-            "type": "String",
-            "optional": false,
-            "field": "RoomImageId",
-            "description": "<p>of image to be removed.</p> "
           }
         ]
       }
     },
     "examples": [
       {
-        "title": "XML Request:",
-        "content": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<RoomImageCreate>\n <Auth>\n   <UserId>Customer User ID</UserId>\n   <UserPassword>Customer Password</UserPassword>\n   <PropertyId>Property ID on myallocator.com</PropertyId>\n   <VendorId>Your Vendor ID</VendorId>\n   <VendorPassword>Your Vendor Password</VendorPassword>\n </Auth>\n <CreateRoomImage>\n   <RoomImage>\n     <RoomId>5532</RoomId>\n     <Filename>double-room.jpg</Filename>\n     <Data>oAAAANSUhEUgAAG2QAABPqCAYAAA[...]</Data>\n   </RoomImage>\n </CreateRoomImage>\n</RoomImageCreate>",
+        "title": "XML Request",
+        "content": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<RoomImageCreate>\n <Auth>\n   <UserId>Customer User ID</UserId>\n   <UserPassword>Customer Password</UserPassword>\n   <PropertyId>Property ID on myallocator.com</PropertyId>\n   <VendorId>Your Vendor ID</VendorId>\n   <VendorPassword>Your Vendor Password</VendorPassword>\n </Auth>\n <CreateRoomImage>\n   <RoomImages>\n     <RoomImage>\n       <RoomId>5532</RoomId>\n       <Filename>double-room.jpg</Filename>\n       <Data>oAAAANSUhEUgAAG2QAABPqCAYAAA[...]</Data>\n     </RoomImage>\n   </RoomImages>\n </CreateRoomImage>\n</RoomImageCreate>",
         "type": "json"
       },
       {
-        "title": "JSON Request:",
+        "title": "JSON Request",
         "content": "{\n    \"Auth/VendorId\":\"Your Vendor ID\",\n    \"Auth/VendorPassword\":\"Your Vendor Password\",\n    \"Auth/UserId\":\"Login on myallocator.com\",\n    \"Auth/UserPassword\":\"Password for myallocator.com\",\n    \"Auth/PropertyId\":\"Property ID on myallocator.com\",\n    \"RoomImages\": [\n      {\n        \"RoomId\": 5532,\n        \"Filename\": \"double-room.jpg\",\n        \"Data\": \"oAAAANSUhEUgAAG2QAABPqCAYAAA[...]\"\n      }\n    ]\n}",
         "type": "json"
       }
     ],
     "success": {
       "fields": {
-        "XML": [
+        "Response": [
           {
-            "group": "XML",
+            "group": "Response",
             "type": "String",
             "optional": false,
             "field": "Filename",
             "description": "<p>Will be replaced by us with a random string, but the extension is taken from this filename</p> "
           },
           {
-            "group": "XML",
+            "group": "Response",
             "type": "String",
             "optional": false,
             "field": "Data",
@@ -3342,33 +3249,123 @@ define({ "api": [
       },
       "examples": [
         {
-          "title": "XML Response (creating a room image):",
-          "content": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<CreateRoomImageResponse>\n <Success>true</Success>\n <RoomImage>\n    <RoomImageId>423</RoomImageId>\n    <SavedFilename>576421558171c7f5054966d6b637c37e.jpg</SavedFilename>\n </RoomImage>\n</CreateRoomImageResponse>",
+          "title": "XML Response",
+          "content": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<CreateRoomImageResponse>\n  <Success>true</Success>\n  <RoomImages>\n    <RoomImage>\n      <RoomImageId>423</RoomImageId>\n      <SavedFilename>576421558171c7f5054966d6b637c37e.jpg</SavedFilename>\n    </RoomImage>\n  </RoomImage>\n</CreateRoomImageResponse>",
           "type": "json"
         },
         {
-          "title": "JSON Response (creating a room image)",
+          "title": "JSON Response",
           "content": "{\n  \"Method\": \"RoomImageCreate\",\n  \"RoomImage\": {\n    \"RoomImageId\": 423,\n    \"SavedFilename\": \"576421558171c7f5054966d6b637c37e.jpg\"\n  },\n  \"Success\": true\n}",
           "type": "json"
-        },
+        }
+      ]
+    },
+    "filename": "perllib/MAAPI.pm",
+    "groupTitle": "PMS"
+  },
+  {
+    "type": "get",
+    "url": "/RoomImageList",
+    "title": "RoomImageList",
+    "name": "RoomImageList",
+    "version": "201501.0.0",
+    "group": "PMS",
+    "description": "<p>Returns a list of uploaded images by room type.</p> ",
+    "parameter": {
+      "fields": {
+        "Request": [
+          {
+            "group": "Request",
+            "type": "String",
+            "optional": true,
+            "field": "Auth/UserId",
+            "description": "<p>Users unique ID   (required with Auth/UserPassword)</p> "
+          },
+          {
+            "group": "Request",
+            "type": "String",
+            "optional": true,
+            "field": "Auth/UserPassword",
+            "description": "<p>Users password    (required with Auth/UserId)</p> "
+          },
+          {
+            "group": "Request",
+            "type": "String",
+            "optional": true,
+            "field": "Auth/UserToken",
+            "description": "<p>Users auth token (see AssociateUserToPMS call to generate a Token)</p> "
+          },
+          {
+            "group": "Request",
+            "type": "String",
+            "optional": false,
+            "field": "Auth/PropertyId",
+            "description": "<p>Property ID on myallocator.com</p> "
+          },
+          {
+            "group": "Request",
+            "type": "String",
+            "optional": false,
+            "field": "Auth/VendorId",
+            "description": "<p>Your Vendor ID</p> "
+          },
+          {
+            "group": "Request",
+            "type": "String",
+            "optional": false,
+            "field": "Auth/VendorPassword",
+            "description": "<p>Your Vendor Password</p> "
+          }
+        ]
+      }
+    },
+    "examples": [
+      {
+        "title": "XML Request",
+        "content": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<RoomImageList>\n <Auth>\n   <UserId>Customer User ID</UserId>\n   <UserPassword>Customer Password</UserPassword>\n   <PropertyId>Property ID on myallocator.com</PropertyId>\n   <VendorId>Your Vendor ID</VendorId>\n   <VendorPassword>Your Vendor Password</VendorPassword>\n </Auth>\n</RoomImageList>",
+        "type": "json"
+      },
+      {
+        "title": "JSON Request",
+        "content": "{\n    \"Auth/VendorId\":\"Your Vendor ID\",\n    \"Auth/VendorPassword\":\"Your Vendor Password\",\n    \"Auth/UserId\":\"Login on myallocator.com\",\n    \"Auth/UserPassword\":\"Password for myallocator.com\",\n    \"Auth/PropertyId\":\"Property ID on myallocator.com\",\n}",
+        "type": "json"
+      }
+    ],
+    "success": {
+      "fields": {
+        "Response": [
+          {
+            "group": "Response",
+            "type": "String",
+            "optional": false,
+            "field": "Id",
+            "description": "<p>The room image ID which will reference the room image.</p> "
+          },
+          {
+            "group": "Response",
+            "type": "String",
+            "optional": false,
+            "field": "RoomId",
+            "description": "<p>Room that the image is stored for</p> "
+          },
+          {
+            "group": "Response",
+            "type": "String",
+            "optional": false,
+            "field": "SavedFilename",
+            "description": "<p>Filename in our system</p> "
+          }
+        ]
+      },
+      "examples": [
         {
-          "title": "JSON Request (Remove single room image)",
-          "content": "{\n    'Auth/UserId':'',\n    'Auth/UserPassword':'',\n    'Auth/VendorId':'',\n    'Auth/VendorPassword':'',\n    'RoomImage':{ 'RoomImageId':### }\n}",
+          "title": "XML Response",
+          "content": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<RoomImageListResponse>\n <RoomImages>\n   <RoomImage>\n     <ImageId>343</ImageId>\n     <RoomId>49</RoomId>\n     <SavedFilename>d4790aaafdf4512dad0c4f2eafe72946.png</SavedFilename>\n   </RoomImage>\n\n   <RoomImage>\n     <ImageId>344</ImageId>\n     <RoomId>49</RoomId>\n     <SavedFilename>a92714654b7486ba6ca010f23bf4c0b6.jpg</SavedFilename>\n   </RoomImage>\n  </RoomImages>\n</RoomImageListResponse>",
           "type": "json"
         },
         {
-          "title": "JSON Request (Remove multiple room images)",
-          "content": "{\n    'Auth/UserId':'',\n    'Auth/Userassword':'',\n    'Auth/VendorId':'',\n    'Auth/VendorPassword':'',\n    'RoomImages': [\n        { 'RoomImageId':## },\n        { 'RoomImageId':## }\n        ]\n}",
-          "type": "json"
-        },
-        {
-          "title": "XML Request (Removing a room image)",
-          "content": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<RoomImageRemove>\n <Auth>\n   <UserId>Customer User ID</UserId>\n   <UserPassword>Customer Password</UserPassword>\n   <PropertyId>Property ID on myallocator.com</PropertyId>\n   <VendorId>Your Vendor ID</VendorId>\n   <VendorPassword>Your Vendor Password</VendorPassword>\n </Auth>\n <RemoveRoomImages>\n   <RoomImageIds>\n     <RoomImageId>35</RoomImageId>\n     <RoomImageId>36</RoomImageId>\n   </RoomImageIds>\n </RemoveRoomImages>\n</RoomImageRemove>",
-          "type": "json"
-        },
-        {
-          "title": "XML Response RoomImageRemoveResponse (Success)",
-          "content": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<RoomImageRemoveResponse>\n  <Success>true</Success>\n</RoomImageRemoveResponse>",
+          "title": "JSON Response",
+          "content": "{\n    \"RoomImages\" : [\n        {\n            \"URL\" : \"https://inbox.myallocator.com/n/user_image.xt?pid=4304&img=64CC674C-5AFC-11E5-8C0B-1DCDF6E4DDB5.jpg\",\n            \"RoomId\" : \"23651\",\n            \"Thumbnail\" : \"https://inbox.myallocator.com/n/user_image_tb.xt?pid=4304&img=64CC674C-5AFC-11E5-8C0B-1DCDF6E4DDB5.jpg\",\n            \"ImageId\" : \"3221\",\n            \"SavedFilename\" : \"64CC674C-5AFC-11E5-8C0B-1DCDF6E4DDB5.jpg\"\n        },\n        {\n            \"URL\" : \"https://inbox.myallocator.com/n/user_image.xt?pid=4304&img=AF559588-5B04-11E5-A038-10A36E043024.jpg\",\n            \"RoomId\" : \"22905\",\n            \"Thumbnail\" : \"https://inbox.myallocator.com/n/user_image_tb.xt?pid=4304&img=AF559588-5B04-11E5-A038-10A36E043024.jpg\",\n            \"ImageId\" : \"3222\",\n            \"SavedFilename\" : \"AF559588-5B04-11E5-A038-10A36E043024.jpg\"\n        }\n    ]\n}",
           "type": "json"
         }
       ]
@@ -4072,7 +4069,7 @@ define({ "api": [
     "title": "Version History",
     "name": "Version_History",
     "version": "201501.0.0",
-    "description": "<table> <thead> <tr> <th>Date</th> <th>Version</th> <th>Change</th> </tr> </thead> <tbody> <tr> <td>2015-07-24</td> <td>201501.0.11</td> <td>added BookingPaymentPasswordValidate</td> </tr> <tr> <td>2015-07-09</td> <td>201501.0.10</td> <td>added IncludeArchived to BookingList</td> </tr> <tr> <td>2015-05-27</td> <td>201501.0.9</td> <td>new BookingList parameters ModificationStartDateTime, ModificationEndDateTime, CreationStartDateTime, CreationEndDateTime</td> </tr> <tr> <td>2015-05-18</td> <td>201501.0.8</td> <td>new BookingAction commands</td> </tr> <tr> <td>2015-03-20</td> <td>201501.0.7</td> <td>Corrected explanation of Units on RoomCreate (thanks Petr T.)</td> </tr> <tr> <td>2015-02-19</td> <td>201501.0.6</td> <td>Add Options.NormalizeToCurrency to BookingList</td> </tr> <tr> <td>2015-02-19</td> <td>201501.0.5</td> <td>Added more documentation to Booking Samples</td> </tr> <tr> <td>2015-02-03</td> <td>201501.0.4</td> <td>Added .Options.IgnoreInvalidRooms to MAAPI</td> </tr> <tr> <td>2015-02-02</td> <td>201501.0.3</td> <td>Improved documentation for multiple overlapping Allocations in ARIUpdate</td> </tr> <tr> <td>2015-01-22</td> <td>201501.0.2</td> <td>Improved documentation with Booking samples</td> </tr> <tr> <td>2015-01-09</td> <td>201501.0.1</td> <td>Initial release of 201501[beta] (new functions: PropertyDetail, ARIRules)</td> </tr> <tr> <td>2015-01-08</td> <td>201408.0.13</td> <td>Corrected validation logic issue with ARIUpdate (properly validates Rooms)</td> </tr> <tr> <td>2015-01-07</td> <td>201408.0.12</td> <td>Corrected issue with AssociateUserToPMS requiring Auth/PropertyId</td> </tr> <tr> <td>2015-01-06</td> <td>201408.0.11</td> <td>Modified FailIfUpdateActive default to &quot;false&quot;</td> </tr> <tr> <td>2015-01-05</td> <td>201408.0.10</td> <td>fixed doc, Price-Weekend is &quot;PriceWeekend&quot;</td> </tr> <tr> <td>2015-01-05</td> <td>201408.0.9</td> <td>added JSON raw input mode - application/json</td> </tr> <tr> <td>2014-12-28</td> <td>201408.0.8</td> <td>added Auth/Debug</td> </tr> <tr> <td>2014-12-28</td> <td>201408.0.7</td> <td>fixed bug in ARIUpdate where zero unit updates would not be applied</td> </tr> <tr> <td>2014-12-26</td> <td>201408.0.6</td> <td>added more documentation to ChannelList and curl example to HelloWorld</td> </tr> <tr> <td>2014-12-24</td> <td>201408.0.5</td> <td>added error logging with ticket responses</td> </tr> <tr> <td>2014-12-23</td> <td>201408.0.4</td> <td>added VendorId to various docs, and propertyid, unified error handling</td> </tr> <tr> <td>2014-12-19</td> <td>201408.0.3</td> <td>fixed bug in RoomCreate (did not return RoomId)</td> </tr> <tr> <td>2014-12-15</td> <td>201408.0.2</td> <td>renamed LoopBookingAction into BookingAction</td> </tr> <tr> <td>2014-12-04</td> <td>201408.0.1</td> <td>initial release of new API</td> </tr> <tr> <td>2012-10-24</td> <td>1.6.2</td> <td>Updated booking information (new: CommissionIncludedInTotal).</td> </tr> <tr> <td>2012-10-24</td> <td>1.6.1</td> <td>Updated booking information and updated channel list (new: eb,air, orb, boo, tra).</td> </tr> <tr> <td>2012-10-24</td> <td>1.6</td> <td>New feature Booking Callback and updated channel list (new: max).</td> </tr> <tr> <td>2012-09-20</td> <td>1.5.2</td> <td>Updated channel list (new: exp, ysh, eb). Get/Set property country.</td> </tr> <tr> <td>2012-07-04</td> <td>1.5.1</td> <td>Updated channel list. Added MinStay/MaxStay example.</td> </tr> <tr> <td>2011-09-17</td> <td>1.5</td> <td>New method SetRoomTypes to add/update/remove rooms.</td> </tr> <tr> <td>2011-09-17</td> <td>1.4.1</td> <td>GetBookings: Minor correction regarding the end date. It&#39;s not the departure date but rather the departure date - 1.</td> </tr> <tr> <td>2011-01-15</td> <td>1.4</td> <td>New methods SetAllocation (non-blocking), SetLogin, GetUpdateStatus, GetBookings. Support for MinStay and MaxStay.</td> </tr> <tr> <td>2010-11-09</td> <td>1.3.1</td> <td>Updated channel list. GetRoomTypes: Obsoleted &quot;Ensuite&quot;, &quot;DoubleBed&quot; and &quot;Beds&quot; (replaced by new property &quot;Occupancy&quot;). GetProperties: shows which days are configure for weekends.</td> </tr> <tr> <td>2010-05-30</td> <td>1.3</td> <td>GetRoomTypes includes a room description (Label). Removed need to list channels to update to and ability to exclude channels. Skipped channels now warnings rather than errors.</td> </tr> <tr> <td>2010-05-05</td> <td>1.2</td> <td>Added links to XML samples. New channel: hb</td> </tr> <tr> <td>2010-04-30</td> <td>1.1</td> <td>Changed Room to \\textit{RoomType} to clarify matters</td> </tr> <tr> <td>2010-04-27</td> <td>1.0</td> <td>Initial release</td> </tr> </tbody> </table> <hr> <p>v201501 : ARIRules,  v201408 : new JSON format, all call names switched to NounPronounVerb format. v1 : the original api (which didn&#39;t support versioning)</p> ",
+    "description": "<table> <thead> <tr> <th>Date</th> <th>Version</th> <th>Change</th> </tr> </thead> <tbody> <tr> <td>2015-10-01</td> <td>201501.0.12</td> <td>Fix various documentation issues</td> </tr> <tr> <td>2015-07-24</td> <td>201501.0.11</td> <td>added BookingPaymentPasswordValidate</td> </tr> <tr> <td>2015-07-09</td> <td>201501.0.10</td> <td>added IncludeArchived to BookingList</td> </tr> <tr> <td>2015-05-27</td> <td>201501.0.9</td> <td>new BookingList parameters ModificationStartDateTime, ModificationEndDateTime, CreationStartDateTime, CreationEndDateTime</td> </tr> <tr> <td>2015-05-18</td> <td>201501.0.8</td> <td>new BookingAction commands</td> </tr> <tr> <td>2015-03-20</td> <td>201501.0.7</td> <td>Corrected explanation of Units on RoomCreate (thanks Petr T.)</td> </tr> <tr> <td>2015-02-19</td> <td>201501.0.6</td> <td>Add Options.NormalizeToCurrency to BookingList</td> </tr> <tr> <td>2015-02-19</td> <td>201501.0.5</td> <td>Added more documentation to Booking Samples</td> </tr> <tr> <td>2015-02-03</td> <td>201501.0.4</td> <td>Added .Options.IgnoreInvalidRooms to MAAPI</td> </tr> <tr> <td>2015-02-02</td> <td>201501.0.3</td> <td>Improved documentation for multiple overlapping Allocations in ARIUpdate</td> </tr> <tr> <td>2015-01-22</td> <td>201501.0.2</td> <td>Improved documentation with Booking samples</td> </tr> <tr> <td>2015-01-09</td> <td>201501.0.1</td> <td>Initial release of 201501[beta] (new functions: PropertyDetail, ARIRules)</td> </tr> <tr> <td>2015-01-08</td> <td>201408.0.13</td> <td>Corrected validation logic issue with ARIUpdate (properly validates Rooms)</td> </tr> <tr> <td>2015-01-07</td> <td>201408.0.12</td> <td>Corrected issue with AssociateUserToPMS requiring Auth/PropertyId</td> </tr> <tr> <td>2015-01-06</td> <td>201408.0.11</td> <td>Modified FailIfUpdateActive default to &quot;false&quot;</td> </tr> <tr> <td>2015-01-05</td> <td>201408.0.10</td> <td>fixed doc, Price-Weekend is &quot;PriceWeekend&quot;</td> </tr> <tr> <td>2015-01-05</td> <td>201408.0.9</td> <td>added JSON raw input mode - application/json</td> </tr> <tr> <td>2014-12-28</td> <td>201408.0.8</td> <td>added Auth/Debug</td> </tr> <tr> <td>2014-12-28</td> <td>201408.0.7</td> <td>fixed bug in ARIUpdate where zero unit updates would not be applied</td> </tr> <tr> <td>2014-12-26</td> <td>201408.0.6</td> <td>added more documentation to ChannelList and curl example to HelloWorld</td> </tr> <tr> <td>2014-12-24</td> <td>201408.0.5</td> <td>added error logging with ticket responses</td> </tr> <tr> <td>2014-12-23</td> <td>201408.0.4</td> <td>added VendorId to various docs, and propertyid, unified error handling</td> </tr> <tr> <td>2014-12-19</td> <td>201408.0.3</td> <td>fixed bug in RoomCreate (did not return RoomId)</td> </tr> <tr> <td>2014-12-15</td> <td>201408.0.2</td> <td>renamed LoopBookingAction into BookingAction</td> </tr> <tr> <td>2014-12-04</td> <td>201408.0.1</td> <td>initial release of new API</td> </tr> <tr> <td>2012-10-24</td> <td>1.6.2</td> <td>Updated booking information (new: CommissionIncludedInTotal).</td> </tr> <tr> <td>2012-10-24</td> <td>1.6.1</td> <td>Updated booking information and updated channel list (new: eb,air, orb, boo, tra).</td> </tr> <tr> <td>2012-10-24</td> <td>1.6</td> <td>New feature Booking Callback and updated channel list (new: max).</td> </tr> <tr> <td>2012-09-20</td> <td>1.5.2</td> <td>Updated channel list (new: exp, ysh, eb). Get/Set property country.</td> </tr> <tr> <td>2012-07-04</td> <td>1.5.1</td> <td>Updated channel list. Added MinStay/MaxStay example.</td> </tr> <tr> <td>2011-09-17</td> <td>1.5</td> <td>New method SetRoomTypes to add/update/remove rooms.</td> </tr> <tr> <td>2011-09-17</td> <td>1.4.1</td> <td>GetBookings: Minor correction regarding the end date. It&#39;s not the departure date but rather the departure date - 1.</td> </tr> <tr> <td>2011-01-15</td> <td>1.4</td> <td>New methods SetAllocation (non-blocking), SetLogin, GetUpdateStatus, GetBookings. Support for MinStay and MaxStay.</td> </tr> <tr> <td>2010-11-09</td> <td>1.3.1</td> <td>Updated channel list. GetRoomTypes: Obsoleted &quot;Ensuite&quot;, &quot;DoubleBed&quot; and &quot;Beds&quot; (replaced by new property &quot;Occupancy&quot;). GetProperties: shows which days are configure for weekends.</td> </tr> <tr> <td>2010-05-30</td> <td>1.3</td> <td>GetRoomTypes includes a room description (Label). Removed need to list channels to update to and ability to exclude channels. Skipped channels now warnings rather than errors.</td> </tr> <tr> <td>2010-05-05</td> <td>1.2</td> <td>Added links to XML samples. New channel: hb</td> </tr> <tr> <td>2010-04-30</td> <td>1.1</td> <td>Changed Room to \\textit{RoomType} to clarify matters</td> </tr> <tr> <td>2010-04-27</td> <td>1.0</td> <td>Initial release</td> </tr> </tbody> </table> <hr> <p>v201501 : ARIRules,  v201408 : new JSON format, all call names switched to NounPronounVerb format. v1 : the original api (which didn&#39;t support versioning)</p> ",
     "filename": "perllib/MAAPI.pm",
     "groupTitle": ""
   },
