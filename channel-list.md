@@ -10,10 +10,12 @@ Created: $date
 | loc | myallocator.com only | 2 years | Specify this channel if you _only_ want to update to myallocator.com. Submitting to any
 | 9fl | 9flats | 2 years |  |
 | adv | HotelAdvisor | 2 years | deprecated (do not use); HotelAdvisor does not operate anymore. |
+| adve | Adventure Travel | 2 years |  |
 | ago | Agoda | 2 years |  |
 | air | Airbnb | 2 years |  |
 | bb | BBPlanet | 2 years | Italy Only. BBPlanet.com, BBPlanet.it, ... |
 | bd | BestDay | 2 years | US, Argentina, Canada, Brazil, Cuba, and the Caribbean |
+| bnb | BedAndBreakfast.eu | 0 years |  |
 | bnw | BookNow App | 0 years |  |
 | boo | Booking.com | 2 years |  |
 | bp | BudgetPlaces | 2 years |  |
@@ -21,6 +23,7 @@ Created: $date
 | cb | CityBreak | 2 years | visit.com |
 | ct | Cultuzz | 2 years | CultBay (eBay). Extra fees apply. |
 | ctr | CTrip | 1 years |  |
+| cwd | The Hostel Crowd | 2 years |  |
 | eb | EasyBookings | 2 years |  |
 | eba | Ebab | 2 years | Accommodations for gays and lesbians |
 | enz | Enzo Group | 2 years |  |
@@ -29,6 +32,7 @@ Created: $date
 | exp | Expedia | 2 years | Hotel.com |
 | fam | Famous Hostels | 2 years |  |
 | fk | FlipKey | 2 years | TripAdvisor |
+| goi | Goibibo | 0 years |  |
 | gom | Gomio | 2 years |  |
 | gr | Group Reservation | 2 years |  |
 | h2h | Hostel2Hostel | 2 years |  |
@@ -55,6 +59,7 @@ Created: $date
 | lr | Laterooms | 2 years | AsiaRooms |
 | mal | MalaPronta | 2 years | Brazil Only |
 | max | MaxBooking | 2 years |  |
+| mmt | MakeMyTrip | 0 years |  |
 | myb | MyBookings | 2 years |  |
 | nate | Nathan Helehini | 0 years |  |
 | net | Net Affinity | 2 years |  |
@@ -69,6 +74,7 @@ Created: $date
 | tom | TOMAS | 2 years | Booking system used predominantly in Germany and Switzerland on city portals |
 | tri | Trip Masters | 2 years |  |
 | user | User Channel | 0 years |  |
+| vjo | VisitJourneys | 2 years |  |
 | wim | Wimdu | 2 years |  |
 | wix | Wix Hotels | 2 years |  |
 | ysh | YourSpainHostel | 2 years | Spain Only |
