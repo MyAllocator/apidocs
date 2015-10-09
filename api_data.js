@@ -367,6 +367,27 @@ define({ "api": [
           },
           {
             "group": "Request",
+            "type": "Boolean",
+            "optional": true,
+            "field": ".Allocations.Allocation.Closed",
+            "description": "<p>Room is not available during this time</p> "
+          },
+          {
+            "group": "Request",
+            "type": "Boolean",
+            "optional": true,
+            "field": ".Allocations.Allocation.ClosedToArrival",
+            "description": "<p>Arrivals are not allowed on this day.</p> "
+          },
+          {
+            "group": "Request",
+            "type": "Bollean",
+            "optional": true,
+            "field": ".Allocations.Allocation.ClosedToDeparture",
+            "description": "<p>Departures are not allowed on this day.</p> "
+          },
+          {
+            "group": "Request",
             "type": "Container",
             "optional": true,
             "field": ".Allocations.Allocation.Prices",
