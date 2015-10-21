@@ -44,6 +44,7 @@ Created: $date
 | hc | Hostelsclub | 2 years | flashbooking.com |
 | hcu | HostelCulture | 2 years |  |
 | hcu2 | HostelCulture v2 | 2 years |  |
+| hd | Hosteldeals | 2 years |  |
 | hde | Hotel.de | 2 years | deprecated (do not use); Obsolete. Now updated through HRS. |
 | hhb | HiHostel Brazil | 2 years |  |
 | hi | HI Hostels | 2 years | For members of Hostelling International |
@@ -63,7 +64,6 @@ Created: $date
 | max | MaxBooking | 2 years |  |
 | mmt | MakeMyTrip | 0 years |  |
 | myb | MyBookings | 2 years |  |
-| nate | Nathan Helehini | 0 years |  |
 | net | Net Affinity | 2 years |  |
 | nom | Nomads Spain | 2 years |  |
 | orb | Orbitz | 2 years | Asia-Hotels.com, Ebookers.com, Hotelclub.com, Lodging.com, RatesToGo.com |
