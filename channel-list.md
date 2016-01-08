@@ -11,10 +11,12 @@ Created: $date
 | 9fl | 9flats | 2 years |  |
 | adv | HotelAdvisor | 2 years | deprecated (do not use); HotelAdvisor does not operate anymore. |
 | adve | Adventure Travel | 2 years |  |
+| advt | Adventure Travel | 2 years |  |
 | ago | Agoda | 2 years |  |
 | air | Airbnb | 2 years |  |
+| art | ArtArsis | 2 years |  |
 | bal | Balmers | 2 years |  |
-| bb | BBPlanet | 2 years | Italy Only. BBPlanet.com, BBPlanet.it, ... |
+| bb | BBPlanet | 1 years | Italy Only. BBPlanet.com, BBPlanet.it, ... |
 | bd | BestDay | 2 years | US, Argentina, Canada, Brazil, Cuba, and the Caribbean |
 | bnb | BedAndBreakfast.eu | 0 years |  |
 | bnb2 | Bedandbreakfast.com | 2 years |  |
@@ -22,12 +24,14 @@ Created: $date
 | boo | Booking.com | 2 years |  |
 | bp | BudgetPlaces | 2 years |  |
 | bud | Bud and Breakfast | 1 years |  |
+| bv | BookVisit | 2 years | bookvisit.com |
 | cb | CityBreak | 2 years | visit.com |
 | ct | Cultuzz | 2 years | CultBay (eBay). Extra fees apply. |
 | ctr | CTrip | 1 years |  |
 | cwd | The Hostel Crowd | 2 years |  |
 | eb | EasyBookings | 2 years |  |
 | eba | Ebab | 2 years | Accommodations for gays and lesbians |
+| enbc | Enbloc Hotels | 2 years |  |
 | enz | Enzo Group | 2 years |  |
 | esc | Escapio | 2 years | deprecated (do not use); As of October 1st 2015 Escapio is no longer maintaing their own inventory. |
 | etb | EasyToBook | 2 years | Cities Only |
@@ -36,7 +40,7 @@ Created: $date
 | fk | FlipKey | 2 years | TripAdvisor |
 | goi | Goibibo | 0 years |  |
 | gom | Gomio | 2 years |  |
-| gr | Group Reservation | 2 years |  |
+| gr | Dorms.com | 2 years |  |
 | h2h | Hostel2Hostel | 2 years |  |
 | hb | Hostelbookers | 0 years | deprecated (do not use); Old, slow Hostelbookers interface. Obsolete. |
 | hb2 | Hostelbookers v2 | 2 years | Also known as hostelmania.com, hostelz.com, bug.co.uk, BestLondonhostels.com |
@@ -44,10 +48,12 @@ Created: $date
 | hc | Hostelsclub | 2 years | flashbooking.com |
 | hcu | HostelCulture | 2 years |  |
 | hcu2 | HostelCulture v2 | 2 years |  |
+| hd | Hosteldeals | 2 years |  |
 | hde | Hotel.de | 2 years | deprecated (do not use); Obsolete. Now updated through HRS. |
 | hhb | HiHostel Brazil | 2 years |  |
 | hi | HI Hostels | 2 years | For members of Hostelling International |
 | hola | Hola Hostels | 2 years |  |
+| hom | Homey Hostel | 2 years |  |
 | hou | HouseTrip | 2 years |  |
 | hrs | HRS | 2 years | hotel.de |
 | ht | HostelTimes | 2 years |  |
@@ -55,11 +61,12 @@ Created: $date
 | hw2 | Hostelworld v2 | 2 years | Also known as Hostels.com |
 | ini | InItalia | 2 years | Italy Only |
 | iwb | InstantWorldBooking | 2 years | HostelTraveler.com |
+| kni | Knijbel | 2 years |  |
 | lmg | BookingMarkets | 0 years | deprecated (do not use); BookingMarkets API was shut down |
 | loc |  | 0 years |  |
 | loop | Developer Loopback | 2 years |  |
 | lr | Laterooms | 2 years | AsiaRooms |
-| mal | MalaPronta | 2 years | Brazil Only |
+| mal | MalaPronta | 2 years | deprecated (do not use); Brazil Only |
 | max | MaxBooking | 2 years |  |
 | mmt | MakeMyTrip | 0 years |  |
 | myb | MyBookings | 2 years |  |
@@ -78,6 +85,7 @@ Created: $date
 | tri | Trip Masters | 2 years |  |
 | user | User Channel | 0 years |  |
 | vjo | VisitJourneys | 2 years |  |
+| vrbo | Vacation Rentals By Owner | 2 years |  |
 | wim | Wimdu | 2 years |  |
 | wix | Wix Hotels | 2 years |  |
 | wpk | Worldpackers | 2 years |  |
