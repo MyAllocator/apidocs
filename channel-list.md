@@ -15,6 +15,7 @@ Created: $date
 | ago | Agoda | 2 years |  |
 | air | Airbnb | 2 years |  |
 | art | ArtArsis | 2 years |  |
+| aveo | Atraveo | 0 years | Atraveo.com |
 | bal | Balmers | 2 years |  |
 | bb | BBPlanet | 1 years | Italy Only. BBPlanet.com, BBPlanet.it, ... |
 | bd | BestDay | 2 years | US, Argentina, Canada, Brazil, Cuba, and the Caribbean |
@@ -26,9 +27,11 @@ Created: $date
 | bud | Bud and Breakfast | 1 years |  |
 | bv | BookVisit | 2 years | bookvisit.com |
 | cb | CityBreak | 2 years | visit.com |
+| clt | ClearTrip | 0 years |  |
 | ct | Cultuzz | 2 years | CultBay (eBay). Extra fees apply. |
 | ctr | CTrip | 1 years |  |
 | cwd | The Hostel Crowd | 2 years |  |
+| deco | Decolar | 2 years |  |
 | eb | EasyBookings | 2 years |  |
 | eba | Ebab | 2 years | Accommodations for gays and lesbians |
 | enbc | Enbloc Hotels | 2 years |  |
@@ -38,12 +41,13 @@ Created: $date
 | exp | Expedia | 2 years | Hotel.com |
 | fam | Famous Hostels | 2 years |  |
 | fk | FlipKey | 2 years | TripAdvisor |
+| flh | Feel Like Home | 2 years |  |
 | goi | Goibibo | 0 years |  |
 | gom | Gomio | 2 years |  |
 | gr | Dorms.com | 2 years |  |
 | h2h | Hostel2Hostel | 2 years |  |
 | hb | Hostelbookers | 0 years | deprecated (do not use); Old, slow Hostelbookers interface. Obsolete. |
-| hb2 | Hostelbookers v2 | 2 years | Also known as hostelmania.com, hostelz.com, bug.co.uk, BestLondonhostels.com |
+| hb2 | Hostelbookers v2 | 2 years | Obsolete. Now updated through Hostelworld. |
 | hbe | HotelBeds | 2 years | Liberate, TUI travel |
 | hc | Hostelsclub | 2 years | flashbooking.com |
 | hcu | HostelCulture | 2 years |  |
@@ -54,14 +58,18 @@ Created: $date
 | hi | HI Hostels | 2 years | For members of Hostelling International |
 | hola | Hola Hostels | 2 years |  |
 | hom | Homey Hostel | 2 years |  |
+| hopa | HostelPass, Inc. | 2 years |  |
 | hou | HouseTrip | 2 years |  |
 | hrs | HRS | 2 years | hotel.de |
 | ht | HostelTimes | 2 years |  |
+| htrv | HotelTravel | 0 years | hoteltravel.com |
 | hw | Hostelworld | 2 years | deprecated (do not use); Old, slow Hostelworld interface. Obsolete. |
-| hw2 | Hostelworld v2 | 2 years | Also known as Hostels.com |
+| hw2 | Hostelworld & Hostelbookers | 2 years |  |
+| ibc | IBCHotels | 2 years |  |
 | ini | InItalia | 2 years | Italy Only |
 | iwb | InstantWorldBooking | 2 years | HostelTraveler.com |
 | kni | Knijbel | 2 years |  |
+| koh | Koh Mak | 2 years |  |
 | lmg | BookingMarkets | 0 years | deprecated (do not use); BookingMarkets API was shut down |
 | loc |  | 0 years |  |
 | loop | Developer Loopback | 2 years |  |
@@ -76,11 +84,14 @@ Created: $date
 | orb | Orbitz | 2 years | Asia-Hotels.com, Ebookers.com, Hotelclub.com, Lodging.com, RatesToGo.com |
 | ost | Ostrovok | 2 years |  |
 | ote | Open Travel Exchange | 2 years |  |
+| pand | BackPackerPanda | 2 years |  |
 | pre | Prestigia | 2 years |  |
+| r2n | Rooms2Night | 2 years |  |
 | rec | Reconline | 2 years | GDS. Hotels &amp; Resorts only, 20+ rooms required. |
 | rep | TravelRepublic | 2 years |  |
 | sur | Surf Holidays | 2 years |  |
 | ta | TripAdvisor | 0 years |  |
+| test | Test Channel | 0 years |  |
 | tom | TOMAS | 2 years | Booking system used predominantly in Germany and Switzerland on city portals |
 | tri | Trip Masters | 2 years |  |
 | user | User Channel | 0 years |  |
