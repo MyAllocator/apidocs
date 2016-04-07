@@ -78,7 +78,6 @@ Created: $date
 | max | MaxBooking | 2 years |  |
 | mmt | MakeMyTrip | 0 years |  |
 | myb | MyBookings | 2 years |  |
-| nate | Nathan Helehini | 0 years |  |
 | net | Net Affinity | 2 years |  |
 | nom | Nomads Spain | 2 years |  |
 | orb | Orbitz | 2 years | Asia-Hotels.com, Ebookers.com, Hotelclub.com, Lodging.com, RatesToGo.com |
@@ -91,7 +90,6 @@ Created: $date
 | rep | TravelRepublic | 2 years |  |
 | sur | Surf Holidays | 2 years |  |
 | ta | TripAdvisor | 0 years |  |
-| test | Test Channel | 0 years |  |
 | tom | TOMAS | 2 years | Booking system used predominantly in Germany and Switzerland on city portals |
 | tri | Trip Masters | 2 years |  |
 | user | User Channel | 0 years |  |
