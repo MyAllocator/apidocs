@@ -858,13 +858,55 @@
             "group": "Request",
             "type": "String",
             "optional": true,
+            "field": "Auth/UserId",
+            "description": "<p>Users unique ID     (required with Auth/UserPassword)</p> "
+          },
+          {
+            "group": "Request",
+            "type": "String",
+            "optional": true,
+            "field": "Auth/UserPassword",
+            "description": "<p>Users password      (required with Auth/UserId)</p> "
+          },
+          {
+            "group": "Request",
+            "type": "String",
+            "optional": true,
+            "field": "Auth/UserToken",
+            "description": "<p>Users auth token (see AssociateUserToPMS call to generate a Token)@apiParam (Request) {String} Auth/PropertyId      Property ID on myallocator.com</p> "
+          },
+          {
+            "group": "Request",
+            "type": "String",
+            "optional": false,
+            "field": "Auth/PropertyId",
+            "description": "<p>Property Id associated to user.</p> "
+          },
+          {
+            "group": "Request",
+            "type": "String",
+            "optional": false,
+            "field": "Auth/VendorId",
+            "description": "<p>Your Vendor ID</p> "
+          },
+          {
+            "group": "Request",
+            "type": "String",
+            "optional": false,
+            "field": "Auth/VendorPassword",
+            "description": "<p>Your Vendor Password</p> "
+          },
+          {
+            "group": "Request",
+            "type": "String",
+            "optional": false,
             "field": "MyAllocatorId",
             "description": "<p>Myallocator Booking ID to which to apply actions</p> "
           },
           {
             "group": "Request",
             "type": "Array",
-            "optional": true,
+            "optional": false,
             "field": "Actions",
             "description": "<p>List of actions to be done on the booking</p> "
           }
@@ -904,12 +946,12 @@
     "examples": [
       {
         "title": "JSON Request",
-        "content": "{\n    \"Auth/UserToken\":\"\",\n    \"Auth/VendorId\":\"\",\n    \"Auth/VendorPassword\":\"\",\n    \"BookingId\":\"XXXXX\",\n    \"Actions\":[\n        \"ACK\",\n        \"NOTIFY-SYNC\",\n        [ \"ADDNOTE\", \"Customer called, they will arrive late\"]\n    ]\n}",
+        "content": "{\n    \"Auth/UserToken\":\"\",\n    \"Auth/UserId\":\"\",\n    \"Auth/UserPassword\":\"\",\n    \"Auth/VendorId\":\"\",\n    \"Auth/VendorPassword\":\"\",\n    \"Auth/PropertyId\":\"\",\n\n    \"MyAllocatorId\":\"XXXXX\",\n    \"Actions\":[\n        \"ACK\",\n        \"NOTIFY-SYNC\",\n        [ \"ADDNOTE\", \"Customer called, they will arrive late\"]\n    ]\n}",
         "type": "json"
       },
       {
         "title": "curl w/ JSON",
-        "content": "curl http://api.myallocator.com/pms/v201408/json/BookingAction -d@- <<EOJSON\njson={\n    \"Auth/UserToken\":\"\",\n    \"Auth/VendorId\":\"\",\n    \"Auth/VendorPassword\":\"\",\n    \"BookingId\":\"XXXXX\",\n    \"Actions\":[\n        \"ACK\",\n        \"NOTIFY-SYNC\",\n        [ \"ADDNOTE\", \"Customer called, they will arrive late\"]\n    ]\n}\nEOJSON",
+        "content": "curl http://api.myallocator.com/pms/v201408/json/BookingAction -d@- <<EOJSON\njson={\n    \"Auth/UserToken\":\"\",\n    \"Auth/UserId\":\"\",\n    \"Auth/UserPassword\":\"\",\n    \"Auth/VendorId\":\"\",\n    \"Auth/VendorPassword\":\"\",\n    \"Auth/PropertyId\":\"\",\n\n    \"MyAllocatorId\":\"XXXXX\",\n    \"Actions\":[\n        \"ACK\",\n        \"NOTIFY-SYNC\",\n        [ \"ADDNOTE\", \"Customer called, they will arrive late\"]\n    ]\n}\nEOJSON",
         "type": "json"
       }
     ],
@@ -971,14 +1013,14 @@
           {
             "group": "Request",
             "type": "String",
-            "optional": true,
+            "optional": false,
             "field": "MyAllocatorId",
             "description": "<p>Query for a specific myallocator booking id</p> "
           },
           {
             "group": "Request",
             "type": "String",
-            "optional": true,
+            "optional": false,
             "field": "CancellationReason",
             "description": "<p>Give a reason for the cancellation</p> "
           }
@@ -989,12 +1031,12 @@
     "examples": [
       {
         "title": "JSON Example of cancelling a booking",
-        "content": "{\n    \"Auth/UserToken\":\"\",\n    \"Auth/VendorId\":\"\",\n    \"Auth/VendorPassword\":\"\"\n    \"Auth/PropertyId\":\"\",\n    \"MyAllocatorId\":\"57333cd36dbf9a4f114dd781\",\n    \"CancellationReason\":\"Guest's flight was cancelled\"\n}",
+        "content": "{\n    \"Auth/UserToken\":\"\",\n    \"Auth/UserId\":\"\",\n    \"Auth/UserPassword\":\"\",\n    \"Auth/VendorId\":\"\",\n    \"Auth/VendorPassword\":\"\",\n    \"Auth/PropertyId\":\"\",\n\n    \"MyAllocatorId\":\"57333cd36dbf9a4f114dd781\",\n    \"CancellationReason\":\"Guest's flight was cancelled\"\n}",
         "type": "json"
       },
       {
         "title": "curl w/ JSON",
-        "content": "curl http://api.myallocator.com/pms/v201408/json/BookingCancel -d@- <<EOJSON\njson=\n{\n    \"Auth/UserToken\":\"\",\n    \"Auth/VendorId\":\"\",\n    \"Auth/VendorPassword\":\"\",\n    \"Auth/PropertyId\":\"\",\n    \"MyAllocatorId\":\"57333cd36dbf9a4f114dd781\",\n    \"CancellationReason\":\"Guest's flight was cancelled\"\n}\nEOJSON",
+        "content": "curl http://api.myallocator.com/pms/v201408/json/BookingCancel -d@- <<EOJSON\njson=\n{\n    \"Auth/UserToken\":\"\",\n    \"Auth/UserId\":\"\",\n    \"Auth/UserPassword\":\"\",\n    \"Auth/VendorId\":\"\",\n    \"Auth/VendorPassword\":\"\",\n    \"Auth/PropertyId\":\"\",\n\n    \"MyAllocatorId\":\"57333cd36dbf9a4f114dd781\",\n    \"CancellationReason\":\"Guest's flight was cancelled\"\n}\nEOJSON",
         "type": "json"
       }
     ],
