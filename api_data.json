@@ -3192,6 +3192,20 @@
             "optional": false,
             "field": "Auth/VendorPassword",
             "description": "<p>Your Vendor Password</p> "
+          },
+          {
+            "group": "Request",
+            "type": "Container",
+            "optional": false,
+            "field": "Options",
+            "description": "<p>Container node (Hash) containing list of options</p> "
+          },
+          {
+            "group": "Request",
+            "type": "Boolean",
+            "optional": false,
+            "field": ".Options.ExpiresSoon",
+            "description": "<p>Default: 0, If 1 the call returns properties expiring within the next week.</p> "
           }
         ]
       }
@@ -3199,12 +3213,12 @@
     "examples": [
       {
         "title": "XML PropertyList Request",
-        "content": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<PropertyList>\n<Auth>\n <UserId>Customer User ID</UserId>\n <UserPassword>Customer Password</UserPassword>\n <VendorId>Your Vendor ID</VendorId>\n <VendorPassword>Your Vendor Password</VendorPassword>\n </Auth>\n</PropertyList>",
+        "content": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<PropertyList>\n <Auth>\n   <UserId>Customer User ID</UserId>\n   <UserPassword>Customer Password</UserPassword>\n   <VendorId>Your Vendor ID</VendorId>\n   <VendorPassword>Your Vendor Password</VendorPassword>\n </Auth>\n <Options>\n   <ExpiresSoon>0</ExpiresSoon>\n </Options>\n</PropertyList>",
         "type": "json"
       },
       {
         "title": "JSON PropertyList Request",
-        "content": "{}",
+        "content": "{\n   \"Auth/VendorId\":\"Your Vendor ID\",\n   \"Auth/VendorPassword\":\"Your Vendor Password\",\n   \"Auth/UserId\":\"Login on myallocator.com\",\n   \"Auth/UserPassword\":\"Password for myallocator.com\",\n   \"Options\": {\n       \"ExpiresSoon\": 0\n   }\n}",
         "type": "json"
       },
       {
@@ -3256,7 +3270,7 @@
             "type": "String",
             "optional": false,
             "field": "Billing",
-            "description": "<p>can be: trial, active, disabled</p> "
+            "description": "<p>The property&#39;s billing status (trial, active, disabled, expires_soon).</p> "
           },
           {
             "group": "Response",
