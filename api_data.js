@@ -26,7 +26,7 @@ define({ "api": [
   },
   {
     "group": "PMS",
-    "type": "get",
+    "type": "POST",
     "url": "/ARIRulesList",
     "title": "ARIRulesList",
     "name": "ARIRulesList",
@@ -117,7 +117,7 @@ define({ "api": [
   },
   {
     "group": "PMS",
-    "type": "get",
+    "type": "POST",
     "url": "/ARIRulesUpdate",
     "title": "ARIRulesUpdate",
     "name": "ARIRulesUpdate",
@@ -220,7 +220,7 @@ define({ "api": [
   },
   {
     "group": "PMS",
-    "type": "get",
+    "type": "POST",
     "url": "/ARIUpdate",
     "title": "ARIUpdate",
     "name": "ARIUpdate",
@@ -524,7 +524,7 @@ define({ "api": [
   },
   {
     "group": "PMS",
-    "type": "get",
+    "type": "POST",
     "url": "/ARIUpdateStatus",
     "title": "ARIUpdateStatus",
     "name": "ARIUpdateStatus",
@@ -622,7 +622,7 @@ define({ "api": [
   },
   {
     "group": "PMS",
-    "type": "get",
+    "type": "POST",
     "url": "/AmenityList",
     "title": "AmenityList",
     "name": "AmenityList",
@@ -674,7 +674,7 @@ define({ "api": [
   },
   {
     "group": "PMS",
-    "type": "get",
+    "type": "POST",
     "url": "/AssociatePropertyToPMS",
     "title": "AssociatePropertyToPMS",
     "name": "AssociatePropertyToPMS",
@@ -763,7 +763,7 @@ define({ "api": [
   },
   {
     "group": "PMS",
-    "type": "get",
+    "type": "POST",
     "url": "/AssociateUserToPMS",
     "title": "AssociateUserToPMS",
     "name": "AssociateUserToPMS",
@@ -845,7 +845,7 @@ define({ "api": [
   },
   {
     "group": "PMS",
-    "type": "GET",
+    "type": "POST",
     "url": "/BookingAction",
     "title": "BookingAction",
     "name": "BookingAction",
@@ -960,7 +960,7 @@ define({ "api": [
   },
   {
     "group": "PMS",
-    "type": "get",
+    "type": "POST",
     "url": "/BookingCancel",
     "title": "BookingCancel",
     "name": "BookingCancel",
@@ -1045,7 +1045,7 @@ define({ "api": [
   },
   {
     "group": "PMS",
-    "type": "GET",
+    "type": "POST",
     "url": "/BookingCreate",
     "title": "BookingCreate",
     "name": "BookingCreate",
@@ -1249,7 +1249,7 @@ define({ "api": [
   },
   {
     "group": "PMS",
-    "type": "get",
+    "type": "POST",
     "url": "/BookingList",
     "title": "BookingList",
     "name": "BookingList",
@@ -1476,10 +1476,31 @@ define({ "api": [
           },
           {
             "group": "Request",
-            "type": "String",
+            "type": "Boolean",
             "optional": true,
             "field": "Options/IncludeCount",
             "description": "<p>Include the count for how many bookings match the search (not taking limit into account)</p> "
+          },
+          {
+            "group": "Request",
+            "type": "Boolean",
+            "optional": true,
+            "field": "Options/IncludeNotes",
+            "description": "<p>Include notes added by the hotel on the myallocator inbox</p> "
+          },
+          {
+            "group": "Request",
+            "type": "Boolean",
+            "optional": true,
+            "field": "Options/IncludeVersionData",
+            "description": "<p>Includes an additional array with details of previous versions of this booking (only when modifications exist). Cannot be used together with Version parameter.</p> "
+          },
+          {
+            "group": "Request",
+            "type": "Integer",
+            "optional": true,
+            "field": "Options/Version",
+            "description": "<p>Return older version of booking. Version 0 is the initial booking, Version 1 second oldest and so on. Without this option we always return the most recent.</p> "
           }
         ]
       }
@@ -1912,7 +1933,7 @@ define({ "api": [
   },
   {
     "group": "PMS",
-    "type": "get",
+    "type": "POST",
     "url": "/BookingPaymentDownload",
     "title": "BookingPaymentDownload",
     "name": "BookingPaymentDownload",
@@ -1983,6 +2004,13 @@ define({ "api": [
             "optional": true,
             "field": "MyAllocatorId",
             "description": "<p>Id assigned by MyAllocator (required if no OrderId)</p> "
+          },
+          {
+            "group": "Request",
+            "type": "String",
+            "optional": true,
+            "field": "Version",
+            "description": "<p>Returns credit card details from a specific version of the booking. Without this parameter the most recent details are returned.</p> "
           }
         ]
       }
@@ -2008,7 +2036,7 @@ define({ "api": [
   },
   {
     "group": "PMS",
-    "type": "get",
+    "type": "POST",
     "url": "/BookingPaymentPasswordValidate",
     "title": "BookingPaymentPasswordValidate",
     "name": "BookingPaymentPasswordValidate",
@@ -2105,7 +2133,7 @@ define({ "api": [
   },
   {
     "group": "PMS",
-    "type": "get",
+    "type": "POST",
     "url": "/ChannelList",
     "title": "ChannelList",
     "name": "ChannelList",
@@ -2182,7 +2210,7 @@ define({ "api": [
   },
   {
     "group": "PMS",
-    "type": "get",
+    "type": "POST",
     "url": "/HelloWorld",
     "title": "HelloWorld",
     "name": "HelloWorld",
@@ -2220,7 +2248,7 @@ define({ "api": [
   },
   {
     "group": "PMS",
-    "type": "get",
+    "type": "POST",
     "url": "/LoopARIList",
     "title": "LoopARIList",
     "name": "LoopARIList",
@@ -2243,7 +2271,7 @@ define({ "api": [
   },
   {
     "group": "PMS",
-    "type": "get",
+    "type": "POST",
     "url": "/LoopBookingAction",
     "title": "LoopBookingAction",
     "name": "LoopBookingAction",
@@ -2261,7 +2289,7 @@ define({ "api": [
   },
   {
     "group": "PMS",
-    "type": "GET",
+    "type": "POST",
     "url": "/LoopBookingCreate",
     "title": "LoopBookingCreate",
     "name": "LoopBookingCreate",
@@ -2465,7 +2493,7 @@ define({ "api": [
   },
   {
     "group": "PMS",
-    "type": "GET",
+    "type": "POST",
     "url": "/LoopBookingCreate",
     "title": "LoopBookingCreate",
     "name": "LoopBookingCreate",
@@ -2548,7 +2576,7 @@ define({ "api": [
   },
   {
     "group": "PMS",
-    "type": "get",
+    "type": "POST",
     "url": "/LoopBookingList",
     "title": "LoopBookingList",
     "name": "LoopBookingList",
@@ -2566,7 +2594,7 @@ define({ "api": [
   },
   {
     "group": "PMS",
-    "type": "get",
+    "type": "POST",
     "url": "/PropertyChannelList",
     "title": "PropertyChannelList",
     "name": "PropertyChannelList",
@@ -2637,7 +2665,7 @@ define({ "api": [
   },
   {
     "group": "PMS",
-    "type": "get",
+    "type": "POST",
     "url": "/PropertyCreate",
     "title": "PropertyCreate",
     "name": "PropertyCreate",
@@ -2810,7 +2838,7 @@ define({ "api": [
   },
   {
     "group": "PMS",
-    "type": "get",
+    "type": "POST",
     "url": "/PropertyImageCreate",
     "title": "PropertyImageCreate",
     "name": "PropertyImageCreate",
@@ -2932,7 +2960,7 @@ define({ "api": [
   },
   {
     "group": "PMS",
-    "type": "get",
+    "type": "POST",
     "url": "/PropertyImageList",
     "title": "PropertyImageList",
     "name": "PropertyImageList",
@@ -3040,7 +3068,7 @@ define({ "api": [
   },
   {
     "group": "PMS",
-    "type": "get",
+    "type": "POST",
     "url": "/PropertyImageRemove",
     "title": "PropertyImageRemove",
     "name": "PropertyImageRemove",
@@ -3142,7 +3170,7 @@ define({ "api": [
   },
   {
     "group": "PMS",
-    "type": "get",
+    "type": "POST",
     "url": "/PropertyList",
     "title": "PropertyList",
     "name": "PropertyList",
@@ -3336,7 +3364,7 @@ define({ "api": [
   },
   {
     "group": "PMS",
-    "type": "get",
+    "type": "POST",
     "url": "/PropertyModify",
     "title": "PropertyModify",
     "name": "PropertyModify",
@@ -3492,7 +3520,7 @@ define({ "api": [
   },
   {
     "group": "PMS",
-    "type": "get",
+    "type": "POST",
     "url": "/RatePlanCreate",
     "title": "RatePlanCreate",
     "name": "RatePlanCreate",
@@ -3663,7 +3691,7 @@ define({ "api": [
   },
   {
     "group": "PMS",
-    "type": "get",
+    "type": "POST",
     "url": "/RatePlanList",
     "title": "RatePlanList",
     "name": "RatePlanList",
@@ -3771,7 +3799,7 @@ define({ "api": [
   },
   {
     "group": "PMS",
-    "type": "get",
+    "type": "POST",
     "url": "/RatePlanRemove",
     "title": "RatePlanRemove",
     "name": "RatePlanRemove",
@@ -3893,7 +3921,7 @@ define({ "api": [
   },
   {
     "group": "PMS",
-    "type": "get",
+    "type": "POST",
     "url": "/RatePlanUpdate",
     "title": "RatePlanUpdate",
     "name": "RatePlanUpdate",
@@ -4013,7 +4041,7 @@ define({ "api": [
   },
   {
     "group": "PMS",
-    "type": "get",
+    "type": "POST",
     "url": "/RoomAvailabilityList",
     "title": "RoomAvailabilityList",
     "name": "RoomAvailabilityList",
@@ -4117,7 +4145,7 @@ define({ "api": [
   },
   {
     "group": "PMS",
-    "type": "get",
+    "type": "POST",
     "url": "/RoomCreate",
     "title": "RoomCreate",
     "name": "RoomCreate",
@@ -4330,7 +4358,7 @@ define({ "api": [
   },
   {
     "group": "PMS",
-    "type": "get",
+    "type": "POST",
     "url": "/RoomImageCreate",
     "title": "RoomImageCreate",
     "name": "RoomImageCreate",
@@ -4459,7 +4487,7 @@ define({ "api": [
   },
   {
     "group": "PMS",
-    "type": "get",
+    "type": "POST",
     "url": "/RoomImageList",
     "title": "RoomImageList",
     "name": "RoomImageList",
@@ -4574,7 +4602,7 @@ define({ "api": [
   },
   {
     "group": "PMS",
-    "type": "get",
+    "type": "POST",
     "url": "/RoomImageRemove",
     "title": "RoomImageRemove",
     "name": "RoomImageRemove",
@@ -4678,7 +4706,7 @@ define({ "api": [
   },
   {
     "group": "PMS",
-    "type": "get",
+    "type": "POST",
     "url": "/RoomList",
     "title": "RoomList",
     "name": "RoomList",
@@ -4825,7 +4853,7 @@ define({ "api": [
   },
   {
     "group": "PMS",
-    "type": "get",
+    "type": "POST",
     "url": "/RoomRemove",
     "title": "RoomRemove",
     "name": "RoomRemove",
@@ -4880,7 +4908,7 @@ define({ "api": [
   },
   {
     "group": "PMS",
-    "type": "get",
+    "type": "POST",
     "url": "/RoomUpdate",
     "title": "RoomUpdate",
     "name": "RoomUpdate",
@@ -4898,7 +4926,7 @@ define({ "api": [
   },
   {
     "group": "PMS",
-    "type": "get",
+    "type": "POST",
     "url": "/UserCreate",
     "title": "UserCreate",
     "name": "UserCreate",
@@ -5029,7 +5057,7 @@ define({ "api": [
   },
   {
     "group": "PMS",
-    "type": "get",
+    "type": "POST",
     "url": "/UserExists",
     "title": "UserExists",
     "name": "UserExists",
@@ -5139,7 +5167,7 @@ define({ "api": [
   },
   {
     "group": "PMS",
-    "type": "get",
+    "type": "POST",
     "url": "/UserModify",
     "title": "UserModify",
     "name": "UserModify",
@@ -5233,7 +5261,7 @@ define({ "api": [
   },
   {
     "group": "PMS",
-    "type": "get",
+    "type": "POST",
     "url": "/VendorSet",
     "title": "VendorSet",
     "name": "VendorSet",
@@ -5447,7 +5475,7 @@ define({ "api": [
     "title": "XML v1 Information",
     "name": "XML_v1_Information",
     "version": "201601.0.0",
-    "description": "<p>XML v1 is deprecated and this documentation is provided for backward compatibility. <a href=\"https://inbox.myallocator.com/n/myallocator.com_API_Spec.pdf\">https://inbox.myallocator.com/n/myallocator.com_API_Spec.pdf</a></p> <p>If you have specific concerns or things we can do to aid in this process please let us know at devhelp@myallocator.com.  I&#39;ve been on your side of the fence for more than 20 years, I hate when API&#39;s change too!</p> <p>The naming conventions have changed from VerbNoun to NounAdjectiveVerb,  but the data structures themselves have not changed significantly.  SetAllocation is ARIUpdate, but the request/response format for XML is the same.  We went out of our way to make the fewest number of changes possible,  but at the same time to introduce the ability to version and provide backward  compatibility starting with v1.  It&#39;s also worth mentioning all the old call names (SetAllocation) still work,  even though they aren&#39;t in this documentation just to avoid confusion to new developers.</p> <p>There is a v1 URL which runs on the new code base: <a href=\"http://api.myallocator.com/pms/v1/xml\">http://api.myallocator.com/pms/v1/xml</a></p> <p>The new codebase should (in theory) provide full v1 read/write compatibility,  with a few improvements. It should be 98% backward compatible (there some trivial differences in validation logic, but no differences in response/request format).</p> <p>Right now -- api.myallocator.com/ points at a single server running an ancient fork  of the old/original codebase. Requests to api.myallocator.com/pms/<em> are proxied  to the new api servers. At some point (once I get caught up on tickets) we&#39;re going  to turn off the old api server and send all requests to / api.myallocator.com/pms/v1/xml This </em>should* be unnoticeable to you, but you can control when this happens  by moving to <a href=\"http://api.myallocator.com/pms/v1/xml\">http://api.myallocator.com/pms/v1/xml</a> yourself.</p> <p>We will need to this at some point so we can start changing/optimizing internal data  structures, right now we&#39;re writing data in both new format and old format.</p> <p>There is no plan to deprecate v1 entirely in 2015 .. maybe someday, but no plans,  it&#39;s just not that big a deal, so we&#39;re not saying &quot;never&quot;, but we&#39;re saying don&#39;t  stress or feel rushed.</p> <p>The only changes to v1 actually impact all versions.  Specifically SetAllocation with QueryForUpdateStatus:false timeouts will be  decreased from 1 hour, to 30 minutes, to 15 minutes, to 5, and eventually  (hopefully) to 60 seconds so API requests can turn over faster. </p> <p>Certain channels which aren&#39;t live yet (ex: CTrip) require 2 minutes to do an update  and we don&#39;t want people camping on API webserver API connections.</p> <p><strong><em> BUT WAIT !!! BEFORE THAT HAPPENS </em></strong> soon you&#39;ll have the option to  receive callback notifications for both ariupdates, and configuration changes  (in addition to bookings).</p> <p>We&#39;re hoping it will be trivial for most v1 developers to move the code which  processes synchronous ARIUpdates from the HTTP response, into a callback handler on your  web-server, giving us an asynchronous update path and dramatically increasing  the reliability of the API for everybody.</p> <p>Right now it&#39;s very easy for a badly implemented rogue PMS to camp all 150 API  connections (even if it was increased to 5000 it&#39;d be easy to camp them all since the  timeout [1hr] is so large).   This wasn&#39;t as big a deal when we had 10 developers,  now there are over 150 and some of them.</p> <p>It only takes one bad implementation to take the whole system down for everybody.</p> ",
+    "description": "<p>XML v1 is deprecated and this documentation is provided for backward compatibility.</p> <p>If you have specific concerns or things we can do to aid in this process please let us know at devhelp@myallocator.com.  I&#39;ve been on your side of the fence for more than 20 years, I hate when API&#39;s change too!</p> <p>The naming conventions have changed from VerbNoun to NounAdjectiveVerb,  but the data structures themselves have not changed significantly.  SetAllocation is ARIUpdate, but the request/response format for XML is the same.  We went out of our way to make the fewest number of changes possible,  but at the same time to introduce the ability to version and provide backward  compatibility starting with v1.  It&#39;s also worth mentioning all the old call names (SetAllocation) still work,  even though they aren&#39;t in this documentation just to avoid confusion to new developers.</p> <p>There is a v1 URL which runs on the new code base: <a href=\"http://api.myallocator.com/pms/v1/xml\">http://api.myallocator.com/pms/v1/xml</a></p> <p>The new codebase should (in theory) provide full v1 read/write compatibility,  with a few improvements. It should be 98% backward compatible (there some trivial differences in validation logic, but no differences in response/request format).</p> <p>Right now -- api.myallocator.com/ points at a single server running an ancient fork  of the old/original codebase. Requests to api.myallocator.com/pms/<em> are proxied  to the new api servers. At some point (once I get caught up on tickets) we&#39;re going  to turn off the old api server and send all requests to / api.myallocator.com/pms/v1/xml This </em>should* be unnoticeable to you, but you can control when this happens  by moving to <a href=\"http://api.myallocator.com/pms/v1/xml\">http://api.myallocator.com/pms/v1/xml</a> yourself.</p> <p>We will need to this at some point so we can start changing/optimizing internal data  structures, right now we&#39;re writing data in both new format and old format.</p> <p>There is no plan to deprecate v1 entirely in 2015 .. maybe someday, but no plans,  it&#39;s just not that big a deal, so we&#39;re not saying &quot;never&quot;, but we&#39;re saying don&#39;t  stress or feel rushed.</p> <p>The only changes to v1 actually impact all versions.  Specifically SetAllocation with QueryForUpdateStatus:false timeouts will be  decreased from 1 hour, to 30 minutes, to 15 minutes, to 5, and eventually  (hopefully) to 60 seconds so API requests can turn over faster. </p> <p>Certain channels which aren&#39;t live yet (ex: CTrip) require 2 minutes to do an update  and we don&#39;t want people camping on API webserver API connections.</p> <p><strong><em> BUT WAIT !!! BEFORE THAT HAPPENS </em></strong> soon you&#39;ll have the option to  receive callback notifications for both ariupdates, and configuration changes  (in addition to bookings).</p> <p>We&#39;re hoping it will be trivial for most v1 developers to move the code which  processes synchronous ARIUpdates from the HTTP response, into a callback handler on your  web-server, giving us an asynchronous update path and dramatically increasing  the reliability of the API for everybody.</p> <p>Right now it&#39;s very easy for a badly implemented rogue PMS to camp all 150 API  connections (even if it was increased to 5000 it&#39;d be easy to camp them all since the  timeout [1hr] is so large).   This wasn&#39;t as big a deal when we had 10 developers,  now there are over 150 and some of them.</p> <p>It only takes one bad implementation to take the whole system down for everybody.</p> ",
     "error": {
       "examples": [
         {
@@ -5506,7 +5534,7 @@ define({ "api": [
     "title": "Response Handling",
     "name": "Response_Handling",
     "version": "201601.0.0",
-    "description": "<p>== Response Format ==  The codes are as follows, the message (msg) is not parsed and can be anything you like   (we still recommend something that describes the error).</p> <table> <thead> <tr> <th>Code</th> <th>Cause</th> </tr> </thead> <tbody> <tr> <td>10</td> <td>Password wrong or not set.</td> </tr> <tr> <td>20</td> <td>Error while parsing JSON structure (including the exception message, for example position of not parsable part)</td> </tr> <tr> <td>21</td> <td>Error while parsing JSON structure (exact reason unknown)</td> </tr> <tr> <td>22</td> <td>Error while parsing JSON content</td> </tr> <tr> <td>30</td> <td>PropertyId is NULL or 0</td> </tr> <tr> <td>31</td> <td>Property not used on your PMS anymore</td> </tr> <tr> <td>35</td> <td>MyallocatorId already existing</td> </tr> <tr> <td>50+</td> <td>Internal error on your side (for debugging)</td> </tr> </tbody> </table> <p> We record every error and can give you more details if needed. The important codes  are really only 10 and 31. The JSON should always be valid and the PropertyId  always included.</p> ",
+    "description": "<p>== Response Format ==  The codes are as follows, the message (msg) is not parsed and can be anything you like   (we still recommend something that describes the error).</p> <table> <thead> <tr> <th>Code</th> <th>Cause</th> </tr> </thead> <tbody> <tr> <td>10</td> <td>Password wrong or not set.</td> </tr> <tr> <td>20</td> <td>Error while parsing JSON structure (including the exception message, for example position of not parsable part)</td> </tr> <tr> <td>21</td> <td>Error while parsing JSON structure (exact reason unknown)</td> </tr> <tr> <td>22</td> <td>Error while parsing JSON content</td> </tr> <tr> <td>30</td> <td>PropertyId is NULL or 0</td> </tr> <tr> <td>31</td> <td>Property not used on your PMS anymore</td> </tr> <tr> <td>35</td> <td>MyallocatorId already existing</td> </tr> <tr> <td>40</td> <td>Request a retry (vendor currently unable to process booking notification)</td> </tr> <tr> <td>50+</td> <td>Internal error on your side (for debugging)</td> </tr> </tbody> </table> <p> We record every error and can give you more details if needed. The important codes  are really only 10 and 31. The JSON should always be valid and the PropertyId  always included.</p> ",
     "success": {
       "examples": [
         {

@@ -77,11 +77,13 @@ Created: $date
 | lr | Laterooms | 2 years | AsiaRooms |
 | mal | MalaPronta | 2 years | deprecated (do not use); Brazil Only |
 | max | MaxBooking | 2 years |  |
+| mcs | Madrid Central Suites | 2 years |  |
 | mmt | MakeMyTrip | 0 years |  |
 | myb | MyBookings | 2 years |  |
 | nate | Nathan Helehini | 0 years |  |
 | net | Net Affinity | 2 years |  |
 | nom | Nomads Spain | 2 years |  |
+| oa | Only-apartments | 2 years |  |
 | orb | Orbitz | 2 years | Asia-Hotels.com, Ebookers.com, Hotelclub.com, Lodging.com, RatesToGo.com |
 | ost | Ostrovok | 2 years |  |
 | ote | Open Travel Exchange | 2 years |  |
