@@ -72,6 +72,7 @@ Created: $date
 | kni | Knijbel | 2 years |  |
 | koh | Koh Mak | 2 years |  |
 | lmg | BookingMarkets | 0 years | deprecated (do not use); BookingMarkets API was shut down |
+| lmin | Lastminute | 2 years |  |
 | loc |  | 0 years |  |
 | loop | Developer Loopback | 2 years |  |
 | lr | Laterooms | 2 years | AsiaRooms |
