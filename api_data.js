@@ -2474,12 +2474,12 @@ define({ "api": [
     "examples": [
       {
         "title": "JSON LoopBookingCreate Request",
-        "content": "{\n\"Auth/VendorId\":\"\",\n\"Auth/VendorPassword\":\"\",\n\"Auth/UserToken\":\"\",\n\"Auth/PropertyId\":\"\",\n\"Booking\":{\n\t\"StartDate\":\"YYYY-MM-DD\",\n\t\"EndDate\":\"YYYY-MM-DD\",\n\t\"RoomId\":###,\n\t\"Units\":##,\n\t\"Price\":\"3.00\"\n\t}\n}",
+        "content": "{\n\"Auth/VendorId\":\"\",\n\"Auth/VendorPassword\":\"\",\n\"Auth/UserToken\":\"\",\n\"Auth/PropertyId\":\"\",\n\"Booking\":{\n    \"StartDate\": \"2016-08-10\",\n    \"EndDate\": \"2016-08-11\",\n    \"Units\": \"1\",\n    \"RoomTypeId\": \"83651\",\n    \"RateId\": \"123\",\n    \"RoomDayRate\": \"100.00\",\n    \"RoomDayDescription\": \"A room day description!\",\n    \"CustomerFName\": \"Bob\",\n    \"CustomerLName\": \"Smith\",\n    \"RoomDesc\": \"A room description!\",\n    \"OccupantSmoker\": \"false\",\n    \"OccupantNote\": \"Please do not put me by the elevator. Thanks!\",\n    \"OccupantFName\": \"Tyler\",\n    \"OccupantLName\": \"Green\",\n    \"Occupancy\": \"1\",\n    \"Policy\": \"No smoking.\",\n    \"ChannelRoomType\": \"123\"\n\t}\n}",
         "type": "json"
       },
       {
         "title": "XML LoopBookingCreate Request",
-        "content": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<LoopBookingCreate>\n<Auth>\n\t<UserId>Customer User ID</UserId>\n\t<UserPassword>Customer Password</UserPassword>\n\t<PropertyId>###</PropertyId>\n</Auth>\n<Booking>\n\t<StartDate>YYYY-MM-DD</StartDate>\n\t<EndDate>YYYY-MM-DD</EndRate>\n</Booking>\n</LoopBookingCreate>",
+        "content": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<LoopBookingCreate>\n<Auth>\n    <UserId>Customer User ID</UserId>\n    <UserPassword>Customer Password</UserPassword>\n    <PropertyId>###</PropertyId>\n</Auth>\n<Booking>\n    <StartDate>YYYY-MM-DD</StartDate>\n    <EndDate>YYYY-MM-DD</EndRate>\n</Booking>\n</LoopBookingCreate>",
         "type": "json"
       },
       {
