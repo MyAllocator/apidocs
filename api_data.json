@@ -2488,6 +2488,15 @@
         "type": "json"
       }
     ],
+    "success": {
+      "examples": [
+        {
+          "title": "JSON LoopBookingCreate Response",
+          "content": "{\n    \"Booking\" : {\n        \"MyallocatorCreationDate\" : \"2016-08-01\",\n        \"Customers\" : [\n            {\n                \"CustomerFName\" : \"Bob\",\n                \"CustomerLName\" : \"Smith\",\n                \"CustomerNote\" : \"\",\n                \"CustomerEmail\" : \"test@testing.com\"\n            }\n        ],\n        \"Acknowledged\" : false,\n        \"MyallocatorModificationDate\" : \"2016-08-01\",\n        \"MyallocatorModificationTime\" : \"23:48:26\",\n        \"PropertyId\" : ####,\n        \"StartDate\" : \"2016-08-10\",\n        \"EndDate\" : \"2016-08-11\",\n        \"MyallocatorCreationTime\" : \"23:48:26\",\n        \"OrderId\" : \"22326EC417B3-8F4A-6E11-2485-063BDF07\",\n        \"IsCancellation\" : false,\n        \"MarkedAsRead\" : false,\n        \"Channel\" : \"loop\",\n        \"Version\" : 0,\n        \"Rooms\" : [\n            {\n                \"DayRates\" : [\n                    {\n                        \"RateId\" : \"123\",\n                        \"Description\" : \"A fun room day description!\",\n                        \"Rate\" : \"100.00\",\n                        \"Date\" : \"2016-08-10\"\n                    },\n                    {\n                        \"RateId\" : \"123\",\n                        \"Description\" : \"A fun room day description!\",\n                        \"Rate\" : \"100.00\",\n                        \"Date\" : \"2016-08-11\"\n                    }\n                ],\n                \"OccupantSmoker\" : false,\n                \"OccupantFName\" : \"Tyler\",\n                \"OccupantLName\" : \"Green\",\n                \"Units\" : \"1\",\n                \"StartDate\" : \"2016-08-10\",\n                \"Occupancy\" : \"1\",\n                \"EndDate\" : \"2016-08-11\",\n                \"RoomTypeIds\" : [\n                    83651\n                ],\n                \"RoomDesc\" : \"A fun room description!\",\n                \"Price\" : 200,\n                \"RateId\" : \"123\",\n                \"RateDesc\" : \"Standard Rate\",\n                \"Currency\" : \"USD\",\n                \"OccupantNote\" : \"Please do not put me by the elevator. Thanks!\",\n                \"Policy\" : \"No smoking.\",\n                \"ChannelRoomType\" : \"123\"\n            }\n        ],\n        \"MyallocatorId\" : \"70FDB360-5842-11E6-A4F8-3B714CE62322\"\n    },\n    \"Success\" : true\n}",
+          "type": "json"
+        }
+      ]
+    },
     "filename": "perllib/MAAPI.pm",
     "groupTitle": "PMS"
   },
