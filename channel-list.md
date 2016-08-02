@@ -93,6 +93,7 @@ Created: $date
 | r2n | Rooms2Night | 2 years |  |
 | rec | Reconline | 2 years | GDS. Hotels &amp; Resorts only, 20+ rooms required. |
 | rep | TravelRepublic | 2 years |  |
+| skd | Seekda GmbH | 2 years |  |
 | sur | Surf Holidays | 2 years |  |
 | ta | TripAdvisor | 0 years |  |
 | test | Test Channel | 0 years |  |

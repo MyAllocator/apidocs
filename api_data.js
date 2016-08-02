@@ -2484,7 +2484,7 @@ define({ "api": [
       },
       {
         "title": "curl w/ JSON",
-        "content": "curl http://api.myallocator.com/pms/v201408/json/LoopBookingCreate -d@- <<EOJSON\njson={\n\"Auth/VendorId\":\"\",\n\"Auth/VendorPassword\":\"\",\n\"Auth/UserToken\":\"\",\n\"Auth/PropertyId\":\"\",\n\"Booking\":{\n\t\"StartDate\":\"YYYY-MM-DD\",\n\t\"EndDate\":\"YYYY-MM-DD\",\n\t\"RoomId\":###,\n\t\"Units\":##,\n\t\"Price\":\"3.00\"\n\t}\n}\nEOJSON",
+        "content": "curl http://api.myallocator.com/pms/v201408/json/LoopBookingCreate -d@- <<EOJSON\njson={\n\"Auth/VendorId\":\"\",\n\"Auth/VendorPassword\":\"\",\n\"Auth/UserToken\":\"\",\n\"Auth/PropertyId\":\"\",\n\"Booking\":{\n    \"StartDate\": \"2016-08-10\",\n    \"EndDate\": \"2016-08-11\",\n    \"Units\": \"1\",\n    \"RoomTypeId\": \"83651\",\n    \"RateId\": \"123\",\n    \"RoomDayRate\": \"100.00\",\n    \"RoomDayDescription\": \"A room day description!\",\n    \"CustomerFName\": \"Bob\",\n    \"CustomerLName\": \"Smith\",\n    \"RoomDesc\": \"A room description!\",\n    \"OccupantSmoker\": \"false\",\n    \"OccupantNote\": \"Please do not put me by the elevator. Thanks!\",\n    \"OccupantFName\": \"Tyler\",\n    \"OccupantLName\": \"Green\",\n    \"Occupancy\": \"1\",\n    \"Policy\": \"No smoking.\",\n    \"ChannelRoomType\": \"123\"\n\t}\n}\nEOJSON",
         "type": "json"
       }
     ],
