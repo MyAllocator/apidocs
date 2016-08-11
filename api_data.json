@@ -2027,7 +2027,7 @@
     "examples": [
       {
         "title": "curl w/ JSON",
-        "content": "curl http://api.myallocator.com/pms/v201408/json/BookingPaymentDownload -d@- <<EOJSON\njson=\n{\n\t\"Payments\": [\n\t\t{\n\t\t\t\"CardNumber\": \"4111111111111111\",\n\t\t\t\"CardHolderName\": \"Martin Seamus McFly\",\n\t\t\t\"CardCVV\": \"123\",\n\t\t\t\"CardExpiryMonth\": \"11\",\n\t\t\t\"CardExpiryYear\": \"2018\",\n\t\t\t\"CardHolderAddress\": \"100 Easy St.\",\n\t\t\t\"CardHolderCity\": \"Mountain View\",\n\t\t\t\"CardHolderState\": \"CA\",\n\t\t\t\"CardHolderPostCode\": \"94043\",\n\t\t\t\"CardHolderCountry\": \"US\"\n\t\t},\n\t\t{\n\t\t\t\"CardNumber\": \"4111111111111111\",\n\t\t\t\"CardHolderName\": \"Emmett Lathrop Brown\",\n\t\t\t\"CardCVV\": \"123\",\n\t\t\t\"CardExpiryMonth\": \"11\",\n\t\t\t\"CardExpiryYear\": \"2018\",\n\t\t\t\"CardHolderAddress\": \"101 Easy St.\",\n\t\t\t\"CardHolderCity\": \"Mountain View\",\n\t\t\t\"CardHolderState\": \"CA\",\n\t\t\t\"CardHolderPostCode\": \"94043\",\n\t\t\t\"CardHolderCountry\": \"US\"\n\t\t}\n\t]\n}\nEOJSON",
+        "content": "curl http://api.myallocator.com/pms/v201408/json/BookingPaymentDownload -d@- <<EOJSON\njson=\n{\n    \"Auth/VendorId\":\"Your Vendor ID\",\n    \"Auth/VendorPassword\":\"Your Vendor Password\",\n    \"Auth/UserId\":\"Login on myallocator.com\",\n    \"Auth/UserPassword\":\"Password for myallocator.com\",\n    \"Auth/PropertyId\":\"Property ID on myallocator.com\",\n    \"CreditCardPassword\":\"some_password\",\n    \"MyAllocatorId\": \"some_ma_id\"\n}\nEOJSON",
         "type": "json"
       }
     ],
