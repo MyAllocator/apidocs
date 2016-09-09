@@ -29,6 +29,7 @@ Created: $date
 | bv | BookVisit | 2 years | bookvisit.com |
 | cb | CityBreak | 2 years | visit.com |
 | clt | ClearTrip | 0 years |  |
+| cs | CanadaStays | 2 years |  |
 | ct | Cultuzz | 2 years | CultBay (eBay). Extra fees apply. |
 | ctr | CTrip | 1 years |  |
 | cwd | The Hostel Crowd | 2 years |  |

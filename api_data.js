@@ -1,31 +1,108 @@
 define({ "api": [
   {
-    "group": "Introduction",
+    "group": "1_Introduction",
     "type": "",
     "url": "{}",
-    "title": "Welcome",
-    "name": "Welcome",
+    "title": "i - Getting Started",
+    "name": "i___Getting_Started",
     "version": "201601.0.0",
-    "description": "<p><strong> Usage </strong></p> <p> If you would like to use the myallocator.com PMS API please request a vendor id+password here:  <a href=\"https://www.myallocator.com/become-partner/\">https://www.myallocator.com/become-partner/</a>  The vendor_id + vendor_password will need to be submitted with every request, except HelloWorld (for testing).</p> <p> Your customers need to create an account on myallocator.com before they can use the API (or you need to create one for them).   The credentials (user/password) must be stored by you and sent with each request.</p> <p> <strong> The Basics </strong></p> <p> Need API Vendor Credentials?  <a href=\"https://www.myallocator.com/become-partner/\">https://www.myallocator.com/become-partner/</a></p> <p> PMS integration guide:  <a href=\"https://docs.google.com/document/d/1_OuI0Z6rTkkuA9xxlJUvhXlazJ9w_iqsp1QzIj4gb2U/edit?usp=sharing\">https://docs.google.com/document/d/1_OuI0Z6rTkkuA9xxlJUvhXlazJ9w_iqsp1QzIj4gb2U/edit?usp=sharing</a></p> <p> <strong> Support </strong></p> <p> Email: devhelp@myallocator.com (please include a &quot;TicketId&quot; if it is about an API call)</p> <p> Chat: <a href=\"https://www.hipchat.com/g3EsN71bk\">https://www.hipchat.com/g3EsN71bk</a> (Pilot Office hours from May 11th - June 12th will be Mon-Fri, 9am to 3pm PST [GMT-7])</p> <p> <strong> XML vs. JSON Requests  </strong></p> <p> The service URLs are:</p> <ul> <li>JSON - <a href=\"https://api.myallocator.com/pms/v201408/json/MethodName\">https://api.myallocator.com/pms/v201408/json/MethodName</a></li> <li><p>XML - <a href=\"https://api.myallocator.com/pms/v201408/xml/MethodName\">https://api.myallocator.com/pms/v201408/xml/MethodName</a></p> <p>In the URL above the Version is 201408, this version will periodically be changed as new features are added. The json|xml denotes the protocol for how requests/responses will be formatted. </p> <p>MyAllocator can be accessed via REST using either JSON XML form syntax, or JSON raw.</p> </li> <li>XML (form): Requests to our server need to be send using the POST method. The XML string should be stored in a parameter called &#39;xmlRequestString&#39;. Using standard HTML form (application/x-www-form-urlencoded) encoding.</li> <li>XML (raw): set the HTTP header Content-Type: application/xml and pass a raw UTF8 encoded xml body.</li> <li>JSON (form): offers simplified parsing and low transport overhead and is passed in the field &#39;json&#39; using standard HTML form encoding (application/x-www-form-urlencoded). In this example data such as space must be encoded to &#39;+&#39; or %20.</li> <li><p>JSON (raw): set the HTTP header Content-Type: application/json and pass a raw UTF8 encoded json body.</p> <p><strong> Using an SDK </strong> Software Development Kits for several popular languages are available at <a href=\"http://github.com/myallocator\">http://github.com/myallocator</a>  If you don&#39;t see your language listed please let us know and we&#39;ll add it. </p> <p><strong> Online Travel Agencies/Booking Websites </strong> This is NOT the API you are looking for. Please review this documentation &amp; licensing: <a href=\"https://docs.google.com/document/d/1TYM3GxhmvpaOPoQw3S9-tAotv9QrASpwSZahRRWS55M/edit?usp=sharing\">https://docs.google.com/document/d/1TYM3GxhmvpaOPoQw3S9-tAotv9QrASpwSZahRRWS55M/edit?usp=sharing</a></p> <p><strong> Following Updates </strong> We will announce major releases via github. Please &quot;watch&quot; the apidocs repo.</p> </li> </ul> ",
+    "description": "<p>Welcome PMS vendors!</p> <p> If you would like to use the myallocator.com PMS API please request a vendor id+password here:  <a href=\"https://www.myallocator.com/become-partner/\">https://www.myallocator.com/become-partner/</a></p> <p> The vendor_id + vendor_password will need to be submitted with every request, except HelloWorld (for testing).</p> <p> Be sure to register your vendor account with the email address of which you prefer to receive notifications. We will  send application update notifications and action required requests to this address.</p> <p> Your customers must create an account on myallocator.com before they can use the API (or you need to create one for them).   The credentials (user/password) must be stored by you and sent with each request.</p> <p> Request API Vendor Credentials:  <a href=\"https://www.myallocator.com/become-partner/\">https://www.myallocator.com/become-partner/</a></p> <p> PMS Integration Guide:  <a href=\"https://docs.google.com/document/d/1_OuI0Z6rTkkuA9xxlJUvhXlazJ9w_iqsp1QzIj4gb2U/edit?usp=sharing\">https://docs.google.com/document/d/1_OuI0Z6rTkkuA9xxlJUvhXlazJ9w_iqsp1QzIj4gb2U/edit?usp=sharing</a></p> <p> PMS PHP SDK (Recommended if using PHP):  <a href=\"https://github.com/MyAllocator/myallocator-pms-php\">https://github.com/MyAllocator/myallocator-pms-php</a></p> <p> <strong> Online Travel Agencies/Booking Websites </strong></p> <p> This API is for PMS vendors.</p> <p> If you are an OTA or booking website, this is NOT the API you are looking for.</p> <p> Please review our Build2Us OTA facing API documentation &amp; licensing:  <a href=\"https://docs.google.com/document/d/1TYM3GxhmvpaOPoQw3S9-tAotv9QrASpwSZahRRWS55M/edit?usp=sharing\">https://docs.google.com/document/d/1TYM3GxhmvpaOPoQw3S9-tAotv9QrASpwSZahRRWS55M/edit?usp=sharing</a></p> ",
+    "filename": "perllib/MAAPI.pm",
+    "groupTitle": "1_Introduction"
+  },
+  {
+    "group": "1_Introduction",
+    "type": "",
+    "url": "{}",
+    "title": "ii - Data Formats",
+    "name": "ii___Data_Formats",
+    "version": "201601.0.0",
+    "description": "<p>The API supports JSON and XML data formats. We recommend using JSON as the XML API may eventually be deprecated.</p> <p> The service URLs are:</p> <p> JSON - <a href=\"https://api.myallocator.com/pms/v201408/json/MethodName\">https://api.myallocator.com/pms/v201408/json/MethodName</a></p> <p> XML - <a href=\"https://api.myallocator.com/pms/v201408/xml/MethodName\">https://api.myallocator.com/pms/v201408/xml/MethodName</a></p> <p> In the URL above the Version is 201408, this version will periodically be changed as new features are added.  The json|xml denotes the protocol for how requests/responses will be formatted. </p> <p> MyAllocator can be accessed via REST using either JSON / XML form syntax or JSON raw:</p> <p> JSON (form): Offers simplified parsing and low transport overhead and is passed in the field &#39;json&#39; using standard HTML form encoding (application/x-www-form-urlencoded). In this example data such as space must be encoded to &#39;+&#39; or %20.</p> <p> JSON (raw): Set the HTTP header Content-Type: application/json and pass a raw UTF8 encoded json body.</p> <p> XML (form): Requests to our server need to be send using the POST method. The XML string should be stored in a parameter called &#39;xmlRequestString&#39;. Using standard HTML form (application/x-www-form-urlencoded) encoding.</p> <p> XML (raw): Set the HTTP header Content-Type: application/xml and pass a raw UTF8 encoded xml body.</p> ",
+    "filename": "perllib/MAAPI.pm",
+    "groupTitle": "1_Introduction"
+  },
+  {
+    "group": "1_Introduction",
+    "type": "",
+    "url": "{}",
+    "title": "iii - Vendor Tokens",
+    "name": "iii___Vendor_Tokens",
+    "version": "201601.0.0",
+    "description": "<p>Vendor+User and Vendor+Property associations exist in myallocator.</p> <p>Vendor+User Association (Referenced by a user token)</p> <ol> <li>A user token <strong>is not</strong> required for a vendor to access a user the API.</li> <li>User tokens enable vendors to substitute user credentials (Auth/UserId, Auth/UserPassword) with a token (Auth/UserToken) for requests requiring user credentials. This helps vendors to avoid storing user credentials.</li> <li>A user token may be generated via the AssociateUserToPMS API Method.</li> <li>If AssociateUserToPMS is called for a vendor / user with an existing token, the existing token is returned.</li> </ol> <p>Vendor+Property Association (Referenced by a property token)</p> <ol> <li>A property token <strong>is</strong> required for a vendor to access a property via the API.</li> <li>Property tokens are generated via the following ways:<ol> <li>Vendor creates a property via the PropertyCreate API method, a property token is automatically generated.</li> <li>Vendor invokes the AssociatePropertyToPMS API method.</li> <li>Property navigates in MA web interface to Manage &gt; PMS Connections and enables your PMS to connect.<ol> <li>New vendors may not appear in the PMS dropdown list. Please let us know if you would like to be added and what you would like your public PMS name to be.</li> </ol> </li> </ol> </li> <li>If AssociatePropertyToPMS is called for a vendor / property with an existing token, the existing token is returned.</li> </ol> <p>Important Notes</p> <ol> <li>User tokens only apply to vendor+user credentials. A vendor+user association is not* required for a vendor to access a user - they can use user username and password instead.</li> <li>Property tokens only apply to vendor+property associations. A vendor+property association is required for a vendor to access a property.</li> <li>Property tokens themselves currently serve no purpose (they will soon).</li> <li>In the relative near-term, API methods requiring user credentials (Auth/UserId + Auth/UserPassword) and a property id (Auth/PropertyId) may be authenticated by simply including the property token (Auth/PropertyToken) (coming soon).</li> </ol> ",
+    "filename": "perllib/MAAPI.pm",
+    "groupTitle": "1_Introduction"
+  },
+  {
+    "group": "1_Introduction",
+    "type": "",
+    "url": "{}",
+    "title": "iv - Developer Support",
+    "name": "iv___Developer_Support",
+    "version": "201601.0.0",
+    "description": "<p>You may contact us for developer support via the following methods.</p> <p> Chat: <a href=\"http://devchat.myallocator.com\">http://devchat.myallocator.com</a> (Public Hipchat Room - Office Hours: Weekdays 08:00 - 15:00 PDT)</p> <p> Email: devhelp@myallocator.com (please include a &quot;TicketId&quot; if it is about an API call)</p> ",
+    "filename": "perllib/MAAPI.pm",
+    "groupTitle": "1_Introduction"
+  },
+  {
+    "group": "2_Booking_Callbacks",
+    "type": "",
+    "url": "{}",
+    "title": "Concepts",
+    "name": "Concepts",
+    "version": "201601.0.0",
+    "description": "<p>Callbacks are the preferred way to access booking data (instead of polling).  Callbacks data format matches the BookingList api call. </p> <p> Instead of polling for new bookings every few minutes you should register to receive a booking callback.  With this feature we will send the bookings to your server via HTTP/HTTPS. </p> <p> Callbacks are easier for us and you! You don&#39;t have to develop a mechanism to regularly download bookings.</p> ",
+    "filename": "perllib/MAAPI.pm",
+    "groupTitle": "2_Booking_Callbacks"
+  },
+  {
+    "group": "2_Booking_Callbacks",
+    "type": "",
+    "url": "{}",
+    "title": "Delivery Method",
+    "name": "Delivery_Method",
+    "version": "201601.0.0",
+    "description": "<p>Callbacks are delivered via HTTP/HTTPS.     </p> <p> Configure a URL endpoint (HTTPS strongly recommended) and password  via the the VendorSet API method that we can use to authenticate to your API.   Whenever we receive a new booking we will send a POST request to your server with two parameters:</p> <ul> <li><em>booking</em> : contains a JSON-coded string of the booking data.</li> <li><em>password</em> : contains a string of a previously agreed on password.</li> </ul> <p> If your server doesn&#39;t answer (or doesn&#39;t answer with the correct code,   see below) our system will retry with incremental delays between each  try (1, 2, 4, 8, 16, 32 minutes... and so on).</p> <p> The Request format is very similiar to the GetBookings response, but instead of  XML it is in JSON format. Additionally it contains a PropertyId field  which is the property ID of the myallocator property.</p> <p> Your server needs to respond in the correct format, otherwise  we will keep resending the booking. In the response BODY   write a JSON object in the following format:</p> ",
+    "examples": [
+      {
+        "title": "Example of a JSON booking",
+        "content": "{\n  \"Customers\":[\n     {\n        \"CustomerLName\":\"Smith\",\n        \"CustomerCompany\":\"\",\n        \"CustomerNote\":\" \",\n        \"CustomerEmail\":\"martin@smith.com\",\n        \"CustomerFName\":\"Martin\",\n        \"CustomerCity\":\"Stirling\",\n        \"CustomerCountry\":\"GB\"\n     }\n  ],\n  \"IsCancellation\":false,\n  \"OrderAdults\":1,\n  \"OrderChildren\":0,\n  \"OrderDate\":\"2012-09-18\",\n  \"OrderId\":\"13597636\",\n  \"OrderModifDate\":null,\n  \"OrderModifTime\":null,\n  \"OrderSource\":\"booking.com\",\n  \"OrderSourceId\":\"726122988\",\n  \"OrderTime\":\"16:22:14\",\n  \"Rooms\":[\n     {\n        \"EndDate\":\"2012-09-18\",\n        \"Currency\":\"EUR\",\n        \"RoomTypeIds\":[\n           \"832\"\n        ],\n        \"Price\":\"16.80\",\n        \"RoomDesc\":\"3 person mixed shared bed\",\n        \"Units\":\"1\",\n        \"StartDate\":\"2012-09-18\"\n     }\n  ],\n  \"TotalCurrency\":\"EUR\",\n  \"TotalPrice\":\"16.80\",\n  \"MyallocatorId\":\"5058a1bd921f120061010000\",\n  \"Channel\":\"ct\",\n  \"PropertyId\":264,\n  \"StartDate\":\"2012-09-18\",\n  \"EndDate\":\"2012-09-18\",\n  \"MyallocatorCreationDate\":\"2012-09-18\",\n  \"MyallocatorCreationTime\":\"17:32:16\",\n  \"MyallocatorModificationDate\":\"2012-09-18\",\n  \"MyallocatorModificationTime\":\"17:32:16\"\n}",
+        "type": "json"
+      }
+    ],
+    "filename": "perllib/MAAPI.pm",
+    "groupTitle": "2_Booking_Callbacks"
+  },
+  {
+    "group": "2_Booking_Callbacks",
+    "type": "",
+    "url": "{}",
+    "title": "Response Handling",
+    "name": "Response_Handling",
+    "version": "201601.0.0",
+    "description": "<p>== Response Format ==  The codes are as follows, the message (msg) is not parsed and can be anything you like   (we still recommend something that describes the error).</p> <table> <thead> <tr> <th>Code</th> <th>Cause</th> </tr> </thead> <tbody> <tr> <td>10</td> <td>Password wrong or not set.</td> </tr> <tr> <td>20</td> <td>Error while parsing JSON structure (including the exception message, for example position of not parsable part)</td> </tr> <tr> <td>21</td> <td>Error while parsing JSON structure (exact reason unknown)</td> </tr> <tr> <td>22</td> <td>Error while parsing JSON content</td> </tr> <tr> <td>30</td> <td>PropertyId is NULL or 0</td> </tr> <tr> <td>31</td> <td>Property not used on your PMS anymore</td> </tr> <tr> <td>35</td> <td>MyallocatorId already existing</td> </tr> <tr> <td>40</td> <td>Request a retry (vendor currently unable to process booking notification)</td> </tr> <tr> <td>50+</td> <td>Internal error on your side (for debugging)</td> </tr> </tbody> </table> <p> We record every error and can give you more details if needed. The important codes  are really only 10 and 31. The JSON should always be valid and the PropertyId  always included.</p> ",
+    "success": {
+      "examples": [
+        {
+          "title": "Example of a successful JSON response",
+          "content": "{ \n    \"success\": true \n}",
+          "type": "json"
+        }
+      ]
+    },
     "error": {
       "examples": [
         {
-          "title": "JSON error response",
-          "content": "{\n   \"Error\": {\n       \"Id\": 3,\n       \"Message\": \"Invalid user or user password\"\n   }\n}",
-          "type": "json"
-        },
-        {
-          "title": "XML error response",
-          "content": "<MethodResponse>\n <Errors>\n  <Error>\n    <ErrorId>3</ErrorId>\n    <ErrorMsg>Invalid user or user password</ErrorMsg>\n  </Error>\n </Errors>\n</MethodResponse>",
+          "title": "Example of an unsuccessful JSON response",
+          "content": "{\n  \"error\":{\n     \"code\":31,\n     \"msg\":\"Could not find property on this system for myallocator PropertyId: 603\"\n  },\n  \"success\":false\n}",
           "type": "json"
         }
       ]
     },
     "filename": "perllib/MAAPI.pm",
-    "groupTitle": "Introduction"
+    "groupTitle": "2_Booking_Callbacks"
   },
   {
-    "group": "PMS",
+    "group": "3_API_Methods",
     "type": "POST",
     "url": "/ARIRulesList",
     "title": "ARIRulesList",
@@ -113,10 +190,10 @@ define({ "api": [
       }
     ],
     "filename": "perllib/MAAPI.pm",
-    "groupTitle": "PMS"
+    "groupTitle": "3_API_Methods"
   },
   {
-    "group": "PMS",
+    "group": "3_API_Methods",
     "type": "POST",
     "url": "/ARIRulesUpdate",
     "title": "ARIRulesUpdate",
@@ -216,10 +293,10 @@ define({ "api": [
       }
     ],
     "filename": "perllib/MAAPI.pm",
-    "groupTitle": "PMS"
+    "groupTitle": "3_API_Methods"
   },
   {
-    "group": "PMS",
+    "group": "3_API_Methods",
     "type": "POST",
     "url": "/ARIUpdate",
     "title": "ARIUpdate",
@@ -520,10 +597,10 @@ define({ "api": [
       }
     ],
     "filename": "perllib/MAAPI.pm",
-    "groupTitle": "PMS"
+    "groupTitle": "3_API_Methods"
   },
   {
-    "group": "PMS",
+    "group": "3_API_Methods",
     "type": "POST",
     "url": "/ARIUpdateStatus",
     "title": "ARIUpdateStatus",
@@ -618,10 +695,10 @@ define({ "api": [
       }
     ],
     "filename": "perllib/MAAPI.pm",
-    "groupTitle": "PMS"
+    "groupTitle": "3_API_Methods"
   },
   {
-    "group": "PMS",
+    "group": "3_API_Methods",
     "type": "POST",
     "url": "/AmenityList",
     "title": "AmenityList",
@@ -670,10 +747,10 @@ define({ "api": [
       ]
     },
     "filename": "perllib/MAAPI.pm",
-    "groupTitle": "PMS"
+    "groupTitle": "3_API_Methods"
   },
   {
-    "group": "PMS",
+    "group": "3_API_Methods",
     "type": "POST",
     "url": "/AssociatePropertyToPMS",
     "title": "AssociatePropertyToPMS",
@@ -759,10 +836,10 @@ define({ "api": [
       }
     ],
     "filename": "perllib/MAAPI.pm",
-    "groupTitle": "PMS"
+    "groupTitle": "3_API_Methods"
   },
   {
-    "group": "PMS",
+    "group": "3_API_Methods",
     "type": "POST",
     "url": "/AssociateUserToPMS",
     "title": "AssociateUserToPMS",
@@ -841,16 +918,16 @@ define({ "api": [
       }
     ],
     "filename": "perllib/MAAPI.pm",
-    "groupTitle": "PMS"
+    "groupTitle": "3_API_Methods"
   },
   {
-    "group": "PMS",
+    "group": "3_API_Methods",
     "type": "POST",
     "url": "/BookingAction",
     "title": "BookingAction",
     "name": "BookingAction",
     "version": "201601.0.0",
-    "description": "<p>Booking provides the ability to send incremental &#39;intents&#39; which modify a booking. Currently a limited number of actions are supported, however in the future new actions will be added. Actions are processed in sequence, the first error encountered stops all future actions. After any successful modification to a booking a callback trigger is modified, and the modified timestamp is set. A Response will be returned which provides insight/status on each command. If multiple commands are sent, the first error on any command will stop all further command processing.</p> <h2 id=\"supported-actions\">Supported Actions</h2> <ul> <li>ACK       mark a booking as acknowledged on myallocator UI</li> <li>UNACK     removes the acknowledgement flag</li> <li>READ      mark a booking as read on myallocator UI</li> <li>UNREAD    remove the read flag</li> <li>ADDNOTE   add a note from the property to be shown on myallocator UI</li> <li>NOTIFY-ASYNC  triggers an async callback notification to all vendors (typically within 1 minute, with retries)</li> <li>NOTIFY-SYNC   triggers a synchronous callback (instantaneous, with error/success status)</li> </ul> ",
+    "description": "<p>Booking provides the ability to send incremental &#39;intents&#39; which modify a booking. Currently a limited number of actions are supported, however in the future new actions will be added. Actions are processed in sequence, the first error encountered stops all future actions. After any successful modification to a booking a callback trigger is modified, and the modified timestamp is set. A Response will be returned which provides insight/status on each command. If multiple commands are sent, the first error on any command will stop all further command processing.</p> <h2 id=\"supported-actions\">Supported Actions</h2> <ul> <li>ACK       mark a booking as acknowledged on myallocator UI</li> <li>UNACK     removes the acknowledgement flag</li> <li>READ      mark a booking as read on myallocator UI</li> <li>UNREAD    remove the read flag</li> <li>ADDNOTE   add a note from the property to be shown on myallocator UI</li> </ul> ",
     "parameter": {
       "fields": {
         "Request": [
@@ -946,20 +1023,20 @@ define({ "api": [
     "examples": [
       {
         "title": "JSON Request",
-        "content": "{\n    \"Auth/UserToken\":\"\",\n    \"Auth/UserId\":\"\",\n    \"Auth/UserPassword\":\"\",\n    \"Auth/VendorId\":\"\",\n    \"Auth/VendorPassword\":\"\",\n    \"Auth/PropertyId\":\"\",\n\n    \"MyAllocatorId\":\"XXXXX\",\n    \"Actions\":[\n        \"ACK\",\n        \"NOTIFY-SYNC\",\n        [ \"ADDNOTE\", \"Customer called, they will arrive late\"]\n    ]\n}",
+        "content": "{\n    \"Auth/UserToken\":\"\",\n    \"Auth/UserId\":\"\",\n    \"Auth/UserPassword\":\"\",\n    \"Auth/VendorId\":\"\",\n    \"Auth/VendorPassword\":\"\",\n    \"Auth/PropertyId\":\"\",\n\n    \"MyAllocatorId\":\"XXXXX\",\n    \"Actions\":[\n        \"ACK\",\n        [ \"ADDNOTE\", \"Customer called, they will arrive late\"]\n    ]\n}",
         "type": "json"
       },
       {
         "title": "curl w/ JSON",
-        "content": "curl http://api.myallocator.com/pms/v201408/json/BookingAction -d@- <<EOJSON\njson={\n    \"Auth/UserToken\":\"\",\n    \"Auth/UserId\":\"\",\n    \"Auth/UserPassword\":\"\",\n    \"Auth/VendorId\":\"\",\n    \"Auth/VendorPassword\":\"\",\n    \"Auth/PropertyId\":\"\",\n\n    \"MyAllocatorId\":\"XXXXX\",\n    \"Actions\":[\n        \"ACK\",\n        \"NOTIFY-SYNC\",\n        [ \"ADDNOTE\", \"Customer called, they will arrive late\"]\n    ]\n}\nEOJSON",
+        "content": "curl http://api.myallocator.com/pms/v201408/json/BookingAction -d@- <<EOJSON\njson={\n    \"Auth/UserToken\":\"\",\n    \"Auth/UserId\":\"\",\n    \"Auth/UserPassword\":\"\",\n    \"Auth/VendorId\":\"\",\n    \"Auth/VendorPassword\":\"\",\n    \"Auth/PropertyId\":\"\",\n\n    \"MyAllocatorId\":\"XXXXX\",\n    \"Actions\":[\n        \"ACK\",\n        [ \"ADDNOTE\", \"Customer called, they will arrive late\"]\n    ]\n}\nEOJSON",
         "type": "json"
       }
     ],
     "filename": "perllib/MAAPI.pm",
-    "groupTitle": "PMS"
+    "groupTitle": "3_API_Methods"
   },
   {
-    "group": "PMS",
+    "group": "3_API_Methods",
     "type": "POST",
     "url": "/BookingCancel",
     "title": "BookingCancel",
@@ -1041,214 +1118,10 @@ define({ "api": [
       }
     ],
     "filename": "perllib/MAAPI.pm",
-    "groupTitle": "PMS"
+    "groupTitle": "3_API_Methods"
   },
   {
-    "group": "PMS",
-    "type": "POST",
-    "url": "/BookingCreate",
-    "title": "BookingCreate",
-    "name": "BookingCreate",
-    "version": "201501.0.0",
-    "description": "<p>Internal Use Only.</p> ",
-    "parameter": {
-      "fields": {
-        "Request": [
-          {
-            "group": "Request",
-            "type": "String",
-            "optional": true,
-            "field": "Auth/UserId",
-            "description": "<p>Users unique ID     (required with Auth/UserPassword)</p> "
-          },
-          {
-            "group": "Request",
-            "type": "String",
-            "optional": true,
-            "field": "Auth/UserPassword",
-            "description": "<p>Users password        (required with Auth/UserId)</p> "
-          },
-          {
-            "group": "Request",
-            "type": "String",
-            "optional": true,
-            "field": "Auth/UserToken",
-            "description": "<p>Users auth token (see AssociateUserToPMS call to generate a Token)</p> "
-          },
-          {
-            "group": "Request",
-            "type": "String",
-            "optional": false,
-            "field": "Auth/PropertyId",
-            "description": "<p>Property Id associated to user.</p> "
-          },
-          {
-            "group": "Request",
-            "type": "String",
-            "optional": false,
-            "field": "Auth/VendorId",
-            "description": "<p>Your Vendor ID</p> "
-          },
-          {
-            "group": "Request",
-            "type": "String",
-            "optional": false,
-            "field": "Auth/VendorPassword",
-            "description": "<p>Your Vendor Password</p> "
-          },
-          {
-            "group": "Request",
-            "type": "Container",
-            "optional": false,
-            "field": "Booking",
-            "description": "<p>(see Booking)</p> "
-          }
-        ],
-        "Booking": [
-          {
-            "group": "Booking",
-            "type": "Date",
-            "optional": true,
-            "field": ".StartDate",
-            "description": "<p>YYYY-MM-DD (Date of Arrival)</p> "
-          },
-          {
-            "group": "Booking",
-            "type": "Date",
-            "optional": true,
-            "field": ".EndDate",
-            "description": "<p>YYYY-MM-DD  (Date before Departure)</p> "
-          },
-          {
-            "group": "Booking",
-            "type": "Integer",
-            "optional": true,
-            "field": ".Units",
-            "description": "<p>number of Rooms</p> "
-          },
-          {
-            "group": "Booking",
-            "type": "Integer",
-            "optional": true,
-            "field": ".RoomTypeId",
-            "description": "<p>MyAllocator Room Id</p> "
-          },
-          {
-            "group": "Booking",
-            "type": "Integer",
-            "optional": true,
-            "field": ".RateId",
-            "description": "<p>OTA Rate Id</p> "
-          },
-          {
-            "group": "Booking",
-            "type": "Currency",
-            "optional": true,
-            "field": ".RoomDayRate",
-            "description": "<p>MyAllocator Room Price (if not specified then a random, incrementing by $10 per day number will be used)</p> "
-          },
-          {
-            "group": "Booking",
-            "type": "String",
-            "optional": true,
-            "field": ".RoomDayDescription",
-            "description": "<p>A description for the Room within the DayRates container.</p> "
-          },
-          {
-            "group": "Booking",
-            "type": "String",
-            "optional": true,
-            "field": ".CustomerFName",
-            "description": "<p>Customer First Name</p> "
-          },
-          {
-            "group": "Booking",
-            "type": "String",
-            "optional": true,
-            "field": ".CustomerLName",
-            "description": "<p>Customer Last Name</p> "
-          },
-          {
-            "group": "Booking",
-            "type": "String",
-            "optional": true,
-            "field": ".RoomDesc",
-            "description": "<p>Room Description</p> "
-          },
-          {
-            "group": "Booking",
-            "type": "Boolean",
-            "optional": true,
-            "field": ".OccupantSmoker",
-            "description": ""
-          },
-          {
-            "group": "Booking",
-            "type": "String",
-            "optional": true,
-            "field": ".OccupantNote",
-            "description": ""
-          },
-          {
-            "group": "Booking",
-            "type": "String",
-            "optional": true,
-            "field": ".OccupantLName",
-            "description": ""
-          },
-          {
-            "group": "Booking",
-            "type": "String",
-            "optional": true,
-            "field": ".OccupantFName",
-            "description": ""
-          },
-          {
-            "group": "Booking",
-            "type": "String",
-            "optional": true,
-            "field": ".Occupancy",
-            "description": ""
-          },
-          {
-            "group": "Booking",
-            "type": "String",
-            "optional": true,
-            "field": ".Policy",
-            "description": ""
-          },
-          {
-            "group": "Booking",
-            "type": "String",
-            "optional": true,
-            "field": ".ChannelRoomType",
-            "description": ""
-          }
-        ]
-      }
-    },
-    "examples": [
-      {
-        "title": "JSON LoopBookingCreate Request",
-        "content": "{\n\"Auth/VendorId\":\"\",\n\"Auth/VendorPassword\":\"\",\n\"Auth/UserToken\":\"\",\n\"Auth/PropertyId\":\"\",\n\"Booking\":{\n\t\"StartDate\":\"YYYY-MM-DD\",\n\t\"EndDate\":\"YYYY-MM-DD\",\n\t\"RoomId\":###,\n\t\"Units\":##,\n\t\"Price\":\"3.00\"\n\t}\n}",
-        "type": "json"
-      },
-      {
-        "title": "XML LoopBookingCreate Request",
-        "content": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<LoopBookingCreate>\n<Auth>\n\t<UserId>Customer User ID</UserId>\n\t<UserPassword>Customer Password</UserPassword>\n\t<PropertyId>###</PropertyId>\n</Auth>\n<Booking>\n\t<StartDate>YYYY-MM-DD</StartDate>\n\t<EndDate>YYYY-MM-DD</EndRate>\n</Booking>\n</LoopBookingCreate>",
-        "type": "json"
-      },
-      {
-        "title": "curl w/ JSON",
-        "content": "curl http://api.myallocator.com/pms/v201408/json/LoopBookingCreate -d@- <<EOJSON\njson={\n\"Auth/VendorId\":\"\",\n\"Auth/VendorPassword\":\"\",\n\"Auth/UserToken\":\"\",\n\"Auth/PropertyId\":\"\",\n\"Booking\":{\n\t\"StartDate\":\"YYYY-MM-DD\",\n\t\"EndDate\":\"YYYY-MM-DD\",\n\t\"RoomId\":###,\n\t\"Units\":##,\n\t\"Price\":\"3.00\"\n\t}\n}\nEOJSON",
-        "type": "json"
-      }
-    ],
-    "filename": "perllib/MAAPI.pm",
-    "groupTitle": "PMS"
-  },
-  {
-    "group": "PMS",
+    "group": "3_API_Methods",
     "type": "POST",
     "url": "/BookingList",
     "title": "BookingList",
@@ -1929,10 +1802,10 @@ define({ "api": [
       }
     },
     "filename": "perllib/MAAPI.pm",
-    "groupTitle": "PMS"
+    "groupTitle": "3_API_Methods"
   },
   {
-    "group": "PMS",
+    "group": "3_API_Methods",
     "type": "POST",
     "url": "/BookingPaymentDownload",
     "title": "BookingPaymentDownload",
@@ -2032,10 +1905,10 @@ define({ "api": [
       }
     ],
     "filename": "perllib/MAAPI.pm",
-    "groupTitle": "PMS"
+    "groupTitle": "3_API_Methods"
   },
   {
-    "group": "PMS",
+    "group": "3_API_Methods",
     "type": "POST",
     "url": "/BookingPaymentPasswordValidate",
     "title": "BookingPaymentPasswordValidate",
@@ -2129,10 +2002,10 @@ define({ "api": [
       ]
     },
     "filename": "perllib/MAAPI.pm",
-    "groupTitle": "PMS"
+    "groupTitle": "3_API_Methods"
   },
   {
-    "group": "PMS",
+    "group": "3_API_Methods",
     "type": "POST",
     "url": "/ChannelList",
     "title": "ChannelList",
@@ -2206,10 +2079,10 @@ define({ "api": [
       }
     ],
     "filename": "perllib/MAAPI.pm",
-    "groupTitle": "PMS"
+    "groupTitle": "3_API_Methods"
   },
   {
-    "group": "PMS",
+    "group": "3_API_Methods",
     "type": "POST",
     "url": "/HelloWorld",
     "title": "HelloWorld",
@@ -2244,10 +2117,10 @@ define({ "api": [
       }
     ],
     "filename": "perllib/MAAPI.pm",
-    "groupTitle": "PMS"
+    "groupTitle": "3_API_Methods"
   },
   {
-    "group": "PMS",
+    "group": "3_API_Methods",
     "type": "POST",
     "url": "/LoopARIList",
     "title": "LoopARIList",
@@ -2267,10 +2140,10 @@ define({ "api": [
       }
     ],
     "filename": "perllib/MAAPI.pm",
-    "groupTitle": "PMS"
+    "groupTitle": "3_API_Methods"
   },
   {
-    "group": "PMS",
+    "group": "3_API_Methods",
     "type": "POST",
     "url": "/LoopBookingAction",
     "title": "LoopBookingAction",
@@ -2285,16 +2158,16 @@ define({ "api": [
       }
     ],
     "filename": "perllib/MAAPI.pm",
-    "groupTitle": "PMS"
+    "groupTitle": "3_API_Methods"
   },
   {
-    "group": "PMS",
+    "group": "3_API_Methods",
     "type": "POST",
     "url": "/LoopBookingCreate",
     "title": "LoopBookingCreate",
     "name": "LoopBookingCreate",
     "version": "201601.0.0",
-    "description": "<p>Create a new booking in the Loopback Channel.  Parameters are optional and if not specified then booking will be populated with DWIW (Do What I Want) style data. See the &quot;BookingList&quot; api call for a complete discussion of Booking related fields.</p> ",
+    "description": "<p>Create a new booking in the Loopback Channel.  Parameters are optional and if not specified then booking will be populated with DWIW (Do What I Want) style data. See the &quot;BookingList&quot; api call for a complete discussion of Booking related fields.</p> <p><strong> Booking callback notifications are disabled </strong>for bookings created via LoopBookingCreate. To test booking callback notifications, you can setup BookNow in the web interface for a test property and generate test bookings.</p> ",
     "parameter": {
       "fields": {
         "Request": [
@@ -2498,10 +2371,10 @@ define({ "api": [
       ]
     },
     "filename": "perllib/MAAPI.pm",
-    "groupTitle": "PMS"
+    "groupTitle": "3_API_Methods"
   },
   {
-    "group": "PMS",
+    "group": "3_API_Methods",
     "type": "POST",
     "url": "/LoopBookingCreate",
     "title": "LoopBookingCreate",
@@ -2581,10 +2454,10 @@ define({ "api": [
       }
     ],
     "filename": "perllib/MAAPI.pm",
-    "groupTitle": "PMS"
+    "groupTitle": "3_API_Methods"
   },
   {
-    "group": "PMS",
+    "group": "3_API_Methods",
     "type": "POST",
     "url": "/LoopBookingList",
     "title": "LoopBookingList",
@@ -2599,10 +2472,10 @@ define({ "api": [
       }
     ],
     "filename": "perllib/MAAPI.pm",
-    "groupTitle": "PMS"
+    "groupTitle": "3_API_Methods"
   },
   {
-    "group": "PMS",
+    "group": "3_API_Methods",
     "type": "POST",
     "url": "/PropertyChannelList",
     "title": "PropertyChannelList",
@@ -2670,10 +2543,10 @@ define({ "api": [
       }
     ],
     "filename": "perllib/MAAPI.pm",
-    "groupTitle": "PMS"
+    "groupTitle": "3_API_Methods"
   },
   {
-    "group": "PMS",
+    "group": "3_API_Methods",
     "type": "POST",
     "url": "/PropertyCreate",
     "title": "PropertyCreate",
@@ -2864,10 +2737,10 @@ define({ "api": [
       ]
     },
     "filename": "perllib/MAAPI.pm",
-    "groupTitle": "PMS"
+    "groupTitle": "3_API_Methods"
   },
   {
-    "group": "PMS",
+    "group": "3_API_Methods",
     "type": "POST",
     "url": "/PropertyImageCreate",
     "title": "PropertyImageCreate",
@@ -2986,10 +2859,10 @@ define({ "api": [
       ]
     },
     "filename": "perllib/MAAPI.pm",
-    "groupTitle": "PMS"
+    "groupTitle": "3_API_Methods"
   },
   {
-    "group": "PMS",
+    "group": "3_API_Methods",
     "type": "POST",
     "url": "/PropertyImageList",
     "title": "PropertyImageList",
@@ -3094,10 +2967,10 @@ define({ "api": [
       ]
     },
     "filename": "perllib/MAAPI.pm",
-    "groupTitle": "PMS"
+    "groupTitle": "3_API_Methods"
   },
   {
-    "group": "PMS",
+    "group": "3_API_Methods",
     "type": "POST",
     "url": "/PropertyImageRemove",
     "title": "PropertyImageRemove",
@@ -3196,10 +3069,10 @@ define({ "api": [
       ]
     },
     "filename": "perllib/MAAPI.pm",
-    "groupTitle": "PMS"
+    "groupTitle": "3_API_Methods"
   },
   {
-    "group": "PMS",
+    "group": "3_API_Methods",
     "type": "POST",
     "url": "/PropertyList",
     "title": "PropertyList",
@@ -3390,10 +3263,10 @@ define({ "api": [
       ]
     },
     "filename": "perllib/MAAPI.pm",
-    "groupTitle": "PMS"
+    "groupTitle": "3_API_Methods"
   },
   {
-    "group": "PMS",
+    "group": "3_API_Methods",
     "type": "POST",
     "url": "/PropertyModify",
     "title": "PropertyModify",
@@ -3539,10 +3412,10 @@ define({ "api": [
       ]
     },
     "filename": "perllib/MAAPI.pm",
-    "groupTitle": "PMS"
+    "groupTitle": "3_API_Methods"
   },
   {
-    "group": "PMS",
+    "group": "3_API_Methods",
     "type": "POST",
     "url": "/RatePlanCreate",
     "title": "RatePlanCreate",
@@ -3710,10 +3583,10 @@ define({ "api": [
       ]
     },
     "filename": "perllib/MAAPI.pm",
-    "groupTitle": "PMS"
+    "groupTitle": "3_API_Methods"
   },
   {
-    "group": "PMS",
+    "group": "3_API_Methods",
     "type": "POST",
     "url": "/RatePlanList",
     "title": "RatePlanList",
@@ -3818,10 +3691,10 @@ define({ "api": [
       ]
     },
     "filename": "perllib/MAAPI.pm",
-    "groupTitle": "PMS"
+    "groupTitle": "3_API_Methods"
   },
   {
-    "group": "PMS",
+    "group": "3_API_Methods",
     "type": "POST",
     "url": "/RatePlanRemove",
     "title": "RatePlanRemove",
@@ -3940,10 +3813,10 @@ define({ "api": [
       ]
     },
     "filename": "perllib/MAAPI.pm",
-    "groupTitle": "PMS"
+    "groupTitle": "3_API_Methods"
   },
   {
-    "group": "PMS",
+    "group": "3_API_Methods",
     "type": "POST",
     "url": "/RatePlanUpdate",
     "title": "RatePlanUpdate",
@@ -4060,10 +3933,10 @@ define({ "api": [
       ]
     },
     "filename": "perllib/MAAPI.pm",
-    "groupTitle": "PMS"
+    "groupTitle": "3_API_Methods"
   },
   {
-    "group": "PMS",
+    "group": "3_API_Methods",
     "type": "POST",
     "url": "/RoomAvailabilityList",
     "title": "RoomAvailabilityList",
@@ -4164,10 +4037,10 @@ define({ "api": [
       ]
     },
     "filename": "perllib/MAAPI.pm",
-    "groupTitle": "PMS"
+    "groupTitle": "3_API_Methods"
   },
   {
-    "group": "PMS",
+    "group": "3_API_Methods",
     "type": "POST",
     "url": "/RoomCreate",
     "title": "RoomCreate",
@@ -4377,10 +4250,10 @@ define({ "api": [
       ]
     },
     "filename": "perllib/MAAPI.pm",
-    "groupTitle": "PMS"
+    "groupTitle": "3_API_Methods"
   },
   {
-    "group": "PMS",
+    "group": "3_API_Methods",
     "type": "POST",
     "url": "/RoomImageCreate",
     "title": "RoomImageCreate",
@@ -4506,10 +4379,10 @@ define({ "api": [
       ]
     },
     "filename": "perllib/MAAPI.pm",
-    "groupTitle": "PMS"
+    "groupTitle": "3_API_Methods"
   },
   {
-    "group": "PMS",
+    "group": "3_API_Methods",
     "type": "POST",
     "url": "/RoomImageList",
     "title": "RoomImageList",
@@ -4621,10 +4494,10 @@ define({ "api": [
       ]
     },
     "filename": "perllib/MAAPI.pm",
-    "groupTitle": "PMS"
+    "groupTitle": "3_API_Methods"
   },
   {
-    "group": "PMS",
+    "group": "3_API_Methods",
     "type": "POST",
     "url": "/RoomImageRemove",
     "title": "RoomImageRemove",
@@ -4725,10 +4598,10 @@ define({ "api": [
       }
     ],
     "filename": "perllib/MAAPI.pm",
-    "groupTitle": "PMS"
+    "groupTitle": "3_API_Methods"
   },
   {
-    "group": "PMS",
+    "group": "3_API_Methods",
     "type": "POST",
     "url": "/RoomList",
     "title": "RoomList",
@@ -4872,10 +4745,10 @@ define({ "api": [
       ]
     },
     "filename": "perllib/MAAPI.pm",
-    "groupTitle": "PMS"
+    "groupTitle": "3_API_Methods"
   },
   {
-    "group": "PMS",
+    "group": "3_API_Methods",
     "type": "POST",
     "url": "/RoomRemove",
     "title": "RoomRemove",
@@ -4927,10 +4800,10 @@ define({ "api": [
       }
     ],
     "filename": "perllib/MAAPI.pm",
-    "groupTitle": "PMS"
+    "groupTitle": "3_API_Methods"
   },
   {
-    "group": "PMS",
+    "group": "3_API_Methods",
     "type": "POST",
     "url": "/RoomUpdate",
     "title": "RoomUpdate",
@@ -4945,10 +4818,10 @@ define({ "api": [
       }
     ],
     "filename": "perllib/MAAPI.pm",
-    "groupTitle": "PMS"
+    "groupTitle": "3_API_Methods"
   },
   {
-    "group": "PMS",
+    "group": "3_API_Methods",
     "type": "POST",
     "url": "/UserCreate",
     "title": "UserCreate",
@@ -5076,10 +4949,10 @@ define({ "api": [
       ]
     },
     "filename": "perllib/MAAPI.pm",
-    "groupTitle": "PMS"
+    "groupTitle": "3_API_Methods"
   },
   {
-    "group": "PMS",
+    "group": "3_API_Methods",
     "type": "POST",
     "url": "/UserExists",
     "title": "UserExists",
@@ -5186,10 +5059,10 @@ define({ "api": [
       }
     ],
     "filename": "perllib/MAAPI.pm",
-    "groupTitle": "PMS"
+    "groupTitle": "3_API_Methods"
   },
   {
-    "group": "PMS",
+    "group": "3_API_Methods",
     "type": "POST",
     "url": "/UserModify",
     "title": "UserModify",
@@ -5280,10 +5153,10 @@ define({ "api": [
       ]
     },
     "filename": "perllib/MAAPI.pm",
-    "groupTitle": "PMS"
+    "groupTitle": "3_API_Methods"
   },
   {
-    "group": "PMS",
+    "group": "3_API_Methods",
     "type": "POST",
     "url": "/VendorSet",
     "title": "VendorSet",
@@ -5326,20 +5199,6 @@ define({ "api": [
             "optional": false,
             "field": "Callback/NotifyBooking",
             "description": "<p>Send notifications of Bookings</p> "
-          },
-          {
-            "group": "Request",
-            "type": "String",
-            "optional": false,
-            "field": "Callback/NotifyARIUpdate",
-            "description": "<p>Send notifications of ARIUpdate results</p> "
-          },
-          {
-            "group": "Request",
-            "type": "String",
-            "optional": false,
-            "field": "Callback/NotifyProperty",
-            "description": "<p>Send notifications of Property Configuration changes</p> "
           }
         ],
         "Response": [
@@ -5357,7 +5216,7 @@ define({ "api": [
     "examples": [
       {
         "title": "XML VendorSet",
-        "content": "<?xml version=\"1.0\" encoding=\"UTF-8\" ?>\n<VendorSet>\n <Auth>\n   <VendorId>Your Vendor ID</VendorId>\n   <VendorPassword>Your Vendor Password</VendorPassword>\n </Auth>\n <Callback>\n   <URL>http://www.yourdomain.com/myallocator/callback.cgi</URL>\n   <Password>very secret password</Password>\n\t<NotifyARIUpdate>true|false</NotifyARIUpdate>\n\t<NotifyBooking>true|false</NotifyBooking>\n\t<NotifyProperty>true|false</NotifyProperty>\n </Callback>\n</VendorSet>",
+        "content": "<?xml version=\"1.0\" encoding=\"UTF-8\" ?>\n<VendorSet>\n    <Auth>\n        <VendorId>Your Vendor ID</VendorId>\n        <VendorPassword>Your Vendor Password</VendorPassword>\n    </Auth>\n    <Callback>\n        <URL>http://www.yourdomain.com/myallocator/callback.cgi</URL>\n        <Password>very secret password</Password>\n        <NotifyBooking>true|false</NotifyBooking>\n    </Callback>\n</VendorSet>",
         "type": "json"
       },
       {
@@ -5372,10 +5231,10 @@ define({ "api": [
       }
     ],
     "filename": "perllib/MAAPI.pm",
-    "groupTitle": "PMS"
+    "groupTitle": "3_API_Methods"
   },
   {
-    "group": "_Appendix",
+    "group": "4_Appendix",
     "type": "",
     "url": "{}",
     "title": "Channel Codes",
@@ -5383,10 +5242,10 @@ define({ "api": [
     "version": "201601.0.0",
     "description": "<p>For the most up to date information please use the ChannelList API call.</p> <p>We also have prepared the following summary: <a href=\"https://github.com/MyAllocator/apidocs/blob/gh-pages/channel-list.md\">https://github.com/MyAllocator/apidocs/blob/gh-pages/channel-list.md</a></p> ",
     "filename": "perllib/MAAPI.pm",
-    "groupTitle": "_Appendix"
+    "groupTitle": "4_Appendix"
   },
   {
-    "group": "_Appendix",
+    "group": "4_Appendix",
     "type": "",
     "url": "{}",
     "title": "FAQ",
@@ -5394,10 +5253,10 @@ define({ "api": [
     "version": "201601.0.0",
     "description": "<ul> <li><p><em>How should I deal with failed channel updates?</em> If the error is noted as non-fatal on the Error Code page then retry the update after a few minutes. Failing updates are not as rare as you would think because channels do go down and become unresponsive.</p> <p>Fatal errors should not be automatically retried as they need user intervention. Make sure to show the error message to the customer._</p> <ul> <li><em>Are there any limits on how many updates can be send at once?</em></li> </ul> <p>There is (currently) no limit, but you&#39;re strongly advised to split large updates (especially full refreshes) into smaller chunks of 30-60 days. This has the advantage that you can easily re-run failed chunks and it will make debugging problems easier.</p> <ul> <li><p><em>I cannot log in to myallocator with the test credentials. Why?</em> This is to avoid the settings for the test properties from being changed. You can however just register your own test property. Should you need more than the 30-day trial period let us know and we will extend it.</p> </li> <li><p><em>Callback: how do you know which customers belong to us?</em> The first time you send an update on behalf of a customer through our API this customer will be marked as a user of your PMS. From then on you will receive callbacks for this customer.</p> </li> <li><p><em>Can I send updates in parallel?</em> You can for different properties. What you should never do is send an update for a property without waiting for the previous update for this property to succeed/fail. Otherwise you can run into race-conditions where the later update succeeds before the first update, opening up availability on the channel unintentionally.</p> </li> <li><p><em>Why can there be multiple RoomTypeIds for a booking?</em> The same channel room can be assigned to multiple myallocator rooms. For this scenario we send the sum of available rooms/beds and the highest price of any available room that is mapped to this channel room. So the list of RoomTypeIds represents all matching rooms, but it does not mean that all of them were actually booked. Check out the warning on the Automatic Adjustments developer page for more details on how to adjust for this scenario.</p> </li> <li><p><em>Do I need PCI Certification for BookingPaymentDownload?</em> Yes. We require a PCI compliance certificate from you.  Most hostel and small PMS companies (those with less than $10m year in revenue) can use a Level 3 &quot;self&quot; certification.<br>Level 3 PCI Compliance simply requires you attest that you are following secure coding practices in your application, and server hosting environment. In most cases it will require you attain attestation from your server hosting and gateway  vendors to ensure a complete web of trust. More information: <a href=\"http://www.pcicompliance101.net/pci-dss-compliance.htm\">http://www.pcicompliance101.net/pci-dss-compliance.htm</a></p> </li> </ul> </li> <li><p>_For our testing purpose, will you give us an appropriate account?</p> </li> </ul> <p>You are welcome to create a trial account and use that for testing,  if you would like it extended you can talk to your relationship manager.  (devhelp can&#39;t give you a free account, only the relationship manager can do that)</p> <ul> <li>_In some Methods the &#39;PropertyID&#39; is required, where can we get this?</li> </ul> <p>It is returned when a property is created, or via: PropertyList</p> <ul> <li>_In the Method &quot;AssociateUserToPMS&quot; returns the error: &quot;ErrorMsg=Auth/PropertyId or Auth/PropertyToken is required&quot;; neither of these is mentioned in the specs</li> </ul> <p>A single user may have multiple properties associated to them, each property has a unique number called the &quot;PropertyId&quot;</p> <ul> <li>_Some API&#39;s found in the documentation require special vendor permissions. How may we acquiring them?</li> </ul> <p>Speak with your relationship manager, very few integrations need those,  only very deep integrations with thousands of users. It is much better (and more common) to have your user sign up on www.myallocator.com,  create property, setup channels, etc. then provide you with a username+password which you exchange for a UserToken  (that doesn&#39;t expire).</p> ",
     "filename": "perllib/MAAPI.pm",
-    "groupTitle": "_Appendix"
+    "groupTitle": "4_Appendix"
   },
   {
-    "group": "_Appendix",
+    "group": "4_Appendix",
     "type": "",
     "url": "{}",
     "title": "Global Error Codes",
@@ -5405,21 +5264,10 @@ define({ "api": [
     "version": "201601.0.0",
     "description": "<p>Errors are divided into three categories. A global error will have a single  Errors tag with no further encapsulation and only a single Error tag.</p> <p> An API method specific error will be included in the method name. Again, there will only be a single Error  tag. The third type of error is channel specific. The Errors tag is included  in the method name and there may be multiple Error tags.</p> <table> <thead> <tr> <th>Code</th> <th>Description</th> </tr> </thead> <tbody> <tr> <td>2</td> <td>Missing authentication tags</td> </tr> <tr> <td>3</td> <td>Invalid user or user password</td> </tr> <tr> <td>4</td> <td>Invalid vendor or vendor password</td> </tr> <tr> <td>5</td> <td>Vendor disabled</td> </tr> <tr> <td>6</td> <td>User has no credit left</td> </tr> <tr> <td>7</td> <td>User has no permission to change availability for this property</td> </tr> <tr> <td>8</td> <td>No such API method</td> </tr> <tr> <td>9</td> <td>Unsupported channel</td> </tr> <tr> <td>10</td> <td>No channels selected</td> </tr> <tr> <td>11</td> <td>No allocations submitted</td> </tr> <tr> <td>12</td> <td>Invalid room type id (does not exist or not assigned to this property)</td> </tr> <tr> <td>13</td> <td>Missing allocation info (price, dates, units)</td> </tr> <tr> <td>14</td> <td>Internal error. Support has been notified!</td> </tr> <tr> <td>15</td> <td>Missing or wrong channel credentials on myallocator.com</td> </tr> <tr> <td>16</td> <td>End date before start date</td> </tr> <tr> <td>17</td> <td>Start date too far in the future (&gt;2 years)</td> </tr> <tr> <td>18</td> <td>Invalid property id</td> </tr> <tr> <td>19</td> <td>Vendor not enabled to use this method</td> </tr> <tr> <td>20</td> <td>Missing required XML fields</td> </tr> <tr> <td>21</td> <td>No applicable dates submitted</td> </tr> <tr> <td>22</td> <td>Invalid update id</td> </tr> <tr> <td>301</td> <td>Invalid characters in new username</td> </tr> <tr> <td>302</td> <td>Username exists already</td> </tr> <tr> <td>303</td> <td>Invalid values (check Breakfast, Currency, ExpiryDate)</td> </tr> <tr> <td>401</td> <td>Invalid date format</td> </tr> <tr> <td>402</td> <td>Missing or invalid search criteri</td> </tr> <tr> <td>450</td> <td>Payment password is invalid</td> </tr> </tbody> </table> <p><em>Channel Specific errors</em></p> <table> <thead> <tr> <th>Code</th> <th>Description</th> </tr> </thead> <tbody> <tr> <td>202</td> <td>Channel skipped (not setup)</td> </tr> <tr> <td>203</td> <td>Channel did not respond</td> </tr> <tr> <td>204</td> <td>Channel skipped (no applicable rooms)</td> </tr> <tr> <td>205</td> <td>Incorrect room setup. The room type mapping needs to be updated on myallocator.com.</td> </tr> <tr> <td>206</td> <td>Channel only updates up to a certain period in the future. Some dates were skipped.</td> </tr> <tr> <td>207</td> <td>Skipped room type (not setup with channel)</td> </tr> <tr> <td>208</td> <td>Partial success: ...</td> </tr> <tr> <td>99</td> <td>Check/Display ErrMsg or WarningMsg content</td> </tr> </tbody> </table> ",
     "filename": "perllib/MAAPI.pm",
-    "groupTitle": "_Appendix"
+    "groupTitle": "4_Appendix"
   },
   {
-    "group": "_Appendix",
-    "type": "",
-    "url": "{}",
-    "title": "Our Todo List",
-    "name": "Our_Todo_List",
-    "version": "201601.0.0",
-    "description": "<p>We are no longer allowing new clients to board under our legacy &quot;antiquity&quot; version(s) of the API.</p> <p>This is a list of Errata. This page will list known areas we are working on, if you have a bug please let us know. This is our internal list of stuff we know is broken, or stuff we&#39;re working on.</p> <ul> <li>NEED TO REGRESSION TEST v1</li> <li>All calls need stricter incoming type checking, specifically at the container level. </li> <li>PMS Property ID cannot be used as an identification.</li> <li>Documentation: needs to be restructured, fix indenting, add Auth/PropertyId, designate container nodes using new syntax</li> <li>Documentation: need to add new error codes, possibly create a severity measure.</li> <li>Documentation: need to make list of channels and capabilities auto update</li> <li>Documentation: need to implement test harness in API + fix API URI parameter strings</li> <li>Documentation: need to fix title bar in API</li> <li>JSON - planning to add _method, _version to the request (which must match URI) in next release 201412</li> <li>Callbacks need to support versioning and a unified format (right now the callback format is slightly different based on the channel)</li> <li>propertyTokens are not fully implemented in all calls (and may never be)</li> <li>If you receive an internal server error, it is not always gracefully handled.</li> <li>Error messaging on ARIUpdates on Channels needs to be improved. (Currently the same as legacy v1 API)</li> <li>ARIUpdate ExcludeChannels is not working in JSON</li> <li>v1 compat - Need to discuss issues with overlapping date ranges (currently allowed on v201408, not on v1)</li> <li>Loop Bookings: may not display properly in the interface (some date bug?)</li> <li>Backend: Need to explore internal addState/useState on channels (is this even actually used?)</li> <li>Backend: Need to move channel status logging from mysql to redis</li> <li>Backend: Need to formalize the parameters/objects passed to ariupdate in each channel module for more legible internal codepath</li> <li>Backend: Migrate MyAllocator-&gt;channel_update into the ARIUpdate framework</li> <li>Backend: need to merge channel properties list in MyAllocator.pm into Channels.pm</li> </ul> <p>If you want to see historical (recent) changes to the API our documentation is hosted on github. <a href=\"https://github.com/MyAllocator/apidocs\">https://github.com/MyAllocator/apidocs</a></p> ",
-    "filename": "perllib/MAAPI.pm",
-    "groupTitle": "_Appendix"
-  },
-  {
-    "group": "_Appendix",
+    "group": "4_Appendix",
     "type": "",
     "url": "{}",
     "title": "Reporting Issues/Bugs",
@@ -5427,16 +5275,16 @@ define({ "api": [
     "version": "201601.0.0",
     "description": "<p>If you are having an issue with a particular API call please open a ticket by emailing  devhelp@myallocator.com.  Please be sure to ALWAYS include the TicketId.</p> <p>Whenever an error is returned a &quot;TicketId&quot; is also included in the response. Error Tickets are stored for 72 hours and preserve the entire incoming request and outgoing response and a variety of useful internal state information which is indispensable for  determining the cause of any issue.</p> <p>Tickets are <em>always</em> generated on API error responses.</p> <p>Pass Auth/Debug:1 (json) or <Auth><Debug>1</Debug></Auth> (xml) to request a &quot;TicketId&quot; key/node be created and returned for any successful request.</p> <p>Please include a TicketId with any issue you are reporting or requesting help with.</p> <p>PLEASE NOTE: <em>DO</em> <em>NOT</em> send Auth/Debug if it is not likely to be used.  We are setting a recommended threshold of 1,000 error tickets per 24 hour period. If a vendor receives too many errors their token <em>may</em> be suspended. Currently suspensions are done by hand however in the future this may be automated.</p> <p>Auth/Debug tickets count as errors, so use them only when necessary. Additionally Auth/Debug for BookingPaymentDownload will violate PCI Compliance and should never be avoided except under very dire/extreme circumstances.</p> ",
     "filename": "perllib/MAAPI.pm",
-    "groupTitle": "_Appendix"
+    "groupTitle": "4_Appendix"
   },
   {
-    "group": "_Appendix",
+    "group": "4_Appendix",
     "type": "",
     "url": "{}",
     "title": "Sample Booking Data",
     "name": "Sample_Booking_Data",
     "version": "201501.0.0",
-    "description": "<p>Sample bookings for a variety of OTA&#39;s.</p> <p><strong> Mandatory Fields </strong></p> <table> <thead> <tr> <th>Tag</th> <th>Description</th> </tr> </thead> <tbody> <tr> <td>Channel</td> <td>2-3 letter channel code</td> </tr> <tr> <td>StartDate</td> <td>Date of arrival (YYYY-MM-DD)</td> </tr> <tr> <td>EndDate</td> <td>Date before day of departure (YYYY-MM-DD)</td> </tr> <tr> <td>IsCancellation</td> <td>true or false</td> </tr> <tr> <td>MyallocatorId</td> <td>Booking ID on myallocator.com (hexadecimal number)</td> </tr> <tr> <td>MyallocatorCreationDate</td> <td>Date of booking creation on myallocator.com</td> </tr> <tr> <td>MyallocatorCreationTime</td> <td>Time of booking creation on myallocator.com</td> </tr> <tr> <td>MyallocatorModificationDate</td> <td>Date of booking modification on myallocator.com (in case of a cancellation the modification date is different from the creation date)</td> </tr> <tr> <td>MyallocatorModificationTime</td> <td>Time of booking modification on myallocator.com</td> </tr> <tr> <td>OrderId</td> <td>Booking ID on the channel</td> </tr> <tr> <td>Rooms</td> <td>Room List of booked rooms</td> </tr> <tr> <td>- RoomTypeIds</td> <td>List of booked myallocator.com room IDs. Several channel room can be mapped to one myallocator.com room. If -1 it means that we couldn&#39;t match the channel room to one of our rooms.</td> </tr> <tr> <td>- Units</td> <td>Number of booked rooms (for private rooms) or beds (for shared rooms)</td> </tr> <tr> <td>- StartDate</td> <td>Staying in this room from this date on (YYYY-MM-DD)</td> </tr> <tr> <td>- EndDate</td> <td>Date before day of departure (YYYY-MM-DD)</td> </tr> </tbody> </table> <p><strong> Optional Fields </strong></p> <table> <thead> <tr> <th>Tags</th> <th>Description</th> </tr> </thead> <tbody> <tr> <td>OrderSource</td> <td>Which website the booking originates from</td> </tr> <tr> <td>OrderDate</td> <td>The date the booking has been created on the channel</td> </tr> <tr> <td>OrderTime</td> <td>The time the booking has been created on the channel</td> </tr> <tr> <td>OrderAdults</td> <td>Number of adults</td> </tr> <tr> <td>OrderChildren</td> <td>Number of children</td> </tr> <tr> <td>Deposit</td> <td>Amount of money already taken as a deposit</td> </tr> <tr> <td>DepositCurrency</td> <td>Currency of deposit</td> </tr> <tr> <td>Commission</td> <td>Fee taken by the channel</td> </tr> <tr> <td>CommissionCurrency</td> <td>Currency of fee taken by the channel</td> </tr> <tr> <td>CommissionIncludedInTotal</td> <td>Whether the commission is included in the TotalPrice. Can be true or false.</td> </tr> <tr> <td>TotalPrice</td> <td>Total cost of booking</td> </tr> <tr> <td>TotalCurrency</td> <td>Currency for total cost of booking</td> </tr> <tr> <td>PaymentCollect</td> <td>&#39;Channel&#39; or &#39;Property&#39;, indicates who collects the payment from the guest</td> </tr> <tr> <td>Customers</td> <td>/Customer Customer details (can be more than one)</td> </tr> <tr> <td>- CustomerFName</td> <td>First name</td> </tr> <tr> <td>- CustomerLName</td> <td>Family name (or if CustomerFName is empty, both first and last name)</td> </tr> <tr> <td>- CustomerEmail</td> <td>Email address</td> </tr> <tr> <td>- CustomerGender</td> <td>Gender</td> </tr> <tr> <td>- CustomerSmoker</td> <td>Whether customer is a smoker. Can be true or false.</td> </tr> <tr> <td>- CustomerPhone</td> <td>Phone number</td> </tr> <tr> <td>- CustomerPhoneMobile</td> <td>Mobile phone number</td> </tr> <tr> <td>- CustomerFax</td> <td>Fax number</td> </tr> <tr> <td>- CustomerAddress</td> <td>Address</td> </tr> <tr> <td>- CustomerCompany</td> <td>Company name</td> </tr> <tr> <td>- CustomerCompanyDepartment</td> <td>Company deparment name</td> </tr> <tr> <td>- CustomerCity</td> <td>City</td> </tr> <tr> <td>- CustomerState</td> <td>State</td> </tr> <tr> <td>- CustomerPostCode</td> <td>Post code</td> </tr> <tr> <td>- CustomerCountry</td> <td>Address country name (not neccessarily a 2/3-letter code).</td> </tr> <tr> <td>- CustomerNationality</td> <td>Nationality (not neccessarily a 3-letter code)</td> </tr> <tr> <td>- CustomerArrivalTime</td> <td>Time of arrival</td> </tr> <tr> <td>- CustomerNote</td> <td>Note to the property owner</td> </tr> <tr> <td>Rooms</td> <td>Room Room details</td> </tr> <tr> <td>- Price</td> <td>Price for this room for the entire duration of stay (not the daily rate)</td> </tr> <tr> <td>- Currency</td> <td>Currency for the price</td> </tr> <tr> <td>- ChannelRoomType</td> <td>Room type ID on the channel</td> </tr> <tr> <td>- RoomOrderId</td> <td>ID of the channel for that room booking</td> </tr> <tr> <td>- RoomDesc</td> <td>Room description on the channel</td> </tr> <tr> <td>- RateId</td> <td>Rate type ID on the channel</td> </tr> <tr> <td>- RateDesc</td> <td>Rate description on the channel</td> </tr> <tr> <td>- OccupantFName</td> <td>First name of occupant of this room</td> </tr> <tr> <td>- OccupantLName</td> <td>Family name of occupant of this room (or if OccupantFirstName is empty, both first and last name)</td> </tr> <tr> <td>- OccupantSmoker</td> <td>whether occupant is a smoker. Can be true or false.</td> </tr> <tr> <td>- OccupantNote</td> <td>Note to the property owner</td> </tr> <tr> <td>- Occupancy</td> <td>Number of persons this room is booked for</td> </tr> <tr> <td>- Adults</td> <td>Number of adults staying in this room</td> </tr> <tr> <td>- Children</td> <td>Number of children staying in this room</td> </tr> <tr> <td>- Babies</td> <td>Number of babies staying in this room</td> </tr> <tr> <td>- Policy</td> <td>Booking policy the room was booked for</td> </tr> <tr> <td>- Breakfast</td> <td>Wheter breakfast was ordered alogn with the booking. Can be true or false.</td> </tr> </tbody> </table> ",
+    "description": "<p>Sample bookings for a variety of OTA&#39;s.</p> <p>You can find more OTA booking examples here: <a href=\"https://github.com/MyAllocator/bookingsamples/tree/master/2016-02-16\">https://github.com/MyAllocator/bookingsamples/tree/master/2016-02-16</a></p> <p><strong> Mandatory Fields </strong></p> <table> <thead> <tr> <th>Tag</th> <th>Description</th> </tr> </thead> <tbody> <tr> <td>Channel</td> <td>2-3 letter channel code</td> </tr> <tr> <td>StartDate</td> <td>Date of arrival (YYYY-MM-DD)</td> </tr> <tr> <td>EndDate</td> <td>Date before day of departure (YYYY-MM-DD)</td> </tr> <tr> <td>IsCancellation</td> <td>true or false</td> </tr> <tr> <td>MyallocatorId</td> <td>Booking ID on myallocator.com (hexadecimal number)</td> </tr> <tr> <td>MyallocatorCreationDate</td> <td>Date of booking creation on myallocator.com</td> </tr> <tr> <td>MyallocatorCreationTime</td> <td>Time of booking creation on myallocator.com</td> </tr> <tr> <td>MyallocatorModificationDate</td> <td>Date of booking modification on myallocator.com (in case of a cancellation the modification date is different from the creation date)</td> </tr> <tr> <td>MyallocatorModificationTime</td> <td>Time of booking modification on myallocator.com</td> </tr> <tr> <td>OrderId</td> <td>Booking ID on the channel</td> </tr> <tr> <td>Rooms</td> <td>Room List of booked rooms</td> </tr> <tr> <td>- RoomTypeIds</td> <td>List of booked myallocator.com room IDs. Several channel room can be mapped to one myallocator.com room. If -1 it means that we couldn&#39;t match the channel room to one of our rooms.</td> </tr> <tr> <td>- Units</td> <td>Number of booked rooms (for private rooms) or beds (for shared rooms)</td> </tr> <tr> <td>- StartDate</td> <td>Staying in this room from this date on (YYYY-MM-DD)</td> </tr> <tr> <td>- EndDate</td> <td>Date before day of departure (YYYY-MM-DD)</td> </tr> </tbody> </table> <p><strong> Optional Fields </strong></p> <table> <thead> <tr> <th>Tags</th> <th>Description</th> </tr> </thead> <tbody> <tr> <td>OrderSource</td> <td>Which website the booking originates from</td> </tr> <tr> <td>OrderDate</td> <td>The date the booking has been created on the channel</td> </tr> <tr> <td>OrderTime</td> <td>The time the booking has been created on the channel</td> </tr> <tr> <td>OrderAdults</td> <td>Number of adults</td> </tr> <tr> <td>OrderChildren</td> <td>Number of children</td> </tr> <tr> <td>Deposit</td> <td>Amount of money already taken as a deposit</td> </tr> <tr> <td>DepositCurrency</td> <td>Currency of deposit</td> </tr> <tr> <td>Commission</td> <td>Fee taken by the channel</td> </tr> <tr> <td>CommissionCurrency</td> <td>Currency of fee taken by the channel</td> </tr> <tr> <td>CommissionIncludedInTotal</td> <td>Whether the commission is included in the TotalPrice. Can be true or false.</td> </tr> <tr> <td>TotalPrice</td> <td>Total cost of booking</td> </tr> <tr> <td>TotalCurrency</td> <td>Currency for total cost of booking</td> </tr> <tr> <td>PaymentCollect</td> <td>&#39;Channel&#39; or &#39;Property&#39;, indicates who collects the payment from the guest</td> </tr> <tr> <td>Customers</td> <td>/Customer Customer details (can be more than one)</td> </tr> <tr> <td>- CustomerFName</td> <td>First name</td> </tr> <tr> <td>- CustomerLName</td> <td>Family name (or if CustomerFName is empty, both first and last name)</td> </tr> <tr> <td>- CustomerEmail</td> <td>Email address</td> </tr> <tr> <td>- CustomerGender</td> <td>Gender</td> </tr> <tr> <td>- CustomerSmoker</td> <td>Whether customer is a smoker. Can be true or false.</td> </tr> <tr> <td>- CustomerPhone</td> <td>Phone number</td> </tr> <tr> <td>- CustomerPhoneMobile</td> <td>Mobile phone number</td> </tr> <tr> <td>- CustomerFax</td> <td>Fax number</td> </tr> <tr> <td>- CustomerAddress</td> <td>Address</td> </tr> <tr> <td>- CustomerCompany</td> <td>Company name</td> </tr> <tr> <td>- CustomerCompanyDepartment</td> <td>Company deparment name</td> </tr> <tr> <td>- CustomerCity</td> <td>City</td> </tr> <tr> <td>- CustomerState</td> <td>State</td> </tr> <tr> <td>- CustomerPostCode</td> <td>Post code</td> </tr> <tr> <td>- CustomerCountry</td> <td>Address country name (not neccessarily a 2/3-letter code).</td> </tr> <tr> <td>- CustomerNationality</td> <td>Nationality (not neccessarily a 3-letter code)</td> </tr> <tr> <td>- CustomerArrivalTime</td> <td>Time of arrival</td> </tr> <tr> <td>- CustomerNote</td> <td>Note to the property owner</td> </tr> <tr> <td>Rooms</td> <td>Room Room details</td> </tr> <tr> <td>- Price</td> <td>Price for this room for the entire duration of stay (not the daily rate)</td> </tr> <tr> <td>- Currency</td> <td>Currency for the price</td> </tr> <tr> <td>- ChannelRoomType</td> <td>Room type ID on the channel</td> </tr> <tr> <td>- RoomOrderId</td> <td>ID of the channel for that room booking</td> </tr> <tr> <td>- RoomDesc</td> <td>Room description on the channel</td> </tr> <tr> <td>- RateId</td> <td>Rate type ID on the channel</td> </tr> <tr> <td>- RateDesc</td> <td>Rate description on the channel</td> </tr> <tr> <td>- OccupantFName</td> <td>First name of occupant of this room</td> </tr> <tr> <td>- OccupantLName</td> <td>Family name of occupant of this room (or if OccupantFirstName is empty, both first and last name)</td> </tr> <tr> <td>- OccupantSmoker</td> <td>whether occupant is a smoker. Can be true or false.</td> </tr> <tr> <td>- OccupantNote</td> <td>Note to the property owner</td> </tr> <tr> <td>- Occupancy</td> <td>Number of persons this room is booked for</td> </tr> <tr> <td>- Adults</td> <td>Number of adults staying in this room</td> </tr> <tr> <td>- Children</td> <td>Number of children staying in this room</td> </tr> <tr> <td>- Babies</td> <td>Number of babies staying in this room</td> </tr> <tr> <td>- Policy</td> <td>Booking policy the room was booked for</td> </tr> <tr> <td>- Breakfast</td> <td>Wheter breakfast was ordered alogn with the booking. Can be true or false.</td> </tr> </tbody> </table> ",
     "success": {
       "examples": [
         {
@@ -5467,10 +5315,10 @@ define({ "api": [
       ]
     },
     "filename": "perllib/BOOKING.pm",
-    "groupTitle": "_Appendix"
+    "groupTitle": "4_Appendix"
   },
   {
-    "group": "_Appendix",
+    "group": "4_Appendix",
     "type": "",
     "url": "{}",
     "title": "Terminology",
@@ -5478,10 +5326,10 @@ define({ "api": [
     "version": "201601.0.0",
     "description": "<table> <thead> <tr> <th>Term</th> <th>Description</th> </tr> </thead> <tbody> <tr> <td>Vendor</td> <td>You as the owner and developer of the front desk software.</td> </tr> <tr> <td>User/Customer</td> <td>Someone using your product and who is also registered on myallocator.com.</td> </tr> <tr> <td>Allocation</td> <td>A number indicating how many available beds or rooms there are.</td> </tr> <tr> <td>ARI</td> <td>Availablity (Allocation) along with Rate Information</td> </tr> </tbody> </table> ",
     "filename": "perllib/MAAPI.pm",
-    "groupTitle": "_Appendix"
+    "groupTitle": "4_Appendix"
   },
   {
-    "group": "_Appendix",
+    "group": "4_Appendix",
     "type": "",
     "url": "{}",
     "title": "Version History",
@@ -5489,10 +5337,10 @@ define({ "api": [
     "version": "201601.0.0",
     "description": "<table> <thead> <tr> <th>Date</th> <th>Version</th> <th>Change</th> </tr> </thead> <tbody> <tr> <td>2016-05-26</td> <td>201605.0.2</td> <td>New API call: BookingCancel</td> </tr> <tr> <td>2016-05-25</td> <td>201605.0.1</td> <td>Removed CANCEL/UNCANCEL from BookingAction, added more options to BookingList</td> </tr> <tr> <td>2016-03-15</td> <td>201603.0.1</td> <td>New API calls: RatePlanCreate, RatePlanUpdate, RatePlanRemove</td> </tr> <tr> <td>2016-02-04</td> <td>201601.0.2</td> <td>VERSIONED JSON response format PropertyChannelList to include currency (and future fields)</td> </tr> <tr> <td>2016-01-08</td> <td>201601.0.1</td> <td>Fixed documentation for ARIUpdate to include Auth/VendorId Auth/VendorPassword</td> </tr> <tr> <td>2015-10-13</td> <td>201501.0.13</td> <td>Fix BookingList ModificationEndDate so it goes until 11:59pm</td> </tr> <tr> <td>2015-10-01</td> <td>201501.0.12</td> <td>Fix various documentation issues</td> </tr> <tr> <td>2015-07-24</td> <td>201501.0.11</td> <td>added BookingPaymentPasswordValidate</td> </tr> <tr> <td>2015-07-09</td> <td>201501.0.10</td> <td>added IncludeArchived to BookingList</td> </tr> <tr> <td>2015-05-27</td> <td>201501.0.9</td> <td>new BookingList parameters ModificationStartDateTime, ModificationEndDateTime, CreationStartDateTime, CreationEndDateTime</td> </tr> <tr> <td>2015-05-18</td> <td>201501.0.8</td> <td>new BookingAction commands</td> </tr> <tr> <td>2015-03-20</td> <td>201501.0.7</td> <td>Corrected explanation of Units on RoomCreate (thanks Petr T.)</td> </tr> <tr> <td>2015-02-19</td> <td>201501.0.6</td> <td>Add Options.NormalizeToCurrency to BookingList</td> </tr> <tr> <td>2015-02-19</td> <td>201501.0.5</td> <td>Added more documentation to Booking Samples</td> </tr> <tr> <td>2015-02-03</td> <td>201501.0.4</td> <td>Added .Options.IgnoreInvalidRooms to MAAPI</td> </tr> <tr> <td>2015-02-02</td> <td>201501.0.3</td> <td>Improved documentation for multiple overlapping Allocations in ARIUpdate</td> </tr> <tr> <td>2015-01-22</td> <td>201501.0.2</td> <td>Improved documentation with Booking samples</td> </tr> <tr> <td>2015-01-09</td> <td>201501.0.1</td> <td>Initial release of 201601[beta] (new functions: PropertyDetail, ARIRules)</td> </tr> <tr> <td>2015-01-08</td> <td>201408.0.13</td> <td>Corrected validation logic issue with ARIUpdate (properly validates Rooms)</td> </tr> <tr> <td>2015-01-07</td> <td>201408.0.12</td> <td>Corrected issue with AssociateUserToPMS requiring Auth/PropertyId</td> </tr> <tr> <td>2015-01-06</td> <td>201408.0.11</td> <td>Modified FailIfUpdateActive default to &quot;false&quot;</td> </tr> <tr> <td>2015-01-05</td> <td>201408.0.10</td> <td>fixed doc, Price-Weekend is &quot;PriceWeekend&quot;</td> </tr> <tr> <td>2015-01-05</td> <td>201408.0.9</td> <td>added JSON raw input mode - application/json</td> </tr> <tr> <td>2014-12-28</td> <td>201408.0.8</td> <td>added Auth/Debug</td> </tr> <tr> <td>2014-12-28</td> <td>201408.0.7</td> <td>fixed bug in ARIUpdate where zero unit updates would not be applied</td> </tr> <tr> <td>2014-12-26</td> <td>201408.0.6</td> <td>added more documentation to ChannelList and curl example to HelloWorld</td> </tr> <tr> <td>2014-12-24</td> <td>201408.0.5</td> <td>added error logging with ticket responses</td> </tr> <tr> <td>2014-12-23</td> <td>201408.0.4</td> <td>added VendorId to various docs, and propertyid, unified error handling</td> </tr> <tr> <td>2014-12-19</td> <td>201408.0.3</td> <td>fixed bug in RoomCreate (did not return RoomId)</td> </tr> <tr> <td>2014-12-15</td> <td>201408.0.2</td> <td>renamed LoopBookingAction into BookingAction</td> </tr> <tr> <td>2014-12-04</td> <td>201408.0.1</td> <td>initial release of new API</td> </tr> <tr> <td>2012-10-24</td> <td>1.6.2</td> <td>Updated booking information (new: CommissionIncludedInTotal).</td> </tr> <tr> <td>2012-10-24</td> <td>1.6.1</td> <td>Updated booking information and updated channel list (new: eb,air, orb, boo, tra).</td> </tr> <tr> <td>2012-10-24</td> <td>1.6</td> <td>New feature Booking Callback and updated channel list (new: max).</td> </tr> <tr> <td>2012-09-20</td> <td>1.5.2</td> <td>Updated channel list (new: exp, ysh, eb). Get/Set property country.</td> </tr> <tr> <td>2012-07-04</td> <td>1.5.1</td> <td>Updated channel list. Added MinStay/MaxStay example.</td> </tr> <tr> <td>2011-09-17</td> <td>1.5</td> <td>New method SetRoomTypes to add/update/remove rooms.</td> </tr> <tr> <td>2011-09-17</td> <td>1.4.1</td> <td>GetBookings: Minor correction regarding the end date. It&#39;s not the departure date but rather the departure date - 1.</td> </tr> <tr> <td>2011-01-15</td> <td>1.4</td> <td>New methods SetAllocation (non-blocking), SetLogin, GetUpdateStatus, GetBookings. Support for MinStay and MaxStay.</td> </tr> <tr> <td>2010-11-09</td> <td>1.3.1</td> <td>Updated channel list. GetRoomTypes: Obsoleted &quot;Ensuite&quot;, &quot;DoubleBed&quot; and &quot;Beds&quot; (replaced by new property &quot;Occupancy&quot;). GetProperties: shows which days are configure for weekends.</td> </tr> <tr> <td>2010-05-30</td> <td>1.3</td> <td>GetRoomTypes includes a room description (Label). Removed need to list channels to update to and ability to exclude channels. Skipped channels now warnings rather than errors.</td> </tr> <tr> <td>2010-05-05</td> <td>1.2</td> <td>Added links to XML samples. New channel: hb</td> </tr> <tr> <td>2010-04-30</td> <td>1.1</td> <td>Changed Room to \\textit{RoomType} to clarify matters</td> </tr> <tr> <td>2010-04-27</td> <td>1.0</td> <td>Initial release</td> </tr> </tbody> </table> <hr> <p>v201601 : ARIRules,  v201408 : new JSON format, all call names switched to NounPronounVerb format. v1 : the original api (which didn&#39;t support versioning)</p> ",
     "filename": "perllib/MAAPI.pm",
-    "groupTitle": "_Appendix"
+    "groupTitle": "4_Appendix"
   },
   {
-    "group": "_Appendix",
+    "group": "4_Appendix",
     "type": "",
     "url": "{}",
     "title": "XML v1 Information",
@@ -5519,64 +5367,6 @@ define({ "api": [
       ]
     },
     "filename": "perllib/MAAPI.pm",
-    "groupTitle": "_Appendix"
-  },
-  {
-    "group": "_Callbacks",
-    "type": "",
-    "url": "{}",
-    "title": "Concepts",
-    "name": "Concepts",
-    "version": "201601.0.0",
-    "description": "<p>Callbacks are the preferred way to receive updates instead of polling.  Callbacks data format matches the BookingList api call. </p> <p> Instead of polling for new bookings every few minutes you should register to receive a booking callback.  With this feature we will send the bookings to your server via HTTP/HTTPS.   Callbacks are much more efficient than periodically polling ranges of dates via BookingList.</p> ",
-    "filename": "perllib/MAAPI.pm",
-    "groupTitle": "_Callbacks"
-  },
-  {
-    "group": "_Callbacks",
-    "type": "",
-    "url": "{}",
-    "title": "Delivery Method",
-    "name": "Delivery_Method",
-    "version": "201601.0.0",
-    "description": "<p>Callbacks are delivered via HTTP/HTTPS.     </p> <p> Send us your endpoint URL (HTTPS strongly recommended) and a password  that we use to authenticate to your API. Whenever we receive a new  booking we will send a POST request to your server with two parameters:</p> <ul> <li><em>booking</em> : contains a JSON-coded string of the booking data.</li> <li><p><em>password</em> : contains a string of a previously agreed on password.</p> <p>If your server doesn&#39;t answer (or doesn&#39;t answer with the correct code,  see below) our system will retry with incremental delays between each try (1, 2, 4, 8, 16, 32 minutes... and so on).</p> <p>The Request format is very similiar to the GetBookings response, but instead of XML it is in JSON format. Additionally it contains a PropertyId field which is the property ID of the myallocator property.</p> <p>Your server needs to respond in the correct format, otherwise we will keep resending the booking. In the response BODY  write a JSON object in the following format:</p> </li> </ul> ",
-    "examples": [
-      {
-        "title": "Example of a JSON booking",
-        "content": "{\n  \"Customers\":[\n     {\n        \"CustomerLName\":\"Smith\",\n        \"CustomerCompany\":\"\",\n        \"CustomerNote\":\" \",\n        \"CustomerEmail\":\"martin@smith.com\",\n        \"CustomerFName\":\"Martin\",\n        \"CustomerCity\":\"Stirling\",\n        \"CustomerCountry\":\"GB\"\n     }\n  ],\n  \"IsCancellation\":false,\n  \"OrderAdults\":1,\n  \"OrderChildren\":0,\n  \"OrderDate\":\"2012-09-18\",\n  \"OrderId\":\"13597636\",\n  \"OrderModifDate\":null,\n  \"OrderModifTime\":null,\n  \"OrderSource\":\"booking.com\",\n  \"OrderSourceId\":\"726122988\",\n  \"OrderTime\":\"16:22:14\",\n  \"Rooms\":[\n     {\n        \"EndDate\":\"2012-09-18\",\n        \"Currency\":\"EUR\",\n        \"RoomTypeIds\":[\n           \"832\"\n        ],\n        \"Price\":\"16.80\",\n        \"RoomDesc\":\"3 person mixed shared bed\",\n        \"Units\":\"1\",\n        \"StartDate\":\"2012-09-18\"\n     }\n  ],\n  \"TotalCurrency\":\"EUR\",\n  \"TotalPrice\":\"16.80\",\n  \"MyallocatorId\":\"5058a1bd921f120061010000\",\n  \"Channel\":\"ct\",\n  \"PropertyId\":264,\n  \"StartDate\":\"2012-09-18\",\n  \"EndDate\":\"2012-09-18\",\n  \"MyallocatorCreationDate\":\"2012-09-18\",\n  \"MyallocatorCreationTime\":\"17:32:16\",\n  \"MyallocatorModificationDate\":\"2012-09-18\",\n  \"MyallocatorModificationTime\":\"17:32:16\"\n}",
-        "type": "json"
-      }
-    ],
-    "filename": "perllib/MAAPI.pm",
-    "groupTitle": "_Callbacks"
-  },
-  {
-    "group": "_Callbacks",
-    "type": "",
-    "url": "{}",
-    "title": "Response Handling",
-    "name": "Response_Handling",
-    "version": "201601.0.0",
-    "description": "<p>== Response Format ==  The codes are as follows, the message (msg) is not parsed and can be anything you like   (we still recommend something that describes the error).</p> <table> <thead> <tr> <th>Code</th> <th>Cause</th> </tr> </thead> <tbody> <tr> <td>10</td> <td>Password wrong or not set.</td> </tr> <tr> <td>20</td> <td>Error while parsing JSON structure (including the exception message, for example position of not parsable part)</td> </tr> <tr> <td>21</td> <td>Error while parsing JSON structure (exact reason unknown)</td> </tr> <tr> <td>22</td> <td>Error while parsing JSON content</td> </tr> <tr> <td>30</td> <td>PropertyId is NULL or 0</td> </tr> <tr> <td>31</td> <td>Property not used on your PMS anymore</td> </tr> <tr> <td>35</td> <td>MyallocatorId already existing</td> </tr> <tr> <td>40</td> <td>Request a retry (vendor currently unable to process booking notification)</td> </tr> <tr> <td>50+</td> <td>Internal error on your side (for debugging)</td> </tr> </tbody> </table> <p> We record every error and can give you more details if needed. The important codes  are really only 10 and 31. The JSON should always be valid and the PropertyId  always included.</p> ",
-    "success": {
-      "examples": [
-        {
-          "title": "Example of a successful JSON response",
-          "content": "{ \n\t\"success\": true \n}",
-          "type": "json"
-        }
-      ]
-    },
-    "error": {
-      "examples": [
-        {
-          "title": "Example of an unsuccessful JSON response",
-          "content": "{\n  \"error\":{\n     \"code\":31,\n     \"msg\":\"Could not find property on this system for myallocator PropertyId: 603\"\n  },\n  \"success\":false\n}",
-          "type": "json"
-        }
-      ]
-    },
-    "filename": "perllib/MAAPI.pm",
-    "groupTitle": "_Callbacks"
+    "groupTitle": "4_Appendix"
   }
 ] });
