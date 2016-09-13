@@ -993,20 +993,6 @@ define({ "api": [
             "group": "Parameter",
             "type": "Action",
             "optional": false,
-            "field": "CANCEL",
-            "description": "<p>changes an order state to cancelled, sets cancellation time.. triggers notification.</p> "
-          },
-          {
-            "group": "Parameter",
-            "type": "Action",
-            "optional": false,
-            "field": ".CANCEL.reason",
-            "description": "<p>a brief explantion for why the booking is being cancelled.</p> "
-          },
-          {
-            "group": "Parameter",
-            "type": "Action",
-            "optional": false,
             "field": "ACK",
             "description": ""
           },
