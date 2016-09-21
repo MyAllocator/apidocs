@@ -44,6 +44,7 @@ Created: $date
 | fam | Famous Hostels | 2 years |  |
 | fk | FlipKey | 2 years | TripAdvisor |
 | flh | Feel Like Home | 2 years |  |
+| g2i | Guide to Iceland | 2 years |  |
 | goi | Goibibo | 0 years |  |
 | gom | Gomio | 2 years |  |
 | gr | Dorms.com | 2 years |  |
