@@ -48,6 +48,7 @@ Created: $date
 | goi | Goibibo | 0 years |  |
 | gom | Gomio | 2 years |  |
 | gr | Dorms.com | 2 years |  |
+| gta | GTA-Travel | 2 years | GTA-Travel.com |
 | h2h | Hostel2Hostel | 2 years |  |
 | hb | Hostelbookers | 0 years | deprecated (do not use); Old, slow Hostelbookers interface. Obsolete. |
 | hb2 | Hostelbookers v2 | 2 years | Obsolete. Now updated through Hostelworld. |
@@ -74,7 +75,7 @@ Created: $date
 | kni | Knijbel | 2 years |  |
 | koh | Koh Mak | 2 years |  |
 | lmg | BookingMarkets | 0 years | deprecated (do not use); BookingMarkets API was shut down |
-| lmin | Lastminute | 2 years |  |
+| lmin | Lastminute | 2 years | Lastminute.com |
 | loc |  | 0 years |  |
 | loop | Developer Loopback | 2 years |  |
 | lr | Laterooms | 2 years | AsiaRooms |
