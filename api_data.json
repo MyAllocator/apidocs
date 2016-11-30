@@ -2181,7 +2181,7 @@
     "title": "LoopBookingCreate",
     "name": "LoopBookingCreate",
     "version": "201601.0.0",
-    "description": "<p>Create a new booking in the Loopback Channel.  Parameters are optional and if not specified then booking will be populated with DWIW (Do What I Want) style data. See the &quot;BookingList&quot; api call for a complete discussion of Booking related fields.</p> <p><strong> Booking callback notifications are disabled </strong>for bookings created via LoopBookingCreate. To test booking callback notifications, you can setup BookNow in the web interface for a test property and generate test bookings.</p> ",
+    "description": "<p>Create a new booking in the Loopback Channel.  Parameters are optional and if not specified then booking will be populated with DWIW (Do What I Want) style data. See the &quot;BookingList&quot; api call for a complete discussion of Booking related fields.</p> <p><strong> Booking callback notifications are disabled </strong> for bookings created via LoopBookingCreate. To test booking callback notifications, you can setup BookNow in the web interface for a test property and generate test bookings.</p> <p><strong> Bookings will not automatically adjust on myallocator or the channels </strong> for bookings created via LoopBookingCreate. To test booking adjustments, you can setup BookNow in the web interface for a test property and generate test bookings.</p> ",
     "parameter": {
       "fields": {
         "Request": [
@@ -4856,27 +4856,6 @@
           {
             "group": "Request",
             "type": "String",
-            "optional": true,
-            "field": "Auth/UserId",
-            "description": "<p>Users unique ID     (required with Auth/UserPassword)</p> "
-          },
-          {
-            "group": "Request",
-            "type": "String",
-            "optional": true,
-            "field": "Auth/UserPassword",
-            "description": "<p>Users password        (required with Auth/UserId)</p> "
-          },
-          {
-            "group": "Request",
-            "type": "String",
-            "optional": true,
-            "field": "Auth/UserToken",
-            "description": "<p>Users auth token (see AssociateUserToPMS call to generate a Token)</p> "
-          },
-          {
-            "group": "Request",
-            "type": "String",
             "optional": false,
             "field": "Auth/VendorId",
             "description": "<p>Your Vendor ID</p> "
@@ -4894,6 +4873,13 @@
             "optional": false,
             "field": "UserId",
             "description": "<p>Requested UserId</p> "
+          },
+          {
+            "group": "Request",
+            "type": "String",
+            "optional": false,
+            "field": "UserPassword",
+            "description": "<p>Password for user</p> "
           },
           {
             "group": "Request",
@@ -4949,7 +4935,7 @@
         ]
       }
     },
-    "description": "<p>This method allows you to create customer accounts on myallocator.com. Before you can use this method we&#39;ll have to explicitly enable you for this functionality, as some aspects with regards to customer payment will need to be discussed.    previously known as SetLogin/CreateLogin</p> ",
+    "description": "<p>This method allows you to create customer accounts on myallocator.com. Before you can use this method we&#39;ll have to explicitly enable you for this functionality, as some aspects with regards to customer payment will need to be discussed. Previously known as SetLogin/CreateLogin.</p> ",
     "examples": [
       {
         "title": "XML Request - Creating a customer account",
@@ -4958,7 +4944,7 @@
       },
       {
         "title": "curl w/ JSON",
-        "content": "curl http://api.myallocator.com/pms/v201408/json/UserCreate -d@- <<EOJSON\njson={\n  \"Auth/UserId\":\"login on myallocator.com\",\n  \"Auth/UserPassword\":\"password for myallocator.com\",\n  \"Auth/UserToken\":\"User's auth token\",\n  \"Auth/VendorId\":\"your vendor id\",\n  \"Auth/VendorPassword\":\"your vendor password\",\n  \"UserId\":\"Requested User ID\",\n  \"CustomerFirstName\":\"Customer's first name\",\n  \"CustomerLastName\":\"Customer's last name\",\n  \"CustomerEmail\":\"Customer's email address\",\n  \"SendWelcome\":\"1|0\"\n}\nEOJSON",
+        "content": "curl http://api.myallocator.com/pms/v201408/json/UserCreate -d@- <<EOJSON\njson={\n  \"Auth/VendorId\":\"your vendor id\",\n  \"Auth/VendorPassword\":\"your vendor password\",\n  \"UserId\":\"Requested User ID\",\n  \"UserPassword\":\"New Customer Password\",\n  \"CustomerFirstName\":\"Customer's first name\",\n  \"CustomerLastName\":\"Customer's last name\",\n  \"CustomerEmail\":\"Customer's email address\",\n  \"SendWelcome\":\"1|0\"\n}\nEOJSON",
         "type": "json"
       }
     ],
@@ -5091,7 +5077,7 @@
     "title": "UserModify",
     "name": "UserModify",
     "version": "201601.0.0",
-    "description": "<p>This method allows you to create customer accounts on myallocator.com. Before you can use this method we&#39;ll have to explicitly enable you for this functionality, as some aspects with regards to customer payment will need to be discussed.     previously known as SetLogin/CreateLogin</p> ",
+    "description": "<p>This method allows you to create customer accounts on myallocator.com. Before you can use this method we&#39;ll have to explicitly enable you for this functionality, as some aspects with regards to customer payment will need to be discussed. Previously known as SetLogin/CreateLogin.</p> ",
     "parameter": {
       "fields": {
         "Request": [
@@ -5322,7 +5308,7 @@
         },
         {
           "title": "ago (Agoda)",
-          "content": "{\n   \"TotalPrice\" : \"4800.00\",\n   \"OrderTime\" : \"11:46:00 AM\",\n   \"MyallocatorCreationDate\" : \"2013-02-09\",\n   \"Customers\" : [\n      {\n         \"CustomerLName\" : \"Customer\",\n         \"CustomerNote\" : null,\n         \"CustomerEmail\" : null,\n         \"CustomerSmoking\" : 1,\n         \"CustomerFName\" : \"Happy\",\n         \"CustomerId\" : null,\n         \"CustomerPhone\" : null,\n         \"CustomerCountry\" : \"Thailand\"\n      }\n   ],\n   \"OrderDate\" : \"2013-2-9\",\n   \"OrderAdults\" : \"6\",\n   \"MyallocatorModificationDate\" : \"2013-02-09\",\n   \"MyallocatorModificationTime\" : \"05:05:12\",\n   \"PropertyId\" : 752,\n   \"StartDate\" : \"2014-02-03\",\n   \"EndDate\" : \"2014-02-04\",\n   \"MyallocatorCreationTime\" : \"05:05:12\",\n   \"OrderId\" : \"26777031\",\n   \"IsCancellation\" : false,\n   \"MarkedAsRead\" : false,\n   \"Channel\" : \"ago\",\n   \"TotalCurrency\" : \"THB\",\n   \"Version\" : 0,\n   \"Rooms\" : [\n      {\n         \"EndDate\" : \"2014-02-04\",\n         \"RoomTypeIds\" : [\n            \"3305\"\n         ],\n         \"RoomDesc\" : \"Standard\",\n         \"Units\" : 3,\n         \"StartDate\" : \"2014-2-3\"\n      }\n   ],\n   \"MyallocatorId\" : \"5115d9089984400477490300\",\n   \"OrderChildren\" : \"0\"\n}",
+          "content": "{\n   \"TotalPrice\" : \"4800.00\",\n   \"OrderTime\" : \"11:46:00 AM\",\n   \"MyallocatorCreationDate\" : \"2013-02-09\",\n   \"Customers\" : [\n      {\n         \"CustomerLName\" : \"Customer\",\n         \"CustomerNote\" : null,\n         \"CustomerEmail\" : null,\n         \"CustomerSmoking\" : 1,\n         \"CustomerFName\" : \"Happy\",\n         \"CustomerPhone\" : null,\n         \"CustomerCountry\" : \"Thailand\"\n      }\n   ],\n   \"OrderDate\" : \"2013-2-9\",\n   \"OrderAdults\" : \"6\",\n   \"MyallocatorModificationDate\" : \"2013-02-09\",\n   \"MyallocatorModificationTime\" : \"05:05:12\",\n   \"PropertyId\" : 752,\n   \"StartDate\" : \"2014-02-03\",\n   \"EndDate\" : \"2014-02-04\",\n   \"MyallocatorCreationTime\" : \"05:05:12\",\n   \"OrderId\" : \"26777031\",\n   \"IsCancellation\" : false,\n   \"MarkedAsRead\" : false,\n   \"Channel\" : \"ago\",\n   \"TotalCurrency\" : \"THB\",\n   \"Version\" : 0,\n   \"Rooms\" : [\n      {\n         \"EndDate\" : \"2014-02-04\",\n         \"RoomTypeIds\" : [\n            \"3305\"\n         ],\n         \"RoomDesc\" : \"Standard\",\n         \"Units\" : 3,\n         \"StartDate\" : \"2014-2-3\"\n      }\n   ],\n   \"MyallocatorId\" : \"5115d9089984400477490300\",\n   \"OrderChildren\" : \"0\"\n}",
           "type": "json"
         },
         {
