@@ -19,13 +19,17 @@ Created: $date
 | aveo | Atraveo | 0 years | Atraveo.com |
 | bal | Balmers | 2 years |  |
 | bb | BBPlanet | 1 years | Italy Only. BBPlanet.com, BBPlanet.it, ... |
+| bbit | BedAndBreakfast.it | 0 years | bed-and-breakfast.it |
+| bbnl | BedAndBreakfast.nl | 0 years |  |
 | bd | BestDay | 2 years | US, Argentina, Canada, Brazil, Cuba, and the Caribbean |
 | bnb | BedAndBreakfast.eu | 0 years |  |
 | bnb2 | Bedandbreakfast.com | 2 years |  |
 | bnw | BookNow App | 0 years |  |
+| bon | Hotel Bonanza | 1 years |  |
 | boo | Booking.com | 2 years |  |
 | bp | BudgetPlaces | 2 years |  |
 | bud | Bud and Breakfast | 1 years |  |
+| buen | Buenkmino | 2 years |  |
 | bv | BookVisit | 2 years | bookvisit.com |
 | cb | CityBreak | 2 years | visit.com |
 | clt | ClearTrip | 0 years |  |
@@ -48,8 +52,10 @@ Created: $date
 | goi | Goibibo | 0 years |  |
 | gom | Gomio | 2 years |  |
 | gr | Dorms.com | 2 years |  |
+| grup | Group Connect | 1 years |  |
 | gta | GTA-Travel | 2 years | GTA-Travel.com |
 | h2h | Hostel2Hostel | 2 years |  |
+| han | Hanniwan | 2 years |  |
 | hb | Hostelbookers | 0 years | deprecated (do not use); Old, slow Hostelbookers interface. Obsolete. |
 | hb2 | Hostelbookers v2 | 2 years | Obsolete. Now updated through Hostelworld. |
 | hbe | HotelBeds | 2 years | Liberate, TUI travel |
@@ -63,6 +69,7 @@ Created: $date
 | hola | Hola Hostels | 2 years |  |
 | hom | Homey Hostel | 2 years |  |
 | hopa | HostelPass, Inc. | 2 years |  |
+| hort | ORT Special HA Integration | 2 years |  |
 | hou | HouseTrip | 2 years |  |
 | hrs | HRS | 2 years | hotel.de |
 | ht | HostelTimes | 2 years |  |
@@ -84,6 +91,7 @@ Created: $date
 | mcs | Madrid Central Suites | 2 years |  |
 | mmt | MakeMyTrip | 0 years |  |
 | myb | MyBookings | 2 years |  |
+| nate | Nathan Helehini | 0 years |  |
 | net | Net Affinity | 2 years |  |
 | nom | Nomads Spain | 2 years |  |
 | oa | Only-apartments | 2 years |  |
@@ -92,14 +100,18 @@ Created: $date
 | ote | Open Travel Exchange | 2 years |  |
 | pand | BackPackerPanda | 2 years |  |
 | pre | Prestigia | 2 years | Upscale accommodations |
+| pzg | PortaZ Guesthouses | 2 years |  |
 | r2n | Rooms2Night | 2 years |  |
 | rec | Reconline | 2 years | GDS. Hotels &amp; Resorts only, 20+ rooms required. |
 | rep | TravelRepublic | 2 years |  |
 | skd | Seekda GmbH | 2 years |  |
 | sur | Surf Holidays | 2 years |  |
 | ta | TripAdvisor | 0 years |  |
+| test | Test Channel | 0 years |  |
 | tlok | Traveloka | 0 years | Traveloka.com |
+| tmd | Travel Mind | 2 years |  |
 | tom | TOMAS | 2 years | Booking system used predominantly in Germany and Switzerland on city portals |
+| trab | Trabble | 1 years |  |
 | tri | Trip Masters | 2 years |  |
 | user | User Channel | 0 years |  |
 | vaca | Vacagent | 2 years |  |

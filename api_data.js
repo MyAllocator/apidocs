@@ -600,7 +600,7 @@ define({ "api": [
       },
       {
         "title": "curl w/ JSON",
-        "content": "curl http://api.myallocator.com/pms/v201408/json/ARIUpdate -d@- <<EOJSON\njson={\n \"Auth/UserId\":\"your username\",\n \"Auth/UserPassword\":\"your password\",\n \"Auth/PropertyId\":\"property id from myallocator\",\n \"Auth/VendorId\":\"your vendor\",\n \"Auth/VendorPassword\":\"vendorpass\",\n \"Channels\": [ \"hc\",\"iwb\" ],\n \"Allocations\": [\n\t{\n\t\"RoomId\":\"59\",\n\t\"StartDate\":\"2010-06-01\",\n\t\"EndDate\":\"2010-06-01\",\n\t\"Units\":\"3\",\n\t\"MinStay\":\"1\",\n\t\"MaxStay\":\"30\",\n\t\"Price\":\"20.00\",\n\t\"PriceWeekend\":\"20.00\"\n\t}\n\t]\n}\nEOJSON",
+        "content": "curl http://api.myallocator.com/pms/v201408/json/ARIUpdate -d@- <<EOJSON\njson={\n \"Auth/UserId\":\"your username\",\n \"Auth/UserPassword\":\"your password\",\n \"Auth/PropertyId\":\"property id from myallocator\",\n \"Auth/VendorId\":\"your vendor\",\n \"Auth/VendorPassword\":\"vendorpass\",\n \"Channels\": [ \"hc\",\"iwb\" ],\n \"Allocations\": [\n\t{\n\t\"RoomId\":\"59\",\n\t\"StartDate\":\"2010-06-01\",\n\t\"EndDate\":\"2010-06-01\",\n\t\"Units\":\"3\",\n\t\"MinStay\":\"1\",\n\t\"MaxStay\":\"30\",\n\t\"Price\":\"20.00\",\n\t\"PriceWeekend\":\"20.00\",\n    \"PriceWeekly\":\"400.00\",\n    \"PriceMonthly\":\"1600.00\"\n\t}\n\t]\n}\nEOJSON",
         "type": "json"
       },
       {
@@ -1128,6 +1128,210 @@ define({ "api": [
       {
         "title": "curl w/ JSON",
         "content": "curl http://api.myallocator.com/pms/v201408/json/BookingCancel -d@- <<EOJSON\njson=\n{\n    \"Auth/UserToken\":\"\",\n    \"Auth/UserId\":\"\",\n    \"Auth/UserPassword\":\"\",\n    \"Auth/VendorId\":\"\",\n    \"Auth/VendorPassword\":\"\",\n    \"Auth/PropertyId\":\"\",\n\n    \"MyAllocatorId\":\"57333cd36dbf9a4f114dd781\",\n    \"CancellationReason\":\"Guest's flight was cancelled\"\n}\nEOJSON",
+        "type": "json"
+      }
+    ],
+    "filename": "perllib/MAAPI.pm",
+    "groupTitle": "3_API_Methods"
+  },
+  {
+    "group": "3_API_Methods",
+    "type": "POST",
+    "url": "/BookingCreate",
+    "title": "BookingCreate",
+    "name": "BookingCreate",
+    "version": "201501.0.0",
+    "description": "<p>Internal Use Only. </p> <p><strong> Booking callback notifications are disabled </strong>for bookings created via BookingCreate. To test booking callback notifications, you can setup BookNow in the web interface for a test property and generate test bookings.</p> ",
+    "parameter": {
+      "fields": {
+        "Request": [
+          {
+            "group": "Request",
+            "type": "String",
+            "optional": true,
+            "field": "Auth/UserId",
+            "description": "<p>Users unique ID     (required with Auth/UserPassword)</p> "
+          },
+          {
+            "group": "Request",
+            "type": "String",
+            "optional": true,
+            "field": "Auth/UserPassword",
+            "description": "<p>Users password        (required with Auth/UserId)</p> "
+          },
+          {
+            "group": "Request",
+            "type": "String",
+            "optional": true,
+            "field": "Auth/UserToken",
+            "description": "<p>Users auth token (see AssociateUserToPMS call to generate a Token)</p> "
+          },
+          {
+            "group": "Request",
+            "type": "String",
+            "optional": false,
+            "field": "Auth/PropertyId",
+            "description": "<p>Property Id associated to user.</p> "
+          },
+          {
+            "group": "Request",
+            "type": "String",
+            "optional": false,
+            "field": "Auth/VendorId",
+            "description": "<p>Your Vendor ID</p> "
+          },
+          {
+            "group": "Request",
+            "type": "String",
+            "optional": false,
+            "field": "Auth/VendorPassword",
+            "description": "<p>Your Vendor Password</p> "
+          },
+          {
+            "group": "Request",
+            "type": "Container",
+            "optional": false,
+            "field": "Booking",
+            "description": "<p>(see Booking)</p> "
+          }
+        ],
+        "Booking": [
+          {
+            "group": "Booking",
+            "type": "Date",
+            "optional": true,
+            "field": ".StartDate",
+            "description": "<p>YYYY-MM-DD (Date of Arrival)</p> "
+          },
+          {
+            "group": "Booking",
+            "type": "Date",
+            "optional": true,
+            "field": ".EndDate",
+            "description": "<p>YYYY-MM-DD  (Date before Departure)</p> "
+          },
+          {
+            "group": "Booking",
+            "type": "Integer",
+            "optional": true,
+            "field": ".Units",
+            "description": "<p>number of Rooms</p> "
+          },
+          {
+            "group": "Booking",
+            "type": "Integer",
+            "optional": true,
+            "field": ".RoomTypeId",
+            "description": "<p>MyAllocator Room Id</p> "
+          },
+          {
+            "group": "Booking",
+            "type": "Integer",
+            "optional": true,
+            "field": ".RateId",
+            "description": "<p>OTA Rate Id</p> "
+          },
+          {
+            "group": "Booking",
+            "type": "Currency",
+            "optional": true,
+            "field": ".RoomDayRate",
+            "description": "<p>MyAllocator Room Price (if not specified then a random, incrementing by $10 per day number will be used)</p> "
+          },
+          {
+            "group": "Booking",
+            "type": "String",
+            "optional": true,
+            "field": ".RoomDayDescription",
+            "description": "<p>A description for the Room within the DayRates container.</p> "
+          },
+          {
+            "group": "Booking",
+            "type": "String",
+            "optional": true,
+            "field": ".CustomerFName",
+            "description": "<p>Customer First Name</p> "
+          },
+          {
+            "group": "Booking",
+            "type": "String",
+            "optional": true,
+            "field": ".CustomerLName",
+            "description": "<p>Customer Last Name</p> "
+          },
+          {
+            "group": "Booking",
+            "type": "String",
+            "optional": true,
+            "field": ".RoomDesc",
+            "description": "<p>Room Description</p> "
+          },
+          {
+            "group": "Booking",
+            "type": "Boolean",
+            "optional": true,
+            "field": ".OccupantSmoker",
+            "description": ""
+          },
+          {
+            "group": "Booking",
+            "type": "String",
+            "optional": true,
+            "field": ".OccupantNote",
+            "description": ""
+          },
+          {
+            "group": "Booking",
+            "type": "String",
+            "optional": true,
+            "field": ".OccupantLName",
+            "description": ""
+          },
+          {
+            "group": "Booking",
+            "type": "String",
+            "optional": true,
+            "field": ".OccupantFName",
+            "description": ""
+          },
+          {
+            "group": "Booking",
+            "type": "String",
+            "optional": true,
+            "field": ".Occupancy",
+            "description": ""
+          },
+          {
+            "group": "Booking",
+            "type": "String",
+            "optional": true,
+            "field": ".Policy",
+            "description": ""
+          },
+          {
+            "group": "Booking",
+            "type": "String",
+            "optional": true,
+            "field": ".ChannelRoomType",
+            "description": ""
+          }
+        ]
+      }
+    },
+    "examples": [
+      {
+        "title": "JSON BookingCreate Request",
+        "content": "{\n\"Auth/VendorId\":\"\",\n\"Auth/VendorPassword\":\"\",\n\"Auth/UserToken\":\"\",\n\"Auth/PropertyId\":\"\",\n\"Booking\":{\n\t\"StartDate\":\"YYYY-MM-DD\",\n\t\"EndDate\":\"YYYY-MM-DD\",\n\t\"RoomId\":###,\n\t\"Units\":##,\n\t\"Price\":\"3.00\"\n\t}\n}",
+        "type": "json"
+      },
+      {
+        "title": "XML BookingCreate Request",
+        "content": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<LoopBookingCreate>\n<Auth>\n\t<UserId>Customer User ID</UserId>\n\t<UserPassword>Customer Password</UserPassword>\n\t<PropertyId>###</PropertyId>\n</Auth>\n<Booking>\n\t<StartDate>YYYY-MM-DD</StartDate>\n\t<EndDate>YYYY-MM-DD</EndRate>\n</Booking>\n</LoopBookingCreate>",
+        "type": "json"
+      },
+      {
+        "title": "curl w/ JSON",
+        "content": "curl http://api.myallocator.com/pms/v201408/json/BookingCreate -d@- <<EOJSON\njson={\n\"Auth/VendorId\":\"\",\n\"Auth/VendorPassword\":\"\",\n\"Auth/UserToken\":\"\",\n\"Auth/PropertyId\":\"\",\n\"Booking\":{\n\t\"StartDate\":\"YYYY-MM-DD\",\n\t\"EndDate\":\"YYYY-MM-DD\",\n\t\"RoomId\":###,\n\t\"Units\":##,\n\t\"Price\":\"3.00\"\n\t}\n}\nEOJSON",
         "type": "json"
       }
     ],
@@ -2687,6 +2891,13 @@ define({ "api": [
             "group": "Request",
             "type": "Integer",
             "optional": false,
+            "field": "BookingAdjustModification",
+            "description": "<p>Whether to adjust for modifications (0 = disabled, 1 = enabled).</p> "
+          },
+          {
+            "group": "Request",
+            "type": "Integer",
+            "optional": false,
             "field": "BookingDownload",
             "description": "<p>The state of channel booking download config (0 = do not download, 1 = download).</p> "
           },
@@ -2710,6 +2921,27 @@ define({ "api": [
             "optional": false,
             "field": "EmailBookNow",
             "description": "<p>The email address used when forwarding booknow booking emails. Uses default user* email if not configured.</p> "
+          },
+          {
+            "group": "Request",
+            "type": "String",
+            "optional": false,
+            "field": "PaymentProviders/id",
+            "description": "<p>A unique identifier for this (useful if migrating/updating accounts)</p> "
+          },
+          {
+            "group": "Request",
+            "type": "String",
+            "optional": false,
+            "field": "PaymentProviders/type",
+            "description": "<p>an enumeration for provider tokenx|stripe|braintree|shift4</p> "
+          },
+          {
+            "group": "Request",
+            "type": "String",
+            "optional": false,
+            "field": "PaymentProviders/key1",
+            "description": "<p>a value required by the specific payment provider. (not validated)</p> "
           }
         ],
         "Response": [
@@ -2741,12 +2973,12 @@ define({ "api": [
     "examples": [
       {
         "title": "XML Request - Creating a NEW property (and attaching it to a user account)",
-        "content": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<PropertyCreate>\n <Auth>\n   <VendorId>Your Vendor ID</VendorId>\n   <VendorPassword>Your Vendor Password</VendorPassword>\n </Auth>\n <PropertyName>Name of property</PropertyName>\n <Currency>EUR</Currency>\n <Street>Penny Lane 4</Street>\n <City>London</City>\n <PostCode>N1 9SD</PostCode>\n <State>Greater London</State>\n <Country>UK</Country>\n <Breakfast>IN</Breakfast>\n <BookingAdjust>1</BookingAdjust>\n <BookingAdjustCancellation>1</BookingAdjustCancellation>\n <BookingDownload>1</BookingDownload>\n <EmailDefault>default@email.com</EmailDefault>\n <EmailChannelBooking>channel@email.com</EmailChannelBooking>\n <EmailBookNow>booknow@email.com</EmailBookNow>\n <Timezone>UTC</Timezone>\n <PaymentPassword>secret</PaymentPassword>\n <PrivateRoomPricing>room|person</PrivateRoomPricing>\n <Source>domain.com</Source>\n <MinLengthOfStay>##</MinLengthOfStay>\n <MaxLengthOfStay>0</MaxLengthOfStay>\n <DownloadNewBookings>true|false</DownloadNewBookings>\n</PropertyCreate>",
+        "content": "\t<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n\t<PropertyCreate>\n\t <Auth>\n\t   <VendorId>Your Vendor ID</VendorId>\n\t   <VendorPassword>Your Vendor Password</VendorPassword>\n\t </Auth>\n\t <PropertyName>Name of property</PropertyName>\n\t <Currency>EUR</Currency>\n\t <Street>Penny Lane 4</Street>\n\t <City>London</City>\n\t <PostCode>N1 9SD</PostCode>\n\t <State>Greater London</State>\n\t <Country>UK</Country>\n\t <Breakfast>IN</Breakfast>\n\t <BookingAdjust>1</BookingAdjust>\n\t <BookingAdjustCancellation>1</BookingAdjustCancellation>\n\t <BookingAdjustModification>1</BookingAdjustModification>\n\t <BookingDownload>1</BookingDownload>\n\t <EmailDefault>default@email.com</EmailDefault>\n\t <EmailChannelBooking>channel@email.com</EmailChannelBooking>\n\t <EmailBookNow>booknow@email.com</EmailBookNow>\n\t <Timezone>UTC</Timezone>\n\t <PaymentPassword>secret</PaymentPassword>\n\t <PrivateRoomPricing>room|person</PrivateRoomPricing>\n\t <Source>domain.com</Source>\n\t <MinLengthOfStay>##</MinLengthOfStay>\n\t <MaxLengthOfStay>0</MaxLengthOfStay>\n\t <DownloadNewBookings>true|false</DownloadNewBookings>\n     <PaymentProviders>\n        <Provider provide_id=\"xxx\" provider_type=\"stripe|tokenx|braintree\" key1=\"value1\" key2=\"value2\" />\n     </PaymentProviders>\n\t</PropertyCreate>",
         "type": "json"
       },
       {
         "title": "curl w/ JSON",
-        "content": "curl http://api.myallocator.com/pms/v201408/json/PropertyCreate -d@- <<EOJSON\njson={\n  \"Auth/UserId\":\"login on myallocator.com\",\n  \"Auth/UserPassword\":\"password for myallocator.com\",\n  \"Auth/UserToken\":\"User's auth token\",\n  \"Auth/VendorId\":\"your vendor id\",\n  \"Auth/VendorPassword\":\"your vendor password\",\n  \"Auth/PropertyId\":\"Your PropertyId\",\n  \"PropertyName\":\"Name of property\",\n  \"Currency\":\"###\",\n  \"Street\":\"Penny Lane 4\",\n  \"City\":\"London\",\n  \"PostCode\":\"N1 9SD\",\n  \"State\":\"Greater London\",\n  \"Country\":\"UK\",\n  \"Breakfast\":\"IN\",\n  \"BookingAdjust\":\"0|1\",\n  \"BookingAdjustCancellation\":\"0|1\",\n  \"BookingDownload\":\"0|1\",\n  \"EmailDefault\":\"contact@property.com\",\n  \"EmailChannelBooking\":\"booking@property.com\",\n  \"EmailBookNow\":\"booknow@property.com\"\n}\nEOJSON",
+        "content": "curl http://api.myallocator.com/pms/v201408/json/PropertyCreate -d@- <<EOJSON\njson={\n  \"Auth/UserId\":\"login on myallocator.com\",\n  \"Auth/UserPassword\":\"password for myallocator.com\",\n  \"Auth/UserToken\":\"User's auth token\",\n  \"Auth/VendorId\":\"your vendor id\",\n  \"Auth/VendorPassword\":\"your vendor password\",\n  \"Auth/PropertyId\":\"Your PropertyId\",\n  \"PropertyName\":\"Name of property\",\n  \"Currency\":\"###\",\n  \"Street\":\"Penny Lane 4\",\n  \"City\":\"London\",\n  \"PostCode\":\"N1 9SD\",\n  \"State\":\"Greater London\",\n  \"Country\":\"UK\",\n  \"Breakfast\":\"IN\",\n  \"BookingAdjust\":\"0|1\",\n  \"BookingAdjustCancellation\":\"0|1\",\n  \"BookingAdjustModification\":\"0|1\",\n  \"BookingDownload\":\"0|1\",\n  \"EmailDefault\":\"contact@property.com\",\n  \"EmailChannelBooking\":\"booking@property.com\",\n  \"EmailBookNow\":\"booknow@property.com\",\n  \"PaymentProviders\":[\n      { \"provider_id\":\"xxx\", provider_type:\"stripe|tokenx|braintree\", key1:\"value1\", key2:\"value2\" }\n  ]\n\n}\nEOJSON",
         "type": "json"
       }
     ],
@@ -3251,6 +3483,13 @@ define({ "api": [
             "group": "Response",
             "type": "Integer",
             "optional": false,
+            "field": "BookingAdjustModification",
+            "description": "<p>Whether to adjust for modifications (0 = disabled, 1 = enabled).</p> "
+          },
+          {
+            "group": "Response",
+            "type": "Integer",
+            "optional": false,
             "field": "BookingDownload",
             "description": "<p>The state of channel booking download config (0 = do not download, 1 = download).</p> "
           },
@@ -3280,7 +3519,7 @@ define({ "api": [
       "examples": [
         {
           "title": "XML PropertyList Response Success",
-          "content": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<PropertyListResponse>\n  <Properties>\n    <Property>\n      <Id>19</Id>\n      <Name>Property 1</Name>\n      <Breakfast></Breakfast>\n      <Currency>GBP</Currency>\n      <Country>GB</Country>\n\t\t<Billing>active</Billing>\n      <Weekend>\n        <Day name=\"Friday\">5</Day>\n        <Day name=\"Saturday\">6</Day>\n      </Weekend>\n      <BookingAdjust>1</BookingAdjust>\n      <BookingAdjustCancellation>1</BookingAdjustCancellation>\n      <BookingDownload>1</BookingDownload>\n      <EmailDefault>default@email.com</EmailDefault>\n      <EmailChannelBooking>channel@email.com</EmailChannelBooking>\n      <EmailBookNow>booknow@email.com</EmailBookNow>\n    </Property>\n    \n    <Property>\n      <Id>13</Id>\n      <Name>Property 2</Name>\n      <Breakfast>IN</Breakfast>\n      <Currency>EUR</Currency>\n      <Country>DE</Country>\n\t\t<Billing>active</Billing>\n      <Weekend>\n      </Weekend>\n      <BookingAdjust>0</BookingAdjust>\n      <BookingAdjustCancellation>0</BookingAdjustCancellation>\n      <BookingDownload>0</BookingDownload>\n      <EmailDefault>default@email.com</EmailDefault>\n      <EmailChannelBooking>channel@email.com</EmailChannelBooking>\n      <EmailBookNow>booknow@email.com</EmailBookNow>\n    </Property>\n    \n    <Property>\n      <Id>15</Id>\n      <Name>Property 3</Name>\n      <Breakfast>EX</Breakfast>\n      <Currency>GBP</Currency>\n      <Country>GB</Country>\n\t\t<Billing>active</Billing>\n      <Weekend>\n        <Day name=\"Friday\">5</Day>\n        <Day name=\"Saturday\">6</Day>\n        <Day name=\"Sunday\">7</Day>\n      </Weekend>\n      <BookingAdjust>1</BookingAdjust>\n      <BookingAdjustCancellation>1</BookingAdjustCancellation>\n      <BookingDownload>1</BookingDownload>\n      <EmailDefault>default@email.com</EmailDefault>\n      <EmailChannelBooking>channel@email.com</EmailChannelBooking>\n      <EmailBookNow>booknow@email.com</EmailBookNow>\n    </Property>\n  </Properties>\n</PropertyListResponse>",
+          "content": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<PropertyListResponse>\n  <Properties>\n    <Property>\n      <Id>19</Id>\n      <Name>Property 1</Name>\n      <Breakfast></Breakfast>\n      <Currency>GBP</Currency>\n      <Country>GB</Country>\n\t\t<Billing>active</Billing>\n      <Weekend>\n        <Day name=\"Friday\">5</Day>\n        <Day name=\"Saturday\">6</Day>\n      </Weekend>\n      <BookingAdjust>1</BookingAdjust>\n      <BookingAdjustCancellation>1</BookingAdjustCancellation>\n      <BookingAdjustModification>1</BookingAdjustModification>\n      <BookingDownload>1</BookingDownload>\n      <EmailDefault>default@email.com</EmailDefault>\n      <EmailChannelBooking>channel@email.com</EmailChannelBooking>\n      <EmailBookNow>booknow@email.com</EmailBookNow>\n    </Property>\n    \n    <Property>\n      <Id>13</Id>\n      <Name>Property 2</Name>\n      <Breakfast>IN</Breakfast>\n      <Currency>EUR</Currency>\n      <Country>DE</Country>\n\t\t<Billing>active</Billing>\n      <Weekend>\n      </Weekend>\n      <BookingAdjust>0</BookingAdjust>\n      <BookingAdjustCancellation>0</BookingAdjustCancellation>\n      <BookingAdjustModification>0</BookingAdjustModification>\n      <BookingDownload>0</BookingDownload>\n      <EmailDefault>default@email.com</EmailDefault>\n      <EmailChannelBooking>channel@email.com</EmailChannelBooking>\n      <EmailBookNow>booknow@email.com</EmailBookNow>\n    </Property>\n    \n    <Property>\n      <Id>15</Id>\n      <Name>Property 3</Name>\n      <Breakfast>EX</Breakfast>\n      <Currency>GBP</Currency>\n      <Country>GB</Country>\n\t\t<Billing>active</Billing>\n      <Weekend>\n        <Day name=\"Friday\">5</Day>\n        <Day name=\"Saturday\">6</Day>\n        <Day name=\"Sunday\">7</Day>\n      </Weekend>\n      <BookingAdjust>1</BookingAdjust>\n      <BookingAdjustCancellation>1</BookingAdjustCancellation>\n      <BookingAdjustModification>1</BookingAdjustModification>\n      <BookingDownload>1</BookingDownload>\n      <EmailDefault>default@email.com</EmailDefault>\n      <EmailChannelBooking>channel@email.com</EmailChannelBooking>\n      <EmailBookNow>booknow@email.com</EmailBookNow>\n    </Property>\n  </Properties>\n</PropertyListResponse>",
           "type": "json"
         }
       ]
@@ -3363,7 +3602,7 @@ define({ "api": [
           },
           {
             "group": "Request",
-            "type": "String",
+            "type": "Enumeration",
             "optional": false,
             "field": "Breakfast",
             "description": "<p>Can be IN (included), EX (excluded) or empty.</p> "
@@ -3381,6 +3620,13 @@ define({ "api": [
             "optional": false,
             "field": "BookingAdjustCancellation",
             "description": "<p>The state of booking auto-adjust cancellation config (0 = HOLD, 1 = RESTORE).</p> "
+          },
+          {
+            "group": "Request",
+            "type": "Integer",
+            "optional": false,
+            "field": "BookingAdjustModification",
+            "description": "<p>Whether to adjust for modifications (0 = disabled, 1 = enabled).</p> "
           },
           {
             "group": "Request",
@@ -3409,6 +3655,27 @@ define({ "api": [
             "optional": false,
             "field": "EmailBookNow",
             "description": "<p>The email address used when forwarding booknow booking emails. Uses default user* email if not configured.</p> "
+          },
+          {
+            "group": "Request",
+            "type": "String",
+            "optional": false,
+            "field": "PaymentProviders/id",
+            "description": "<p>A unique identifier for this (useful if migrating/updating accounts)</p> "
+          },
+          {
+            "group": "Request",
+            "type": "String",
+            "optional": false,
+            "field": "PaymentProviders/type",
+            "description": "<p>an enumeration for provider tokenx|stripe|braintree|shift4</p> "
+          },
+          {
+            "group": "Request",
+            "type": "String",
+            "optional": false,
+            "field": "PaymentProviders/key1",
+            "description": "<p>a value required by the specific payment provider. (not validated)</p> "
           }
         ]
       }
@@ -3416,12 +3683,12 @@ define({ "api": [
     "examples": [
       {
         "title": "XML Request - Modifying a property",
-        "content": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<PropertyModify>\n <Auth>\n   <VendorId>Your Vendor ID</VendorId>\n   <VendorPassword>Your Vendor Password</VendorPassword>\n </Auth>\n <PropertyName>Name of property</PropertyName>\n <Currency>EUR</Currency>\n <Country>DE</Country>\n <Breakfast>IN</Breakfast>\n <BookingAdjust>1</BookingAdjust>\n <BookingAdjustCancellation>1</BookingAdjustCancellation>\n <BookingDownload>1</BookingDownload>\n <EmailDefault>default@email.com</EmailDefault>\n <EmailChannelBooking>channel@email.com</EmailChannelBooking>\n <EmailBookNow>booknow@email.com</EmailBookNow>\n</PropertyModify>",
+        "content": "\t<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n\t<PropertyModify>\n\t <Auth>\n\t   <VendorId>Your Vendor ID</VendorId>\n\t   <VendorPassword>Your Vendor Password</VendorPassword>\n\t </Auth>\n\t <PropertyName>Name of property</PropertyName>\n\t <Currency>EUR</Currency>\n\t <Country>DE</Country>\n\t <Breakfast>IN</Breakfast>\n\t <BookingAdjust>1</BookingAdjust>\n\t <BookingAdjustCancellation>1</BookingAdjustCancellation>\n\t <BookingAdjustModification>1</BookingAdjustModification>\n\t <BookingDownload>1</BookingDownload>\n\t <EmailDefault>default@email.com</EmailDefault>\n\t <EmailChannelBooking>channel@email.com</EmailChannelBooking>\n\t <EmailBookNow>booknow@email.com</EmailBookNow>\n     <PaymentProviders>\n        <Provider id=\"xxx\" type=\"stripe|tokenx|braintree\" key1=\"value1\" key2=\"value2\" />\n     </PaymentProviders>\n\t</PropertyModify>",
         "type": "json"
       },
       {
         "title": "curl w/ JSON",
-        "content": "curl http://api.myallocator.com/pms/v201408/json/PropertyModify -d@- <<EOJSON\njson={\n  \"Auth/UserId\":\"login on myallocator.com\",\n  \"Auth/UserPassword\":\"password for myallocator.com\",\n  \"Auth/UserToken\":\"User's auth token\",\n  \"Auth/VendorId\":\"your vendor id\",\n  \"Auth/VendorPassword\":\"your vendor password\",\n  \"Auth/PropertyId\":\"?\",\n  \"PropertyName\":\"Name of property\",\n  \"Currency\":\"###\",\n  \"Country\":\"##\",\n  \"Breakfast\":\"|IN|EX\",\n  \"BookingAdjust\":\"0|1\",\n  \"BookingAdjustCancellation\":\"0|1\",\n  \"BookingDownload\":\"0|1\",\n  \"EmailDefault\":\"contact@property.com\",\n  \"EmailChannelBooking\":\"booking@property.com\",\n  \"EmailBookNow\":\"booknow@property.com\"\n}\nEOJSON",
+        "content": "curl http://api.myallocator.com/pms/v201408/json/PropertyModify -d@- <<EOJSON\njson={\n  \"Auth/UserId\":\"login on myallocator.com\",\n  \"Auth/UserPassword\":\"password for myallocator.com\",\n  \"Auth/UserToken\":\"User's auth token\",\n  \"Auth/VendorId\":\"your vendor id\",\n  \"Auth/VendorPassword\":\"your vendor password\",\n  \"Auth/PropertyId\":\"?\",\n  \"PropertyName\":\"Name of property\",\n  \"Currency\":\"###\",\n  \"Country\":\"##\",\n  \"Breakfast\":\"|IN|EX\",\n  \"BookingAdjust\":\"0|1\",\n  \"BookingAdjustCancellation\":\"0|1\",\n  \"BookingAdjustModification\":\"0|1\",\n  \"BookingDownload\":\"0|1\",\n  \"EmailDefault\":\"contact@property.com\",\n  \"EmailChannelBooking\":\"booking@property.com\",\n  \"EmailBookNow\":\"booknow@property.com\"\n  \"PaymentProviders\":[\n      { \"id\":\"xxx\", type:\"stripe|tokenx|braintree\", key1:\"value1\", key2:\"value2\" }\n  ]\n}\nEOJSON",
         "type": "json"
       }
     ],
@@ -3493,7 +3760,7 @@ define({ "api": [
           {
             "group": "Request",
             "type": "Integer",
-            "optional": false,
+            "optional": true,
             "field": "RoomTypeId",
             "description": "<p>the MyAllocator RoomTypeId associated to this RatePlan</p> "
           },
@@ -3660,6 +3927,20 @@ define({ "api": [
             "optional": false,
             "field": "Auth/VendorPassword",
             "description": "<p>Your Vendor Password</p> "
+          },
+          {
+            "group": "Request",
+            "type": "Integer",
+            "optional": true,
+            "field": "RoomTypeId",
+            "description": "<p>filter by the MyAllocator RoomTypeId</p> "
+          },
+          {
+            "group": "Request",
+            "type": "Integer",
+            "optional": true,
+            "field": "RatePlanId",
+            "description": "<p>filter by the MyAllocator RatePlanId</p> "
           }
         ]
       }
@@ -4155,7 +4436,7 @@ define({ "api": [
             "type": "String",
             "optional": false,
             "field": "PrivateRoom",
-            "description": "<p>&#39;true&#39; if it&#39;s a private room, &#39;false&#39; for dormitories.</p> "
+            "description": "<p>string/scalar &#39;true&#39; if it&#39;s a private room, &#39;false&#39; for dormitories.</p> "
           },
           {
             "group": "Request",
