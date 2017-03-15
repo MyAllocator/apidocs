@@ -25,6 +25,7 @@ Created: $date
 | bnb | BedAndBreakfast.eu | 0 years |  |
 | bnb2 | Bedandbreakfast.com | 2 years |  |
 | bnw | BookNow App | 0 years |  |
+| bole | BookingLettings | 2 years |  |
 | bon | Hotel Bonanza | 1 years |  |
 | boo | Booking.com | 2 years |  |
 | bp | BudgetPlaces | 2 years |  |
@@ -37,7 +38,7 @@ Created: $date
 | ct | Cultuzz | 2 years | CultBay (eBay). Extra fees apply. |
 | ctr | CTrip | 1 years |  |
 | cwd | The Hostel Crowd | 2 years |  |
-| deco | Decolar | 2 years |  |
+| deco | Despegar/Decolar | 2 years |  |
 | eb | EasyBookings | 2 years |  |
 | eba | Ebab | 2 years | Accommodations for gays and lesbians |
 | enbc | Enbloc Hotels | 2 years |  |
@@ -66,6 +67,8 @@ Created: $date
 | hde | Hotel.de | 2 years | deprecated (do not use); Obsolete. Now updated through HRS. |
 | hhb | HiHostel Brazil | 2 years |  |
 | hi | HI Hostels | 2 years | For members of Hostelling International |
+| ho | Hostel One | 2 years |  |
+| hoga | HostelGalaxy | 2 years |  |
 | hola | Hola Hostels | 2 years |  |
 | hom | Homey Hostel | 2 years |  |
 | hopa | HostelPass, Inc. | 2 years |  |
@@ -85,13 +88,13 @@ Created: $date
 | lmin | Lastminute | 2 years | Lastminute.com |
 | loc |  | 0 years |  |
 | loop | Developer Loopback | 2 years |  |
+| lota | LocalOTA | 2 years |  |
 | lr | Laterooms | 2 years | AsiaRooms |
 | mal | MalaPronta | 2 years | deprecated (do not use); Brazil Only |
 | max | MaxBooking | 2 years |  |
 | mcs | Madrid Central Suites | 2 years |  |
 | mmt | MakeMyTrip | 0 years |  |
 | myb | MyBookings | 2 years |  |
-| nate | Nathan Helehini | 0 years |  |
 | net | Net Affinity | 2 years |  |
 | nom | Nomads Spain | 2 years |  |
 | oa | Only-apartments | 2 years |  |
@@ -107,7 +110,6 @@ Created: $date
 | skd | Seekda GmbH | 2 years |  |
 | sur | Surf Holidays | 2 years |  |
 | ta | TripAdvisor | 0 years |  |
-| test | Test Channel | 0 years |  |
 | tlok | Traveloka | 0 years | Traveloka.com |
 | tmd | Travel Mind | 2 years |  |
 | tom | TOMAS | 2 years | Booking system used predominantly in Germany and Switzerland on city portals |
@@ -120,4 +122,5 @@ Created: $date
 | wim | Wimdu | 2 years |  |
 | wix | Wix Hotels | 2 years |  |
 | wpk | Worldpackers | 2 years |  |
+| yoho | Yoho Bed | 2 years |  |
 | ysh | YourSpainHostel | 2 years | Spain Only |

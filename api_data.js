@@ -6,7 +6,7 @@ define({ "api": [
     "title": "i - Getting Started",
     "name": "i___Getting_Started",
     "version": "201601.0.0",
-    "description": "<p>Welcome PMS vendors!</p> <p> If you would like to use the myallocator.com PMS API please request a vendor id+password here:  <a href=\"https://www.myallocator.com/become-partner/\">https://www.myallocator.com/become-partner/</a></p> <p> The vendor_id + vendor_password will need to be submitted with every request, except HelloWorld (for testing).</p> <p> Be sure to register your vendor account with the email address of which you prefer to receive notifications. We will  send application update notifications and action required requests to this address.</p> <p> Your customers must create an account on myallocator.com before they can use the API (or you need to create one for them).   The credentials (user/password) must be stored by you and sent with each request.</p> <p> Request API Vendor Credentials:  <a href=\"https://www.myallocator.com/become-partner/\">https://www.myallocator.com/become-partner/</a></p> <p> PMS Integration Guide:  <a href=\"https://docs.google.com/document/d/1_OuI0Z6rTkkuA9xxlJUvhXlazJ9w_iqsp1QzIj4gb2U/edit?usp=sharing\">https://docs.google.com/document/d/1_OuI0Z6rTkkuA9xxlJUvhXlazJ9w_iqsp1QzIj4gb2U/edit?usp=sharing</a></p> <p> PMS PHP SDK (Recommended if using PHP):  <a href=\"https://github.com/MyAllocator/myallocator-pms-php\">https://github.com/MyAllocator/myallocator-pms-php</a></p> <p> <strong> Online Travel Agencies/Booking Websites </strong></p> <p> This API is for PMS vendors.</p> <p> If you are an OTA or booking website, this is NOT the API you are looking for.</p> <p> Please review our Build2Us OTA facing API documentation &amp; licensing:  <a href=\"https://docs.google.com/document/d/1TYM3GxhmvpaOPoQw3S9-tAotv9QrASpwSZahRRWS55M/edit?usp=sharing\">https://docs.google.com/document/d/1TYM3GxhmvpaOPoQw3S9-tAotv9QrASpwSZahRRWS55M/edit?usp=sharing</a></p> ",
+    "description": "<p>Welcome PMS vendors!</p> <p> If you would like to use the myallocator.com PMS API please request a vendor id+password here:  <a href=\"https://www.myallocator.com/become-partner/\">https://www.myallocator.com/become-partner/</a></p> <p> The vendor_id + vendor_password will need to be submitted with every request, except HelloWorld (for testing).</p> <p> Be sure to register your vendor account with the email address of which you prefer to receive notifications. We will  send application update notifications and action required requests to this address.</p> <p> Your customers must create an account on myallocator.com before they can use the API (or you need to create one for them).  The myallocator user credentials (user/password) are needed to create an association between your  PMS and the property. They should not be stored in your system.</p> <p> Request API Vendor Credentials:  <a href=\"https://www.myallocator.com/become-partner/\">https://www.myallocator.com/become-partner/</a></p> <p> PMS Integration Guide:  <a href=\"https://docs.google.com/document/d/1_OuI0Z6rTkkuA9xxlJUvhXlazJ9w_iqsp1QzIj4gb2U/edit?usp=sharing\">https://docs.google.com/document/d/1_OuI0Z6rTkkuA9xxlJUvhXlazJ9w_iqsp1QzIj4gb2U/edit?usp=sharing</a></p> <p> PMS PHP SDK (Recommended if using PHP):  <a href=\"https://github.com/MyAllocator/myallocator-pms-php\">https://github.com/MyAllocator/myallocator-pms-php</a></p> <p> <strong> Online Travel Agencies/Booking Websites </strong></p> <p> This API is for PMS vendors.</p> <p> If you are an OTA or booking website, this is NOT the API you are looking for.</p> <p> Please review our Build2Us OTA facing API documentation &amp; licensing:  <a href=\"https://docs.google.com/document/d/1TYM3GxhmvpaOPoQw3S9-tAotv9QrASpwSZahRRWS55M/edit?usp=sharing\">https://docs.google.com/document/d/1TYM3GxhmvpaOPoQw3S9-tAotv9QrASpwSZahRRWS55M/edit?usp=sharing</a></p> ",
     "filename": "perllib/MAAPI.pm",
     "groupTitle": "1_Introduction"
   },
@@ -28,7 +28,7 @@ define({ "api": [
     "title": "iii - Vendor Tokens",
     "name": "iii___Vendor_Tokens",
     "version": "201601.0.0",
-    "description": "<p>Vendor+User and Vendor+Property associations exist in myallocator.</p> <p>Vendor+User Association (Referenced by a user token)</p> <ol> <li>A user token <strong>is not</strong> required for a vendor to access a user via the API.</li> <li>User tokens enable vendors to substitute user credentials (Auth/UserId, Auth/UserPassword) with a token (Auth/UserToken) for requests requiring user credentials. This helps vendors to avoid storing user credentials.</li> <li>A user token may be generated via the AssociateUserToPMS API Method.</li> <li>If AssociateUserToPMS is called for a vendor / user with an existing token, the existing token is returned.</li> </ol> <p>Vendor+Property Association (Referenced by a property token)</p> <ol> <li>A property token <strong>is</strong> required for a vendor to access a property via the API.</li> <li>Property tokens are generated via the following ways:<ol> <li>Vendor creates a property via the PropertyCreate API method, a property token is automatically generated.</li> <li>Vendor invokes the AssociatePropertyToPMS API method.</li> <li>Property navigates in MA web interface to Manage &gt; PMS Connections and enables your PMS to connect.<ol> <li>New vendors may not appear in the PMS dropdown list. Please let us know if you would like to be added and what you would like your public PMS name to be.</li> </ol> </li> </ol> </li> <li>If AssociatePropertyToPMS is called for a vendor / property with an existing token, the existing token is returned.</li> </ol> <p>Important Notes</p> <ol> <li>User tokens only apply to vendor+user credentials. A vendor+user association is not* required for a vendor to access a user - they can use user username and password instead.</li> <li>Property tokens only apply to vendor+property associations. A vendor+property association is required for a vendor to access a property.</li> <li>Property tokens themselves currently serve no purpose (they will soon).</li> <li>In the relative near-term, API methods requiring user credentials (Auth/UserId + Auth/UserPassword) and a property id (Auth/PropertyId) may be authenticated by simply including the property token (Auth/PropertyToken) (coming soon).</li> </ol> ",
+    "description": "<p>Vendor+User and Vendor+Property associations exist in myallocator.</p> <p>Vendor+User Association (Referenced by a user token)</p> <ol> <li>A user token <strong>is required</strong> for a vendor to access a user via the API.</li> <li>User tokens enable vendors to substitute user credentials with a token (Auth/UserToken) for requests requiring user credentials. This helps vendors to avoid storing user credentials.</li> <li>A user token must be generated via the AssociateUserToPMS API Method. If you used the UserCreate call then the association is already done for you and the token is returned in the UserCreate response.</li> <li>If AssociateUserToPMS is called for a vendor / user with an existing token, the existing token is returned.</li> </ol> <p>Vendor+Property Association (Referenced by a property token)</p> <ol> <li>A property association <strong>is</strong> required for a vendor to access a property via the API.</li> <li>The returned token is currently not used for anything. However, the presence indicates that a PMS is allowed to update the property.</li> <li>Property tokens are generated via the following ways:<ol> <li>Vendor creates a property via the PropertyCreate API method, a property token is automatically generated.</li> <li>Vendor invokes the AssociatePropertyToPMS API method.</li> <li>Property navigates in MA web interface to Manage &gt; PMS Connections and enables your PMS to connect.<ol> <li>New vendors may not appear in the PMS dropdown list until after certification. Please let us know if you would like to be added and what you would like your public PMS name to be.</li> </ol> </li> </ol> </li> <li>If AssociatePropertyToPMS is called for a vendor / property with an existing token, the existing token is returned.</li> </ol> <p>Important Notes</p> <ol> <li>User tokens only apply to vendor+user credentials. A vendor+user association is required for a vendor to access a user.</li> <li>Property tokens only apply to vendor+property associations. A vendor+property association is required for a vendor to access a property.</li> <li>To successfully access a property via the API you need both user and property association.</li> </ol> ",
     "filename": "perllib/MAAPI.pm",
     "groupTitle": "1_Introduction"
   },
@@ -128,21 +128,7 @@ define({ "api": [
           {
             "group": "Request",
             "type": "String",
-            "optional": true,
-            "field": "Auth/UserId",
-            "description": "<p>Users unique ID     (required with Auth/UserPassword)</p> "
-          },
-          {
-            "group": "Request",
-            "type": "String",
-            "optional": true,
-            "field": "Auth/UserPassword",
-            "description": "<p>Users password        (required with Auth/UserId)</p> "
-          },
-          {
-            "group": "Request",
-            "type": "String",
-            "optional": true,
+            "optional": false,
             "field": "Auth/UserToken",
             "description": "<p>Users auth token (see AssociateUserToPMS call to generate a Token)</p> "
           },
@@ -187,12 +173,12 @@ define({ "api": [
     "examples": [
       {
         "title": "XML Request - Creating a customer account",
-        "content": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<ARIRulesList>\n\t<Auth>\n\t\t<UserId>Customer User ID</UserId>\n\t\t<UserPassword>Customer Password</UserPassword>\n\t\t<VendorId>Your Vendor ID</VendorId>\n\t\t<VendorPassword>Your Vendor Password</VendorPassword>\n\t</Auth>\n\t<ARIRules>\n\t\t<Rule PMSRuleId=\"\" RoomId=\"\" Channel=\"\" Verb=\"BLOCK\" StartDate=\"YYYY-MM-DD\" EndDate=\"YYYY-MM-DD\" />\n\t</ARIRules>\n</ARIRulesList>",
+        "content": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<ARIRulesList>\n\t<Auth>\n\t\t<UserToken>User token</UserToken>\n\t\t<VendorId>Your Vendor ID</VendorId>\n\t\t<VendorPassword>Your Vendor Password</VendorPassword>\n\t</Auth>\n\t<ARIRules>\n\t\t<Rule PMSRuleId=\"\" RoomId=\"\" Channel=\"\" Verb=\"BLOCK\" StartDate=\"YYYY-MM-DD\" EndDate=\"YYYY-MM-DD\" />\n\t</ARIRules>\n</ARIRulesList>",
         "type": "json"
       },
       {
         "title": "curl w/ JSON",
-        "content": "curl http://api.myallocator.com/pms/v201408/json/ARIRulesList -d@- <<EOJSON\njson={\n  \"Auth/UserId\":\"login on myallocator.com\",\n  \"Auth/UserPassword\":\"password for myallocator.com\",\n  \"Auth/UserToken\":\"User's auth token\",\n  \"Auth/VendorId\":\"your vendor id\",\n  \"Auth/VendorPassword\":\"your vendor password\"\n}\nEOJSON",
+        "content": "curl http://api.myallocator.com/pms/v201408/json/ARIRulesList -d@- <<EOJSON\njson={\n  \"Auth/UserToken\":\"User's auth token\",\n  \"Auth/VendorId\":\"your vendor id\",\n  \"Auth/VendorPassword\":\"your vendor password\"\n}\nEOJSON",
         "type": "json"
       }
     ],
@@ -213,21 +199,7 @@ define({ "api": [
           {
             "group": "Request",
             "type": "String",
-            "optional": true,
-            "field": "Auth/UserId",
-            "description": "<p>Users unique ID     (required with Auth/UserPassword)</p> "
-          },
-          {
-            "group": "Request",
-            "type": "String",
-            "optional": true,
-            "field": "Auth/UserPassword",
-            "description": "<p>Users password        (required with Auth/UserId)</p> "
-          },
-          {
-            "group": "Request",
-            "type": "String",
-            "optional": true,
+            "optional": false,
             "field": "Auth/UserToken",
             "description": "<p>Users auth token (see AssociateUserToPMS call to generate a Token)#</p> "
           },
@@ -324,21 +296,7 @@ define({ "api": [
           {
             "group": "Request",
             "type": "String",
-            "optional": true,
-            "field": "Auth/UserId",
-            "description": "<p>Users unique ID     (required with Auth/UserPassword)</p> "
-          },
-          {
-            "group": "Request",
-            "type": "String",
-            "optional": true,
-            "field": "Auth/UserPassword",
-            "description": "<p>Users password        (required with Auth/UserId)</p> "
-          },
-          {
-            "group": "Request",
-            "type": "String",
-            "optional": true,
+            "optional": false,
             "field": "Auth/UserToken",
             "description": "<p>Users auth token (see AssociateUserToPMS call to generate a Token)</p> "
           },
@@ -512,27 +470,10 @@ define({ "api": [
           },
           {
             "group": "Request",
-            "type": "Attribute",
-            "allowedValues": [
-              "\"true\""
-            ],
-            "optional": true,
-            "field": ".Allocations.Allocation.Prices.Price.weekend",
-            "description": "<p>(XML ONLY) Price per person for shared/dorm rooms or per room for private rooms. In XML: You can submit two Price tags. The default one and one with the attribute \\textit{weekend=&quot;true&quot;}. If a Price tag with this attribute has been submitted the rate only applies to weekdays set by the customer as weekends (see PropertyList for which days are set as weekend days).</p> "
-          },
-          {
-            "group": "Request",
             "type": "Currency",
             "optional": true,
             "field": ".Allocations.Allocation.Price",
             "description": "<p>(JSON ONLY) Price per person for shared/dorm rooms or per room for private rooms.</p> "
-          },
-          {
-            "group": "Request",
-            "type": "Currency",
-            "optional": true,
-            "field": ".Allocations.Allocation.PriceWeekend",
-            "description": "<p>(JSON ONLY) price for days marked as &quot;Weekend&quot;</p> "
           }
         ]
       }
@@ -591,16 +532,16 @@ define({ "api": [
         }
       ]
     },
-    "description": "<p>An allocation sets the number of rooms or beds (depending on whether the  room type is a private room or shared/dorm) available during  any specific time frame. For more details see below.</p> <p> <strong> Pricing </strong>  In both XML and JSON it is possible to submit two Prices.   A default &quot;Weekday&quot; price and one with the attribute it{weekend=&quot;true&quot;}. If a Price tag with this attribute has been submitted the rate only applies to weekdays set by the customer as weekends (see PropertyList for which days are set as weekend days).</p> <p> <strong> Excluding Channels </strong>  prefix a channel id with a minus (-) to exclude it.   Ex:  a series of &quot;all&quot;, &quot;-loop&quot; would update all configured channels except &quot;loop&quot;</p> <p> <strong> Handling Errors &amp; Warnings </strong></p> <p> The response will always include the Success, Errors and Warnings tags. If  Success is set to &quot;true&quot; the Errors tag will be empty. If Success is set to  &quot;partial&quot; or &quot;false&quot; at least one Error tag is included.</p> <p> <strong> Sending Overlapping Ranges / Partial updates </strong>  Overlapping ranges in an ARIUpdate are absolutely allowed.   As long as the ranges are sent in the same request body they are applied in sequence as part of the same SQL transaction.   Fields such as Units, MinStay, MaxStay, Price are optional so it is possible send different ranges for pricing and   availability.</p> <p> How this works: we receive XML/JSON request body and decode it into a neutral format,   then write availability directly to the internal MyAllocator database  and provision an updateId for a date range plus room-type(s),   then create one job per channel, finally we return the updateId to the response (assuming QueryForStatus==True).</p> <p> Each job contains ONLY the propertyid, updateId, and ota (no availability, or pricing).  Jobs are picked up one of several auto-scaling &quot;worker tier&quot; servers,   each server loads the latest availability from the db (which may have changed since the updateId was issued),   and then applies any ARIRules, then transmit to OTA, and flag their portion of the updateId as completed.  This ensures the latest availability will always be sent to the OTA.  </p> <p> Once an UpdateId has been issued it falls within the scope of my monitoring domain,   it should be considered reliable by a developer.  The request is broken into a series of jobs (one for each channel).<br> Each job is logged to disk and processed by a pool of servers.<br> It would take a substantial level of failure to be lost.<br> (Jobs are not quite as durable as bookings or configuration data, but it&#39;s still highly durable).  </p> <p> <strong> Submitting to ALL channels </strong></p> <p> You can also submit to all available channels without specifying explicity which  channels to update. Use the channel code &quot;all&quot; to do this. Channels that are not   set up by the user will be skipped as indicated by a warning. </p> <p> It is also possible to submit to all channels while excluding certain channels.  Add the attribute exclude=&quot;true&quot; to skip a channel. See example below.  Use the channel code &quot;all&quot; to do this.</p> <p> <strong> Running Jobs in the Background (ARIUpdateStatus) </strong></p> <p> You can also run the ARIUpdate update in the background and query  for the updates using ARIUpdateStatus. This enables you  to show the update progress to the user while it&#39;s still running. To enable  this feature you need to add the node QueryForStatus (see example)</p> <p> If QueryForStatus is true then the ARIUpdateResponse will contain the additional parameter UpdateId, which  is needed for ARIUpdateStatus</p> <p> QueryForStatus TRUE will be much more resilient than attempting to maintain a single persistent connection,   and it will free up connection requests on our side.  In the future QueryForStatus FALSE may be removed and/or   additional timeouts will be added which may make it unusable.   New integrations should avoid using QueryForStatus FALSE.</p> <p> <strong> Weekends </strong>  Weekends will be removed in a future release, if you are currently building a new integration please avoid using the weekend functionality.</p> ",
+    "description": "<p>An allocation sets the number of rooms or beds (depending on whether the  room type is a private room or shared/dorm) available during  any specific time frame. For more details see below.</p> <p> <strong> Excluding Channels </strong>  prefix a channel id with a minus (-) to exclude it.   Ex:  a series of &quot;all&quot;, &quot;-loop&quot; would update all configured channels except &quot;loop&quot;</p> <p> <strong> Handling Errors &amp; Warnings </strong></p> <p> The response will always include the Success, Errors and Warnings tags. If  Success is set to &quot;true&quot; the Errors tag will be empty. If Success is set to  &quot;partial&quot; or &quot;false&quot; at least one Error tag is included.</p> <p> <strong> Sending Overlapping Ranges / Partial updates </strong>  Overlapping ranges in an ARIUpdate are absolutely allowed.   As long as the ranges are sent in the same request body they are applied in sequence as part of the same SQL transaction.   Fields such as Units, MinStay, MaxStay, Price are optional so it is possible send different ranges for pricing and   availability.</p> <p> How this works: we receive XML/JSON request body and decode it into a neutral format,   then write availability directly to the internal MyAllocator database  and provision an updateId for a date range plus room-type(s),   then create one job per channel, finally we return the updateId to the response (assuming QueryForStatus==True).</p> <p> Each job contains ONLY the propertyid, updateId, and ota (no availability, or pricing).  Jobs are picked up one of several auto-scaling &quot;worker tier&quot; servers,   each server loads the latest availability from the db (which may have changed since the updateId was issued),   and then applies any ARIRules, then transmit to OTA, and flag their portion of the updateId as completed.  This ensures the latest availability will always be sent to the OTA.  </p> <p> Once an UpdateId has been issued it falls within the scope of my monitoring domain,   it should be considered reliable by a developer.  The request is broken into a series of jobs (one for each channel).<br> Each job is logged to disk and processed by a pool of servers.<br> It would take a substantial level of failure to be lost.<br> (Jobs are not quite as durable as bookings or configuration data, but it&#39;s still highly durable).  </p> <p> <strong> Submitting to ALL channels </strong></p> <p> You can also submit to all available channels without specifying explicity which  channels to update. Use the channel code &quot;all&quot; to do this. Channels that are not   set up by the user will be skipped as indicated by a warning. </p> <p> It is also possible to submit to all channels while excluding certain channels.  Add the attribute exclude=&quot;true&quot; to skip a channel. See example below.  Use the channel code &quot;all&quot; to do this.</p> <p> <strong> Running Jobs in the Background (ARIUpdateStatus) </strong></p> <p> You can also run the ARIUpdate update in the background and query  for the updates using ARIUpdateStatus. This enables you  to show the update progress to the user while it&#39;s still running. To enable  this feature you need to add the node QueryForStatus (see example)</p> <p> If QueryForStatus is true then the ARIUpdateResponse will contain the additional parameter UpdateId, which  is needed for ARIUpdateStatus</p> <p> QueryForStatus TRUE will be much more resilient than attempting to maintain a single persistent connection,   and it will free up connection requests on our side.  In the future QueryForStatus FALSE may be removed and/or   additional timeouts will be added which may make it unusable.   New integrations should avoid using QueryForStatus FALSE.</p> ",
     "examples": [
       {
         "title": "JSON ARIUpdate",
-        "content": "{\n \"Auth/UserId\":\"your username\",\n \"Auth/UserPassword\":\"your password\",\n \"Auth/PropertyId\":\"property id from myallocator\",\n \"Auth/VendorId\":\"your vendor\",\n \"Auth/VendorPassword\":\"vendorpass\",\n \"Channels\": [ \"hc\",\"iwb\" ],\n \"Allocations\": [\n\t{\n\t\"RoomId\":\"59\",\n\t\"StartDate\":\"2010-06-01\",\n\t\"EndDate\":\"2010-06-01\",\n\t\"Units\":\"3\",\n\t\"MinStay\":\"1\",\n\t\"MaxStay\":\"30\",\n\t\"Price\":\"20.00\",\n\t\"PriceWeekend\":\"20.00\"\n\t}\n\t]\n}",
+        "content": "{\n \"Auth/UserToken\":\"user token\",\n \"Auth/PropertyId\":\"property id from myallocator\",\n \"Auth/VendorId\":\"your vendor\",\n \"Auth/VendorPassword\":\"vendorpass\",\n \"Channels\": [ \"hc\",\"iwb\" ],\n \"Allocations\": [\n\t{\n\t\"RoomId\":\"59\",\n\t\"StartDate\":\"2010-06-01\",\n\t\"EndDate\":\"2010-06-01\",\n\t\"Units\":\"3\",\n\t\"MinStay\":\"1\",\n\t\"MaxStay\":\"30\",\n\t\"Price\":\"20.00\"\n\t}\n\t]\n}",
         "type": "json"
       },
       {
         "title": "curl w/ JSON",
-        "content": "curl http://api.myallocator.com/pms/v201408/json/ARIUpdate -d@- <<EOJSON\njson={\n \"Auth/UserId\":\"your username\",\n \"Auth/UserPassword\":\"your password\",\n \"Auth/PropertyId\":\"property id from myallocator\",\n \"Auth/VendorId\":\"your vendor\",\n \"Auth/VendorPassword\":\"vendorpass\",\n \"Channels\": [ \"hc\",\"iwb\" ],\n \"Allocations\": [\n\t{\n\t\"RoomId\":\"59\",\n\t\"StartDate\":\"2010-06-01\",\n\t\"EndDate\":\"2010-06-01\",\n\t\"Units\":\"3\",\n\t\"MinStay\":\"1\",\n\t\"MaxStay\":\"30\",\n\t\"Price\":\"20.00\",\n\t\"PriceWeekend\":\"20.00\",\n    \"PriceWeekly\":\"400.00\",\n    \"PriceMonthly\":\"1600.00\"\n\t}\n\t]\n}\nEOJSON",
+        "content": "curl http://api.myallocator.com/pms/v201408/json/ARIUpdate -d@- <<EOJSON\njson={\n \"Auth/UserToken\":\"your username\",\n \"Auth/PropertyId\":\"property id from myallocator\",\n \"Auth/VendorId\":\"your vendor\",\n \"Auth/VendorPassword\":\"vendorpass\",\n \"Channels\": [ \"hc\",\"iwb\" ],\n \"Allocations\": [\n\t{\n\t\"RoomId\":\"59\",\n\t\"StartDate\":\"2010-06-01\",\n\t\"EndDate\":\"2010-06-01\",\n\t\"Units\":\"3\",\n\t\"MinStay\":\"1\",\n\t\"MaxStay\":\"30\",\n\t\"Price\":\"20.00\",\n    \"PriceWeekly\":\"400.00\",\n    \"PriceMonthly\":\"1600.00\"\n\t}\n\t]\n}\nEOJSON",
         "type": "json"
       },
       {
@@ -610,7 +551,7 @@ define({ "api": [
       },
       {
         "title": "XML ARIUpdateRequest",
-        "content": "\t<?xml version=\"1.0\" encoding=\"UTF-8\" ?>\n\t<ARIUpdate>\n\t <Auth>\n\t   <UserId>Customer User ID</UserId>\n\t   <UserPassword>Customer Password</UserPassword>\n\t   <PropertyId>Property ID on myallocator.com</PropertyId>\n\t   <VendorId>Your Vendor ID</VendorId>\n\t   <VendorPassword>Your Vendor Password</VendorPassword>\n\t </Auth>\n\n\t <Channels>\n\t\t<Channel>hc</Channel>\n\t\t<Channel>iwb</Channel>\n\t </Channels>\n\n\t <Allocations>\n\t\t<Allocation>\n\t\t  <RoomId>59</RoomId>\n          <RatePlanId>100</RatePlanId>\n\t\t  <StartDate>2010-06-01</StartDate>\n\t\t  <EndDate>2010-08-12</EndDate>\n\t\t  <Units>3</Units>\n\t\t  <MinStay>1</MinStay>\n\t\t  <MaxStay>30</MaxStay>\n\t\t  <Prices>\n\t\t\t <Price>20.00</Price>\n\t\t\t <Price weekend=\"true\">25.00</Price>\n\t\t  </Prices>\n\t\t</Allocation>\n\t </Allocations>\n\t</ARIUpdate>",
+        "content": "\t<?xml version=\"1.0\" encoding=\"UTF-8\" ?>\n\t<ARIUpdate>\n\t <Auth>\n\t   <UserToken>User token</UserToken>\n\t   <PropertyId>Property ID on myallocator.com</PropertyId>\n\t   <VendorId>Your Vendor ID</VendorId>\n\t   <VendorPassword>Your Vendor Password</VendorPassword>\n\t </Auth>\n\n\t <Channels>\n\t\t<Channel>hc</Channel>\n\t\t<Channel>iwb</Channel>\n\t </Channels>\n\n\t <Allocations>\n\t\t<Allocation>\n\t\t  <RoomId>59</RoomId>\n          <RatePlanId>100</RatePlanId>\n\t\t  <StartDate>2010-06-01</StartDate>\n\t\t  <EndDate>2010-08-12</EndDate>\n\t\t  <Units>3</Units>\n\t\t  <MinStay>1</MinStay>\n\t\t  <MaxStay>30</MaxStay>\n\t\t  <Prices>\n\t\t\t <Price>20.00</Price>\n\t\t  </Prices>\n\t\t</Allocation>\n\t </Allocations>\n\t</ARIUpdate>",
         "type": "json"
       },
       {
@@ -620,7 +561,7 @@ define({ "api": [
       },
       {
         "title": "XML ARIUpdate (Submit to all channels excluding Gomio and Hostelsclub)",
-        "content": "<?xml version=\"1.0\" encoding=\"UTF-8\" ?>\n<ARIUpdate>\n <Auth>\n\t<UserId>Customer User ID</UserId>\n\t<UserPassword>Customer Password</UserPassword>\n\t<PropertyId>Property ID on myallocator.com</PropertyId>\n\t<VendorId>Your Vendor ID</VendorId>\n\t<VendorPassword>Your Vendor Password</VendorPassword>\n </Auth>\n\n <Channels>\n\t<Channel>all</Channel>\n\t<Channel exclude=\"true\">gom</Channel>\n\t<Channel exclude=\"true\">hc</Channel>\n</Channels>\n\n <Allocations>\n\t...\n </Allocations>\n</ARIUpdate>",
+        "content": "<?xml version=\"1.0\" encoding=\"UTF-8\" ?>\n<ARIUpdate>\n <Auth>\n\t<UserToken>User token</UserToken>\n\t<PropertyId>Property ID on myallocator.com</PropertyId>\n\t<VendorId>Your Vendor ID</VendorId>\n\t<VendorPassword>Your Vendor Password</VendorPassword>\n </Auth>\n\n <Channels>\n\t<Channel>all</Channel>\n\t<Channel exclude=\"true\">gom</Channel>\n\t<Channel exclude=\"true\">hc</Channel>\n</Channels>\n\n <Allocations>\n\t...\n </Allocations>\n</ARIUpdate>",
         "type": "json"
       }
     ],
@@ -640,21 +581,7 @@ define({ "api": [
           {
             "group": "Request",
             "type": "String",
-            "optional": true,
-            "field": "Auth/UserId",
-            "description": "<p>Users unique ID     (required with Auth/UserPassword)</p> "
-          },
-          {
-            "group": "Request",
-            "type": "String",
-            "optional": true,
-            "field": "Auth/UserPassword",
-            "description": "<p>Users password        (required with Auth/UserId)</p> "
-          },
-          {
-            "group": "Request",
-            "type": "String",
-            "optional": true,
+            "optional": false,
             "field": "Auth/UserToken",
             "description": "<p>Users auth token (see AssociateUserToPMS call to generate a Token)</p> "
           },
@@ -713,12 +640,12 @@ define({ "api": [
     "examples": [
       {
         "title": "XML ARIUpdateStatus Request",
-        "content": "<?xml version=\"1.0\" encoding=\"UTF-8\" ?>\n<ARIUpdateStatus>\n <Auth>\n   <UserId>Customer User ID</UserId>\n   <UserPassword>Customer Password</UserPassword>\n   <PropertyId>Property ID on myallocator.com</PropertyId>\n   <VendorId>Your Vendor ID</VendorId>\n   <VendorPassword>Your Vendor Password</VendorPassword>\n </Auth>\n\n <UpdateId>832522158</UpdateId>\n</ARIUpdateStatus>",
+        "content": "<?xml version=\"1.0\" encoding=\"UTF-8\" ?>\n<ARIUpdateStatus>\n <Auth>\n   <UserToken>User token</UserToken>\n   <PropertyId>Property ID on myallocator.com</PropertyId>\n   <VendorId>Your Vendor ID</VendorId>\n   <VendorPassword>Your Vendor Password</VendorPassword>\n </Auth>\n\n <UpdateId>832522158</UpdateId>\n</ARIUpdateStatus>",
         "type": "json"
       },
       {
         "title": "curl w/ JSON",
-        "content": "curl http://api.myallocator.com/pms/v201408/json/ARIUpdateStatus -d@- <<EOJSON\njson={\n  \"Auth/UserId\":\"login on myallocator.com\",\n  \"Auth/UserPassword\":\"password for myallocator.com\",\n  \"Auth/UserToken\":\"User's auth token\",\n  \"Auth/PropertyId\":\"Property ID\",\n  \"Auth/VendorId\":\"your vendor id\",\n  \"Auth/VendorPassword\":\"your vendor password\"\n}\nEOJSON",
+        "content": "curl http://api.myallocator.com/pms/v201408/json/ARIUpdateStatus -d@- <<EOJSON\njson={\n  \"Auth/UserToken\":\"User's auth token\",\n  \"Auth/PropertyId\":\"Property ID\",\n  \"Auth/VendorId\":\"your vendor id\",\n  \"Auth/VendorPassword\":\"your vendor password\"\n}\nEOJSON",
         "type": "json"
       }
     ],
@@ -784,7 +711,7 @@ define({ "api": [
     "title": "AssociatePropertyToPMS",
     "name": "AssociatePropertyToPMS",
     "version": "201601.0.0",
-    "description": "<p>This call is mostly here for future expansion in 2015.  Creates a permanent link between an existing myallocator property and a PMS Vendor.   The PMS Vendor should securely obtain the users myallocator user-id and password (but do not store them),   then in the background pass the user credentials to AssociatePropertyToPMS and a link will be created.  Any future API calls will not require a Password. </p> <p> NOTE: *Users and Properties created by a PMS Vendor will automatically be linked to that PMS (this call is not necessary)</p> <p> NOTE: Although Auth/UserPassword is identified in this call as <em>required</em> if a prior AssociateUserToPMS call has been made then it is not actually required.</p> ",
+    "description": "<p>Creates a permanent link between an existing myallocator property and a PMS Vendor.  The link is required to access any of the property related calls in our API  with the user token. The returned property token is currently not being used.</p> <p> The PMS Vendor should securely obtain the users myallocator user-id and password (but do not store them),  then in the background pass the user credentials to AssociatePropertyToPMS and a link will be created.</p> <p> NOTE: Users and Properties created by a PMS Vendor will automatically be linked to that PMS (this call is not necessary)</p> ",
     "parameter": {
       "fields": {
         "Request": [
@@ -841,7 +768,7 @@ define({ "api": [
             "type": "String",
             "optional": false,
             "field": "Auth/PropertyToken",
-            "description": "<p>A 48 character shared secret that can be passed in lieu of Auth/UserId Auth/UserPassword</p> "
+            "description": "<p>Token does not have any practical use for now.</p> "
           }
         ]
       }
@@ -849,17 +776,17 @@ define({ "api": [
     "examples": [
       {
         "title": "JSON AssociatePropertyToPMS",
-        "content": "{\n\t\"Auth/UserId\":\"login on myallocator.com\",\n\t\"Auth/UserPassword\":\"password for myallocator.com\",\n\t\"Auth/VendorId\":\"your vendor id\",\n\t\"Auth/VendorPassword\":\"your vendor password\",\n\t\"Auth/PropertyId\":\"property id from myallocator\",\n\t\"PMSPropertyId\":\"username-on-the-remote-pms-system\"\n}",
+        "content": "{\n\t\"Auth/UserId\":\"username for myallocator.com\",\n\t\"Auth/UserPassword\":\"password for myallocator.com\",\n\t\"Auth/VendorId\":\"your vendor id\",\n\t\"Auth/VendorPassword\":\"your vendor password\",\n\t\"Auth/PropertyId\":\"property id from myallocator\",\n\t\"PMSPropertyId\":\"username-on-the-remote-pms-system\"\n}",
         "type": "json"
       },
       {
         "title": "curl w/ JSON",
-        "content": "curl http://api.myallocator.com/pms/v201408/json/AssociatePropertyToPMS -d@- <<EOJSON\njson={\n\t\"Auth/UserId\":\"login on myallocator.com\",\n\t\"Auth/UserPassword\":\"password for myallocator.com\",\n\t\"Auth/VendorId\":\"your vendor id\",\n\t\"Auth/VendorPassword\":\"your vendor password\",\n\t\"Auth/PropertyId\":\"property id from myallocator\",\n\t\"PMSPropertyId\":\"username-on-the-remote-pms-system\"\n}\nEOJSON",
+        "content": "curl http://api.myallocator.com/pms/v201408/json/AssociatePropertyToPMS -d@- <<EOJSON\njson={\n\t\"Auth/UserId\":\"username for myallocator.com\",\n\t\"Auth/UserPassword\":\"password for myallocator.com\",\n\t\"Auth/VendorId\":\"your vendor id\",\n\t\"Auth/VendorPassword\":\"your vendor password\",\n\t\"Auth/PropertyId\":\"property id from myallocator\",\n\t\"PMSPropertyId\":\"username-on-the-remote-pms-system\"\n}\nEOJSON",
         "type": "json"
       },
       {
         "title": "XML AssociateUserToPMS",
-        "content": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<AssociatePropertyToPMS>\n<Auth>\n  <UserId>Customer User ID</UserId>\n  <UserPassword>Customer Password</UserPassword>\n  <VendorId>Your Vendor ID</VendorId>\n  <VendorPassword>Your Vendor Password</VendorPassword>\n</Auth>\n<PMSPropertyId>username-on-the-remote-pms-system</PMSUserId>\n</AssociatePropertyToPMS>",
+        "content": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<AssociatePropertyToPMS>\n<Auth>\n  <UserId>Customer username</UserId>\n  <UserPassword>Customer Password</UserPassword>\n  <VendorId>Your Vendor ID</VendorId>\n  <VendorPassword>Your Vendor Password</VendorPassword>\n</Auth>\n<PMSPropertyId>username-on-the-remote-pms-system</PMSUserId>\n</AssociatePropertyToPMS>",
         "type": "json"
       }
     ],
@@ -873,23 +800,23 @@ define({ "api": [
     "title": "AssociateUserToPMS",
     "name": "AssociateUserToPMS",
     "version": "201601.0.0",
-    "description": "<p>Creates a permanent link between an existing myallocator user and a PMS Vendor.   The PMS Vendor should securely obtain the users myallocator user-id and password (but do not store them),   then in the background pass the user credentials to AssociateUserToPMS and a link will be created.  Any future API calls will not require UserPassword. </p> <p> NOTE: *Users and Properties created by a PMS Vendor will automatically be linked to that PMS (this call is not necessary)</p> <p> NOTE: Although Auth/UserPassword is identified in this call as <em>required</em> if a prior AssociateUserToPMS call has been made then it is not actually required.</p> ",
+    "description": "<p>Creates a permanent link between an existing myallocator user and a PMS Vendor.   The PMS Vendor should securely obtain the users myallocator user-id and password (but do not store them),   then in the background pass the user credentials to AssociateUserToPMS and a link will be created.  Any future API calls will not require UserId or UserPassword.</p> <p> NOTE: Users and Properties created by a PMS Vendor will automatically be linked to that PMS (this call is not necessary)</p> ",
     "parameter": {
       "fields": {
         "Request": [
           {
             "group": "Request",
             "type": "String",
-            "optional": true,
+            "optional": false,
             "field": "Auth/UserId",
-            "description": "<p>Users unique ID     (required with Auth/UserPassword)</p> "
+            "description": "<p>User unique ID</p> "
           },
           {
             "group": "Request",
             "type": "String",
-            "optional": true,
+            "optional": false,
             "field": "Auth/UserPassword",
-            "description": "<p>Users password        (required with Auth/UserId)</p> "
+            "description": "<p>User password</p> "
           },
           {
             "group": "Request",
@@ -923,7 +850,7 @@ define({ "api": [
             "type": "String",
             "optional": false,
             "field": "Auth/UserToken",
-            "description": "<p>Return this to us instead of a Auth/UserId and Auth/UserPassword</p> "
+            "description": "<p>Use this token to access other API calls</p> "
           }
         ]
       }
@@ -931,17 +858,17 @@ define({ "api": [
     "examples": [
       {
         "title": "JSON AssociateUserToPMS",
-        "content": "{\n  \"Auth/UserId\":\"login on myallocator.com\",\n  \"Auth/UserPassword\":\"password for myallocator.com\",\n  \"Auth/VendorId\":\"your vendor id\",\n  \"Auth/VendorPassword\":\"your vendor password\",\n  \"PMSUserId\":\"username-on-the-remote-pms-system\"\n}",
+        "content": "{\n  \"Auth/UserId\":\"username for myallocator.com\",\n  \"Auth/UserPassword\":\"password for myallocator.com\",\n  \"Auth/VendorId\":\"your vendor id\",\n  \"Auth/VendorPassword\":\"your vendor password\",\n  \"PMSUserId\":\"username-on-the-remote-pms-system\"\n}",
         "type": "json"
       },
       {
         "title": "curl w/ JSON",
-        "content": "curl http://api.myallocator.com/pms/v201408/json/AssociateUserToPMS -d@- <<EOJSON\njson={\n  \"Auth/UserId\":\"login on myallocator.com\",\n  \"Auth/UserPassword\":\"password for myallocator.com\",\n  \"Auth/VendorId\":\"your vendor id\",\n  \"Auth/VendorPassword\":\"your vendor password\",\n  \"PMSUserId\":\"username-on-the-remote-pms-system\"\n}\nEOJSON",
+        "content": "curl http://api.myallocator.com/pms/v201408/json/AssociateUserToPMS -d@- <<EOJSON\njson={\n  \"Auth/UserId\":\"username for myallocator.com\",\n  \"Auth/UserPassword\":\"password for myallocator.com\",\n  \"Auth/VendorId\":\"your vendor id\",\n  \"Auth/VendorPassword\":\"your vendor password\",\n  \"PMSUserId\":\"username-on-the-remote-pms-system\"\n}\nEOJSON",
         "type": "json"
       },
       {
         "title": "XML AssociateUserToPMS",
-        "content": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<AssociateUserToPMS>\n<Auth>\n  <UserId>Customer User ID</UserId>\n  <UserPassword>Customer Password</UserPassword>\n  <VendorId>Your Vendor ID</VendorId>\n  <VendorPassword>Your Vendor Password</VendorPassword>\n</Auth>\n<PMSUserId>username-on-the-remote-pms-system</PMSUserId>\n</AssociateUserToPMS>",
+        "content": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<AssociateUserToPMS>\n<Auth>\n  <UserId>Customer username</UserId>\n  <UserPassword>Customer Password</UserPassword>\n  <VendorId>Your Vendor ID</VendorId>\n  <VendorPassword>Your Vendor Password</VendorPassword>\n</Auth>\n<PMSUserId>username-on-the-remote-pms-system</PMSUserId>\n</AssociateUserToPMS>",
         "type": "json"
       }
     ],
@@ -962,21 +889,7 @@ define({ "api": [
           {
             "group": "Request",
             "type": "String",
-            "optional": true,
-            "field": "Auth/UserId",
-            "description": "<p>Users unique ID     (required with Auth/UserPassword)</p> "
-          },
-          {
-            "group": "Request",
-            "type": "String",
-            "optional": true,
-            "field": "Auth/UserPassword",
-            "description": "<p>Users password      (required with Auth/UserId)</p> "
-          },
-          {
-            "group": "Request",
-            "type": "String",
-            "optional": true,
+            "optional": false,
             "field": "Auth/UserToken",
             "description": "<p>Users auth token (see AssociateUserToPMS call to generate a Token)@apiParam (Request) {String} Auth/PropertyId      Property ID on myallocator.com</p> "
           },
@@ -1037,12 +950,12 @@ define({ "api": [
     "examples": [
       {
         "title": "JSON Request",
-        "content": "{\n    \"Auth/UserToken\":\"\",\n    \"Auth/UserId\":\"\",\n    \"Auth/UserPassword\":\"\",\n    \"Auth/VendorId\":\"\",\n    \"Auth/VendorPassword\":\"\",\n    \"Auth/PropertyId\":\"\",\n\n    \"MyAllocatorId\":\"XXXXX\",\n    \"Actions\":[\n        \"ACK\",\n        [ \"ADDNOTE\", \"Customer called, they will arrive late\"]\n    ]\n}",
+        "content": "{\n    \"Auth/UserToken\":\"\",\n    \"Auth/VendorId\":\"\",\n    \"Auth/VendorPassword\":\"\",\n    \"Auth/PropertyId\":\"\",\n\n    \"MyAllocatorId\":\"XXXXX\",\n    \"Actions\":[\n        \"ACK\",\n        [ \"ADDNOTE\", \"Customer called, they will arrive late\"]\n    ]\n}",
         "type": "json"
       },
       {
         "title": "curl w/ JSON",
-        "content": "curl http://api.myallocator.com/pms/v201408/json/BookingAction -d@- <<EOJSON\njson={\n    \"Auth/UserToken\":\"\",\n    \"Auth/UserId\":\"\",\n    \"Auth/UserPassword\":\"\",\n    \"Auth/VendorId\":\"\",\n    \"Auth/VendorPassword\":\"\",\n    \"Auth/PropertyId\":\"\",\n\n    \"MyAllocatorId\":\"XXXXX\",\n    \"Actions\":[\n        \"ACK\",\n        [ \"ADDNOTE\", \"Customer called, they will arrive late\"]\n    ]\n}\nEOJSON",
+        "content": "curl http://api.myallocator.com/pms/v201408/json/BookingAction -d@- <<EOJSON\njson={\n    \"Auth/UserToken\":\"\",\n    \"Auth/VendorId\":\"\",\n    \"Auth/VendorPassword\":\"\",\n    \"Auth/PropertyId\":\"\",\n\n    \"MyAllocatorId\":\"XXXXX\",\n    \"Actions\":[\n        \"ACK\",\n        [ \"ADDNOTE\", \"Customer called, they will arrive late\"]\n    ]\n}\nEOJSON",
         "type": "json"
       }
     ],
@@ -1062,21 +975,7 @@ define({ "api": [
           {
             "group": "Request",
             "type": "String",
-            "optional": true,
-            "field": "Auth/UserId",
-            "description": "<p>Users unique ID     (required with Auth/UserPassword)</p> "
-          },
-          {
-            "group": "Request",
-            "type": "String",
-            "optional": true,
-            "field": "Auth/UserPassword",
-            "description": "<p>Users password      (required with Auth/UserId)</p> "
-          },
-          {
-            "group": "Request",
-            "type": "String",
-            "optional": true,
+            "optional": false,
             "field": "Auth/UserToken",
             "description": "<p>Users auth token (see AssociateUserToPMS call to generate a Token)@apiParam (Request) {String} Auth/PropertyId      Property ID on myallocator.com</p> "
           },
@@ -1122,12 +1021,12 @@ define({ "api": [
     "examples": [
       {
         "title": "JSON Example of cancelling a booking",
-        "content": "{\n    \"Auth/UserToken\":\"\",\n    \"Auth/UserId\":\"\",\n    \"Auth/UserPassword\":\"\",\n    \"Auth/VendorId\":\"\",\n    \"Auth/VendorPassword\":\"\",\n    \"Auth/PropertyId\":\"\",\n\n    \"MyAllocatorId\":\"57333cd36dbf9a4f114dd781\",\n    \"CancellationReason\":\"Guest's flight was cancelled\"\n}",
+        "content": "{\n    \"Auth/UserToken\":\"\",\n    \"Auth/VendorId\":\"\",\n    \"Auth/VendorPassword\":\"\",\n    \"Auth/PropertyId\":\"\",\n\n    \"MyAllocatorId\":\"57333cd36dbf9a4f114dd781\",\n    \"CancellationReason\":\"Guest's flight was cancelled\"\n}",
         "type": "json"
       },
       {
         "title": "curl w/ JSON",
-        "content": "curl http://api.myallocator.com/pms/v201408/json/BookingCancel -d@- <<EOJSON\njson=\n{\n    \"Auth/UserToken\":\"\",\n    \"Auth/UserId\":\"\",\n    \"Auth/UserPassword\":\"\",\n    \"Auth/VendorId\":\"\",\n    \"Auth/VendorPassword\":\"\",\n    \"Auth/PropertyId\":\"\",\n\n    \"MyAllocatorId\":\"57333cd36dbf9a4f114dd781\",\n    \"CancellationReason\":\"Guest's flight was cancelled\"\n}\nEOJSON",
+        "content": "curl http://api.myallocator.com/pms/v201408/json/BookingCancel -d@- <<EOJSON\njson=\n{\n    \"Auth/UserToken\":\"\",\n    \"Auth/VendorId\":\"\",\n    \"Auth/VendorPassword\":\"\",\n    \"Auth/PropertyId\":\"\",\n\n    \"MyAllocatorId\":\"57333cd36dbf9a4f114dd781\",\n    \"CancellationReason\":\"Guest's flight was cancelled\"\n}\nEOJSON",
         "type": "json"
       }
     ],
@@ -1148,21 +1047,7 @@ define({ "api": [
           {
             "group": "Request",
             "type": "String",
-            "optional": true,
-            "field": "Auth/UserId",
-            "description": "<p>Users unique ID     (required with Auth/UserPassword)</p> "
-          },
-          {
-            "group": "Request",
-            "type": "String",
-            "optional": true,
-            "field": "Auth/UserPassword",
-            "description": "<p>Users password        (required with Auth/UserId)</p> "
-          },
-          {
-            "group": "Request",
-            "type": "String",
-            "optional": true,
+            "optional": false,
             "field": "Auth/UserToken",
             "description": "<p>Users auth token (see AssociateUserToPMS call to generate a Token)</p> "
           },
@@ -1326,7 +1211,7 @@ define({ "api": [
       },
       {
         "title": "XML BookingCreate Request",
-        "content": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<LoopBookingCreate>\n<Auth>\n\t<UserId>Customer User ID</UserId>\n\t<UserPassword>Customer Password</UserPassword>\n\t<PropertyId>###</PropertyId>\n</Auth>\n<Booking>\n\t<StartDate>YYYY-MM-DD</StartDate>\n\t<EndDate>YYYY-MM-DD</EndRate>\n</Booking>\n</LoopBookingCreate>",
+        "content": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<LoopBookingCreate>\n<Auth>\n\t<UserToken>User token</UserToken>\n\t<PropertyId>###</PropertyId>\n</Auth>\n<Booking>\n\t<StartDate>YYYY-MM-DD</StartDate>\n\t<EndDate>YYYY-MM-DD</EndRate>\n</Booking>\n</LoopBookingCreate>",
         "type": "json"
       },
       {
@@ -1351,21 +1236,7 @@ define({ "api": [
           {
             "group": "Request",
             "type": "String",
-            "optional": true,
-            "field": "Auth/UserId",
-            "description": "<p>Users unique ID     (required with Auth/UserPassword)</p> "
-          },
-          {
-            "group": "Request",
-            "type": "String",
-            "optional": true,
-            "field": "Auth/UserPassword",
-            "description": "<p>Users password        (required with Auth/UserId)</p> "
-          },
-          {
-            "group": "Request",
-            "type": "String",
-            "optional": true,
+            "optional": false,
             "field": "Auth/UserToken",
             "description": "<p>Users auth token (see AssociateUserToPMS call to generate a Token)@apiParam (Request) {String} Auth/PropertyId         Property ID on myallocator.com</p> "
           },
@@ -1600,7 +1471,7 @@ define({ "api": [
     "examples": [
       {
         "title": "XML Example of querying for bookings",
-        "content": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<BookingList>\n <Auth>\n   <UserId>Customer User ID</UserId>\n   <UserPassword>Customer Password</UserPassword>\n   <PropertyId>Property ID on myallocator.com</PropertyId>\n   <VendorId>Your Vendor ID</VendorId>\n   <VendorPassword>Your Vendor Password</VendorPassword>\n </Auth>\n <Options>\n\t<NormalizeToCurrency>USD</NormalizeToCurrency>\n </Options>\n <!-- NOTE: Arrival, Creation, Modification cannot *actually* be used together -->\n <ArrivalStartDate>2010-01-01</ArrivalStartDate>\n <ArrivalEndDate>2013-01-01</ArrivalEndDate>\n <CreationStartDate>2010-01-01</CreationStartDate>\n <CreationEndDate>2013-01-01</CreationEndDate>\n <ModificationStartDate>2010-01-01</ModificationStartDate>\n <ModificationEndDate>2013-01-01</ModificationEndDate>\n</BookingList>",
+        "content": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<BookingList>\n <Auth>\n   <UserToken>User token</UserToken>\n   <PropertyId>Property ID on myallocator.com</PropertyId>\n   <VendorId>Your Vendor ID</VendorId>\n   <VendorPassword>Your Vendor Password</VendorPassword>\n </Auth>\n <Options>\n\t<NormalizeToCurrency>USD</NormalizeToCurrency>\n </Options>\n <!-- NOTE: Arrival, Creation, Modification cannot *actually* be used together -->\n <ArrivalStartDate>2010-01-01</ArrivalStartDate>\n <ArrivalEndDate>2013-01-01</ArrivalEndDate>\n <CreationStartDate>2010-01-01</CreationStartDate>\n <CreationEndDate>2013-01-01</CreationEndDate>\n <ModificationStartDate>2010-01-01</ModificationStartDate>\n <ModificationEndDate>2013-01-01</ModificationEndDate>\n</BookingList>",
         "type": "json"
       },
       {
@@ -2036,21 +1907,7 @@ define({ "api": [
           {
             "group": "Request",
             "type": "String",
-            "optional": true,
-            "field": "Auth/UserId",
-            "description": "<p>Users unique ID     (required with Auth/UserPassword)</p> "
-          },
-          {
-            "group": "Request",
-            "type": "String",
-            "optional": true,
-            "field": "Auth/UserPassword",
-            "description": "<p>Users password        (required with Auth/UserId)</p> "
-          },
-          {
-            "group": "Request",
-            "type": "String",
-            "optional": true,
+            "optional": false,
             "field": "Auth/UserToken",
             "description": "<p>Users auth token (see AssociateUserToPMS call to generate a Token)@apiParam (Request) {String} Auth/PropertyId</p> "
           },
@@ -2118,7 +1975,7 @@ define({ "api": [
     "examples": [
       {
         "title": "curl w/ JSON",
-        "content": "curl https://api.myallocator.com/pms/v201408/json/BookingPaymentDownload -d@- <<EOJSON\njson=\n{\n    \"Auth/VendorId\":\"Your Vendor ID\",\n    \"Auth/VendorPassword\":\"Your Vendor Password\",\n    \"Auth/UserId\":\"Login on myallocator.com\",\n    \"Auth/UserPassword\":\"Password for myallocator.com\",\n    \"Auth/PropertyId\":\"Property ID on myallocator.com\",\n    \"CreditCardPassword\":\"some_password\",\n    \"MyAllocatorId\": \"some_ma_id\"\n}\nEOJSON",
+        "content": "curl https://api.myallocator.com/pms/v201408/json/BookingPaymentDownload -d@- <<EOJSON\njson=\n{\n    \"Auth/VendorId\":\"Your Vendor ID\",\n    \"Auth/VendorPassword\":\"Your Vendor Password\",\n    \"Auth/UserToken\":\"User token\",\n    \"Auth/PropertyId\":\"Property ID on myallocator.com\",\n    \"CreditCardPassword\":\"some_password\",\n    \"MyAllocatorId\": \"some_ma_id\"\n}\nEOJSON",
         "type": "json"
       }
     ],
@@ -2139,23 +1996,9 @@ define({ "api": [
           {
             "group": "Request",
             "type": "String",
-            "optional": true,
-            "field": "Auth/UserId",
-            "description": "<p>Users unique ID     (required with Auth/UserPassword)</p> "
-          },
-          {
-            "group": "Request",
-            "type": "String",
-            "optional": true,
-            "field": "Auth/UserPassword",
-            "description": "<p>Users password        (required with Auth/UserId)</p> "
-          },
-          {
-            "group": "Request",
-            "type": "String",
-            "optional": true,
+            "optional": false,
             "field": "Auth/UserToken",
-            "description": "<p>Users auth token (see AssociateUserToPMS call to generate a Token)@apiParam (Request) {String} Auth/PropertyId</p> "
+            "description": "<p>Users auth token (see AssociateUserToPMS call to generate a Token)</p> "
           },
           {
             "group": "Request",
@@ -2191,17 +2034,17 @@ define({ "api": [
     "examples": [
       {
         "title": "XML Request",
-        "content": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<BookingPaymentPasswordValidate>\n  <Auth>\n    <UserId>Customer User ID</UserId>\n    <UserPassword>Customer Password</UserPassword>\n    <PropertyId>Property ID on myallocator.com</PropertyId>\n    <VendorId>Your Vendor ID</VendorId>\n    <VendorPassword>Your Vendor Password</VendorPassword>\n  </Auth>\n  <CreditCardPassword>some_password</CreditCardPassword>\n</BookingPaymentPasswordValidate>",
+        "content": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<BookingPaymentPasswordValidate>\n  <Auth>\n    <UserToken>Customer User Token</UserToken>\n    <PropertyId>Property ID on myallocator.com</PropertyId>\n    <VendorId>Your Vendor ID</VendorId>\n    <VendorPassword>Your Vendor Password</VendorPassword>\n  </Auth>\n  <CreditCardPassword>some_password</CreditCardPassword>\n</BookingPaymentPasswordValidate>",
         "type": "json"
       },
       {
         "title": "JSON Request",
-        "content": "{\n    \"Auth/VendorId\":\"Your Vendor ID\",\n    \"Auth/VendorPassword\":\"Your Vendor Password\",\n    \"Auth/UserId\":\"Login on myallocator.com\",\n    \"Auth/UserPassword\":\"Password for myallocator.com\",\n    \"Auth/PropertyId\":\"Property ID on myallocator.com\",\n    \"CreditCardPassword\":\"some_password\"\n}",
+        "content": "{\n    \"Auth/VendorId\":\"Your Vendor ID\",\n    \"Auth/VendorPassword\":\"Your Vendor Password\",\n    \"Auth/UserToken\":\"User token\",\n    \"Auth/PropertyId\":\"Property ID on myallocator.com\",\n    \"CreditCardPassword\":\"some_password\"\n}",
         "type": "json"
       },
       {
         "title": "curl w/ JSON",
-        "content": "curl http://api.myallocator.com/pms/v201408/json/BookingPaymentPasswordValidate -d@- <<EOJSON\njson=\n{\n    \"Auth/VendorId\":\"Your Vendor ID\",\n    \"Auth/VendorPassword\":\"Your Vendor Password\",\n    \"Auth/UserId\":\"Login on myallocator.com\",\n    \"Auth/UserPassword\":\"Password for myallocator.com\",\n    \"Auth/PropertyId\":\"Property ID on myallocator.com\",\n    \"CreditCardPassword\":\"some_password\"\n}\nEOJSON",
+        "content": "curl http://api.myallocator.com/pms/v201408/json/BookingPaymentPasswordValidate -d@- <<EOJSON\njson=\n{\n    \"Auth/VendorId\":\"Your Vendor ID\",\n    \"Auth/VendorPassword\":\"Your Vendor Password\",\n    \"Auth/UserToken\":\"User token\",\n    \"Auth/PropertyId\":\"Property ID on myallocator.com\",\n    \"CreditCardPassword\":\"some_password\"\n}\nEOJSON",
         "type": "json"
       }
     ],
@@ -2392,21 +2235,7 @@ define({ "api": [
           {
             "group": "Request",
             "type": "String",
-            "optional": true,
-            "field": "Auth/UserId",
-            "description": "<p>Users unique ID     (required with Auth/UserPassword)</p> "
-          },
-          {
-            "group": "Request",
-            "type": "String",
-            "optional": true,
-            "field": "Auth/UserPassword",
-            "description": "<p>Users password        (required with Auth/UserId)</p> "
-          },
-          {
-            "group": "Request",
-            "type": "String",
-            "optional": true,
+            "optional": false,
             "field": "Auth/UserToken",
             "description": "<p>Users auth token (see AssociateUserToPMS call to generate a Token)</p> "
           },
@@ -2570,7 +2399,7 @@ define({ "api": [
       },
       {
         "title": "XML LoopBookingCreate Request",
-        "content": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<LoopBookingCreate>\n<Auth>\n    <UserId>Customer User ID</UserId>\n    <UserPassword>Customer Password</UserPassword>\n    <PropertyId>###</PropertyId>\n</Auth>\n<Booking>\n    <StartDate>YYYY-MM-DD</StartDate>\n    <EndDate>YYYY-MM-DD</EndRate>\n</Booking>\n</LoopBookingCreate>",
+        "content": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<LoopBookingCreate>\n<Auth>\n    <UserToken>User token</UserToken>\n    <PropertyId>###</PropertyId>\n</Auth>\n<Booking>\n    <StartDate>YYYY-MM-DD</StartDate>\n    <EndDate>YYYY-MM-DD</EndRate>\n</Booking>\n</LoopBookingCreate>",
         "type": "json"
       },
       {
@@ -2598,28 +2427,14 @@ define({ "api": [
     "title": "LoopBookingCreate",
     "name": "LoopBookingCreate",
     "version": "201501.0.0",
-    "description": "<p>Create a new booking in the Loopback Channel.  Parameters are optional and if not specified then booking will be populated with DWIW (Do What I Want) style data. See the &quot;BookingList&quot; api call for a complete discussion of Booking related fields.</p> ",
+    "description": "<p>Create a new booking in the Loopback Channel. Parameters are optional and if not specified then booking will be populated with DWIW (Do What I Want) style data. See the &quot;BookingList&quot; api call for a complete discussion of Booking related fields.</p> ",
     "parameter": {
       "fields": {
         "Request": [
           {
             "group": "Request",
             "type": "String",
-            "optional": true,
-            "field": "Auth/UserId",
-            "description": "<p>Users unique ID     (required with Auth/UserPassword)</p> "
-          },
-          {
-            "group": "Request",
-            "type": "String",
-            "optional": true,
-            "field": "Auth/UserPassword",
-            "description": "<p>Users password        (required with Auth/UserId)</p> "
-          },
-          {
-            "group": "Request",
-            "type": "String",
-            "optional": true,
+            "optional": false,
             "field": "Auth/UserToken",
             "description": "<p>Users auth token (see AssociateUserToPMS call to generate a Token)</p> "
           },
@@ -2662,7 +2477,7 @@ define({ "api": [
       },
       {
         "title": "XML LoopBookingCreate Request",
-        "content": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<LoopBookingCreate>\n<Auth>\n\t<UserId>Customer User ID</UserId>\n\t<UserPassword>Customer Password</UserPassword>\n\t<PropertyId>###</PropertyId>\n</Auth>\n<Booking>\n\t<StartDate>YYYY-MM-DD</StartDate>\n\t<EndDate>YYYY-MM-DD</EndRate>\n</Booking>\n</LoopBookingCreate>",
+        "content": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<LoopBookingCreate>\n<Auth>\n\t<UserToken>User token</UserToken>\n\t<PropertyId>###</PropertyId>\n</Auth>\n<Booking>\n\t<StartDate>YYYY-MM-DD</StartDate>\n\t<EndDate>YYYY-MM-DD</EndRate>\n</Booking>\n</LoopBookingCreate>",
         "type": "json"
       },
       {
@@ -2706,21 +2521,7 @@ define({ "api": [
           {
             "group": "Request",
             "type": "String",
-            "optional": true,
-            "field": "Auth/UserId",
-            "description": "<p>Users unique ID     (required with Auth/UserPassword)</p> "
-          },
-          {
-            "group": "Request",
-            "type": "String",
-            "optional": true,
-            "field": "Auth/UserPassword",
-            "description": "<p>Users password        (required with Auth/UserId)</p> "
-          },
-          {
-            "group": "Request",
-            "type": "String",
-            "optional": true,
+            "optional": false,
             "field": "Auth/UserToken",
             "description": "<p>Users auth token (see AssociateUserToPMS call to generate a Token)</p> "
           },
@@ -2751,12 +2552,12 @@ define({ "api": [
     "examples": [
       {
         "title": "XML PropertyChannelList Request",
-        "content": "\t<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n\t<PropertyChannelList>\n\t  <Auth>\n       <UserId>Customer User ID </UserId>\n\t    <UserPassword>Customer Password </UserPassword>\n\t    <PropertyId>Property ID on myallocator.com </PropertyId>\n\t    <VendorId>Your Vendor ID </VendorId>\n\t    <VendorPassword>Your Vendor Password </VendorPassword>\n\t  </Auth>\n\t</PropertyChannelList>",
+        "content": "\t<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n\t<PropertyChannelList>\n\t  <Auth>\n        <UserToken>User token</UserToken>\n\t    <PropertyId>Property ID on myallocator.com </PropertyId>\n\t    <VendorId>Your Vendor ID </VendorId>\n\t    <VendorPassword>Your Vendor Password </VendorPassword>\n\t  </Auth>\n\t</PropertyChannelList>",
         "type": "json"
       },
       {
         "title": "curl w/ JSON",
-        "content": "curl http://api.myallocator.com/pms/v201609/json/PropertyChannelList -d@- <<EOJSON\njson={\n  \"Auth/UserId\":\"login on myallocator.com\",\n  \"Auth/UserPassword\":\"password for myallocator.com\",\n  \"Auth/UserToken\":\"User's auth token\",\n  \"Auth/PropertyId\":\"Property ID on myallocator.com\",\n  \"Auth/VendorId\":\"your vendor id\",\n  \"Auth/VendorPassword\":\"your vendor password\"\n}\nEOJSON",
+        "content": "curl http://api.myallocator.com/pms/v201609/json/PropertyChannelList -d@- <<EOJSON\njson={\n  \"Auth/UserToken\":\"User's auth token\",\n  \"Auth/PropertyId\":\"Property ID on myallocator.com\",\n  \"Auth/VendorId\":\"your vendor id\",\n  \"Auth/VendorPassword\":\"your vendor password\"\n}\nEOJSON",
         "type": "json"
       }
     ],
@@ -2785,21 +2586,7 @@ define({ "api": [
           {
             "group": "Request",
             "type": "String",
-            "optional": true,
-            "field": "Auth/UserId",
-            "description": "<p>Users unique ID     (required with Auth/UserPassword)</p> "
-          },
-          {
-            "group": "Request",
-            "type": "String",
-            "optional": true,
-            "field": "Auth/UserPassword",
-            "description": "<p>Users password        (required with Auth/UserId)</p> "
-          },
-          {
-            "group": "Request",
-            "type": "String",
-            "optional": true,
+            "optional": false,
             "field": "Auth/UserToken",
             "description": "<p>Users auth token (see AssociateUserToPMS call to generate a Token)</p> "
           },
@@ -2978,7 +2765,7 @@ define({ "api": [
       },
       {
         "title": "curl w/ JSON",
-        "content": "curl http://api.myallocator.com/pms/v201408/json/PropertyCreate -d@- <<EOJSON\njson={\n  \"Auth/UserId\":\"login on myallocator.com\",\n  \"Auth/UserPassword\":\"password for myallocator.com\",\n  \"Auth/UserToken\":\"User's auth token\",\n  \"Auth/VendorId\":\"your vendor id\",\n  \"Auth/VendorPassword\":\"your vendor password\",\n  \"Auth/PropertyId\":\"Your PropertyId\",\n  \"PropertyName\":\"Name of property\",\n  \"Currency\":\"###\",\n  \"Street\":\"Penny Lane 4\",\n  \"City\":\"London\",\n  \"PostCode\":\"N1 9SD\",\n  \"State\":\"Greater London\",\n  \"Country\":\"UK\",\n  \"Breakfast\":\"IN\",\n  \"BookingAdjust\":\"0|1\",\n  \"BookingAdjustCancellation\":\"0|1\",\n  \"BookingAdjustModification\":\"0|1\",\n  \"BookingDownload\":\"0|1\",\n  \"EmailDefault\":\"contact@property.com\",\n  \"EmailChannelBooking\":\"booking@property.com\",\n  \"EmailBookNow\":\"booknow@property.com\",\n  \"PaymentProviders\":[\n      { \"provider_id\":\"xxx\", provider_type:\"stripe|tokenx|braintree\", key1:\"value1\", key2:\"value2\" }\n  ]\n\n}\nEOJSON",
+        "content": "curl http://api.myallocator.com/pms/v201408/json/PropertyCreate -d@- <<EOJSON\njson={\n  \"Auth/UserToken\":\"User's auth token\",\n  \"Auth/VendorId\":\"your vendor id\",\n  \"Auth/VendorPassword\":\"your vendor password\",\n  \"Auth/PropertyId\":\"Your PropertyId\",\n  \"PropertyName\":\"Name of property\",\n  \"Currency\":\"###\",\n  \"Street\":\"Penny Lane 4\",\n  \"City\":\"London\",\n  \"PostCode\":\"N1 9SD\",\n  \"State\":\"Greater London\",\n  \"Country\":\"UK\",\n  \"Breakfast\":\"IN\",\n  \"BookingAdjust\":\"0|1\",\n  \"BookingAdjustCancellation\":\"0|1\",\n  \"BookingAdjustModification\":\"0|1\",\n  \"BookingDownload\":\"0|1\",\n  \"EmailDefault\":\"contact@property.com\",\n  \"EmailChannelBooking\":\"booking@property.com\",\n  \"EmailBookNow\":\"booknow@property.com\",\n  \"PaymentProviders\":[\n      { \"provider_id\":\"xxx\", provider_type:\"stripe|tokenx|braintree\", key1:\"value1\", key2:\"value2\" }\n  ]\n\n}\nEOJSON",
         "type": "json"
       }
     ],
@@ -3008,21 +2795,7 @@ define({ "api": [
           {
             "group": "Request",
             "type": "String",
-            "optional": true,
-            "field": "Auth/UserId",
-            "description": "<p>Users unique ID     (required with Auth/UserPassword)</p> "
-          },
-          {
-            "group": "Request",
-            "type": "String",
-            "optional": true,
-            "field": "Auth/UserPassword",
-            "description": "<p>Users password      (required with Auth/UserId)</p> "
-          },
-          {
-            "group": "Request",
-            "type": "String",
-            "optional": true,
+            "optional": false,
             "field": "Auth/UserToken",
             "description": "<p>Users auth token (see AssociateUserToPMS call to generate a Token)</p> "
           },
@@ -3067,17 +2840,17 @@ define({ "api": [
     "examples": [
       {
         "title": "XML Request:",
-        "content": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<PropertyImageCreate>\n <Auth>\n   <UserId>Customer User ID</UserId>\n   <UserPassword>Customer Password</UserPassword>\n   <PropertyId>Property ID on myallocator.com</PropertyId>\n   <VendorId>Your Vendor ID</VendorId>\n   <VendorPassword>Your Vendor Password</VendorPassword>\n </Auth>\n <CreatePropertyImage>\n   <PropertyImages>\n       <PropertyImage>\n         <Filename>double-room.jpg</Filename>\n         <Data>oAAAANSUhEUgAAG2QAABPqCAYAAA[...]</Data>\n       </PropertyImage>\n   </PropertyImages>\n </CreatePropertyImage>\n</PropertyImageCreate>",
+        "content": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<PropertyImageCreate>\n <Auth>\n   <UserToken>User token</UserToken>\n   <PropertyId>Property ID on myallocator.com</PropertyId>\n   <VendorId>Your Vendor ID</VendorId>\n   <VendorPassword>Your Vendor Password</VendorPassword>\n </Auth>\n <CreatePropertyImage>\n   <PropertyImages>\n       <PropertyImage>\n         <Filename>double-room.jpg</Filename>\n         <Data>oAAAANSUhEUgAAG2QAABPqCAYAAA[...]</Data>\n       </PropertyImage>\n   </PropertyImages>\n </CreatePropertyImage>\n</PropertyImageCreate>",
         "type": "json"
       },
       {
         "title": "JSON Request:",
-        "content": "{\n    \"Auth/VendorId\":\"Your Vendor ID\",\n    \"Auth/VendorPassword\":\"Your Vendor Password\",\n    \"Auth/UserId\":\"Login on myallocator.com\",\n    \"Auth/UserPassword\":\"Password for myallocator.com\",\n    \"Auth/PropertyId\":\"Property ID on myallocator.com\",\n    \"PropertyImages\": [\n      {\n        \"Filename\": \"double-room.jpg\",\n        \"Data\": \"oAAAANSUhEUgAAG2QAABPqCAYAAA[...]\"\n      }\n    ]\n}",
+        "content": "{\n    \"Auth/VendorId\":\"Your Vendor ID\",\n    \"Auth/VendorPassword\":\"Your Vendor Password\",\n    \"Auth/UserToken\":\"User token\",\n    \"Auth/PropertyId\":\"Property ID on myallocator.com\",\n    \"PropertyImages\": [\n      {\n        \"Filename\": \"double-room.jpg\",\n        \"Data\": \"oAAAANSUhEUgAAG2QAABPqCAYAAA[...]\"\n      }\n    ]\n}",
         "type": "json"
       },
       {
         "title": "curl w/ JSON",
-        "content": "curl http://api.myallocator.com/pms/v201408/json/PropertyImageCreate -d@- <<EOJSON\njson={\n    \"Auth/VendorId\":\"Your Vendor ID\",\n    \"Auth/VendorPassword\":\"Your Vendor Password\",\n    \"Auth/UserId\":\"Login on myallocator.com\",\n    \"Auth/UserPassword\":\"Password for myallocator.com\",\n    \"Auth/PropertyId\":\"Property ID on myallocator.com\",\n    \"PropertyImages\": [\n      {\n        \"Filename\": \"double-room.jpg\",\n        \"Data\": \"oAAAANSUhEUgAAG2QAABPqCAYAAA[...]\"\n      }\n    ]\n}\nEOJSON",
+        "content": "curl http://api.myallocator.com/pms/v201408/json/PropertyImageCreate -d@- <<EOJSON\njson={\n    \"Auth/VendorId\":\"Your Vendor ID\",\n    \"Auth/VendorPassword\":\"Your Vendor Password\",\n    \"Auth/UserToken\":\"User token\",\n    \"Auth/PropertyId\":\"Property ID on myallocator.com\",\n    \"PropertyImages\": [\n      {\n        \"Filename\": \"double-room.jpg\",\n        \"Data\": \"oAAAANSUhEUgAAG2QAABPqCAYAAA[...]\"\n      }\n    ]\n}\nEOJSON",
         "type": "json"
       }
     ],
@@ -3130,21 +2903,7 @@ define({ "api": [
           {
             "group": "Request",
             "type": "String",
-            "optional": true,
-            "field": "Auth/UserId",
-            "description": "<p>Users unique ID   (required with Auth/UserPassword)</p> "
-          },
-          {
-            "group": "Request",
-            "type": "String",
-            "optional": true,
-            "field": "Auth/UserPassword",
-            "description": "<p>Users password    (required with Auth/UserId)</p> "
-          },
-          {
-            "group": "Request",
-            "type": "String",
-            "optional": true,
+            "optional": false,
             "field": "Auth/UserToken",
             "description": "<p>Users auth token (see AssociateUserToPMS call to generate a Token)</p> "
           },
@@ -3175,17 +2934,17 @@ define({ "api": [
     "examples": [
       {
         "title": "XML Request",
-        "content": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<PropertyImageList>\n <Auth>\n   <UserId>Customer User ID</UserId>\n   <UserPassword>Customer Password</UserPassword>\n   <PropertyId>Property ID on myallocator.com</PropertyId>\n   <VendorId>Your Vendor ID</VendorId>\n   <VendorPassword>Your Vendor Password</VendorPassword>\n </Auth>\n</PropertyImageList>",
+        "content": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<PropertyImageList>\n <Auth>\n   <UserToken>User token</UserToken>\n   <PropertyId>Property ID on myallocator.com</PropertyId>\n   <VendorId>Your Vendor ID</VendorId>\n   <VendorPassword>Your Vendor Password</VendorPassword>\n </Auth>\n</PropertyImageList>",
         "type": "json"
       },
       {
         "title": "JSON Request",
-        "content": "{\n    \"Auth/VendorId\":\"Your Vendor ID\",\n    \"Auth/VendorPassword\":\"Your Vendor Password\",\n    \"Auth/UserId\":\"Login on myallocator.com\",\n    \"Auth/UserPassword\":\"Password for myallocator.com\",\n    \"Auth/PropertyId\":\"Property ID on myallocator.com\"\n}",
+        "content": "{\n    \"Auth/VendorId\":\"Your Vendor ID\",\n    \"Auth/VendorPassword\":\"Your Vendor Password\",\n    \"Auth/UserToken\":\"User token\",\n    \"Auth/PropertyId\":\"Property ID on myallocator.com\"\n}",
         "type": "json"
       },
       {
         "title": "curl w/ JSON",
-        "content": "curl http://api.myallocator.com/pms/v201408/json/PropertyImageList -d@- <<EOJSON\njson=\n{\n    \"Auth/VendorId\":\"Your Vendor ID\",\n    \"Auth/VendorPassword\":\"Your Vendor Password\",\n    \"Auth/UserId\":\"Login on myallocator.com\",\n    \"Auth/UserPassword\":\"Password for myallocator.com\",\n    \"Auth/PropertyId\":\"Property ID on myallocator.com\"\n}\nEOJSON",
+        "content": "curl http://api.myallocator.com/pms/v201408/json/PropertyImageList -d@- <<EOJSON\njson=\n{\n    \"Auth/VendorId\":\"Your Vendor ID\",\n    \"Auth/VendorPassword\":\"Your Vendor Password\",\n    \"Auth/UserToken\":\"User token\",\n    \"Auth/PropertyId\":\"Property ID on myallocator.com\"\n}\nEOJSON",
         "type": "json"
       }
     ],
@@ -3238,21 +2997,7 @@ define({ "api": [
           {
             "group": "Request",
             "type": "String",
-            "optional": true,
-            "field": "Auth/UserId",
-            "description": "<p>Users unique ID   (required with Auth/UserPassword)</p> "
-          },
-          {
-            "group": "Request",
-            "type": "String",
-            "optional": true,
-            "field": "Auth/UserPassword",
-            "description": "<p>Users password    (required with Auth/UserId)</p> "
-          },
-          {
-            "group": "Request",
-            "type": "String",
-            "optional": true,
+            "optional": false,
             "field": "Auth/UserToken",
             "description": "<p>Users auth token (see AssociateUserToPMS call to generate a Token)</p> "
           },
@@ -3290,22 +3035,22 @@ define({ "api": [
     "examples": [
       {
         "title": "JSON Request (single property image)",
-        "content": "{\n    \"Auth/VendorId\":\"Your Vendor ID\",\n    \"Auth/VendorPassword\":\"Your Vendor Password\",\n    \"Auth/UserId\":\"Login on myallocator.com\",\n    \"Auth/UserPassword\":\"Password for myallocator.com\",\n    \"Auth/PropertyId\":\"Property ID on myallocator.com\",\n    'PropertyImage':{ 'PropertyImageId':### }\n}",
+        "content": "{\n    \"Auth/VendorId\":\"Your Vendor ID\",\n    \"Auth/VendorPassword\":\"Your Vendor Password\",\n    \"Auth/UserToken\":\"User token\",\n    \"Auth/PropertyId\":\"Property ID on myallocator.com\",\n    'PropertyImage':{ 'PropertyImageId':### }\n}",
         "type": "json"
       },
       {
         "title": "JSON Request (multiple property images)",
-        "content": "{\n    \"Auth/VendorId\":\"Your Vendor ID\",\n    \"Auth/VendorPassword\":\"Your Vendor Password\",\n    \"Auth/UserId\":\"Login on myallocator.com\",\n    \"Auth/UserPassword\":\"Password for myallocator.com\",\n    \"Auth/PropertyId\":\"Property ID on myallocator.com\",\n    'PropertyImages': [\n        { 'PropertyImageId':## },\n        { 'PropertyImageId':## }\n    ]\n}",
+        "content": "{\n    \"Auth/VendorId\":\"Your Vendor ID\",\n    \"Auth/VendorPassword\":\"Your Vendor Password\",\n    \"Auth/UserToken\":\"User token\",\n    \"Auth/PropertyId\":\"Property ID on myallocator.com\",\n    'PropertyImages': [\n        { 'PropertyImageId':## },\n        { 'PropertyImageId':## }\n    ]\n}",
         "type": "json"
       },
       {
         "title": "curl w/ JSON",
-        "content": "curl http://api.myallocator.com/pms/v201408/json/PropertyImageRemove -d@- <<EOJSON\njson={\n    \"Auth/VendorId\":\"Your Vendor ID\",\n    \"Auth/VendorPassword\":\"Your Vendor Password\",\n    \"Auth/UserId\":\"Login on myallocator.com\",\n    \"Auth/UserPassword\":\"Password for myallocator.com\",\n    \"Auth/PropertyId\":\"Property ID on myallocator.com\",\n    'PropertyImage':{ 'PropertyImageId':### }\n}\nEOJSON",
+        "content": "curl http://api.myallocator.com/pms/v201408/json/PropertyImageRemove -d@- <<EOJSON\njson={\n    \"Auth/VendorId\":\"Your Vendor ID\",\n    \"Auth/VendorPassword\":\"Your Vendor Password\",\n    \"Auth/UserToken\":\"User token\",\n    \"Auth/PropertyId\":\"Property ID on myallocator.com\",\n    'PropertyImage':{ 'PropertyImageId':### }\n}\nEOJSO\nN",
         "type": "json"
       },
       {
         "title": "XML Request",
-        "content": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<PropertyImageRemove>\n <Auth>\n   <UserId>Customer User ID</UserId>\n   <UserPassword>Customer Password</UserPassword>\n   <PropertyId>Property ID on myallocator.com</PropertyId>\n   <VendorId>Your Vendor ID</VendorId>\n   <VendorPassword>Your Vendor Password</VendorPassword>\n </Auth>\n <RemovePropertyImages>\n   <PropertyImageIds>\n     <PropertyImageId>35</PropertyImageId>\n     <PropertyImageId>36</PropertyImageId>\n   </PropertyImageIds>\n </RemovePropertyImages>\n</PropertyImageRemove>",
+        "content": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<PropertyImageRemove>\n <Auth>\n   <UserToken>User token</UserToken>\n   <PropertyId>Property ID on myallocator.com</PropertyId>\n   <VendorId>Your Vendor ID</VendorId>\n   <VendorPassword>Your Vendor Password</VendorPassword>\n </Auth>\n <RemovePropertyImages>\n   <PropertyImageIds>\n     <PropertyImageId>35</PropertyImageId>\n     <PropertyImageId>36</PropertyImageId>\n   </PropertyImageIds>\n </RemovePropertyImages>\n</PropertyImageRemove>",
         "type": "json"
       }
     ],
@@ -3340,21 +3085,7 @@ define({ "api": [
           {
             "group": "Request",
             "type": "String",
-            "optional": true,
-            "field": "Auth/UserId",
-            "description": "<p>Users unique ID     (required with Auth/UserPassword)</p> "
-          },
-          {
-            "group": "Request",
-            "type": "String",
-            "optional": true,
-            "field": "Auth/UserPassword",
-            "description": "<p>Users password        (required with Auth/UserId)</p> "
-          },
-          {
-            "group": "Request",
-            "type": "String",
-            "optional": true,
+            "optional": false,
             "field": "Auth/UserToken",
             "description": "<p>Users auth token (see AssociateUserToPMS call to generate a Token)</p> "
           },
@@ -3399,17 +3130,17 @@ define({ "api": [
     "examples": [
       {
         "title": "XML PropertyList Request",
-        "content": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<PropertyList>\n <Auth>\n   <UserId>Customer User ID</UserId>\n   <UserPassword>Customer Password</UserPassword>\n   <VendorId>Your Vendor ID</VendorId>\n   <VendorPassword>Your Vendor Password</VendorPassword>\n </Auth>\n <Options>\n   <ExpiresSoon>0</ExpiresSoon>\n </Options>\n</PropertyList>",
+        "content": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<PropertyList>\n <Auth>\n   <UserToken>User token</UserToken>\n   <VendorId>Your Vendor ID</VendorId>\n   <VendorPassword>Your Vendor Password</VendorPassword>\n </Auth>\n <Options>\n   <ExpiresSoon>0</ExpiresSoon>\n </Options>\n</PropertyList>",
         "type": "json"
       },
       {
         "title": "JSON PropertyList Request",
-        "content": "{\n   \"Auth/VendorId\":\"Your Vendor ID\",\n   \"Auth/VendorPassword\":\"Your Vendor Password\",\n   \"Auth/UserId\":\"Login on myallocator.com\",\n   \"Auth/UserPassword\":\"Password for myallocator.com\",\n   \"Options\": {\n       \"ExpiresSoon\": 0\n   }\n}",
+        "content": "{\n   \"Auth/VendorId\":\"Your Vendor ID\",\n   \"Auth/VendorPassword\":\"Your Vendor Password\",\n   \"Auth/UserToken\":\"User token\",\n   \"Options\": {\n       \"ExpiresSoon\": 0\n   }\n}",
         "type": "json"
       },
       {
         "title": "curl w/ JSON",
-        "content": "curl http://api.myallocator.com/pms/v201408/json/PropertyList -d \n\t'json={\"Auth/VendorId\":\"\", \"Auth/VendorPassword\":\"\", \"Auth/UserId\":\"\", \"Auth/UserPassword\":\"\"}'",
+        "content": "curl http://api.myallocator.com/pms/v201408/json/PropertyList -d \n\t'json={\"Auth/VendorId\":\"\", \"Auth/VendorPassword\":\"\", \"Auth/UserToken\":\"\"}'",
         "type": "json"
       }
     ],
@@ -3463,7 +3194,7 @@ define({ "api": [
             "type": "String",
             "optional": false,
             "field": "Weekend",
-            "description": "<p>Day &amp; Shows which days are marked as weekend days by the customer on Myallocator. Monday = 1, Sunday = 7. The name of the weekday is also given in the \\textit{name} property. See ARIUpdate for information on when this is used.</p> "
+            "description": "<p>Obsolete, not used. Please ignore.</p> "
           },
           {
             "group": "Response",
@@ -3540,21 +3271,7 @@ define({ "api": [
           {
             "group": "Request",
             "type": "String",
-            "optional": true,
-            "field": "Auth/UserId",
-            "description": "<p>Users unique ID     (required with Auth/UserPassword)</p> "
-          },
-          {
-            "group": "Request",
-            "type": "String",
-            "optional": true,
-            "field": "Auth/UserPassword",
-            "description": "<p>Users password        (required with Auth/UserId)</p> "
-          },
-          {
-            "group": "Request",
-            "type": "String",
-            "optional": true,
+            "optional": false,
             "field": "Auth/UserToken",
             "description": "<p>Users auth token (see AssociateUserToPMS call to generate a Token)</p> "
           },
@@ -3688,7 +3405,7 @@ define({ "api": [
       },
       {
         "title": "curl w/ JSON",
-        "content": "curl http://api.myallocator.com/pms/v201408/json/PropertyModify -d@- <<EOJSON\njson={\n  \"Auth/UserId\":\"login on myallocator.com\",\n  \"Auth/UserPassword\":\"password for myallocator.com\",\n  \"Auth/UserToken\":\"User's auth token\",\n  \"Auth/VendorId\":\"your vendor id\",\n  \"Auth/VendorPassword\":\"your vendor password\",\n  \"Auth/PropertyId\":\"?\",\n  \"PropertyName\":\"Name of property\",\n  \"Currency\":\"###\",\n  \"Country\":\"##\",\n  \"Breakfast\":\"|IN|EX\",\n  \"BookingAdjust\":\"0|1\",\n  \"BookingAdjustCancellation\":\"0|1\",\n  \"BookingAdjustModification\":\"0|1\",\n  \"BookingDownload\":\"0|1\",\n  \"EmailDefault\":\"contact@property.com\",\n  \"EmailChannelBooking\":\"booking@property.com\",\n  \"EmailBookNow\":\"booknow@property.com\"\n  \"PaymentProviders\":[\n      { \"id\":\"xxx\", type:\"stripe|tokenx|braintree\", key1:\"value1\", key2:\"value2\" }\n  ]\n}\nEOJSON",
+        "content": "curl http://api.myallocator.com/pms/v201408/json/PropertyModify -d@- <<EOJSON\njson={\n  \"Auth/UserToken\":\"User's auth token\",\n  \"Auth/VendorId\":\"your vendor id\",\n  \"Auth/VendorPassword\":\"your vendor password\",\n  \"Auth/PropertyId\":\"?\",\n  \"PropertyName\":\"Name of property\",\n  \"Currency\":\"###\",\n  \"Country\":\"##\",\n  \"Breakfast\":\"|IN|EX\",\n  \"BookingAdjust\":\"0|1\",\n  \"BookingAdjustCancellation\":\"0|1\",\n  \"BookingAdjustModification\":\"0|1\",\n  \"BookingDownload\":\"0|1\",\n  \"EmailDefault\":\"contact@property.com\",\n  \"EmailChannelBooking\":\"booking@property.com\",\n  \"EmailBookNow\":\"booknow@property.com\"\n  \"PaymentProviders\":[\n      { \"id\":\"xxx\", type:\"stripe|tokenx|braintree\", key1:\"value1\", key2:\"value2\" }\n  ]\n}\nEOJSON",
         "type": "json"
       }
     ],
@@ -3718,21 +3435,7 @@ define({ "api": [
           {
             "group": "Request",
             "type": "String",
-            "optional": true,
-            "field": "Auth/UserId",
-            "description": "<p>Users unique ID   (required with Auth/UserPassword)</p> "
-          },
-          {
-            "group": "Request",
-            "type": "String",
-            "optional": true,
-            "field": "Auth/UserPassword",
-            "description": "<p>Users password    (required with Auth/UserId)</p> "
-          },
-          {
-            "group": "Request",
-            "type": "String",
-            "optional": true,
+            "optional": false,
             "field": "Auth/UserToken",
             "description": "<p>Users auth token (see AssociateUserToPMS call to generate a Token)</p> "
           },
@@ -3826,12 +3529,12 @@ define({ "api": [
     "examples": [
       {
         "title": "XML Request",
-        "content": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<RatePlanCreate>\n<Auth>\n<UserId>Customer User ID</UserId>\n<UserPassword>Customer Password</UserPassword>\n<PropertyId>Property ID on myallocator.com</PropertyId>\n<VendorId>Your Vendor ID</VendorId>\n<VendorPassword>Your Vendor Password</VendorPassword>\n</Auth>\n<RoomTypeId>123</RoomTypeId>\n<Label>Some Text</Label>\n<IsIBEOnly>true|false</IsIBEOnly>\n<OccupancyMin>0</OccupancyMin>\n<OccupancyMax>0</OccupancyMax>\n<MinLOS>0</MinLOS>\n<MaxLOS>0</MaxLOS>\n<RateModel>daily|derived-percentage|derived-fixed</RateModel>\n<RateModifier>10.00</RateModifier>\n</RatePlanCreate>",
+        "content": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<RatePlanCreate>\n<Auth>\n<UserToken>User token</UserToken>\n<PropertyId>Property ID on myallocator.com</PropertyId>\n<VendorId>Your Vendor ID</VendorId>\n<VendorPassword>Your Vendor Password</VendorPassword>\n</Auth>\n<RoomTypeId>123</RoomTypeId>\n<Label>Some Text</Label>\n<IsIBEOnly>true|false</IsIBEOnly>\n<OccupancyMin>0</OccupancyMin>\n<OccupancyMax>0</OccupancyMax>\n<MinLOS>0</MinLOS>\n<MaxLOS>0</MaxLOS>\n<RateModel>daily|derived-percentage|derived-fixed</RateModel>\n<RateModifier>10.00</RateModifier>\n</RatePlanCreate>",
         "type": "json"
       },
       {
         "title": "JSON Request",
-        "content": "{\n    \"Auth/VendorId\":\"Your Vendor ID\",\n    \"Auth/VendorPassword\":\"Your Vendor Password\",\n    \"Auth/UserId\":\"Login on myallocator.com\",\n    \"Auth/UserPassword\":\"Password for myallocator.com\",\n    \"Auth/PropertyId\":\"Property ID on myallocator.com\",\n    \"RoomTypeId\":1234, \n    \"Label\":\"Name of RatePlan\",\n    \"IsIBEOnly\":false,\n    \"OccupancyMin\":0,\n    \"OccupancyMax\":0,\n    \"MinLOS\":0,\n    \"MaxLOS\":0,\n    \"RateModel\":\"daily\",\n    \"RateModifier\":0\n}",
+        "content": "{\n    \"Auth/VendorId\":\"Your Vendor ID\",\n    \"Auth/VendorPassword\":\"Your Vendor Password\",\n    \"Auth/UserToken\":\"User token\",\n    \"Auth/PropertyId\":\"Property ID on myallocator.com\",\n    \"RoomTypeId\":1234, \n    \"Label\":\"Name of RatePlan\",\n    \"IsIBEOnly\":false,\n    \"OccupancyMin\":0,\n    \"OccupancyMax\":0,\n    \"MinLOS\":0,\n    \"MaxLOS\":0,\n    \"RateModel\":\"daily\",\n    \"RateModifier\":0\n}",
         "type": "json"
       },
       {
@@ -3889,21 +3592,7 @@ define({ "api": [
           {
             "group": "Request",
             "type": "String",
-            "optional": true,
-            "field": "Auth/UserId",
-            "description": "<p>Users unique ID   (required with Auth/UserPassword)</p> "
-          },
-          {
-            "group": "Request",
-            "type": "String",
-            "optional": true,
-            "field": "Auth/UserPassword",
-            "description": "<p>Users password    (required with Auth/UserId)</p> "
-          },
-          {
-            "group": "Request",
-            "type": "String",
-            "optional": true,
+            "optional": false,
             "field": "Auth/UserToken",
             "description": "<p>Users auth token (see AssociateUserToPMS call to generate a Token)</p> "
           },
@@ -3948,12 +3637,12 @@ define({ "api": [
     "examples": [
       {
         "title": "XML Request",
-        "content": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<RatePlanList>\n<Auth>\n<UserId>Customer User ID</UserId>\n<UserPassword>Customer Password</UserPassword>\n<PropertyId>Property ID on myallocator.com</PropertyId>\n<VendorId>Your Vendor ID</VendorId>\n<VendorPassword>Your Vendor Password</VendorPassword>\n</Auth>\n</RatePlanList>",
+        "content": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<RatePlanList>\n<Auth>\n<UserToken>User token</UserToken>\n<PropertyId>Property ID on myallocator.com</PropertyId>\n<VendorId>Your Vendor ID</VendorId>\n<VendorPassword>Your Vendor Password</VendorPassword>\n</Auth>\n</RatePlanList>",
         "type": "json"
       },
       {
         "title": "JSON Request",
-        "content": "{\n    \"Auth/VendorId\":\"Your Vendor ID\",\n    \"Auth/VendorPassword\":\"Your Vendor Password\",\n    \"Auth/UserId\":\"Login on myallocator.com\",\n    \"Auth/UserPassword\":\"Password for myallocator.com\",\n    \"Auth/PropertyId\":\"Property ID on myallocator.com\"\n}",
+        "content": "{\n    \"Auth/VendorId\":\"Your Vendor ID\",\n    \"Auth/VendorPassword\":\"Your Vendor Password\",\n    \"Auth/UserToken\":\"User token\",\n    \"Auth/PropertyId\":\"Property ID on myallocator.com\"\n}",
         "type": "json"
       },
       {
@@ -4011,21 +3700,7 @@ define({ "api": [
           {
             "group": "Request",
             "type": "String",
-            "optional": true,
-            "field": "Auth/UserId",
-            "description": "<p>Users unique ID   (required with Auth/UserPassword)</p> "
-          },
-          {
-            "group": "Request",
-            "type": "String",
-            "optional": true,
-            "field": "Auth/UserPassword",
-            "description": "<p>Users password    (required with Auth/UserId)</p> "
-          },
-          {
-            "group": "Request",
-            "type": "String",
-            "optional": true,
+            "optional": false,
             "field": "Auth/UserToken",
             "description": "<p>Users auth token (see AssociateUserToPMS call to generate a Token)</p> "
           },
@@ -4063,17 +3738,17 @@ define({ "api": [
     "examples": [
       {
         "title": "XML Request",
-        "content": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<RatePlanRemove>\n <Auth>\n   <UserId>Customer User ID</UserId>\n   <UserPassword>Customer Password</UserPassword>\n   <PropertyId>Property ID on myallocator.com</PropertyId>\n   <VendorId>Your Vendor ID</VendorId>\n   <VendorPassword>Your Vendor Password</VendorPassword>\n </Auth>\n</RatePlanRemove>",
+        "content": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<RatePlanRemove>\n <Auth>\n   <UserToken>User token</UserToken>\n   <PropertyId>Property ID on myallocator.com</PropertyId>\n   <VendorId>Your Vendor ID</VendorId>\n   <VendorPassword>Your Vendor Password</VendorPassword>\n </Auth>\n</RatePlanRemove>",
         "type": "json"
       },
       {
         "title": "JSON Request",
-        "content": "{\n    \"Auth/VendorId\":\"Your Vendor ID\",\n    \"Auth/VendorPassword\":\"Your Vendor Password\",\n    \"Auth/UserId\":\"Login on myallocator.com\",\n    \"Auth/UserPassword\":\"Password for myallocator.com\",\n    \"Auth/PropertyId\":\"Property ID on myallocator.com\",\n    \"RatePlanId\":1234\n}",
+        "content": "{\n    \"Auth/VendorId\":\"Your Vendor ID\",\n    \"Auth/VendorPassword\":\"Your Vendor Password\",\n    \"Auth/UserToken\":\"User token\",\n    \"Auth/PropertyId\":\"Property ID on myallocator.com\",\n    \"RatePlanId\":1234\n}",
         "type": "json"
       },
       {
         "title": "curl w/ JSON",
-        "content": "curl http://api.myallocator.com/pms/v201408/json/RatePlanRemove -d@- <<EOJSON\njson={\n    \"Auth/VendorId\":\"Your Vendor ID\",\n    \"Auth/VendorPassword\":\"Your Vendor Password\",\n    \"Auth/UserId\":\"Login on myallocator.com\",\n    \"Auth/UserPassword\":\"Password for myallocator.com\",\n    \"Auth/PropertyId\":\"Property ID on myallocator.com\",\n    \"RatePlanId\":1234\n}\nEOJSON",
+        "content": "curl http://api.myallocator.com/pms/v201408/json/RatePlanRemove -d@- <<EOJSON\njson={\n    \"Auth/VendorId\":\"Your Vendor ID\",\n    \"Auth/VendorPassword\":\"Your Vendor Password\",\n    \"Auth/UserToken\":\"User token\",\n    \"Auth/PropertyId\":\"Property ID on myallocator.com\",\n    \"RatePlanId\":1234\n}\nEOJSON",
         "type": "json"
       }
     ],
@@ -4133,21 +3808,7 @@ define({ "api": [
           {
             "group": "Request",
             "type": "String",
-            "optional": true,
-            "field": "Auth/UserId",
-            "description": "<p>Users unique ID   (required with Auth/UserPassword)</p> "
-          },
-          {
-            "group": "Request",
-            "type": "String",
-            "optional": true,
-            "field": "Auth/UserPassword",
-            "description": "<p>Users password    (required with Auth/UserId)</p> "
-          },
-          {
-            "group": "Request",
-            "type": "String",
-            "optional": true,
+            "optional": false,
             "field": "Auth/UserToken",
             "description": "<p>Users auth token (see AssociateUserToPMS call to generate a Token)</p> "
           },
@@ -4178,7 +3839,7 @@ define({ "api": [
     "examples": [
       {
         "title": "XML Request",
-        "content": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<RatePlanUpdate>\n<Auth>\n   <UserId>Customer User ID</UserId>\n   <UserPassword>Customer Password</UserPassword>\n   <PropertyId>Property ID on myallocator.com</PropertyId>\n   <VendorId>Your Vendor ID</VendorId>\n   <VendorPassword>Your Vendor Password</VendorPassword>\n</Auth>\n<RatePlanId>1234</RatePlanId>\n<RoomTypeId>1234<RoomTypeId>\n<Label>\"Name of RatePlan\"<Label>\n<IsIBEOnly>false<IsIBEOnly>\n<OccupancyMin>0<OccupancyMin>\n<OccupancyMax>0<OccupancyMax>\n<MinLOS>0<MinLOS>\n<MaxLOS>0<MaxLOS>\n<RateModel>\"daily\"<RateModel>\n<RateModifier><RateModifier>\n</RatePlanUpdate>",
+        "content": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<RatePlanUpdate>\n<Auth>\n   <UserToken>User token</UserToken>\n   <PropertyId>Property ID on myallocator.com</PropertyId>\n   <VendorId>Your Vendor ID</VendorId>\n   <VendorPassword>Your Vendor Password</VendorPassword>\n</Auth>\n<RatePlanId>1234</RatePlanId>\n<RoomTypeId>1234<RoomTypeId>\n<Label>\"Name of RatePlan\"<Label>\n<IsIBEOnly>false<IsIBEOnly>\n<OccupancyMin>0<OccupancyMin>\n<OccupancyMax>0<OccupancyMax>\n<MinLOS>0<MinLOS>\n<MaxLOS>0<MaxLOS>\n<RateModel>\"daily\"<RateModel>\n<RateModifier><RateModifier>\n</RatePlanUpdate>",
         "type": "json"
       },
       {
@@ -4188,12 +3849,12 @@ define({ "api": [
       },
       {
         "title": "JSON Request",
-        "content": "{\n    \"Auth/VendorId\":\"Your Vendor ID\",\n    \"Auth/VendorPassword\":\"Your Vendor Password\",\n    \"Auth/UserId\":\"Login on myallocator.com\",\n    \"Auth/UserPassword\":\"Password for myallocator.com\",\n    \"Auth/PropertyId\":\"Property ID on myallocator.com\",\n}",
+        "content": "{\n    \"Auth/VendorId\":\"Your Vendor ID\",\n    \"Auth/VendorPassword\":\"Your Vendor Password\",\n    \"Auth/UserToken\":\"User token\",\n    \"Auth/PropertyId\":\"Property ID on myallocator.com\",\n}",
         "type": "json"
       },
       {
         "title": "curl w/ JSON",
-        "content": "curl http://api.myallocator.com/pms/v201408/json/RatePlanUpdate -d@- <<EOJSON\njson={\n    \"Auth/VendorId\":\"Your Vendor ID\",\n    \"Auth/VendorPassword\":\"Your Vendor Password\",\n    \"Auth/UserId\":\"Login on myallocator.com\",\n    \"Auth/UserPassword\":\"Password for myallocator.com\",\n    \"Auth/PropertyId\":\"Property ID on myallocator.com\",\n    \"RatePlanId\":1234,\n    \"RoomTypeId\":1234,\n    \"Label\":\"Name of RatePlan\",\n    \"IsIBEOnly\":false,\n    \"OccupancyMin\":0,\n    \"OccupancyMax\":0,\n    \"MinLOS\":0,\n    \"MaxLOS\":0,\n    \"RateModel\":\"daily\",\n    \"RateModifier\":0\n\n}\nEOJSON",
+        "content": "curl http://api.myallocator.com/pms/v201408/json/RatePlanUpdate -d@- <<EOJSON\njson={\n    \"Auth/VendorId\":\"Your Vendor ID\",\n    \"Auth/VendorPassword\":\"Your Vendor Password\",\n    \"Auth/UserToken\":\"User token\",\n    \"Auth/PropertyId\":\"Property ID on myallocator.com\",\n    \"RatePlanId\":1234,\n    \"RoomTypeId\":1234,\n    \"Label\":\"Name of RatePlan\",\n    \"IsIBEOnly\":false,\n    \"OccupancyMin\":0,\n    \"OccupancyMax\":0,\n    \"MinLOS\":0,\n    \"MaxLOS\":0,\n    \"RateModel\":\"daily\",\n    \"RateModifier\":0\n\n}\nEOJSON",
         "type": "json"
       }
     ],
@@ -4253,21 +3914,7 @@ define({ "api": [
           {
             "group": "Request",
             "type": "String",
-            "optional": true,
-            "field": "Auth/UserId",
-            "description": "<p>Users unique ID     (required with Auth/UserPassword)</p> "
-          },
-          {
-            "group": "Request",
-            "type": "String",
-            "optional": true,
-            "field": "Auth/UserPassword",
-            "description": "<p>Users password        (required with Auth/UserId)</p> "
-          },
-          {
-            "group": "Request",
-            "type": "String",
-            "optional": true,
+            "optional": false,
             "field": "Auth/UserToken",
             "description": "<p>Users auth token (see AssociateUserToPMS call to generate a Token)</p> "
           },
@@ -4322,7 +3969,7 @@ define({ "api": [
       },
       {
         "title": "XML RoomAvailabilityList Request",
-        "content": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<RoomAvailabilityList>\n<Auth>\n\t<UserId>Customer User ID</UserId>\n\t<UserPassword>Customer Password</UserPassword>\n\t<VendorId>Customer User ID</VendorId>\n\t<VendorPassword>Customer Password</VendorPassword>\n\t<PropertyId>###</PropertyId>\n</Auth>\n<StartDate>2015-01-01</StartDate>\n<EndDate>2017-01-01</EndDate>\n</RoomAvailabilityList>",
+        "content": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<RoomAvailabilityList>\n<Auth>\n\t<UserToken>User token</UserToken>\n\t<VendorId>Customer User ID</VendorId>\n\t<VendorPassword>Customer Password</VendorPassword>\n\t<PropertyId>###</PropertyId>\n</Auth>\n<StartDate>2015-01-01</StartDate>\n<EndDate>2017-01-01</EndDate>\n</RoomAvailabilityList>",
         "type": "json"
       }
     ],
@@ -4357,21 +4004,7 @@ define({ "api": [
           {
             "group": "Request",
             "type": "String",
-            "optional": true,
-            "field": "Auth/UserId",
-            "description": "<p>Users unique ID     (required with Auth/UserPassword)</p> "
-          },
-          {
-            "group": "Request",
-            "type": "String",
-            "optional": true,
-            "field": "Auth/UserPassword",
-            "description": "<p>Users password        (required with Auth/UserId)</p> "
-          },
-          {
-            "group": "Request",
-            "type": "String",
-            "optional": true,
+            "optional": false,
             "field": "Auth/UserToken",
             "description": "<p>Users auth token (see AssociateUserToPMS call to generate a Token)</p> "
           },
@@ -4458,17 +4091,17 @@ define({ "api": [
     "examples": [
       {
         "title": "XML Request:",
-        "content": "\t<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n\t<RoomCreate>\n\t <Auth>\n\t   <UserId>Customer User ID</UserId>\n\t   <UserPassword>Customer Password</UserPassword>\n\t   <PropertyId>Property ID on myallocator.com</PropertyId>\n\t   <VendorId>Your Vendor ID</VendorId>\n\t   <VendorPassword>Your Vendor Password</VendorPassword>\n\t </Auth>\n     <ValidateOnly>false</ValidateOnly>\n     <AuthorizeBilling>false</AuthorizeBilling>\n\n\t <CreateRooms>\n\t\t<RoomTypes>\n\t     <RoomType>\n\t       <Label>2-bed private with sea-view</Label>\n\t       <Units>4</Units>\n\t       <Occupancy>2</Occupancy>\n\t       <PrivateRoom>true</PrivateRoom>\n\t     </RoomType>\n\t     <RoomType>\n\t       <Label>6-bed female dorm</Label>\n\t       <Units>3</Units>\n\t       <Occupancy>6</Occupancy>\n\t       <Gender>FE</Gender>\n\t       <PrivateRoom>false</PrivateRoom>\n\t     </RoomType>\n\t   </RoomTypes>\n\t </CreateRooms>\n\t</RoomCreate>",
+        "content": "\t<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n\t<RoomCreate>\n\t <Auth>\n\t   <UserToken>User token</UserToken>\n\t   <PropertyId>Property ID on myallocator.com</PropertyId>\n\t   <VendorId>Your Vendor ID</VendorId>\n\t   <VendorPassword>Your Vendor Password</VendorPassword>\n\t </Auth>\n     <ValidateOnly>false</ValidateOnly>\n     <AuthorizeBilling>false</AuthorizeBilling>\n\n\t <CreateRooms>\n\t\t<RoomTypes>\n\t     <RoomType>\n\t       <Label>2-bed private with sea-view</Label>\n\t       <Units>4</Units>\n\t       <Occupancy>2</Occupancy>\n\t       <PrivateRoom>true</PrivateRoom>\n\t     </RoomType>\n\t     <RoomType>\n\t       <Label>6-bed female dorm</Label>\n\t       <Units>3</Units>\n\t       <Occupancy>6</Occupancy>\n\t       <Gender>FE</Gender>\n\t       <PrivateRoom>false</PrivateRoom>\n\t     </RoomType>\n\t   </RoomTypes>\n\t </CreateRooms>\n\t</RoomCreate>",
         "type": "json"
       },
       {
         "title": "JSON Request:",
-        "content": "{\n    \"Auth/VendorId\":\"Your Vendor ID\",\n    \"Auth/VendorPassword\":\"Your Vendor Password\",\n    \"Auth/UserId\":\"Login on myallocator.com\",\n    \"Auth/UserPassword\":\"Password for myallocator.com\",\n    \"Auth/PropertyId\":\"Property ID on myallocator.com\",\n    \"ValidateOnly\":false,\n    \"AuthorizeBilling\":true,\n    \"Rooms\": [\n        {\n            \"PMSRoomId\":\"IdOfRoomOnPMS\",\n            \"Label\":\"Double Room\",\n            \"Units\":4,\n            \"Occupancy\":2,\n            \"PrivateRoom\":\"true\",\n            \"Gender\":\"MI\"\n        },\n        {\n            \"PMSRoomId\":\"IdOfRoomOnPMS\",\n            \"Label\":\"Female dorm\",\n            \"Units\":3,\n            \"Occupancy\":6,\n            \"PrivateRoom\":\"false\",\n            \"Gender\":\"FE\"\n        }\n    ]\n}",
+        "content": "{\n    \"Auth/VendorId\":\"Your Vendor ID\",\n    \"Auth/VendorPassword\":\"Your Vendor Password\",\n    \"Auth/UserToken\":\"User token\",\n    \"Auth/PropertyId\":\"Property ID on myallocator.com\",\n    \"ValidateOnly\":false,\n    \"AuthorizeBilling\":true,\n    \"Rooms\": [\n        {\n            \"PMSRoomId\":\"IdOfRoomOnPMS\",\n            \"Label\":\"Double Room\",\n            \"Units\":4,\n            \"Occupancy\":2,\n            \"PrivateRoom\":\"true\",\n            \"Gender\":\"MI\"\n        },\n        {\n            \"PMSRoomId\":\"IdOfRoomOnPMS\",\n            \"Label\":\"Female dorm\",\n            \"Units\":3,\n            \"Occupancy\":6,\n            \"PrivateRoom\":\"false\",\n            \"Gender\":\"FE\"\n        }\n    ]\n}",
         "type": "json"
       },
       {
         "title": "curl w/ JSON",
-        "content": "curl http://api.myallocator.com/pms/v201408/json/RoomCreate -d@- <<EOJSON\njson={\n    \"Auth/VendorId\":\"Your Vendor ID\",\n    \"Auth/VendorPassword\":\"Your Vendor Password\",\n    \"Auth/UserId\":\"Login on myallocator.com\",\n    \"Auth/UserPassword\":\"Password for myallocator.com\",\n    \"Auth/PropertyId\":\"Property ID on myallocator.com\",\n    \"ValidateOnly\":false,\n    \"AuthorizeBilling\":true,\n    \"Rooms\": [\n        {\n            \"PMSRoomId\":\"IdOfRoomOnPMS\",\n            \"Label\":\"Double Room\",\n            \"Units\":4,\n            \"Occupancy\":2,\n            \"PrivateRoom\":\"true\",\n            \"Gender\":\"MI\"\n        },\n        {\n            \"PMSRoomId\":\"IdOfRoomOnPMS\",\n            \"Label\":\"Female dorm\",\n            \"Units\":3,\n            \"Occupancy\":6,\n            \"PrivateRoom\":\"false\",\n            \"Gender\":\"FE\"\n        }\n    ]\n}\nEOJSON",
+        "content": "curl http://api.myallocator.com/pms/v201408/json/RoomCreate -d@- <<EOJSON\njson={\n    \"Auth/VendorId\":\"Your Vendor ID\",\n    \"Auth/VendorPassword\":\"Your Vendor Password\",\n    \"Auth/UserToken\":\"User token\",\n    \"Auth/PropertyId\":\"Property ID on myallocator.com\",\n    \"ValidateOnly\":false,\n    \"AuthorizeBilling\":true,\n    \"Rooms\": [\n        {\n            \"PMSRoomId\":\"IdOfRoomOnPMS\",\n            \"Label\":\"Double Room\",\n            \"Units\":4,\n            \"Occupancy\":2,\n            \"PrivateRoom\":\"true\",\n            \"Gender\":\"MI\"\n        },\n        {\n            \"PMSRoomId\":\"IdOfRoomOnPMS\",\n            \"Label\":\"Female dorm\",\n            \"Units\":3,\n            \"Occupancy\":6,\n            \"PrivateRoom\":\"false\",\n            \"Gender\":\"FE\"\n        }\n    ]\n}\nEOJSON",
         "type": "json"
       }
     ],
@@ -4570,21 +4203,7 @@ define({ "api": [
           {
             "group": "Request",
             "type": "String",
-            "optional": true,
-            "field": "Auth/UserId",
-            "description": "<p>Users unique ID     (required with Auth/UserPassword)</p> "
-          },
-          {
-            "group": "Request",
-            "type": "String",
-            "optional": true,
-            "field": "Auth/UserPassword",
-            "description": "<p>Users password      (required with Auth/UserId)</p> "
-          },
-          {
-            "group": "Request",
-            "type": "String",
-            "optional": true,
+            "optional": false,
             "field": "Auth/UserToken",
             "description": "<p>Users auth token (see AssociateUserToPMS call to generate a Token)</p> "
           },
@@ -4636,17 +4255,17 @@ define({ "api": [
     "examples": [
       {
         "title": "XML Request",
-        "content": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<RoomImageCreate>\n <Auth>\n   <UserId>Customer User ID</UserId>\n   <UserPassword>Customer Password</UserPassword>\n   <PropertyId>Property ID on myallocator.com</PropertyId>\n   <VendorId>Your Vendor ID</VendorId>\n   <VendorPassword>Your Vendor Password</VendorPassword>\n </Auth>\n <CreateRoomImage>\n   <RoomImages>\n     <RoomImage>\n       <RoomId>5532</RoomId>\n       <Filename>double-room.jpg</Filename>\n       <Data>oAAAANSUhEUgAAG2QAABPqCAYAAA[...]</Data>\n     </RoomImage>\n   </RoomImages>\n </CreateRoomImage>\n</RoomImageCreate>",
+        "content": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<RoomImageCreate>\n <Auth>\n   <UserToken>User token</UserToken>\n   <PropertyId>Property ID on myallocator.com</PropertyId>\n   <VendorId>Your Vendor ID</VendorId>\n   <VendorPassword>Your Vendor Password</VendorPassword>\n </Auth>\n <CreateRoomImage>\n   <RoomImages>\n     <RoomImage>\n       <RoomId>5532</RoomId>\n       <Filename>double-room.jpg</Filename>\n       <Data>oAAAANSUhEUgAAG2QAABPqCAYAAA[...]</Data>\n     </RoomImage>\n   </RoomImages>\n </CreateRoomImage>\n</RoomImageCreate>",
         "type": "json"
       },
       {
         "title": "JSON Request",
-        "content": "{\n    \"Auth/VendorId\":\"Your Vendor ID\",\n    \"Auth/VendorPassword\":\"Your Vendor Password\",\n    \"Auth/UserId\":\"Login on myallocator.com\",\n    \"Auth/UserPassword\":\"Password for myallocator.com\",\n    \"Auth/PropertyId\":\"Property ID on myallocator.com\",\n    \"RoomImages\": [\n      {\n        \"RoomId\": 5532,\n        \"Filename\": \"double-room.jpg\",\n        \"Data\": \"oAAAANSUhEUgAAG2QAABPqCAYAAA[...]\"\n      }\n    ]\n}",
+        "content": "{\n    \"Auth/VendorId\":\"Your Vendor ID\",\n    \"Auth/VendorPassword\":\"Your Vendor Password\",\n    \"Auth/UserToken\":\"User token\",\n    \"Auth/PropertyId\":\"Property ID on myallocator.com\",\n    \"RoomImages\": [\n      {\n        \"RoomId\": 5532,\n        \"Filename\": \"double-room.jpg\",\n        \"Data\": \"oAAAANSUhEUgAAG2QAABPqCAYAAA[...]\"\n      }\n    ]\n}",
         "type": "json"
       },
       {
         "title": "curl w/ JSON",
-        "content": "curl http://api.myallocator.com/pms/v201408/json/RoomImageCreate -d@- <<EOJSON\njson={\n    \"Auth/VendorId\":\"Your Vendor ID\",\n    \"Auth/VendorPassword\":\"Your Vendor Password\",\n    \"Auth/UserId\":\"Login on myallocator.com\",\n    \"Auth/UserPassword\":\"Password for myallocator.com\",\n    \"Auth/PropertyId\":\"Property ID on myallocator.com\",\n    \"RoomImages\": [\n      {\n        \"RoomId\": 5532,\n        \"Filename\": \"double-room.jpg\",\n        \"Data\": \"oAAAANSUhEUgAAG2QAABPqCAYAAA[...]\"\n      }\n    ]\n}\nEOJSON",
+        "content": "curl http://api.myallocator.com/pms/v201408/json/RoomImageCreate -d@- <<EOJSON\njson={\n    \"Auth/VendorId\":\"Your Vendor ID\",\n    \"Auth/VendorPassword\":\"Your Vendor Password\",\n    \"Auth/UserToken\":\"User token\",\n    \"Auth/PropertyId\":\"Property ID on myallocator.com\",\n    \"RoomImages\": [\n      {\n        \"RoomId\": 5532,\n        \"Filename\": \"double-room.jpg\",\n        \"Data\": \"oAAAANSUhEUgAAG2QAABPqCAYAAA[...]\"\n      }\n    ]\n}\nEOJSON",
         "type": "json"
       }
     ],
@@ -4699,21 +4318,7 @@ define({ "api": [
           {
             "group": "Request",
             "type": "String",
-            "optional": true,
-            "field": "Auth/UserId",
-            "description": "<p>Users unique ID   (required with Auth/UserPassword)</p> "
-          },
-          {
-            "group": "Request",
-            "type": "String",
-            "optional": true,
-            "field": "Auth/UserPassword",
-            "description": "<p>Users password    (required with Auth/UserId)</p> "
-          },
-          {
-            "group": "Request",
-            "type": "String",
-            "optional": true,
+            "optional": false,
             "field": "Auth/UserToken",
             "description": "<p>Users auth token (see AssociateUserToPMS call to generate a Token)</p> "
           },
@@ -4744,17 +4349,17 @@ define({ "api": [
     "examples": [
       {
         "title": "XML Request",
-        "content": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<RoomImageList>\n <Auth>\n   <UserId>Customer User ID</UserId>\n   <UserPassword>Customer Password</UserPassword>\n   <PropertyId>Property ID on myallocator.com</PropertyId>\n   <VendorId>Your Vendor ID</VendorId>\n   <VendorPassword>Your Vendor Password</VendorPassword>\n </Auth>\n</RoomImageList>",
+        "content": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<RoomImageList>\n <Auth>\n   <UserToken>User token</UserToken>\n   <PropertyId>Property ID on myallocator.com</PropertyId>\n   <VendorId>Your Vendor ID</VendorId>\n   <VendorPassword>Your Vendor Password</VendorPassword>\n </Auth>\n</RoomImageList>",
         "type": "json"
       },
       {
         "title": "JSON Request",
-        "content": "{\n    \"Auth/VendorId\":\"Your Vendor ID\",\n    \"Auth/VendorPassword\":\"Your Vendor Password\",\n    \"Auth/UserId\":\"Login on myallocator.com\",\n    \"Auth/UserPassword\":\"Password for myallocator.com\",\n    \"Auth/PropertyId\":\"Property ID on myallocator.com\"\n}",
+        "content": "{\n    \"Auth/VendorId\":\"Your Vendor ID\",\n    \"Auth/VendorPassword\":\"Your Vendor Password\",\n    \"Auth/UserToken\":\"User token\",\n    \"Auth/PropertyId\":\"Property ID on myallocator.com\"\n}",
         "type": "json"
       },
       {
         "title": "curl w/ JSON",
-        "content": "curl http://api.myallocator.com/pms/v201408/json/RoomImageList -d@- <<EOJSON\njson={\n    \"Auth/VendorId\":\"Your Vendor ID\",\n    \"Auth/VendorPassword\":\"Your Vendor Password\",\n    \"Auth/UserId\":\"Login on myallocator.com\",\n    \"Auth/UserPassword\":\"Password for myallocator.com\",\n    \"Auth/PropertyId\":\"Property ID on myallocator.com\"\n}\nEOJSON",
+        "content": "curl http://api.myallocator.com/pms/v201408/json/RoomImageList -d@- <<EOJSON\njson={\n    \"Auth/VendorId\":\"Your Vendor ID\",\n    \"Auth/VendorPassword\":\"Your Vendor Password\",\n    \"Auth/UserToken\":\"User token\",\n    \"Auth/PropertyId\":\"Property ID on myallocator.com\"\n}\nEOJSON",
         "type": "json"
       }
     ],
@@ -4814,21 +4419,7 @@ define({ "api": [
           {
             "group": "Request",
             "type": "String",
-            "optional": true,
-            "field": "Auth/UserId",
-            "description": "<p>Users unique ID     (required with Auth/UserPassword)</p> "
-          },
-          {
-            "group": "Request",
-            "type": "String",
-            "optional": true,
-            "field": "Auth/UserPassword",
-            "description": "<p>Users password      (required with Auth/UserId)</p> "
-          },
-          {
-            "group": "Request",
-            "type": "String",
-            "optional": true,
+            "optional": false,
             "field": "Auth/UserToken",
             "description": "<p>Users auth token (see AssociateUserToPMS call to generate a Token)</p> "
           },
@@ -4874,7 +4465,7 @@ define({ "api": [
       "examples": [
         {
           "title": "JSON Request (single room image)",
-          "content": "{\n    \"Auth/UserId\":\"\",\n    \"Auth/UserPassword\":\"\",\n    \"Auth/VendorId\":\"\",\n    \"Auth/VendorPassword\":\"\",\n    \"RoomImage\":{ \"RoomImageId\":### }\n}",
+          "content": "{\n    \"Auth/UserToken\":\"\",\n    \"Auth/VendorId\":\"\",\n    \"Auth/VendorPassword\":\"\",\n    \"RoomImage\":{ \"RoomImageId\":### }\n}",
           "type": "json"
         },
         {
@@ -4884,7 +4475,7 @@ define({ "api": [
         },
         {
           "title": "XML Request (single room image)",
-          "content": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<RoomImageRemove>\n <Auth>\n   <UserId>Customer User ID</UserId>\n   <UserPassword>Customer Password</UserPassword>\n   <PropertyId>Property ID on myallocator.com</PropertyId>\n   <VendorId>Your Vendor ID</VendorId>\n   <VendorPassword>Your Vendor Password</VendorPassword>\n </Auth>\n <RemoveRoomImages>\n   <RoomImages>\n     <RoomImage>\n       <RoomImageId>##</RoomImageId>\n       <RoomId>##</RoomId>\n     </RoomImage>\n     <RoomImage>\n       <RoomImageId>##</RoomImageId>\n       <RoomId>##</RoomId>\n     </RoomImage>\n   </RoomImages>\n </RemoveRoomImages>\n</RoomImageRemove>",
+          "content": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<RoomImageRemove>\n <Auth>\n   <UserToken>User token</UserToken>\n   <PropertyId>Property ID on myallocator.com</PropertyId>\n   <VendorId>Your Vendor ID</VendorId>\n   <VendorPassword>Your Vendor Password</VendorPassword>\n </Auth>\n <RemoveRoomImages>\n   <RoomImages>\n     <RoomImage>\n       <RoomImageId>##</RoomImageId>\n       <RoomId>##</RoomId>\n     </RoomImage>\n     <RoomImage>\n       <RoomImageId>##</RoomImageId>\n       <RoomId>##</RoomId>\n     </RoomImage>\n   </RoomImages>\n </RemoveRoomImages>\n</RoomImageRemove>",
           "type": "json"
         },
         {
@@ -4897,7 +4488,7 @@ define({ "api": [
     "examples": [
       {
         "title": "curl w/ JSON",
-        "content": "curl http://api.myallocator.com/pms/v201408/json/RoomImageRemove -d@- <<EOJSON\njson={\n    \"Auth/UserId\":\"\",\n    \"Auth/UserPassword\":\"\",\n    \"Auth/VendorId\":\"\",\n    \"Auth/VendorPassword\":\"\",\n    \"RoomImage\":{ \"RoomImageId\":### }\n}\nEOJSON",
+        "content": "curl http://api.myallocator.com/pms/v201408/json/RoomImageRemove -d@- <<EOJSON\njson={\n    \"Auth/UserToken\":\"\",\n    \"Auth/VendorId\":\"\",\n    \"Auth/VendorPassword\":\"\",\n    \"RoomImage\":{ \"RoomImageId\":### }\n}\nEOJSON",
         "type": "json"
       }
     ],
@@ -4918,21 +4509,7 @@ define({ "api": [
           {
             "group": "Request",
             "type": "String",
-            "optional": true,
-            "field": "Auth/UserId",
-            "description": "<p>Users unique ID     (required with Auth/UserPassword)</p> "
-          },
-          {
-            "group": "Request",
-            "type": "String",
-            "optional": true,
-            "field": "Auth/UserPassword",
-            "description": "<p>Users password        (required with Auth/UserId)</p> "
-          },
-          {
-            "group": "Request",
-            "type": "String",
-            "optional": true,
+            "optional": false,
             "field": "Auth/UserToken",
             "description": "<p>Users auth token (see AssociateUserToPMS call to generate a Token)</p> "
           },
@@ -4963,12 +4540,12 @@ define({ "api": [
     "examples": [
       {
         "title": "curl w/ JSON",
-        "content": "curl http://api.myallocator.com/pms/v201408/json/RoomList -d@- <<EOJSON\njson={\n  \"Auth/UserId\":\"login on myallocator.com\",\n  \"Auth/UserPassword\":\"password for myallocator.com\",\n  \"Auth/UserToken\":\"User's auth token\",\n  \"Auth/PropertyId\":\"Property ID on myallocator.com\",\n  \"Auth/VendorId\":\"your vendor id\",\n  \"Auth/VendorPassword\":\"your vendor password\"\n}\nEOJSON",
+        "content": "curl http://api.myallocator.com/pms/v201408/json/RoomList -d@- <<EOJSON\njson={\n  \"Auth/UserToken\":\"User's auth token\",\n  \"Auth/PropertyId\":\"Property ID on myallocator.com\",\n  \"Auth/VendorId\":\"your vendor id\",\n  \"Auth/VendorPassword\":\"your vendor password\"\n}\nEOJSON",
         "type": "json"
       },
       {
         "title": "XML RoomList Request",
-        "content": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<RoomList>\n <Auth>\n   <UserId>Customer User ID </UserId>\n   <UserPassword>Customer Password </UserPassword>\n   <PropertyId>Property ID on myallocator.com </PropertyId>\n   <VendorId>Your Vendor ID </VendorId>\n   <VendorPassword>Your Vendor Password </VendorPassword>\n </Auth>\n</RoomList>",
+        "content": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<RoomList>\n <Auth>\n   <UserToken>User token</UserToken>\n   <PropertyId>Property ID on myallocator.com </PropertyId>\n   <VendorId>Your Vendor ID </VendorId>\n   <VendorPassword>Your Vendor Password </VendorPassword>\n </Auth>\n</RoomList>",
         "type": "json"
       }
     ],
@@ -5076,17 +4653,17 @@ define({ "api": [
       "examples": [
         {
           "title": "JSON Request (Remove single room)",
-          "content": "{\n\t\"Auth/UserId\":\"\",\n\t\"Auth/UserPassword\":\"\",\n\t\"Auth/VendorId\":\"\",\n\t\"Auth/VendorPassword\":\"\",\n\t\"Room\":{ \"RoomId\":### }\n}",
+          "content": "{\n\t\"Auth/UserToken\":\"\",\n\t\"Auth/VendorId\":\"\",\n\t\"Auth/VendorPassword\":\"\",\n\t\"Room\":{ \"RoomId\":### }\n}",
           "type": "json"
         },
         {
           "title": "JSON Request (Remove multiple rooms)",
-          "content": "{\n\t\"Auth/UserId\":\"\",\n\t\"Auth/Userassword\":\"\",\n\t\"Auth/VendorId\":\"\",\n\t\"Auth/VendorPassword\":\"\",\n\t\"Rooms\": [\n\t\t{ \"RoomId\":## },\n\t\t{ \"RoomId\":## }\n\t\t]\n}",
+          "content": "{\n\t\"Auth/UserToken\":\"\",\n\t\"Auth/VendorId\":\"\",\n\t\"Auth/VendorPassword\":\"\",\n\t\"Rooms\": [\n\t\t{ \"RoomId\":## },\n\t\t{ \"RoomId\":## }\n\t\t]\n}",
           "type": "json"
         },
         {
           "title": "XML Request (Removing a room)",
-          "content": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<RoomRemove>\n <Auth>\n   <UserId>Customer User ID</UserId>\n   <UserPassword>Customer Password</UserPassword>\n   <PropertyId>Property ID on myallocator.com</PropertyId>\n   <VendorId>Your Vendor ID</VendorId>\n   <VendorPassword>Your Vendor Password</VendorPassword>\n </Auth>\n <RemoveRooms>\n   <RoomTypeIds>\n     <RoomTypeId>35</RoomTypeId>\n     <RoomTypeId>36</RoomTypeId>\n   </RoomTypeIds>\n </RemoveRooms>\n</RoomRemove>",
+          "content": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<RoomRemove>\n <Auth>\n   <UserToken>User token</UserToken>\n   <PropertyId>Property ID on myallocator.com</PropertyId>\n   <VendorId>Your Vendor ID</VendorId>\n   <VendorPassword>Your Vendor Password</VendorPassword>\n </Auth>\n <RemoveRooms>\n   <RoomTypeIds>\n     <RoomTypeId>35</RoomTypeId>\n     <RoomTypeId>36</RoomTypeId>\n   </RoomTypeIds>\n </RemoveRooms>\n</RoomRemove>",
           "type": "json"
         },
         {
@@ -5099,7 +4676,7 @@ define({ "api": [
     "examples": [
       {
         "title": "curl w/ JSON",
-        "content": "curl http://api.myallocator.com/pms/v201408/json/RoomRemove -d@- <<EOJSON\njson={\n\t\"Auth/UserId\":\"\",\n\t\"Auth/UserPassword\":\"\",\n\t\"Auth/VendorId\":\"\",\n\t\"Auth/VendorPassword\":\"\",\n\t\"Room\":{ \"RoomId\":### }\n}\nEOJSON",
+        "content": "curl http://api.myallocator.com/pms/v201408/json/RoomRemove -d@- <<EOJSON\njson={\n\t\"Auth/UserToken\":\"\",\n\t\"Auth/VendorId\":\"\",\n\t\"Auth/VendorPassword\":\"\",\n\t\"Room\":{ \"RoomId\":### }\n}\nEOJSON",
         "type": "json"
       }
     ],
@@ -5255,21 +4832,7 @@ define({ "api": [
           {
             "group": "Request",
             "type": "String",
-            "optional": true,
-            "field": "Auth/UserId",
-            "description": "<p>Users unique ID     (required with Auth/UserPassword)</p> "
-          },
-          {
-            "group": "Request",
-            "type": "String",
-            "optional": true,
-            "field": "Auth/UserPassword",
-            "description": "<p>Users password        (required with Auth/UserId)</p> "
-          },
-          {
-            "group": "Request",
-            "type": "String",
-            "optional": true,
+            "optional": false,
             "field": "Auth/UserToken",
             "description": "<p>Users auth token (see AssociateUserToPMS call to generate a Token)</p> "
           },
@@ -5365,21 +4928,7 @@ define({ "api": [
           {
             "group": "Request",
             "type": "String",
-            "optional": true,
-            "field": "Auth/UserId",
-            "description": "<p>Users unique ID     (required with Auth/UserPassword)</p> "
-          },
-          {
-            "group": "Request",
-            "type": "String",
-            "optional": true,
-            "field": "Auth/UserPassword",
-            "description": "<p>Users password        (required with Auth/UserId)</p> "
-          },
-          {
-            "group": "Request",
-            "type": "String",
-            "optional": true,
+            "optional": false,
             "field": "Auth/UserToken",
             "description": "<p>Users auth token (see AssociateUserToPMS call to generate a Token)</p> "
           },
@@ -5429,7 +4978,7 @@ define({ "api": [
       },
       {
         "title": "curl w/ JSON",
-        "content": "curl http://api.myallocator.com/pms/v201408/json/UserModify -d@- <<EOJSON\njson={\n  \"Auth/UserId\":\"login on myallocator.com\",\n  \"Auth/UserPassword\":\"password for myallocator.com\",\n  \"Auth/UserToken\":\"User's auth token\",\n  \"Auth/VendorId\":\"your vendor id\",\n  \"Auth/VendorPassword\":\"your vendor password\",\n  \"CustomerFirstName\":\"Customer's first name\",\n  \"CustomerLastName\":\"Customer's last name\",\n  \"CustomerEmail\":\"Customer's email address\"\n}\nEOJSON",
+        "content": "curl http://api.myallocator.com/pms/v201408/json/UserModify -d@- <<EOJSON\njson={\n  \"Auth/UserToken\":\"User's auth token\",\n  \"Auth/VendorId\":\"your vendor id\",\n  \"Auth/VendorPassword\":\"your vendor password\",\n  \"CustomerFirstName\":\"Customer's first name\",\n  \"CustomerLastName\":\"Customer's last name\",\n  \"CustomerEmail\":\"Customer's email address\"\n}\nEOJSON",
         "type": "json"
       }
     ],
