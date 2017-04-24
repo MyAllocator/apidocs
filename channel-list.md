@@ -95,6 +95,7 @@ Created: $date
 | mcs | Madrid Central Suites | 2 years |  |
 | mmt | MakeMyTrip | 0 years |  |
 | myb | MyBookings | 2 years |  |
+| nate | Nathan Helehini | 0 years |  |
 | net | Net Affinity | 2 years |  |
 | nom | Nomads Spain | 2 years |  |
 | oa | Only-apartments | 2 years |  |
@@ -107,9 +108,16 @@ Created: $date
 | r2n | Rooms2Night | 2 years |  |
 | rec | Reconline | 2 years | GDS. Hotels &amp; Resorts only, 20+ rooms required. |
 | rep | TravelRepublic | 2 years |  |
+| sawa | Sawadee | 2 years |  |
+| sim0 | ZERO Flow Control sim0 Channel | 0 years |  |
+| sim1 | Flow Control Sim1 Channel | 0 years |  |
+| sim2 | Flow Control Sim2 Channel | 0 years |  |
+| sim3 | Flow Control Sim3 Channel | 0 years |  |
+| sim4 | Flow Control Sim4 Channel | 0 years |  |
 | skd | Seekda GmbH | 2 years |  |
 | sur | Surf Holidays | 2 years |  |
 | ta | TripAdvisor | 0 years |  |
+| test | Test Channel | 0 years |  |
 | tlok | Traveloka | 0 years | Traveloka.com |
 | tmd | Travel Mind | 2 years |  |
 | tom | TOMAS | 2 years | Booking system used predominantly in Germany and Switzerland on city portals |
@@ -117,8 +125,10 @@ Created: $date
 | tri | Trip Masters | 2 years |  |
 | user | User Channel | 0 years |  |
 | vaca | Vacagent | 2 years |  |
+| vive | Vive Travel | 2 years |  |
 | vjo | VisitJourneys | 2 years |  |
 | vrbo | Vacation Rentals By Owner | 2 years |  |
+| whoo | Whoop Button Technologies | 1 years |  |
 | wim | Wimdu | 2 years |  |
 | wix | Wix Hotels | 2 years |  |
 | wpk | Worldpackers | 2 years |  |
