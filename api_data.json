@@ -1238,7 +1238,7 @@
             "type": "String",
             "optional": false,
             "field": "Auth/UserToken",
-            "description": "<p>Users auth token (see AssociateUserToPMS call to generate a Token)@apiParam (Request) {String} Auth/PropertyId \t\tProperty ID on myallocator.com</p>"
+            "description": "<p>Users auth token (see AssociateUserToPMS call to generate a Token)@apiParam (Request) {String} Auth/PropertyId      Property ID on myallocator.com</p>"
           },
           {
             "group": "Request",
@@ -1944,7 +1944,7 @@
             "type": "String",
             "optional": true,
             "field": "OrderId",
-            "description": "<p>OrderId from the OTA\t(required if no MyAllocatorId)</p>"
+            "description": "<p>OrderId from the OTA    (required if no MyAllocatorId)</p>"
           },
           {
             "group": "Request",
