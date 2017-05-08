@@ -164,7 +164,7 @@ define({ "api": [
       "examples": [
         {
           "title": "Response - Updating a login and property",
-          "content": "\t<?xml version=\"1.0\" encoding=\"utf-8\"?>\n\t<ARIRulesListResponse>\n\t  <Success>true</Success>\n\t</ARIRulesListResponse>\n\n\n\t<?xml version=\"1.0\" encoding=\"utf-8\"?>\n\n\t<ARIRulesListResponse>\n\t\t<ARIRules>\n\t\t\t<RuleAppend PMSRuleId=\"\" RoomId=\"\" Channel=\"\" Verb=\"BLOCK\" StartDate=\"YYYY-MM-DD\" EndDate=\"YYYY-MM-DD\" />\n\t\t\t<RuleUpdate PMSRuleId=\"\" RoomId=\"\" Channel=\"\" Verb=\"BLOCK\" StartDate=\"YYYY-MM-DD\" EndDate=\"YYYY-MM-DD\" />\n\t\t\t<RuleDelete PMSRuleId=\"\"/>\n\t\t\t<RuleDelete RoomId=\"\"/>\n\t\t\t<RuleDelete RoomId=\"\" Channel=\"\"/>\n\t\t</ARIRules>\n\t  <Success>true</Success>\n\t</ARIRulesListResponse>",
+          "content": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<ARIRulesListResponse>\n  <Success>true</Success>\n</ARIRulesListResponse>\n\n\n<?xml version=\"1.0\" encoding=\"utf-8\"?>\n\n<ARIRulesListResponse>\n\t<ARIRules>\n\t\t<RuleAppend PMSRuleId=\"\" RoomId=\"\" Channel=\"\" Verb=\"BLOCK\" StartDate=\"YYYY-MM-DD\" EndDate=\"YYYY-MM-DD\" />\n\t\t<RuleUpdate PMSRuleId=\"\" RoomId=\"\" Channel=\"\" Verb=\"BLOCK\" StartDate=\"YYYY-MM-DD\" EndDate=\"YYYY-MM-DD\" />\n\t\t<RuleDelete PMSRuleId=\"\"/>\n\t\t<RuleDelete RoomId=\"\"/>\n\t\t<RuleDelete RoomId=\"\" Channel=\"\"/>\n\t</ARIRules>\n  <Success>true</Success>\n</ARIRulesListResponse>",
           "type": "json"
         }
       ]
@@ -173,7 +173,7 @@ define({ "api": [
     "examples": [
       {
         "title": "XML Request - Creating a customer account",
-        "content": "\t<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n\t<ARIRulesList>\n\t\t<Auth>\n\t\t\t<UserToken>User token</UserToken>\n\t\t\t<VendorId>Your Vendor ID</VendorId>\n\t\t\t<VendorPassword>Your Vendor Password</VendorPassword>\n\t\t</Auth>\n\t\t<ARIRules>\n\t\t\t<Rule PMSRuleId=\"\" RoomId=\"\" Channel=\"\" Verb=\"BLOCK\" StartDate=\"YYYY-MM-DD\" EndDate=\"YYYY-MM-DD\" />\n\t\t</ARIRules>\n\t</ARIRulesList>",
+        "content": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<ARIRulesList>\n\t<Auth>\n\t\t<UserToken>User token</UserToken>\n\t\t<VendorId>Your Vendor ID</VendorId>\n\t\t<VendorPassword>Your Vendor Password</VendorPassword>\n\t</Auth>\n\t<ARIRules>\n\t\t<Rule PMSRuleId=\"\" RoomId=\"\" Channel=\"\" Verb=\"BLOCK\" StartDate=\"YYYY-MM-DD\" EndDate=\"YYYY-MM-DD\" />\n\t</ARIRules>\n</ARIRulesList>",
         "type": "json"
       },
       {
@@ -507,27 +507,27 @@ define({ "api": [
       "examples": [
         {
           "title": "XML ARIUpdate Response (Full Success)",
-          "content": "\t<?xml version=\"1.0\" encoding=\"utf-8\"?>\n\t<ARIUpdateResponse>\n\t <Success>true</Success>\n\t <Errors></Errors>\n\t <Warnings>\n\t\t<Warning channel=\"hc\">\n\t\t  <WarningId>207</WarningId>\n\t\t  <WarningMsg>\n\t\t\tSkipped room type (not setup with channel).\n\t\t  </WarningMsg>\n\t\t</Warning>\n\t </Warnings>\n\t</ARIUpdateResponse>",
+          "content": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<ARIUpdateResponse>\n <Success>true</Success>\n <Errors></Errors>\n <Warnings>\n\t<Warning channel=\"hc\">\n\t  <WarningId>207</WarningId>\n\t  <WarningMsg>\n\t\tSkipped room type (not setup with channel).\n\t  </WarningMsg>\n\t</Warning>\n </Warnings>\n</ARIUpdateResponse>",
           "type": "json"
         },
         {
           "title": "XML ARIUpdate Warning Response (at least one channel succeeded)",
-          "content": "\t<?xml version=\"1.0\" encoding=\"utf-8\"?>\n\t<ARIUpdateResponse>\n\t <Success>partial</Success>\n\t <Errors>\n\t\t<Error channel=\"adv\">\n\t\t  <ErrorId>15</ErrorId>\n\t\t  <ErrorMsg>\n\t\t\t Missing or wrong channel credentials on myallocator.com\n\t\t  </ErrorMsg>\n\t\t</Error>\n\t </Errors>\n\t <Warnings></Warnings>\n\t</ARIUpdateResponse>",
+          "content": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<ARIUpdateResponse>\n <Success>partial</Success>\n <Errors>\n\t<Error channel=\"adv\">\n\t  <ErrorId>15</ErrorId>\n\t  <ErrorMsg>\n\t\t Missing or wrong channel credentials on myallocator.com\n\t  </ErrorMsg>\n\t</Error>\n </Errors>\n <Warnings></Warnings>\n</ARIUpdateResponse>",
           "type": "json"
         },
         {
           "title": "XML ARIUpdate Failed Response (all channels came back with errors)",
-          "content": "\t<?xml version=\"1.0\" encoding=\"utf-8\"?>\n\t<ARIUpdateResponse>\n\t <Success>false</Success>\n\t <Errors>\n\t\t<Error channel=\"adv\">\n\t\t  <ErrorId>15</ErrorId>\n\t\t  <ErrorMsg>\n\t\t\tMissing or wrong channel credentials on myallocator.com\n\t\t  </ErrorMsg>\n\t\t</Error>\n\t </Errors>\n\t <Warnings></Warnings>\n\t</ARIUpdateResponse>",
+          "content": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<ARIUpdateResponse>\n <Success>false</Success>\n <Errors>\n\t<Error channel=\"adv\">\n\t  <ErrorId>15</ErrorId>\n\t  <ErrorMsg>\n\t\tMissing or wrong channel credentials on myallocator.com\n\t  </ErrorMsg>\n\t</Error>\n </Errors>\n <Warnings></Warnings>\n</ARIUpdateResponse>",
           "type": "json"
         },
         {
           "title": "XML ARIUpdate Failed update (error before submitting to any channel)",
-          "content": "\t<?xml version=\"1.0\" encoding=\"utf-8\"?>\n\t<ARIUpdateResponse>\n\t <Success>false</Success>\n\t <Errors>\n\t\t<Error\">\n\t\t  <ErrorId>17</ErrorId>\n\t\t  <ErrorMsg>\n\t\t\tStart date too far in the future (>2 years)\n\t\t  </ErrorMsg>\n\t\t</Error>\n\t </Errors>\n\t <Warnings></Warnings>\n\t</ARIUpdateResponse>",
+          "content": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<ARIUpdateResponse>\n <Success>false</Success>\n <Errors>\n\t<Error\">\n\t  <ErrorId>17</ErrorId>\n\t  <ErrorMsg>\n\t\tStart date too far in the future (>2 years)\n\t  </ErrorMsg>\n\t</Error>\n </Errors>\n <Warnings></Warnings>\n</ARIUpdateResponse>",
           "type": "json"
         },
         {
           "title": "XML ARIUpdate QueryForStatus=true",
-          "content": "\t<?xml version=\"1.0\" encoding=\"utf-8\"?>\n\t<ARIUpdateResponse>\n\t <Success>true</Success>\n\t <Errors></Errors>\n\t <Warnings></Warnings>\n\t  <UpdateId>832522158</UpdateId>\n\t</ARIUpdateResponse>",
+          "content": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<ARIUpdateResponse>\n <Success>true</Success>\n <Errors></Errors>\n <Warnings></Warnings>\n  <UpdateId>832522158</UpdateId>\n</ARIUpdateResponse>",
           "type": "json"
         }
       ]
@@ -556,12 +556,12 @@ define({ "api": [
       },
       {
         "title": "XML Request (Status Check)",
-        "content": "\t<?xml version=\"1.0\" encoding=\"UTF-8\" ?>\n\t<ARIUpdate>\n\t <Auth>\n\t\t...\n\t </Auth>\n\n\t <Options>\n\t\t<QueryForStatus>true</QueryForStatus>\n\t </Options>\n\n\t ...\n\t</ARIUpdate>",
+        "content": "<?xml version=\"1.0\" encoding=\"UTF-8\" ?>\n<ARIUpdate>\n <Auth>\n\t...\n </Auth>\n\n <Options>\n\t<QueryForStatus>true</QueryForStatus>\n </Options>\n\n ...\n</ARIUpdate>",
         "type": "json"
       },
       {
         "title": "XML ARIUpdate (Submit to all channels excluding Gomio and Hostelsclub)",
-        "content": "\t<?xml version=\"1.0\" encoding=\"UTF-8\" ?>\n\t<ARIUpdate>\n\t <Auth>\n\t\t<UserToken>User token</UserToken>\n\t\t<PropertyId>Property ID on myallocator.com</PropertyId>\n\t\t<VendorId>Your Vendor ID</VendorId>\n\t\t<VendorPassword>Your Vendor Password</VendorPassword>\n\t </Auth>\n\n\t <Channels>\n\t\t<Channel>all</Channel>\n\t\t<Channel exclude=\"true\">gom</Channel>\n\t\t<Channel exclude=\"true\">hc</Channel>\n\t</Channels>\n\n\t <Allocations>\n\t\t...\n\t </Allocations>\n\t</ARIUpdate>",
+        "content": "<?xml version=\"1.0\" encoding=\"UTF-8\" ?>\n<ARIUpdate>\n <Auth>\n\t<UserToken>User token</UserToken>\n\t<PropertyId>Property ID on myallocator.com</PropertyId>\n\t<VendorId>Your Vendor ID</VendorId>\n\t<VendorPassword>Your Vendor Password</VendorPassword>\n </Auth>\n\n <Channels>\n\t<Channel>all</Channel>\n\t<Channel exclude=\"true\">gom</Channel>\n\t<Channel exclude=\"true\">hc</Channel>\n</Channels>\n\n <Allocations>\n\t...\n </Allocations>\n</ARIUpdate>",
         "type": "json"
       }
     ],
@@ -632,7 +632,7 @@ define({ "api": [
       "examples": [
         {
           "title": "XML ARIUpdateStatus Response",
-          "content": "\t<?xml version=\"1.0\" encoding=\"UTF-8\" ?>\n\t<ARIUpdateStatusResponse>\n\t <Channels>\n\t   <Channel code=\"gom\">\n\t     <ActivePart>3</ActivePart>\n\t     <Parts>3</Parts>\n\t     <Warnings></Warnings>\n\t     <Errors></Errors>\n\t     <Success>false</Success>\n\t   </Channel>\n\t   <Channel code=\"hc\">\n\t     <ActivePart>3</ActivePart>\n\t     <Parts>0</Parts>\n\t     <Errors></Errors>\n\t     <Success>true</Success>\n\t     <Warnings>\n\t       <Warning>\n\t         <WarningId>207</WarningId>\n\t         <WarningMsg>Skipped room type (not setup with channel).</WarningMsg>\n\t       </Warning>\n\t     </Warnings>\n\t   </Channel>\n\t   <Channel code=\"iwb\">\n\t     <ActivePart>0</ActivePart>\n\t     <Errors>\n\t       <ErrorId>15</ErrorId>\n\t       <ErrorMsg>Missing or wrong channel credentials on myallocator.com</ErrorMsg>\n\t     </Errors>\n\t     <Parts>0</Parts>\n\t     <Success>false</Success>\n\t     <Warnings>\n\t     </Warnings>\n\t   </Channel>\n\t</ARIUpdateStatusResponse>",
+          "content": "<?xml version=\"1.0\" encoding=\"UTF-8\" ?>\n<ARIUpdateStatusResponse>\n <Channels>\n   <Channel code=\"gom\">\n     <ActivePart>3</ActivePart>\n     <Parts>3</Parts>\n     <Warnings></Warnings>\n     <Errors></Errors>\n     <Success>false</Success>\n   </Channel>\n   <Channel code=\"hc\">\n     <ActivePart>3</ActivePart>\n     <Parts>0</Parts>\n     <Errors></Errors>\n     <Success>true</Success>\n     <Warnings>\n       <Warning>\n         <WarningId>207</WarningId>\n         <WarningMsg>Skipped room type (not setup with channel).</WarningMsg>\n       </Warning>\n     </Warnings>\n   </Channel>\n   <Channel code=\"iwb\">\n     <ActivePart>0</ActivePart>\n     <Errors>\n       <ErrorId>15</ErrorId>\n       <ErrorMsg>Missing or wrong channel credentials on myallocator.com</ErrorMsg>\n     </Errors>\n     <Parts>0</Parts>\n     <Success>false</Success>\n     <Warnings>\n     </Warnings>\n   </Channel>\n</ARIUpdateStatusResponse>",
           "type": "json"
         }
       ]
@@ -640,7 +640,7 @@ define({ "api": [
     "examples": [
       {
         "title": "XML ARIUpdateStatus Request",
-        "content": "\t<?xml version=\"1.0\" encoding=\"UTF-8\" ?>\n\t<ARIUpdateStatus>\n\t <Auth>\n\t   <UserToken>User token</UserToken>\n\t   <PropertyId>Property ID on myallocator.com</PropertyId>\n\t   <VendorId>Your Vendor ID</VendorId>\n\t   <VendorPassword>Your Vendor Password</VendorPassword>\n\t </Auth>\n\n\t <UpdateId>832522158</UpdateId>\n\t</ARIUpdateStatus>",
+        "content": "<?xml version=\"1.0\" encoding=\"UTF-8\" ?>\n<ARIUpdateStatus>\n <Auth>\n   <UserToken>User token</UserToken>\n   <PropertyId>Property ID on myallocator.com</PropertyId>\n   <VendorId>Your Vendor ID</VendorId>\n   <VendorPassword>Your Vendor Password</VendorPassword>\n </Auth>\n\n <UpdateId>832522158</UpdateId>\n</ARIUpdateStatus>",
         "type": "json"
       },
       {
@@ -786,7 +786,7 @@ define({ "api": [
       },
       {
         "title": "XML AssociateUserToPMS",
-        "content": "\t<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n\t<AssociatePropertyToPMS>\n\t<Auth>\n\t  <UserId>Customer username</UserId>\n\t  <UserPassword>Customer Password</UserPassword>\n\t  <VendorId>Your Vendor ID</VendorId>\n\t  <VendorPassword>Your Vendor Password</VendorPassword>\n\t</Auth>\n\t<PMSPropertyId>username-on-the-remote-pms-system</PMSUserId>\n\t</AssociatePropertyToPMS>",
+        "content": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<AssociatePropertyToPMS>\n<Auth>\n  <UserId>Customer username</UserId>\n  <UserPassword>Customer Password</UserPassword>\n  <VendorId>Your Vendor ID</VendorId>\n  <VendorPassword>Your Vendor Password</VendorPassword>\n</Auth>\n<PMSPropertyId>username-on-the-remote-pms-system</PMSUserId>\n</AssociatePropertyToPMS>",
         "type": "json"
       }
     ],
@@ -868,7 +868,7 @@ define({ "api": [
       },
       {
         "title": "XML AssociateUserToPMS",
-        "content": "\t<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n\t<AssociateUserToPMS>\n\t<Auth>\n\t  <UserId>Customer username</UserId>\n\t  <UserPassword>Customer Password</UserPassword>\n\t  <VendorId>Your Vendor ID</VendorId>\n\t  <VendorPassword>Your Vendor Password</VendorPassword>\n\t</Auth>\n\t<PMSUserId>username-on-the-remote-pms-system</PMSUserId>\n\t</AssociateUserToPMS>",
+        "content": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<AssociateUserToPMS>\n<Auth>\n  <UserId>Customer username</UserId>\n  <UserPassword>Customer Password</UserPassword>\n  <VendorId>Your Vendor ID</VendorId>\n  <VendorPassword>Your Vendor Password</VendorPassword>\n</Auth>\n<PMSUserId>username-on-the-remote-pms-system</PMSUserId>\n</AssociateUserToPMS>",
         "type": "json"
       }
     ],
@@ -1211,7 +1211,7 @@ define({ "api": [
       },
       {
         "title": "XML BookingCreate Request",
-        "content": "\t<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n\t<LoopBookingCreate>\n\t<Auth>\n\t\t<UserToken>User token</UserToken>\n\t\t<PropertyId>###</PropertyId>\n\t</Auth>\n\t<Booking>\n\t\t<StartDate>YYYY-MM-DD</StartDate>\n\t\t<EndDate>YYYY-MM-DD</EndRate>\n\t</Booking>\n\t</LoopBookingCreate>",
+        "content": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<LoopBookingCreate>\n<Auth>\n\t<UserToken>User token</UserToken>\n\t<PropertyId>###</PropertyId>\n</Auth>\n<Booking>\n\t<StartDate>YYYY-MM-DD</StartDate>\n\t<EndDate>YYYY-MM-DD</EndRate>\n</Booking>\n</LoopBookingCreate>",
         "type": "json"
       },
       {
@@ -1471,7 +1471,7 @@ define({ "api": [
     "examples": [
       {
         "title": "XML Example of querying for bookings",
-        "content": "\t<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n\t<BookingList>\n\t <Auth>\n\t   <UserToken>User token</UserToken>\n\t   <PropertyId>Property ID on myallocator.com</PropertyId>\n\t   <VendorId>Your Vendor ID</VendorId>\n\t   <VendorPassword>Your Vendor Password</VendorPassword>\n\t </Auth>\n\t <Options>\n\t\t<NormalizeToCurrency>USD</NormalizeToCurrency>\n\t </Options>\n\t <!-- NOTE: Arrival, Creation, Modification cannot *actually* be used together -->\n\t <ArrivalStartDate>2010-01-01</ArrivalStartDate>\n\t <ArrivalEndDate>2013-01-01</ArrivalEndDate>\n\t <CreationStartDate>2010-01-01</CreationStartDate>\n\t <CreationEndDate>2013-01-01</CreationEndDate>\n\t <ModificationStartDate>2010-01-01</ModificationStartDate>\n\t <ModificationEndDate>2013-01-01</ModificationEndDate>\n\t</BookingList>",
+        "content": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<BookingList>\n <Auth>\n   <UserToken>User token</UserToken>\n   <PropertyId>Property ID on myallocator.com</PropertyId>\n   <VendorId>Your Vendor ID</VendorId>\n   <VendorPassword>Your Vendor Password</VendorPassword>\n </Auth>\n <Options>\n\t<NormalizeToCurrency>USD</NormalizeToCurrency>\n </Options>\n <!-- NOTE: Arrival, Creation, Modification cannot *actually* be used together -->\n <ArrivalStartDate>2010-01-01</ArrivalStartDate>\n <ArrivalEndDate>2013-01-01</ArrivalEndDate>\n <CreationStartDate>2010-01-01</CreationStartDate>\n <CreationEndDate>2013-01-01</CreationEndDate>\n <ModificationStartDate>2010-01-01</ModificationStartDate>\n <ModificationEndDate>2013-01-01</ModificationEndDate>\n</BookingList>",
         "type": "json"
       },
       {
@@ -1489,7 +1489,7 @@ define({ "api": [
       "examples": [
         {
           "title": "Response - Querying for bookings",
-          "content": "\t<?xml version=\"1.0\" encoding=\"utf-8\"?>\n\t<BookingListResponse>\n\t <Bookings>\n\t   <Booking>\n\t     <Channel>hb2</Channel>\n\t     <StartDate>2012-01-01</StartDate>\n\t     <EndDate>2012-01-03</EndDate>\n\t     <IsCancellation>false</IsCancellation>\n\t     <MyallocatorId>4d7e47e467458b927c000000</MyallocatorId>\n\t     <MyallocatorCreationDate>2011-03-14</MyallocatorCreationDate>\n\t     <MyallocatorCreationTime>16:52:52</MyallocatorCreationTime>\n\t     <MyallocatorModificationDate>2011-03-14</MyallocatorModificationDate>\n\t     <MyallocatorModificationTime>16:52:52</MyallocatorModificationTime>\n\t     <OrderId>1234</OrderId>\n\t     <OrderDate>2011-11-11</OrderDate>\n\t     <OrderTime>11:11:00</OrderTime>\n\t     <OrderSource>Hostelbookers.com</OrderSource>\n\t     <OrderAdults>2</OrderAdults>\n\t     <OrderChildren>2</OrderChildren>\n\t     <Deposit>12.00</Deposit>\n\t     <TotalPrice>82.00</TotalPrice>\n\t     <TotalCurrency>GBP</TotalCurrency>\n\n\t     <Customers>\n\t       <Customer>\n\t         <CustomerFName>John</CustomerFName>\n\t         <CustomerLName>Smith</CustomerLName>\n\t         <CustomerAddress>522 Main Rd</CustomerAddress>\n\t         <CustomerArrivalTime>13:00</CustomerArrivalTime>\n\t         <CustomerEmail>john@googlemail.com</CustomerEmail>\n\t         <CustomerNationality>UK</CustomerNationality>\n\t         <CustomerPhone>+44 1234567890</CustomerPhone>\n\t         <CustomerCompany>Johnston Ltd.</CustomerCompany>\n\t         <CustomerCity>Stirling</CustomerCity>\n\t         <CustomerState>Stirlingshire</CustomerState>\n\t         <CustomerPostCode>FK8 2HE</CustomerPostCode>\n\t         <CustomerCountry>UK</CustomerCountry>\n\t         <CustomerNote>Bringing a dog</CustomerNote>\n\t       </Customer>\n\t     </Customers>\n\n\t     <Rooms>\n\t       <Room>\n\t         <StartDate>2012-01-01</StartDate>\n\t         <EndDate>2012-01-03</EndDate>\n\t         <Price>40.00</Price>\n\t         <Currency>GBP</Currency>\n\t         <RoomTypeIds>\n\t           <RoomTypeId>117</RoomTypeId>\n\t         </RoomTypeIds>\n\t         <RoomDesc>2 peoples (1Double bed)</RoomDesc>\n\t         <Units>2</Units>\n\t       </Room>\n\t       <Room>\n\t         <StartDate>2012-01-02</StartDate>\n\t         <EndDate>2012-01-02</EndDate>\n\t         <Price>42.00</Price>\n\t         <Currency>GBP</Currency>\n\t         <RoomTypeIds>\n\t           <RoomTypeId>119</RoomTypeId>\n\t         </RoomTypeIds>\n\t         <RoomDesc>Dormitory Room</RoomDesc>\n\t         <Units>4</Units>\n\t       </Room>\n\t     </Rooms>\n\n\t   </Booking>\n\t </Bookings>\n\t</BookingListResponse>",
+          "content": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<BookingListResponse>\n <Bookings>\n   <Booking>\n     <Channel>hb2</Channel>\n     <StartDate>2012-01-01</StartDate>\n     <EndDate>2012-01-03</EndDate>\n     <IsCancellation>false</IsCancellation>\n     <MyallocatorId>4d7e47e467458b927c000000</MyallocatorId>\n     <MyallocatorCreationDate>2011-03-14</MyallocatorCreationDate>\n     <MyallocatorCreationTime>16:52:52</MyallocatorCreationTime>\n     <MyallocatorModificationDate>2011-03-14</MyallocatorModificationDate>\n     <MyallocatorModificationTime>16:52:52</MyallocatorModificationTime>\n     <OrderId>1234</OrderId>\n     <OrderDate>2011-11-11</OrderDate>\n     <OrderTime>11:11:00</OrderTime>\n     <OrderSource>Hostelbookers.com</OrderSource>\n     <OrderAdults>2</OrderAdults>\n     <OrderChildren>2</OrderChildren>\n     <Deposit>12.00</Deposit>\n     <TotalPrice>82.00</TotalPrice>\n     <TotalCurrency>GBP</TotalCurrency>\n\n     <Customers>\n       <Customer>\n         <CustomerFName>John</CustomerFName>\n         <CustomerLName>Smith</CustomerLName>\n         <CustomerAddress>522 Main Rd</CustomerAddress>\n         <CustomerArrivalTime>13:00</CustomerArrivalTime>\n         <CustomerEmail>john@googlemail.com</CustomerEmail>\n         <CustomerNationality>UK</CustomerNationality>\n         <CustomerPhone>+44 1234567890</CustomerPhone>\n         <CustomerCompany>Johnston Ltd.</CustomerCompany>\n         <CustomerCity>Stirling</CustomerCity>\n         <CustomerState>Stirlingshire</CustomerState>\n         <CustomerPostCode>FK8 2HE</CustomerPostCode>\n         <CustomerCountry>UK</CustomerCountry>\n         <CustomerNote>Bringing a dog</CustomerNote>\n       </Customer>\n     </Customers>\n\n     <Rooms>\n       <Room>\n         <StartDate>2012-01-01</StartDate>\n         <EndDate>2012-01-03</EndDate>\n         <Price>40.00</Price>\n         <Currency>GBP</Currency>\n         <RoomTypeIds>\n           <RoomTypeId>117</RoomTypeId>\n         </RoomTypeIds>\n         <RoomDesc>2 peoples (1Double bed)</RoomDesc>\n         <Units>2</Units>\n       </Room>\n       <Room>\n         <StartDate>2012-01-02</StartDate>\n         <EndDate>2012-01-02</EndDate>\n         <Price>42.00</Price>\n         <Currency>GBP</Currency>\n         <RoomTypeIds>\n           <RoomTypeId>119</RoomTypeId>\n         </RoomTypeIds>\n         <RoomDesc>Dormitory Room</RoomDesc>\n         <Units>4</Units>\n       </Room>\n     </Rooms>\n\n   </Booking>\n </Bookings>\n</BookingListResponse>",
           "type": "json"
         }
       ],
@@ -1967,7 +1967,7 @@ define({ "api": [
       "examples": [
         {
           "title": "JSON BookingPaymentDownload",
-          "content": "   {\n       \"Payments\": [\n            {\n                \"CardNumber\": \"4111111111111111\",\n                \"CardHolderName\": \"Martin Seamus McFly\",\n                \"CardCVV\": \"123\",\n                \"CardExpiryMonth\": \"11\",\n                \"CardExpiryYear\": \"2018\",\n                \"CardHolderAddress\": \"100 Easy St.\",\n                \"CardHolderCity\": \"Mountain View\",\n                \"CardHolderState\": \"CA\",\n                \"CardHolderPostCode\": \"94043\",\n                \"CardHolderCountry\": \"US\"\n            },\n            {\n                \"CardNumber\": \"4111111111111111\",\n                \"CardHolderName\": \"Emmett Lathrop Brown\",\n                \"CardCVV\": \"123\",\n                \"CardExpiryMonth\": \"11\",\n                \"CardExpiryYear\": \"2018\",\n                \"CardHolderAddress\": \"101 Easy St.\",\n                \"CardHolderCity\": \"Mountain View\",\n                \"CardHolderState\": \"CA\",\n                \"CardHolderPostCode\": \"94043\",\n                \"CardHolderCountry\": \"US\"\n            }\n       ]\n   }",
+          "content": "{\n    \"Payments\": [\n         {\n             \"CardNumber\": \"4111111111111111\",\n             \"CardHolderName\": \"Martin Seamus McFly\",\n             \"CardCVV\": \"123\",\n             \"CardExpiryMonth\": \"11\",\n             \"CardExpiryYear\": \"2018\",\n             \"CardHolderAddress\": \"100 Easy St.\",\n             \"CardHolderCity\": \"Mountain View\",\n             \"CardHolderState\": \"CA\",\n             \"CardHolderPostCode\": \"94043\",\n             \"CardHolderCountry\": \"US\"\n         },\n         {\n             \"CardNumber\": \"4111111111111111\",\n             \"CardHolderName\": \"Emmett Lathrop Brown\",\n             \"CardCVV\": \"123\",\n             \"CardExpiryMonth\": \"11\",\n             \"CardExpiryYear\": \"2018\",\n             \"CardHolderAddress\": \"101 Easy St.\",\n             \"CardHolderCity\": \"Mountain View\",\n             \"CardHolderState\": \"CA\",\n             \"CardHolderPostCode\": \"94043\",\n             \"CardHolderCountry\": \"US\"\n         }\n    ]\n}",
           "type": "json"
         }
       ]
@@ -2034,7 +2034,7 @@ define({ "api": [
     "examples": [
       {
         "title": "XML Request",
-        "content": "\t<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n\t<BookingPaymentPasswordValidate>\n\t  <Auth>\n\t    <UserToken>Customer User Token</UserToken>\n\t    <PropertyId>Property ID on myallocator.com</PropertyId>\n\t    <VendorId>Your Vendor ID</VendorId>\n\t    <VendorPassword>Your Vendor Password</VendorPassword>\n\t  </Auth>\n\t  <CreditCardPassword>some_password</CreditCardPassword>\n\t</BookingPaymentPasswordValidate>",
+        "content": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<BookingPaymentPasswordValidate>\n  <Auth>\n    <UserToken>Customer User Token</UserToken>\n    <PropertyId>Property ID on myallocator.com</PropertyId>\n    <VendorId>Your Vendor ID</VendorId>\n    <VendorPassword>Your Vendor Password</VendorPassword>\n  </Auth>\n  <CreditCardPassword>some_password</CreditCardPassword>\n</BookingPaymentPasswordValidate>",
         "type": "json"
       },
       {
@@ -2052,7 +2052,7 @@ define({ "api": [
       "examples": [
         {
           "title": "XML Response",
-          "content": "\t<?xml version=\"1.0\" encoding=\"utf-8\"?>\n\t<BookingPaymentPasswordValidateResponse PasswordValid=\"true\">\n\t  <Success>true</Success>\n\t</BookingPaymentPasswordValidateResponse>",
+          "content": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<BookingPaymentPasswordValidateResponse PasswordValid=\"true\">\n  <Success>true</Success>\n</BookingPaymentPasswordValidateResponse>",
           "type": "json"
         },
         {
@@ -2399,7 +2399,7 @@ define({ "api": [
       },
       {
         "title": "XML LoopBookingCreate Request",
-        "content": "    <?xml version=\"1.0\" encoding=\"UTF-8\"?>\n    <LoopBookingCreate>\n    <Auth>\n        <UserToken>User token</UserToken>\n        <PropertyId>###</PropertyId>\n    </Auth>\n    <Booking>\n        <StartDate>YYYY-MM-DD</StartDate>\n        <EndDate>YYYY-MM-DD</EndRate>\n    </Booking>\n    </LoopBookingCreate>",
+        "content": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<LoopBookingCreate>\n<Auth>\n    <UserToken>User token</UserToken>\n    <PropertyId>###</PropertyId>\n</Auth>\n<Booking>\n    <StartDate>YYYY-MM-DD</StartDate>\n    <EndDate>YYYY-MM-DD</EndRate>\n</Booking>\n</LoopBookingCreate>",
         "type": "json"
       },
       {
@@ -2477,7 +2477,7 @@ define({ "api": [
       },
       {
         "title": "XML LoopBookingCreate Request",
-        "content": "\t<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n\t<LoopBookingCreate>\n\t<Auth>\n\t\t<UserToken>User token</UserToken>\n\t\t<PropertyId>###</PropertyId>\n\t</Auth>\n\t<Booking>\n\t\t<StartDate>YYYY-MM-DD</StartDate>\n\t\t<EndDate>YYYY-MM-DD</EndRate>\n\t</Booking>\n\t</LoopBookingCreate>",
+        "content": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<LoopBookingCreate>\n<Auth>\n\t<UserToken>User token</UserToken>\n\t<PropertyId>###</PropertyId>\n</Auth>\n<Booking>\n\t<StartDate>YYYY-MM-DD</StartDate>\n\t<EndDate>YYYY-MM-DD</EndRate>\n</Booking>\n</LoopBookingCreate>",
         "type": "json"
       },
       {
@@ -2840,7 +2840,7 @@ define({ "api": [
     "examples": [
       {
         "title": "XML Request:",
-        "content": "\t<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n\t<PropertyImageCreate>\n\t <Auth>\n\t   <UserToken>User token</UserToken>\n\t   <PropertyId>Property ID on myallocator.com</PropertyId>\n\t   <VendorId>Your Vendor ID</VendorId>\n\t   <VendorPassword>Your Vendor Password</VendorPassword>\n\t </Auth>\n\t <CreatePropertyImage>\n\t   <PropertyImages>\n\t       <PropertyImage>\n\t         <Filename>double-room.jpg</Filename>\n\t         <Data>oAAAANSUhEUgAAG2QAABPqCAYAAA[...]</Data>\n\t       </PropertyImage>\n\t   </PropertyImages>\n\t </CreatePropertyImage>\n\t</PropertyImageCreate>",
+        "content": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<PropertyImageCreate>\n <Auth>\n   <UserToken>User token</UserToken>\n   <PropertyId>Property ID on myallocator.com</PropertyId>\n   <VendorId>Your Vendor ID</VendorId>\n   <VendorPassword>Your Vendor Password</VendorPassword>\n </Auth>\n <CreatePropertyImage>\n   <PropertyImages>\n       <PropertyImage>\n         <Filename>double-room.jpg</Filename>\n         <Data>oAAAANSUhEUgAAG2QAABPqCAYAAA[...]</Data>\n       </PropertyImage>\n   </PropertyImages>\n </CreatePropertyImage>\n</PropertyImageCreate>",
         "type": "json"
       },
       {
@@ -2876,7 +2876,7 @@ define({ "api": [
       "examples": [
         {
           "title": "XML Response",
-          "content": "\t<?xml version=\"1.0\" encoding=\"utf-8\"?>\n\t<CreatePropertyImageResponse>\n\t <Success>true</Success>\n\t <PropertyImage>\n\t    <PropertyImageId>423</PropertyImageId>\n\t    <SavedFilename>576421558171c7f5054966d6b637c37e.jpg</SavedFilename>\n\t </PropertyImage>\n\t</CreatePropertyImageResponse>",
+          "content": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<CreatePropertyImageResponse>\n <Success>true</Success>\n <PropertyImage>\n    <PropertyImageId>423</PropertyImageId>\n    <SavedFilename>576421558171c7f5054966d6b637c37e.jpg</SavedFilename>\n </PropertyImage>\n</CreatePropertyImageResponse>",
           "type": "json"
         },
         {
@@ -2934,7 +2934,7 @@ define({ "api": [
     "examples": [
       {
         "title": "XML Request",
-        "content": "\t<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n\t<PropertyImageList>\n\t <Auth>\n\t   <UserToken>User token</UserToken>\n\t   <PropertyId>Property ID on myallocator.com</PropertyId>\n\t   <VendorId>Your Vendor ID</VendorId>\n\t   <VendorPassword>Your Vendor Password</VendorPassword>\n\t </Auth>\n\t</PropertyImageList>",
+        "content": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<PropertyImageList>\n <Auth>\n   <UserToken>User token</UserToken>\n   <PropertyId>Property ID on myallocator.com</PropertyId>\n   <VendorId>Your Vendor ID</VendorId>\n   <VendorPassword>Your Vendor Password</VendorPassword>\n </Auth>\n</PropertyImageList>",
         "type": "json"
       },
       {
@@ -2970,7 +2970,7 @@ define({ "api": [
       "examples": [
         {
           "title": "XML Response",
-          "content": "\t<?xml version=\"1.0\" encoding=\"utf-8\"?>\n\t<PropertyImageListResponse>\n\t <PropertyImages>\n\t   <PropertyImage>\n\t     <ImageId>343</ImageId>\n\t     <SavedFilename>d4790aaafdf4512dad0c4f2eafe72946.png</SavedFilename>\n\t   </PropertyImage>\n\n\t   <PropertyImage>\n\t     <ImageId>344</ImageId>\n\t     <SavedFilename>a92714654b7486ba6ca010f23bf4c0b6.jpg</SavedFilename>\n\t   </PropertyImage>\n\t  </PropertyImages>\n\t</PropertyImageListResponse>",
+          "content": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<PropertyImageListResponse>\n <PropertyImages>\n   <PropertyImage>\n     <ImageId>343</ImageId>\n     <SavedFilename>d4790aaafdf4512dad0c4f2eafe72946.png</SavedFilename>\n   </PropertyImage>\n\n   <PropertyImage>\n     <ImageId>344</ImageId>\n     <SavedFilename>a92714654b7486ba6ca010f23bf4c0b6.jpg</SavedFilename>\n   </PropertyImage>\n  </PropertyImages>\n</PropertyImageListResponse>",
           "type": "json"
         },
         {
@@ -3050,7 +3050,7 @@ define({ "api": [
       },
       {
         "title": "XML Request",
-        "content": "\t<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n\t<PropertyImageRemove>\n\t <Auth>\n\t   <UserToken>User token</UserToken>\n\t   <PropertyId>Property ID on myallocator.com</PropertyId>\n\t   <VendorId>Your Vendor ID</VendorId>\n\t   <VendorPassword>Your Vendor Password</VendorPassword>\n\t </Auth>\n\t <RemovePropertyImages>\n\t   <PropertyImageIds>\n\t     <PropertyImageId>35</PropertyImageId>\n\t     <PropertyImageId>36</PropertyImageId>\n\t   </PropertyImageIds>\n\t </RemovePropertyImages>\n\t</PropertyImageRemove>",
+        "content": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<PropertyImageRemove>\n <Auth>\n   <UserToken>User token</UserToken>\n   <PropertyId>Property ID on myallocator.com</PropertyId>\n   <VendorId>Your Vendor ID</VendorId>\n   <VendorPassword>Your Vendor Password</VendorPassword>\n </Auth>\n <RemovePropertyImages>\n   <PropertyImageIds>\n     <PropertyImageId>35</PropertyImageId>\n     <PropertyImageId>36</PropertyImageId>\n   </PropertyImageIds>\n </RemovePropertyImages>\n</PropertyImageRemove>",
         "type": "json"
       }
     ],
@@ -3058,7 +3058,7 @@ define({ "api": [
       "examples": [
         {
           "title": "XML Response",
-          "content": "\t<?xml version=\"1.0\" encoding=\"utf-8\"?>\n\t<PropertyImageRemoveResponse>\n\t  <Success>true</Success>\n\t</PropertyImageRemoveResponse>",
+          "content": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<PropertyImageRemoveResponse>\n  <Success>true</Success>\n</PropertyImageRemoveResponse>",
           "type": "json"
         },
         {
@@ -3130,12 +3130,12 @@ define({ "api": [
     "examples": [
       {
         "title": "XML PropertyList Request",
-        "content": " <?xml version=\"1.0\" encoding=\"UTF-8\"?>\n <PropertyList>\n  <Auth>\n    <UserToken>User token</UserToken>\n    <VendorId>Your Vendor ID</VendorId>\n    <VendorPassword>Your Vendor Password</VendorPassword>\n  </Auth>\n  <Options>\n    <ExpiresSoon>0</ExpiresSoon>\n  </Options>\n </PropertyList>",
+        "content": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<PropertyList>\n <Auth>\n   <UserToken>User token</UserToken>\n   <VendorId>Your Vendor ID</VendorId>\n   <VendorPassword>Your Vendor Password</VendorPassword>\n </Auth>\n <Options>\n   <ExpiresSoon>0</ExpiresSoon>\n </Options>\n</PropertyList>",
         "type": "json"
       },
       {
         "title": "JSON PropertyList Request",
-        "content": " {\n    \"Auth/VendorId\":\"Your Vendor ID\",\n    \"Auth/VendorPassword\":\"Your Vendor Password\",\n    \"Auth/UserToken\":\"User token\",\n    \"Options\": {\n        \"ExpiresSoon\": 0\n    }\n }",
+        "content": "{\n   \"Auth/VendorId\":\"Your Vendor ID\",\n   \"Auth/VendorPassword\":\"Your Vendor Password\",\n   \"Auth/UserToken\":\"User token\",\n   \"Options\": {\n       \"ExpiresSoon\": 0\n   }\n}",
         "type": "json"
       },
       {
@@ -3529,7 +3529,7 @@ define({ "api": [
     "examples": [
       {
         "title": "XML Request",
-        "content": "    <?xml version=\"1.0\" encoding=\"UTF-8\"?>\n    <RatePlanCreate>\n    <Auth>\n    <UserToken>User token</UserToken>\n    <PropertyId>Property ID on myallocator.com</PropertyId>\n    <VendorId>Your Vendor ID</VendorId>\n    <VendorPassword>Your Vendor Password</VendorPassword>\n    </Auth>\n    <RoomTypeId>123</RoomTypeId>\n    <Label>Some Text</Label>\n    <IsIBEOnly>true|false</IsIBEOnly>\n    <OccupancyMin>0</OccupancyMin>\n    <OccupancyMax>0</OccupancyMax>\n    <MinLOS>0</MinLOS>\n    <MaxLOS>0</MaxLOS>\n    <RateModel>daily|derived-percentage|derived-fixed</RateModel>\n    <RateModifier>10.00</RateModifier>\n    </RatePlanCreate>",
+        "content": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<RatePlanCreate>\n<Auth>\n<UserToken>User token</UserToken>\n<PropertyId>Property ID on myallocator.com</PropertyId>\n<VendorId>Your Vendor ID</VendorId>\n<VendorPassword>Your Vendor Password</VendorPassword>\n</Auth>\n<RoomTypeId>123</RoomTypeId>\n<Label>Some Text</Label>\n<IsIBEOnly>true|false</IsIBEOnly>\n<OccupancyMin>0</OccupancyMin>\n<OccupancyMax>0</OccupancyMax>\n<MinLOS>0</MinLOS>\n<MaxLOS>0</MaxLOS>\n<RateModel>daily|derived-percentage|derived-fixed</RateModel>\n<RateModifier>10.00</RateModifier>\n</RatePlanCreate>",
         "type": "json"
       },
       {
@@ -3637,7 +3637,7 @@ define({ "api": [
     "examples": [
       {
         "title": "XML Request",
-        "content": "    <?xml version=\"1.0\" encoding=\"UTF-8\"?>\n    <RatePlanList>\n    <Auth>\n    <UserToken>User token</UserToken>\n    <PropertyId>Property ID on myallocator.com</PropertyId>\n    <VendorId>Your Vendor ID</VendorId>\n    <VendorPassword>Your Vendor Password</VendorPassword>\n    </Auth>\n    </RatePlanList>",
+        "content": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<RatePlanList>\n<Auth>\n<UserToken>User token</UserToken>\n<PropertyId>Property ID on myallocator.com</PropertyId>\n<VendorId>Your Vendor ID</VendorId>\n<VendorPassword>Your Vendor Password</VendorPassword>\n</Auth>\n</RatePlanList>",
         "type": "json"
       },
       {
@@ -3738,7 +3738,7 @@ define({ "api": [
     "examples": [
       {
         "title": "XML Request",
-        "content": "\t<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n\t<RatePlanRemove>\n\t <Auth>\n\t   <UserToken>User token</UserToken>\n\t   <PropertyId>Property ID on myallocator.com</PropertyId>\n\t   <VendorId>Your Vendor ID</VendorId>\n\t   <VendorPassword>Your Vendor Password</VendorPassword>\n\t </Auth>\n\t</RatePlanRemove>",
+        "content": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<RatePlanRemove>\n <Auth>\n   <UserToken>User token</UserToken>\n   <PropertyId>Property ID on myallocator.com</PropertyId>\n   <VendorId>Your Vendor ID</VendorId>\n   <VendorPassword>Your Vendor Password</VendorPassword>\n </Auth>\n</RatePlanRemove>",
         "type": "json"
       },
       {
@@ -3839,7 +3839,7 @@ define({ "api": [
     "examples": [
       {
         "title": "XML Request",
-        "content": "    <?xml version=\"1.0\" encoding=\"UTF-8\"?>\n    <RatePlanUpdate>\n    <Auth>\n       <UserToken>User token</UserToken>\n       <PropertyId>Property ID on myallocator.com</PropertyId>\n       <VendorId>Your Vendor ID</VendorId>\n       <VendorPassword>Your Vendor Password</VendorPassword>\n    </Auth>\n    <RatePlanId>1234</RatePlanId>\n    <RoomTypeId>1234<RoomTypeId>\n    <Label>\"Name of RatePlan\"<Label>\n    <IsIBEOnly>false<IsIBEOnly>\n    <OccupancyMin>0<OccupancyMin>\n    <OccupancyMax>0<OccupancyMax>\n    <MinLOS>0<MinLOS>\n    <MaxLOS>0<MaxLOS>\n    <RateModel>\"daily\"<RateModel>\n    <RateModifier><RateModifier>\n    </RatePlanUpdate>",
+        "content": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<RatePlanUpdate>\n<Auth>\n   <UserToken>User token</UserToken>\n   <PropertyId>Property ID on myallocator.com</PropertyId>\n   <VendorId>Your Vendor ID</VendorId>\n   <VendorPassword>Your Vendor Password</VendorPassword>\n</Auth>\n<RatePlanId>1234</RatePlanId>\n<RoomTypeId>1234<RoomTypeId>\n<Label>\"Name of RatePlan\"<Label>\n<IsIBEOnly>false<IsIBEOnly>\n<OccupancyMin>0<OccupancyMin>\n<OccupancyMax>0<OccupancyMax>\n<MinLOS>0<MinLOS>\n<MaxLOS>0<MaxLOS>\n<RateModel>\"daily\"<RateModel>\n<RateModifier><RateModifier>\n</RatePlanUpdate>",
         "type": "json"
       },
       {
@@ -3969,7 +3969,7 @@ define({ "api": [
       },
       {
         "title": "XML RoomAvailabilityList Request",
-        "content": "\t<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n\t<RoomAvailabilityList>\n\t<Auth>\n\t\t<UserToken>User token</UserToken>\n\t\t<VendorId>Customer User ID</VendorId>\n\t\t<VendorPassword>Customer Password</VendorPassword>\n\t\t<PropertyId>###</PropertyId>\n\t</Auth>\n\t<StartDate>2015-01-01</StartDate>\n\t<EndDate>2017-01-01</EndDate>\n\t</RoomAvailabilityList>",
+        "content": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<RoomAvailabilityList>\n<Auth>\n\t<UserToken>User token</UserToken>\n\t<VendorId>Customer User ID</VendorId>\n\t<VendorPassword>Customer Password</VendorPassword>\n\t<PropertyId>###</PropertyId>\n</Auth>\n<StartDate>2015-01-01</StartDate>\n<EndDate>2017-01-01</EndDate>\n</RoomAvailabilityList>",
         "type": "json"
       }
     ],
@@ -3977,12 +3977,12 @@ define({ "api": [
       "examples": [
         {
           "title": "JSON RoomAvailabilityList",
-          "content": "    {\n        \"Rooms\": [\n            {\n                \"Data\": [\n                    {\n                        \"Closed\": false,\n                        \"ClosedForArrival\": false,\n                        \"ClosedForDeparture\": false,\n                        \"Date\": \"2014-03-15\",\n                        \"MaxStay\": 7,\n                        \"MinStay\": 1,\n                        \"Price\": 33,\n                        \"Units\": 2\n                    },\n                    {\n                        \"Closed\": false,\n                        \"ClosedForArrival\": false,\n                        \"ClosedForDeparture\": false,\n                        \"Date\": \"2014-03-16\",\n                        \"MaxStay\": 7,\n                        \"MinStay\": 1,\n                        \"Price\": 33,\n                        \"Units\": 2\n                    }\n                ],\n                \"PropertyId\": 1234,\n                \"RatePlanId\": 0,\n                \"RoomId\": 48,\n                \"RoomName\": \"1-person private\",\n                \"isPrivate\": true\n            },\n            {\n                \"Data\": [\n                    {\n                        \"Closed\": false,\n                        \"ClosedForArrival\": false,\n                        \"ClosedForDeparture\": false,\n                        \"Date\": \"2014-03-15\",\n                        \"MaxStay\": 7,\n                        \"MinStay\": 1,\n                        \"Price\": 0,\n                        \"Units\": 0\n                    },\n                    {\n                        \"Closed\": false,\n                        \"ClosedForArrival\": false,\n                        \"ClosedForDeparture\": false,\n                        \"Date\": \"2014-03-16\",\n                        \"MaxStay\": 7,\n                        \"MinStay\": 1,\n                        \"Price\": 0,\n                        \"Units\": 0\n                    }\n                ],\n                \"PropertyId\": 1,\n                \"RatePlanId\": 0,\n                \"RoomId\": 49,\n                \"RoomName\": \"5-person male shared\",\n                \"isPrivate\": false\n            }\n        ]\n    }",
+          "content": "{\n    \"Rooms\": [\n        {\n            \"Data\": [\n                {\n                    \"Closed\": false,\n                    \"ClosedForArrival\": false,\n                    \"ClosedForDeparture\": false,\n                    \"Date\": \"2014-03-15\",\n                    \"MaxStay\": 7,\n                    \"MinStay\": 1,\n                    \"Price\": 33,\n                    \"Units\": 2\n                },\n                {\n                    \"Closed\": false,\n                    \"ClosedForArrival\": false,\n                    \"ClosedForDeparture\": false,\n                    \"Date\": \"2014-03-16\",\n                    \"MaxStay\": 7,\n                    \"MinStay\": 1,\n                    \"Price\": 33,\n                    \"Units\": 2\n                }\n            ],\n            \"PropertyId\": 1234,\n            \"RatePlanId\": 0,\n            \"RoomId\": 48,\n            \"RoomName\": \"1-person private\",\n            \"isPrivate\": true\n        },\n        {\n            \"Data\": [\n                {\n                    \"Closed\": false,\n                    \"ClosedForArrival\": false,\n                    \"ClosedForDeparture\": false,\n                    \"Date\": \"2014-03-15\",\n                    \"MaxStay\": 7,\n                    \"MinStay\": 1,\n                    \"Price\": 0,\n                    \"Units\": 0\n                },\n                {\n                    \"Closed\": false,\n                    \"ClosedForArrival\": false,\n                    \"ClosedForDeparture\": false,\n                    \"Date\": \"2014-03-16\",\n                    \"MaxStay\": 7,\n                    \"MinStay\": 1,\n                    \"Price\": 0,\n                    \"Units\": 0\n                }\n            ],\n            \"PropertyId\": 1,\n            \"RatePlanId\": 0,\n            \"RoomId\": 49,\n            \"RoomName\": \"5-person male shared\",\n            \"isPrivate\": false\n        }\n    ]\n}",
           "type": "json"
         },
         {
           "title": "XML RoomAvailabilityList",
-          "content": "\t<?xml version=\"1.0\" encoding=\"utf-8\"?>\n\t<RoomAvailabilityListResponse Success=\"false\">\n\t  <Rooms PropertyId=\"1234\" RoomId=\"4567\" \"RatePlanId\"=\"0\" RoomName=\"Test Standard room\" isPrivate=\"true\">\n\t    <Dates Closed=\"0\" ClosedForArrival=\"0\" ClosedForDeparture=\"0\" Date=\"2015-04-01\" MaxStay=\"0\" MinStay=\"1\" Price=\"0.00\" Units=\"0\" />\n\t    <Dates Closed=\"0\" ClosedForArrival=\"0\" ClosedForDeparture=\"0\" Date=\"2015-04-02\" MaxStay=\"0\" MinStay=\"1\" Price=\"0.00\" Units=\"0\" />\n\t    <Dates Closed=\"0\" ClosedForArrival=\"0\" ClosedForDeparture=\"0\" Date=\"2015-04-03\" MaxStay=\"0\" MinStay=\"1\" Price=\"0.00\" Units=\"0\" />\n\t    <Dates Closed=\"0\" ClosedForArrival=\"0\" ClosedForDeparture=\"0\" Date=\"2015-04-04\" MaxStay=\"0\" MinStay=\"1\" Price=\"0.00\" Units=\"0\" />\n\t    <Dates Closed=\"0\" ClosedForArrival=\"0\" ClosedForDeparture=\"0\" Date=\"2015-04-05\" MaxStay=\"0\" MinStay=\"1\" Price=\"0.00\" Units=\"0\" />\n\t    <Dates Closed=\"0\" ClosedForArrival=\"0\" ClosedForDeparture=\"0\" Date=\"2015-04-06\" MaxStay=\"0\" MinStay=\"1\" Price=\"0.00\" Units=\"0\" />\n\t    <Dates Closed=\"0\" ClosedForArrival=\"0\" ClosedForDeparture=\"0\" Date=\"2015-04-07\" MaxStay=\"0\" MinStay=\"1\" Price=\"0.00\" Units=\"0\" />\n\t    <Dates Closed=\"0\" ClosedForArrival=\"0\" ClosedForDeparture=\"0\" Date=\"2015-04-08\" MaxStay=\"0\" MinStay=\"1\" Price=\"0.00\" Units=\"0\" />\n\t    <Dates Closed=\"0\" ClosedForArrival=\"0\" ClosedForDeparture=\"0\" Date=\"2015-04-09\" MaxStay=\"0\" MinStay=\"1\" Price=\"0.00\" Units=\"0\" />\n\t    <Dates Closed=\"0\" ClosedForArrival=\"0\" ClosedForDeparture=\"0\" Date=\"2015-04-10\" MaxStay=\"0\" MinStay=\"1\" Price=\"0.00\" Units=\"0\" />\n\t    <Dates Closed=\"0\" ClosedForArrival=\"0\" ClosedForDeparture=\"0\" Date=\"2015-04-11\" MaxStay=\"0\" MinStay=\"1\" Price=\"0.00\" Units=\"0\" />\n\t    <Dates Closed=\"0\" ClosedForArrival=\"0\" ClosedForDeparture=\"0\" Date=\"2015-04-12\" MaxStay=\"0\" MinStay=\"1\" Price=\"0.00\" Units=\"0\" />\n\t    <Dates Closed=\"0\" ClosedForArrival=\"0\" ClosedForDeparture=\"0\" Date=\"2015-04-13\" MaxStay=\"0\" MinStay=\"1\" Price=\"0.00\" Units=\"0\" />\n\t    <Dates Closed=\"0\" ClosedForArrival=\"0\" ClosedForDeparture=\"0\" Date=\"2015-04-14\" MaxStay=\"0\" MinStay=\"1\" Price=\"0.00\" Units=\"0\" />\n\t    <Dates Closed=\"0\" ClosedForArrival=\"0\" ClosedForDeparture=\"0\" Date=\"2015-04-15\" MaxStay=\"0\" MinStay=\"1\" Price=\"0.00\" Units=\"0\" />\n\t    <Dates Closed=\"0\" ClosedForArrival=\"0\" ClosedForDeparture=\"0\" Date=\"2015-04-16\" MaxStay=\"0\" MinStay=\"1\" Price=\"0.00\" Units=\"0\" />\n\t    <Dates Closed=\"0\" ClosedForArrival=\"0\" ClosedForDeparture=\"0\" Date=\"2015-04-17\" MaxStay=\"0\" MinStay=\"1\" Price=\"0.00\" Units=\"0\" />\n\t    <Dates Closed=\"0\" ClosedForArrival=\"0\" ClosedForDeparture=\"0\" Date=\"2015-04-18\" MaxStay=\"0\" MinStay=\"1\" Price=\"0.00\" Units=\"0\" />\n\t    <Dates Closed=\"0\" ClosedForArrival=\"0\" ClosedForDeparture=\"0\" Date=\"2015-04-19\" MaxStay=\"0\" MinStay=\"1\" Price=\"0.00\" Units=\"0\" />\n\t    <Dates Closed=\"0\" ClosedForArrival=\"0\" ClosedForDeparture=\"0\" Date=\"2015-04-20\" MaxStay=\"0\" MinStay=\"1\" Price=\"0.00\" Units=\"0\" />\n\t    <Dates Closed=\"0\" ClosedForArrival=\"0\" ClosedForDeparture=\"0\" Date=\"2015-04-21\" MaxStay=\"0\" MinStay=\"1\" Price=\"0.00\" Units=\"0\" />\n\t    <Dates Closed=\"0\" ClosedForArrival=\"0\" ClosedForDeparture=\"0\" Date=\"2015-04-22\" MaxStay=\"0\" MinStay=\"1\" Price=\"0.00\" Units=\"0\" />\n\t    <Dates Closed=\"0\" ClosedForArrival=\"0\" ClosedForDeparture=\"0\" Date=\"2015-04-23\" MaxStay=\"0\" MinStay=\"1\" Price=\"0.00\" Units=\"0\" />\n\t    <Dates Closed=\"0\" ClosedForArrival=\"0\" ClosedForDeparture=\"0\" Date=\"2015-04-24\" MaxStay=\"0\" MinStay=\"1\" Price=\"0.00\" Units=\"0\" />\n\t    <Dates Closed=\"0\" ClosedForArrival=\"0\" ClosedForDeparture=\"0\" Date=\"2015-04-25\" MaxStay=\"0\" MinStay=\"1\" Price=\"0.00\" Units=\"0\" />\n\t    <Dates Closed=\"0\" ClosedForArrival=\"0\" ClosedForDeparture=\"0\" Date=\"2015-04-26\" MaxStay=\"0\" MinStay=\"1\" Price=\"0.00\" Units=\"0\" />\n\t    <Dates Closed=\"0\" ClosedForArrival=\"0\" ClosedForDeparture=\"0\" Date=\"2015-04-27\" MaxStay=\"0\" MinStay=\"1\" Price=\"0.00\" Units=\"0\" />\n\t    <Dates Closed=\"0\" ClosedForArrival=\"0\" ClosedForDeparture=\"0\" Date=\"2015-04-28\" MaxStay=\"0\" MinStay=\"1\" Price=\"0.00\" Units=\"0\" />\n\t    <Dates Closed=\"0\" ClosedForArrival=\"0\" ClosedForDeparture=\"0\" Date=\"2015-04-29\" MaxStay=\"0\" MinStay=\"1\" Price=\"0.00\" Units=\"0\" />\n\t    <Dates Closed=\"0\" ClosedForArrival=\"0\" ClosedForDeparture=\"0\" Date=\"2015-04-30\" MaxStay=\"0\" MinStay=\"1\" Price=\"0.00\" Units=\"0\" />\n\t    <Dates Closed=\"0\" ClosedForArrival=\"0\" ClosedForDeparture=\"0\" Date=\"2015-05-01\" MaxStay=\"0\" MinStay=\"1\" Price=\"0.00\" Units=\"0\" />\n\t    <Dates Closed=\"0\" ClosedForArrival=\"0\" ClosedForDeparture=\"0\" Date=\"2015-05-02\" MaxStay=\"0\" MinStay=\"1\" Price=\"0.00\" Units=\"0\" />\n\t    <Dates Closed=\"0\" ClosedForArrival=\"0\" ClosedForDeparture=\"0\" Date=\"2015-05-03\" MaxStay=\"0\" MinStay=\"1\" Price=\"0.00\" Units=\"0\" />\n\t    <Dates Closed=\"0\" ClosedForArrival=\"0\" ClosedForDeparture=\"0\" Date=\"2015-05-04\" MaxStay=\"0\" MinStay=\"1\" Price=\"0.00\" Units=\"0\" />\n\t    <Dates Closed=\"0\" ClosedForArrival=\"0\" ClosedForDeparture=\"0\" Date=\"2015-05-05\" MaxStay=\"5\" MinStay=\"5\" Price=\"45.00\" Units=\"4\" />\n\t    <Dates Closed=\"0\" ClosedForArrival=\"0\" ClosedForDeparture=\"0\" Date=\"2015-05-06\" MaxStay=\"5\" MinStay=\"5\" Price=\"45.00\" Units=\"4\" />\n\t    <Dates Closed=\"0\" ClosedForArrival=\"0\" ClosedForDeparture=\"0\" Date=\"2015-05-07\" MaxStay=\"5\" MinStay=\"5\" Price=\"45.00\" Units=\"4\" />\n\t    <Dates Closed=\"0\" ClosedForArrival=\"0\" ClosedForDeparture=\"0\" Date=\"2015-05-08\" MaxStay=\"5\" MinStay=\"5\" Price=\"55.00\" Units=\"4\" />\n\t    <Dates Closed=\"0\" ClosedForArrival=\"0\" ClosedForDeparture=\"0\" Date=\"2015-05-09\" MaxStay=\"5\" MinStay=\"5\" Price=\"55.00\" Units=\"4\" />\n\t    <Dates Closed=\"0\" ClosedForArrival=\"0\" ClosedForDeparture=\"0\" Date=\"2015-05-10\" MaxStay=\"5\" MinStay=\"5\" Price=\"45.00\" Units=\"4\" />\n\t    <Dates Closed=\"0\" ClosedForArrival=\"0\" ClosedForDeparture=\"0\" Date=\"2015-05-11\" MaxStay=\"5\" MinStay=\"5\" Price=\"45.00\" Units=\"4\" />\n\t    <Dates Closed=\"0\" ClosedForArrival=\"0\" ClosedForDeparture=\"0\" Date=\"2015-05-12\" MaxStay=\"5\" MinStay=\"5\" Price=\"45.00\" Units=\"4\" />\n\t    <Dates Closed=\"0\" ClosedForArrival=\"0\" ClosedForDeparture=\"0\" Date=\"2015-05-13\" MaxStay=\"5\" MinStay=\"5\" Price=\"45.00\" Units=\"4\" />\n\t    <Dates Closed=\"0\" ClosedForArrival=\"0\" ClosedForDeparture=\"0\" Date=\"2015-05-14\" MaxStay=\"5\" MinStay=\"5\" Price=\"45.00\" Units=\"4\" />\n\t    <Dates Closed=\"0\" ClosedForArrival=\"0\" ClosedForDeparture=\"0\" Date=\"2015-05-15\" MaxStay=\"5\" MinStay=\"5\" Price=\"55.00\" Units=\"4\" />\n\t    <Dates Closed=\"0\" ClosedForArrival=\"0\" ClosedForDeparture=\"0\" Date=\"2015-05-16\" MaxStay=\"5\" MinStay=\"5\" Price=\"55.00\" Units=\"4\" />\n\t    <Dates Closed=\"0\" ClosedForArrival=\"0\" ClosedForDeparture=\"0\" Date=\"2015-05-17\" MaxStay=\"5\" MinStay=\"5\" Price=\"45.00\" Units=\"4\" />\n\t    <Dates Closed=\"0\" ClosedForArrival=\"0\" ClosedForDeparture=\"0\" Date=\"2015-05-18\" MaxStay=\"5\" MinStay=\"5\" Price=\"45.00\" Units=\"4\" />\n\t    <Dates Closed=\"0\" ClosedForArrival=\"0\" ClosedForDeparture=\"0\" Date=\"2015-05-19\" MaxStay=\"5\" MinStay=\"5\" Price=\"45.00\" Units=\"4\" />\n\t    <Dates Closed=\"0\" ClosedForArrival=\"0\" ClosedForDeparture=\"0\" Date=\"2015-05-20\" MaxStay=\"5\" MinStay=\"5\" Price=\"45.00\" Units=\"4\" />\n\t    <Dates Closed=\"0\" ClosedForArrival=\"0\" ClosedForDeparture=\"0\" Date=\"2015-05-21\" MaxStay=\"5\" MinStay=\"5\" Price=\"45.00\" Units=\"4\" />\n\t    <Dates Closed=\"0\" ClosedForArrival=\"0\" ClosedForDeparture=\"0\" Date=\"2015-05-22\" MaxStay=\"5\" MinStay=\"5\" Price=\"55.00\" Units=\"4\" />\n\t    <Dates Closed=\"0\" ClosedForArrival=\"0\" ClosedForDeparture=\"0\" Date=\"2015-05-23\" MaxStay=\"5\" MinStay=\"5\" Price=\"55.00\" Units=\"4\" />\n\t    <Dates Closed=\"0\" ClosedForArrival=\"0\" ClosedForDeparture=\"0\" Date=\"2015-05-24\" MaxStay=\"5\" MinStay=\"5\" Price=\"45.00\" Units=\"4\" />\n\t    <Dates Closed=\"0\" ClosedForArrival=\"0\" ClosedForDeparture=\"0\" Date=\"2015-05-25\" MaxStay=\"5\" MinStay=\"5\" Price=\"45.00\" Units=\"4\" />\n\t    <Dates Closed=\"0\" ClosedForArrival=\"0\" ClosedForDeparture=\"0\" Date=\"2015-05-26\" MaxStay=\"5\" MinStay=\"5\" Price=\"45.00\" Units=\"4\" />\n\t    <Dates Closed=\"0\" ClosedForArrival=\"0\" ClosedForDeparture=\"0\" Date=\"2015-05-27\" MaxStay=\"5\" MinStay=\"5\" Price=\"45.00\" Units=\"4\" />\n\t    <Dates Closed=\"0\" ClosedForArrival=\"0\" ClosedForDeparture=\"0\" Date=\"2015-05-28\" MaxStay=\"5\" MinStay=\"5\" Price=\"45.00\" Units=\"4\" />\n\t    <Dates Closed=\"0\" ClosedForArrival=\"0\" ClosedForDeparture=\"0\" Date=\"2015-05-29\" MaxStay=\"5\" MinStay=\"5\" Price=\"55.00\" Units=\"4\" />\n\t    <Dates Closed=\"0\" ClosedForArrival=\"0\" ClosedForDeparture=\"0\" Date=\"2015-05-30\" MaxStay=\"5\" MinStay=\"5\" Price=\"55.00\" Units=\"4\" />\n\t    <Dates Closed=\"0\" ClosedForArrival=\"0\" ClosedForDeparture=\"0\" Date=\"2015-05-31\" MaxStay=\"5\" MinStay=\"5\" Price=\"45.00\" Units=\"4\" />\n\t    <Dates Closed=\"0\" ClosedForArrival=\"0\" ClosedForDeparture=\"0\" Date=\"2015-06-01\" MaxStay=\"5\" MinStay=\"5\" Price=\"45.00\" Units=\"4\" />\n\t  </Rooms>\n\t</RoomAvailabilityListResponse>",
+          "content": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<RoomAvailabilityListResponse Success=\"false\">\n  <Rooms PropertyId=\"1234\" RoomId=\"4567\" \"RatePlanId\"=\"0\" RoomName=\"Test Standard room\" isPrivate=\"true\">\n    <Dates Closed=\"0\" ClosedForArrival=\"0\" ClosedForDeparture=\"0\" Date=\"2015-04-01\" MaxStay=\"0\" MinStay=\"1\" Price=\"0.00\" Units=\"0\" />\n    <Dates Closed=\"0\" ClosedForArrival=\"0\" ClosedForDeparture=\"0\" Date=\"2015-04-02\" MaxStay=\"0\" MinStay=\"1\" Price=\"0.00\" Units=\"0\" />\n    <Dates Closed=\"0\" ClosedForArrival=\"0\" ClosedForDeparture=\"0\" Date=\"2015-04-03\" MaxStay=\"0\" MinStay=\"1\" Price=\"0.00\" Units=\"0\" />\n    <Dates Closed=\"0\" ClosedForArrival=\"0\" ClosedForDeparture=\"0\" Date=\"2015-04-04\" MaxStay=\"0\" MinStay=\"1\" Price=\"0.00\" Units=\"0\" />\n    <Dates Closed=\"0\" ClosedForArrival=\"0\" ClosedForDeparture=\"0\" Date=\"2015-04-05\" MaxStay=\"0\" MinStay=\"1\" Price=\"0.00\" Units=\"0\" />\n    <Dates Closed=\"0\" ClosedForArrival=\"0\" ClosedForDeparture=\"0\" Date=\"2015-04-06\" MaxStay=\"0\" MinStay=\"1\" Price=\"0.00\" Units=\"0\" />\n    <Dates Closed=\"0\" ClosedForArrival=\"0\" ClosedForDeparture=\"0\" Date=\"2015-04-07\" MaxStay=\"0\" MinStay=\"1\" Price=\"0.00\" Units=\"0\" />\n    <Dates Closed=\"0\" ClosedForArrival=\"0\" ClosedForDeparture=\"0\" Date=\"2015-04-08\" MaxStay=\"0\" MinStay=\"1\" Price=\"0.00\" Units=\"0\" />\n    <Dates Closed=\"0\" ClosedForArrival=\"0\" ClosedForDeparture=\"0\" Date=\"2015-04-09\" MaxStay=\"0\" MinStay=\"1\" Price=\"0.00\" Units=\"0\" />\n    <Dates Closed=\"0\" ClosedForArrival=\"0\" ClosedForDeparture=\"0\" Date=\"2015-04-10\" MaxStay=\"0\" MinStay=\"1\" Price=\"0.00\" Units=\"0\" />\n    <Dates Closed=\"0\" ClosedForArrival=\"0\" ClosedForDeparture=\"0\" Date=\"2015-04-11\" MaxStay=\"0\" MinStay=\"1\" Price=\"0.00\" Units=\"0\" />\n    <Dates Closed=\"0\" ClosedForArrival=\"0\" ClosedForDeparture=\"0\" Date=\"2015-04-12\" MaxStay=\"0\" MinStay=\"1\" Price=\"0.00\" Units=\"0\" />\n    <Dates Closed=\"0\" ClosedForArrival=\"0\" ClosedForDeparture=\"0\" Date=\"2015-04-13\" MaxStay=\"0\" MinStay=\"1\" Price=\"0.00\" Units=\"0\" />\n    <Dates Closed=\"0\" ClosedForArrival=\"0\" ClosedForDeparture=\"0\" Date=\"2015-04-14\" MaxStay=\"0\" MinStay=\"1\" Price=\"0.00\" Units=\"0\" />\n    <Dates Closed=\"0\" ClosedForArrival=\"0\" ClosedForDeparture=\"0\" Date=\"2015-04-15\" MaxStay=\"0\" MinStay=\"1\" Price=\"0.00\" Units=\"0\" />\n    <Dates Closed=\"0\" ClosedForArrival=\"0\" ClosedForDeparture=\"0\" Date=\"2015-04-16\" MaxStay=\"0\" MinStay=\"1\" Price=\"0.00\" Units=\"0\" />\n    <Dates Closed=\"0\" ClosedForArrival=\"0\" ClosedForDeparture=\"0\" Date=\"2015-04-17\" MaxStay=\"0\" MinStay=\"1\" Price=\"0.00\" Units=\"0\" />\n    <Dates Closed=\"0\" ClosedForArrival=\"0\" ClosedForDeparture=\"0\" Date=\"2015-04-18\" MaxStay=\"0\" MinStay=\"1\" Price=\"0.00\" Units=\"0\" />\n    <Dates Closed=\"0\" ClosedForArrival=\"0\" ClosedForDeparture=\"0\" Date=\"2015-04-19\" MaxStay=\"0\" MinStay=\"1\" Price=\"0.00\" Units=\"0\" />\n    <Dates Closed=\"0\" ClosedForArrival=\"0\" ClosedForDeparture=\"0\" Date=\"2015-04-20\" MaxStay=\"0\" MinStay=\"1\" Price=\"0.00\" Units=\"0\" />\n    <Dates Closed=\"0\" ClosedForArrival=\"0\" ClosedForDeparture=\"0\" Date=\"2015-04-21\" MaxStay=\"0\" MinStay=\"1\" Price=\"0.00\" Units=\"0\" />\n    <Dates Closed=\"0\" ClosedForArrival=\"0\" ClosedForDeparture=\"0\" Date=\"2015-04-22\" MaxStay=\"0\" MinStay=\"1\" Price=\"0.00\" Units=\"0\" />\n    <Dates Closed=\"0\" ClosedForArrival=\"0\" ClosedForDeparture=\"0\" Date=\"2015-04-23\" MaxStay=\"0\" MinStay=\"1\" Price=\"0.00\" Units=\"0\" />\n    <Dates Closed=\"0\" ClosedForArrival=\"0\" ClosedForDeparture=\"0\" Date=\"2015-04-24\" MaxStay=\"0\" MinStay=\"1\" Price=\"0.00\" Units=\"0\" />\n    <Dates Closed=\"0\" ClosedForArrival=\"0\" ClosedForDeparture=\"0\" Date=\"2015-04-25\" MaxStay=\"0\" MinStay=\"1\" Price=\"0.00\" Units=\"0\" />\n    <Dates Closed=\"0\" ClosedForArrival=\"0\" ClosedForDeparture=\"0\" Date=\"2015-04-26\" MaxStay=\"0\" MinStay=\"1\" Price=\"0.00\" Units=\"0\" />\n    <Dates Closed=\"0\" ClosedForArrival=\"0\" ClosedForDeparture=\"0\" Date=\"2015-04-27\" MaxStay=\"0\" MinStay=\"1\" Price=\"0.00\" Units=\"0\" />\n    <Dates Closed=\"0\" ClosedForArrival=\"0\" ClosedForDeparture=\"0\" Date=\"2015-04-28\" MaxStay=\"0\" MinStay=\"1\" Price=\"0.00\" Units=\"0\" />\n    <Dates Closed=\"0\" ClosedForArrival=\"0\" ClosedForDeparture=\"0\" Date=\"2015-04-29\" MaxStay=\"0\" MinStay=\"1\" Price=\"0.00\" Units=\"0\" />\n    <Dates Closed=\"0\" ClosedForArrival=\"0\" ClosedForDeparture=\"0\" Date=\"2015-04-30\" MaxStay=\"0\" MinStay=\"1\" Price=\"0.00\" Units=\"0\" />\n    <Dates Closed=\"0\" ClosedForArrival=\"0\" ClosedForDeparture=\"0\" Date=\"2015-05-01\" MaxStay=\"0\" MinStay=\"1\" Price=\"0.00\" Units=\"0\" />\n    <Dates Closed=\"0\" ClosedForArrival=\"0\" ClosedForDeparture=\"0\" Date=\"2015-05-02\" MaxStay=\"0\" MinStay=\"1\" Price=\"0.00\" Units=\"0\" />\n    <Dates Closed=\"0\" ClosedForArrival=\"0\" ClosedForDeparture=\"0\" Date=\"2015-05-03\" MaxStay=\"0\" MinStay=\"1\" Price=\"0.00\" Units=\"0\" />\n    <Dates Closed=\"0\" ClosedForArrival=\"0\" ClosedForDeparture=\"0\" Date=\"2015-05-04\" MaxStay=\"0\" MinStay=\"1\" Price=\"0.00\" Units=\"0\" />\n    <Dates Closed=\"0\" ClosedForArrival=\"0\" ClosedForDeparture=\"0\" Date=\"2015-05-05\" MaxStay=\"5\" MinStay=\"5\" Price=\"45.00\" Units=\"4\" />\n    <Dates Closed=\"0\" ClosedForArrival=\"0\" ClosedForDeparture=\"0\" Date=\"2015-05-06\" MaxStay=\"5\" MinStay=\"5\" Price=\"45.00\" Units=\"4\" />\n    <Dates Closed=\"0\" ClosedForArrival=\"0\" ClosedForDeparture=\"0\" Date=\"2015-05-07\" MaxStay=\"5\" MinStay=\"5\" Price=\"45.00\" Units=\"4\" />\n    <Dates Closed=\"0\" ClosedForArrival=\"0\" ClosedForDeparture=\"0\" Date=\"2015-05-08\" MaxStay=\"5\" MinStay=\"5\" Price=\"55.00\" Units=\"4\" />\n    <Dates Closed=\"0\" ClosedForArrival=\"0\" ClosedForDeparture=\"0\" Date=\"2015-05-09\" MaxStay=\"5\" MinStay=\"5\" Price=\"55.00\" Units=\"4\" />\n    <Dates Closed=\"0\" ClosedForArrival=\"0\" ClosedForDeparture=\"0\" Date=\"2015-05-10\" MaxStay=\"5\" MinStay=\"5\" Price=\"45.00\" Units=\"4\" />\n    <Dates Closed=\"0\" ClosedForArrival=\"0\" ClosedForDeparture=\"0\" Date=\"2015-05-11\" MaxStay=\"5\" MinStay=\"5\" Price=\"45.00\" Units=\"4\" />\n    <Dates Closed=\"0\" ClosedForArrival=\"0\" ClosedForDeparture=\"0\" Date=\"2015-05-12\" MaxStay=\"5\" MinStay=\"5\" Price=\"45.00\" Units=\"4\" />\n    <Dates Closed=\"0\" ClosedForArrival=\"0\" ClosedForDeparture=\"0\" Date=\"2015-05-13\" MaxStay=\"5\" MinStay=\"5\" Price=\"45.00\" Units=\"4\" />\n    <Dates Closed=\"0\" ClosedForArrival=\"0\" ClosedForDeparture=\"0\" Date=\"2015-05-14\" MaxStay=\"5\" MinStay=\"5\" Price=\"45.00\" Units=\"4\" />\n    <Dates Closed=\"0\" ClosedForArrival=\"0\" ClosedForDeparture=\"0\" Date=\"2015-05-15\" MaxStay=\"5\" MinStay=\"5\" Price=\"55.00\" Units=\"4\" />\n    <Dates Closed=\"0\" ClosedForArrival=\"0\" ClosedForDeparture=\"0\" Date=\"2015-05-16\" MaxStay=\"5\" MinStay=\"5\" Price=\"55.00\" Units=\"4\" />\n    <Dates Closed=\"0\" ClosedForArrival=\"0\" ClosedForDeparture=\"0\" Date=\"2015-05-17\" MaxStay=\"5\" MinStay=\"5\" Price=\"45.00\" Units=\"4\" />\n    <Dates Closed=\"0\" ClosedForArrival=\"0\" ClosedForDeparture=\"0\" Date=\"2015-05-18\" MaxStay=\"5\" MinStay=\"5\" Price=\"45.00\" Units=\"4\" />\n    <Dates Closed=\"0\" ClosedForArrival=\"0\" ClosedForDeparture=\"0\" Date=\"2015-05-19\" MaxStay=\"5\" MinStay=\"5\" Price=\"45.00\" Units=\"4\" />\n    <Dates Closed=\"0\" ClosedForArrival=\"0\" ClosedForDeparture=\"0\" Date=\"2015-05-20\" MaxStay=\"5\" MinStay=\"5\" Price=\"45.00\" Units=\"4\" />\n    <Dates Closed=\"0\" ClosedForArrival=\"0\" ClosedForDeparture=\"0\" Date=\"2015-05-21\" MaxStay=\"5\" MinStay=\"5\" Price=\"45.00\" Units=\"4\" />\n    <Dates Closed=\"0\" ClosedForArrival=\"0\" ClosedForDeparture=\"0\" Date=\"2015-05-22\" MaxStay=\"5\" MinStay=\"5\" Price=\"55.00\" Units=\"4\" />\n    <Dates Closed=\"0\" ClosedForArrival=\"0\" ClosedForDeparture=\"0\" Date=\"2015-05-23\" MaxStay=\"5\" MinStay=\"5\" Price=\"55.00\" Units=\"4\" />\n    <Dates Closed=\"0\" ClosedForArrival=\"0\" ClosedForDeparture=\"0\" Date=\"2015-05-24\" MaxStay=\"5\" MinStay=\"5\" Price=\"45.00\" Units=\"4\" />\n    <Dates Closed=\"0\" ClosedForArrival=\"0\" ClosedForDeparture=\"0\" Date=\"2015-05-25\" MaxStay=\"5\" MinStay=\"5\" Price=\"45.00\" Units=\"4\" />\n    <Dates Closed=\"0\" ClosedForArrival=\"0\" ClosedForDeparture=\"0\" Date=\"2015-05-26\" MaxStay=\"5\" MinStay=\"5\" Price=\"45.00\" Units=\"4\" />\n    <Dates Closed=\"0\" ClosedForArrival=\"0\" ClosedForDeparture=\"0\" Date=\"2015-05-27\" MaxStay=\"5\" MinStay=\"5\" Price=\"45.00\" Units=\"4\" />\n    <Dates Closed=\"0\" ClosedForArrival=\"0\" ClosedForDeparture=\"0\" Date=\"2015-05-28\" MaxStay=\"5\" MinStay=\"5\" Price=\"45.00\" Units=\"4\" />\n    <Dates Closed=\"0\" ClosedForArrival=\"0\" ClosedForDeparture=\"0\" Date=\"2015-05-29\" MaxStay=\"5\" MinStay=\"5\" Price=\"55.00\" Units=\"4\" />\n    <Dates Closed=\"0\" ClosedForArrival=\"0\" ClosedForDeparture=\"0\" Date=\"2015-05-30\" MaxStay=\"5\" MinStay=\"5\" Price=\"55.00\" Units=\"4\" />\n    <Dates Closed=\"0\" ClosedForArrival=\"0\" ClosedForDeparture=\"0\" Date=\"2015-05-31\" MaxStay=\"5\" MinStay=\"5\" Price=\"45.00\" Units=\"4\" />\n    <Dates Closed=\"0\" ClosedForArrival=\"0\" ClosedForDeparture=\"0\" Date=\"2015-06-01\" MaxStay=\"5\" MinStay=\"5\" Price=\"45.00\" Units=\"4\" />\n  </Rooms>\n</RoomAvailabilityListResponse>",
           "type": "json"
         }
       ]
@@ -4176,7 +4176,7 @@ define({ "api": [
       "examples": [
         {
           "title": "XML Response (creating a room):",
-          "content": "\t<?xml version=\"1.0\" encoding=\"utf-8\"?>\n\t<CreateRoomResponse>\n\t <Success>true</Success>\n\t <RoomTypeIds>\n\t\t<RoomTypeId>35</RoomTypeId>\n\t </RoomTypeIds>\n\t</CreateRoomResponse>",
+          "content": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<CreateRoomResponse>\n <Success>true</Success>\n <RoomTypeIds>\n\t<RoomTypeId>35</RoomTypeId>\n </RoomTypeIds>\n</CreateRoomResponse>",
           "type": "json"
         },
         {
@@ -4255,7 +4255,7 @@ define({ "api": [
     "examples": [
       {
         "title": "XML Request",
-        "content": "\t<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n\t<RoomImageCreate>\n\t <Auth>\n\t   <UserToken>User token</UserToken>\n\t   <PropertyId>Property ID on myallocator.com</PropertyId>\n\t   <VendorId>Your Vendor ID</VendorId>\n\t   <VendorPassword>Your Vendor Password</VendorPassword>\n\t </Auth>\n\t <CreateRoomImage>\n\t   <RoomImages>\n\t     <RoomImage>\n\t       <RoomId>5532</RoomId>\n\t       <Filename>double-room.jpg</Filename>\n\t       <Data>oAAAANSUhEUgAAG2QAABPqCAYAAA[...]</Data>\n\t     </RoomImage>\n\t   </RoomImages>\n\t </CreateRoomImage>\n\t</RoomImageCreate>",
+        "content": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<RoomImageCreate>\n <Auth>\n   <UserToken>User token</UserToken>\n   <PropertyId>Property ID on myallocator.com</PropertyId>\n   <VendorId>Your Vendor ID</VendorId>\n   <VendorPassword>Your Vendor Password</VendorPassword>\n </Auth>\n <CreateRoomImage>\n   <RoomImages>\n     <RoomImage>\n       <RoomId>5532</RoomId>\n       <Filename>double-room.jpg</Filename>\n       <Data>oAAAANSUhEUgAAG2QAABPqCAYAAA[...]</Data>\n     </RoomImage>\n   </RoomImages>\n </CreateRoomImage>\n</RoomImageCreate>",
         "type": "json"
       },
       {
@@ -4291,7 +4291,7 @@ define({ "api": [
       "examples": [
         {
           "title": "XML Response",
-          "content": "\t<?xml version=\"1.0\" encoding=\"utf-8\"?>\n\t<CreateRoomImageResponse>\n\t  <Success>true</Success>\n\t  <RoomImages>\n\t    <RoomImage>\n\t      <RoomImageId>423</RoomImageId>\n\t      <SavedFilename>576421558171c7f5054966d6b637c37e.jpg</SavedFilename>\n\t    </RoomImage>\n\t  </RoomImage>\n\t</CreateRoomImageResponse>",
+          "content": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<CreateRoomImageResponse>\n  <Success>true</Success>\n  <RoomImages>\n    <RoomImage>\n      <RoomImageId>423</RoomImageId>\n      <SavedFilename>576421558171c7f5054966d6b637c37e.jpg</SavedFilename>\n    </RoomImage>\n  </RoomImage>\n</CreateRoomImageResponse>",
           "type": "json"
         },
         {
@@ -4349,7 +4349,7 @@ define({ "api": [
     "examples": [
       {
         "title": "XML Request",
-        "content": "\t<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n\t<RoomImageList>\n\t <Auth>\n\t   <UserToken>User token</UserToken>\n\t   <PropertyId>Property ID on myallocator.com</PropertyId>\n\t   <VendorId>Your Vendor ID</VendorId>\n\t   <VendorPassword>Your Vendor Password</VendorPassword>\n\t </Auth>\n\t</RoomImageList>",
+        "content": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<RoomImageList>\n <Auth>\n   <UserToken>User token</UserToken>\n   <PropertyId>Property ID on myallocator.com</PropertyId>\n   <VendorId>Your Vendor ID</VendorId>\n   <VendorPassword>Your Vendor Password</VendorPassword>\n </Auth>\n</RoomImageList>",
         "type": "json"
       },
       {
@@ -4392,7 +4392,7 @@ define({ "api": [
       "examples": [
         {
           "title": "XML Response",
-          "content": "\t<?xml version=\"1.0\" encoding=\"utf-8\"?>\n\t<RoomImageListResponse>\n\t <RoomImages>\n\t   <RoomImage>\n\t     <ImageId>343</ImageId>\n\t     <RoomId>49</RoomId>\n\t     <SavedFilename>d4790aaafdf4512dad0c4f2eafe72946.png</SavedFilename>\n\t   </RoomImage>\n\n\t   <RoomImage>\n\t     <ImageId>344</ImageId>\n\t     <RoomId>49</RoomId>\n\t     <SavedFilename>a92714654b7486ba6ca010f23bf4c0b6.jpg</SavedFilename>\n\t   </RoomImage>\n\t  </RoomImages>\n\t</RoomImageListResponse>",
+          "content": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<RoomImageListResponse>\n <RoomImages>\n   <RoomImage>\n     <ImageId>343</ImageId>\n     <RoomId>49</RoomId>\n     <SavedFilename>d4790aaafdf4512dad0c4f2eafe72946.png</SavedFilename>\n   </RoomImage>\n\n   <RoomImage>\n     <ImageId>344</ImageId>\n     <RoomId>49</RoomId>\n     <SavedFilename>a92714654b7486ba6ca010f23bf4c0b6.jpg</SavedFilename>\n   </RoomImage>\n  </RoomImages>\n</RoomImageListResponse>",
           "type": "json"
         },
         {
@@ -4475,12 +4475,12 @@ define({ "api": [
         },
         {
           "title": "XML Request (single room image)",
-          "content": "\t<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n\t<RoomImageRemove>\n\t <Auth>\n\t   <UserToken>User token</UserToken>\n\t   <PropertyId>Property ID on myallocator.com</PropertyId>\n\t   <VendorId>Your Vendor ID</VendorId>\n\t   <VendorPassword>Your Vendor Password</VendorPassword>\n\t </Auth>\n\t <RemoveRoomImages>\n\t   <RoomImages>\n\t     <RoomImage>\n\t       <RoomImageId>##</RoomImageId>\n\t       <RoomId>##</RoomId>\n\t     </RoomImage>\n\t     <RoomImage>\n\t       <RoomImageId>##</RoomImageId>\n\t       <RoomId>##</RoomId>\n\t     </RoomImage>\n\t   </RoomImages>\n\t </RemoveRoomImages>\n\t</RoomImageRemove>",
+          "content": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<RoomImageRemove>\n <Auth>\n   <UserToken>User token</UserToken>\n   <PropertyId>Property ID on myallocator.com</PropertyId>\n   <VendorId>Your Vendor ID</VendorId>\n   <VendorPassword>Your Vendor Password</VendorPassword>\n </Auth>\n <RemoveRoomImages>\n   <RoomImages>\n     <RoomImage>\n       <RoomImageId>##</RoomImageId>\n       <RoomId>##</RoomId>\n     </RoomImage>\n     <RoomImage>\n       <RoomImageId>##</RoomImageId>\n       <RoomId>##</RoomId>\n     </RoomImage>\n   </RoomImages>\n </RemoveRoomImages>\n</RoomImageRemove>",
           "type": "json"
         },
         {
           "title": "XML Response",
-          "content": "\t<?xml version=\"1.0\" encoding=\"utf-8\"?>\n\t<RoomImageRemoveResponse>\n\t  <Success>true</Success>\n\t</RoomImageRemoveResponse>",
+          "content": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<RoomImageRemoveResponse>\n  <Success>true</Success>\n</RoomImageRemoveResponse>",
           "type": "json"
         }
       ]
@@ -4545,7 +4545,7 @@ define({ "api": [
       },
       {
         "title": "XML RoomList Request",
-        "content": "    <?xml version=\"1.0\" encoding=\"UTF-8\"?>\n    <RoomList>\n     <Auth>\n       <UserToken>User token</UserToken>\n       <PropertyId>Property ID on myallocator.com </PropertyId>\n       <VendorId>Your Vendor ID </VendorId>\n       <VendorPassword>Your Vendor Password </VendorPassword>\n     </Auth>\n    </RoomList>",
+        "content": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<RoomList>\n <Auth>\n   <UserToken>User token</UserToken>\n   <PropertyId>Property ID on myallocator.com </PropertyId>\n   <VendorId>Your Vendor ID </VendorId>\n   <VendorPassword>Your Vendor Password </VendorPassword>\n </Auth>\n</RoomList>",
         "type": "json"
       }
     ],
@@ -4627,7 +4627,7 @@ define({ "api": [
       "examples": [
         {
           "title": "XML RoomList v1 Success Response:",
-          "content": "    <?xml version=\"1.0\" encoding=\"utf-8\"?>\n    <RoomListResponse>\n     <RoomTypes>\n       <RoomType>\n         <Id>59</Id>\n         <Label>1-bed private ensuite</Label>\n         <Units>3</Units>\n         <Occupancy>1</Occupancy>\n         <Beds>1</Beds>\n         <Gender>MI</Gender>\n         <DoubleBed>false</DoubleBed>\n         <Ensuite>false</Ensuite>\n         <PrivateRoom>true</PrivateRoom>\n         <Disabled>false</Disabled>\n         <ICalLink>https://api.myallocator.com/callback/ota/air/v201506/ical?pid=1&rid=59&hash=726ed</ICalLink>\n       </RoomType>\n\n       <RoomType>\n         <Id>63</Id>\n         <Label>2-bed private</Label>\n         <Units>4</Units>\n         <Occupancy>2</Occupancy>\n         <Beds>2</Beds>\n         <Gender>MI</Gender>\n         <DoubleBed>false</DoubleBed>\n         <Ensuite>false</Ensuite>\n         <PrivateRoom>true</PrivateRoom>\n         <Disabled>false</Disabled>\n         <ICalLink>https://api.myallocator.com/callback/ota/air/v201506/ical?pid=1&rid=63&hash=foo12</ICalLink>\n       </RoomType>\n\n       <RoomType>\n         <Id>49</Id>\n         <Label>5-bed female shared</Label>\n         <Units>3</Units>\n         <Occupancy>5</Occupancy>\n         <Beds>5</Beds>\n         <Gender>FE</Gender>\n         <DoubleBed>false</DoubleBed>\n         <Ensuite>false</Ensuite>\n         <PrivateRoom>false</PrivateRoom>\n         <Disabled>false</Disabled>\n         <ICalLink>https://api.myallocator.com/callback/ota/air/v201506/ical?pid=1&rid=49&hash=9fe41</ICalLink>\n       </RoomType>\n      </RoomTypes>\n    </RoomListResponse>",
+          "content": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<RoomListResponse>\n <RoomTypes>\n   <RoomType>\n     <Id>59</Id>\n     <Label>1-bed private ensuite</Label>\n     <Units>3</Units>\n     <Occupancy>1</Occupancy>\n     <Beds>1</Beds>\n     <Gender>MI</Gender>\n     <DoubleBed>false</DoubleBed>\n     <Ensuite>false</Ensuite>\n     <PrivateRoom>true</PrivateRoom>\n     <Disabled>false</Disabled>\n     <ICalLink>https://api.myallocator.com/callback/ota/air/v201506/ical?pid=1&rid=59&hash=726ed</ICalLink>\n   </RoomType>\n\n   <RoomType>\n     <Id>63</Id>\n     <Label>2-bed private</Label>\n     <Units>4</Units>\n     <Occupancy>2</Occupancy>\n     <Beds>2</Beds>\n     <Gender>MI</Gender>\n     <DoubleBed>false</DoubleBed>\n     <Ensuite>false</Ensuite>\n     <PrivateRoom>true</PrivateRoom>\n     <Disabled>false</Disabled>\n     <ICalLink>https://api.myallocator.com/callback/ota/air/v201506/ical?pid=1&rid=63&hash=foo12</ICalLink>\n   </RoomType>\n\n   <RoomType>\n     <Id>49</Id>\n     <Label>5-bed female shared</Label>\n     <Units>3</Units>\n     <Occupancy>5</Occupancy>\n     <Beds>5</Beds>\n     <Gender>FE</Gender>\n     <DoubleBed>false</DoubleBed>\n     <Ensuite>false</Ensuite>\n     <PrivateRoom>false</PrivateRoom>\n     <Disabled>false</Disabled>\n     <ICalLink>https://api.myallocator.com/callback/ota/air/v201506/ical?pid=1&rid=49&hash=9fe41</ICalLink>\n   </RoomType>\n  </RoomTypes>\n</RoomListResponse>",
           "type": "json"
         }
       ]
@@ -4670,12 +4670,12 @@ define({ "api": [
         },
         {
           "title": "XML Request (Removing a room)",
-          "content": "\t<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n\t<RoomRemove>\n\t <Auth>\n\t   <UserToken>User token</UserToken>\n\t   <PropertyId>Property ID on myallocator.com</PropertyId>\n\t   <VendorId>Your Vendor ID</VendorId>\n\t   <VendorPassword>Your Vendor Password</VendorPassword>\n\t </Auth>\n\t <RemoveRooms>\n\t   <RoomTypeIds>\n\t     <RoomTypeId>35</RoomTypeId>\n\t     <RoomTypeId>36</RoomTypeId>\n\t   </RoomTypeIds>\n\t </RemoveRooms>\n\t</RoomRemove>",
+          "content": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<RoomRemove>\n <Auth>\n   <UserToken>User token</UserToken>\n   <PropertyId>Property ID on myallocator.com</PropertyId>\n   <VendorId>Your Vendor ID</VendorId>\n   <VendorPassword>Your Vendor Password</VendorPassword>\n </Auth>\n <RemoveRooms>\n   <RoomTypeIds>\n     <RoomTypeId>35</RoomTypeId>\n     <RoomTypeId>36</RoomTypeId>\n   </RoomTypeIds>\n </RemoveRooms>\n</RoomRemove>",
           "type": "json"
         },
         {
           "title": "XML Response SetRooms (Success)",
-          "content": "\t<?xml version=\"1.0\" encoding=\"utf-8\"?>\n\t<RoomRemoveResponse>\n\t  <Success>true</Success>\n\t</RoomRemoveResponse>",
+          "content": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<RoomRemoveResponse>\n  <Success>true</Success>\n</RoomRemoveResponse>",
           "type": "json"
         }
       ]
@@ -4804,7 +4804,7 @@ define({ "api": [
     "examples": [
       {
         "title": "XML Request - Creating a customer account",
-        "content": "\t<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n\t<UserCreate>\n\t <Auth>\n\t   <VendorId>Your Vendor ID</VendorId>\n\t   <VendorPassword>Your Vendor Password</VendorPassword>\n\t </Auth>\n\t <UserId>New Customer Id</UserId>\n\t <UserPassword>New Customer Password</UserPassword>\n\t <CustomerFirstName>Customer first name</CustomerFirstName>\n\t <CustomerLastName>Customer family name</CustomerLastName>\n\t <CustomerEmail>Customer email address</CustomerEmail>\n\t</UserCreate>",
+        "content": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<UserCreate>\n <Auth>\n   <VendorId>Your Vendor ID</VendorId>\n   <VendorPassword>Your Vendor Password</VendorPassword>\n </Auth>\n <UserId>New Customer Id</UserId>\n <UserPassword>New Customer Password</UserPassword>\n <CustomerFirstName>Customer first name</CustomerFirstName>\n <CustomerLastName>Customer family name</CustomerLastName>\n <CustomerEmail>Customer email address</CustomerEmail>\n</UserCreate>",
         "type": "json"
       },
       {
@@ -4896,7 +4896,7 @@ define({ "api": [
       "examples": [
         {
           "title": "XML UserExists Response",
-          "content": "\t<?xml version=\"1.0\" encoding=\"UTF-8\" ?>\n\t<UserExists>\n\t  <UserIdExists>1</UserIdExists>\n\t  <EmailExists>1</EmailExists>\n\t</UserExists>",
+          "content": "<?xml version=\"1.0\" encoding=\"UTF-8\" ?>\n<UserExists>\n  <UserIdExists>1</UserIdExists>\n  <EmailExists>1</EmailExists>\n</UserExists>",
           "type": "json"
         }
       ]
@@ -4904,7 +4904,7 @@ define({ "api": [
     "examples": [
       {
         "title": "XML UserManager Exists Request",
-        "content": "\t<?xml version=\"1.0\" encoding=\"UTF-8\" ?>\n\t<UserExists>\n\t  <Auth>\n\t    <VendorId>Your Vendor ID</VendorId>\n\t    <VendorPassword>Your Vendor Password</VendorPassword>\n\t  </Auth>\n\t  <Method>Exists</Method>\n\t  <UserId>requested-username</UserId>\n\t  <Email>user@domain.com</EmailId>\n\t</UserExists>",
+        "content": "<?xml version=\"1.0\" encoding=\"UTF-8\" ?>\n<UserExists>\n  <Auth>\n    <VendorId>Your Vendor ID</VendorId>\n    <VendorPassword>Your Vendor Password</VendorPassword>\n  </Auth>\n  <Method>Exists</Method>\n  <UserId>requested-username</UserId>\n  <Email>user@domain.com</EmailId>\n</UserExists>",
         "type": "json"
       },
       {
@@ -4980,7 +4980,7 @@ define({ "api": [
     "examples": [
       {
         "title": "XML Request - Creating a user account.",
-        "content": "\t<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n\t<UserModify>\n\t <Auth>\n\t   <VendorId>Your Vendor ID</VendorId>\n\t   <VendorPassword>Your Vendor Password</VendorPassword>\n\t </Auth>\n\t <UserId>New Customer Id</UserId>\n\t <UserPassword>New Customer Password</UserPassword>\n\t <CustomerFirstName>Customer first name</CustomerFirstName>\n\t <CustomerLastName>Customer family name</CustomerLastName>\n\t <CustomerEmail>Customer email address</CustomerEmail>\n\t</UserModify>",
+        "content": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<UserModify>\n <Auth>\n   <VendorId>Your Vendor ID</VendorId>\n   <VendorPassword>Your Vendor Password</VendorPassword>\n </Auth>\n <UserId>New Customer Id</UserId>\n <UserPassword>New Customer Password</UserPassword>\n <CustomerFirstName>Customer first name</CustomerFirstName>\n <CustomerLastName>Customer family name</CustomerLastName>\n <CustomerEmail>Customer email address</CustomerEmail>\n</UserModify>",
         "type": "json"
       },
       {
@@ -4993,7 +4993,7 @@ define({ "api": [
       "examples": [
         {
           "title": "Response - Updating a login and property",
-          "content": "\t<?xml version=\"1.0\" encoding=\"utf-8\"?>\n\t<UserModifyResponse>\n\t <Success>true</Success>\n\t</UserModifyResponse>",
+          "content": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<UserModifyResponse>\n <Success>true</Success>\n</UserModifyResponse>",
           "type": "json"
         }
       ]
@@ -5062,7 +5062,7 @@ define({ "api": [
     "examples": [
       {
         "title": "XML VendorSet",
-        "content": "    <?xml version=\"1.0\" encoding=\"UTF-8\" ?>\n    <VendorSet>\n        <Auth>\n            <VendorId>Your Vendor ID</VendorId>\n            <VendorPassword>Your Vendor Password</VendorPassword>\n        </Auth>\n        <Callback>\n            <URL>http://www.yourdomain.com/myallocator/callback.cgi</URL>\n            <Password>very secret password</Password>\n            <NotifyBooking>true|false</NotifyBooking>\n        </Callback>\n    </VendorSet>",
+        "content": "<?xml version=\"1.0\" encoding=\"UTF-8\" ?>\n<VendorSet>\n    <Auth>\n        <VendorId>Your Vendor ID</VendorId>\n        <VendorPassword>Your Vendor Password</VendorPassword>\n    </Auth>\n    <Callback>\n        <URL>http://www.yourdomain.com/myallocator/callback.cgi</URL>\n        <Password>very secret password</Password>\n        <NotifyBooking>true|false</NotifyBooking>\n    </Callback>\n</VendorSet>",
         "type": "json"
       },
       {
