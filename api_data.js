@@ -4738,7 +4738,7 @@ define({ "api": [
     "title": "UserModify",
     "name": "UserModify",
     "version": "201601.0.0",
-    "description": "<p>This method allows you to create customer accounts on myallocator.com. Before you can use this method we&#39;ll have to explicitly enable you for this functionality, as some aspects with regards to customer payment will need to be discussed. Previously known as SetLogin/CreateLogin.</p> ",
+    "description": "<p>This method allows vendors to change a myallocator user&#39;s first name, last name and general contact email address.</p> ",
     "parameter": {
       "fields": {
         "Request": [
@@ -4747,7 +4747,7 @@ define({ "api": [
             "type": "String",
             "optional": false,
             "field": "Auth/UserToken",
-            "description": "<p>Users auth token (see AssociateUserToPMS call to generate a Token)</p> "
+            "description": "<p>User&#39;s auth token (see AssociateUserToPMS call to generate a Token)</p> "
           },
           {
             "group": "Request",
@@ -4766,44 +4766,44 @@ define({ "api": [
           {
             "group": "Request",
             "type": "String",
-            "optional": false,
+            "optional": true,
             "field": "CustomerFirstName",
-            "description": "<p>Customer&#39;s first name (optional).</p> "
+            "description": "<p>User&#39;s first name</p> "
           },
           {
             "group": "Request",
             "type": "String",
-            "optional": false,
+            "optional": true,
             "field": "CustomerLastName",
-            "description": "<p>Customer&#39;s family name (optional).</p> "
+            "description": "<p>User&#39;s family name</p> "
           },
           {
             "group": "Request",
             "type": "String",
-            "optional": false,
+            "optional": true,
             "field": "CustomerEmail",
-            "description": "<p>Customer&#39;s email address.</p> "
+            "description": "<p>User&#39;s email address</p> "
           }
         ]
       }
     },
     "examples": [
       {
-        "title": "XML Request - Creating a user account.",
-        "content": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<UserModify>\n <Auth>\n   <VendorId>Your Vendor ID</VendorId>\n   <VendorPassword>Your Vendor Password</VendorPassword>\n </Auth>\n <UserId>New Customer Id</UserId>\n <UserPassword>New Customer Password</UserPassword>\n <CustomerFirstName>Customer first name</CustomerFirstName>\n <CustomerLastName>Customer family name</CustomerLastName>\n <CustomerEmail>Customer email address</CustomerEmail>\n</UserModify>",
+        "title": "XML Request - Updating user account",
+        "content": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<UserModify>\n    <Auth>\n        <VendorId>Your Vendor ID</VendorId>\n        <VendorPassword>Your Vendor Password</VendorPassword>\n        <UserToken>User token</UserToken>\n     </Auth>\n     <CustomerFirstName>Customer first name</CustomerFirstName>\n     <CustomerLastName>Customer family name</CustomerLastName>\n     <CustomerEmail>Customer email address</CustomerEmail>\n</UserModify>",
         "type": "json"
       },
       {
         "title": "curl w/ JSON",
-        "content": "curl http://api.myallocator.com/pms/v201408/json/UserModify -d@- <<EOJSON\njson={\n  \"Auth/UserToken\":\"User's auth token\",\n  \"Auth/VendorId\":\"your vendor id\",\n  \"Auth/VendorPassword\":\"your vendor password\",\n  \"CustomerFirstName\":\"Customer's first name\",\n  \"CustomerLastName\":\"Customer's last name\",\n  \"CustomerEmail\":\"Customer's email address\"\n}\nEOJSON",
+        "content": "    curl http://api.myallocator.com/pms/v201408/json/UserModify -d@- <<EOJSON\n    json={\n      \"Auth/UserToken\"      : \"User's auth token\",\n      \"Auth/VendorId\"       : \"Your vendor id\",\n      \"Auth/VendorPassword\" : \"Your vendor password\",\n      \"CustomerFirstName\"   : \"Customer's first name\",\n      \"CustomerLastName\"    : \"Customer's last name\",\n      \"CustomerEmail\"       : \"Customer's email address\"\n    }\nEOJSON",
         "type": "json"
       }
     ],
     "success": {
       "examples": [
         {
-          "title": "Response - Updating a login and property",
-          "content": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<UserModifyResponse>\n <Success>true</Success>\n</UserModifyResponse>",
+          "title": "Response - Updating user account",
+          "content": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<UserModifyResponse>\n    <Success>true</Success>\n</UserModifyResponse>",
           "type": "json"
         }
       ]
