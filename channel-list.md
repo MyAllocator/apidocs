@@ -27,7 +27,7 @@ Created: $date
 | bnw | BookNow App | 0 years |  |
 | bon | Hotel Bonanza | 1 years |  |
 | boo | Booking.com | 2 years |  |
-| bp | BudgetPlaces | 2 years |  |
+| bp | BudgetPlaces | 2 years | BudgetPlaces has ceased operations. |
 | bud | Bud and Breakfast | 1 years |  |
 | buen | Buenkmino | 2 years |  |
 | bv | BookVisit | 2 years | bookvisit.com |
@@ -107,6 +107,7 @@ Created: $date
 | skd | Seekda GmbH | 2 years |  |
 | sur | Surf Holidays | 2 years |  |
 | ta | TripAdvisor | 0 years |  |
+| tavr | TripAdvisor Vacation Rentals | 2 years |  |
 | tlok | Traveloka | 0 years | Traveloka.com |
 | tmd | Travel Mind | 2 years |  |
 | tmp | testing stuff | 0 years |  |
