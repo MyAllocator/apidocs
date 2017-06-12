@@ -3245,7 +3245,7 @@ define({ "api": [
     "title": "RatePlanCreate",
     "name": "RatePlanCreate",
     "version": "201603.0.0",
-    "description": "<p>Create a rateplan for a property. <em>Rateplan support is currently in development, so unless you talked to us first DO NOT implement this.</em></p> ",
+    "description": "<p>Create a rateplan for a property. <strong>Rateplan support is currently in development, so unless you talked to us first DO NOT implement this.</strong></p> ",
     "parameter": {
       "fields": {
         "Request": [
@@ -3395,7 +3395,7 @@ define({ "api": [
     "title": "RatePlanList",
     "name": "RatePlanList",
     "version": "201603.0.0",
-    "description": "<p>Returns a list of RatePlans by Property. <em>Rateplan support is currently in development, so unless you talked to us first DO NOT implement this.</em></p> ",
+    "description": "<p>Returns a list of RatePlans by Property. <strong>Rateplan support is currently in development, so unless you talked to us first DO NOT implement this.</strong></p> ",
     "parameter": {
       "fields": {
         "Request": [
@@ -3503,7 +3503,7 @@ define({ "api": [
     "title": "RatePlanRemove",
     "name": "RatePlanRemove",
     "version": "201603.0.0",
-    "description": "<p>Removes rateplans from a property.  <em>Rateplan support is currently in development, so unless you talked to us first DO NOT implement this.</em></p> ",
+    "description": "<p>Removes rateplans from a property.  <strong>Rateplan support is currently in development, so unless you talked to us first DO NOT implement this.</strong></p> ",
     "parameter": {
       "fields": {
         "Request": [
@@ -3611,7 +3611,7 @@ define({ "api": [
     "title": "RatePlanUpdate",
     "name": "RatePlanUpdate",
     "version": "201603.0.0",
-    "description": "<p>Updates rateplan settings. <em>Rateplan support is currently in development, so unless you talked to us first DO NOT implement this.</em></p> ",
+    "description": "<p>Updates rateplan settings. <strong>Rateplan support is currently in development, so unless you talked to us first DO NOT implement this.</strong></p> ",
     "parameter": {
       "fields": {
         "Request": [
