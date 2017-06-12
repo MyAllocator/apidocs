@@ -91,6 +91,7 @@ Created: $date
 | max | MaxBooking | 2 years |  |
 | mcs | Madrid Central Suites | 2 years |  |
 | mmt | MakeMyTrip | 0 years |  |
+| mo | Mo Test | 2 years |  |
 | myb | MyBookings | 2 years |  |
 | net | Net Affinity | 2 years |  |
 | nom | Nomads Spain | 2 years |  |

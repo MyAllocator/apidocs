@@ -400,6 +400,13 @@ define({ "api": [
           },
           {
             "group": "Request",
+            "type": "String",
+            "optional": false,
+            "field": ".Allocation.RatePlanId",
+            "description": "<p>Rateplan ID as returned by RatePlanList. Defaults to 0. Unless you implemented experimental rateplan support you likely don&#39;t need this.</p> "
+          },
+          {
+            "group": "Request",
             "type": "Date",
             "optional": false,
             "field": ".Allocation.StartDate",
@@ -3238,7 +3245,7 @@ define({ "api": [
     "title": "RatePlanCreate",
     "name": "RatePlanCreate",
     "version": "201603.0.0",
-    "description": "<p>Returns a list of RatePlans by Property</p> ",
+    "description": "<p>Create a rateplan for a property. <em>Rateplan support is currently in development, so unless you talked to us first DO NOT implement this.</em></p> ",
     "parameter": {
       "fields": {
         "Request": [
@@ -3324,14 +3331,7 @@ define({ "api": [
             "type": "Enumeration",
             "optional": false,
             "field": "RateModel",
-            "description": "<p>daily: use daily rates;  derived-percentage: RateModifier is a +/- percentage on the rateplan 0 rate, derived-fixed: RateModifier is a +/- fixed dollar (in whatever currency) on rateplan 0 rates.</p> "
-          },
-          {
-            "group": "Request",
-            "type": "Decimal",
-            "optional": false,
-            "field": "RateModifier",
-            "description": "<p>used for RateModel derived-percentage and derived-fixed</p> "
+            "description": "<p>Only &quot;daily&quot; supported currently.</p> "
           }
         ]
       }
@@ -3339,17 +3339,17 @@ define({ "api": [
     "examples": [
       {
         "title": "XML Request",
-        "content": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<RatePlanCreate>\n<Auth>\n<UserToken>User token</UserToken>\n<PropertyId>Property ID on myallocator.com</PropertyId>\n<VendorId>Your Vendor ID</VendorId>\n<VendorPassword>Your Vendor Password</VendorPassword>\n</Auth>\n<RoomTypeId>123</RoomTypeId>\n<Label>Some Text</Label>\n<IsIBEOnly>true|false</IsIBEOnly>\n<OccupancyMin>0</OccupancyMin>\n<OccupancyMax>0</OccupancyMax>\n<MinLOS>0</MinLOS>\n<MaxLOS>0</MaxLOS>\n<RateModel>daily|derived-percentage|derived-fixed</RateModel>\n<RateModifier>10.00</RateModifier>\n</RatePlanCreate>",
+        "content": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<RatePlanCreate>\n<Auth>\n<UserToken>User token</UserToken>\n<PropertyId>Property ID on myallocator.com</PropertyId>\n<VendorId>Your Vendor ID</VendorId>\n<VendorPassword>Your Vendor Password</VendorPassword>\n</Auth>\n<RoomTypeId>123</RoomTypeId>\n<Label>Some Text</Label>\n<IsIBEOnly>true|false</IsIBEOnly>\n<OccupancyMin>0</OccupancyMin>\n<OccupancyMax>0</OccupancyMax>\n<MinLOS>0</MinLOS>\n<MaxLOS>0</MaxLOS>\n<RateModel>daily</RateModel>\n</RatePlanCreate>",
         "type": "json"
       },
       {
         "title": "JSON Request",
-        "content": "{\n    \"Auth/VendorId\":\"Your Vendor ID\",\n    \"Auth/VendorPassword\":\"Your Vendor Password\",\n    \"Auth/UserToken\":\"User token\",\n    \"Auth/PropertyId\":\"Property ID on myallocator.com\",\n    \"RoomTypeId\":1234, \n    \"Label\":\"Name of RatePlan\",\n    \"IsIBEOnly\":false,\n    \"OccupancyMin\":0,\n    \"OccupancyMax\":0,\n    \"MinLOS\":0,\n    \"MaxLOS\":0,\n    \"RateModel\":\"daily\",\n    \"RateModifier\":0\n}",
+        "content": "{\n    \"Auth/VendorId\":\"Your Vendor ID\",\n    \"Auth/VendorPassword\":\"Your Vendor Password\",\n    \"Auth/UserToken\":\"User token\",\n    \"Auth/PropertyId\":\"Property ID on myallocator.com\",\n    \"RoomTypeId\":1234,\n    \"Label\":\"Name of RatePlan\",\n    \"IsIBEOnly\":false,\n    \"OccupancyMin\":0,\n    \"OccupancyMax\":0,\n    \"MinLOS\":0,\n    \"MaxLOS\":0,\n    \"RateModel\":\"daily\"\n}",
         "type": "json"
       },
       {
         "title": "curl w/ JSON",
-        "content": "curl http://api.myallocator.com/pms/v201603/json/RatePlanCreate -d@- <<EOJSON\njson={\n\"Auth/VendorId\":\"\",\n\"Auth/VendorPassword\":\"\",\n\"Auth/UserToken\":\"\",\n\"Auth/PropertyId\":\"\",\n    \"RoomTypeId\":1234,\n    \"Label\":\"Name of RatePlan\",\n    \"IsIBEOnly\":false,\n    \"OccupancyMin\":0,\n    \"OccupancyMax\":0,\n    \"MinLOS\":0,\n    \"MaxLOS\":0,\n    \"RateModel\":\"daily\",\n    \"RateModifier\":0\n\n}\nEOJSON",
+        "content": "curl http://api.myallocator.com/pms/v201603/json/RatePlanCreate -d@- <<EOJSON\njson={\n    \"Auth/VendorId\":\"\",\n    \"Auth/VendorPassword\":\"\",\n    \"Auth/UserToken\":\"\",\n    \"Auth/PropertyId\":\"\",\n    \"RoomTypeId\":1234,\n    \"Label\":\"Name of RatePlan\",\n    \"IsIBEOnly\":false,\n    \"OccupancyMin\":0,\n    \"OccupancyMax\":0,\n    \"MinLOS\":0,\n    \"MaxLOS\":0,\n    \"RateModel\":\"daily\"\n}\nEOJSON",
         "type": "json"
       }
     ],
@@ -3395,7 +3395,7 @@ define({ "api": [
     "title": "RatePlanList",
     "name": "RatePlanList",
     "version": "201603.0.0",
-    "description": "<p>Returns a list of RatePlans by Property</p> ",
+    "description": "<p>Returns a list of RatePlans by Property. <em>Rateplan support is currently in development, so unless you talked to us first DO NOT implement this.</em></p> ",
     "parameter": {
       "fields": {
         "Request": [
@@ -3503,7 +3503,7 @@ define({ "api": [
     "title": "RatePlanRemove",
     "name": "RatePlanRemove",
     "version": "201603.0.0",
-    "description": "<p>Returns a list of RatePlans by Property</p> ",
+    "description": "<p>Removes rateplans from a property.  <em>Rateplan support is currently in development, so unless you talked to us first DO NOT implement this.</em></p> ",
     "parameter": {
       "fields": {
         "Request": [
@@ -3611,7 +3611,7 @@ define({ "api": [
     "title": "RatePlanUpdate",
     "name": "RatePlanUpdate",
     "version": "201603.0.0",
-    "description": "<p>Returns a list of RatePlans by Property</p> ",
+    "description": "<p>Updates rateplan settings. <em>Rateplan support is currently in development, so unless you talked to us first DO NOT implement this.</em></p> ",
     "parameter": {
       "fields": {
         "Request": [
@@ -3649,12 +3649,12 @@ define({ "api": [
     "examples": [
       {
         "title": "XML Request",
-        "content": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<RatePlanUpdate>\n<Auth>\n   <UserToken>User token</UserToken>\n   <PropertyId>Property ID on myallocator.com</PropertyId>\n   <VendorId>Your Vendor ID</VendorId>\n   <VendorPassword>Your Vendor Password</VendorPassword>\n</Auth>\n<RatePlanId>1234</RatePlanId>\n<RoomTypeId>1234<RoomTypeId>\n<Label>\"Name of RatePlan\"<Label>\n<IsIBEOnly>false<IsIBEOnly>\n<OccupancyMin>0<OccupancyMin>\n<OccupancyMax>0<OccupancyMax>\n<MinLOS>0<MinLOS>\n<MaxLOS>0<MaxLOS>\n<RateModel>\"daily\"<RateModel>\n<RateModifier><RateModifier>\n</RatePlanUpdate>",
+        "content": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<RatePlanUpdate>\n<Auth>\n   <UserToken>User token</UserToken>\n   <PropertyId>Property ID on myallocator.com</PropertyId>\n   <VendorId>Your Vendor ID</VendorId>\n   <VendorPassword>Your Vendor Password</VendorPassword>\n</Auth>\n<RatePlanId>1234</RatePlanId>\n<RoomTypeId>1234<RoomTypeId>\n<Label>\"Name of RatePlan\"<Label>\n<IsIBEOnly>false<IsIBEOnly>\n<OccupancyMin>0<OccupancyMin>\n<OccupancyMax>0<OccupancyMax>\n<MinLOS>0<MinLOS>\n<MaxLOS>0<MaxLOS>\n<RateModel>daily<RateModel>\n</RatePlanUpdate>",
         "type": "json"
       },
       {
         "title": "curl w/ JSON",
-        "content": "curl http://api.myallocator.com/pms/v201603/json/RatePlanUpdate -d@- <<EOJSON\njson={\n\"Auth/VendorId\":\"\",\n\"Auth/VendorPassword\":\"\",\n\"Auth/UserToken\":\"\",\n\"Auth/PropertyId\":\"\",\n\"RatePlanId\":1234,\n\"RoomTypeId\":1234,\n\"Label\":\"Name of RatePlan\",\n\"IsIBEOnly\":false,\n\"OccupancyMin\":0,\n\"OccupancyMax\":0,\n\"MinLOS\":0,\n\"MaxLOS\":0,\n\"RateModel\":\"daily\",\n\"RateModifier\":0\n}\nEOJSON",
+        "content": "curl http://api.myallocator.com/pms/v201603/json/RatePlanUpdate -d@- <<EOJSON\njson={\n\"Auth/VendorId\":\"\",\n\"Auth/VendorPassword\":\"\",\n\"Auth/UserToken\":\"\",\n\"Auth/PropertyId\":\"\",\n\"RatePlanId\":1234,\n\"RoomTypeId\":1234,\n\"Label\":\"Name of RatePlan\",\n\"IsIBEOnly\":false,\n\"OccupancyMin\":0,\n\"OccupancyMax\":0,\n\"MinLOS\":0,\n\"MaxLOS\":0,\n\"RateModel\":\"daily\"\n}\nEOJSON",
         "type": "json"
       },
       {
@@ -3664,7 +3664,7 @@ define({ "api": [
       },
       {
         "title": "curl w/ JSON",
-        "content": "curl http://api.myallocator.com/pms/v201408/json/RatePlanUpdate -d@- <<EOJSON\njson={\n    \"Auth/VendorId\":\"Your Vendor ID\",\n    \"Auth/VendorPassword\":\"Your Vendor Password\",\n    \"Auth/UserToken\":\"User token\",\n    \"Auth/PropertyId\":\"Property ID on myallocator.com\",\n    \"RatePlanId\":1234,\n    \"RoomTypeId\":1234,\n    \"Label\":\"Name of RatePlan\",\n    \"IsIBEOnly\":false,\n    \"OccupancyMin\":0,\n    \"OccupancyMax\":0,\n    \"MinLOS\":0,\n    \"MaxLOS\":0,\n    \"RateModel\":\"daily\",\n    \"RateModifier\":0\n\n}\nEOJSON",
+        "content": "curl http://api.myallocator.com/pms/v201408/json/RatePlanUpdate -d@- <<EOJSON\njson={\n    \"Auth/VendorId\":\"Your Vendor ID\",\n    \"Auth/VendorPassword\":\"Your Vendor Password\",\n    \"Auth/UserToken\":\"User token\",\n    \"Auth/PropertyId\":\"Property ID on myallocator.com\",\n    \"RatePlanId\":1234,\n    \"RoomTypeId\":1234,\n    \"Label\":\"Name of RatePlan\",\n    \"IsIBEOnly\":false,\n    \"OccupancyMin\":0,\n    \"OccupancyMax\":0,\n    \"MinLOS\":0,\n    \"MaxLOS\":0,\n    \"RateModel\":\"daily\"\n\n}\nEOJSON",
         "type": "json"
       }
     ],
