@@ -2017,6 +2017,15 @@
         "type": "json"
       }
     ],
+    "success": {
+      "examples": [
+        {
+          "title": "JSON Response",
+          "content": "{\n\t\"Inventory\"  :  [\n\t\t\t{\n\t\t\t\"arrival\" : \"YYYY-MM-DD\",\n\t\t\t\"rate\" : \"1.00\",\n\t\t\t\"ref_id\" : \"#####-#####-#####\",\n\t\t\t\"property_id\" : \"1234\",\n\t\t\t\"room_id\" : \"xxx\",\n\t\t\t\"room_qty\" : \"##\",\n\t\t\t}\n\t\t]\n}",
+          "type": "json"
+        }
+      ]
+    },
     "filename": "perllib/MAAPI.pm",
     "groupTitle": "3_API_Methods"
   },
@@ -2303,6 +2312,15 @@
         "type": "json"
       }
     ],
+    "success": {
+      "examples": [
+        {
+          "title": "JSON LoopBookingCreate Response",
+          "content": "\n\"Booking\":{\n\t\"Channel\":\"loop\",\n\t\"Orderid\":\"####\",\n\t\"OrderDate\":\"YYYY-MM-DD\",\n\t\"TotalPrice\":82,\n\t\"TotalCurrency\":\"USD\",\n\t\"StartDate\":\"YYYY-MM-DD\",\n\t\"EndDate\":\"YYYY-MM-DD\",\n\t\"IsCancellation\":\"\",\n\t\"Customers\":[\n\t\t\"CustomerFName\":\"\",\n\t\t\"CustomerLName\":\"\",\n\t\t\"CustomerEmail\":\"\"\n\t],\n\t\"Rooms\":[\n\t\t\"StartDate\":\"\",\n\t\t\"EndDate\":\"\",\n\t\t\"Price\":\"\",\n\t\t\"Currency\":\"\",\n\t\t\"RoomTypeId\":\"\",\n\t\t\"Units\":\"1\"\n\t]\n}",
+          "type": "json"
+        }
+      ]
+    },
     "filename": "perllib/MAAPI.pm",
     "groupTitle": "3_API_Methods"
   },
