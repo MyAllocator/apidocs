@@ -101,7 +101,6 @@ Created: $date
 | mega | Omega Hostels | 2 years |  |
 | mmt | MakeMyTrip | 0 years |  |
 | myb | MyBookings | 2 years |  |
-| nate | Nathan Helehini | 0 years |  |
 | net | Net Affinity | 2 years |  |
 | nom | Nomads Spain | 2 years |  |
 | oa | Only-apartments | 2 years |  |
@@ -120,7 +119,6 @@ Created: $date
 | sur | Surf Holidays | 2 years |  |
 | ta | TripAdvisor | 0 years |  |
 | tavr | TripAdvisor Vacation Rentals | 2 years | FlipKey, Housetrip |
-| test | Test Channel | 0 years |  |
 | tlok | Traveloka | 0 years | Traveloka.com |
 | tmd | Travel Mind | 2 years |  |
 | tom | TOMAS | 2 years | Booking system used predominantly in Germany and Switzerland on city portals |
