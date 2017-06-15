@@ -5,11 +5,12 @@
   "title": "myallocator PMS API",
   "url": "https://api.myallocator.com",
   "sampleUrl": false,
-  "apidoc": "0.2.0",
+  "defaultVersion": "0.0.0",
+  "apidoc": "0.3.0",
   "generator": {
     "name": "apidoc",
-    "time": "2017-06-12T15:43:38.107Z",
+    "time": "2017-06-15T10:42:21.632Z",
     "url": "http://apidocjs.com",
-    "version": "0.12.1"
+    "version": "0.17.6"
   }
 }
