@@ -84,7 +84,7 @@
       "examples": [
         {
           "title": "Example of a successful JSON response",
-          "content": "{ \n    \"success\": true \n}",
+          "content": "{\n    \"success\": true\n}",
           "type": "json"
         }
       ]
@@ -539,7 +539,7 @@
         }
       ]
     },
-    "description": "<p>An allocation sets the number of rooms or beds (depending on whether the room type is a private room or shared/dorm) available during any specific time frame. For more details see below.</p> <p>** Excluding Channels ** prefix a channel id with a minus (-) to exclude it.   Ex: a series of &quot;all&quot;, &quot;-loop&quot; would update all configured channels except &quot;loop&quot;</p> <p>** Handling Errors &amp; Warnings **</p> <p>The response will always include the Success, Errors and Warnings tags. If Success is set to &quot;true&quot; the Errors tag will be empty. If Success is set to &quot;partial&quot; or &quot;false&quot; at least one Error tag is included.</p> <p>** Sending Overlapping Ranges / Partial updates ** Overlapping ranges in an ARIUpdate are absolutely allowed. As long as the ranges are sent in the same request body they are applied in sequence as part of the same SQL transaction. Fields such as Units, MinStay, MaxStay, Price are optional so it is possible send different ranges for pricing and availability.</p> <p>How this works: we receive XML/JSON request body and decode it into a neutral format, then write availability directly to the internal MyAllocator database and provision an updateId for a date range plus room-type(s), then create one job per channel, finally we return the updateId to the response (assuming QueryForStatus==True).</p> <p>Each job contains ONLY the propertyid, updateId, and ota (no availability, or pricing). Jobs are picked up one of several auto-scaling &quot;worker tier&quot; servers, each server loads the latest availability from the db (which may have changed since the updateId was issued), and then applies any ARIRules, then transmit to OTA, and flag their portion of the updateId as completed. This ensures the latest availability will always be sent to the OTA.</p> <p>Once an UpdateId has been issued it falls within the scope of my monitoring domain, it should be considered reliable by a developer. The request is broken into a series of jobs (one for each channel).<br> Each job is logged to disk and processed by a pool of servers.<br> It would take a substantial level of failure to be lost.<br> (Jobs are not quite as durable as bookings or configuration data, but it's still highly durable).</p> <p>** Submitting to ALL channels **</p> <p>You can also submit to all available channels without specifying explicity which channels to update. Use the channel code &quot;all&quot; to do this. Channels that are not set up by the user will be skipped as indicated by a warning.</p> <p>It is also possible to submit to all channels while excluding certain channels. Add the attribute exclude=&quot;true&quot; to skip a channel. See example below. Use the channel code &quot;all&quot; to do this.</p> <p>** Running Jobs in the Background (ARIUpdateStatus) **</p> <p>You can also run the ARIUpdate update in the background and query for the updates using ARIUpdateStatus. This enables you to show the update progress to the user while it's still running. To enable this feature you need to add the node QueryForStatus (see example)</p> <p>If QueryForStatus is true then the ARIUpdateResponse will contain the additional parameter UpdateId, which is needed for ARIUpdateStatus</p> <p>QueryForStatus TRUE will be much more resilient than attempting to maintain a single persistent connection, and it will free up connection requests on our side.  In the future QueryForStatus FALSE may be removed and/or additional timeouts will be added which may make it unusable. New integrations should avoid using QueryForStatus FALSE.</p>",
+    "description": "<p>An allocation sets the number of rooms or beds (depending on whether the room type is a private room or shared/dorm) available during any specific time frame. For more details see below.</p> <p>** Excluding Channels ** prefix a channel id with a minus (-) to exclude it.   Ex: a series of &quot;all&quot;, &quot;-loop&quot; would update all configured channels except &quot;loop&quot;</p> <p>** Handling Errors &amp; Warnings **</p> <p>The response will always include the Success, Errors and Warnings tags. If Success is set to &quot;true&quot; the Errors tag will be empty. If Success is set to &quot;partial&quot; or &quot;false&quot; at least one Error tag is included.</p> <p>** Sending Overlapping Ranges / Partial updates ** Overlapping ranges in an ARIUpdate are absolutely allowed. As long as the ranges are sent in the same request body they are applied in sequence as part of the same SQL transaction. Fields such as Units, MinStay, MaxStay, Price are optional so it is possible send different ranges for pricing and availability.</p> <p>How this works: we receive XML/JSON request body and decode it into a neutral format, then write availability directly to the internal MyAllocator database and provision an updateId for a date range plus room-type(s), then create one job per channel, finally we return the updateId to the response (assuming QueryForStatus==True).</p> <p>Each job contains ONLY the propertyid, updateId, and ota (no availability, or pricing). Jobs are picked up one of several auto-scaling &quot;worker tier&quot; servers, each server loads the latest availability from the db (which may have changed since the updateId was issued), and then applies any ARIRules, then transmit to OTA, and flag their portion of the updateId as completed. This ensures the latest availability will always be sent to the OTA.</p> <p>Once an UpdateId has been issued it falls within the scope of my monitoring domain, it should be considered reliable by a developer. The request is broken into a series of jobs (one for each channel). Each job is logged to disk and processed by a pool of servers. It would take a substantial level of failure to be lost. (Jobs are not quite as durable as bookings or configuration data, but it's still highly durable).</p> <p>** Submitting to ALL channels **</p> <p>You can also submit to all available channels without specifying explicity which channels to update. Use the channel code &quot;all&quot; to do this. Channels that are not set up by the user will be skipped as indicated by a warning.</p> <p>It is also possible to submit to all channels while excluding certain channels. Add the attribute exclude=&quot;true&quot; to skip a channel. See example below. Use the channel code &quot;all&quot; to do this.</p> <p>** Running Jobs in the Background (ARIUpdateStatus) **</p> <p>You can also run the ARIUpdate update in the background and query for the updates using ARIUpdateStatus. This enables you to show the update progress to the user while it's still running. To enable this feature you need to add the node QueryForStatus (see example)</p> <p>If QueryForStatus is true then the ARIUpdateResponse will contain the additional parameter UpdateId, which is needed for ARIUpdateStatus</p> <p>QueryForStatus TRUE will be much more resilient than attempting to maintain a single persistent connection, and it will free up connection requests on our side.  In the future QueryForStatus FALSE may be removed and/or additional timeouts will be added which may make it unusable. New integrations should avoid using QueryForStatus FALSE.</p>",
     "examples": [
       {
         "title": "JSON ARIUpdate",
@@ -2608,7 +2608,7 @@
       "examples": [
         {
           "title": "Response - Updating a login and property",
-          "content": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<UserPropertyResponse> \n <Success>true</Success>\n <PropertyId>1234</PropertyId>\n <propertyToken>23094234234234</propertyToken>\n</UserPropertyResponse>",
+          "content": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<UserPropertyResponse>\n <Success>true</Success>\n <PropertyId>1234</PropertyId>\n <propertyToken>23094234234234</propertyToken>\n</UserPropertyResponse>",
           "type": "json"
         }
       ]
@@ -2975,7 +2975,7 @@
       },
       {
         "title": "curl w/ JSON",
-        "content": "curl http://api.myallocator.com/pms/v201408/json/PropertyList -d \n\t'json={\"Auth/VendorId\":\"\", \"Auth/VendorPassword\":\"\", \"Auth/UserToken\":\"\"}'",
+        "content": "curl http://api.myallocator.com/pms/v201408/json/PropertyList -d\n\t'json={\"Auth/VendorId\":\"\", \"Auth/VendorPassword\":\"\", \"Auth/UserToken\":\"\"}'",
         "type": "json"
       }
     ],
@@ -3085,7 +3085,7 @@
       "examples": [
         {
           "title": "XML PropertyList Response Success",
-          "content": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<PropertyListResponse>\n  <Properties>\n    <Property>\n      <Id>19</Id>\n      <Name>Property 1</Name>\n      <Breakfast></Breakfast>\n      <Currency>GBP</Currency>\n      <Country>GB</Country>\n\t\t<Billing>active</Billing>\n      <Weekend>\n        <Day name=\"Friday\">5</Day>\n        <Day name=\"Saturday\">6</Day>\n      </Weekend>\n      <BookingAdjust>1</BookingAdjust>\n      <BookingAdjustCancellation>1</BookingAdjustCancellation>\n      <BookingAdjustModification>1</BookingAdjustModification>\n      <BookingDownload>1</BookingDownload>\n      <EmailDefault>default@email.com</EmailDefault>\n      <EmailChannelBooking>channel@email.com</EmailChannelBooking>\n      <EmailBookNow>booknow@email.com</EmailBookNow>\n    </Property>\n    \n    <Property>\n      <Id>13</Id>\n      <Name>Property 2</Name>\n      <Breakfast>IN</Breakfast>\n      <Currency>EUR</Currency>\n      <Country>DE</Country>\n\t\t<Billing>active</Billing>\n      <Weekend>\n      </Weekend>\n      <BookingAdjust>0</BookingAdjust>\n      <BookingAdjustCancellation>0</BookingAdjustCancellation>\n      <BookingAdjustModification>0</BookingAdjustModification>\n      <BookingDownload>0</BookingDownload>\n      <EmailDefault>default@email.com</EmailDefault>\n      <EmailChannelBooking>channel@email.com</EmailChannelBooking>\n      <EmailBookNow>booknow@email.com</EmailBookNow>\n    </Property>\n    \n    <Property>\n      <Id>15</Id>\n      <Name>Property 3</Name>\n      <Breakfast>EX</Breakfast>\n      <Currency>GBP</Currency>\n      <Country>GB</Country>\n\t\t<Billing>active</Billing>\n      <Weekend>\n        <Day name=\"Friday\">5</Day>\n        <Day name=\"Saturday\">6</Day>\n        <Day name=\"Sunday\">7</Day>\n      </Weekend>\n      <BookingAdjust>1</BookingAdjust>\n      <BookingAdjustCancellation>1</BookingAdjustCancellation>\n      <BookingAdjustModification>1</BookingAdjustModification>\n      <BookingDownload>1</BookingDownload>\n      <EmailDefault>default@email.com</EmailDefault>\n      <EmailChannelBooking>channel@email.com</EmailChannelBooking>\n      <EmailBookNow>booknow@email.com</EmailBookNow>\n    </Property>\n  </Properties>\n</PropertyListResponse>",
+          "content": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<PropertyListResponse>\n  <Properties>\n    <Property>\n      <Id>19</Id>\n      <Name>Property 1</Name>\n      <Breakfast></Breakfast>\n      <Currency>GBP</Currency>\n      <Country>GB</Country>\n\t\t<Billing>active</Billing>\n      <Weekend>\n        <Day name=\"Friday\">5</Day>\n        <Day name=\"Saturday\">6</Day>\n      </Weekend>\n      <BookingAdjust>1</BookingAdjust>\n      <BookingAdjustCancellation>1</BookingAdjustCancellation>\n      <BookingAdjustModification>1</BookingAdjustModification>\n      <BookingDownload>1</BookingDownload>\n      <EmailDefault>default@email.com</EmailDefault>\n      <EmailChannelBooking>channel@email.com</EmailChannelBooking>\n      <EmailBookNow>booknow@email.com</EmailBookNow>\n    </Property>\n\n    <Property>\n      <Id>13</Id>\n      <Name>Property 2</Name>\n      <Breakfast>IN</Breakfast>\n      <Currency>EUR</Currency>\n      <Country>DE</Country>\n\t\t<Billing>active</Billing>\n      <Weekend>\n      </Weekend>\n      <BookingAdjust>0</BookingAdjust>\n      <BookingAdjustCancellation>0</BookingAdjustCancellation>\n      <BookingAdjustModification>0</BookingAdjustModification>\n      <BookingDownload>0</BookingDownload>\n      <EmailDefault>default@email.com</EmailDefault>\n      <EmailChannelBooking>channel@email.com</EmailChannelBooking>\n      <EmailBookNow>booknow@email.com</EmailBookNow>\n    </Property>\n\n    <Property>\n      <Id>15</Id>\n      <Name>Property 3</Name>\n      <Breakfast>EX</Breakfast>\n      <Currency>GBP</Currency>\n      <Country>GB</Country>\n\t\t<Billing>active</Billing>\n      <Weekend>\n        <Day name=\"Friday\">5</Day>\n        <Day name=\"Saturday\">6</Day>\n        <Day name=\"Sunday\">7</Day>\n      </Weekend>\n      <BookingAdjust>1</BookingAdjust>\n      <BookingAdjustCancellation>1</BookingAdjustCancellation>\n      <BookingAdjustModification>1</BookingAdjustModification>\n      <BookingDownload>1</BookingDownload>\n      <EmailDefault>default@email.com</EmailDefault>\n      <EmailChannelBooking>channel@email.com</EmailChannelBooking>\n      <EmailBookNow>booknow@email.com</EmailBookNow>\n    </Property>\n  </Properties>\n</PropertyListResponse>",
           "type": "json"
         }
       ]
@@ -3298,7 +3298,7 @@
           {
             "group": "Request",
             "type": "Integer",
-            "optional": true,
+            "optional": false,
             "field": "RoomTypeId",
             "description": "<p>the MyAllocator RoomTypeId associated to this RatePlan</p>"
           },
@@ -3682,7 +3682,7 @@
       },
       {
         "title": "curl w/ JSON",
-        "content": "curl http://api.myallocator.com/pms/v201408/json/RatePlanUpdate -d@- <<EOJSON\njson={\n    \"Auth/VendorId\":\"Your Vendor ID\",\n    \"Auth/VendorPassword\":\"Your Vendor Password\",\n    \"Auth/UserToken\":\"User token\",\n    \"Auth/PropertyId\":\"Property ID on myallocator.com\",\n    \"RatePlanId\":1234,\n    \"RoomTypeId\":1234,\n    \"Label\":\"Name of RatePlan\",\n    \"IsIBEOnly\":false,\n    \"OccupancyMin\":0,\n    \"OccupancyMax\":0,\n    \"MinLOS\":0,\n    \"MaxLOS\":0,\n    \"RateModel\":\"daily\"\n\n}\nEOJSON",
+        "content": "curl http://api.myallocator.com/pms/v201408/json/RatePlanUpdate -d@- <<EOJSON\njson={\n    \"Auth/VendorId\":\"Your Vendor ID\",\n    \"Auth/VendorPassword\":\"Your Vendor Password\",\n    \"Auth/UserToken\":\"User token\",\n    \"Auth/PropertyId\":\"Property ID on myallocator.com\",\n    \"RatePlanId\":1234,\n    \"RoomTypeId\":1234,\n    \"Label\":\"Name of RatePlan\",\n    \"IsIBEOnly\":false,\n    \"OccupancyMin\":0,\n    \"OccupancyMax\":0,\n    \"MinLOS\":0,\n    \"MaxLOS\":0,\n    \"RateModel\":\"daily\"\n}\nEOJSON",
         "type": "json"
       }
     ],
@@ -4869,7 +4869,7 @@
           },
           {
             "group": "Request",
-            "type": "String",
+            "type": "Boolean",
             "optional": false,
             "field": "Callback/NotifyBooking",
             "description": "<p>Send notifications of Bookings</p>"
@@ -4882,11 +4882,32 @@
             "optional": false,
             "field": "Success",
             "description": ""
+          },
+          {
+            "group": "Response",
+            "type": "String",
+            "optional": false,
+            "field": "Callback/URL",
+            "description": "<p>Callback URL that was set</p>"
+          },
+          {
+            "group": "Response",
+            "type": "String",
+            "optional": false,
+            "field": "Callback/Password",
+            "description": "<p>Callback password that was set</p>"
+          },
+          {
+            "group": "Response",
+            "type": "Boolean",
+            "optional": false,
+            "field": "Callback/NotifyBooking",
+            "description": "<p>Whether we are not sending callbacks for bookings or not.</p>"
           }
         ]
       }
     },
-    "description": "<p>this is a utility which can be used to easily update vendor properties. most PMS systems will NOT use call on a regular basis. (Please note: after an update of callback properties old requests which are already in queue may continue to arrive for up to an hour).</p> <p>set Callback/URL to blank to disable callbacks.</p>",
+    "description": "<p>Use this call if you're using booking callbacks to set the callback URL and password. Most PMS systems will NOT use call on a regular basis. Note: after an update of callback properties old requests which are already in queue may continue to arrive for up to an hour.</p> <p>Set Callback/NotifyBooking to false to disable callbacks.</p>",
     "examples": [
       {
         "title": "XML VendorSet",
@@ -4895,7 +4916,7 @@
       },
       {
         "title": "JSON VendorSet",
-        "content": "{\n   \"Auth/VendorId\":\"Your Vendor ID\",\n   \"Auth/VendorPassword\":\"Your Vendor Password\",\n   \"Callback/URL\":\"http://www.yourdomain.com/myallocator/callback.cgi\",\n   \"Callback/Password\":\"very secret password\"\n}",
+        "content": "{\n   \"Auth/VendorId\":\"Your Vendor ID\",\n   \"Auth/VendorPassword\":\"Your Vendor Password\",\n   \"Callback/URL\":\"http://www.yourdomain.com/myallocator/callback.cgi\",\n   \"Callback/Password\":\"very secret password\",\n   \"Callback/NotifyBooking\":true\n}",
         "type": "json"
       },
       {
@@ -4904,6 +4925,20 @@
         "type": "json"
       }
     ],
+    "success": {
+      "examples": [
+        {
+          "title": "XML Response",
+          "content": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<VendorSetResponse>\n    <Callback>\n        <NotifyBooking>true</NotifyBooking>\n        <Password>very secret password</Password>\n        <URL>http://www.yourdomain.com/myallocator/callback.cgi</URL>\n    </Callback>\n    <Success>true</Success>\n</VendorSetResponse>",
+          "type": "json"
+        },
+        {
+          "title": "JSON Response",
+          "content": "{\n    \"Success\": true,\n    \"Callback/URL\": \"http://www.yourdomain.com/myallocator/callback.cgi\",\n    \"Callback/NotifyBooking\": true,\n    \"Callback/Password\": \"very secret password\"\n}",
+          "type": "json"
+        }
+      ]
+    },
     "filename": "perllib/MAAPI.pm",
     "groupTitle": "3_API_Methods"
   },
@@ -5034,7 +5069,7 @@
           "type": "json"
         },
         {
-          "title": "Example: XML Channel specific error ",
+          "title": "Example: XML Channel specific error",
           "content": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<SetAllocationResponse>\n <Errors>\n   <Error channel=\"hc\">\n     <ErrorMsg>\n       Provider not responding. Please try again later.\n     </ErrorMsg>\n   </Error>\n   <Error channel=\"iwb\">\n     <ErrorMsg>\n       Provider not responding. Please try again later.\n     </ErrorMsg>\n   </Error>\n </Errors>\n <Success>false</Success>\n <Warnings></Warnings>\n</SetAllocationResponse>",
           "type": "json"
         }
