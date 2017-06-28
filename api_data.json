@@ -178,7 +178,7 @@
       },
       {
         "title": "curl w/ JSON",
-        "content": "curl http://api.myallocator.com/pms/v201408/json/ARIRulesList -d@- <<EOJSON\njson={\n  \"Auth/UserToken\":\"User's auth token\",\n  \"Auth/VendorId\":\"your vendor id\",\n  \"Auth/VendorPassword\":\"your vendor password\"\n}\nEOJSON",
+        "content": "curl https://api.myallocator.com/pms/v201408/json/ARIRulesList -d@- <<EOJSON\njson={\n  \"Auth/UserToken\":\"User's auth token\",\n  \"Auth/VendorId\":\"your vendor id\",\n  \"Auth/VendorPassword\":\"your vendor password\"\n}\nEOJSON",
         "type": "json"
       }
     ],
@@ -271,7 +271,7 @@
       },
       {
         "title": "curl w/ JSON",
-        "content": "curl http://api.myallocator.com/pms/v201408/json/ARIRulesUpdate -d@- <<EOJSON\njson={\n\t\"ARIRules\":[\n\t\t{ \"_Action\":\"Append\", PMSRuleId:\"\", RoomId:\"\", RatePlanId:\"\", Channel:\"\", Verb:\"BLOCK\", StartDate:\"YYYY-MM-DD\", EndDate:\"YYYY-MM-DD\"  },\n\t\t{ \"_Action\":\"Update\", PMSRuleId:\"\", RoomId:\"\", Channel:\"\", Verb:\"BLOCK\", StartDate:\"YYYY-MM-DD\", EndDate:\"YYYY-MM-DD\"  },\n\t\t{ \"_Action\":\"Delete\", PMSRuleId:\"\", RoomId:\"\", Channel:\"\"  },\n\t\t{ \"_Action\":\"Delete\", PMSRuleId:\"\", RoomId:\"\"  },\n\t\t{ \"_Action\":\"Delete\", PMSRuleId:\"\" },\n\t\t]\n}\nEOJSON",
+        "content": "curl https://api.myallocator.com/pms/v201408/json/ARIRulesUpdate -d@- <<EOJSON\njson={\n\t\"ARIRules\":[\n\t\t{ \"_Action\":\"Append\", PMSRuleId:\"\", RoomId:\"\", RatePlanId:\"\", Channel:\"\", Verb:\"BLOCK\", StartDate:\"YYYY-MM-DD\", EndDate:\"YYYY-MM-DD\"  },\n\t\t{ \"_Action\":\"Update\", PMSRuleId:\"\", RoomId:\"\", Channel:\"\", Verb:\"BLOCK\", StartDate:\"YYYY-MM-DD\", EndDate:\"YYYY-MM-DD\"  },\n\t\t{ \"_Action\":\"Delete\", PMSRuleId:\"\", RoomId:\"\", Channel:\"\"  },\n\t\t{ \"_Action\":\"Delete\", PMSRuleId:\"\", RoomId:\"\"  },\n\t\t{ \"_Action\":\"Delete\", PMSRuleId:\"\" },\n\t\t]\n}\nEOJSON",
         "type": "json"
       },
       {
@@ -548,7 +548,7 @@
       },
       {
         "title": "curl w/ JSON",
-        "content": "curl http://api.myallocator.com/pms/v201408/json/ARIUpdate -d@- <<EOJSON\njson={\n \"Auth/UserToken\":\"your username\",\n \"Auth/PropertyId\":\"property id from myallocator\",\n \"Auth/VendorId\":\"your vendor\",\n \"Auth/VendorPassword\":\"vendorpass\",\n \"Channels\": [ \"hc\",\"iwb\" ],\n \"Allocations\": [\n\t{\n\t\"RoomId\":\"59\",\n\t\"StartDate\":\"2010-06-01\",\n\t\"EndDate\":\"2010-06-01\",\n\t\"Units\":\"3\",\n\t\"MinStay\":\"1\",\n\t\"MaxStay\":\"30\",\n\t\"Price\":\"20.00\",\n    \"PriceWeekly\":\"400.00\",\n    \"PriceMonthly\":\"1600.00\"\n\t}\n\t]\n}\nEOJSON",
+        "content": "curl https://api.myallocator.com/pms/v201408/json/ARIUpdate -d@- <<EOJSON\njson={\n \"Auth/UserToken\":\"your username\",\n \"Auth/PropertyId\":\"property id from myallocator\",\n \"Auth/VendorId\":\"your vendor\",\n \"Auth/VendorPassword\":\"vendorpass\",\n \"Channels\": [ \"hc\",\"iwb\" ],\n \"Allocations\": [\n\t{\n\t\"RoomId\":\"59\",\n\t\"StartDate\":\"2010-06-01\",\n\t\"EndDate\":\"2010-06-01\",\n\t\"Units\":\"3\",\n\t\"MinStay\":\"1\",\n\t\"MaxStay\":\"30\",\n\t\"Price\":\"20.00\",\n    \"PriceWeekly\":\"400.00\",\n    \"PriceMonthly\":\"1600.00\"\n\t}\n\t]\n}\nEOJSON",
         "type": "json"
       },
       {
@@ -652,7 +652,7 @@
       },
       {
         "title": "curl w/ JSON",
-        "content": "curl http://api.myallocator.com/pms/v201408/json/ARIUpdateStatus -d@- <<EOJSON\njson={\n  \"Auth/UserToken\":\"User's auth token\",\n  \"Auth/PropertyId\":\"Property ID\",\n  \"Auth/VendorId\":\"your vendor id\",\n  \"Auth/VendorPassword\":\"your vendor password\"\n}\nEOJSON",
+        "content": "curl https://api.myallocator.com/pms/v201408/json/ARIUpdateStatus -d@- <<EOJSON\njson={\n  \"Auth/UserToken\":\"User's auth token\",\n  \"Auth/PropertyId\":\"Property ID\",\n  \"Auth/VendorId\":\"your vendor id\",\n  \"Auth/VendorPassword\":\"your vendor password\"\n}\nEOJSON",
         "type": "json"
       }
     ],
@@ -690,7 +690,7 @@
     "examples": [
       {
         "title": "curl w/ JSON",
-        "content": "curl http://api.myallocator.com/pms/v201408/json/AmenityList -d@- <<EOJSON\njson={\n  \"Auth/VendorId\":\"your vendor id\",\n  \"Auth/VendorPassword\":\"your vendor password\"\n}\nEOJSON",
+        "content": "curl https://api.myallocator.com/pms/v201408/json/AmenityList -d@- <<EOJSON\njson={\n  \"Auth/VendorId\":\"your vendor id\",\n  \"Auth/VendorPassword\":\"your vendor password\"\n}\nEOJSON",
         "type": "json"
       },
       {
@@ -788,7 +788,7 @@
       },
       {
         "title": "curl w/ JSON",
-        "content": "curl http://api.myallocator.com/pms/v201408/json/AssociatePropertyToPMS -d@- <<EOJSON\njson={\n\t\"Auth/UserId\":\"username for myallocator.com\",\n\t\"Auth/UserPassword\":\"password for myallocator.com\",\n\t\"Auth/VendorId\":\"your vendor id\",\n\t\"Auth/VendorPassword\":\"your vendor password\",\n\t\"Auth/PropertyId\":\"property id from myallocator\",\n\t\"PMSPropertyId\":\"username-on-the-remote-pms-system\"\n}\nEOJSON",
+        "content": "curl https://api.myallocator.com/pms/v201408/json/AssociatePropertyToPMS -d@- <<EOJSON\njson={\n\t\"Auth/UserId\":\"username for myallocator.com\",\n\t\"Auth/UserPassword\":\"password for myallocator.com\",\n\t\"Auth/VendorId\":\"your vendor id\",\n\t\"Auth/VendorPassword\":\"your vendor password\",\n\t\"Auth/PropertyId\":\"property id from myallocator\",\n\t\"PMSPropertyId\":\"username-on-the-remote-pms-system\"\n}\nEOJSON",
         "type": "json"
       },
       {
@@ -870,7 +870,7 @@
       },
       {
         "title": "curl w/ JSON",
-        "content": "curl http://api.myallocator.com/pms/v201408/json/AssociateUserToPMS -d@- <<EOJSON\njson={\n  \"Auth/UserId\":\"username for myallocator.com\",\n  \"Auth/UserPassword\":\"password for myallocator.com\",\n  \"Auth/VendorId\":\"your vendor id\",\n  \"Auth/VendorPassword\":\"your vendor password\",\n  \"PMSUserId\":\"username-on-the-remote-pms-system\"\n}\nEOJSON",
+        "content": "curl https://api.myallocator.com/pms/v201408/json/AssociateUserToPMS -d@- <<EOJSON\njson={\n  \"Auth/UserId\":\"username for myallocator.com\",\n  \"Auth/UserPassword\":\"password for myallocator.com\",\n  \"Auth/VendorId\":\"your vendor id\",\n  \"Auth/VendorPassword\":\"your vendor password\",\n  \"PMSUserId\":\"username-on-the-remote-pms-system\"\n}\nEOJSON",
         "type": "json"
       },
       {
@@ -962,7 +962,7 @@
       },
       {
         "title": "curl w/ JSON",
-        "content": "curl http://api.myallocator.com/pms/v201408/json/BookingAction -d@- <<EOJSON\njson={\n    \"Auth/UserToken\":\"\",\n    \"Auth/VendorId\":\"\",\n    \"Auth/VendorPassword\":\"\",\n    \"Auth/PropertyId\":\"\",\n\n    \"MyAllocatorId\":\"XXXXX\",\n    \"Actions\":[\n        \"ACK\",\n        [ \"ADDNOTE\", \"Customer called, they will arrive late\"]\n    ]\n}\nEOJSON",
+        "content": "curl https://api.myallocator.com/pms/v201408/json/BookingAction -d@- <<EOJSON\njson={\n    \"Auth/UserToken\":\"\",\n    \"Auth/VendorId\":\"\",\n    \"Auth/VendorPassword\":\"\",\n    \"Auth/PropertyId\":\"\",\n\n    \"MyAllocatorId\":\"XXXXX\",\n    \"Actions\":[\n        \"ACK\",\n        [ \"ADDNOTE\", \"Customer called, they will arrive late\"]\n    ]\n}\nEOJSON",
         "type": "json"
       }
     ],
@@ -1033,7 +1033,7 @@
       },
       {
         "title": "curl w/ JSON",
-        "content": "curl http://api.myallocator.com/pms/v201408/json/BookingCancel -d@- <<EOJSON\njson=\n{\n    \"Auth/UserToken\":\"\",\n    \"Auth/VendorId\":\"\",\n    \"Auth/VendorPassword\":\"\",\n    \"Auth/PropertyId\":\"\",\n\n    \"MyAllocatorId\":\"57333cd36dbf9a4f114dd781\",\n    \"CancellationReason\":\"Guest's flight was cancelled\"\n}\nEOJSON",
+        "content": "curl https://api.myallocator.com/pms/v201408/json/BookingCancel -d@- <<EOJSON\njson=\n{\n    \"Auth/UserToken\":\"\",\n    \"Auth/VendorId\":\"\",\n    \"Auth/VendorPassword\":\"\",\n    \"Auth/PropertyId\":\"\",\n\n    \"MyAllocatorId\":\"57333cd36dbf9a4f114dd781\",\n    \"CancellationReason\":\"Guest's flight was cancelled\"\n}\nEOJSON",
         "type": "json"
       }
     ],
@@ -1298,7 +1298,7 @@
       },
       {
         "title": "curl w/ JSON",
-        "content": "curl http://api.myallocator.com/pms/v201408/json/BookingList -d@- <<EOJSON\njson=\n{\n\t\"Auth/UserToken\":\"\",\n\t\"Auth/VendorId\":\"\",\n\t\"Auth/VendorPassword\":\"\",\n\t\"Auth/PropertyId\":\"\",\n\t\"ModificationStartDate\":\"2010-01-01\",\n\t\"ModificationEndDate\":\"2010-01-02\"\n}\nEOJSON",
+        "content": "curl https://api.myallocator.com/pms/v201408/json/BookingList -d@- <<EOJSON\njson=\n{\n\t\"Auth/UserToken\":\"\",\n\t\"Auth/VendorId\":\"\",\n\t\"Auth/VendorPassword\":\"\",\n\t\"Auth/PropertyId\":\"\",\n\t\"ModificationStartDate\":\"2010-01-01\",\n\t\"ModificationEndDate\":\"2010-01-02\"\n}\nEOJSON",
         "type": "json"
       }
     ],
@@ -1861,7 +1861,7 @@
       },
       {
         "title": "curl w/ JSON",
-        "content": "curl http://api.myallocator.com/pms/v201408/json/BookingPaymentPasswordValidate -d@- <<EOJSON\njson=\n{\n    \"Auth/VendorId\":\"Your Vendor ID\",\n    \"Auth/VendorPassword\":\"Your Vendor Password\",\n    \"Auth/UserToken\":\"User token\",\n    \"Auth/PropertyId\":\"Property ID on myallocator.com\",\n    \"CreditCardPassword\":\"some_password\"\n}\nEOJSON",
+        "content": "curl https://api.myallocator.com/pms/v201408/json/BookingPaymentPasswordValidate -d@- <<EOJSON\njson=\n{\n    \"Auth/VendorId\":\"Your Vendor ID\",\n    \"Auth/VendorPassword\":\"Your Vendor Password\",\n    \"Auth/UserToken\":\"User token\",\n    \"Auth/PropertyId\":\"Property ID on myallocator.com\",\n    \"CreditCardPassword\":\"some_password\"\n}\nEOJSON",
         "type": "json"
       }
     ],
@@ -1947,7 +1947,7 @@
     "examples": [
       {
         "title": "curl w/ JSON",
-        "content": "curl http://api.myallocator.com/pms/v201408/json/ChannelList -d@- <<EOJSON\njson={\n\t\"Channels\":{\n\t\t\"cid\":{\n\t\t\t\"name\":\"Name of Channel (ex: Booking.com)\",\n\t\t\t\"signupLink\":\"http://domain/url.to.signup\",\n\t\t\t\"requireActivation\":\"true|false\",\n\t\t\t\"calendarBased\":\"true|false\",\n\t\t\t\"isLive\":\"true|false\",\n\t\t\t\"isBeta\":\"true|false\",\n\t\t\t\"PropertyInput\":[\n\t\t\t\t{ \"name\":\"field_id\", label:\"Name of Input\", type:\"inputtype\" },\n\t\t\t\t{ \"name\":\"field_two\", label:\"User Prompt\", type:\"inputtype\" }\n\t\t\t\t],\n\t\t\t\"RoomInput\":[\n\t\t\t\t{ \"name\":\"field_id\", label:\"Name of Input\", type:\"inputtype\" },\n\t\t\t\t{ \"name\":\"field_two\", label:\"User Prompt\", type:\"inputtype\" }\n\t\t\t\t]\n\t\t\t}\n\t\t}\n}\nEOJSON",
+        "content": "curl https://api.myallocator.com/pms/v201408/json/ChannelList -d@- <<EOJSON\njson={\n\t\"Channels\":{\n\t\t\"cid\":{\n\t\t\t\"name\":\"Name of Channel (ex: Booking.com)\",\n\t\t\t\"signupLink\":\"http://domain/url.to.signup\",\n\t\t\t\"requireActivation\":\"true|false\",\n\t\t\t\"calendarBased\":\"true|false\",\n\t\t\t\"isLive\":\"true|false\",\n\t\t\t\"isBeta\":\"true|false\",\n\t\t\t\"PropertyInput\":[\n\t\t\t\t{ \"name\":\"field_id\", label:\"Name of Input\", type:\"inputtype\" },\n\t\t\t\t{ \"name\":\"field_two\", label:\"User Prompt\", type:\"inputtype\" }\n\t\t\t\t],\n\t\t\t\"RoomInput\":[\n\t\t\t\t{ \"name\":\"field_id\", label:\"Name of Input\", type:\"inputtype\" },\n\t\t\t\t{ \"name\":\"field_two\", label:\"User Prompt\", type:\"inputtype\" }\n\t\t\t\t]\n\t\t\t}\n\t\t}\n}\nEOJSON",
         "type": "json"
       },
       {
@@ -1980,7 +1980,7 @@
       },
       {
         "title": "curl w/ JSON",
-        "content": "curl http://api.myallocator.com/pms/v201408/json/HelloWorld -d 'json={\"Hello\":\"World\"}'",
+        "content": "curl https://api.myallocator.com/pms/v201408/json/HelloWorld -d 'json={\"Hello\":\"World\"}'",
         "type": "json"
       },
       {
@@ -1990,7 +1990,7 @@
       },
       {
         "title": "curl w/XML",
-        "content": "curl http://api.myallocator.com/pms/v201408/xml/Hello --data 'xmlRequestString=\n<HelloWorld>\n<Auth>\n</Auth>\n<Foo>Bar</Foo>\n</HelloWorld>'",
+        "content": "curl https://api.myallocator.com/pms/v201408/xml/Hello --data 'xmlRequestString=\n<HelloWorld>\n<Auth>\n</Auth>\n<Foo>Bar</Foo>\n</HelloWorld>'",
         "type": "json"
       }
     ],
@@ -2013,7 +2013,7 @@
       },
       {
         "title": "curl w/ JSON",
-        "content": "curl http://api.myallocator.com/pms/v201408/json/LoopARIList -d@- <<EOJSON\njson={\n\t\"Auth/UserToken\":\"\",\n\t\"Auth/VendorId\":\"\",\n\t\"Auth/VendorPassword\":\"\"\n}\nEOJSON",
+        "content": "curl https://api.myallocator.com/pms/v201408/json/LoopARIList -d@- <<EOJSON\njson={\n\t\"Auth/UserToken\":\"\",\n\t\"Auth/VendorId\":\"\",\n\t\"Auth/VendorPassword\":\"\"\n}\nEOJSON",
         "type": "json"
       }
     ],
@@ -2040,7 +2040,7 @@
     "examples": [
       {
         "title": "curl w/ JSON",
-        "content": "curl http://api.myallocator.com/pms/v201408/json/LoopBookingAction -d@- <<EOJSON\njson={\n...\n}\nEOJSON",
+        "content": "curl https://api.myallocator.com/pms/v201408/json/LoopBookingAction -d@- <<EOJSON\njson={\n...\n}\nEOJSON",
         "type": "json"
       }
     ],
@@ -2230,7 +2230,7 @@
       },
       {
         "title": "curl w/ JSON",
-        "content": "curl http://api.myallocator.com/pms/v201408/json/LoopBookingCreate -d@- <<EOJSON\njson={\n\"Auth/VendorId\":\"\",\n\"Auth/VendorPassword\":\"\",\n\"Auth/UserToken\":\"\",\n\"Auth/PropertyId\":\"\",\n\"Booking\":{\n    \"StartDate\": \"2016-08-10\",\n    \"EndDate\": \"2016-08-11\",\n    \"Units\": \"1\",\n    \"RoomTypeId\": \"83651\",\n    \"RateId\": \"123\",\n    \"RoomDayRate\": \"100.00\",\n    \"RoomDayDescription\": \"A room day description!\",\n    \"CustomerFName\": \"Bob\",\n    \"CustomerLName\": \"Smith\",\n    \"RoomDesc\": \"A room description!\",\n    \"OccupantSmoker\": \"false\",\n    \"OccupantNote\": \"Please do not put me by the elevator. Thanks!\",\n    \"OccupantFName\": \"Tyler\",\n    \"OccupantLName\": \"Green\",\n    \"Occupancy\": \"1\",\n    \"Policy\": \"No smoking.\",\n    \"ChannelRoomType\": \"123\"\n\t}\n}\nEOJSON",
+        "content": "curl https://api.myallocator.com/pms/v201408/json/LoopBookingCreate -d@- <<EOJSON\njson={\n\"Auth/VendorId\":\"\",\n\"Auth/VendorPassword\":\"\",\n\"Auth/UserToken\":\"\",\n\"Auth/PropertyId\":\"\",\n\"Booking\":{\n    \"StartDate\": \"2016-08-10\",\n    \"EndDate\": \"2016-08-11\",\n    \"Units\": \"1\",\n    \"RoomTypeId\": \"83651\",\n    \"RateId\": \"123\",\n    \"RoomDayRate\": \"100.00\",\n    \"RoomDayDescription\": \"A room day description!\",\n    \"CustomerFName\": \"Bob\",\n    \"CustomerLName\": \"Smith\",\n    \"RoomDesc\": \"A room description!\",\n    \"OccupantSmoker\": \"false\",\n    \"OccupantNote\": \"Please do not put me by the elevator. Thanks!\",\n    \"OccupantFName\": \"Tyler\",\n    \"OccupantLName\": \"Green\",\n    \"Occupancy\": \"1\",\n    \"Policy\": \"No smoking.\",\n    \"ChannelRoomType\": \"123\"\n\t}\n}\nEOJSON",
         "type": "json"
       }
     ],
@@ -2308,7 +2308,7 @@
       },
       {
         "title": "curl w/ JSON",
-        "content": "curl http://api.myallocator.com/pms/v201408/json/LoopBookingCreate -d@- <<EOJSON\njson={\n\"Auth/VendorId\":\"\",\n\"Auth/VendorPassword\":\"\",\n\"Auth/UserToken\":\"\",\n\"Auth/PropertyId\":\"\",\n\"Booking\":{\n\t\"StartDate\":\"YYYY-MM-DD\",\n\t\"EndDate\":\"YYYY-MM-DD\",\n\t\"RoomId\":###,\n\t\"Units\":##,\n\t\"Price\":\"3.00\"\n\t}\n}\nEOJSON",
+        "content": "curl https://api.myallocator.com/pms/v201408/json/LoopBookingCreate -d@- <<EOJSON\njson={\n\"Auth/VendorId\":\"\",\n\"Auth/VendorPassword\":\"\",\n\"Auth/UserToken\":\"\",\n\"Auth/PropertyId\":\"\",\n\"Booking\":{\n\t\"StartDate\":\"YYYY-MM-DD\",\n\t\"EndDate\":\"YYYY-MM-DD\",\n\t\"RoomId\":###,\n\t\"Units\":##,\n\t\"Price\":\"3.00\"\n\t}\n}\nEOJSON",
         "type": "json"
       }
     ],
@@ -2335,7 +2335,7 @@
     "examples": [
       {
         "title": "curl w/ JSON",
-        "content": "curl http://api.myallocator.com/pms/v201408/json/LoopBookingList -d@- <<EOJSON\njson={\n...\n}\nEOJSON",
+        "content": "curl https://api.myallocator.com/pms/v201408/json/LoopBookingList -d@- <<EOJSON\njson={\n...\n}\nEOJSON",
         "type": "json"
       }
     ],
@@ -2392,7 +2392,7 @@
       },
       {
         "title": "curl w/ JSON",
-        "content": "curl http://api.myallocator.com/pms/v201609/json/PropertyChannelList -d@- <<EOJSON\njson={\n  \"Auth/UserToken\":\"User's auth token\",\n  \"Auth/PropertyId\":\"Property ID on myallocator.com\",\n  \"Auth/VendorId\":\"your vendor id\",\n  \"Auth/VendorPassword\":\"your vendor password\"\n}\nEOJSON",
+        "content": "curl https://api.myallocator.com/pms/v201609/json/PropertyChannelList -d@- <<EOJSON\njson={\n  \"Auth/UserToken\":\"User's auth token\",\n  \"Auth/PropertyId\":\"Property ID on myallocator.com\",\n  \"Auth/VendorId\":\"your vendor id\",\n  \"Auth/VendorPassword\":\"your vendor password\"\n}\nEOJSON",
         "type": "json"
       }
     ],
@@ -2600,7 +2600,7 @@
       },
       {
         "title": "curl w/ JSON",
-        "content": "curl http://api.myallocator.com/pms/v201408/json/PropertyCreate -d@- <<EOJSON\njson={\n  \"Auth/UserToken\":\"User's auth token\",\n  \"Auth/VendorId\":\"your vendor id\",\n  \"Auth/VendorPassword\":\"your vendor password\",\n  \"Auth/PropertyId\":\"Your PropertyId\",\n  \"PropertyName\":\"Name of property\",\n  \"Currency\":\"###\",\n  \"Street\":\"Penny Lane 4\",\n  \"City\":\"London\",\n  \"PostCode\":\"N1 9SD\",\n  \"State\":\"Greater London\",\n  \"Country\":\"UK\",\n  \"Breakfast\":\"IN\",\n  \"BookingAdjust\":\"0|1\",\n  \"BookingAdjustCancellation\":\"0|1\",\n  \"BookingAdjustModification\":\"0|1\",\n  \"BookingDownload\":\"0|1\",\n  \"EmailDefault\":\"contact@property.com\",\n  \"EmailChannelBooking\":\"booking@property.com\",\n  \"EmailBookNow\":\"booknow@property.com\",\n  \"PaymentProviders\":[\n      { \"provider_id\":\"xxx\", provider_type:\"stripe|tokenx|braintree\", key1:\"value1\", key2:\"value2\" }\n  ]\n\n}\nEOJSON",
+        "content": "curl https://api.myallocator.com/pms/v201408/json/PropertyCreate -d@- <<EOJSON\njson={\n  \"Auth/UserToken\":\"User's auth token\",\n  \"Auth/VendorId\":\"your vendor id\",\n  \"Auth/VendorPassword\":\"your vendor password\",\n  \"Auth/PropertyId\":\"Your PropertyId\",\n  \"PropertyName\":\"Name of property\",\n  \"Currency\":\"###\",\n  \"Street\":\"Penny Lane 4\",\n  \"City\":\"London\",\n  \"PostCode\":\"N1 9SD\",\n  \"State\":\"Greater London\",\n  \"Country\":\"UK\",\n  \"Breakfast\":\"IN\",\n  \"BookingAdjust\":\"0|1\",\n  \"BookingAdjustCancellation\":\"0|1\",\n  \"BookingAdjustModification\":\"0|1\",\n  \"BookingDownload\":\"0|1\",\n  \"EmailDefault\":\"contact@property.com\",\n  \"EmailChannelBooking\":\"booking@property.com\",\n  \"EmailBookNow\":\"booknow@property.com\",\n  \"PaymentProviders\":[\n      { \"provider_id\":\"xxx\", provider_type:\"stripe|tokenx|braintree\", key1:\"value1\", key2:\"value2\" }\n  ]\n\n}\nEOJSON",
         "type": "json"
       }
     ],
@@ -2685,7 +2685,7 @@
       },
       {
         "title": "curl w/ JSON",
-        "content": "curl http://api.myallocator.com/pms/v201408/json/PropertyImageCreate -d@- <<EOJSON\njson={\n    \"Auth/VendorId\":\"Your Vendor ID\",\n    \"Auth/VendorPassword\":\"Your Vendor Password\",\n    \"Auth/UserToken\":\"User token\",\n    \"Auth/PropertyId\":\"Property ID on myallocator.com\",\n    \"PropertyImages\": [\n      {\n        \"Filename\": \"double-room.jpg\",\n        \"Data\": \"oAAAANSUhEUgAAG2QAABPqCAYAAA[...]\"\n      }\n    ]\n}\nEOJSON",
+        "content": "curl https://api.myallocator.com/pms/v201408/json/PropertyImageCreate -d@- <<EOJSON\njson={\n    \"Auth/VendorId\":\"Your Vendor ID\",\n    \"Auth/VendorPassword\":\"Your Vendor Password\",\n    \"Auth/UserToken\":\"User token\",\n    \"Auth/PropertyId\":\"Property ID on myallocator.com\",\n    \"PropertyImages\": [\n      {\n        \"Filename\": \"double-room.jpg\",\n        \"Data\": \"oAAAANSUhEUgAAG2QAABPqCAYAAA[...]\"\n      }\n    ]\n}\nEOJSON",
         "type": "json"
       }
     ],
@@ -2779,7 +2779,7 @@
       },
       {
         "title": "curl w/ JSON",
-        "content": "curl http://api.myallocator.com/pms/v201408/json/PropertyImageList -d@- <<EOJSON\njson=\n{\n    \"Auth/VendorId\":\"Your Vendor ID\",\n    \"Auth/VendorPassword\":\"Your Vendor Password\",\n    \"Auth/UserToken\":\"User token\",\n    \"Auth/PropertyId\":\"Property ID on myallocator.com\"\n}\nEOJSON",
+        "content": "curl https://api.myallocator.com/pms/v201408/json/PropertyImageList -d@- <<EOJSON\njson=\n{\n    \"Auth/VendorId\":\"Your Vendor ID\",\n    \"Auth/VendorPassword\":\"Your Vendor Password\",\n    \"Auth/UserToken\":\"User token\",\n    \"Auth/PropertyId\":\"Property ID on myallocator.com\"\n}\nEOJSON",
         "type": "json"
       }
     ],
@@ -2880,7 +2880,7 @@
       },
       {
         "title": "curl w/ JSON",
-        "content": "curl http://api.myallocator.com/pms/v201408/json/PropertyImageRemove -d@- <<EOJSON\njson={\n    \"Auth/VendorId\":\"Your Vendor ID\",\n    \"Auth/VendorPassword\":\"Your Vendor Password\",\n    \"Auth/UserToken\":\"User token\",\n    \"Auth/PropertyId\":\"Property ID on myallocator.com\",\n    'PropertyImage':{ 'PropertyImageId':### }\n}\nEOJSO\nN",
+        "content": "curl https://api.myallocator.com/pms/v201408/json/PropertyImageRemove -d@- <<EOJSON\njson={\n    \"Auth/VendorId\":\"Your Vendor ID\",\n    \"Auth/VendorPassword\":\"Your Vendor Password\",\n    \"Auth/UserToken\":\"User token\",\n    \"Auth/PropertyId\":\"Property ID on myallocator.com\",\n    'PropertyImage':{ 'PropertyImageId':### }\n}\nEOJSO\nN",
         "type": "json"
       },
       {
@@ -2975,7 +2975,7 @@
       },
       {
         "title": "curl w/ JSON",
-        "content": "curl http://api.myallocator.com/pms/v201408/json/PropertyList -d\n\t'json={\"Auth/VendorId\":\"\", \"Auth/VendorPassword\":\"\", \"Auth/UserToken\":\"\"}'",
+        "content": "curl https://api.myallocator.com/pms/v201408/json/PropertyList -d\n\t'json={\"Auth/VendorId\":\"\", \"Auth/VendorPassword\":\"\", \"Auth/UserToken\":\"\"}'",
         "type": "json"
       }
     ],
@@ -3240,7 +3240,7 @@
       },
       {
         "title": "curl w/ JSON",
-        "content": "curl http://api.myallocator.com/pms/v201408/json/PropertyModify -d@- <<EOJSON\njson={\n  \"Auth/UserToken\":\"User's auth token\",\n  \"Auth/VendorId\":\"your vendor id\",\n  \"Auth/VendorPassword\":\"your vendor password\",\n  \"Auth/PropertyId\":\"?\",\n  \"PropertyName\":\"Name of property\",\n  \"Currency\":\"###\",\n  \"Country\":\"##\",\n  \"Breakfast\":\"|IN|EX\",\n  \"BookingAdjust\":\"0|1\",\n  \"BookingAdjustCancellation\":\"0|1\",\n  \"BookingAdjustModification\":\"0|1\",\n  \"BookingDownload\":\"0|1\",\n  \"EmailDefault\":\"contact@property.com\",\n  \"EmailChannelBooking\":\"booking@property.com\",\n  \"EmailBookNow\":\"booknow@property.com\"\n  \"PaymentProviders\":[\n      { \"id\":\"xxx\", type:\"stripe|tokenx|braintree\", key1:\"value1\", key2:\"value2\" }\n  ]\n}\nEOJSON",
+        "content": "curl https://api.myallocator.com/pms/v201408/json/PropertyModify -d@- <<EOJSON\njson={\n  \"Auth/UserToken\":\"User's auth token\",\n  \"Auth/VendorId\":\"your vendor id\",\n  \"Auth/VendorPassword\":\"your vendor password\",\n  \"Auth/PropertyId\":\"?\",\n  \"PropertyName\":\"Name of property\",\n  \"Currency\":\"###\",\n  \"Country\":\"##\",\n  \"Breakfast\":\"|IN|EX\",\n  \"BookingAdjust\":\"0|1\",\n  \"BookingAdjustCancellation\":\"0|1\",\n  \"BookingAdjustModification\":\"0|1\",\n  \"BookingDownload\":\"0|1\",\n  \"EmailDefault\":\"contact@property.com\",\n  \"EmailChannelBooking\":\"booking@property.com\",\n  \"EmailBookNow\":\"booknow@property.com\"\n  \"PaymentProviders\":[\n      { \"id\":\"xxx\", type:\"stripe|tokenx|braintree\", key1:\"value1\", key2:\"value2\" }\n  ]\n}\nEOJSON",
         "type": "json"
       }
     ],
@@ -3367,7 +3367,7 @@
       },
       {
         "title": "curl w/ JSON",
-        "content": "curl http://api.myallocator.com/pms/v201603/json/RatePlanCreate -d@- <<EOJSON\njson={\n    \"Auth/VendorId\":\"\",\n    \"Auth/VendorPassword\":\"\",\n    \"Auth/UserToken\":\"\",\n    \"Auth/PropertyId\":\"\",\n    \"RoomTypeId\":1234,\n    \"Label\":\"Name of RatePlan\",\n    \"IsIBEOnly\":false,\n    \"OccupancyMin\":0,\n    \"OccupancyMax\":0,\n    \"MinLOS\":0,\n    \"MaxLOS\":0,\n    \"RateModel\":\"daily\"\n}\nEOJSON",
+        "content": "curl https://api.myallocator.com/pms/v201603/json/RatePlanCreate -d@- <<EOJSON\njson={\n    \"Auth/VendorId\":\"\",\n    \"Auth/VendorPassword\":\"\",\n    \"Auth/UserToken\":\"\",\n    \"Auth/PropertyId\":\"\",\n    \"RoomTypeId\":1234,\n    \"Label\":\"Name of RatePlan\",\n    \"IsIBEOnly\":false,\n    \"OccupancyMin\":0,\n    \"OccupancyMax\":0,\n    \"MinLOS\":0,\n    \"MaxLOS\":0,\n    \"RateModel\":\"daily\"\n}\nEOJSON",
         "type": "json"
       }
     ],
@@ -3475,7 +3475,7 @@
       },
       {
         "title": "curl w/ JSON",
-        "content": "curl http://api.myallocator.com/pms/v201603/json/RatePlanList -d@- <<EOJSON\njson={\n\"Auth/VendorId\":\"\",\n\"Auth/VendorPassword\":\"\",\n\"Auth/UserToken\":\"\",\n\"Auth/PropertyId\":\"\"\n}\nEOJSON",
+        "content": "curl https://api.myallocator.com/pms/v201603/json/RatePlanList -d@- <<EOJSON\njson={\n\"Auth/VendorId\":\"\",\n\"Auth/VendorPassword\":\"\",\n\"Auth/UserToken\":\"\",\n\"Auth/PropertyId\":\"\"\n}\nEOJSON",
         "type": "json"
       }
     ],
@@ -3576,7 +3576,7 @@
       },
       {
         "title": "curl w/ JSON",
-        "content": "curl http://api.myallocator.com/pms/v201408/json/RatePlanRemove -d@- <<EOJSON\njson={\n    \"Auth/VendorId\":\"Your Vendor ID\",\n    \"Auth/VendorPassword\":\"Your Vendor Password\",\n    \"Auth/UserToken\":\"User token\",\n    \"Auth/PropertyId\":\"Property ID on myallocator.com\",\n    \"RatePlanId\":1234\n}\nEOJSON",
+        "content": "curl https://api.myallocator.com/pms/v201408/json/RatePlanRemove -d@- <<EOJSON\njson={\n    \"Auth/VendorId\":\"Your Vendor ID\",\n    \"Auth/VendorPassword\":\"Your Vendor Password\",\n    \"Auth/UserToken\":\"User token\",\n    \"Auth/PropertyId\":\"Property ID on myallocator.com\",\n    \"RatePlanId\":1234\n}\nEOJSON",
         "type": "json"
       }
     ],
@@ -3672,7 +3672,7 @@
       },
       {
         "title": "curl w/ JSON",
-        "content": "curl http://api.myallocator.com/pms/v201603/json/RatePlanUpdate -d@- <<EOJSON\njson={\n\"Auth/VendorId\":\"\",\n\"Auth/VendorPassword\":\"\",\n\"Auth/UserToken\":\"\",\n\"Auth/PropertyId\":\"\",\n\"RatePlanId\":1234,\n\"RoomTypeId\":1234,\n\"Label\":\"Name of RatePlan\",\n\"IsIBEOnly\":false,\n\"OccupancyMin\":0,\n\"OccupancyMax\":0,\n\"MinLOS\":0,\n\"MaxLOS\":0,\n\"RateModel\":\"daily\"\n}\nEOJSON",
+        "content": "curl https://api.myallocator.com/pms/v201603/json/RatePlanUpdate -d@- <<EOJSON\njson={\n\"Auth/VendorId\":\"\",\n\"Auth/VendorPassword\":\"\",\n\"Auth/UserToken\":\"\",\n\"Auth/PropertyId\":\"\",\n\"RatePlanId\":1234,\n\"RoomTypeId\":1234,\n\"Label\":\"Name of RatePlan\",\n\"IsIBEOnly\":false,\n\"OccupancyMin\":0,\n\"OccupancyMax\":0,\n\"MinLOS\":0,\n\"MaxLOS\":0,\n\"RateModel\":\"daily\"\n}\nEOJSON",
         "type": "json"
       },
       {
@@ -3682,7 +3682,7 @@
       },
       {
         "title": "curl w/ JSON",
-        "content": "curl http://api.myallocator.com/pms/v201408/json/RatePlanUpdate -d@- <<EOJSON\njson={\n    \"Auth/VendorId\":\"Your Vendor ID\",\n    \"Auth/VendorPassword\":\"Your Vendor Password\",\n    \"Auth/UserToken\":\"User token\",\n    \"Auth/PropertyId\":\"Property ID on myallocator.com\",\n    \"RatePlanId\":1234,\n    \"RoomTypeId\":1234,\n    \"Label\":\"Name of RatePlan\",\n    \"IsIBEOnly\":false,\n    \"OccupancyMin\":0,\n    \"OccupancyMax\":0,\n    \"MinLOS\":0,\n    \"MaxLOS\":0,\n    \"RateModel\":\"daily\"\n}\nEOJSON",
+        "content": "curl https://api.myallocator.com/pms/v201408/json/RatePlanUpdate -d@- <<EOJSON\njson={\n    \"Auth/VendorId\":\"Your Vendor ID\",\n    \"Auth/VendorPassword\":\"Your Vendor Password\",\n    \"Auth/UserToken\":\"User token\",\n    \"Auth/PropertyId\":\"Property ID on myallocator.com\",\n    \"RatePlanId\":1234,\n    \"RoomTypeId\":1234,\n    \"Label\":\"Name of RatePlan\",\n    \"IsIBEOnly\":false,\n    \"OccupancyMin\":0,\n    \"OccupancyMax\":0,\n    \"MinLOS\":0,\n    \"MaxLOS\":0,\n    \"RateModel\":\"daily\"\n}\nEOJSON",
         "type": "json"
       }
     ],
@@ -3792,7 +3792,7 @@
       },
       {
         "title": "curl w/ JSON",
-        "content": "curl http://api.myallocator.com/pms/v201408/json/RoomAvailabilityList -d@- <<EOJSON\njson=\n{\n  \"Auth/VendorId\":\"\",\n  \"Auth/VendorPassword\":\"\",\n  \"Auth/UserToken\":\"\",\n  \"Auth/PropertyId\":\"\",\n  \"StartDate\":\"2015-01-01\",\n  \"EndDate\":\"2017-01-01\"\n}\nEOJSON",
+        "content": "curl https://api.myallocator.com/pms/v201408/json/RoomAvailabilityList -d@- <<EOJSON\njson=\n{\n  \"Auth/VendorId\":\"\",\n  \"Auth/VendorPassword\":\"\",\n  \"Auth/UserToken\":\"\",\n  \"Auth/PropertyId\":\"\",\n  \"StartDate\":\"2015-01-01\",\n  \"EndDate\":\"2017-01-01\"\n}\nEOJSON",
         "type": "json"
       },
       {
@@ -3929,7 +3929,7 @@
       },
       {
         "title": "curl w/ JSON",
-        "content": "curl http://api.myallocator.com/pms/v201408/json/RoomCreate -d@- <<EOJSON\njson={\n    \"Auth/VendorId\":\"Your Vendor ID\",\n    \"Auth/VendorPassword\":\"Your Vendor Password\",\n    \"Auth/UserToken\":\"User token\",\n    \"Auth/PropertyId\":\"Property ID on myallocator.com\",\n    \"ValidateOnly\":false,\n    \"AuthorizeBilling\":true,\n    \"Rooms\": [\n        {\n            \"PMSRoomId\":\"IdOfRoomOnPMS\",\n            \"Label\":\"Double Room\",\n            \"Units\":4,\n            \"Occupancy\":2,\n            \"PrivateRoom\":\"true\",\n            \"Gender\":\"MI\"\n        },\n        {\n            \"PMSRoomId\":\"IdOfRoomOnPMS\",\n            \"Label\":\"Female dorm\",\n            \"Units\":3,\n            \"Occupancy\":6,\n            \"PrivateRoom\":\"false\",\n            \"Gender\":\"FE\"\n        }\n    ]\n}\nEOJSON",
+        "content": "curl https://api.myallocator.com/pms/v201408/json/RoomCreate -d@- <<EOJSON\njson={\n    \"Auth/VendorId\":\"Your Vendor ID\",\n    \"Auth/VendorPassword\":\"Your Vendor Password\",\n    \"Auth/UserToken\":\"User token\",\n    \"Auth/PropertyId\":\"Property ID on myallocator.com\",\n    \"ValidateOnly\":false,\n    \"AuthorizeBilling\":true,\n    \"Rooms\": [\n        {\n            \"PMSRoomId\":\"IdOfRoomOnPMS\",\n            \"Label\":\"Double Room\",\n            \"Units\":4,\n            \"Occupancy\":2,\n            \"PrivateRoom\":\"true\",\n            \"Gender\":\"MI\"\n        },\n        {\n            \"PMSRoomId\":\"IdOfRoomOnPMS\",\n            \"Label\":\"Female dorm\",\n            \"Units\":3,\n            \"Occupancy\":6,\n            \"PrivateRoom\":\"false\",\n            \"Gender\":\"FE\"\n        }\n    ]\n}\nEOJSON",
         "type": "json"
       }
     ],
@@ -4093,7 +4093,7 @@
       },
       {
         "title": "curl w/ JSON",
-        "content": "curl http://api.myallocator.com/pms/v201408/json/RoomImageCreate -d@- <<EOJSON\njson={\n    \"Auth/VendorId\":\"Your Vendor ID\",\n    \"Auth/VendorPassword\":\"Your Vendor Password\",\n    \"Auth/UserToken\":\"User token\",\n    \"Auth/PropertyId\":\"Property ID on myallocator.com\",\n    \"RoomImages\": [\n      {\n        \"RoomId\": 5532,\n        \"Filename\": \"double-room.jpg\",\n        \"Data\": \"oAAAANSUhEUgAAG2QAABPqCAYAAA[...]\"\n      }\n    ]\n}\nEOJSON",
+        "content": "curl https://api.myallocator.com/pms/v201408/json/RoomImageCreate -d@- <<EOJSON\njson={\n    \"Auth/VendorId\":\"Your Vendor ID\",\n    \"Auth/VendorPassword\":\"Your Vendor Password\",\n    \"Auth/UserToken\":\"User token\",\n    \"Auth/PropertyId\":\"Property ID on myallocator.com\",\n    \"RoomImages\": [\n      {\n        \"RoomId\": 5532,\n        \"Filename\": \"double-room.jpg\",\n        \"Data\": \"oAAAANSUhEUgAAG2QAABPqCAYAAA[...]\"\n      }\n    ]\n}\nEOJSON",
         "type": "json"
       }
     ],
@@ -4187,7 +4187,7 @@
       },
       {
         "title": "curl w/ JSON",
-        "content": "curl http://api.myallocator.com/pms/v201408/json/RoomImageList -d@- <<EOJSON\njson={\n    \"Auth/VendorId\":\"Your Vendor ID\",\n    \"Auth/VendorPassword\":\"Your Vendor Password\",\n    \"Auth/UserToken\":\"User token\",\n    \"Auth/PropertyId\":\"Property ID on myallocator.com\"\n}\nEOJSON",
+        "content": "curl https://api.myallocator.com/pms/v201408/json/RoomImageList -d@- <<EOJSON\njson={\n    \"Auth/VendorId\":\"Your Vendor ID\",\n    \"Auth/VendorPassword\":\"Your Vendor Password\",\n    \"Auth/UserToken\":\"User token\",\n    \"Auth/PropertyId\":\"Property ID on myallocator.com\"\n}\nEOJSON",
         "type": "json"
       }
     ],
@@ -4316,7 +4316,7 @@
     "examples": [
       {
         "title": "curl w/ JSON",
-        "content": "curl http://api.myallocator.com/pms/v201408/json/RoomImageRemove -d@- <<EOJSON\njson={\n    \"Auth/UserToken\":\"\",\n    \"Auth/VendorId\":\"\",\n    \"Auth/VendorPassword\":\"\",\n    \"RoomImage\":{ \"RoomImageId\":### }\n}\nEOJSON",
+        "content": "curl https://api.myallocator.com/pms/v201408/json/RoomImageRemove -d@- <<EOJSON\njson={\n    \"Auth/UserToken\":\"\",\n    \"Auth/VendorId\":\"\",\n    \"Auth/VendorPassword\":\"\",\n    \"RoomImage\":{ \"RoomImageId\":### }\n}\nEOJSON",
         "type": "json"
       }
     ],
@@ -4368,7 +4368,7 @@
     "examples": [
       {
         "title": "curl w/ JSON",
-        "content": "curl http://api.myallocator.com/pms/v201408/json/RoomList -d@- <<EOJSON\njson={\n  \"Auth/UserToken\":\"User's auth token\",\n  \"Auth/PropertyId\":\"Property ID on myallocator.com\",\n  \"Auth/VendorId\":\"your vendor id\",\n  \"Auth/VendorPassword\":\"your vendor password\"\n}\nEOJSON",
+        "content": "curl https://api.myallocator.com/pms/v201408/json/RoomList -d@- <<EOJSON\njson={\n  \"Auth/UserToken\":\"User's auth token\",\n  \"Auth/PropertyId\":\"Property ID on myallocator.com\",\n  \"Auth/VendorId\":\"your vendor id\",\n  \"Auth/VendorPassword\":\"your vendor password\"\n}\nEOJSON",
         "type": "json"
       },
       {
@@ -4511,7 +4511,7 @@
     "examples": [
       {
         "title": "curl w/ JSON",
-        "content": "curl http://api.myallocator.com/pms/v201408/json/RoomRemove -d@- <<EOJSON\njson={\n\t\"Auth/UserToken\":\"\",\n\t\"Auth/VendorId\":\"\",\n\t\"Auth/VendorPassword\":\"\",\n\t\"Room\":{ \"RoomId\":### }\n}\nEOJSON",
+        "content": "curl https://api.myallocator.com/pms/v201408/json/RoomRemove -d@- <<EOJSON\njson={\n\t\"Auth/UserToken\":\"\",\n\t\"Auth/VendorId\":\"\",\n\t\"Auth/VendorPassword\":\"\",\n\t\"Room\":{ \"RoomId\":### }\n}\nEOJSON",
         "type": "json"
       }
     ],
@@ -4529,7 +4529,7 @@
     "examples": [
       {
         "title": "curl w/ JSON",
-        "content": "curl http://api.myallocator.com/pms/v201408/json/RoomUpdate -d@- <<EOJSON\njson={\n...\n}\nEOJSON",
+        "content": "curl https://api.myallocator.com/pms/v201408/json/RoomUpdate -d@- <<EOJSON\njson={\n...\n}\nEOJSON",
         "type": "json"
       }
     ],
@@ -4637,7 +4637,7 @@
       },
       {
         "title": "curl w/ JSON",
-        "content": "curl http://api.myallocator.com/pms/v201408/json/UserCreate -d@- <<EOJSON\njson={\n  \"Auth/VendorId\":\"your vendor id\",\n  \"Auth/VendorPassword\":\"your vendor password\",\n  \"UserId\":\"Requested User ID\",\n  \"UserPassword\":\"New Customer Password\",\n  \"CustomerFirstName\":\"Customer's first name\",\n  \"CustomerLastName\":\"Customer's last name\",\n  \"CustomerEmail\":\"Customer's email address\",\n  \"SendWelcome\":\"1|0\"\n}\nEOJSON",
+        "content": "curl https://api.myallocator.com/pms/v201408/json/UserCreate -d@- <<EOJSON\njson={\n  \"Auth/VendorId\":\"your vendor id\",\n  \"Auth/VendorPassword\":\"your vendor password\",\n  \"UserId\":\"Requested User ID\",\n  \"UserPassword\":\"New Customer Password\",\n  \"CustomerFirstName\":\"Customer's first name\",\n  \"CustomerLastName\":\"Customer's last name\",\n  \"CustomerEmail\":\"Customer's email address\",\n  \"SendWelcome\":\"1|0\"\n}\nEOJSON",
         "type": "json"
       }
     ],
@@ -4742,7 +4742,7 @@
       },
       {
         "title": "curl w/ JSON",
-        "content": "curl http://api.myallocator.com/pms/v201408/json/UserExists -d@- <<EOJSON\njson={\n  \"Auth/VendorId\":\"Your Vendor ID\",\n  \"Auth/VendorPassword\":\"Your Vendor Password\",\n  \"UserId\":\"requested-username\",\n  \"Email\":\"user@domain.com\"\n}\nEOJSON",
+        "content": "curl https://api.myallocator.com/pms/v201408/json/UserExists -d@- <<EOJSON\njson={\n  \"Auth/VendorId\":\"Your Vendor ID\",\n  \"Auth/VendorPassword\":\"Your Vendor Password\",\n  \"UserId\":\"requested-username\",\n  \"Email\":\"user@domain.com\"\n}\nEOJSON",
         "type": "json"
       }
     ],
@@ -4813,7 +4813,7 @@
       },
       {
         "title": "curl w/ JSON",
-        "content": "    curl http://api.myallocator.com/pms/v201408/json/UserModify -d@- <<EOJSON\n    json={\n      \"Auth/UserToken\"      : \"User's auth token\",\n      \"Auth/VendorId\"       : \"Your vendor id\",\n      \"Auth/VendorPassword\" : \"Your vendor password\",\n      \"CustomerFirstName\"   : \"Customer's first name\",\n      \"CustomerLastName\"    : \"Customer's last name\",\n      \"CustomerEmail\"       : \"Customer's email address\"\n    }\nEOJSON",
+        "content": "    curl https://api.myallocator.com/pms/v201408/json/UserModify -d@- <<EOJSON\n    json={\n      \"Auth/UserToken\"      : \"User's auth token\",\n      \"Auth/VendorId\"       : \"Your vendor id\",\n      \"Auth/VendorPassword\" : \"Your vendor password\",\n      \"CustomerFirstName\"   : \"Customer's first name\",\n      \"CustomerLastName\"    : \"Customer's last name\",\n      \"CustomerEmail\"       : \"Customer's email address\"\n    }\nEOJSON",
         "type": "json"
       }
     ],
@@ -4921,7 +4921,7 @@
       },
       {
         "title": "curl w/ JSON",
-        "content": "curl http://api.myallocator.com/pms/v201408/json/VendorSet -d@- <<EOJSON\njson={\n   \"Auth/VendorId\":\"Your Vendor ID\",\n   \"Auth/VendorPassword\":\"Your Vendor Password\",\n   \"Callback/URL\":\"http://www.yourdomain.com/myallocator/callback.cgi\",\n   \"Callback/Password\":\"very secret password\"\n}\nEOJSON",
+        "content": "curl https://api.myallocator.com/pms/v201408/json/VendorSet -d@- <<EOJSON\njson={\n   \"Auth/VendorId\":\"Your Vendor ID\",\n   \"Auth/VendorPassword\":\"Your Vendor Password\",\n   \"Callback/URL\":\"http://www.yourdomain.com/myallocator/callback.cgi\",\n   \"Callback/Password\":\"very secret password\"\n}\nEOJSON",
         "type": "json"
       }
     ],
@@ -4993,12 +4993,12 @@
     "title": "Sample Booking Data",
     "name": "Sample_Booking_Data",
     "version": "201501.0.0",
-    "description": "<p>Sample bookings for a variety of OTA's.</p> <p>You can find more OTA booking examples here: https://github.com/MyAllocator/bookingsamples</p> <p>** Mandatory Fields **</p> <table> <thead> <tr> <th>Tag</th> <th>Description</th> </tr> </thead> <tbody> <tr> <td>Channel</td> <td>2-3 letter channel code</td> </tr> <tr> <td>StartDate</td> <td>Date of arrival (YYYY-MM-DD)</td> </tr> <tr> <td>EndDate</td> <td>Date before day of departure (YYYY-MM-DD)</td> </tr> <tr> <td>IsCancellation</td> <td>true or false</td> </tr> <tr> <td>MyallocatorId</td> <td>Booking ID on myallocator.com (hexadecimal number)</td> </tr> <tr> <td>MyallocatorCreationDate</td> <td>Date of booking creation on myallocator.com</td> </tr> <tr> <td>MyallocatorCreationTime</td> <td>Time of booking creation on myallocator.com</td> </tr> <tr> <td>MyallocatorModificationDate</td> <td>Date of booking modification on myallocator.com (in case of a cancellation the modification date is different from the creation date)</td> </tr> <tr> <td>MyallocatorModificationTime</td> <td>Time of booking modification on myallocator.com</td> </tr> <tr> <td>OrderId</td> <td>Booking ID on the channel</td> </tr> <tr> <td>Rooms</td> <td>Room List of booked rooms</td> </tr> <tr> <td>- RoomTypeIds</td> <td>List of booked myallocator.com room IDs. Several channel room can be mapped to one myallocator.com room. If -1 it means that we couldn't match the channel room to one of our rooms.</td> </tr> <tr> <td>- Units</td> <td>Number of booked rooms (for private rooms) or beds (for shared rooms)</td> </tr> <tr> <td>- StartDate</td> <td>Staying in this room from this date on (YYYY-MM-DD)</td> </tr> <tr> <td>- EndDate</td> <td>Date before day of departure (YYYY-MM-DD)</td> </tr> </tbody> </table> <p>** Optional Fields **</p> <table> <thead> <tr> <th>Tags</th> <th>Description</th> </tr> </thead> <tbody> <tr> <td>IsModification</td> <td>Indicates whether booking has been modified. A cancellation also counts as a modification. Can be true or false.</td> </tr> <tr> <td>OrderSource</td> <td>Which website the booking originates from</td> </tr> <tr> <td>OrderDate</td> <td>The date the booking has been created on the channel</td> </tr> <tr> <td>OrderTime</td> <td>The time the booking has been created on the channel</td> </tr> <tr> <td>OrderAdults</td> <td>Number of adults</td> </tr> <tr> <td>OrderChildren</td> <td>Number of children</td> </tr> <tr> <td>Deposit</td> <td>Amount of money already taken as a deposit</td> </tr> <tr> <td>DepositCurrency</td> <td>Currency of deposit</td> </tr> <tr> <td>Commission</td> <td>Fee taken by the channel</td> </tr> <tr> <td>CommissionCurrency</td> <td>Currency of fee taken by the channel</td> </tr> <tr> <td>CommissionIncludedInTotal</td> <td>Whether the commission is included in the TotalPrice. Can be true or false.</td> </tr> <tr> <td>TotalPrice</td> <td>Total cost of booking</td> </tr> <tr> <td>TotalCurrency</td> <td>Currency for total cost of booking</td> </tr> <tr> <td>PaymentCollect</td> <td>'Channel' or 'Property', indicates who collects the payment from the guest</td> </tr> <tr> <td>Customers</td> <td>/Customer Customer details (can be more than one)</td> </tr> <tr> <td>- CustomerFName</td> <td>First name</td> </tr> <tr> <td>- CustomerLName</td> <td>Family name (or if CustomerFName is empty, both first and last name)</td> </tr> <tr> <td>- CustomerEmail</td> <td>Email address</td> </tr> <tr> <td>- CustomerGender</td> <td>Gender</td> </tr> <tr> <td>- CustomerSmoker</td> <td>Whether customer is a smoker. Can be true or false.</td> </tr> <tr> <td>- CustomerPhone</td> <td>Phone number</td> </tr> <tr> <td>- CustomerPhoneMobile</td> <td>Mobile phone number</td> </tr> <tr> <td>- CustomerFax</td> <td>Fax number</td> </tr> <tr> <td>- CustomerAddress</td> <td>Address</td> </tr> <tr> <td>- CustomerCompany</td> <td>Company name</td> </tr> <tr> <td>- CustomerCompanyDepartment</td> <td>Company deparment name</td> </tr> <tr> <td>- CustomerCity</td> <td>City</td> </tr> <tr> <td>- CustomerState</td> <td>State</td> </tr> <tr> <td>- CustomerPostCode</td> <td>Post code</td> </tr> <tr> <td>- CustomerCountry</td> <td>Address country name (not neccessarily a 2/3-letter code).</td> </tr> <tr> <td>- CustomerNationality</td> <td>Nationality (not neccessarily a 3-letter code)</td> </tr> <tr> <td>- CustomerArrivalTime</td> <td>Time of arrival</td> </tr> <tr> <td>- CustomerNote</td> <td>Note to the property owner</td> </tr> <tr> <td>Rooms</td> <td>Room Room details</td> </tr> <tr> <td>- Price</td> <td>Price for this room for the entire duration of stay (not the daily rate)</td> </tr> <tr> <td>- Currency</td> <td>Currency for the price</td> </tr> <tr> <td>- ChannelRoomType</td> <td>Room type ID on the channel</td> </tr> <tr> <td>- RoomOrderId</td> <td>ID of the channel for that room booking</td> </tr> <tr> <td>- RoomDesc</td> <td>Room description on the channel</td> </tr> <tr> <td>- RateId</td> <td>Rate type ID on the channel</td> </tr> <tr> <td>- RateDesc</td> <td>Rate description on the channel</td> </tr> <tr> <td>- OccupantFName</td> <td>First name of occupant of this room</td> </tr> <tr> <td>- OccupantLName</td> <td>Family name of occupant of this room (or if OccupantFirstName is empty, both first and last name)</td> </tr> <tr> <td>- OccupantSmoker</td> <td>whether occupant is a smoker. Can be true or false.</td> </tr> <tr> <td>- OccupantNote</td> <td>Note to the property owner</td> </tr> <tr> <td>- Occupancy</td> <td>Number of persons this room is booked for</td> </tr> <tr> <td>- Adults</td> <td>Number of adults staying in this room</td> </tr> <tr> <td>- Children</td> <td>Number of children staying in this room</td> </tr> <tr> <td>- Babies</td> <td>Number of babies staying in this room</td> </tr> <tr> <td>- Policy</td> <td>Booking policy the room was booked for</td> </tr> <tr> <td>- Breakfast</td> <td>Wheter breakfast was ordered alogn with the booking. Can be true or false.</td> </tr> </tbody> </table>",
+    "description": "<p>Sample bookings for a variety of OTA's.</p> <p>You can find more OTA booking examples here: https://github.com/MyAllocator/bookingsamples</p> <p>** Mandatory Fields **</p> <table> <thead> <tr> <th>Tag</th> <th>Description</th> </tr> </thead> <tbody> <tr> <td>Channel</td> <td>2-3 letter channel code</td> </tr> <tr> <td>StartDate</td> <td>Date of arrival (YYYY-MM-DD)</td> </tr> <tr> <td>EndDate</td> <td>Date before day of departure (YYYY-MM-DD)</td> </tr> <tr> <td>IsCancellation</td> <td>true or false</td> </tr> <tr> <td>MyallocatorId</td> <td>Booking ID on myallocator.com (hexadecimal number)</td> </tr> <tr> <td>MyallocatorCreationDate</td> <td>Date of booking creation on myallocator.com</td> </tr> <tr> <td>MyallocatorCreationTime</td> <td>Time of booking creation on myallocator.com</td> </tr> <tr> <td>MyallocatorModificationDate</td> <td>Date of booking modification on myallocator.com (in case of a cancellation the modification date is different from the creation date)</td> </tr> <tr> <td>MyallocatorModificationTime</td> <td>Time of booking modification on myallocator.com</td> </tr> <tr> <td>OrderId</td> <td>Booking ID on the channel</td> </tr> <tr> <td>Rooms</td> <td>Room List of booked rooms</td> </tr> <tr> <td>- RoomTypeIds</td> <td>List of booked myallocator.com room IDs. Several channel room can be mapped to one myallocator.com room. If -1 it means that we couldn't match the channel room to one of our rooms.</td> </tr> <tr> <td>- Units</td> <td>Number of booked rooms (for private rooms) or beds (for shared rooms)</td> </tr> <tr> <td>- StartDate</td> <td>Staying in this room from this date on (YYYY-MM-DD)</td> </tr> <tr> <td>- EndDate</td> <td>Date before day of departure (YYYY-MM-DD)</td> </tr> </tbody> </table> <p>** Optional Fields **</p> <table> <thead> <tr> <th>Tags</th> <th>Description</th> </tr> </thead> <tbody> <tr> <td>IsModification</td> <td>Indicates whether booking has been modified. A cancellation also counts as a modification. Can be true or false.</td> </tr> <tr> <td>OrderSource</td> <td>Which website the booking originates from</td> </tr> <tr> <td>OrderDate</td> <td>The date the booking has been created on the channel</td> </tr> <tr> <td>OrderTime</td> <td>The time the booking has been created on the channel</td> </tr> <tr> <td>OrderAdults</td> <td>Number of adults</td> </tr> <tr> <td>OrderChildren</td> <td>Number of children</td> </tr> <tr> <td>Deposit</td> <td>Amount of money already taken as a deposit</td> </tr> <tr> <td>DepositCurrency</td> <td>Currency of deposit</td> </tr> <tr> <td>Commission</td> <td>Fee taken by the channel</td> </tr> <tr> <td>CommissionCurrency</td> <td>Currency of fee taken by the channel</td> </tr> <tr> <td>CommissionIncludedInTotal</td> <td>Whether the commission is included in the TotalPrice. Can be true or false.</td> </tr> <tr> <td>TotalPrice</td> <td>Total cost of booking</td> </tr> <tr> <td>TotalCurrency</td> <td>Currency for total cost of booking</td> </tr> <tr> <td>PaymentCollect</td> <td>'Channel' or 'Property', indicates who collects the payment from the guest</td> </tr> <tr> <td>Customers</td> <td>/Customer Customer details (can be more than one)</td> </tr> <tr> <td>- CustomerFName</td> <td>First name</td> </tr> <tr> <td>- CustomerLName</td> <td>Family name (or if CustomerFName is empty, both first and last name)</td> </tr> <tr> <td>- CustomerEmail</td> <td>Email address</td> </tr> <tr> <td>- CustomerGender</td> <td>Gender</td> </tr> <tr> <td>- CustomerSmoker</td> <td>Whether customer is a smoker. Can be true or false.</td> </tr> <tr> <td>- CustomerPhone</td> <td>Phone number</td> </tr> <tr> <td>- CustomerPhoneMobile</td> <td>Mobile phone number</td> </tr> <tr> <td>- CustomerFax</td> <td>Fax number</td> </tr> <tr> <td>- CustomerAddress</td> <td>Address</td> </tr> <tr> <td>- CustomerCompany</td> <td>Company name</td> </tr> <tr> <td>- CustomerCompanyDepartment</td> <td>Company deparment name</td> </tr> <tr> <td>- CustomerCity</td> <td>City</td> </tr> <tr> <td>- CustomerState</td> <td>State</td> </tr> <tr> <td>- CustomerPostCode</td> <td>Post code</td> </tr> <tr> <td>- CustomerCountry</td> <td>Address country name (not neccessarily a 2/3-letter code).</td> </tr> <tr> <td>- CustomerNationality</td> <td>Nationality (not neccessarily a 3-letter code)</td> </tr> <tr> <td>- CustomerArrivalTime</td> <td>Time of arrival</td> </tr> <tr> <td>- CustomerNote</td> <td>Note to the property owner</td> </tr> <tr> <td>Rooms</td> <td>Room Room details</td> </tr> <tr> <td>- Price</td> <td>Price for this room for the entire duration of stay (not the daily rate)</td> </tr> <tr> <td>- Currency</td> <td>Currency for the price</td> </tr> <tr> <td>- ChannelRoomType</td> <td>Room type ID on the channel</td> </tr> <tr> <td>- RoomOrderId</td> <td>ID of the channel for that room booking</td> </tr> <tr> <td>- RoomDesc</td> <td>Room description on the channel</td> </tr> <tr> <td>- PromotionDesc</td> <td>Description of a possible promotion involved</td> </tr> <tr> <td>- RateId</td> <td>Rate type ID on the channel</td> </tr> <tr> <td>- RateDesc</td> <td>Rate description on the channel</td> </tr> <tr> <td>- OccupantFName</td> <td>First name of occupant of this room</td> </tr> <tr> <td>- OccupantLName</td> <td>Family name of occupant of this room (or if OccupantFirstName is empty, both first and last name)</td> </tr> <tr> <td>- OccupantSmoker</td> <td>whether occupant is a smoker. Can be true or false.</td> </tr> <tr> <td>- OccupantNote</td> <td>Note to the property owner</td> </tr> <tr> <td>- Occupancy</td> <td>Number of persons this room is booked for</td> </tr> <tr> <td>- Adults</td> <td>Number of adults staying in this room</td> </tr> <tr> <td>- Children</td> <td>Number of children staying in this room</td> </tr> <tr> <td>- Babies</td> <td>Number of babies staying in this room</td> </tr> <tr> <td>- Policy</td> <td>Booking policy the room was booked for</td> </tr> <tr> <td>- Breakfast</td> <td>Wheter breakfast was ordered alogn with the booking. Can be true or false.</td> </tr> </tbody> </table>",
     "success": {
       "examples": [
         {
           "title": "Complete",
-          "content": "\n{\n    IsCancellation => Bool\n    CancellationReason => String\n    OrderId       => String\n    OrderDate     => Date\n    OrderTime     => Time\n    OrderSource   => String\n    OrderSourceId => String\n    OrderCustomers => Int       # Total number of customers\n    OrderAdults   => Int\n    OrderChildren => Int\n    OrderMales    => Int\n    OrderFemales  => Int\n    Commission    => Float\n    CommissionCurrency => String\n    CommissionIncludedInTotal => Bool\n    Deposit       => Float\n    DepositCurrency => String\n    TotalPrice    => Float\n    TotalCurrency => String\n    TotalTaxes    => Float\n    TotalTaxesCurrency => String\n    Balance       => Float\n    BalanceCurrency => String\n    PaymentCollect  => 'Channel' or 'Property'\n\n\n    Customers => [\n        {\n            CustomerTitle => String\n            CustomerFName => String\n            CustomerLName => String\n            CustomerBirthday => Date\n            CustomerEmail => String\n            CustomerPhone => String\n            CustomerPhoneMobile => String\n            CustomerFax   => String\n            CustomerAddress  => String\n            CustomerCompany  => String\n            CustomerCompanyDepartment => String\n            CustomerCity     => String\n            CustomerState    => String\n            CustomerPostCode => String\n            CustomerCountry  => String\n            CustomerNationality => String\n            CustomerArrivalTime => String\n            CustomerNote => String\n            CustomerGender => String (MA/FE/MI if possible, but free text also possible)\n            CustomerSmoker => Bool\n            CustomerAge  => Int\n        }\n    ]\n\n    Rooms => [\n        {\n            StartDate => Date\n            EndDate   => Date\n            Units     => Int\n            Price     => Float\n            Currency  => String\n            ChannelRoomType => ID\n            RoomTypeIds => [\n                ID\n            ]\n            RoomDesc  => String\n            RateType  => ID\n            RateDesc  => String\n            OccupantFName  => String\n            OccupantLName  => String\n            OccupantSmoker => Bool\n            OccupantNote   => String\n            Occupancy      => Int\n            Adults    => Int\n            Children  => Int\n            Babies    => Int\n            RoomOrderId => String\n            Breakfast => ENUM(-1, 0, 1)   # -1 Different settings\n0  No breakfast\n1  With breakfast\n            DayRates => [\n              {\n                Date     => Date\n                Description => String\n                Rate     => Float\n                Currency => String\n                RateId   => ID\n                Commission => Float\n              }\n           ]\n       }\n    ]\n\n\n    PaymentTransactions = [\n      {\n        Provider     => String\n        Amount       => Float\n        Currency     => String\n        Description  => String\n        AuthCode     => String\n        Reference    => String\n        OrderId      => String\n      }\n    ],\n\n    Discounts => [\n        {\n            Discount => Float\n            Currency => String\n            Description => String\n            IncludedInTotal => Bool\n            StartDate => Date\n            EndDate => Date\n        }\n\n    ],\n\n    ExtraServices => [\n        {\n            Description => String ('Extra Bed')\n            Units => Int\n            Price => Float\n            Currency  => String\n            StartDate => Date\n            EndDate   => Date,\n            IncludedInTotal => Bool\n        }\n    ]\n);",
+          "content": "\n{\n    IsCancellation => Bool\n    CancellationReason => String\n    OrderId       => String\n    OrderDate     => Date\n    OrderTime     => Time\n    OrderSource   => String\n    OrderSourceId => String\n    OrderCustomers => Int       # Total number of customers\n    OrderAdults   => Int\n    OrderChildren => Int\n    OrderMales    => Int\n    OrderFemales  => Int\n    Commission    => Float\n    CommissionCurrency => String\n    CommissionIncludedInTotal => Bool\n    Deposit       => Float\n    DepositCurrency => String\n    TotalPrice    => Float\n    TotalCurrency => String\n    TotalTaxes    => Float\n    TotalTaxesCurrency => String\n    Balance       => Float\n    BalanceCurrency => String\n    PaymentCollect  => 'Channel' or 'Property'\n\n\n    Customers => [\n        {\n            CustomerTitle => String\n            CustomerFName => String\n            CustomerLName => String\n            CustomerBirthday => Date\n            CustomerEmail => String\n            CustomerPhone => String\n            CustomerPhoneMobile => String\n            CustomerFax   => String\n            CustomerAddress  => String\n            CustomerCompany  => String\n            CustomerCompanyDepartment => String\n            CustomerCity     => String\n            CustomerState    => String\n            CustomerPostCode => String\n            CustomerCountry  => String\n            CustomerNationality => String\n            CustomerArrivalTime => String\n            CustomerNote => String\n            CustomerGender => String (MA/FE/MI if possible, but free text also possible)\n            CustomerSmoker => Bool\n            CustomerAge  => Int\n        }\n    ]\n\n    Rooms => [\n        {\n            StartDate => Date\n            EndDate   => Date\n            Units     => Int\n            Price     => Float\n            Currency  => String\n            ChannelRoomType => ID\n            RoomTypeIds => [\n                ID\n            ]\n            RoomDesc  => String\n            PromotionDesc => String\n            RateType  => ID\n            RateDesc  => String\n            OccupantFName  => String\n            OccupantLName  => String\n            OccupantSmoker => Bool\n            OccupantNote   => String\n            Occupancy      => Int\n            Adults    => Int\n            Children  => Int\n            Babies    => Int\n            RoomOrderId => String\n            Breakfast => ENUM(-1, 0, 1)   # -1 Different settings\n0  No breakfast\n1  With breakfast\n            DayRates => [\n              {\n                Date     => Date\n                Description => String\n                Rate     => Float\n                Currency => String\n                RateId   => ID\n                Commission => Float\n              }\n           ]\n       }\n    ]\n\n\n    PaymentTransactions = [\n      {\n        Provider     => String\n        Amount       => Float\n        Currency     => String\n        Description  => String\n        AuthCode     => String\n        Reference    => String\n        OrderId      => String\n      }\n    ],\n\n    Discounts => [\n        {\n            Discount => Float\n            Currency => String\n            Description => String\n            IncludedInTotal => Bool\n            StartDate => Date\n            EndDate => Date\n        }\n\n    ],\n\n    ExtraServices => [\n        {\n            Description => String ('Extra Bed')\n            Units => Int\n            Price => Float\n            Currency  => String\n            StartDate => Date\n            EndDate   => Date,\n            IncludedInTotal => Bool\n        }\n    ]\n);",
           "type": "json"
         },
         {
@@ -5055,7 +5055,7 @@
     "title": "XML v1 Information",
     "name": "XML_v1_Information",
     "version": "201601.0.0",
-    "description": "<p>XML v1 is deprecated and this documentation is provided for backward compatibility.</p> <p>If you have specific concerns or things we can do to aid in this process please let us know at devhelp@myallocator.com. I've been on your side of the fence for more than 20 years, I hate when API's change too!</p> <p>The naming conventions have changed from VerbNoun to NounAdjectiveVerb, but the data structures themselves have not changed significantly. SetAllocation is ARIUpdate, but the request/response format for XML is the same. We went out of our way to make the fewest number of changes possible, but at the same time to introduce the ability to version and provide backward compatibility starting with v1. It's also worth mentioning all the old call names (SetAllocation) still work, even though they aren't in this documentation just to avoid confusion to new developers.</p> <p>There is a v1 URL which runs on the new code base: http://api.myallocator.com/pms/v1/xml</p> <p>The new codebase should (in theory) provide full v1 read/write compatibility, with a few improvements. It should be 98% backward compatible (there some trivial differences in validation logic, but no differences in response/request format).</p> <p>Right now -- api.myallocator.com/ points at a single server running an ancient fork of the old/original codebase. Requests to api.myallocator.com/pms/* are proxied to the new api servers. At some point (once I get caught up on tickets) we're going to turn off the old api server and send all requests to / api.myallocator.com/pms/v1/xml This <em>should</em> be unnoticeable to you, but you can control when this happens by moving to http://api.myallocator.com/pms/v1/xml yourself.</p> <p>We will need to this at some point so we can start changing/optimizing internal data structures, right now we're writing data in both new format and old format.</p> <p>There is no plan to deprecate v1 entirely in 2015 .. maybe someday, but no plans, it's just not that big a deal, so we're not saying &quot;never&quot;, but we're saying don't stress or feel rushed.</p> <p>The only changes to v1 actually impact all versions. Specifically SetAllocation with QueryForUpdateStatus:false timeouts will be decreased from 1 hour, to 30 minutes, to 15 minutes, to 5, and eventually (hopefully) to 60 seconds so API requests can turn over faster.</p> <p>Certain channels which aren't live yet (ex: CTrip) require 2 minutes to do an update and we don't want people camping on API webserver API connections.</p> <p>*** BUT WAIT !!! BEFORE THAT HAPPENS *** soon you'll have the option to receive callback notifications for both ariupdates, and configuration changes (in addition to bookings).</p> <p>We're hoping it will be trivial for most v1 developers to move the code which processes synchronous ARIUpdates from the HTTP response, into a callback handler on your web-server, giving us an asynchronous update path and dramatically increasing the reliability of the API for everybody.</p> <p>Right now it's very easy for a badly implemented rogue PMS to camp all 150 API connections (even if it was increased to 5000 it'd be easy to camp them all since the timeout [1hr] is so large).   This wasn't as big a deal when we had 10 developers, now there are over 150 and some of them.</p> <p>It only takes one bad implementation to take the whole system down for everybody.</p>",
+    "description": "<p>XML v1 is deprecated and this documentation is provided for backward compatibility.</p> <p>If you have specific concerns or things we can do to aid in this process please let us know at devhelp@myallocator.com. I've been on your side of the fence for more than 20 years, I hate when API's change too!</p> <p>The naming conventions have changed from VerbNoun to NounAdjectiveVerb, but the data structures themselves have not changed significantly. SetAllocation is ARIUpdate, but the request/response format for XML is the same. We went out of our way to make the fewest number of changes possible, but at the same time to introduce the ability to version and provide backward compatibility starting with v1. It's also worth mentioning all the old call names (SetAllocation) still work, even though they aren't in this documentation just to avoid confusion to new developers.</p> <p>There is a v1 URL which runs on the new code base: https://api.myallocator.com/pms/v1/xml</p> <p>The new codebase should (in theory) provide full v1 read/write compatibility, with a few improvements. It should be 98% backward compatible (there some trivial differences in validation logic, but no differences in response/request format).</p> <p>Right now -- api.myallocator.com/ points at a single server running an ancient fork of the old/original codebase. Requests to api.myallocator.com/pms/* are proxied to the new api servers. At some point (once I get caught up on tickets) we're going to turn off the old api server and send all requests to / api.myallocator.com/pms/v1/xml This <em>should</em> be unnoticeable to you, but you can control when this happens by moving to https://api.myallocator.com/pms/v1/xml yourself.</p> <p>We will need to this at some point so we can start changing/optimizing internal data structures, right now we're writing data in both new format and old format.</p> <p>There is no plan to deprecate v1 entirely in 2015 .. maybe someday, but no plans, it's just not that big a deal, so we're not saying &quot;never&quot;, but we're saying don't stress or feel rushed.</p> <p>The only changes to v1 actually impact all versions. Specifically SetAllocation with QueryForUpdateStatus:false timeouts will be decreased from 1 hour, to 30 minutes, to 15 minutes, to 5, and eventually (hopefully) to 60 seconds so API requests can turn over faster.</p> <p>Certain channels which aren't live yet (ex: CTrip) require 2 minutes to do an update and we don't want people camping on API webserver API connections.</p> <p>*** BUT WAIT !!! BEFORE THAT HAPPENS *** soon you'll have the option to receive callback notifications for both ariupdates, and configuration changes (in addition to bookings).</p> <p>We're hoping it will be trivial for most v1 developers to move the code which processes synchronous ARIUpdates from the HTTP response, into a callback handler on your web-server, giving us an asynchronous update path and dramatically increasing the reliability of the API for everybody.</p> <p>Right now it's very easy for a badly implemented rogue PMS to camp all 150 API connections (even if it was increased to 5000 it'd be easy to camp them all since the timeout [1hr] is so large).   This wasn't as big a deal when we had 10 developers, now there are over 150 and some of them.</p> <p>It only takes one bad implementation to take the whole system down for everybody.</p>",
     "error": {
       "examples": [
         {
