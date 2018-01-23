@@ -578,6 +578,298 @@ define({ "api": [
   {
     "group": "3_API_Methods",
     "type": "POST",
+    "url": "/ARIUpdate",
+    "title": "ARIUpdate",
+    "name": "ARIUpdate",
+    "version": "201601.0.0",
+    "parameter": {
+      "fields": {
+        "Request": [
+          {
+            "group": "Request",
+            "type": "String",
+            "optional": false,
+            "field": "Auth/UserToken",
+            "description": "<p>Users auth token (see AssociateUserToPMS call to generate a Token)</p>"
+          },
+          {
+            "group": "Request",
+            "type": "String",
+            "optional": false,
+            "field": "Auth/PropertyId",
+            "description": "<p>Property ID on myallocator.com</p>"
+          },
+          {
+            "group": "Request",
+            "type": "String",
+            "optional": false,
+            "field": "Auth/VendorId",
+            "description": "<p>Your Vendor ID</p>"
+          },
+          {
+            "group": "Request",
+            "type": "String",
+            "optional": false,
+            "field": "Auth/VendorPassword",
+            "description": "<p>Your Vendor Password</p>"
+          },
+          {
+            "group": "Request",
+            "type": "Container",
+            "optional": false,
+            "field": "Options",
+            "description": "<p>Container node (Hash) containing a list of channels to be updated.</p>"
+          },
+          {
+            "group": "Request",
+            "type": "Boolean",
+            "optional": false,
+            "field": ".Options.QueryForStatus",
+            "description": "<p>Default: false, If true the call returns immediately, and the caller should use ARIUpdateStatus to query.</p>"
+          },
+          {
+            "group": "Request",
+            "type": "Boolean",
+            "optional": false,
+            "field": ".Options.FailIfUpdateActive",
+            "description": "<p>Default: false, If true the call will fail if another update is currently running (rather than block with potentially old data)</p>"
+          },
+          {
+            "group": "Request",
+            "type": "Boolean",
+            "optional": false,
+            "field": ".Options.IgnoreInvalidRooms",
+            "description": "<p>Default: false, If true AND Invalid RoomId's are specified then a warning will be returned (otherwise the entire call will fail)</p>"
+          },
+          {
+            "group": "Request",
+            "type": "Integer",
+            "optional": false,
+            "field": ".Options.loop_delay",
+            "description": "<p>Intentionally make the 'loop' channel take loop_delay seconds (useful for testing with QueryForStatus)</p>"
+          },
+          {
+            "group": "Request",
+            "type": "Container",
+            "optional": false,
+            "field": "Channels",
+            "description": "<p>Container node (array) containing a list of channels to be updated.</p>"
+          },
+          {
+            "group": "Request",
+            "type": "String",
+            "optional": false,
+            "field": ".Channels.Channel",
+            "description": "<p>(XML ONLY) A XML node containing the channel that the customer wants to update. (Use ChannelList for ChannelId's)</p>"
+          },
+          {
+            "group": "Request",
+            "type": "String",
+            "optional": false,
+            "field": ".Channels.ChannelId",
+            "description": "<p>(JSON ONLY) the ChannelId of the channel to be updated. ex: &quot;loop&quot; for Loop</p>"
+          },
+          {
+            "group": "Request",
+            "type": "Container",
+            "optional": false,
+            "field": "Allocations",
+            "description": "<p>Container node (array) containing a list</p>"
+          },
+          {
+            "group": "Request",
+            "type": "String",
+            "optional": false,
+            "field": ".Allocations.Allocation",
+            "description": "<p>Individual allocations. There can be as many as you like, but a the date ranges should never overlap (within one room id).</p>"
+          },
+          {
+            "group": "Request",
+            "type": "String",
+            "optional": false,
+            "field": ".Allocation.RoomId",
+            "description": "<p>Room type id as returned by RoomList.</p>"
+          },
+          {
+            "group": "Request",
+            "type": "String",
+            "optional": false,
+            "field": ".Allocation.RatePlanId",
+            "description": "<p>Rateplan ID as returned by RatePlanList. Defaults to 0. Unless you implemented experimental rateplan support you likely don't need this.</p>"
+          },
+          {
+            "group": "Request",
+            "type": "Date",
+            "optional": false,
+            "field": ".Allocation.StartDate",
+            "description": "<p>Format: YYYY-MM-DD.</p>"
+          },
+          {
+            "group": "Request",
+            "type": "Date",
+            "optional": false,
+            "field": ".Allocation.EndDate",
+            "description": "<p>Format: YYYY-MM-DD.</p>"
+          },
+          {
+            "group": "Request",
+            "type": "String",
+            "optional": true,
+            "field": ".Allocations.Allocation.Units",
+            "description": "<p>How many beds or rooms should be available on this day. Whether it's beds or rooms depends on whether the room is a dorm or a private room. To remove allocation set Units to 0.</p>"
+          },
+          {
+            "group": "Request",
+            "type": "Integer",
+            "optional": true,
+            "field": ".Allocations.Allocation.MinStay",
+            "description": "<p>Specify the minumum number of days a customer is allowed to stay. Not all channels support this feature. Needs to be 1 or higher. (optional)</p>"
+          },
+          {
+            "group": "Request",
+            "type": "Integer",
+            "optional": true,
+            "field": ".Allocations.Allocation.MaxStay",
+            "description": "<p>Specify the maximum number of days a customer is allowed to stay. Not all channels support this feature. Needs to be 0 or higher. 0 means &quot;unlimited&quot;. (optional)</p>"
+          },
+          {
+            "group": "Request",
+            "type": "Boolean",
+            "optional": true,
+            "field": ".Allocations.Allocation.Closed",
+            "description": "<p>Room is not available during this time</p>"
+          },
+          {
+            "group": "Request",
+            "type": "Boolean",
+            "optional": true,
+            "field": ".Allocations.Allocation.ClosedForArrival",
+            "description": "<p>Arrivals are not allowed on this day.</p>"
+          },
+          {
+            "group": "Request",
+            "type": "Bollean",
+            "optional": true,
+            "field": ".Allocations.Allocation.ClosedForDeparture",
+            "description": "<p>Departures are not allowed on this day.</p>"
+          },
+          {
+            "group": "Request",
+            "type": "Container",
+            "optional": true,
+            "field": ".Allocations.Allocation.Prices",
+            "description": "<p>(XML ONLY) Container for Price nodes.</p>"
+          },
+          {
+            "group": "Request",
+            "type": "Currency",
+            "optional": true,
+            "field": ".Allocations.Allocation.Prices.Price",
+            "description": "<p>(XML ONLY) Price per person for shared/dorm rooms or per room for private rooms.</p>"
+          },
+          {
+            "group": "Request",
+            "type": "Currency",
+            "optional": true,
+            "field": ".Allocations.Allocation.Price",
+            "description": "<p>(JSON ONLY) Price per person for shared/dorm rooms or per room for private rooms.</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "fields": {
+        "Response": [
+          {
+            "group": "Response",
+            "type": "String",
+            "optional": false,
+            "field": "Success",
+            "description": "<p>Can be it{true} (all channel updates succeeded), it{partial} (not all channels succeeded) or it{false} (all channel updates failed).</p>"
+          },
+          {
+            "group": "Response",
+            "type": "String",
+            "optional": false,
+            "field": "Errors/Error",
+            "description": "<p>Might contain the attribute it{channel=&quot;..&quot;} to indicate whether the error only applies to a specific channel.</p>"
+          },
+          {
+            "group": "Response",
+            "type": "String",
+            "optional": false,
+            "field": "Warnings/Warning",
+            "description": "<p>Might contain the attribute it{channel=&quot;..&quot;} to indicate whether the warning only applies to a specific channel.</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "XML ARIUpdate Response (Full Success)",
+          "content": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<ARIUpdateResponse>\n <Success>true</Success>\n <Errors></Errors>\n <Warnings>\n    <Warning channel=\"hc\">\n      <WarningId>207</WarningId>\n      <WarningMsg>\n        Skipped room type (not setup with channel).\n      </WarningMsg>\n    </Warning>\n </Warnings>\n</ARIUpdateResponse>",
+          "type": "json"
+        },
+        {
+          "title": "XML ARIUpdate Warning Response (at least one channel succeeded)",
+          "content": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<ARIUpdateResponse>\n <Success>partial</Success>\n <Errors>\n    <Error channel=\"adv\">\n      <ErrorId>15</ErrorId>\n      <ErrorMsg>\n         Missing or wrong channel credentials on myallocator.com\n      </ErrorMsg>\n    </Error>\n </Errors>\n <Warnings></Warnings>\n</ARIUpdateResponse>",
+          "type": "json"
+        },
+        {
+          "title": "XML ARIUpdate Failed Response (all channels came back with errors)",
+          "content": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<ARIUpdateResponse>\n <Success>false</Success>\n <Errors>\n    <Error channel=\"adv\">\n      <ErrorId>15</ErrorId>\n      <ErrorMsg>\n        Missing or wrong channel credentials on myallocator.com\n      </ErrorMsg>\n    </Error>\n </Errors>\n <Warnings></Warnings>\n</ARIUpdateResponse>",
+          "type": "json"
+        },
+        {
+          "title": "XML ARIUpdate Failed update (error before submitting to any channel)",
+          "content": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<ARIUpdateResponse>\n <Success>false</Success>\n <Errors>\n    <Error\">\n      <ErrorId>17</ErrorId>\n      <ErrorMsg>\n        Start date too far in the future (>2 years)\n      </ErrorMsg>\n    </Error>\n </Errors>\n <Warnings></Warnings>\n</ARIUpdateResponse>",
+          "type": "json"
+        },
+        {
+          "title": "XML ARIUpdate QueryForStatus=true",
+          "content": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<ARIUpdateResponse>\n <Success>true</Success>\n <Errors></Errors>\n <Warnings></Warnings>\n  <UpdateId>832522158</UpdateId>\n</ARIUpdateResponse>",
+          "type": "json"
+        }
+      ]
+    },
+    "description": "<p>An allocation sets the number of rooms or beds (depending on whether the room type is a private room or shared/dorm) available during any specific time frame. For more details see below.</p> <p>** Excluding Channels ** prefix a channel id with a minus (-) to exclude it.   Ex: a series of &quot;all&quot;, &quot;-loop&quot; would update all configured channels except &quot;loop&quot;</p> <p>** Handling Errors &amp; Warnings **</p> <p>The response will always include the Success, Errors and Warnings tags. If Success is set to &quot;true&quot; the Errors tag will be empty. If Success is set to &quot;partial&quot; or &quot;false&quot; at least one Error tag is included.</p> <p>** Sending Overlapping Ranges / Partial updates ** Overlapping ranges in an ARIUpdate are absolutely allowed. As long as the ranges are sent in the same request body they are applied in sequence as part of the same SQL transaction. Fields such as Units, MinStay, MaxStay, Price are optional so it is possible send different ranges for pricing and availability.</p> <p>How this works: we receive XML/JSON request body and decode it into a neutral format, then write availability directly to the internal MyAllocator database and provision an updateId for a date range plus room-type(s), then create one job per channel, finally we return the updateId to the response (assuming QueryForStatus==True).</p> <p>Each job contains ONLY the propertyid, updateId, and ota (no availability, or pricing). Jobs are picked up one of several auto-scaling &quot;worker tier&quot; servers, each server loads the latest availability from the db (which may have changed since the updateId was issued), and then applies any ARIRules, then transmit to OTA, and flag their portion of the updateId as completed. This ensures the latest availability will always be sent to the OTA.</p> <p>Once an UpdateId has been issued it falls within the scope of my monitoring domain, it should be considered reliable by a developer. The request is broken into a series of jobs (one for each channel). Each job is logged to disk and processed by a pool of servers. It would take a substantial level of failure to be lost. (Jobs are not quite as durable as bookings or configuration data, but it's still highly durable).</p> <p>** Submitting to ALL channels **</p> <p>You can also submit to all available channels without specifying explicity which channels to update. Use the channel code &quot;all&quot; to do this. Channels that are not set up by the user will be skipped as indicated by a warning.</p> <p>It is also possible to submit to all channels while excluding certain channels. Add the attribute exclude=&quot;true&quot; to skip a channel. See example below. Use the channel code &quot;all&quot; to do this.</p> <p>** Running Jobs in the Background (ARIUpdateStatus) **</p> <p>You can also run the ARIUpdate update in the background and query for the updates using ARIUpdateStatus. This enables you to show the update progress to the user while it's still running. To enable this feature you need to add the node QueryForStatus (see example)</p> <p>If QueryForStatus is true then the ARIUpdateResponse will contain the additional parameter UpdateId, which is needed for ARIUpdateStatus</p> <p>QueryForStatus TRUE will be much more resilient than attempting to maintain a single persistent connection, and it will free up connection requests on our side.  In the future QueryForStatus FALSE may be removed and/or additional timeouts will be added which may make it unusable. New integrations should avoid using QueryForStatus FALSE.</p>",
+    "examples": [
+      {
+        "title": "JSON ARIUpdate",
+        "content": "{\n \"Auth/UserToken\":\"user token\",\n \"Auth/PropertyId\":\"property id from myallocator\",\n \"Auth/VendorId\":\"your vendor\",\n \"Auth/VendorPassword\":\"vendorpass\",\n \"Channels\": [ \"hc\",\"iwb\" ],\n \"Allocations\": [\n    {\n    \"RoomId\":\"59\",\n    \"StartDate\":\"2010-06-01\",\n    \"EndDate\":\"2010-06-01\",\n    \"Units\":\"3\",\n    \"MinStay\":\"1\",\n    \"MaxStay\":\"30\",\n    \"Price\":\"20.00\"\n    }\n    ]\n}",
+        "type": "json"
+      },
+      {
+        "title": "curl w/ JSON",
+        "content": "curl https://api.myallocator.com/pms/v201408/json/ARIUpdate -d@- <<EOJSON\njson={\n \"Auth/UserToken\":\"your username\",\n \"Auth/PropertyId\":\"property id from myallocator\",\n \"Auth/VendorId\":\"your vendor\",\n \"Auth/VendorPassword\":\"vendorpass\",\n \"Channels\": [ \"hc\",\"iwb\" ],\n \"Allocations\": [\n    {\n    \"RoomId\":\"59\",\n    \"StartDate\":\"2010-06-01\",\n    \"EndDate\":\"2010-06-01\",\n    \"Units\":\"3\",\n    \"MinStay\":\"1\",\n    \"MaxStay\":\"30\",\n    \"Price\":\"20.00\",\n    \"PriceWeekly\":\"400.00\",\n    \"PriceMonthly\":\"1600.00\"\n    }\n    ]\n}\nEOJSON",
+        "type": "json"
+      },
+      {
+        "title": "JSON ARIUpdateResponse",
+        "content": "{\n'Errors':[\n   { 'err':100, 'msg':'Unhandled Exception' }\n],\n'Messages':[\n      {\n         \"msg\" : \"QueryForStatus mode enabled (will not wait)\",\n         \"id\" : 99,\n         \"type\" : \"info\"\n      }\n],\n'Channels':[\n      \"exp\" : {\n         \"msg\" : \"job 123 is queued in tube ariupdates\",\n         \"hold\" : 1,\n         \"parts\" : 1,\n         \"channel_id\" : \"exp\"\n      },\n      \"boo\" : {\n         \"msg\" : \"job 124 is queued in tube ariupdates\",\n         \"hold\" : 1,\n         \"parts\" : 1,\n         \"channel_id\" : \"boo\"\n      }\n]\n}",
+        "type": "json"
+      },
+      {
+        "title": "XML ARIUpdateRequest",
+        "content": "<?xml version=\"1.0\" encoding=\"UTF-8\" ?>\n<ARIUpdate>\n <Auth>\n   <UserToken>User token</UserToken>\n   <PropertyId>Property ID on myallocator.com</PropertyId>\n   <VendorId>Your Vendor ID</VendorId>\n   <VendorPassword>Your Vendor Password</VendorPassword>\n </Auth>\n\n <Channels>\n    <Channel>hc</Channel>\n    <Channel>iwb</Channel>\n </Channels>\n\n <Allocations>\n    <Allocation>\n      <RoomId>59</RoomId>\n      <RatePlanId>100</RatePlanId>\n      <StartDate>2010-06-01</StartDate>\n      <EndDate>2010-08-12</EndDate>\n      <Units>3</Units>\n      <MinStay>1</MinStay>\n      <MaxStay>30</MaxStay>\n      <Prices>\n         <Price>20.00</Price>\n      </Prices>\n    </Allocation>\n </Allocations>\n</ARIUpdate>",
+        "type": "json"
+      },
+      {
+        "title": "XML Request (Status Check)",
+        "content": "<?xml version=\"1.0\" encoding=\"UTF-8\" ?>\n<ARIUpdate>\n <Auth>\n    ...\n </Auth>\n\n <Options>\n    <QueryForStatus>true</QueryForStatus>\n </Options>\n\n ...\n</ARIUpdate>",
+        "type": "json"
+      },
+      {
+        "title": "XML ARIUpdate (Submit to all channels excluding Gomio and Hostelsclub)",
+        "content": "<?xml version=\"1.0\" encoding=\"UTF-8\" ?>\n<ARIUpdate>\n <Auth>\n    <UserToken>User token</UserToken>\n    <PropertyId>Property ID on myallocator.com</PropertyId>\n    <VendorId>Your Vendor ID</VendorId>\n    <VendorPassword>Your Vendor Password</VendorPassword>\n </Auth>\n\n <Channels>\n    <Channel>all</Channel>\n    <Channel exclude=\"true\">gom</Channel>\n    <Channel exclude=\"true\">hc</Channel>\n</Channels>\n\n <Allocations>\n    ...\n </Allocations>\n</ARIUpdate>",
+        "type": "json"
+      }
+    ],
+    "filename": "perllib/MyAllocator/API/Role/ARIUpdate.pm",
+    "groupTitle": "3_API_Methods"
+  },
+  {
+    "group": "3_API_Methods",
+    "type": "POST",
     "url": "/ARIUpdateStatus",
     "title": "ARIUpdateStatus",
     "name": "ARIUpdateStatus",
@@ -1994,8 +2286,8 @@ define({ "api": [
     "url": "/PropertyChannelList",
     "title": "PropertyChannelList",
     "name": "PropertyChannelList",
-    "version": "201601.0.0",
-    "description": "<p>Lists the channel details associated with a property. Formerly (v1) GetProperties</p>",
+    "version": "201801.0.1",
+    "description": "<p>Lists the channel details associated with a property.</p> <p>Note the version of this call. Previous versions would always return all properties even when the property ID was specified.</p>",
     "parameter": {
       "fields": {
         "Request": [
@@ -2038,7 +2330,7 @@ define({ "api": [
       },
       {
         "title": "curl w/ JSON",
-        "content": "curl https://api.myallocator.com/pms/v201609/json/PropertyChannelList -d@- <<EOJSON\njson={\n  \"Auth/UserToken\":\"User's auth token\",\n  \"Auth/PropertyId\":\"Property ID on myallocator.com\",\n  \"Auth/VendorId\":\"your vendor id\",\n  \"Auth/VendorPassword\":\"your vendor password\"\n}\nEOJSON",
+        "content": "curl https://api.myallocator.com/pms/v201801/json/PropertyChannelList -d@- <<EOJSON\njson={\n  \"Auth/UserToken\":\"User's auth token\",\n  \"Auth/PropertyId\":\"Property ID on myallocator.com\",\n  \"Auth/VendorId\":\"your vendor id\",\n  \"Auth/VendorPassword\":\"your vendor password\"\n}\nEOJSON",
         "type": "json"
       }
     ],
@@ -4669,7 +4961,7 @@ define({ "api": [
     "title": "Version History",
     "name": "Version_History",
     "version": "201601.0.0",
-    "description": "<table> <thead> <tr> <th>Date</th> <th>Version</th> <th>Change</th> </tr> </thead> <tbody> <tr> <td>2017-04-12</td> <td>201710.0.1</td> <td>New API call: PropertyChannelImportARI</td> </tr> <tr> <td>2017-04-12</td> <td>201610.0.2</td> <td>ICalLink field added to call RoomList</td> </tr> <tr> <td>2016-10-09</td> <td>201610.0.1</td> <td>Changes to ARIRules</td> </tr> <tr> <td>2016-05-26</td> <td>201605.0.2</td> <td>New API call: BookingCancel</td> </tr> <tr> <td>2016-05-25</td> <td>201605.0.1</td> <td>Removed CANCEL/UNCANCEL from BookingAction, added more options to BookingList</td> </tr> <tr> <td>2016-03-15</td> <td>201603.0.1</td> <td>New API calls: RatePlanCreate, RatePlanUpdate, RatePlanRemove</td> </tr> <tr> <td>2016-02-04</td> <td>201601.0.2</td> <td>VERSIONED JSON response format PropertyChannelList to include currency (and future fields)</td> </tr> <tr> <td>2016-01-08</td> <td>201601.0.1</td> <td>Fixed documentation for ARIUpdate to include Auth/VendorId Auth/VendorPassword</td> </tr> <tr> <td>2015-10-13</td> <td>201501.0.13</td> <td>Fix BookingList ModificationEndDate so it goes until 11:59pm</td> </tr> <tr> <td>2015-10-01</td> <td>201501.0.12</td> <td>Fix various documentation issues</td> </tr> <tr> <td>2015-07-24</td> <td>201501.0.11</td> <td>added BookingPaymentPasswordValidate</td> </tr> <tr> <td>2015-07-09</td> <td>201501.0.10</td> <td>added IncludeArchived to BookingList</td> </tr> <tr> <td>2015-05-27</td> <td>201501.0.9</td> <td>new BookingList parameters ModificationStartDateTime, ModificationEndDateTime, CreationStartDateTime, CreationEndDateTime</td> </tr> <tr> <td>2015-05-18</td> <td>201501.0.8</td> <td>new BookingAction commands</td> </tr> <tr> <td>2015-03-20</td> <td>201501.0.7</td> <td>Corrected explanation of Units on RoomCreate (thanks Petr T.)</td> </tr> <tr> <td>2015-02-19</td> <td>201501.0.6</td> <td>Add Options.NormalizeToCurrency to BookingList</td> </tr> <tr> <td>2015-02-19</td> <td>201501.0.5</td> <td>Added more documentation to Booking Samples</td> </tr> <tr> <td>2015-02-03</td> <td>201501.0.4</td> <td>Added .Options.IgnoreInvalidRooms to MAAPI</td> </tr> <tr> <td>2015-02-02</td> <td>201501.0.3</td> <td>Improved documentation for multiple overlapping Allocations in ARIUpdate</td> </tr> <tr> <td>2015-01-22</td> <td>201501.0.2</td> <td>Improved documentation with Booking samples</td> </tr> <tr> <td>2015-01-09</td> <td>201501.0.1</td> <td>Initial release of 201601[beta] (new functions: ARIRules)</td> </tr> <tr> <td>2015-01-08</td> <td>201408.0.13</td> <td>Corrected validation logic issue with ARIUpdate (properly validates Rooms)</td> </tr> <tr> <td>2015-01-07</td> <td>201408.0.12</td> <td>Corrected issue with AssociateUserToPMS requiring Auth/PropertyId</td> </tr> <tr> <td>2015-01-06</td> <td>201408.0.11</td> <td>Modified FailIfUpdateActive default to &quot;false&quot;</td> </tr> <tr> <td>2015-01-05</td> <td>201408.0.10</td> <td>fixed doc, Price-Weekend is &quot;PriceWeekend&quot;</td> </tr> <tr> <td>2015-01-05</td> <td>201408.0.9</td> <td>added JSON raw input mode - application/json</td> </tr> <tr> <td>2014-12-28</td> <td>201408.0.8</td> <td>added Auth/Debug</td> </tr> <tr> <td>2014-12-28</td> <td>201408.0.7</td> <td>fixed bug in ARIUpdate where zero unit updates would not be applied</td> </tr> <tr> <td>2014-12-26</td> <td>201408.0.6</td> <td>added more documentation to ChannelList and curl example to HelloWorld</td> </tr> <tr> <td>2014-12-24</td> <td>201408.0.5</td> <td>added error logging with ticket responses</td> </tr> <tr> <td>2014-12-23</td> <td>201408.0.4</td> <td>added VendorId to various docs, and propertyid, unified error handling</td> </tr> <tr> <td>2014-12-19</td> <td>201408.0.3</td> <td>fixed bug in RoomCreate (did not return RoomId)</td> </tr> <tr> <td>2014-12-15</td> <td>201408.0.2</td> <td>renamed LoopBookingAction into BookingAction</td> </tr> <tr> <td>2014-12-04</td> <td>201408.0.1</td> <td>initial release of new API</td> </tr> <tr> <td>2012-10-24</td> <td>1.6.2</td> <td>Updated booking information (new: CommissionIncludedInTotal).</td> </tr> <tr> <td>2012-10-24</td> <td>1.6.1</td> <td>Updated booking information and updated channel list (new: eb,air, orb, boo, tra).</td> </tr> <tr> <td>2012-10-24</td> <td>1.6</td> <td>New feature Booking Callback and updated channel list (new: max).</td> </tr> <tr> <td>2012-09-20</td> <td>1.5.2</td> <td>Updated channel list (new: exp, ysh, eb). Get/Set property country.</td> </tr> <tr> <td>2012-07-04</td> <td>1.5.1</td> <td>Updated channel list. Added MinStay/MaxStay example.</td> </tr> <tr> <td>2011-09-17</td> <td>1.5</td> <td>New method SetRoomTypes to add/update/remove rooms.</td> </tr> <tr> <td>2011-09-17</td> <td>1.4.1</td> <td>GetBookings: Minor correction regarding the end date. It's not the departure date but rather the departure date - 1.</td> </tr> <tr> <td>2011-01-15</td> <td>1.4</td> <td>New methods SetAllocation (non-blocking), SetLogin, GetUpdateStatus, GetBookings. Support for MinStay and MaxStay.</td> </tr> <tr> <td>2010-11-09</td> <td>1.3.1</td> <td>Updated channel list. GetRoomTypes: Obsoleted &quot;Ensuite&quot;, &quot;DoubleBed&quot; and &quot;Beds&quot; (replaced by new property &quot;Occupancy&quot;). GetProperties: shows which days are configure for weekends.</td> </tr> <tr> <td>2010-05-30</td> <td>1.3</td> <td>GetRoomTypes includes a room description (Label). Removed need to list channels to update to and ability to exclude channels. Skipped channels now warnings rather than errors.</td> </tr> <tr> <td>2010-05-05</td> <td>1.2</td> <td>Added links to XML samples. New channel: hb</td> </tr> <tr> <td>2010-04-30</td> <td>1.1</td> <td>Changed Room to \\textit{RoomType} to clarify matters</td> </tr> <tr> <td>2010-04-27</td> <td>1.0</td> <td>Initial release</td> </tr> </tbody> </table> <hr> <p>v201601 : ARIRules, v201408 : new JSON format, all call names switched to NounPronounVerb format. v1 : the original api (which didn't support versioning)</p>",
+    "description": "<table> <thead> <tr> <th>Date</th> <th>Version</th> <th>Change</th> </tr> </thead> <tbody> <tr> <td>2018-01-22</td> <td>201801.0.1</td> <td>PropertyChannelList able to limit by property ID</td> </tr> <tr> <td>2017-04-12</td> <td>201710.0.1</td> <td>New API call: PropertyChannelImportARI</td> </tr> <tr> <td>2017-04-12</td> <td>201610.0.2</td> <td>ICalLink field added to call RoomList</td> </tr> <tr> <td>2016-10-09</td> <td>201610.0.1</td> <td>Changes to ARIRules</td> </tr> <tr> <td>2016-05-26</td> <td>201605.0.2</td> <td>New API call: BookingCancel</td> </tr> <tr> <td>2016-05-25</td> <td>201605.0.1</td> <td>Removed CANCEL/UNCANCEL from BookingAction, added more options to BookingList</td> </tr> <tr> <td>2016-03-15</td> <td>201603.0.1</td> <td>New API calls: RatePlanCreate, RatePlanUpdate, RatePlanRemove</td> </tr> <tr> <td>2016-02-04</td> <td>201601.0.2</td> <td>VERSIONED JSON response format PropertyChannelList to include currency (and future fields)</td> </tr> <tr> <td>2016-01-08</td> <td>201601.0.1</td> <td>Fixed documentation for ARIUpdate to include Auth/VendorId Auth/VendorPassword</td> </tr> <tr> <td>2015-10-13</td> <td>201501.0.13</td> <td>Fix BookingList ModificationEndDate so it goes until 11:59pm</td> </tr> <tr> <td>2015-10-01</td> <td>201501.0.12</td> <td>Fix various documentation issues</td> </tr> <tr> <td>2015-07-24</td> <td>201501.0.11</td> <td>added BookingPaymentPasswordValidate</td> </tr> <tr> <td>2015-07-09</td> <td>201501.0.10</td> <td>added IncludeArchived to BookingList</td> </tr> <tr> <td>2015-05-27</td> <td>201501.0.9</td> <td>new BookingList parameters ModificationStartDateTime, ModificationEndDateTime, CreationStartDateTime, CreationEndDateTime</td> </tr> <tr> <td>2015-05-18</td> <td>201501.0.8</td> <td>new BookingAction commands</td> </tr> <tr> <td>2015-03-20</td> <td>201501.0.7</td> <td>Corrected explanation of Units on RoomCreate (thanks Petr T.)</td> </tr> <tr> <td>2015-02-19</td> <td>201501.0.6</td> <td>Add Options.NormalizeToCurrency to BookingList</td> </tr> <tr> <td>2015-02-19</td> <td>201501.0.5</td> <td>Added more documentation to Booking Samples</td> </tr> <tr> <td>2015-02-03</td> <td>201501.0.4</td> <td>Added .Options.IgnoreInvalidRooms to MAAPI</td> </tr> <tr> <td>2015-02-02</td> <td>201501.0.3</td> <td>Improved documentation for multiple overlapping Allocations in ARIUpdate</td> </tr> <tr> <td>2015-01-22</td> <td>201501.0.2</td> <td>Improved documentation with Booking samples</td> </tr> <tr> <td>2015-01-09</td> <td>201501.0.1</td> <td>Initial release of 201601[beta] (new functions: ARIRules)</td> </tr> <tr> <td>2015-01-08</td> <td>201408.0.13</td> <td>Corrected validation logic issue with ARIUpdate (properly validates Rooms)</td> </tr> <tr> <td>2015-01-07</td> <td>201408.0.12</td> <td>Corrected issue with AssociateUserToPMS requiring Auth/PropertyId</td> </tr> <tr> <td>2015-01-06</td> <td>201408.0.11</td> <td>Modified FailIfUpdateActive default to &quot;false&quot;</td> </tr> <tr> <td>2015-01-05</td> <td>201408.0.10</td> <td>fixed doc, Price-Weekend is &quot;PriceWeekend&quot;</td> </tr> <tr> <td>2015-01-05</td> <td>201408.0.9</td> <td>added JSON raw input mode - application/json</td> </tr> <tr> <td>2014-12-28</td> <td>201408.0.8</td> <td>added Auth/Debug</td> </tr> <tr> <td>2014-12-28</td> <td>201408.0.7</td> <td>fixed bug in ARIUpdate where zero unit updates would not be applied</td> </tr> <tr> <td>2014-12-26</td> <td>201408.0.6</td> <td>added more documentation to ChannelList and curl example to HelloWorld</td> </tr> <tr> <td>2014-12-24</td> <td>201408.0.5</td> <td>added error logging with ticket responses</td> </tr> <tr> <td>2014-12-23</td> <td>201408.0.4</td> <td>added VendorId to various docs, and propertyid, unified error handling</td> </tr> <tr> <td>2014-12-19</td> <td>201408.0.3</td> <td>fixed bug in RoomCreate (did not return RoomId)</td> </tr> <tr> <td>2014-12-15</td> <td>201408.0.2</td> <td>renamed LoopBookingAction into BookingAction</td> </tr> <tr> <td>2014-12-04</td> <td>201408.0.1</td> <td>initial release of new API</td> </tr> <tr> <td>2012-10-24</td> <td>1.6.2</td> <td>Updated booking information (new: CommissionIncludedInTotal).</td> </tr> <tr> <td>2012-10-24</td> <td>1.6.1</td> <td>Updated booking information and updated channel list (new: eb,air, orb, boo, tra).</td> </tr> <tr> <td>2012-10-24</td> <td>1.6</td> <td>New feature Booking Callback and updated channel list (new: max).</td> </tr> <tr> <td>2012-09-20</td> <td>1.5.2</td> <td>Updated channel list (new: exp, ysh, eb). Get/Set property country.</td> </tr> <tr> <td>2012-07-04</td> <td>1.5.1</td> <td>Updated channel list. Added MinStay/MaxStay example.</td> </tr> <tr> <td>2011-09-17</td> <td>1.5</td> <td>New method SetRoomTypes to add/update/remove rooms.</td> </tr> <tr> <td>2011-09-17</td> <td>1.4.1</td> <td>GetBookings: Minor correction regarding the end date. It's not the departure date but rather the departure date - 1.</td> </tr> <tr> <td>2011-01-15</td> <td>1.4</td> <td>New methods SetAllocation (non-blocking), SetLogin, GetUpdateStatus, GetBookings. Support for MinStay and MaxStay.</td> </tr> <tr> <td>2010-11-09</td> <td>1.3.1</td> <td>Updated channel list. GetRoomTypes: Obsoleted &quot;Ensuite&quot;, &quot;DoubleBed&quot; and &quot;Beds&quot; (replaced by new property &quot;Occupancy&quot;). GetProperties: shows which days are configure for weekends.</td> </tr> <tr> <td>2010-05-30</td> <td>1.3</td> <td>GetRoomTypes includes a room description (Label). Removed need to list channels to update to and ability to exclude channels. Skipped channels now warnings rather than errors.</td> </tr> <tr> <td>2010-05-05</td> <td>1.2</td> <td>Added links to XML samples. New channel: hb</td> </tr> <tr> <td>2010-04-30</td> <td>1.1</td> <td>Changed Room to \\textit{RoomType} to clarify matters</td> </tr> <tr> <td>2010-04-27</td> <td>1.0</td> <td>Initial release</td> </tr> </tbody> </table> <hr> <p>v201601 : ARIRules, v201408 : new JSON format, all call names switched to NounPronounVerb format. v1 : the original api (which didn't support versioning)</p>",
     "filename": "perllib/MAAPI.pm",
     "groupTitle": "4_Appendix"
   },
