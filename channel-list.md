@@ -69,7 +69,7 @@ Created: $date
 | g2i | Guide to Iceland | 2 years |  |
 | goi | Ingoibibo (Goibibo) | 0 years | Formerly Goibibo |
 | gom | Gomio | 2 years |  |
-| gr | Dorms.com | 2 years |  |
+| gr | Dorms.com Hostels | 2 years |  |
 | grup | Group Connect | 1 years |  |
 | gta | GTA-Travel | 2 years | GTA-Travel.com |
 | h2h | Hostel2Hostel | 2 years |  |
@@ -105,7 +105,7 @@ Created: $date
 | hw | Hostelworld | 2 years | deprecated (do not use); Old, slow Hostelworld interface. Obsolete. |
 | hw2 | Hostelworld & Hostelbookers | 2 years |  |
 | ibc | IBCHotels | 2 years |  |
-| icas | Icastelli Limited | 2 years |  |
+| icas | Icastelli.net | 2 years |  |
 | ini | InItalia | 2 years | Italy Only |
 | inst | Innstreet | 2 years |  |
 | iper | IPERTRADE | 1 years |  |
@@ -139,6 +139,7 @@ Created: $date
 | oa | Only-apartments | 2 years |  |
 | odi | ODIGEO Connect | 1 years | E-Dreams, Govoyage, Travelink, Opodo |
 | ohma | On Holiday Maldives | 2 years |  |
+| once | Once Hostels | 2 years |  |
 | orb | Orbitz | 2 years | Asia-Hotels.com, Ebookers.com, Hotelclub.com, Lodging.com, RatesToGo.com |
 | ost | Ostrovok | 2 years |  |
 | ote | Open Travel Exchange | 2 years |  |
