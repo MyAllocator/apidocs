@@ -28,7 +28,7 @@ define({ "api": [
     "title": "iii - Vendor Tokens",
     "name": "iii___Vendor_Tokens",
     "version": "201601.0.0",
-    "description": "<p>Vendor+User and Vendor+Property associations exist in myallocator.</p> <p>Vendor+User Association (Referenced by a user token)</p> <ol> <li>A user token <strong>is required</strong> for a vendor to access a user via the API.</li> <li>User tokens enable vendors to substitute user credentials with a token (Auth/UserToken) for requests requiring user credentials. This helps vendors to avoid storing user credentials.</li> <li>A user token must be generated via the AssociateUserToPMS API Method. If you used the UserCreate call then the association is already done for you and the token is returned in the UserCreate response.</li> <li>If AssociateUserToPMS is called for a vendor / user with an existing token, the existing token is returned.</li> </ol> <p>Vendor+Property Association (Referenced by a property token)</p> <ol> <li>A property association <strong>is</strong> required for a vendor to access a property via the API.</li> <li>The returned token is currently not used for anything. However, the presence indicates that a PMS is allowed to update the property.</li> <li>Property tokens are generated via the following ways: <ol> <li>Vendor creates a property via the PropertyCreate API method, a property token is automatically generated.</li> <li>Vendor invokes the AssociatePropertyToPMS API method.</li> <li>Property navigates in MA web interface to Manage &gt; PMS Connections and enables your PMS to connect. <ol> <li>New vendors may not appear in the PMS dropdown list until after certification. Please let us know if you would like to be added and what you would like your public PMS name to be.</li> </ol> </li> </ol> </li> <li>If AssociatePropertyToPMS is called for a vendor / property with an existing token, the existing token is returned.</li> </ol> <p>Important Notes</p> <ol> <li>User tokens only apply to vendor+user credentials. A vendor+user association is required for a vendor to access a user.</li> <li>Property tokens only apply to vendor+property associations. A vendor+property association is required for a vendor to access a property.</li> <li>To successfully access a property via the API you need both user and property association.</li> </ol>",
+    "description": "<p>Most API calls require that the user is authenticated. The <code>Hello*</code> family of calls exist for testing purposes and do not require authentication (although they will also work in an authenticated session). This is done with a <strong>user token</strong> that represents the access rights of a specific user, who in turn has access to one or more properties. To obtain this token the customer needs to be directed to the <a href=\"https://inbox.myallocator.com/en/manage/vendors\">&quot;PMS Connections&quot; page</a> which can be found within the MANAGE area of the myallocator inbox. There the customer needs to select your PMS:</p> <img src=\"img/pms_connections_add.png\" style=\"width:100%;margin: 20px 0;\" /> <p>Once your PMS is selected and added, the page will show a token:</p> <img src=\"img/pms_connections_token.png\" style=\"width:100%;margin: 20px 0;\" /> <p>This token will need to be copied to your PMS. Include the token with each API call inside the <code>Auth/UserToken</code> field.</p> <p>An alternative way to obtain the token is with the <code>AssociateUserToPMS</code> API method, but it requires special permissions. For details, see the section about this API method.</p>",
     "filename": "perllib/MAAPI.pm",
     "groupTitle": "1_Introduction"
   },
@@ -39,7 +39,7 @@ define({ "api": [
     "title": "iv - Developer Support",
     "name": "iv___Developer_Support",
     "version": "201601.0.0",
-    "description": "<p>You may contact us for developer support via the following methods.</p> <p>Chat: http://devchat.myallocator.com (Public Hipchat Room - Office Hours: Weekdays 08:00 - 15:00 PDT)</p> <p>Email: devhelp@myallocator.com (please include a &quot;TicketId&quot; if it is about an API call)</p>",
+    "description": "<p>You may contact us for developer support via the following methods. The chat is the preferred way.</p> <p>Chat: <a href=\"https://devchat.myallocator.com\">https://devchat.myallocator.com</a></p> <p>Email: <a href=\"mailto:devhelp@myallocator.com\">devhelp@myallocator.com</a></p>",
     "filename": "perllib/MAAPI.pm",
     "groupTitle": "1_Introduction"
   },
@@ -130,7 +130,7 @@ define({ "api": [
             "type": "String",
             "optional": false,
             "field": "Auth/UserToken",
-            "description": "<p>Users auth token (see AssociateUserToPMS call to generate a Token)</p>"
+            "description": "<p>Users auth token (see section <code>iii - Vendor tokens</code>)</p>"
           },
           {
             "group": "Request",
@@ -201,7 +201,7 @@ define({ "api": [
             "type": "String",
             "optional": false,
             "field": "Auth/UserToken",
-            "description": "<p>Users auth token (see AssociateUserToPMS call to generate a Token)#</p>"
+            "description": "<p>Users auth token (see section <code>iii - Vendor tokens</code>)#</p>"
           },
           {
             "group": "Request",
@@ -298,7 +298,7 @@ define({ "api": [
             "type": "String",
             "optional": false,
             "field": "Auth/UserToken",
-            "description": "<p>Users auth token (see AssociateUserToPMS call to generate a Token)</p>"
+            "description": "<p>Users auth token (see section <code>iii - Vendor tokens</code>)</p>"
           },
           {
             "group": "Request",
@@ -882,7 +882,7 @@ define({ "api": [
             "type": "String",
             "optional": false,
             "field": "Auth/UserToken",
-            "description": "<p>Users auth token (see AssociateUserToPMS call to generate a Token)</p>"
+            "description": "<p>Users auth token (see section <code>iii - Vendor tokens</code>)</p>"
           },
           {
             "group": "Request",
@@ -1006,100 +1006,11 @@ define({ "api": [
   {
     "group": "3_API_Methods",
     "type": "POST",
-    "url": "/AssociatePropertyToPMS",
-    "title": "AssociatePropertyToPMS",
-    "name": "AssociatePropertyToPMS",
-    "version": "201601.0.0",
-    "description": "<p>Creates a permanent link between an existing myallocator property and a PMS Vendor. The link is required to access any of the property related calls in our API with the user token. The returned property token is currently not being used.</p> <p>The PMS Vendor should securely obtain the users myallocator user-id and password (but do not store them), then in the background pass the user credentials to AssociatePropertyToPMS and a link will be created.</p> <p>NOTE: Users and Properties created by a PMS Vendor will automatically be linked to that PMS (this call is not necessary)</p>",
-    "parameter": {
-      "fields": {
-        "Request": [
-          {
-            "group": "Request",
-            "type": "String",
-            "optional": false,
-            "field": "Auth/UserId",
-            "description": "<p>Users unique ID</p>"
-          },
-          {
-            "group": "Request",
-            "type": "String",
-            "optional": false,
-            "field": "Auth/UserPassword",
-            "description": "<p>Users password</p>"
-          },
-          {
-            "group": "Request",
-            "type": "String",
-            "optional": false,
-            "field": "Auth/VendorId",
-            "description": "<p>Your Vendor ID</p>"
-          },
-          {
-            "group": "Request",
-            "type": "String",
-            "optional": false,
-            "field": "Auth/VendorPassword",
-            "description": "<p>Your Vendor Password</p>"
-          },
-          {
-            "group": "Request",
-            "type": "String",
-            "optional": false,
-            "field": "Auth/PropertyId",
-            "description": "<p>PropertyId assigned by MyAllocator</p>"
-          },
-          {
-            "group": "Request",
-            "type": "String",
-            "optional": true,
-            "field": "PMSPropertyId",
-            "description": "<p>The Unique PropertyId on the PMS (for reference 128 character max) - will be included in callbacks</p>"
-          }
-        ]
-      }
-    },
-    "success": {
-      "fields": {
-        "Response": [
-          {
-            "group": "Response",
-            "type": "String",
-            "optional": false,
-            "field": "Auth/PropertyToken",
-            "description": "<p>Token does not have any practical use for now.</p>"
-          }
-        ]
-      }
-    },
-    "examples": [
-      {
-        "title": "JSON AssociatePropertyToPMS",
-        "content": "{\n    \"Auth/UserId\":\"username for myallocator.com\",\n    \"Auth/UserPassword\":\"password for myallocator.com\",\n    \"Auth/VendorId\":\"your vendor id\",\n    \"Auth/VendorPassword\":\"your vendor password\",\n    \"Auth/PropertyId\":\"property id from myallocator\",\n    \"PMSPropertyId\":\"username-on-the-remote-pms-system\"\n}",
-        "type": "json"
-      },
-      {
-        "title": "curl w/ JSON",
-        "content": "curl https://api.myallocator.com/pms/v201408/json/AssociatePropertyToPMS -d@- <<EOJSON\njson={\n    \"Auth/UserId\":\"username for myallocator.com\",\n    \"Auth/UserPassword\":\"password for myallocator.com\",\n    \"Auth/VendorId\":\"your vendor id\",\n    \"Auth/VendorPassword\":\"your vendor password\",\n    \"Auth/PropertyId\":\"property id from myallocator\",\n    \"PMSPropertyId\":\"username-on-the-remote-pms-system\"\n}\nEOJSON",
-        "type": "json"
-      },
-      {
-        "title": "XML AssociateUserToPMS",
-        "content": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<AssociatePropertyToPMS>\n<Auth>\n  <UserId>Customer username</UserId>\n  <UserPassword>Customer Password</UserPassword>\n  <VendorId>Your Vendor ID</VendorId>\n  <VendorPassword>Your Vendor Password</VendorPassword>\n</Auth>\n<PMSPropertyId>username-on-the-remote-pms-system</PMSUserId>\n</AssociatePropertyToPMS>",
-        "type": "json"
-      }
-    ],
-    "filename": "perllib/MAAPI.pm",
-    "groupTitle": "3_API_Methods"
-  },
-  {
-    "group": "3_API_Methods",
-    "type": "POST",
     "url": "/AssociateUserToPMS",
     "title": "AssociateUserToPMS",
     "name": "AssociateUserToPMS",
     "version": "201601.0.0",
-    "description": "<p>Creates a permanent link between an existing myallocator user and a PMS Vendor. The PMS Vendor should securely obtain the users myallocator user-id and password (but do not store them), then in the background pass the user credentials to AssociateUserToPMS and a link will be created. Any future API calls will not require UserId or UserPassword.</p> <p>NOTE: Users and Properties created by a PMS Vendor will automatically be linked to that PMS (this call is not necessary)</p>",
+    "description": "<p>This method can be used to obtain a <code>UserToken</code> for authentication. <strong>By default this call is not available and needs to be enabled for your PMS from our connectivity department.</strong> Copying the user token from the <a href=\"https://inbox.myallocator.com/en/manage/vendors\">&quot;PMS Connections&quot; page</a> on the myallocator website is the preferred and default way to obtain the token. The <code>AssociateUserToPMS</code> call is only applicable for systems where the customer does not have access to the myallocator website.</p> <p>If this call has been enabled then the username and password for the property's myallocator account can be included in a form in the PMS. <strong>The myallocator username and password is not to be saved/stored in your system and should not be included in any logging output in your system!</strong> Only the token should be stored.</p> <p>With the correct username/password this call will grant you access to properties currently associated with the user. Should the user create new properties you'll need to call this API method again.</p> <p>Note that the user can revoke access for your PMS through the myallocator website for one or all properties. If access has been revoked it can only be enabled again through the myallocator website.</p>",
     "parameter": {
       "fields": {
         "Request": [
@@ -1108,14 +1019,14 @@ define({ "api": [
             "type": "String",
             "optional": false,
             "field": "Auth/UserId",
-            "description": "<p>User unique ID</p>"
+            "description": "<p>Username on myallocator</p>"
           },
           {
             "group": "Request",
             "type": "String",
             "optional": false,
             "field": "Auth/UserPassword",
-            "description": "<p>User password</p>"
+            "description": "<p>Password on myallocator</p>"
           },
           {
             "group": "Request",
@@ -1190,7 +1101,7 @@ define({ "api": [
             "type": "String",
             "optional": false,
             "field": "Auth/UserToken",
-            "description": "<p>Users auth token (see AssociateUserToPMS call to generate a Token)@apiParam (Request) {String} Auth/PropertyId      Property ID on myallocator.com</p>"
+            "description": "<p>Users auth token (see section <code>iii - Vendor tokens</code>)@apiParam (Request) {String} Auth/PropertyId      Property ID on myallocator.com</p>"
           },
           {
             "group": "Request",
@@ -1260,7 +1171,7 @@ define({ "api": [
             "type": "String",
             "optional": false,
             "field": "Auth/UserToken",
-            "description": "<p>Users auth token (see AssociateUserToPMS call to generate a Token)@apiParam (Request) {String} Auth/PropertyId      Property ID on myallocator.com</p>"
+            "description": "<p>Users auth token (see section <code>iii - Vendor tokens</code>)@apiParam (Request) {String} Auth/PropertyId      Property ID on myallocator.com</p>"
           },
           {
             "group": "Request",
@@ -1331,7 +1242,7 @@ define({ "api": [
             "type": "String",
             "optional": false,
             "field": "Auth/UserToken",
-            "description": "<p>Users auth token (see AssociateUserToPMS call to generate a Token)@apiParam (Request) {String} Auth/PropertyId      Property ID on myallocator.com</p>"
+            "description": "<p>Users auth token (see section <code>iii - Vendor tokens</code>)@apiParam (Request) {String} Auth/PropertyId      Property ID on myallocator.com</p>"
           },
           {
             "group": "Request",
@@ -2009,7 +1920,7 @@ define({ "api": [
             "type": "String",
             "optional": false,
             "field": "Auth/UserToken",
-            "description": "<p>Users auth token (see AssociateUserToPMS call to generate a Token)@apiParam (Request) {String} Auth/PropertyId</p>"
+            "description": "<p>Users auth token (see section <code>iii - Vendor tokens</code>)@apiParam (Request) {String} Auth/PropertyId</p>"
           },
           {
             "group": "Request",
@@ -2098,7 +2009,7 @@ define({ "api": [
             "type": "String",
             "optional": false,
             "field": "Auth/UserToken",
-            "description": "<p>Users auth token (see AssociateUserToPMS call to generate a Token)</p>"
+            "description": "<p>Users auth token (see section <code>iii - Vendor tokens</code>)</p>"
           },
           {
             "group": "Request",
@@ -2296,7 +2207,7 @@ define({ "api": [
             "type": "String",
             "optional": false,
             "field": "Auth/UserToken",
-            "description": "<p>Users auth token (see AssociateUserToPMS call to generate a Token)</p>"
+            "description": "<p>Users auth token (see section <code>iii - Vendor tokens</code>)</p>"
           },
           {
             "group": "Request",
@@ -2361,7 +2272,7 @@ define({ "api": [
             "type": "String",
             "optional": false,
             "field": "Auth/UserToken",
-            "description": "<p>Users auth token (see AssociateUserToPMS call to generate a Token)</p>"
+            "description": "<p>Users auth token (see section <code>iii - Vendor tokens</code>)</p>"
           },
           {
             "group": "Request",
@@ -2524,7 +2435,7 @@ define({ "api": [
             "type": "String",
             "optional": false,
             "field": "propertyToken",
-            "description": "<p>the token for the newly created property (same as returned by AssociatePropertyToPMS - for future use)</p>"
+            "description": "<p>Obsolete field. Please ignore.</p>"
           }
         ]
       }
@@ -2626,7 +2537,7 @@ define({ "api": [
             "type": "String",
             "optional": false,
             "field": "Auth/UserToken",
-            "description": "<p>Users auth token (see AssociateUserToPMS call to generate a Token)</p>"
+            "description": "<p>Users auth token (see section <code>iii - Vendor tokens</code>)</p>"
           },
           {
             "group": "Request",
@@ -2734,7 +2645,7 @@ define({ "api": [
             "type": "String",
             "optional": false,
             "field": "Auth/UserToken",
-            "description": "<p>Users auth token (see AssociateUserToPMS call to generate a Token)</p>"
+            "description": "<p>Users auth token (see section <code>iii - Vendor tokens</code>)</p>"
           },
           {
             "group": "Request",
@@ -2828,7 +2739,7 @@ define({ "api": [
             "type": "String",
             "optional": false,
             "field": "Auth/UserToken",
-            "description": "<p>Users auth token (see AssociateUserToPMS call to generate a Token)</p>"
+            "description": "<p>Users auth token (see section <code>iii - Vendor tokens</code>)</p>"
           },
           {
             "group": "Request",
@@ -2916,7 +2827,7 @@ define({ "api": [
             "type": "String",
             "optional": false,
             "field": "Auth/UserToken",
-            "description": "<p>Users auth token (see AssociateUserToPMS call to generate a Token)</p>"
+            "description": "<p>Users auth token (see section <code>iii - Vendor tokens</code>)</p>"
           },
           {
             "group": "Request",
@@ -3102,7 +3013,7 @@ define({ "api": [
             "type": "String",
             "optional": false,
             "field": "Auth/UserToken",
-            "description": "<p>Users auth token (see AssociateUserToPMS call to generate a Token)</p>"
+            "description": "<p>Users auth token (see section <code>iii - Vendor tokens</code>)</p>"
           },
           {
             "group": "Request",
@@ -3266,7 +3177,7 @@ define({ "api": [
             "type": "String",
             "optional": false,
             "field": "Auth/UserToken",
-            "description": "<p>Users auth token (see AssociateUserToPMS call to generate a Token)</p>"
+            "description": "<p>Users auth token (see section <code>iii - Vendor tokens</code>)</p>"
           },
           {
             "group": "Request",
@@ -3416,7 +3327,7 @@ define({ "api": [
             "type": "String",
             "optional": false,
             "field": "Auth/UserToken",
-            "description": "<p>Users auth token (see AssociateUserToPMS call to generate a Token)</p>"
+            "description": "<p>Users auth token (see section <code>iii - Vendor tokens</code>)</p>"
           },
           {
             "group": "Request",
@@ -3524,7 +3435,7 @@ define({ "api": [
             "type": "String",
             "optional": false,
             "field": "Auth/UserToken",
-            "description": "<p>Users auth token (see AssociateUserToPMS call to generate a Token)</p>"
+            "description": "<p>Users auth token (see section <code>iii - Vendor tokens</code>)</p>"
           },
           {
             "group": "Request",
@@ -3632,7 +3543,7 @@ define({ "api": [
             "type": "String",
             "optional": false,
             "field": "Auth/UserToken",
-            "description": "<p>Users auth token (see AssociateUserToPMS call to generate a Token)</p>"
+            "description": "<p>Users auth token (see section <code>iii - Vendor tokens</code>)</p>"
           },
           {
             "group": "Request",
@@ -3738,7 +3649,7 @@ define({ "api": [
             "type": "String",
             "optional": false,
             "field": "Auth/UserToken",
-            "description": "<p>Users auth token (see AssociateUserToPMS call to generate a Token)</p>"
+            "description": "<p>Users auth token (see section <code>iii - Vendor tokens</code>)</p>"
           },
           {
             "group": "Request",
@@ -3828,7 +3739,7 @@ define({ "api": [
             "type": "String",
             "optional": false,
             "field": "Auth/UserToken",
-            "description": "<p>Users auth token (see AssociateUserToPMS call to generate a Token)</p>"
+            "description": "<p>Users auth token (see section <code>iii - Vendor tokens</code>)</p>"
           },
           {
             "group": "Request",
@@ -3985,7 +3896,7 @@ define({ "api": [
             "type": "String",
             "optional": false,
             "field": "Auth/UserToken",
-            "description": "<p>Users auth token (see AssociateUserToPMS call to generate a Token)</p>"
+            "description": "<p>Users auth token (see section <code>iii - Vendor tokens</code>)</p>"
           },
           {
             "group": "Request",
@@ -4100,7 +4011,7 @@ define({ "api": [
             "type": "String",
             "optional": false,
             "field": "Auth/UserToken",
-            "description": "<p>Users auth token (see AssociateUserToPMS call to generate a Token)</p>"
+            "description": "<p>Users auth token (see section <code>iii - Vendor tokens</code>)</p>"
           },
           {
             "group": "Request",
@@ -4201,7 +4112,7 @@ define({ "api": [
             "type": "String",
             "optional": false,
             "field": "Auth/UserToken",
-            "description": "<p>Users auth token (see AssociateUserToPMS call to generate a Token)</p>"
+            "description": "<p>Users auth token (see section <code>iii - Vendor tokens</code>)</p>"
           },
           {
             "group": "Request",
@@ -4291,7 +4202,7 @@ define({ "api": [
             "type": "String",
             "optional": false,
             "field": "Auth/UserToken",
-            "description": "<p>Users auth token (see AssociateUserToPMS call to generate a Token)</p>"
+            "description": "<p>Users auth token (see section <code>iii - Vendor tokens</code>)</p>"
           },
           {
             "group": "Request",
@@ -4580,7 +4491,7 @@ define({ "api": [
             "type": "String",
             "optional": false,
             "field": "userToken",
-            "description": "<p>the PMS Auth token (see AssociateUserToPMS)</p>"
+            "description": "<p>User token for authentication purposes</p>"
           }
         ]
       }
@@ -4626,7 +4537,7 @@ define({ "api": [
             "type": "String",
             "optional": false,
             "field": "Auth/UserToken",
-            "description": "<p>Users auth token (see AssociateUserToPMS call to generate a Token)</p>"
+            "description": "<p>Users auth token (see section <code>iii - Vendor tokens</code>)</p>"
           },
           {
             "group": "Request",
@@ -4722,7 +4633,7 @@ define({ "api": [
             "type": "String",
             "optional": false,
             "field": "Auth/UserToken",
-            "description": "<p>User's auth token (see AssociateUserToPMS call to generate a Token)</p>"
+            "description": "<p>User's auth token (see section <code>iii - Vendor tokens</code>)</p>"
           },
           {
             "group": "Request",
@@ -4917,7 +4828,7 @@ define({ "api": [
     "title": "FAQ",
     "name": "FAQ",
     "version": "201601.0.0",
-    "description": "<p>This section contains frequently asked questions.</p> <ul> <li><strong>How should I deal with failed channel updates?</strong> If the error is noted as non-fatal on the Error Code page then retry the update after a few minutes. Failing updates are not as rare as you would think because channels do go down and become unresponsive. Fatal errors should not be automatically retried as they need user intervention. Make sure to show the error message to the customer.</li> <li><strong>Are there any limits on how many updates can be send at once?</strong> There is (currently) no limit, but you're strongly advised to split large updates (especially full refreshes) into smaller chunks of 30-60 days. This has the advantage that you can easily re-run failed chunks and it will make debugging problems easier.</li> <li><strong>I cannot log in to myallocator with the test credentials. Why?</strong> This is to avoid the settings for the test properties from being changed. You can however just register your own test property. Should you need more than the 30-day trial period let us know and we will extend it.</li> <li><strong>Callback: how do you know which customers belong to us?</strong> The first time you send an update on behalf of a customer through our API this customer will be marked as a user of your PMS. From then on you will receive callbacks for this customer.</li> <li><strong>Callback: why do I not receive any bookings?</strong> Make sure the property is associated with your vendor account. You can check this by going to the <em>PMS Connections</em> page inside the myallocator website for the property in question to check that your PMS is listed. Also make sure to set your callback URL with the <em>VendorSet</em> call <strong>and</strong> set <em>Callback/NotifyBooking</em> to true.</li> <li><strong>Callback: how do I test the callback?</strong> You can use the free BookNow widget inside the myallocator website. Add availability and rates, go to MANAGE, enable BookNow and then create bookings through the preview.</li> <li><strong>Can I send updates in parallel?</strong> You can for different properties. What you should never do is send an update for a property without waiting for the previous update for this property to succeed/fail. Otherwise you can run into race-conditions where the later update succeeds before the first update, opening up availability on the channel unintentionally.</li> <li><strong>Why can there be multiple RoomTypeIds for a booking?</strong> The same channel room can be assigned to multiple myallocator rooms. For this scenario we send the sum of available rooms/beds and the highest price of any available room that is mapped to this channel room. So the list of RoomTypeIds represents all matching rooms, but it does not mean that all of them were actually booked. Check out the warning on the Automatic Adjustments developer page for more details on how to adjust for this scenario.</li> <li><strong>Do I need PCI Certification for BookingPaymentDownload?</strong> Yes. We require a PCI compliance certificate from you. Most hostel and small PMS companies (those with less than $10m year in revenue) can use a Level 3 &quot;self&quot; certification. Level 3 PCI Compliance simply requires you attest that you are following secure coding practices in your application, and server hosting environment. In most cases it will require you attain attestation from your server hosting and gateway vendors to ensure a complete web of trust. More information: http://www.pcicompliance101.net/pci-dss-compliance.htm</li> <li><strong>For our testing purpose, will you give us an appropriate account?</strong> You are welcome to create a trial account and use that for testing, if you would like it extended you can talk to your relationship manager. (devhelp can't give you a free account, only the relationship manager can do that)</li> <li><strong>In some Methods the <em>PropertyId</em> is required, where can we get this?</strong> It is returned when a property is created, or via: PropertyList</li> <li><strong>In the Method &quot;AssociateUserToPMS&quot; returns the error: &quot;ErrorMsg=Auth/PropertyId or Auth/PropertyToken is required&quot;; neither of these is mentioned in the specs.</strong> A single user may have multiple properties associated to them, each property has a unique number called the &quot;PropertyId&quot;</li> <li><strong>Some API calls found in the documentation require special vendor permissions. How may we acquiring them?</strong> Speak with your relationship manager, very few integrations need those, only very deep integrations with thousands of users. It is much better (and more common) to have your user sign up on www.myallocator.com, create property, setup channels, etc. then provide you with a username+password which you exchange for a UserToken (that doesn't expire).</li> <li><strong>What API calls should absolutely be implemented?</strong> The minimum we recommend to integrate is <em>RoomList</em>, <em>ARIUpdate</em> and <em>ARIUpdateStatus</em>. If you don't use booking callbacks (which you really should) you also need <em>BookingList</em>. <em>AssociateUserToPMS</em> and <em>AssociatePropertyToPMS</em> is needed for each new connection and therefore also mandatory. <em>PropertyList</em> is highly recommended to retrieve the <em>PropertyId</em> for the properties that each user has.</li> </ul>",
+    "description": "<p>This section contains frequently asked questions.</p> <ul> <li><strong>How should I deal with failed channel updates?</strong> If the error is noted as non-fatal on the Error Code page then retry the update after a few minutes. Failing updates are not as rare as you would think because channels do go down and become unresponsive. Fatal errors should not be automatically retried as they need user intervention. Make sure to show the error message to the customer.</li> <li><strong>Are there any limits on how many updates can be send at once?</strong> There is (currently) no limit, but you're strongly advised to split large updates (especially full refreshes) into smaller chunks of 30-60 days. This has the advantage that you can easily re-run failed chunks and it will make debugging problems easier.</li> <li><strong>I cannot log in to myallocator with the test credentials. Why?</strong> This is to avoid the settings for the test properties from being changed. You can however just register your own test property. Should you need more than the 30-day trial period let us know and we will extend it.</li> <li><strong>Callback: how do you know which customers belong to us?</strong> The first time you send an update on behalf of a customer through our API this customer will be marked as a user of your PMS. From then on you will receive callbacks for this customer.</li> <li><strong>Callback: why do I not receive any bookings?</strong> Make sure the property is associated with your vendor account. You can check this by going to the <a href=\"https://inbox.myallocator.com/en/manage/vendors\">&quot;PMS Connections&quot; page</a> inside the myallocator website for the property in question to check that your PMS is listed. Also make sure to set your callback URL with the <em>VendorSet</em> call <strong>and</strong> set <em>Callback/NotifyBooking</em> to true.</li> <li><strong>Callback: how do I test the callback?</strong> You can use the free BookNow widget inside the myallocator website. Add availability and rates, go to MANAGE, enable BookNow and then create bookings through the preview.</li> <li><strong>Can I send updates in parallel?</strong> You can for different properties. What you should never do is send an update for a property without waiting for the previous update for this property to succeed/fail. Otherwise you can run into race-conditions where the later update succeeds before the first update, opening up availability on the channel unintentionally.</li> <li><strong>Why can there be multiple RoomTypeIds for a booking?</strong> The same channel room can be assigned to multiple myallocator rooms. For this scenario we send the sum of available rooms/beds and the highest price of any available room that is mapped to this channel room. So the list of RoomTypeIds represents all matching rooms, but it does not mean that all of them were actually booked. Check out the warning on the Automatic Adjustments developer page for more details on how to adjust for this scenario.</li> <li><strong>Do I need PCI Certification for BookingPaymentDownload?</strong> Yes. We require a PCI compliance certificate from you. Most hostel and small PMS companies (those with less than $10m year in revenue) can use a Level 3 &quot;self&quot; certification. Level 3 PCI Compliance simply requires you attest that you are following secure coding practices in your application, and server hosting environment. In most cases it will require you attain attestation from your server hosting and gateway vendors to ensure a complete web of trust. More information: http://www.pcicompliance101.net/pci-dss-compliance.htm</li> <li><strong>For our testing purpose, will you give us an appropriate account?</strong> You are welcome to create a trial account and use that for testing, if you would like it extended you can talk to your relationship manager. (devhelp can't give you a free account, only the relationship manager can do that)</li> <li><strong>In some Methods the <em>PropertyId</em> is required, where can we get this?</strong> It is returned when a property is created, or via: PropertyList</li> <li><strong>Some API calls found in the documentation require special vendor permissions. How may we acquiring them?</strong> Speak with your relationship manager, very few integrations need those, only very deep integrations with thousands of users. It is much better (and more common) to have your user sign up on www.myallocator.com, create property, setup channels, etc. then provide you with a username+password which you exchange for a UserToken (that doesn't expire).</li> <li><strong>What API calls should absolutely be implemented?</strong> The minimum we recommend to integrate is <em>RoomList</em>, <em>ARIUpdate</em> and <em>ARIUpdateStatus</em>. If you don't use booking callbacks (which you really should) you also need <em>BookingList</em>. <em>PropertyList</em> is highly recommended to retrieve the <em>PropertyId</em> for the properties that each user has.</li> </ul>",
     "filename": "perllib/MAAPI.pm",
     "groupTitle": "4_Appendix"
   },
@@ -4961,7 +4872,7 @@ define({ "api": [
     "title": "Version History",
     "name": "Version_History",
     "version": "201601.0.0",
-    "description": "<table> <thead> <tr> <th>Date</th> <th>Version</th> <th>Change</th> </tr> </thead> <tbody> <tr> <td>2018-01-22</td> <td>201801.0.1</td> <td>PropertyChannelList able to limit by property ID</td> </tr> <tr> <td>2017-04-12</td> <td>201710.0.1</td> <td>New API call: PropertyChannelImportARI</td> </tr> <tr> <td>2017-04-12</td> <td>201610.0.2</td> <td>ICalLink field added to call RoomList</td> </tr> <tr> <td>2016-10-09</td> <td>201610.0.1</td> <td>Changes to ARIRules</td> </tr> <tr> <td>2016-05-26</td> <td>201605.0.2</td> <td>New API call: BookingCancel</td> </tr> <tr> <td>2016-05-25</td> <td>201605.0.1</td> <td>Removed CANCEL/UNCANCEL from BookingAction, added more options to BookingList</td> </tr> <tr> <td>2016-03-15</td> <td>201603.0.1</td> <td>New API calls: RatePlanCreate, RatePlanUpdate, RatePlanRemove</td> </tr> <tr> <td>2016-02-04</td> <td>201601.0.2</td> <td>VERSIONED JSON response format PropertyChannelList to include currency (and future fields)</td> </tr> <tr> <td>2016-01-08</td> <td>201601.0.1</td> <td>Fixed documentation for ARIUpdate to include Auth/VendorId Auth/VendorPassword</td> </tr> <tr> <td>2015-10-13</td> <td>201501.0.13</td> <td>Fix BookingList ModificationEndDate so it goes until 11:59pm</td> </tr> <tr> <td>2015-10-01</td> <td>201501.0.12</td> <td>Fix various documentation issues</td> </tr> <tr> <td>2015-07-24</td> <td>201501.0.11</td> <td>added BookingPaymentPasswordValidate</td> </tr> <tr> <td>2015-07-09</td> <td>201501.0.10</td> <td>added IncludeArchived to BookingList</td> </tr> <tr> <td>2015-05-27</td> <td>201501.0.9</td> <td>new BookingList parameters ModificationStartDateTime, ModificationEndDateTime, CreationStartDateTime, CreationEndDateTime</td> </tr> <tr> <td>2015-05-18</td> <td>201501.0.8</td> <td>new BookingAction commands</td> </tr> <tr> <td>2015-03-20</td> <td>201501.0.7</td> <td>Corrected explanation of Units on RoomCreate (thanks Petr T.)</td> </tr> <tr> <td>2015-02-19</td> <td>201501.0.6</td> <td>Add Options.NormalizeToCurrency to BookingList</td> </tr> <tr> <td>2015-02-19</td> <td>201501.0.5</td> <td>Added more documentation to Booking Samples</td> </tr> <tr> <td>2015-02-03</td> <td>201501.0.4</td> <td>Added .Options.IgnoreInvalidRooms to MAAPI</td> </tr> <tr> <td>2015-02-02</td> <td>201501.0.3</td> <td>Improved documentation for multiple overlapping Allocations in ARIUpdate</td> </tr> <tr> <td>2015-01-22</td> <td>201501.0.2</td> <td>Improved documentation with Booking samples</td> </tr> <tr> <td>2015-01-09</td> <td>201501.0.1</td> <td>Initial release of 201601[beta] (new functions: ARIRules)</td> </tr> <tr> <td>2015-01-08</td> <td>201408.0.13</td> <td>Corrected validation logic issue with ARIUpdate (properly validates Rooms)</td> </tr> <tr> <td>2015-01-07</td> <td>201408.0.12</td> <td>Corrected issue with AssociateUserToPMS requiring Auth/PropertyId</td> </tr> <tr> <td>2015-01-06</td> <td>201408.0.11</td> <td>Modified FailIfUpdateActive default to &quot;false&quot;</td> </tr> <tr> <td>2015-01-05</td> <td>201408.0.10</td> <td>fixed doc, Price-Weekend is &quot;PriceWeekend&quot;</td> </tr> <tr> <td>2015-01-05</td> <td>201408.0.9</td> <td>added JSON raw input mode - application/json</td> </tr> <tr> <td>2014-12-28</td> <td>201408.0.8</td> <td>added Auth/Debug</td> </tr> <tr> <td>2014-12-28</td> <td>201408.0.7</td> <td>fixed bug in ARIUpdate where zero unit updates would not be applied</td> </tr> <tr> <td>2014-12-26</td> <td>201408.0.6</td> <td>added more documentation to ChannelList and curl example to HelloWorld</td> </tr> <tr> <td>2014-12-24</td> <td>201408.0.5</td> <td>added error logging with ticket responses</td> </tr> <tr> <td>2014-12-23</td> <td>201408.0.4</td> <td>added VendorId to various docs, and propertyid, unified error handling</td> </tr> <tr> <td>2014-12-19</td> <td>201408.0.3</td> <td>fixed bug in RoomCreate (did not return RoomId)</td> </tr> <tr> <td>2014-12-15</td> <td>201408.0.2</td> <td>renamed LoopBookingAction into BookingAction</td> </tr> <tr> <td>2014-12-04</td> <td>201408.0.1</td> <td>initial release of new API</td> </tr> <tr> <td>2012-10-24</td> <td>1.6.2</td> <td>Updated booking information (new: CommissionIncludedInTotal).</td> </tr> <tr> <td>2012-10-24</td> <td>1.6.1</td> <td>Updated booking information and updated channel list (new: eb,air, orb, boo, tra).</td> </tr> <tr> <td>2012-10-24</td> <td>1.6</td> <td>New feature Booking Callback and updated channel list (new: max).</td> </tr> <tr> <td>2012-09-20</td> <td>1.5.2</td> <td>Updated channel list (new: exp, ysh, eb). Get/Set property country.</td> </tr> <tr> <td>2012-07-04</td> <td>1.5.1</td> <td>Updated channel list. Added MinStay/MaxStay example.</td> </tr> <tr> <td>2011-09-17</td> <td>1.5</td> <td>New method SetRoomTypes to add/update/remove rooms.</td> </tr> <tr> <td>2011-09-17</td> <td>1.4.1</td> <td>GetBookings: Minor correction regarding the end date. It's not the departure date but rather the departure date - 1.</td> </tr> <tr> <td>2011-01-15</td> <td>1.4</td> <td>New methods SetAllocation (non-blocking), SetLogin, GetUpdateStatus, GetBookings. Support for MinStay and MaxStay.</td> </tr> <tr> <td>2010-11-09</td> <td>1.3.1</td> <td>Updated channel list. GetRoomTypes: Obsoleted &quot;Ensuite&quot;, &quot;DoubleBed&quot; and &quot;Beds&quot; (replaced by new property &quot;Occupancy&quot;). GetProperties: shows which days are configure for weekends.</td> </tr> <tr> <td>2010-05-30</td> <td>1.3</td> <td>GetRoomTypes includes a room description (Label). Removed need to list channels to update to and ability to exclude channels. Skipped channels now warnings rather than errors.</td> </tr> <tr> <td>2010-05-05</td> <td>1.2</td> <td>Added links to XML samples. New channel: hb</td> </tr> <tr> <td>2010-04-30</td> <td>1.1</td> <td>Changed Room to \\textit{RoomType} to clarify matters</td> </tr> <tr> <td>2010-04-27</td> <td>1.0</td> <td>Initial release</td> </tr> </tbody> </table> <hr> <p>v201601 : ARIRules, v201408 : new JSON format, all call names switched to NounPronounVerb format. v1 : the original api (which didn't support versioning)</p>",
+    "description": "<table> <thead> <tr> <th>Date</th> <th>Version</th> <th>Change</th> </tr> </thead> <tbody> <tr> <td>2018-01-24</td> <td>201801.0.2</td> <td>Simplified token usage</td> </tr> <tr> <td>2018-01-22</td> <td>201801.0.1</td> <td>PropertyChannelList able to limit by property ID</td> </tr> <tr> <td>2017-04-12</td> <td>201710.0.1</td> <td>New API call: PropertyChannelImportARI</td> </tr> <tr> <td>2017-04-12</td> <td>201610.0.2</td> <td>ICalLink field added to call RoomList</td> </tr> <tr> <td>2016-10-09</td> <td>201610.0.1</td> <td>Changes to ARIRules</td> </tr> <tr> <td>2016-05-26</td> <td>201605.0.2</td> <td>New API call: BookingCancel</td> </tr> <tr> <td>2016-05-25</td> <td>201605.0.1</td> <td>Removed CANCEL/UNCANCEL from BookingAction, added more options to BookingList</td> </tr> <tr> <td>2016-03-15</td> <td>201603.0.1</td> <td>New API calls: RatePlanCreate, RatePlanUpdate, RatePlanRemove</td> </tr> <tr> <td>2016-02-04</td> <td>201601.0.2</td> <td>VERSIONED JSON response format PropertyChannelList to include currency (and future fields)</td> </tr> <tr> <td>2016-01-08</td> <td>201601.0.1</td> <td>Fixed documentation for ARIUpdate to include Auth/VendorId Auth/VendorPassword</td> </tr> <tr> <td>2015-10-13</td> <td>201501.0.13</td> <td>Fix BookingList ModificationEndDate so it goes until 11:59pm</td> </tr> <tr> <td>2015-10-01</td> <td>201501.0.12</td> <td>Fix various documentation issues</td> </tr> <tr> <td>2015-07-24</td> <td>201501.0.11</td> <td>added BookingPaymentPasswordValidate</td> </tr> <tr> <td>2015-07-09</td> <td>201501.0.10</td> <td>added IncludeArchived to BookingList</td> </tr> <tr> <td>2015-05-27</td> <td>201501.0.9</td> <td>new BookingList parameters ModificationStartDateTime, ModificationEndDateTime, CreationStartDateTime, CreationEndDateTime</td> </tr> <tr> <td>2015-05-18</td> <td>201501.0.8</td> <td>new BookingAction commands</td> </tr> <tr> <td>2015-03-20</td> <td>201501.0.7</td> <td>Corrected explanation of Units on RoomCreate (thanks Petr T.)</td> </tr> <tr> <td>2015-02-19</td> <td>201501.0.6</td> <td>Add Options.NormalizeToCurrency to BookingList</td> </tr> <tr> <td>2015-02-19</td> <td>201501.0.5</td> <td>Added more documentation to Booking Samples</td> </tr> <tr> <td>2015-02-03</td> <td>201501.0.4</td> <td>Added .Options.IgnoreInvalidRooms to MAAPI</td> </tr> <tr> <td>2015-02-02</td> <td>201501.0.3</td> <td>Improved documentation for multiple overlapping Allocations in ARIUpdate</td> </tr> <tr> <td>2015-01-22</td> <td>201501.0.2</td> <td>Improved documentation with Booking samples</td> </tr> <tr> <td>2015-01-09</td> <td>201501.0.1</td> <td>Initial release of 201601[beta] (new functions: ARIRules)</td> </tr> <tr> <td>2015-01-08</td> <td>201408.0.13</td> <td>Corrected validation logic issue with ARIUpdate (properly validates Rooms)</td> </tr> <tr> <td>2015-01-07</td> <td>201408.0.12</td> <td>Corrected issue with AssociateUserToPMS requiring Auth/PropertyId</td> </tr> <tr> <td>2015-01-06</td> <td>201408.0.11</td> <td>Modified FailIfUpdateActive default to &quot;false&quot;</td> </tr> <tr> <td>2015-01-05</td> <td>201408.0.10</td> <td>fixed doc, Price-Weekend is &quot;PriceWeekend&quot;</td> </tr> <tr> <td>2015-01-05</td> <td>201408.0.9</td> <td>added JSON raw input mode - application/json</td> </tr> <tr> <td>2014-12-28</td> <td>201408.0.8</td> <td>added Auth/Debug</td> </tr> <tr> <td>2014-12-28</td> <td>201408.0.7</td> <td>fixed bug in ARIUpdate where zero unit updates would not be applied</td> </tr> <tr> <td>2014-12-26</td> <td>201408.0.6</td> <td>added more documentation to ChannelList and curl example to HelloWorld</td> </tr> <tr> <td>2014-12-24</td> <td>201408.0.5</td> <td>added error logging with ticket responses</td> </tr> <tr> <td>2014-12-23</td> <td>201408.0.4</td> <td>added VendorId to various docs, and propertyid, unified error handling</td> </tr> <tr> <td>2014-12-19</td> <td>201408.0.3</td> <td>fixed bug in RoomCreate (did not return RoomId)</td> </tr> <tr> <td>2014-12-15</td> <td>201408.0.2</td> <td>renamed LoopBookingAction into BookingAction</td> </tr> <tr> <td>2014-12-04</td> <td>201408.0.1</td> <td>initial release of new API</td> </tr> <tr> <td>2012-10-24</td> <td>1.6.2</td> <td>Updated booking information (new: CommissionIncludedInTotal).</td> </tr> <tr> <td>2012-10-24</td> <td>1.6.1</td> <td>Updated booking information and updated channel list (new: eb,air, orb, boo, tra).</td> </tr> <tr> <td>2012-10-24</td> <td>1.6</td> <td>New feature Booking Callback and updated channel list (new: max).</td> </tr> <tr> <td>2012-09-20</td> <td>1.5.2</td> <td>Updated channel list (new: exp, ysh, eb). Get/Set property country.</td> </tr> <tr> <td>2012-07-04</td> <td>1.5.1</td> <td>Updated channel list. Added MinStay/MaxStay example.</td> </tr> <tr> <td>2011-09-17</td> <td>1.5</td> <td>New method SetRoomTypes to add/update/remove rooms.</td> </tr> <tr> <td>2011-09-17</td> <td>1.4.1</td> <td>GetBookings: Minor correction regarding the end date. It's not the departure date but rather the departure date - 1.</td> </tr> <tr> <td>2011-01-15</td> <td>1.4</td> <td>New methods SetAllocation (non-blocking), SetLogin, GetUpdateStatus, GetBookings. Support for MinStay and MaxStay.</td> </tr> <tr> <td>2010-11-09</td> <td>1.3.1</td> <td>Updated channel list. GetRoomTypes: Obsoleted &quot;Ensuite&quot;, &quot;DoubleBed&quot; and &quot;Beds&quot; (replaced by new property &quot;Occupancy&quot;). GetProperties: shows which days are configure for weekends.</td> </tr> <tr> <td>2010-05-30</td> <td>1.3</td> <td>GetRoomTypes includes a room description (Label). Removed need to list channels to update to and ability to exclude channels. Skipped channels now warnings rather than errors.</td> </tr> <tr> <td>2010-05-05</td> <td>1.2</td> <td>Added links to XML samples. New channel: hb</td> </tr> <tr> <td>2010-04-30</td> <td>1.1</td> <td>Changed Room to \\textit{RoomType} to clarify matters</td> </tr> <tr> <td>2010-04-27</td> <td>1.0</td> <td>Initial release</td> </tr> </tbody> </table> <hr> <p>v201601 : ARIRules, v201408 : new JSON format, all call names switched to NounPronounVerb format. v1 : the original api (which didn't support versioning)</p>",
     "filename": "perllib/MAAPI.pm",
     "groupTitle": "4_Appendix"
   },
