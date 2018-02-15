@@ -298,298 +298,6 @@
             "type": "String",
             "optional": false,
             "field": "Auth/UserToken",
-            "description": "<p>Users auth token (see section <code>iii - Vendor tokens</code>)</p>"
-          },
-          {
-            "group": "Request",
-            "type": "String",
-            "optional": false,
-            "field": "Auth/PropertyId",
-            "description": "<p>Property ID on myallocator.com</p>"
-          },
-          {
-            "group": "Request",
-            "type": "String",
-            "optional": false,
-            "field": "Auth/VendorId",
-            "description": "<p>Your Vendor ID</p>"
-          },
-          {
-            "group": "Request",
-            "type": "String",
-            "optional": false,
-            "field": "Auth/VendorPassword",
-            "description": "<p>Your Vendor Password</p>"
-          },
-          {
-            "group": "Request",
-            "type": "Container",
-            "optional": false,
-            "field": "Options",
-            "description": "<p>Container node (Hash) containing a list of channels to be updated.</p>"
-          },
-          {
-            "group": "Request",
-            "type": "Boolean",
-            "optional": false,
-            "field": ".Options.QueryForStatus",
-            "description": "<p>Default: false, If true the call returns immediately, and the caller should use ARIUpdateStatus to query.</p>"
-          },
-          {
-            "group": "Request",
-            "type": "Boolean",
-            "optional": false,
-            "field": ".Options.FailIfUpdateActive",
-            "description": "<p>Default: false, If true the call will fail if another update is currently running (rather than block with potentially old data)</p>"
-          },
-          {
-            "group": "Request",
-            "type": "Boolean",
-            "optional": false,
-            "field": ".Options.IgnoreInvalidRooms",
-            "description": "<p>Default: false, If true AND Invalid RoomId's are specified then a warning will be returned (otherwise the entire call will fail)</p>"
-          },
-          {
-            "group": "Request",
-            "type": "Integer",
-            "optional": false,
-            "field": ".Options.loop_delay",
-            "description": "<p>Intentionally make the 'loop' channel take loop_delay seconds (useful for testing with QueryForStatus)</p>"
-          },
-          {
-            "group": "Request",
-            "type": "Container",
-            "optional": false,
-            "field": "Channels",
-            "description": "<p>Container node (array) containing a list of channels to be updated.</p>"
-          },
-          {
-            "group": "Request",
-            "type": "String",
-            "optional": false,
-            "field": ".Channels.Channel",
-            "description": "<p>(XML ONLY) A XML node containing the channel that the customer wants to update. (Use ChannelList for ChannelId's)</p>"
-          },
-          {
-            "group": "Request",
-            "type": "String",
-            "optional": false,
-            "field": ".Channels.ChannelId",
-            "description": "<p>(JSON ONLY) the ChannelId of the channel to be updated. ex: &quot;loop&quot; for Loop</p>"
-          },
-          {
-            "group": "Request",
-            "type": "Container",
-            "optional": false,
-            "field": "Allocations",
-            "description": "<p>Container node (array) containing a list</p>"
-          },
-          {
-            "group": "Request",
-            "type": "String",
-            "optional": false,
-            "field": ".Allocations.Allocation",
-            "description": "<p>Individual allocations. There can be as many as you like, but a the date ranges should never overlap (within one room id).</p>"
-          },
-          {
-            "group": "Request",
-            "type": "String",
-            "optional": false,
-            "field": ".Allocation.RoomId",
-            "description": "<p>Room type id as returned by RoomList.</p>"
-          },
-          {
-            "group": "Request",
-            "type": "String",
-            "optional": false,
-            "field": ".Allocation.RatePlanId",
-            "description": "<p>Rateplan ID as returned by RatePlanList. Defaults to 0. Unless you implemented experimental rateplan support you likely don't need this.</p>"
-          },
-          {
-            "group": "Request",
-            "type": "Date",
-            "optional": false,
-            "field": ".Allocation.StartDate",
-            "description": "<p>Format: YYYY-MM-DD.</p>"
-          },
-          {
-            "group": "Request",
-            "type": "Date",
-            "optional": false,
-            "field": ".Allocation.EndDate",
-            "description": "<p>Format: YYYY-MM-DD.</p>"
-          },
-          {
-            "group": "Request",
-            "type": "String",
-            "optional": true,
-            "field": ".Allocations.Allocation.Units",
-            "description": "<p>How many beds or rooms should be available on this day. Whether it's beds or rooms depends on whether the room is a dorm or a private room. To remove allocation set Units to 0.</p>"
-          },
-          {
-            "group": "Request",
-            "type": "Integer",
-            "optional": true,
-            "field": ".Allocations.Allocation.MinStay",
-            "description": "<p>Specify the minumum number of days a customer is allowed to stay. Not all channels support this feature. Needs to be 1 or higher. (optional)</p>"
-          },
-          {
-            "group": "Request",
-            "type": "Integer",
-            "optional": true,
-            "field": ".Allocations.Allocation.MaxStay",
-            "description": "<p>Specify the maximum number of days a customer is allowed to stay. Not all channels support this feature. Needs to be 0 or higher. 0 means &quot;unlimited&quot;. (optional)</p>"
-          },
-          {
-            "group": "Request",
-            "type": "Boolean",
-            "optional": true,
-            "field": ".Allocations.Allocation.Closed",
-            "description": "<p>Room is not available during this time</p>"
-          },
-          {
-            "group": "Request",
-            "type": "Boolean",
-            "optional": true,
-            "field": ".Allocations.Allocation.ClosedForArrival",
-            "description": "<p>Arrivals are not allowed on this day.</p>"
-          },
-          {
-            "group": "Request",
-            "type": "Bollean",
-            "optional": true,
-            "field": ".Allocations.Allocation.ClosedForDeparture",
-            "description": "<p>Departures are not allowed on this day.</p>"
-          },
-          {
-            "group": "Request",
-            "type": "Container",
-            "optional": true,
-            "field": ".Allocations.Allocation.Prices",
-            "description": "<p>(XML ONLY) Container for Price nodes.</p>"
-          },
-          {
-            "group": "Request",
-            "type": "Currency",
-            "optional": true,
-            "field": ".Allocations.Allocation.Prices.Price",
-            "description": "<p>(XML ONLY) Price per person for shared/dorm rooms or per room for private rooms.</p>"
-          },
-          {
-            "group": "Request",
-            "type": "Currency",
-            "optional": true,
-            "field": ".Allocations.Allocation.Price",
-            "description": "<p>(JSON ONLY) Price per person for shared/dorm rooms or per room for private rooms.</p>"
-          }
-        ]
-      }
-    },
-    "success": {
-      "fields": {
-        "Response": [
-          {
-            "group": "Response",
-            "type": "String",
-            "optional": false,
-            "field": "Success",
-            "description": "<p>Can be it{true} (all channel updates succeeded), it{partial} (not all channels succeeded) or it{false} (all channel updates failed).</p>"
-          },
-          {
-            "group": "Response",
-            "type": "String",
-            "optional": false,
-            "field": "Errors/Error",
-            "description": "<p>Might contain the attribute it{channel=&quot;..&quot;} to indicate whether the error only applies to a specific channel.</p>"
-          },
-          {
-            "group": "Response",
-            "type": "String",
-            "optional": false,
-            "field": "Warnings/Warning",
-            "description": "<p>Might contain the attribute it{channel=&quot;..&quot;} to indicate whether the warning only applies to a specific channel.</p>"
-          }
-        ]
-      },
-      "examples": [
-        {
-          "title": "XML ARIUpdate Response (Full Success)",
-          "content": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<ARIUpdateResponse>\n <Success>true</Success>\n <Errors></Errors>\n <Warnings>\n    <Warning channel=\"hc\">\n      <WarningId>207</WarningId>\n      <WarningMsg>\n        Skipped room type (not setup with channel).\n      </WarningMsg>\n    </Warning>\n </Warnings>\n</ARIUpdateResponse>",
-          "type": "json"
-        },
-        {
-          "title": "XML ARIUpdate Warning Response (at least one channel succeeded)",
-          "content": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<ARIUpdateResponse>\n <Success>partial</Success>\n <Errors>\n    <Error channel=\"adv\">\n      <ErrorId>15</ErrorId>\n      <ErrorMsg>\n         Missing or wrong channel credentials on myallocator.com\n      </ErrorMsg>\n    </Error>\n </Errors>\n <Warnings></Warnings>\n</ARIUpdateResponse>",
-          "type": "json"
-        },
-        {
-          "title": "XML ARIUpdate Failed Response (all channels came back with errors)",
-          "content": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<ARIUpdateResponse>\n <Success>false</Success>\n <Errors>\n    <Error channel=\"adv\">\n      <ErrorId>15</ErrorId>\n      <ErrorMsg>\n        Missing or wrong channel credentials on myallocator.com\n      </ErrorMsg>\n    </Error>\n </Errors>\n <Warnings></Warnings>\n</ARIUpdateResponse>",
-          "type": "json"
-        },
-        {
-          "title": "XML ARIUpdate Failed update (error before submitting to any channel)",
-          "content": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<ARIUpdateResponse>\n <Success>false</Success>\n <Errors>\n    <Error\">\n      <ErrorId>17</ErrorId>\n      <ErrorMsg>\n        Start date too far in the future (>2 years)\n      </ErrorMsg>\n    </Error>\n </Errors>\n <Warnings></Warnings>\n</ARIUpdateResponse>",
-          "type": "json"
-        },
-        {
-          "title": "XML ARIUpdate QueryForStatus=true",
-          "content": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<ARIUpdateResponse>\n <Success>true</Success>\n <Errors></Errors>\n <Warnings></Warnings>\n  <UpdateId>832522158</UpdateId>\n</ARIUpdateResponse>",
-          "type": "json"
-        }
-      ]
-    },
-    "description": "<p>An allocation sets the number of rooms or beds (depending on whether the room type is a private room or shared/dorm) available during any specific time frame. For more details see below.</p> <p>** Excluding Channels ** prefix a channel id with a minus (-) to exclude it.   Ex: a series of &quot;all&quot;, &quot;-loop&quot; would update all configured channels except &quot;loop&quot;</p> <p>** Handling Errors &amp; Warnings **</p> <p>The response will always include the Success, Errors and Warnings tags. If Success is set to &quot;true&quot; the Errors tag will be empty. If Success is set to &quot;partial&quot; or &quot;false&quot; at least one Error tag is included.</p> <p>** Sending Overlapping Ranges / Partial updates ** Overlapping ranges in an ARIUpdate are absolutely allowed. As long as the ranges are sent in the same request body they are applied in sequence as part of the same SQL transaction. Fields such as Units, MinStay, MaxStay, Price are optional so it is possible send different ranges for pricing and availability.</p> <p>How this works: we receive XML/JSON request body and decode it into a neutral format, then write availability directly to the internal MyAllocator database and provision an updateId for a date range plus room-type(s), then create one job per channel, finally we return the updateId to the response (assuming QueryForStatus==True).</p> <p>Each job contains ONLY the propertyid, updateId, and ota (no availability, or pricing). Jobs are picked up one of several auto-scaling &quot;worker tier&quot; servers, each server loads the latest availability from the db (which may have changed since the updateId was issued), and then applies any ARIRules, then transmit to OTA, and flag their portion of the updateId as completed. This ensures the latest availability will always be sent to the OTA.</p> <p>Once an UpdateId has been issued it falls within the scope of my monitoring domain, it should be considered reliable by a developer. The request is broken into a series of jobs (one for each channel). Each job is logged to disk and processed by a pool of servers. It would take a substantial level of failure to be lost. (Jobs are not quite as durable as bookings or configuration data, but it's still highly durable).</p> <p>** Submitting to ALL channels **</p> <p>You can also submit to all available channels without specifying explicity which channels to update. Use the channel code &quot;all&quot; to do this. Channels that are not set up by the user will be skipped as indicated by a warning.</p> <p>It is also possible to submit to all channels while excluding certain channels. Add the attribute exclude=&quot;true&quot; to skip a channel. See example below. Use the channel code &quot;all&quot; to do this.</p> <p>** Running Jobs in the Background (ARIUpdateStatus) **</p> <p>You can also run the ARIUpdate update in the background and query for the updates using ARIUpdateStatus. This enables you to show the update progress to the user while it's still running. To enable this feature you need to add the node QueryForStatus (see example)</p> <p>If QueryForStatus is true then the ARIUpdateResponse will contain the additional parameter UpdateId, which is needed for ARIUpdateStatus</p> <p>QueryForStatus TRUE will be much more resilient than attempting to maintain a single persistent connection, and it will free up connection requests on our side.  In the future QueryForStatus FALSE may be removed and/or additional timeouts will be added which may make it unusable. New integrations should avoid using QueryForStatus FALSE.</p>",
-    "examples": [
-      {
-        "title": "JSON ARIUpdate",
-        "content": "{\n \"Auth/UserToken\":\"user token\",\n \"Auth/PropertyId\":\"property id from myallocator\",\n \"Auth/VendorId\":\"your vendor\",\n \"Auth/VendorPassword\":\"vendorpass\",\n \"Channels\": [ \"hc\",\"iwb\" ],\n \"Allocations\": [\n    {\n    \"RoomId\":\"59\",\n    \"StartDate\":\"2010-06-01\",\n    \"EndDate\":\"2010-06-01\",\n    \"Units\":\"3\",\n    \"MinStay\":\"1\",\n    \"MaxStay\":\"30\",\n    \"Price\":\"20.00\"\n    }\n    ]\n}",
-        "type": "json"
-      },
-      {
-        "title": "curl w/ JSON",
-        "content": "curl https://api.myallocator.com/pms/v201408/json/ARIUpdate -d@- <<EOJSON\njson={\n \"Auth/UserToken\":\"your username\",\n \"Auth/PropertyId\":\"property id from myallocator\",\n \"Auth/VendorId\":\"your vendor\",\n \"Auth/VendorPassword\":\"vendorpass\",\n \"Channels\": [ \"hc\",\"iwb\" ],\n \"Allocations\": [\n    {\n    \"RoomId\":\"59\",\n    \"StartDate\":\"2010-06-01\",\n    \"EndDate\":\"2010-06-01\",\n    \"Units\":\"3\",\n    \"MinStay\":\"1\",\n    \"MaxStay\":\"30\",\n    \"Price\":\"20.00\",\n    \"PriceWeekly\":\"400.00\",\n    \"PriceMonthly\":\"1600.00\"\n    }\n    ]\n}\nEOJSON",
-        "type": "json"
-      },
-      {
-        "title": "JSON ARIUpdateResponse",
-        "content": "{\n'Errors':[\n   { 'err':100, 'msg':'Unhandled Exception' }\n],\n'Messages':[\n      {\n         \"msg\" : \"QueryForStatus mode enabled (will not wait)\",\n         \"id\" : 99,\n         \"type\" : \"info\"\n      }\n],\n'Channels':[\n      \"exp\" : {\n         \"msg\" : \"job 123 is queued in tube ariupdates\",\n         \"hold\" : 1,\n         \"parts\" : 1,\n         \"cid\" : \"exp\"\n      },\n      \"boo\" : {\n         \"msg\" : \"job 124 is queued in tube ariupdates\",\n         \"hold\" : 1,\n         \"parts\" : 1,\n         \"cid\" : \"boo\"\n      }\n]\n}",
-        "type": "json"
-      },
-      {
-        "title": "XML ARIUpdateRequest",
-        "content": "<?xml version=\"1.0\" encoding=\"UTF-8\" ?>\n<ARIUpdate>\n <Auth>\n   <UserToken>User token</UserToken>\n   <PropertyId>Property ID on myallocator.com</PropertyId>\n   <VendorId>Your Vendor ID</VendorId>\n   <VendorPassword>Your Vendor Password</VendorPassword>\n </Auth>\n\n <Channels>\n    <Channel>hc</Channel>\n    <Channel>iwb</Channel>\n </Channels>\n\n <Allocations>\n    <Allocation>\n      <RoomId>59</RoomId>\n      <RatePlanId>100</RatePlanId>\n      <StartDate>2010-06-01</StartDate>\n      <EndDate>2010-08-12</EndDate>\n      <Units>3</Units>\n      <MinStay>1</MinStay>\n      <MaxStay>30</MaxStay>\n      <Prices>\n         <Price>20.00</Price>\n      </Prices>\n    </Allocation>\n </Allocations>\n</ARIUpdate>",
-        "type": "json"
-      },
-      {
-        "title": "XML Request (Status Check)",
-        "content": "<?xml version=\"1.0\" encoding=\"UTF-8\" ?>\n<ARIUpdate>\n <Auth>\n    ...\n </Auth>\n\n <Options>\n    <QueryForStatus>true</QueryForStatus>\n </Options>\n\n ...\n</ARIUpdate>",
-        "type": "json"
-      },
-      {
-        "title": "XML ARIUpdate (Submit to all channels excluding Gomio and Hostelsclub)",
-        "content": "<?xml version=\"1.0\" encoding=\"UTF-8\" ?>\n<ARIUpdate>\n <Auth>\n    <UserToken>User token</UserToken>\n    <PropertyId>Property ID on myallocator.com</PropertyId>\n    <VendorId>Your Vendor ID</VendorId>\n    <VendorPassword>Your Vendor Password</VendorPassword>\n </Auth>\n\n <Channels>\n    <Channel>all</Channel>\n    <Channel exclude=\"true\">gom</Channel>\n    <Channel exclude=\"true\">hc</Channel>\n</Channels>\n\n <Allocations>\n    ...\n </Allocations>\n</ARIUpdate>",
-        "type": "json"
-      }
-    ],
-    "filename": "perllib/MAAPI.pm",
-    "groupTitle": "3_API_Methods"
-  },
-  {
-    "group": "3_API_Methods",
-    "type": "POST",
-    "url": "/ARIUpdate",
-    "title": "ARIUpdate",
-    "name": "ARIUpdate",
-    "version": "201601.0.0",
-    "parameter": {
-      "fields": {
-        "Request": [
-          {
-            "group": "Request",
-            "type": "String",
-            "optional": false,
-            "field": "Auth/UserToken",
             "description": "<p>Users auth token (see AssociateUserToPMS call to generate a Token)</p>"
           },
           {
@@ -865,6 +573,298 @@
       }
     ],
     "filename": "perllib/MyAllocator/API/Role/ARIUpdate.pm",
+    "groupTitle": "3_API_Methods"
+  },
+  {
+    "group": "3_API_Methods",
+    "type": "POST",
+    "url": "/ARIUpdate",
+    "title": "ARIUpdate",
+    "name": "ARIUpdate",
+    "version": "201601.0.0",
+    "parameter": {
+      "fields": {
+        "Request": [
+          {
+            "group": "Request",
+            "type": "String",
+            "optional": false,
+            "field": "Auth/UserToken",
+            "description": "<p>Users auth token (see section <code>iii - Vendor tokens</code>)</p>"
+          },
+          {
+            "group": "Request",
+            "type": "String",
+            "optional": false,
+            "field": "Auth/PropertyId",
+            "description": "<p>Property ID on myallocator.com</p>"
+          },
+          {
+            "group": "Request",
+            "type": "String",
+            "optional": false,
+            "field": "Auth/VendorId",
+            "description": "<p>Your Vendor ID</p>"
+          },
+          {
+            "group": "Request",
+            "type": "String",
+            "optional": false,
+            "field": "Auth/VendorPassword",
+            "description": "<p>Your Vendor Password</p>"
+          },
+          {
+            "group": "Request",
+            "type": "Container",
+            "optional": false,
+            "field": "Options",
+            "description": "<p>Container node (Hash) containing a list of channels to be updated.</p>"
+          },
+          {
+            "group": "Request",
+            "type": "Boolean",
+            "optional": false,
+            "field": ".Options.QueryForStatus",
+            "description": "<p>Default: false, If true the call returns immediately, and the caller should use ARIUpdateStatus to query.</p>"
+          },
+          {
+            "group": "Request",
+            "type": "Boolean",
+            "optional": false,
+            "field": ".Options.FailIfUpdateActive",
+            "description": "<p>Default: false, If true the call will fail if another update is currently running (rather than block with potentially old data)</p>"
+          },
+          {
+            "group": "Request",
+            "type": "Boolean",
+            "optional": false,
+            "field": ".Options.IgnoreInvalidRooms",
+            "description": "<p>Default: false, If true AND Invalid RoomId's are specified then a warning will be returned (otherwise the entire call will fail)</p>"
+          },
+          {
+            "group": "Request",
+            "type": "Integer",
+            "optional": false,
+            "field": ".Options.loop_delay",
+            "description": "<p>Intentionally make the 'loop' channel take loop_delay seconds (useful for testing with QueryForStatus)</p>"
+          },
+          {
+            "group": "Request",
+            "type": "Container",
+            "optional": false,
+            "field": "Channels",
+            "description": "<p>Container node (array) containing a list of channels to be updated.</p>"
+          },
+          {
+            "group": "Request",
+            "type": "String",
+            "optional": false,
+            "field": ".Channels.Channel",
+            "description": "<p>(XML ONLY) A XML node containing the channel that the customer wants to update. (Use ChannelList for ChannelId's)</p>"
+          },
+          {
+            "group": "Request",
+            "type": "String",
+            "optional": false,
+            "field": ".Channels.ChannelId",
+            "description": "<p>(JSON ONLY) the ChannelId of the channel to be updated. ex: &quot;loop&quot; for Loop</p>"
+          },
+          {
+            "group": "Request",
+            "type": "Container",
+            "optional": false,
+            "field": "Allocations",
+            "description": "<p>Container node (array) containing a list</p>"
+          },
+          {
+            "group": "Request",
+            "type": "String",
+            "optional": false,
+            "field": ".Allocations.Allocation",
+            "description": "<p>Individual allocations. There can be as many as you like, but a the date ranges should never overlap (within one room id).</p>"
+          },
+          {
+            "group": "Request",
+            "type": "String",
+            "optional": false,
+            "field": ".Allocation.RoomId",
+            "description": "<p>Room type id as returned by RoomList.</p>"
+          },
+          {
+            "group": "Request",
+            "type": "String",
+            "optional": false,
+            "field": ".Allocation.RatePlanId",
+            "description": "<p>Rateplan ID as returned by RatePlanList. Defaults to 0. Unless you implemented experimental rateplan support you likely don't need this.</p>"
+          },
+          {
+            "group": "Request",
+            "type": "Date",
+            "optional": false,
+            "field": ".Allocation.StartDate",
+            "description": "<p>Format: YYYY-MM-DD.</p>"
+          },
+          {
+            "group": "Request",
+            "type": "Date",
+            "optional": false,
+            "field": ".Allocation.EndDate",
+            "description": "<p>Format: YYYY-MM-DD.</p>"
+          },
+          {
+            "group": "Request",
+            "type": "String",
+            "optional": true,
+            "field": ".Allocations.Allocation.Units",
+            "description": "<p>How many beds or rooms should be available on this day. Whether it's beds or rooms depends on whether the room is a dorm or a private room. To remove allocation set Units to 0.</p>"
+          },
+          {
+            "group": "Request",
+            "type": "Integer",
+            "optional": true,
+            "field": ".Allocations.Allocation.MinStay",
+            "description": "<p>Specify the minumum number of days a customer is allowed to stay. Not all channels support this feature. Needs to be 1 or higher. (optional)</p>"
+          },
+          {
+            "group": "Request",
+            "type": "Integer",
+            "optional": true,
+            "field": ".Allocations.Allocation.MaxStay",
+            "description": "<p>Specify the maximum number of days a customer is allowed to stay. Not all channels support this feature. Needs to be 0 or higher. 0 means &quot;unlimited&quot;. (optional)</p>"
+          },
+          {
+            "group": "Request",
+            "type": "Boolean",
+            "optional": true,
+            "field": ".Allocations.Allocation.Closed",
+            "description": "<p>Room is not available during this time</p>"
+          },
+          {
+            "group": "Request",
+            "type": "Boolean",
+            "optional": true,
+            "field": ".Allocations.Allocation.ClosedForArrival",
+            "description": "<p>Arrivals are not allowed on this day.</p>"
+          },
+          {
+            "group": "Request",
+            "type": "Bollean",
+            "optional": true,
+            "field": ".Allocations.Allocation.ClosedForDeparture",
+            "description": "<p>Departures are not allowed on this day.</p>"
+          },
+          {
+            "group": "Request",
+            "type": "Container",
+            "optional": true,
+            "field": ".Allocations.Allocation.Prices",
+            "description": "<p>(XML ONLY) Container for Price nodes.</p>"
+          },
+          {
+            "group": "Request",
+            "type": "Currency",
+            "optional": true,
+            "field": ".Allocations.Allocation.Prices.Price",
+            "description": "<p>(XML ONLY) Price per person for shared/dorm rooms or per room for private rooms.</p>"
+          },
+          {
+            "group": "Request",
+            "type": "Currency",
+            "optional": true,
+            "field": ".Allocations.Allocation.Price",
+            "description": "<p>(JSON ONLY) Price per person for shared/dorm rooms or per room for private rooms.</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "fields": {
+        "Response": [
+          {
+            "group": "Response",
+            "type": "String",
+            "optional": false,
+            "field": "Success",
+            "description": "<p>Can be it{true} (all channel updates succeeded), it{partial} (not all channels succeeded) or it{false} (all channel updates failed).</p>"
+          },
+          {
+            "group": "Response",
+            "type": "String",
+            "optional": false,
+            "field": "Errors/Error",
+            "description": "<p>Might contain the attribute it{channel=&quot;..&quot;} to indicate whether the error only applies to a specific channel.</p>"
+          },
+          {
+            "group": "Response",
+            "type": "String",
+            "optional": false,
+            "field": "Warnings/Warning",
+            "description": "<p>Might contain the attribute it{channel=&quot;..&quot;} to indicate whether the warning only applies to a specific channel.</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "XML ARIUpdate Response (Full Success)",
+          "content": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<ARIUpdateResponse>\n <Success>true</Success>\n <Errors></Errors>\n <Warnings>\n    <Warning channel=\"hc\">\n      <WarningId>207</WarningId>\n      <WarningMsg>\n        Skipped room type (not setup with channel).\n      </WarningMsg>\n    </Warning>\n </Warnings>\n</ARIUpdateResponse>",
+          "type": "json"
+        },
+        {
+          "title": "XML ARIUpdate Warning Response (at least one channel succeeded)",
+          "content": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<ARIUpdateResponse>\n <Success>partial</Success>\n <Errors>\n    <Error channel=\"adv\">\n      <ErrorId>15</ErrorId>\n      <ErrorMsg>\n         Missing or wrong channel credentials on myallocator.com\n      </ErrorMsg>\n    </Error>\n </Errors>\n <Warnings></Warnings>\n</ARIUpdateResponse>",
+          "type": "json"
+        },
+        {
+          "title": "XML ARIUpdate Failed Response (all channels came back with errors)",
+          "content": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<ARIUpdateResponse>\n <Success>false</Success>\n <Errors>\n    <Error channel=\"adv\">\n      <ErrorId>15</ErrorId>\n      <ErrorMsg>\n        Missing or wrong channel credentials on myallocator.com\n      </ErrorMsg>\n    </Error>\n </Errors>\n <Warnings></Warnings>\n</ARIUpdateResponse>",
+          "type": "json"
+        },
+        {
+          "title": "XML ARIUpdate Failed update (error before submitting to any channel)",
+          "content": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<ARIUpdateResponse>\n <Success>false</Success>\n <Errors>\n    <Error\">\n      <ErrorId>17</ErrorId>\n      <ErrorMsg>\n        Start date too far in the future (>2 years)\n      </ErrorMsg>\n    </Error>\n </Errors>\n <Warnings></Warnings>\n</ARIUpdateResponse>",
+          "type": "json"
+        },
+        {
+          "title": "XML ARIUpdate QueryForStatus=true",
+          "content": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<ARIUpdateResponse>\n <Success>true</Success>\n <Errors></Errors>\n <Warnings></Warnings>\n  <UpdateId>832522158</UpdateId>\n</ARIUpdateResponse>",
+          "type": "json"
+        }
+      ]
+    },
+    "description": "<p>An allocation sets the number of rooms or beds (depending on whether the room type is a private room or shared/dorm) available during any specific time frame. For more details see below.</p> <p>** Excluding Channels ** prefix a channel id with a minus (-) to exclude it.   Ex: a series of &quot;all&quot;, &quot;-loop&quot; would update all configured channels except &quot;loop&quot;</p> <p>** Handling Errors &amp; Warnings **</p> <p>The response will always include the Success, Errors and Warnings tags. If Success is set to &quot;true&quot; the Errors tag will be empty. If Success is set to &quot;partial&quot; or &quot;false&quot; at least one Error tag is included.</p> <p>** Sending Overlapping Ranges / Partial updates ** Overlapping ranges in an ARIUpdate are absolutely allowed. As long as the ranges are sent in the same request body they are applied in sequence as part of the same SQL transaction. Fields such as Units, MinStay, MaxStay, Price are optional so it is possible send different ranges for pricing and availability.</p> <p>How this works: we receive XML/JSON request body and decode it into a neutral format, then write availability directly to the internal MyAllocator database and provision an updateId for a date range plus room-type(s), then create one job per channel, finally we return the updateId to the response (assuming QueryForStatus==True).</p> <p>Each job contains ONLY the propertyid, updateId, and ota (no availability, or pricing). Jobs are picked up one of several auto-scaling &quot;worker tier&quot; servers, each server loads the latest availability from the db (which may have changed since the updateId was issued), and then applies any ARIRules, then transmit to OTA, and flag their portion of the updateId as completed. This ensures the latest availability will always be sent to the OTA.</p> <p>Once an UpdateId has been issued it falls within the scope of my monitoring domain, it should be considered reliable by a developer. The request is broken into a series of jobs (one for each channel). Each job is logged to disk and processed by a pool of servers. It would take a substantial level of failure to be lost. (Jobs are not quite as durable as bookings or configuration data, but it's still highly durable).</p> <p>** Submitting to ALL channels **</p> <p>You can also submit to all available channels without specifying explicity which channels to update. Use the channel code &quot;all&quot; to do this. Channels that are not set up by the user will be skipped as indicated by a warning.</p> <p>It is also possible to submit to all channels while excluding certain channels. Add the attribute exclude=&quot;true&quot; to skip a channel. See example below. Use the channel code &quot;all&quot; to do this.</p> <p>** Running Jobs in the Background (ARIUpdateStatus) **</p> <p>You can also run the ARIUpdate update in the background and query for the updates using ARIUpdateStatus. This enables you to show the update progress to the user while it's still running. To enable this feature you need to add the node QueryForStatus (see example)</p> <p>If QueryForStatus is true then the ARIUpdateResponse will contain the additional parameter UpdateId, which is needed for ARIUpdateStatus</p> <p>QueryForStatus TRUE will be much more resilient than attempting to maintain a single persistent connection, and it will free up connection requests on our side.  In the future QueryForStatus FALSE may be removed and/or additional timeouts will be added which may make it unusable. New integrations should avoid using QueryForStatus FALSE.</p>",
+    "examples": [
+      {
+        "title": "JSON ARIUpdate",
+        "content": "{\n \"Auth/UserToken\":\"user token\",\n \"Auth/PropertyId\":\"property id from myallocator\",\n \"Auth/VendorId\":\"your vendor\",\n \"Auth/VendorPassword\":\"vendorpass\",\n \"Channels\": [ \"hc\",\"iwb\" ],\n \"Allocations\": [\n    {\n    \"RoomId\":\"59\",\n    \"StartDate\":\"2010-06-01\",\n    \"EndDate\":\"2010-06-01\",\n    \"Units\":\"3\",\n    \"MinStay\":\"1\",\n    \"MaxStay\":\"30\",\n    \"Price\":\"20.00\"\n    }\n    ]\n}",
+        "type": "json"
+      },
+      {
+        "title": "curl w/ JSON",
+        "content": "curl https://api.myallocator.com/pms/v201408/json/ARIUpdate -d@- <<EOJSON\njson={\n \"Auth/UserToken\":\"your username\",\n \"Auth/PropertyId\":\"property id from myallocator\",\n \"Auth/VendorId\":\"your vendor\",\n \"Auth/VendorPassword\":\"vendorpass\",\n \"Channels\": [ \"hc\",\"iwb\" ],\n \"Allocations\": [\n    {\n    \"RoomId\":\"59\",\n    \"StartDate\":\"2010-06-01\",\n    \"EndDate\":\"2010-06-01\",\n    \"Units\":\"3\",\n    \"MinStay\":\"1\",\n    \"MaxStay\":\"30\",\n    \"Price\":\"20.00\",\n    \"PriceWeekly\":\"400.00\",\n    \"PriceMonthly\":\"1600.00\"\n    }\n    ]\n}\nEOJSON",
+        "type": "json"
+      },
+      {
+        "title": "JSON ARIUpdateResponse",
+        "content": "{\n'Errors':[\n   { 'err':100, 'msg':'Unhandled Exception' }\n],\n'Messages':[\n      {\n         \"msg\" : \"QueryForStatus mode enabled (will not wait)\",\n         \"id\" : 99,\n         \"type\" : \"info\"\n      }\n],\n'Channels':[\n      \"exp\" : {\n         \"msg\" : \"job 123 is queued in tube ariupdates\",\n         \"hold\" : 1,\n         \"parts\" : 1,\n         \"cid\" : \"exp\"\n      },\n      \"boo\" : {\n         \"msg\" : \"job 124 is queued in tube ariupdates\",\n         \"hold\" : 1,\n         \"parts\" : 1,\n         \"cid\" : \"boo\"\n      }\n]\n}",
+        "type": "json"
+      },
+      {
+        "title": "XML ARIUpdateRequest",
+        "content": "<?xml version=\"1.0\" encoding=\"UTF-8\" ?>\n<ARIUpdate>\n <Auth>\n   <UserToken>User token</UserToken>\n   <PropertyId>Property ID on myallocator.com</PropertyId>\n   <VendorId>Your Vendor ID</VendorId>\n   <VendorPassword>Your Vendor Password</VendorPassword>\n </Auth>\n\n <Channels>\n    <Channel>hc</Channel>\n    <Channel>iwb</Channel>\n </Channels>\n\n <Allocations>\n    <Allocation>\n      <RoomId>59</RoomId>\n      <RatePlanId>100</RatePlanId>\n      <StartDate>2010-06-01</StartDate>\n      <EndDate>2010-08-12</EndDate>\n      <Units>3</Units>\n      <MinStay>1</MinStay>\n      <MaxStay>30</MaxStay>\n      <Prices>\n         <Price>20.00</Price>\n      </Prices>\n    </Allocation>\n </Allocations>\n</ARIUpdate>",
+        "type": "json"
+      },
+      {
+        "title": "XML Request (Status Check)",
+        "content": "<?xml version=\"1.0\" encoding=\"UTF-8\" ?>\n<ARIUpdate>\n <Auth>\n    ...\n </Auth>\n\n <Options>\n    <QueryForStatus>true</QueryForStatus>\n </Options>\n\n ...\n</ARIUpdate>",
+        "type": "json"
+      },
+      {
+        "title": "XML ARIUpdate (Submit to all channels excluding Gomio and Hostelsclub)",
+        "content": "<?xml version=\"1.0\" encoding=\"UTF-8\" ?>\n<ARIUpdate>\n <Auth>\n    <UserToken>User token</UserToken>\n    <PropertyId>Property ID on myallocator.com</PropertyId>\n    <VendorId>Your Vendor ID</VendorId>\n    <VendorPassword>Your Vendor Password</VendorPassword>\n </Auth>\n\n <Channels>\n    <Channel>all</Channel>\n    <Channel exclude=\"true\">gom</Channel>\n    <Channel exclude=\"true\">hc</Channel>\n</Channels>\n\n <Allocations>\n    ...\n </Allocations>\n</ARIUpdate>",
+        "type": "json"
+      }
+    ],
+    "filename": "perllib/MAAPI.pm",
     "groupTitle": "3_API_Methods"
   },
   {
@@ -3154,478 +3154,6 @@
         {
           "title": "Response - Updating a login and property",
           "content": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<PropertyModifyResponse>\n <Success>true</Success>\n <PropertyId>70</PropertyId>\n</PropertyModifyResponse>",
-          "type": "json"
-        }
-      ]
-    },
-    "filename": "perllib/MAAPI.pm",
-    "groupTitle": "3_API_Methods"
-  },
-  {
-    "group": "3_API_Methods",
-    "type": "POST",
-    "url": "/RatePlanCreate",
-    "title": "RatePlanCreate",
-    "name": "RatePlanCreate",
-    "version": "201603.0.0",
-    "description": "<p>Create a rateplan for a property. <strong>Rateplan support is currently in development, so unless you talked to us first DO NOT implement this.</strong></p>",
-    "parameter": {
-      "fields": {
-        "Request": [
-          {
-            "group": "Request",
-            "type": "String",
-            "optional": false,
-            "field": "Auth/UserToken",
-            "description": "<p>Users auth token (see section <code>iii - Vendor tokens</code>)</p>"
-          },
-          {
-            "group": "Request",
-            "type": "String",
-            "optional": false,
-            "field": "Auth/PropertyId",
-            "description": "<p>Property ID on myallocator.com</p>"
-          },
-          {
-            "group": "Request",
-            "type": "String",
-            "optional": false,
-            "field": "Auth/VendorId",
-            "description": "<p>Your Vendor ID</p>"
-          },
-          {
-            "group": "Request",
-            "type": "String",
-            "optional": false,
-            "field": "Auth/VendorPassword",
-            "description": "<p>Your Vendor Password</p>"
-          },
-          {
-            "group": "Request",
-            "type": "Integer",
-            "optional": false,
-            "field": "RoomTypeId",
-            "description": "<p>the MyAllocator RoomTypeId associated to this RatePlan</p>"
-          },
-          {
-            "group": "Request",
-            "type": "String",
-            "optional": false,
-            "field": "Label",
-            "description": "<p>The name of the Rate Plan</p>"
-          },
-          {
-            "group": "Request",
-            "type": "Boolean",
-            "optional": false,
-            "field": "IsIBEOnly",
-            "description": "<p>designates is &quot;Internet Booking Engine&quot; exclusive (can't be mapped to an OTA)</p>"
-          },
-          {
-            "group": "Request",
-            "type": "Integer",
-            "optional": false,
-            "field": "OccupancyMin",
-            "description": "<p>default minimum occupancy (if no 'daily' value is set), leave zero for 'none'</p>"
-          },
-          {
-            "group": "Request",
-            "type": "Integer",
-            "optional": false,
-            "field": "OccupancyMax",
-            "description": "<p>default maximum occupancy (if no 'daily' value is set), leave zero for 'none'</p>"
-          },
-          {
-            "group": "Request",
-            "type": "Integer",
-            "optional": false,
-            "field": "MinLOS",
-            "description": "<p>default minimum length of stay (if no 'daily' value is set), leave zero for 'none'</p>"
-          },
-          {
-            "group": "Request",
-            "type": "Integer",
-            "optional": false,
-            "field": "MaxLOS",
-            "description": "<p>default maximum length of stay (if no 'daily' value is set), leave zero for 'none'</p>"
-          },
-          {
-            "group": "Request",
-            "type": "Enumeration",
-            "optional": false,
-            "field": "RateModel",
-            "description": "<p>Only &quot;daily&quot; supported currently.</p>"
-          }
-        ]
-      }
-    },
-    "examples": [
-      {
-        "title": "XML Request",
-        "content": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<RatePlanCreate>\n<Auth>\n<UserToken>User token</UserToken>\n<PropertyId>Property ID on myallocator.com</PropertyId>\n<VendorId>Your Vendor ID</VendorId>\n<VendorPassword>Your Vendor Password</VendorPassword>\n</Auth>\n<RoomTypeId>123</RoomTypeId>\n<Label>Some Text</Label>\n<IsIBEOnly>true|false</IsIBEOnly>\n<OccupancyMin>0</OccupancyMin>\n<OccupancyMax>0</OccupancyMax>\n<MinLOS>0</MinLOS>\n<MaxLOS>0</MaxLOS>\n<RateModel>daily</RateModel>\n</RatePlanCreate>",
-        "type": "json"
-      },
-      {
-        "title": "JSON Request",
-        "content": "{\n    \"Auth/VendorId\":\"Your Vendor ID\",\n    \"Auth/VendorPassword\":\"Your Vendor Password\",\n    \"Auth/UserToken\":\"User token\",\n    \"Auth/PropertyId\":\"Property ID on myallocator.com\",\n    \"RoomTypeId\":1234,\n    \"Label\":\"Name of RatePlan\",\n    \"IsIBEOnly\":false,\n    \"OccupancyMin\":0,\n    \"OccupancyMax\":0,\n    \"MinLOS\":0,\n    \"MaxLOS\":0,\n    \"RateModel\":\"daily\"\n}",
-        "type": "json"
-      },
-      {
-        "title": "curl w/ JSON",
-        "content": "curl https://api.myallocator.com/pms/v201603/json/RatePlanCreate -d@- <<EOJSON\njson={\n    \"Auth/VendorId\":\"\",\n    \"Auth/VendorPassword\":\"\",\n    \"Auth/UserToken\":\"\",\n    \"Auth/PropertyId\":\"\",\n    \"RoomTypeId\":1234,\n    \"Label\":\"Name of RatePlan\",\n    \"IsIBEOnly\":false,\n    \"OccupancyMin\":0,\n    \"OccupancyMax\":0,\n    \"MinLOS\":0,\n    \"MaxLOS\":0,\n    \"RateModel\":\"daily\"\n}\nEOJSON",
-        "type": "json"
-      }
-    ],
-    "success": {
-      "fields": {
-        "Response": [
-          {
-            "group": "Response",
-            "type": "String",
-            "optional": false,
-            "field": "Id",
-            "description": "<p>The room image ID which will reference the room image.</p>"
-          },
-          {
-            "group": "Response",
-            "type": "String",
-            "optional": false,
-            "field": "RoomId",
-            "description": "<p>Room that the image is stored for</p>"
-          }
-        ]
-      },
-      "examples": [
-        {
-          "title": "XML Response",
-          "content": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<RatePlanCreateResponse>\n <RatePlans>\n     <RatePlan>\n     </RatePlan>\n </RatePlans>\n</RatePlanCreateResponse>",
-          "type": "json"
-        },
-        {
-          "title": "JSON Response",
-          "content": "{\n    \"RatePlans\" : [\n        {\n        }\n    ]\n}",
-          "type": "json"
-        }
-      ]
-    },
-    "filename": "perllib/MAAPI.pm",
-    "groupTitle": "3_API_Methods"
-  },
-  {
-    "group": "3_API_Methods",
-    "type": "POST",
-    "url": "/RatePlanList",
-    "title": "RatePlanList",
-    "name": "RatePlanList",
-    "version": "201603.0.0",
-    "description": "<p>Returns a list of RatePlans by Property. <strong>Rateplan support is currently in development, so unless you talked to us first DO NOT implement this.</strong></p>",
-    "parameter": {
-      "fields": {
-        "Request": [
-          {
-            "group": "Request",
-            "type": "String",
-            "optional": false,
-            "field": "Auth/UserToken",
-            "description": "<p>Users auth token (see section <code>iii - Vendor tokens</code>)</p>"
-          },
-          {
-            "group": "Request",
-            "type": "String",
-            "optional": false,
-            "field": "Auth/PropertyId",
-            "description": "<p>Property ID on myallocator.com</p>"
-          },
-          {
-            "group": "Request",
-            "type": "String",
-            "optional": false,
-            "field": "Auth/VendorId",
-            "description": "<p>Your Vendor ID</p>"
-          },
-          {
-            "group": "Request",
-            "type": "String",
-            "optional": false,
-            "field": "Auth/VendorPassword",
-            "description": "<p>Your Vendor Password</p>"
-          },
-          {
-            "group": "Request",
-            "type": "Integer",
-            "optional": true,
-            "field": "RoomTypeId",
-            "description": "<p>filter by the MyAllocator RoomTypeId</p>"
-          },
-          {
-            "group": "Request",
-            "type": "Integer",
-            "optional": true,
-            "field": "RatePlanId",
-            "description": "<p>filter by the MyAllocator RatePlanId</p>"
-          }
-        ]
-      }
-    },
-    "examples": [
-      {
-        "title": "XML Request",
-        "content": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<RatePlanList>\n<Auth>\n<UserToken>User token</UserToken>\n<PropertyId>Property ID on myallocator.com</PropertyId>\n<VendorId>Your Vendor ID</VendorId>\n<VendorPassword>Your Vendor Password</VendorPassword>\n</Auth>\n</RatePlanList>",
-        "type": "json"
-      },
-      {
-        "title": "JSON Request",
-        "content": "{\n    \"Auth/VendorId\":\"Your Vendor ID\",\n    \"Auth/VendorPassword\":\"Your Vendor Password\",\n    \"Auth/UserToken\":\"User token\",\n    \"Auth/PropertyId\":\"Property ID on myallocator.com\"\n}",
-        "type": "json"
-      },
-      {
-        "title": "curl w/ JSON",
-        "content": "curl https://api.myallocator.com/pms/v201603/json/RatePlanList -d@- <<EOJSON\njson={\n\"Auth/VendorId\":\"\",\n\"Auth/VendorPassword\":\"\",\n\"Auth/UserToken\":\"\",\n\"Auth/PropertyId\":\"\"\n}\nEOJSON",
-        "type": "json"
-      }
-    ],
-    "success": {
-      "fields": {
-        "Response": [
-          {
-            "group": "Response",
-            "type": "String",
-            "optional": false,
-            "field": "Id",
-            "description": "<p>The room image ID which will reference the room image.</p>"
-          },
-          {
-            "group": "Response",
-            "type": "String",
-            "optional": false,
-            "field": "RoomId",
-            "description": "<p>Room that the image is stored for</p>"
-          }
-        ]
-      },
-      "examples": [
-        {
-          "title": "XML Response",
-          "content": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<RatePlanListResponse>\n <RatePlans>\n     <RatePlan>\n     </RatePlan>\n </RatePlans>\n</RatePlanListResponse>",
-          "type": "json"
-        },
-        {
-          "title": "JSON Response",
-          "content": "{\n    \"RatePlans\" : [\n        {\n        }\n    ]\n}",
-          "type": "json"
-        }
-      ]
-    },
-    "filename": "perllib/MAAPI.pm",
-    "groupTitle": "3_API_Methods"
-  },
-  {
-    "group": "3_API_Methods",
-    "type": "POST",
-    "url": "/RatePlanRemove",
-    "title": "RatePlanRemove",
-    "name": "RatePlanRemove",
-    "version": "201603.0.0",
-    "description": "<p>Removes rateplans from a property.  <strong>Rateplan support is currently in development, so unless you talked to us first DO NOT implement this.</strong></p>",
-    "parameter": {
-      "fields": {
-        "Request": [
-          {
-            "group": "Request",
-            "type": "String",
-            "optional": false,
-            "field": "Auth/UserToken",
-            "description": "<p>Users auth token (see section <code>iii - Vendor tokens</code>)</p>"
-          },
-          {
-            "group": "Request",
-            "type": "String",
-            "optional": false,
-            "field": "Auth/PropertyId",
-            "description": "<p>Property ID on myallocator.com</p>"
-          },
-          {
-            "group": "Request",
-            "type": "String",
-            "optional": false,
-            "field": "Auth/VendorId",
-            "description": "<p>Your Vendor ID</p>"
-          },
-          {
-            "group": "Request",
-            "type": "String",
-            "optional": false,
-            "field": "Auth/VendorPassword",
-            "description": "<p>Your Vendor Password</p>"
-          },
-          {
-            "group": "Request",
-            "type": "Integer",
-            "optional": false,
-            "field": "RatePlanId",
-            "description": "<p>The RatePlanId you want to remove</p>"
-          }
-        ]
-      }
-    },
-    "examples": [
-      {
-        "title": "XML Request",
-        "content": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<RatePlanRemove>\n <Auth>\n   <UserToken>User token</UserToken>\n   <PropertyId>Property ID on myallocator.com</PropertyId>\n   <VendorId>Your Vendor ID</VendorId>\n   <VendorPassword>Your Vendor Password</VendorPassword>\n </Auth>\n</RatePlanRemove>",
-        "type": "json"
-      },
-      {
-        "title": "JSON Request",
-        "content": "{\n    \"Auth/VendorId\":\"Your Vendor ID\",\n    \"Auth/VendorPassword\":\"Your Vendor Password\",\n    \"Auth/UserToken\":\"User token\",\n    \"Auth/PropertyId\":\"Property ID on myallocator.com\",\n    \"RatePlanId\":1234\n}",
-        "type": "json"
-      },
-      {
-        "title": "curl w/ JSON",
-        "content": "curl https://api.myallocator.com/pms/v201408/json/RatePlanRemove -d@- <<EOJSON\njson={\n    \"Auth/VendorId\":\"Your Vendor ID\",\n    \"Auth/VendorPassword\":\"Your Vendor Password\",\n    \"Auth/UserToken\":\"User token\",\n    \"Auth/PropertyId\":\"Property ID on myallocator.com\",\n    \"RatePlanId\":1234\n}\nEOJSON",
-        "type": "json"
-      }
-    ],
-    "success": {
-      "fields": {
-        "Response": [
-          {
-            "group": "Response",
-            "type": "String",
-            "optional": false,
-            "field": "Id",
-            "description": "<p>The room image ID which will reference the room image.</p>"
-          },
-          {
-            "group": "Response",
-            "type": "String",
-            "optional": false,
-            "field": "RoomId",
-            "description": "<p>Room that the image is stored for</p>"
-          },
-          {
-            "group": "Response",
-            "type": "String",
-            "optional": false,
-            "field": "SavedFilename",
-            "description": "<p>Filename in our system</p>"
-          }
-        ]
-      },
-      "examples": [
-        {
-          "title": "XML Response",
-          "content": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<RatePlanRemoveResponse>\n<Success>true</Success>\n</RatePlanRemoveResponse>",
-          "type": "json"
-        },
-        {
-          "title": "JSON Response",
-          "content": "{\n    \"Success\":true\n}",
-          "type": "json"
-        }
-      ]
-    },
-    "filename": "perllib/MAAPI.pm",
-    "groupTitle": "3_API_Methods"
-  },
-  {
-    "group": "3_API_Methods",
-    "type": "POST",
-    "url": "/RatePlanUpdate",
-    "title": "RatePlanUpdate",
-    "name": "RatePlanUpdate",
-    "version": "201603.0.0",
-    "description": "<p>Updates rateplan settings. <strong>Rateplan support is currently in development, so unless you talked to us first DO NOT implement this.</strong></p>",
-    "parameter": {
-      "fields": {
-        "Request": [
-          {
-            "group": "Request",
-            "type": "String",
-            "optional": false,
-            "field": "Auth/UserToken",
-            "description": "<p>Users auth token (see section <code>iii - Vendor tokens</code>)</p>"
-          },
-          {
-            "group": "Request",
-            "type": "String",
-            "optional": false,
-            "field": "Auth/PropertyId",
-            "description": "<p>Property ID on myallocator.com</p>"
-          },
-          {
-            "group": "Request",
-            "type": "String",
-            "optional": false,
-            "field": "Auth/VendorId",
-            "description": "<p>Your Vendor ID</p>"
-          },
-          {
-            "group": "Request",
-            "type": "String",
-            "optional": false,
-            "field": "Auth/VendorPassword",
-            "description": "<p>Your Vendor Password</p>"
-          }
-        ]
-      }
-    },
-    "examples": [
-      {
-        "title": "XML Request",
-        "content": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<RatePlanUpdate>\n<Auth>\n   <UserToken>User token</UserToken>\n   <PropertyId>Property ID on myallocator.com</PropertyId>\n   <VendorId>Your Vendor ID</VendorId>\n   <VendorPassword>Your Vendor Password</VendorPassword>\n</Auth>\n<RatePlanId>1234</RatePlanId>\n<RoomTypeId>1234<RoomTypeId>\n<Label>\"Name of RatePlan\"<Label>\n<IsIBEOnly>false<IsIBEOnly>\n<OccupancyMin>0<OccupancyMin>\n<OccupancyMax>0<OccupancyMax>\n<MinLOS>0<MinLOS>\n<MaxLOS>0<MaxLOS>\n<RateModel>daily<RateModel>\n</RatePlanUpdate>",
-        "type": "json"
-      },
-      {
-        "title": "curl w/ JSON",
-        "content": "curl https://api.myallocator.com/pms/v201603/json/RatePlanUpdate -d@- <<EOJSON\njson={\n\"Auth/VendorId\":\"\",\n\"Auth/VendorPassword\":\"\",\n\"Auth/UserToken\":\"\",\n\"Auth/PropertyId\":\"\",\n\"RatePlanId\":1234,\n\"RoomTypeId\":1234,\n\"Label\":\"Name of RatePlan\",\n\"IsIBEOnly\":false,\n\"OccupancyMin\":0,\n\"OccupancyMax\":0,\n\"MinLOS\":0,\n\"MaxLOS\":0,\n\"RateModel\":\"daily\"\n}\nEOJSON",
-        "type": "json"
-      },
-      {
-        "title": "JSON Request",
-        "content": "{\n    \"Auth/VendorId\":\"Your Vendor ID\",\n    \"Auth/VendorPassword\":\"Your Vendor Password\",\n    \"Auth/UserToken\":\"User token\",\n    \"Auth/PropertyId\":\"Property ID on myallocator.com\",\n}",
-        "type": "json"
-      },
-      {
-        "title": "curl w/ JSON",
-        "content": "curl https://api.myallocator.com/pms/v201408/json/RatePlanUpdate -d@- <<EOJSON\njson={\n    \"Auth/VendorId\":\"Your Vendor ID\",\n    \"Auth/VendorPassword\":\"Your Vendor Password\",\n    \"Auth/UserToken\":\"User token\",\n    \"Auth/PropertyId\":\"Property ID on myallocator.com\",\n    \"RatePlanId\":1234,\n    \"RoomTypeId\":1234,\n    \"Label\":\"Name of RatePlan\",\n    \"IsIBEOnly\":false,\n    \"OccupancyMin\":0,\n    \"OccupancyMax\":0,\n    \"MinLOS\":0,\n    \"MaxLOS\":0,\n    \"RateModel\":\"daily\"\n}\nEOJSON",
-        "type": "json"
-      }
-    ],
-    "success": {
-      "fields": {
-        "Response": [
-          {
-            "group": "Response",
-            "type": "String",
-            "optional": false,
-            "field": "Id",
-            "description": "<p>The room image ID which will reference the room image.</p>"
-          },
-          {
-            "group": "Response",
-            "type": "String",
-            "optional": false,
-            "field": "RoomId",
-            "description": "<p>Room that the image is stored for</p>"
-          },
-          {
-            "group": "Response",
-            "type": "String",
-            "optional": false,
-            "field": "SavedFilename",
-            "description": "<p>Filename in our system</p>"
-          }
-        ]
-      },
-      "examples": [
-        {
-          "title": "XML Response",
-          "content": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<RatePlanUpdateResponse>\n<RatePlans>\n<RatePlan>\n    <RatePlanId>1234</RatePlanId>\n</RatePlan>\n</RatePlans>\n</RatePlanUpdateResponse>",
-          "type": "json"
-        },
-        {
-          "title": "JSON Response",
-          "content": "{\n    \"RatePlans\" : [\n        {\n        }\n    ]\n}",
           "type": "json"
         }
       ]
