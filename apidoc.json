@@ -1,6 +1,6 @@
 {
   "name": "myallocator PMS API",
-  "version": "201610.0.2",
+  "version": "201804.0.1",
   "description": "myallocator API for PMS partners.",
   "title": "myallocator PMS API",
   "url" : "https://api.myallocator.com/pms/v<VERSION>/<json|xml>"
