@@ -5,8 +5,8 @@ define({ "api": [
     "url": "{}",
     "title": "i - Getting Started",
     "name": "i___Getting_Started",
-    "version": "201601.0.0",
-    "description": "<p>Welcome PMS vendors!</p> <p>If you would like to use the myallocator.com PMS API please request a vendor id+password here: https://www.myallocator.com/become-partner/</p> <p>The vendor_id + vendor_password will need to be submitted with every request, except HelloWorld (for testing).</p> <p>Be sure to register your vendor account with the email address of which you prefer to receive notifications. We will send application update notifications and action required requests to this address.</p> <p>Your customers must create an account on myallocator.com before they can use the API (or you need to create one for them). The myallocator user credentials (user/password) are needed to create an association between your PMS and the property. They should not be stored in your system.</p> <p>Request API Vendor Credentials: https://www.myallocator.com/become-partner/</p> <p>PMS Integration Guide: https://docs.google.com/document/d/1_OuI0Z6rTkkuA9xxlJUvhXlazJ9w_iqsp1QzIj4gb2U/edit?usp=sharing</p> <p>PMS PHP SDK (Recommended if using PHP): https://github.com/MyAllocator/myallocator-pms-php</p> <p><strong>Online Travel Agencies/Booking Websites</strong></p> <p>This API is for PMS vendors.</p> <p>If you are an OTA or booking website, this is NOT the API you are looking for.</p> <p>Please review our Build2Us OTA facing API documentation &amp; licensing: https://docs.google.com/document/d/1TYM3GxhmvpaOPoQw3S9-tAotv9QrASpwSZahRRWS55M/edit?usp=sharing</p>",
+    "version": "201804.0.1",
+    "description": "<p>Welcome PMS vendors!</p> <p>If you would like to use the myallocator.com PMS API please request a vendor id+password here: <a href=\"https://www.myallocator.com/become-partner/\">https://www.myallocator.com/become-partner/</a></p> <p>The vendor_id + vendor_password will need to be submitted with every request, except HelloWorld (for testing).</p> <p>Be sure to register your vendor account with the email address of which you prefer to receive notifications. We will send application update notifications and action required requests to this address.</p> <p>Your customers must create an account on myallocator.com before they can use the API (or you need to create one for them). The myallocator user credentials (user/password) are needed to create an association between your PMS and the property. They should not be stored in your system.</p> <p>Request API Vendor Credentials: <a href=\"https://www.myallocator.com/become-partner/\">https://www.myallocator.com/become-partner/</a></p> <p>PMS Integration Guide: <a href=\"https://docs.google.com/document/d/1_OuI0Z6rTkkuA9xxlJUvhXlazJ9w_iqsp1QzIj4gb2U/edit?usp=sharing\">https://docs.google.com/document/d/1_OuI0Z6rTkkuA9xxlJUvhXlazJ9w_iqsp1QzIj4gb2U/edit?usp=sharing</a></p> <p>PMS PHP SDK (Recommended if using PHP): <a href=\"https://github.com/MyAllocator/myallocator-pms-php\">https://github.com/MyAllocator/myallocator-pms-php</a></p> <p><strong>Online Travel Agencies/Booking Websites</strong></p> <p>This API is for PMS vendors.</p> <p>If you are an OTA or booking website, this is NOT the API you are looking for.</p> <p>Please review our Build2Us OTA facing API documentation &amp; licensing: <a href=\"https://myallocator.github.io/build2us-apidocs/index.html\">https://myallocator.github.io/build2us-apidocs/index.html</a></p>",
     "filename": "perllib/MAAPI.pm",
     "groupTitle": "1_Introduction"
   },
@@ -16,8 +16,8 @@ define({ "api": [
     "url": "{}",
     "title": "ii - Data Formats",
     "name": "ii___Data_Formats",
-    "version": "201601.0.0",
-    "description": "<p>The API supports JSON and XML data formats. We recommend using JSON as the XML API may eventually be deprecated.</p> <p>The service URLs are:</p> <p>JSON - https://api.myallocator.com/pms/v201408/json/MethodName</p> <p>XML - https://api.myallocator.com/pms/v201408/xml/MethodName</p> <p>In the URL above the Version is 201408, this version will periodically be changed as new features are added. The json|xml denotes the protocol for how requests/responses will be formatted.</p> <p>MyAllocator can be accessed via REST using either JSON / XML form syntax or JSON raw:</p> <p>JSON (form): Offers simplified parsing and low transport overhead and is passed in the field 'json' using standard HTML form encoding (application/x-www-form-urlencoded). In this example data such as space must be encoded to '+' or %20.</p> <p>JSON (raw): Set the HTTP header Content-Type: application/json and pass a raw UTF8 encoded json body.</p> <p>XML (form): Requests to our server need to be send using the POST method. The XML string should be stored in a parameter called 'xmlRequestString'. Using standard HTML form (application/x-www-form-urlencoded) encoding.</p> <p>XML (raw): Set the HTTP header Content-Type: application/xml and pass a raw UTF8 encoded xml body.</p>",
+    "version": "201804.0.1",
+    "description": "<p>The API supports JSON and XML data formats. We recommend using JSON as the XML API may eventually be deprecated.</p> <p>The service URLs are:</p> <p>JSON - https://api.myallocator.com/pms/v201804.0.1/json/MethodName</p> <p>XML - https://api.myallocator.com/pms/v201804.0.1/xml/MethodName</p> <p>In the URL above the Version is v201804.0.1, this version will periodically be changed as new features are added. The json|xml denotes the protocol for how requests/responses will be formatted.</p> <p>MyAllocator can be accessed via REST using either JSON / XML form syntax or JSON raw:</p> <p>JSON (form): Offers simplified parsing and low transport overhead and is passed in the field 'json' using standard HTML form encoding (application/x-www-form-urlencoded). In this example data such as space must be encoded to '+' or %20.</p> <p>JSON (raw): Set the HTTP header Content-Type: application/json and pass a raw UTF8 encoded json body.</p> <p>XML (form): Requests to our server need to be send using the POST method. The XML string should be stored in a parameter called 'xmlRequestString'. Using standard HTML form (application/x-www-form-urlencoded) encoding.</p> <p>XML (raw): Set the HTTP header Content-Type: application/xml and pass a raw UTF8 encoded xml body.</p>",
     "filename": "perllib/MAAPI.pm",
     "groupTitle": "1_Introduction"
   },
@@ -27,7 +27,7 @@ define({ "api": [
     "url": "{}",
     "title": "iii - Vendor Tokens",
     "name": "iii___Vendor_Tokens",
-    "version": "201601.0.0",
+    "version": "201804.0.1",
     "description": "<p>Most API calls require that the user is authenticated. The <code>Hello*</code> family of calls exist for testing purposes and do not require authentication (although they will also work in an authenticated session). This is done with a <strong>user token</strong> that represents the access rights of a specific user, who in turn has access to one or more properties. To obtain this token the customer needs to be directed to the <a href=\"https://inbox.myallocator.com/en/manage/vendors\">&quot;PMS Connections&quot; page</a> which can be found within the MANAGE area of the myallocator inbox. There the customer needs to select your PMS:</p> <img src=\"img/pms_connections_add.png\" style=\"width:100%;margin: 20px 0;\" /> <p>Once your PMS is selected and added, the page will show a token:</p> <img src=\"img/pms_connections_token.png\" style=\"width:100%;margin: 20px 0;\" /> <p>This token will need to be copied to your PMS. Include the token with each API call inside the <code>Auth/UserToken</code> field.</p> <p>An alternative way to obtain the token is with the <code>AssociateUserToPMS</code> API method, but it requires special permissions. For details, see the section about this API method.</p>",
     "filename": "perllib/MAAPI.pm",
     "groupTitle": "1_Introduction"
@@ -38,7 +38,7 @@ define({ "api": [
     "url": "{}",
     "title": "iv - Developer Support",
     "name": "iv___Developer_Support",
-    "version": "201601.0.0",
+    "version": "201804.0.1",
     "description": "<p>You may contact us for developer support via the following methods. The chat is the preferred way.</p> <p>Chat: <a href=\"https://devchat.myallocator.com\">https://devchat.myallocator.com</a></p> <p>Email: <a href=\"mailto:devhelp@myallocator.com\">devhelp@myallocator.com</a></p>",
     "filename": "perllib/MAAPI.pm",
     "groupTitle": "1_Introduction"
@@ -49,7 +49,7 @@ define({ "api": [
     "url": "{}",
     "title": "Concepts",
     "name": "Concepts",
-    "version": "201601.0.0",
+    "version": "201804.0.1",
     "description": "<p>Callbacks are the preferred way to access booking data (instead of polling). Callbacks data format matches the BookingList api call.</p> <p>Instead of polling for new bookings every few minutes you should register to receive a booking callback. With this feature we will send the bookings to your server via HTTP/HTTPS.</p> <p>Callbacks are easier for us and you! You don't have to develop a mechanism to regularly download bookings.</p>",
     "filename": "perllib/MAAPI.pm",
     "groupTitle": "2_Booking_Callbacks"
@@ -60,7 +60,7 @@ define({ "api": [
     "url": "{}",
     "title": "Delivery Method",
     "name": "Delivery_Method",
-    "version": "201601.0.0",
+    "version": "201804.0.1",
     "description": "<p>Callbacks are delivered via HTTP/HTTPS.</p> <p>Configure a URL endpoint (HTTPS strongly recommended) and password via the the VendorSet API method that we can use to authenticate to your API. Whenever we receive a new booking we will send a POST request to your server with two parameters:</p> <ul> <li><em>booking</em> : contains a JSON-coded string of the booking data.</li> <li><em>password</em> : contains a string of a previously agreed on password.</li> </ul> <p>If your server doesn't answer (or doesn't answer with the correct code, see below) our system will retry with incremental delays between each try (1, 2, 4, 8, 16, 32 minutes... and so on).</p> <p>The Request format is very similiar to the GetBookings response, but instead of XML it is in JSON format. Additionally it contains a PropertyId field which is the property ID of the myallocator property.</p> <p>Your server needs to respond in the correct format, otherwise we will keep resending the booking. In the response BODY write a JSON object in the following format:</p>",
     "examples": [
       {
@@ -78,7 +78,7 @@ define({ "api": [
     "url": "{}",
     "title": "Response Handling",
     "name": "Response_Handling",
-    "version": "201601.0.0",
+    "version": "201804.0.1",
     "description": "<p>== Response Format == The codes are as follows, the message (msg) is not parsed and can be anything you like (we still recommend something that describes the error).</p> <table> <thead> <tr> <th>Code</th> <th>Cause</th> </tr> </thead> <tbody> <tr> <td>10</td> <td>Password wrong or not set.</td> </tr> <tr> <td>20</td> <td>Error while parsing JSON structure (including the exception message, for example position of not parsable part)</td> </tr> <tr> <td>21</td> <td>Error while parsing JSON structure (exact reason unknown)</td> </tr> <tr> <td>22</td> <td>Error while parsing JSON content</td> </tr> <tr> <td>30</td> <td>PropertyId is NULL or 0</td> </tr> <tr> <td>31</td> <td>Property not used on your PMS anymore</td> </tr> <tr> <td>35</td> <td>MyallocatorId already existing</td> </tr> <tr> <td>40</td> <td>Request a retry (vendor currently unable to process booking notification)</td> </tr> <tr> <td>50+</td> <td>Internal error on your side (for debugging)</td> </tr> </tbody> </table> <p>We record every error and can give you more details if needed. The important codes are really only 10 and 31. The JSON should always be valid and the PropertyId always included.</p> <p>The RUID is an unique identifier for each response that you can reference to us to receive support on a specific request/response.</p>",
     "success": {
       "examples": [
@@ -107,7 +107,7 @@ define({ "api": [
     "url": "/ARIRulesList",
     "title": "ARIRulesList",
     "name": "ARIRulesList",
-    "version": "201601.0.0",
+    "version": "201804.0.1",
     "parameter": {
       "fields": {
         "Request": [
@@ -178,7 +178,7 @@ define({ "api": [
       },
       {
         "title": "curl w/ JSON",
-        "content": "curl https://api.myallocator.com/pms/v201408/json/ARIRulesList -d@- <<EOJSON\njson={\n  \"Auth/UserToken\":\"User's auth token\",\n  \"Auth/VendorId\":\"your vendor id\",\n  \"Auth/VendorPassword\":\"your vendor password\"\n}\nEOJSON",
+        "content": "curl https://api.myallocator.com/pms/v201804/json/ARIRulesList -d@- <<EOJSON\njson={\n  \"Auth/UserToken\":\"User's auth token\",\n  \"Auth/VendorId\":\"your vendor id\",\n  \"Auth/VendorPassword\":\"your vendor password\"\n}\nEOJSON",
         "type": "json"
       }
     ],
@@ -191,7 +191,7 @@ define({ "api": [
     "url": "/ARIRulesUpdate",
     "title": "ARIRulesUpdate",
     "name": "ARIRulesUpdate",
-    "version": "201601.0.0",
+    "version": "201804.0.1",
     "description": "<p>ARIRules allow a PMS to communicate channel/OTA business logic to MyAllocator, so auto-adjustments can be safely made by MyAllocator.</p> <p>Currently the ARIRules only support the &quot;BLOCK&quot; Verb which zeros out inventory for a specific channel while the rule is in effect.  This can be used to close out a specific channel/OTA without disabling it.</p> <p>The ARIRulesUpdate and ARIRulesList methods were architected so in future releases we will add additional Verbs to handle other common business cases like reserving rooms for contracted availability, and limited availability.</p> <p>ARIRules for a property can be can be viewed using ARIRulesList or by going into inbox.myallocator.com | Manage | Rules. Each ARIRule must have a unique &quot;PMSRuleId&quot; that corresponds to the rule ID in your system and is used to identify the rule for a property.</p> <p>When new rules are sent or removed a corresponding ARIUpdate is created for the channel and date ranges specified. The UpdateId is returned in the response and can be viewed using ARIUpdateStatus.</p> <p><em>Why are ARIRules so Important</em></p> <p>Before ARIRules if a PMS developer needed to close out a specific channel for a single day it was necessary to send a zero update for a specific channel, then send another update with real inventory for all other channels, and it was necessary to do this after each update. Not only was this incredibly resource intensive. But any AutoAdjustments would still update the closed out channels because there was no logical understanding within MyAllocator of the block.  During the time the blocked date was set to zero any booking would appear like an overbooking (making it impossible to separate signal from noise in diagnosing overbookings) since having &quot;false zero&quot; inventory was part of normal daily operation for many PMS systems.</p>",
     "parameter": {
       "fields": {
@@ -271,7 +271,7 @@ define({ "api": [
       },
       {
         "title": "curl w/ JSON",
-        "content": "curl https://api.myallocator.com/pms/v201408/json/ARIRulesUpdate -d@- <<EOJSON\njson={\n    \"ARIRules\":[\n        { \"_Action\":\"Append\", PMSRuleId:\"\", RoomId:\"\", RatePlanId:\"\", Channel:\"\", Verb:\"BLOCK\", StartDate:\"YYYY-MM-DD\", EndDate:\"YYYY-MM-DD\"  },\n        { \"_Action\":\"Update\", PMSRuleId:\"\", RoomId:\"\", Channel:\"\", Verb:\"BLOCK\", StartDate:\"YYYY-MM-DD\", EndDate:\"YYYY-MM-DD\"  },\n        { \"_Action\":\"Delete\", PMSRuleId:\"\", RoomId:\"\", Channel:\"\"  },\n        { \"_Action\":\"Delete\", PMSRuleId:\"\", RoomId:\"\"  },\n        { \"_Action\":\"Delete\", PMSRuleId:\"\" },\n        ]\n}\nEOJSON",
+        "content": "curl https://api.myallocator.com/pms/v201804/json/ARIRulesUpdate -d@- <<EOJSON\njson={\n    \"ARIRules\":[\n        { \"_Action\":\"Append\", PMSRuleId:\"\", RoomId:\"\", RatePlanId:\"\", Channel:\"\", Verb:\"BLOCK\", StartDate:\"YYYY-MM-DD\", EndDate:\"YYYY-MM-DD\"  },\n        { \"_Action\":\"Update\", PMSRuleId:\"\", RoomId:\"\", Channel:\"\", Verb:\"BLOCK\", StartDate:\"YYYY-MM-DD\", EndDate:\"YYYY-MM-DD\"  },\n        { \"_Action\":\"Delete\", PMSRuleId:\"\", RoomId:\"\", Channel:\"\"  },\n        { \"_Action\":\"Delete\", PMSRuleId:\"\", RoomId:\"\"  },\n        { \"_Action\":\"Delete\", PMSRuleId:\"\" },\n        ]\n}\nEOJSON",
         "type": "json"
       },
       {
@@ -289,7 +289,7 @@ define({ "api": [
     "url": "/ARIUpdate",
     "title": "ARIUpdate",
     "name": "ARIUpdate",
-    "version": "201601.0.0",
+    "version": "201804.0.1",
     "parameter": {
       "fields": {
         "Request": [
@@ -562,7 +562,7 @@ define({ "api": [
       },
       {
         "title": "curl w/ JSON",
-        "content": "curl https://api.myallocator.com/pms/v201408/json/ARIUpdate -d@- <<EOJSON\njson={\n \"Auth/UserToken\":\"your username\",\n \"Auth/PropertyId\":\"property id from myallocator\",\n \"Auth/VendorId\":\"your vendor\",\n \"Auth/VendorPassword\":\"vendorpass\",\n \"Channels\": [ \"hc\",\"iwb\" ],\n \"Allocations\": [\n    {\n    \"RoomId\":\"59\",\n    \"StartDate\":\"2010-06-01\",\n    \"EndDate\":\"2010-06-01\",\n    \"Units\":\"3\",\n    \"MinStay\":\"1\",\n    \"MaxStay\":\"30\",\n    \"Price\":\"20.00\",\n    \"PriceSingle\":\"15.00\"\n    }\n    ]\n}\nEOJSON",
+        "content": "curl https://api.myallocator.com/pms/v201804/json/ARIUpdate -d@- <<EOJSON\njson={\n \"Auth/UserToken\":\"your username\",\n \"Auth/PropertyId\":\"property id from myallocator\",\n \"Auth/VendorId\":\"your vendor\",\n \"Auth/VendorPassword\":\"vendorpass\",\n \"Channels\": [ \"hc\",\"iwb\" ],\n \"Allocations\": [\n    {\n    \"RoomId\":\"59\",\n    \"StartDate\":\"2010-06-01\",\n    \"EndDate\":\"2010-06-01\",\n    \"Units\":\"3\",\n    \"MinStay\":\"1\",\n    \"MaxStay\":\"30\",\n    \"Price\":\"20.00\",\n    \"PriceSingle\":\"15.00\"\n    }\n    ]\n}\nEOJSON",
         "type": "json"
       },
       {
@@ -595,7 +595,7 @@ define({ "api": [
     "url": "/ARIUpdateStatus",
     "title": "ARIUpdateStatus",
     "name": "ARIUpdateStatus",
-    "version": "201601.0.0",
+    "version": "201804.0.1",
     "parameter": {
       "fields": {
         "Request": [
@@ -666,7 +666,7 @@ define({ "api": [
       },
       {
         "title": "curl w/ JSON",
-        "content": "curl https://api.myallocator.com/pms/v201408/json/ARIUpdateStatus -d@- <<EOJSON\njson={\n  \"Auth/UserToken\":\"User's auth token\",\n  \"Auth/PropertyId\":\"Property ID\",\n  \"Auth/VendorId\":\"your vendor id\",\n  \"Auth/VendorPassword\":\"your vendor password\"\n}\nEOJSON",
+        "content": "curl https://api.myallocator.com/pms/v201804/json/ARIUpdateStatus -d@- <<EOJSON\njson={\n  \"Auth/UserToken\":\"User's auth token\",\n  \"Auth/PropertyId\":\"Property ID\",\n  \"Auth/VendorId\":\"your vendor id\",\n  \"Auth/VendorPassword\":\"your vendor password\"\n}\nEOJSON",
         "type": "json"
       }
     ],
@@ -679,7 +679,7 @@ define({ "api": [
     "url": "/AmenityList",
     "title": "AmenityList",
     "name": "AmenityList",
-    "version": "201601.0.0",
+    "version": "201804.0.1",
     "description": "<p>List of all supported amenities and their channel support</p>",
     "parameter": {
       "fields": {
@@ -704,7 +704,7 @@ define({ "api": [
     "examples": [
       {
         "title": "curl w/ JSON",
-        "content": "curl https://api.myallocator.com/pms/v201408/json/AmenityList -d@- <<EOJSON\njson={\n  \"Auth/VendorId\":\"your vendor id\",\n  \"Auth/VendorPassword\":\"your vendor password\"\n}\nEOJSON",
+        "content": "curl https://api.myallocator.com/pms/v201804/json/AmenityList -d@- <<EOJSON\njson={\n  \"Auth/VendorId\":\"your vendor id\",\n  \"Auth/VendorPassword\":\"your vendor password\"\n}\nEOJSON",
         "type": "json"
       },
       {
@@ -731,7 +731,7 @@ define({ "api": [
     "url": "/AssociateUserToPMS",
     "title": "AssociateUserToPMS",
     "name": "AssociateUserToPMS",
-    "version": "201601.0.0",
+    "version": "201804.0.1",
     "description": "<p>This method can be used to obtain a <code>UserToken</code> for authentication. <strong>By default this call is not available and needs to be enabled for your PMS from our connectivity department.</strong> Copying the user token from the <a href=\"https://inbox.myallocator.com/en/manage/vendors\">&quot;PMS Connections&quot; page</a> on the myallocator website is the preferred and default way to obtain the token. The <code>AssociateUserToPMS</code> call is only applicable for systems where the customer does not have access to the myallocator website.</p> <p>If this call has been enabled then the username and password for the property's myallocator account can be included in a form in the PMS. <strong>The myallocator username and password is not to be saved/stored in your system and should not be included in any logging output in your system!</strong> Only the token should be stored.</p> <p>With the correct username/password this call will grant you access to properties currently associated with the user. Should the user create new properties you'll need to call this API method again.</p> <p>Note that the user can revoke access for your PMS through the myallocator website for one or all properties. If access has been revoked it can only be enabled again through the myallocator website.</p>",
     "parameter": {
       "fields": {
@@ -795,7 +795,7 @@ define({ "api": [
       },
       {
         "title": "curl w/ JSON",
-        "content": "curl https://api.myallocator.com/pms/v201408/json/AssociateUserToPMS -d@- <<EOJSON\njson={\n  \"Auth/UserId\":\"username for myallocator.com\",\n  \"Auth/UserPassword\":\"password for myallocator.com\",\n  \"Auth/VendorId\":\"your vendor id\",\n  \"Auth/VendorPassword\":\"your vendor password\",\n  \"PMSUserId\":\"username-on-the-remote-pms-system\"\n}\nEOJSON",
+        "content": "curl https://api.myallocator.com/pms/v201804/json/AssociateUserToPMS -d@- <<EOJSON\njson={\n  \"Auth/UserId\":\"username for myallocator.com\",\n  \"Auth/UserPassword\":\"password for myallocator.com\",\n  \"Auth/VendorId\":\"your vendor id\",\n  \"Auth/VendorPassword\":\"your vendor password\",\n  \"PMSUserId\":\"username-on-the-remote-pms-system\"\n}\nEOJSON",
         "type": "json"
       },
       {
@@ -813,7 +813,7 @@ define({ "api": [
     "url": "/BookingAction",
     "title": "BookingAction",
     "name": "BookingAction",
-    "version": "201601.0.0",
+    "version": "201804.0.1",
     "description": "<p>Booking provides the ability to send incremental 'intents' which modify a booking. Currently a limited number of actions are supported, however in the future new actions will be added. Actions are processed in sequence, the first error encountered stops all future actions. After any successful modification to a booking a callback trigger is modified, and the modified timestamp is set. A Response will be returned which provides insight/status on each command. If multiple commands are sent, the first error on any command will stop all further command processing.</p> <h2>Supported Actions</h2> <ul> <li>ACK       mark a booking as acknowledged on myallocator UI</li> <li>UNACK     removes the acknowledgement flag</li> <li>READ      mark a booking as read on myallocator UI</li> <li>UNREAD    remove the read flag</li> <li>ADDNOTE   add a note from the property to be shown on myallocator UI</li> </ul>",
     "parameter": {
       "fields": {
@@ -871,7 +871,7 @@ define({ "api": [
       },
       {
         "title": "curl w/ JSON",
-        "content": "curl https://api.myallocator.com/pms/v201408/json/BookingAction -d@- <<EOJSON\njson={\n    \"Auth/UserToken\":\"\",\n    \"Auth/VendorId\":\"\",\n    \"Auth/VendorPassword\":\"\",\n    \"Auth/PropertyId\":\"\",\n\n    \"MyAllocatorId\":\"XXXXX\",\n    \"Actions\":[\n        \"ACK\",\n        [ \"ADDNOTE\", \"Customer called, they will arrive late\"]\n    ]\n}\nEOJSON",
+        "content": "curl https://api.myallocator.com/pms/v201804/json/BookingAction -d@- <<EOJSON\njson={\n    \"Auth/UserToken\":\"\",\n    \"Auth/VendorId\":\"\",\n    \"Auth/VendorPassword\":\"\",\n    \"Auth/PropertyId\":\"\",\n\n    \"MyAllocatorId\":\"XXXXX\",\n    \"Actions\":[\n        \"ACK\",\n        [ \"ADDNOTE\", \"Customer called, they will arrive late\"]\n    ]\n}\nEOJSON",
         "type": "json"
       }
     ],
@@ -884,7 +884,7 @@ define({ "api": [
     "url": "/BookingCancel",
     "title": "BookingCancel",
     "name": "BookingCancel",
-    "version": "201601.0.0",
+    "version": "201804.0.1",
     "parameter": {
       "fields": {
         "Request": [
@@ -942,7 +942,7 @@ define({ "api": [
       },
       {
         "title": "curl w/ JSON",
-        "content": "curl https://api.myallocator.com/pms/v201408/json/BookingCancel -d@- <<EOJSON\njson=\n{\n    \"Auth/UserToken\":\"\",\n    \"Auth/VendorId\":\"\",\n    \"Auth/VendorPassword\":\"\",\n    \"Auth/PropertyId\":\"\",\n\n    \"MyAllocatorId\":\"57333cd36dbf9a4f114dd781\",\n    \"CancellationReason\":\"Guest's flight was cancelled\"\n}\nEOJSON",
+        "content": "curl https://api.myallocator.com/pms/v201804/json/BookingCancel -d@- <<EOJSON\njson=\n{\n    \"Auth/UserToken\":\"\",\n    \"Auth/VendorId\":\"\",\n    \"Auth/VendorPassword\":\"\",\n    \"Auth/PropertyId\":\"\",\n\n    \"MyAllocatorId\":\"57333cd36dbf9a4f114dd781\",\n    \"CancellationReason\":\"Guest's flight was cancelled\"\n}\nEOJSON",
         "type": "json"
       }
     ],
@@ -955,7 +955,7 @@ define({ "api": [
     "url": "/BookingList",
     "title": "BookingList",
     "name": "BookingList",
-    "version": "201601.0.0",
+    "version": "201804.0.1",
     "parameter": {
       "fields": {
         "Request": [
@@ -1207,7 +1207,7 @@ define({ "api": [
       },
       {
         "title": "curl w/ JSON",
-        "content": "curl https://api.myallocator.com/pms/v201408/json/BookingList -d@- <<EOJSON\njson=\n{\n    \"Auth/UserToken\":\"\",\n    \"Auth/VendorId\":\"\",\n    \"Auth/VendorPassword\":\"\",\n    \"Auth/PropertyId\":\"\",\n    \"ModificationStartDate\":\"2010-01-01\",\n    \"ModificationEndDate\":\"2010-01-02\"\n}\nEOJSON",
+        "content": "curl https://api.myallocator.com/pms/v201804/json/BookingList -d@- <<EOJSON\njson=\n{\n    \"Auth/UserToken\":\"\",\n    \"Auth/VendorId\":\"\",\n    \"Auth/VendorPassword\":\"\",\n    \"Auth/PropertyId\":\"\",\n    \"ModificationStartDate\":\"2010-01-01\",\n    \"ModificationEndDate\":\"2010-01-02\"\n}\nEOJSON",
         "type": "json"
       }
     ],
@@ -1632,7 +1632,7 @@ define({ "api": [
     "url": "/BookingPaymentDownload",
     "title": "BookingPaymentDownload",
     "name": "BookingPaymentDownload",
-    "version": "201601.0.0",
+    "version": "201804.0.1",
     "description": "<p>This call can be used to retrieve credit card details from specific bookings. This applies only to channels that currently send us the credit card details (booking.com, Expedia, BookNow) and only for bookings that were created after connection with myallocator has been made.</p> <p>This API call is not enabled for vendors by default. You need to send us your PCI compliance certification before this can be done. It's also neccessary to send along the credit card viewing password (different from the user login). For best practise do not store this password in your system but rather get it from the customer and send it on directly. This way the password will only be in the memory and not as accessible.</p> <p>The credit card viewing password needs to be changed ever 365 by the property. It can happen that the property has reset their password in which case our support team needs to reencrypt the existing details. This is not an automatic process and can take between 1 and 3 business days.</p> <p>Applicable error codes are 26 - 30. Even though logically this would be a GET call, we use POST for this one to prevent the password from going to the webserver log files.</p> <p>Bookings can have multiple credit card details stored within them, as they have been updated by the guest. The response will list credit card details with the most recent credit card first.</p> <p>All instances of credit card details do not contain all fields. We pass along the fields we receive from channels.</p>",
     "parameter": {
       "fields": {
@@ -1708,7 +1708,7 @@ define({ "api": [
     "examples": [
       {
         "title": "curl w/ JSON",
-        "content": "curl https://api.myallocator.com/pms/v201408/json/BookingPaymentDownload -d@- <<EOJSON\njson=\n{\n    \"Auth/VendorId\":\"Your Vendor ID\",\n    \"Auth/VendorPassword\":\"Your Vendor Password\",\n    \"Auth/UserToken\":\"User token\",\n    \"Auth/PropertyId\":\"Property ID on myallocator.com\",\n    \"CreditCardPassword\":\"some_password\",\n    \"MyAllocatorId\": \"some_ma_id\"\n}\nEOJSON",
+        "content": "curl https://api.myallocator.com/pms/v201804/json/BookingPaymentDownload -d@- <<EOJSON\njson=\n{\n    \"Auth/VendorId\":\"Your Vendor ID\",\n    \"Auth/VendorPassword\":\"Your Vendor Password\",\n    \"Auth/UserToken\":\"User token\",\n    \"Auth/PropertyId\":\"Property ID on myallocator.com\",\n    \"CreditCardPassword\":\"some_password\",\n    \"MyAllocatorId\": \"some_ma_id\"\n}\nEOJSON",
         "type": "json"
       }
     ],
@@ -1721,7 +1721,7 @@ define({ "api": [
     "url": "/BookingPaymentPasswordValidate",
     "title": "BookingPaymentPasswordValidate",
     "name": "BookingPaymentPasswordValidate",
-    "version": "201601.0.0",
+    "version": "201804.0.1",
     "description": "<p>This call can be used to check credit card password.</p>",
     "parameter": {
       "fields": {
@@ -1777,7 +1777,7 @@ define({ "api": [
       },
       {
         "title": "curl w/ JSON",
-        "content": "curl https://api.myallocator.com/pms/v201408/json/BookingPaymentPasswordValidate -d@- <<EOJSON\njson=\n{\n    \"Auth/VendorId\":\"Your Vendor ID\",\n    \"Auth/VendorPassword\":\"Your Vendor Password\",\n    \"Auth/UserToken\":\"User token\",\n    \"Auth/PropertyId\":\"Property ID on myallocator.com\",\n    \"CreditCardPassword\":\"some_password\"\n}\nEOJSON",
+        "content": "curl https://api.myallocator.com/pms/v201804/json/BookingPaymentPasswordValidate -d@- <<EOJSON\njson=\n{\n    \"Auth/VendorId\":\"Your Vendor ID\",\n    \"Auth/VendorPassword\":\"Your Vendor Password\",\n    \"Auth/UserToken\":\"User token\",\n    \"Auth/PropertyId\":\"Property ID on myallocator.com\",\n    \"CreditCardPassword\":\"some_password\"\n}\nEOJSON",
         "type": "json"
       }
     ],
@@ -1804,7 +1804,7 @@ define({ "api": [
     "url": "/ChannelList",
     "title": "ChannelList",
     "name": "ChannelList",
-    "version": "201601.0.0",
+    "version": "201804.0.1",
     "description": "<p>Dumps information about all known channels, their status, and supported fields.</p>",
     "parameter": {
       "fields": {
@@ -1873,7 +1873,7 @@ define({ "api": [
     "examples": [
       {
         "title": "curl w/ JSON",
-        "content": "curl https://api.myallocator.com/pms/v201408/json/ChannelList -d@- <<EOJSON\njson={\n  \"Auth/VendorId\":\"your vendor id\",\n  \"Auth/VendorPassword\":\"your vendor password\"\n}\nEOJSON",
+        "content": "curl https://api.myallocator.com/pms/v201804/json/ChannelList -d@- <<EOJSON\njson={\n  \"Auth/VendorId\":\"your vendor id\",\n  \"Auth/VendorPassword\":\"your vendor password\"\n}\nEOJSON",
         "type": "json"
       },
       {
@@ -1905,32 +1905,32 @@ define({ "api": [
     "url": "/HelloWorld",
     "title": "HelloWorld",
     "name": "HelloWorld",
-    "version": "201601.0.0",
+    "version": "201804.0.1",
     "description": "<table> <thead> <tr> <th>Call</th> <th>Notes + Authentication Requirements</th> </tr> </thead> <tbody> <tr> <td>HelloWorld</td> <td>No Authentication Required</td> </tr> <tr> <td>HelloUser</td> <td>Requires <em>VALID</em> User Credentials</td> </tr> <tr> <td>HelloVendor</td> <td>Requires <em>VALID</em> Vendor Credentials</td> </tr> <tr> <td>HelloVendorUser</td> <td>Requires <em>VALID</em> User <em>AND</em> Vendor Credentials</td> </tr> </tbody> </table> <p>This method is diagnostic in nature, it is intended to provide a simple echo/response &quot;My First API call&quot;, <em>IT HAS NO PURPOSE</em> besides simply returning whatever parameters you send it (no authentication required). (Note: HelloVendor and HelloVendorUser return a &quot;callback_delay&quot; parameter which should be zero, any positive number indicates a problem [check your server logs])</p>",
     "examples": [
       {
         "title": "XML Hello Request",
-        "content": "GET /pms/v201408/xml/Hello\nHTTP/1.1 200 OK\nContent-Type: text/xml\n<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<HelloWorld>\n <hello>world</hello>\n</HelloWorld>",
+        "content": "GET /pms/v201804/xml/Hello\nHTTP/1.1 200 OK\nContent-Type: text/xml\n<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<HelloWorld>\n <hello>world</hello>\n</HelloWorld>",
         "type": "json"
       },
       {
         "title": "JSON Hello Request",
-        "content": "GET /pms/v201408/json/HelloWorld\nContent-Type: application/json\n{ \"hello\":\"world\" }",
+        "content": "GET /pms/v201804/json/HelloWorld\nContent-Type: application/json\n{ \"hello\":\"world\" }",
         "type": "json"
       },
       {
         "title": "curl w/ JSON",
-        "content": "curl https://api.myallocator.com/pms/v201408/json/HelloWorld -d 'json={\"Hello\":\"World\"}'",
+        "content": "curl https://api.myallocator.com/pms/v201804/json/HelloWorld -d 'json={\"Hello\":\"World\"}'",
         "type": "json"
       },
       {
         "title": "JSON HelloVendor Request",
-        "content": "GET /pms/v201408/json/HelloWorld\nContent-Type: application/json\n{\n    \"Auth/VendorId\":\"your vendor id\",\n    \"Auth/VendorPassword\":\"your vendor password\",\n    \"hello\":\"world\",\n    \"callback_delay\":0\n}",
+        "content": "GET /pms/v201804/json/HelloWorld\nContent-Type: application/json\n{\n    \"Auth/VendorId\":\"your vendor id\",\n    \"Auth/VendorPassword\":\"your vendor password\",\n    \"hello\":\"world\",\n    \"callback_delay\":0\n}",
         "type": "json"
       },
       {
         "title": "curl w/XML",
-        "content": "curl https://api.myallocator.com/pms/v201408/xml/Hello --data 'xmlRequestString=\n<HelloWorld>\n<Auth>\n</Auth>\n<Foo>Bar</Foo>\n</HelloWorld>'",
+        "content": "curl https://api.myallocator.com/pms/v201804/xml/Hello --data 'xmlRequestString=\n<HelloWorld>\n<Auth>\n</Auth>\n<Foo>Bar</Foo>\n</HelloWorld>'",
         "type": "json"
       }
     ],
@@ -1943,7 +1943,7 @@ define({ "api": [
     "url": "/PropertyChannelList",
     "title": "PropertyChannelList",
     "name": "PropertyChannelList",
-    "version": "201801.0.1",
+    "version": "201804.0.1",
     "description": "<p>Lists the channel details associated with a property.</p> <p>Note the version of this call. Previous versions would always return all properties even when the property ID was specified.</p>",
     "parameter": {
       "fields": {
@@ -1987,7 +1987,7 @@ define({ "api": [
       },
       {
         "title": "curl w/ JSON",
-        "content": "curl https://api.myallocator.com/pms/v201801/json/PropertyChannelList -d@- <<EOJSON\njson={\n  \"Auth/UserToken\":\"User's auth token\",\n  \"Auth/PropertyId\":\"Property ID on myallocator.com\",\n  \"Auth/VendorId\":\"your vendor id\",\n  \"Auth/VendorPassword\":\"your vendor password\"\n}\nEOJSON",
+        "content": "curl https://api.myallocator.com/pms/v201804/json/PropertyChannelList -d@- <<EOJSON\njson={\n  \"Auth/UserToken\":\"User's auth token\",\n  \"Auth/PropertyId\":\"Property ID on myallocator.com\",\n  \"Auth/VendorId\":\"your vendor id\",\n  \"Auth/VendorPassword\":\"your vendor password\"\n}\nEOJSON",
         "type": "json"
       }
     ],
@@ -2009,7 +2009,7 @@ define({ "api": [
     "url": "/PropertyCreate",
     "title": "PropertyCreate",
     "name": "PropertyCreate",
-    "version": "201601.0.0",
+    "version": "201804.0.1",
     "parameter": {
       "fields": {
         "Request": [
@@ -2039,7 +2039,7 @@ define({ "api": [
             "type": "String",
             "optional": false,
             "field": "PropertyName",
-            "description": "<p>Name of hotel/hostel/B&amp;B/</p>"
+            "description": "<p>Name of hotel/hostel/B&amp;B/...</p>"
           },
           {
             "group": "Request",
@@ -2051,121 +2051,226 @@ define({ "api": [
           {
             "group": "Request",
             "type": "String",
+            "optional": true,
+            "field": "Timezone",
+            "description": "<p>Timezone the property is located in. Check Appendix for valid values. Defaults to UTC.</p>"
+          },
+          {
+            "group": "Request",
+            "type": "String",
+            "optional": false,
+            "field": "Phone",
+            "description": "<p>Phone numer for the property with international country code (eg. +44 350 5697864)</p>"
+          },
+          {
+            "group": "Request",
+            "type": "String",
+            "optional": true,
+            "field": "Fax",
+            "description": "<p>Fax numer for the property with international country code (eg. +44 350 5697864)</p>"
+          },
+          {
+            "group": "Request",
+            "type": "String",
+            "optional": true,
+            "field": "MinLengthOfStay",
+            "description": "<p>Default minimum length of stay. Defaults to 1.</p>"
+          },
+          {
+            "group": "Request",
+            "type": "String",
+            "optional": true,
+            "field": "MaxLengthOfStay",
+            "description": "<p>Default maximum length of stay. Defaults for 0, which means no maximum stay.</p>"
+          },
+          {
+            "group": "Request",
+            "type": "String",
             "optional": false,
             "field": "AddressLine1",
-            "description": "<p>Street or other information locating the property, including house number if applicable.</p>"
+            "description": "<p>First address line of the property (usually the street name and house number)</p>"
           },
           {
             "group": "Request",
             "type": "String",
             "optional": true,
             "field": "AddressLine2",
-            "description": "<p>Further address information</p>"
+            "description": "<p>Second address line of the property (if applicable)</p>"
           },
           {
             "group": "Request",
             "type": "String",
-            "optional": true,
+            "optional": false,
             "field": "City",
-            "description": "<p>City the property is located in.City the property is located in. Optional for now but will be required in the future.</p>"
+            "description": "<p>City or locality the property is located in</p>"
           },
           {
             "group": "Request",
             "type": "String",
-            "optional": true,
+            "optional": false,
             "field": "PostCode",
-            "description": "<p>Postal code (ZIP) the property is located in.</p>"
+            "description": "<p>Post Code (ZIP) of the property</p>"
           },
           {
             "group": "Request",
             "type": "String",
             "optional": true,
             "field": "State",
-            "description": "<p>State the property is located in.</p>"
+            "description": "<p>State of the property (if applicable)</p>"
           },
           {
             "group": "Request",
             "type": "String",
             "optional": false,
             "field": "Country",
-            "description": "<p>2-letter ISO 3166-1 alpha-2 country code. This is the country the property located in.</p>"
+            "description": "<p>2-letter ISO 3166-1 alpha-2 country code. This is the country the property is located in.</p>"
+          },
+          {
+            "group": "Request",
+            "type": "Decimal",
+            "optional": true,
+            "field": "Latitude",
+            "description": "<p>Geographic latitude of the property, given as decimal degrees. Positive for north, negative for south. Example: 32.70954</p>"
+          },
+          {
+            "group": "Request",
+            "type": "Decimal",
+            "optional": true,
+            "field": "Longitude",
+            "description": "<p>Geographic longitude of the property, given as decimal degrees. Positive for east, negative for west. Example: -117.15292</p>"
           },
           {
             "group": "Request",
             "type": "String",
-            "optional": false,
+            "optional": true,
+            "field": "InvoiceAddressLine1",
+            "description": "<p>First address line of the company or property owner (usually the street name and house number)</p>"
+          },
+          {
+            "group": "Request",
+            "type": "String",
+            "optional": true,
+            "field": "InvoiceAddressLine2",
+            "description": "<p>Second address line of the company or property owner (if applicable)</p>"
+          },
+          {
+            "group": "Request",
+            "type": "String",
+            "optional": true,
+            "field": "InvoiceCity",
+            "description": "<p>City or locality the company or property owner is located in</p>"
+          },
+          {
+            "group": "Request",
+            "type": "String",
+            "optional": true,
+            "field": "InvoicePostCode",
+            "description": "<p>Post Code (ZIP) of the company or property owner</p>"
+          },
+          {
+            "group": "Request",
+            "type": "String",
+            "optional": true,
+            "field": "InvoiceState",
+            "description": "<p>State of the company or property owner (if applicable)</p>"
+          },
+          {
+            "group": "Request",
+            "type": "String",
+            "optional": true,
+            "field": "InvoiceCountry",
+            "description": "<p>2-letter ISO 3166-1 alpha-2 country code. This is the country the the company or property owner is located in.</p>"
+          },
+          {
+            "group": "Request",
+            "type": "String",
+            "optional": true,
+            "field": "InvoiceCompanyName",
+            "description": "<p>Name of the company owning the property</p>"
+          },
+          {
+            "group": "Request",
+            "type": "String",
+            "optional": true,
+            "field": "InvoiceMainContactName",
+            "description": "<p>Name of the main contact for the property</p>"
+          },
+          {
+            "group": "Request",
+            "type": "String",
+            "optional": true,
+            "field": "InvoiceAccountManagerName",
+            "description": "<p>Name of the account manager responsible for the property</p>"
+          },
+          {
+            "group": "Request",
+            "type": "String",
+            "optional": true,
+            "field": "InvoiceVatID",
+            "description": "<p>Tax ID for the property</p>"
+          },
+          {
+            "group": "Request",
+            "type": "URL",
+            "optional": true,
+            "field": "Website",
+            "description": "<p>Homepage of the property</p>"
+          },
+          {
+            "group": "Request",
+            "type": "Enumeration",
+            "optional": true,
             "field": "Breakfast",
-            "description": "<p>Can be (excluded) or empty.</p>"
+            "description": "<p>Can be IN (included), EX (excluded) or empty (not applicable). Defaults to &quot;not applicable&quot;.</p>"
           },
           {
             "group": "Request",
             "type": "Integer",
-            "optional": false,
+            "optional": true,
             "field": "BookingAdjust",
-            "description": "<p>The state of booking auto-adjust config (0 = disabled, 1 = enabled).</p>"
+            "description": "<p>The state of booking auto-adjust config (0 = disabled, 1 = enabled). Defaults to 1.</p>"
           },
           {
             "group": "Request",
             "type": "Integer",
-            "optional": false,
+            "optional": true,
             "field": "BookingAdjustCancellation",
-            "description": "<p>The state of booking auto-adjust cancellation config (0 = HOLD, 1 = RESTORE).</p>"
+            "description": "<p>The state of booking auto-adjust cancellation config (0 = HOLD, 1 = RESTORE). Defaults to 0.</p>"
           },
           {
             "group": "Request",
             "type": "Integer",
-            "optional": false,
+            "optional": true,
             "field": "BookingAdjustModification",
-            "description": "<p>Whether to adjust for modifications (0 = disabled, 1 = enabled).</p>"
+            "description": "<p>Whether to adjust for modifications (0 = disabled, 1 = enabled). Defaults to 1.</p>"
           },
           {
             "group": "Request",
             "type": "Integer",
-            "optional": false,
+            "optional": true,
             "field": "BookingDownload",
-            "description": "<p>The state of channel booking download config (0 = do not download, 1 = download).</p>"
+            "description": "<p>The state of channel booking download config (0 = do not download, 1 = download). Defaults to 1.</p>"
           },
           {
             "group": "Request",
             "type": "String",
-            "optional": false,
+            "optional": true,
             "field": "EmailDefault",
-            "description": "<p>The default property email address. Uses default user* email if not configured.</p>"
+            "description": "<p>The default property email address. Defaults to default user email.</p>"
           },
           {
             "group": "Request",
             "type": "String",
-            "optional": false,
+            "optional": true,
             "field": "EmailChannelBooking",
-            "description": "<p>The email address used when forwarding channel booking emails. Uses default user* email if not configured.</p>"
+            "description": "<p>The email address used when forwarding channel booking emails. Defaults to default user email.</p>"
           },
           {
             "group": "Request",
             "type": "String",
-            "optional": false,
+            "optional": true,
             "field": "EmailBookNow",
-            "description": "<p>The email address used when forwarding booknow booking emails. Uses default user* email if not configured.</p>"
-          },
-          {
-            "group": "Request",
-            "type": "String",
-            "optional": false,
-            "field": "PaymentProviders/id",
-            "description": "<p>A unique identifier for this (useful if migrating/updating accounts)</p>"
-          },
-          {
-            "group": "Request",
-            "type": "String",
-            "optional": false,
-            "field": "PaymentProviders/type",
-            "description": "<p>an enumeration for provider tokenx|stripe|braintree|shift4</p>"
-          },
-          {
-            "group": "Request",
-            "type": "String",
-            "optional": false,
-            "field": "PaymentProviders/key1",
-            "description": "<p>a value required by the specific payment provider. (not validated)</p>"
+            "description": "<p>The email address used when forwarding booknow booking emails. Defaults to default user email.</p>"
           }
         ],
         "Response": [
@@ -2202,7 +2307,7 @@ define({ "api": [
       },
       {
         "title": "curl w/ JSON",
-        "content": "curl https://api.myallocator.com/pms/v201408/json/PropertyCreate -d@- <<EOJSON\njson={\n  \"Auth/UserToken\":\"User's auth token\",\n  \"Auth/VendorId\":\"your vendor id\",\n  \"Auth/VendorPassword\":\"your vendor password\",\n  \"Auth/PropertyId\":\"Your PropertyId\",\n  \"PropertyName\":\"Name of property\",\n  \"Currency\":\"###\",\n  \"AddressLine1\":\"Penny Lane 4\",\n  \"City\":\"London\",\n  \"PostCode\":\"N1 9SD\",\n  \"State\":\"Greater London\",\n  \"Country\":\"UK\",\n  \"Breakfast\":\"IN\",\n  \"BookingAdjust\":\"0|1\",\n  \"BookingAdjustCancellation\":\"0|1\",\n  \"BookingAdjustModification\":\"0|1\",\n  \"BookingDownload\":\"0|1\",\n  \"EmailDefault\":\"contact@property.com\",\n  \"EmailChannelBooking\":\"booking@property.com\",\n  \"EmailBookNow\":\"booknow@property.com\",\n  \"PaymentProviders\":[\n      { \"provider_id\":\"xxx\", provider_type:\"stripe|tokenx|braintree\", key1:\"value1\", key2:\"value2\" }\n  ]\n\n}\nEOJSON",
+        "content": "curl https://api.myallocator.com/pms/v201804/json/PropertyCreate -d@- <<EOJSON\njson={\n  \"Auth/UserToken\":\"User's auth token\",\n  \"Auth/VendorId\":\"your vendor id\",\n  \"Auth/VendorPassword\":\"your vendor password\",\n  \"PropertyName\":\"Example Hostel\",\n  \"Currency\":\"USD\",\n  \"AddressLine1\":\"Main St\",\n  \"AddressLine2\":\"Main Building\",\n  \"City\":\"San Diego\",\n  \"PostCode\":\"92101\",\n  \"State\":\"CA\",\n  \"Country\":\"us\",\n  \"Timezone\":\"UTC\",\n  \"Phone\":\"+1 123456789\",\n  \"Fax\":\"+2 987654332\",\n  \"MinLengthOfStay\":\"2\",\n  \"MaxLengthOfStay\":\"0\",\n  \"Latitude\":\"10.123\",\n  \"Longitude\":\"55.111\",\n  \"Breakfast\":\"IN\",\n  \"Website\":\"https://mopage.de\",\n  \"EmailDefault\":\"contact@property.com\",\n  \"EmailChannelBooking\":\"booking@property.com\",\n  \"EmailBookNow\":\"booknow@property.com\",\n  \"InvoiceAddressLine1\":\"invoice street 1\",\n  \"InvoiceAddressLine2\":\"invoice street 2\",\n  \"InvoiceCity\":\"invoice city\",\n  \"InvoicePostCode\":\"invoice zip\",\n  \"InvoiceState\":\"invoice state\",\n  \"InvoiceCountry\":\"de\",\n  \"InvoiceCompanyName\":\"invoice company name\",\n  \"InvoiceMainContactName\":\"invoice main contact name\",\n  \"InvoiceAccountManagerName\":\"invoice account manager name\",\n  \"InvoiceVatID\":\"invoice vat id\"\n  \"BookingAdjust\":\"0|1\",\n  \"BookingAdjustCancellation\":\"0|1\",\n  \"BookingAdjustModification\":\"0|1\",\n  \"BookingDownload\":\"0|1\",\n  \"EmailDefault\":\"contact@property.com\",\n  \"EmailChannelBooking\":\"booking@property.com\",\n  \"EmailBookNow\":\"booknow@property.com\"\n}\nEOJSON",
         "type": "json"
       }
     ],
@@ -2224,7 +2329,7 @@ define({ "api": [
     "url": "/PropertyFullRefresh",
     "title": "PropertyFullRefresh",
     "name": "PropertyFullRefresh",
-    "version": "201712.0.0",
+    "version": "201804.0.1",
     "description": "<p>Force updating all channels connected to given property.</p>",
     "parameter": {
       "fields": {
@@ -2280,7 +2385,7 @@ define({ "api": [
     "url": "/PropertyImageCreate",
     "title": "PropertyImageCreate",
     "name": "PropertyImageCreate",
-    "version": "201601.0.0",
+    "version": "201804.0.1",
     "description": "<p>This method allows you to create or remove property images on myallocator.com. Please note that you can only send a single PropertyImageCreate or PropertyImageRemove</p>",
     "parameter": {
       "fields": {
@@ -2343,7 +2448,7 @@ define({ "api": [
       },
       {
         "title": "curl w/ JSON",
-        "content": "curl https://api.myallocator.com/pms/v201408/json/PropertyImageCreate -d@- <<EOJSON\njson={\n    \"Auth/VendorId\":\"Your Vendor ID\",\n    \"Auth/VendorPassword\":\"Your Vendor Password\",\n    \"Auth/UserToken\":\"User token\",\n    \"Auth/PropertyId\":\"Property ID on myallocator.com\",\n    \"PropertyImages\": [\n      {\n        \"Filename\": \"double-room.jpg\",\n        \"Data\": \"oAAAANSUhEUgAAG2QAABPqCAYAAA[...]\"\n      }\n    ]\n}\nEOJSON",
+        "content": "curl https://api.myallocator.com/pms/v201804/json/PropertyImageCreate -d@- <<EOJSON\njson={\n    \"Auth/VendorId\":\"Your Vendor ID\",\n    \"Auth/VendorPassword\":\"Your Vendor Password\",\n    \"Auth/UserToken\":\"User token\",\n    \"Auth/PropertyId\":\"Property ID on myallocator.com\",\n    \"PropertyImages\": [\n      {\n        \"Filename\": \"double-room.jpg\",\n        \"Data\": \"oAAAANSUhEUgAAG2QAABPqCAYAAA[...]\"\n      }\n    ]\n}\nEOJSON",
         "type": "json"
       }
     ],
@@ -2388,7 +2493,7 @@ define({ "api": [
     "url": "/PropertyImageList",
     "title": "PropertyImageList",
     "name": "PropertyImageList",
-    "version": "201601.0.0",
+    "version": "201804.0.1",
     "description": "<p>Returns a list of uploaded images for the property-level.</p>",
     "parameter": {
       "fields": {
@@ -2437,7 +2542,7 @@ define({ "api": [
       },
       {
         "title": "curl w/ JSON",
-        "content": "curl https://api.myallocator.com/pms/v201408/json/PropertyImageList -d@- <<EOJSON\njson=\n{\n    \"Auth/VendorId\":\"Your Vendor ID\",\n    \"Auth/VendorPassword\":\"Your Vendor Password\",\n    \"Auth/UserToken\":\"User token\",\n    \"Auth/PropertyId\":\"Property ID on myallocator.com\"\n}\nEOJSON",
+        "content": "curl https://api.myallocator.com/pms/v201804/json/PropertyImageList -d@- <<EOJSON\njson=\n{\n    \"Auth/VendorId\":\"Your Vendor ID\",\n    \"Auth/VendorPassword\":\"Your Vendor Password\",\n    \"Auth/UserToken\":\"User token\",\n    \"Auth/PropertyId\":\"Property ID on myallocator.com\"\n}\nEOJSON",
         "type": "json"
       }
     ],
@@ -2482,7 +2587,7 @@ define({ "api": [
     "url": "/PropertyImageRemove",
     "title": "PropertyImageRemove",
     "name": "PropertyImageRemove",
-    "version": "201601.0.0",
+    "version": "201804.0.1",
     "description": "<p>Remove a property image.</p>",
     "parameter": {
       "fields": {
@@ -2538,7 +2643,7 @@ define({ "api": [
       },
       {
         "title": "curl w/ JSON",
-        "content": "curl https://api.myallocator.com/pms/v201408/json/PropertyImageRemove -d@- <<EOJSON\njson={\n    \"Auth/VendorId\":\"Your Vendor ID\",\n    \"Auth/VendorPassword\":\"Your Vendor Password\",\n    \"Auth/UserToken\":\"User token\",\n    \"Auth/PropertyId\":\"Property ID on myallocator.com\",\n    'PropertyImage':{ 'PropertyImageId':### }\n}\nEOJSO\nN",
+        "content": "curl https://api.myallocator.com/pms/v201804/json/PropertyImageRemove -d@- <<EOJSON\njson={\n    \"Auth/VendorId\":\"Your Vendor ID\",\n    \"Auth/VendorPassword\":\"Your Vendor Password\",\n    \"Auth/UserToken\":\"User token\",\n    \"Auth/PropertyId\":\"Property ID on myallocator.com\",\n    'PropertyImage':{ 'PropertyImageId':### }\n}\nEOJSO\nN",
         "type": "json"
       },
       {
@@ -2570,7 +2675,7 @@ define({ "api": [
     "url": "/PropertyList",
     "title": "PropertyList",
     "name": "PropertyList",
-    "version": "201601.0.0",
+    "version": "201804.0.1",
     "description": "<p>Users on myallocator.com might have more than one property attached to their username. This request lists which properties are associated with the customer and provides a property ID, needed to update the availability of this property. This request was formerly known as GetProperties (v1)</p>",
     "parameter": {
       "fields": {
@@ -2633,7 +2738,7 @@ define({ "api": [
       },
       {
         "title": "curl w/ JSON",
-        "content": "curl https://api.myallocator.com/pms/v201408/json/PropertyList -d\n    'json={\"Auth/VendorId\":\"\", \"Auth/VendorPassword\":\"\", \"Auth/UserToken\":\"\"}'",
+        "content": "curl https://api.myallocator.com/pms/v201804/json/PropertyList -d\n    'json={\"Auth/VendorId\":\"\", \"Auth/VendorPassword\":\"\", \"Auth/UserToken\":\"\"}'",
         "type": "json"
       }
     ],
@@ -2757,7 +2862,7 @@ define({ "api": [
     "url": "/PropertyModify",
     "title": "PropertyModify",
     "name": "PropertyModify",
-    "version": "201601.0.0",
+    "version": "201804.0.1",
     "parameter": {
       "fields": {
         "Request": [
@@ -2806,86 +2911,249 @@ define({ "api": [
           {
             "group": "Request",
             "type": "String",
+            "optional": true,
+            "field": "Timezone",
+            "description": "<p>Timezone the property is located in. Check Appendix for valid values. Defaults to UTC.</p>"
+          },
+          {
+            "group": "Request",
+            "type": "String",
+            "optional": false,
+            "field": "Phone",
+            "description": "<p>Phone numer for the property with international country code (eg. +44 350 5697864)</p>"
+          },
+          {
+            "group": "Request",
+            "type": "String",
+            "optional": true,
+            "field": "Fax",
+            "description": "<p>Fax numer for the property with international country code (eg. +44 350 5697864)</p>"
+          },
+          {
+            "group": "Request",
+            "type": "String",
+            "optional": true,
+            "field": "MinLengthOfStay",
+            "description": "<p>Default minimum length of stay. Defaults to 1.</p>"
+          },
+          {
+            "group": "Request",
+            "type": "String",
+            "optional": true,
+            "field": "MaxLengthOfStay",
+            "description": "<p>Default maximum length of stay. Defaults for 0, which means no maximum stay.</p>"
+          },
+          {
+            "group": "Request",
+            "type": "String",
+            "optional": false,
+            "field": "AddressLine1",
+            "description": "<p>First address line of the property (usually the street name and house number)</p>"
+          },
+          {
+            "group": "Request",
+            "type": "String",
+            "optional": true,
+            "field": "AddressLine2",
+            "description": "<p>Second address line of the property (if applicable)</p>"
+          },
+          {
+            "group": "Request",
+            "type": "String",
+            "optional": false,
+            "field": "City",
+            "description": "<p>City or locality the property is located in</p>"
+          },
+          {
+            "group": "Request",
+            "type": "String",
+            "optional": false,
+            "field": "PostCode",
+            "description": "<p>Post Code (ZIP) of the property</p>"
+          },
+          {
+            "group": "Request",
+            "type": "String",
+            "optional": true,
+            "field": "State",
+            "description": "<p>State of the property (if applicable)</p>"
+          },
+          {
+            "group": "Request",
+            "type": "String",
             "optional": false,
             "field": "Country",
-            "description": "<p>2-letter ISO 3166-1 alpha-2 country code. This is the country the property located in.</p>"
+            "description": "<p>2-letter ISO 3166-1 alpha-2 country code. This is the country the property is located in.</p>"
+          },
+          {
+            "group": "Request",
+            "type": "Decimal",
+            "optional": true,
+            "field": "Latitude",
+            "description": "<p>Geographic latitude of the property, given as decimal degrees. Positive for north, negative for south. Example: 32.70954</p>"
+          },
+          {
+            "group": "Request",
+            "type": "Decimal",
+            "optional": true,
+            "field": "Longitude",
+            "description": "<p>Geographic longitude of the property, given as decimal degrees. Positive for east, negative for west. Example: -117.15292</p>"
+          },
+          {
+            "group": "Request",
+            "type": "String",
+            "optional": true,
+            "field": "InvoiceAddressLine1",
+            "description": "<p>First address line of the company or property owner (usually the street name and house number)</p>"
+          },
+          {
+            "group": "Request",
+            "type": "String",
+            "optional": true,
+            "field": "InvoiceAddressLine2",
+            "description": "<p>Second address line of the company or property owner (if applicable)</p>"
+          },
+          {
+            "group": "Request",
+            "type": "String",
+            "optional": true,
+            "field": "InvoiceCity",
+            "description": "<p>City or locality the company or property owner is located in</p>"
+          },
+          {
+            "group": "Request",
+            "type": "String",
+            "optional": true,
+            "field": "InvoicePostCode",
+            "description": "<p>Post Code (ZIP) of the company or property owner</p>"
+          },
+          {
+            "group": "Request",
+            "type": "String",
+            "optional": true,
+            "field": "InvoiceState",
+            "description": "<p>State of the company or property owner (if applicable)</p>"
+          },
+          {
+            "group": "Request",
+            "type": "String",
+            "optional": true,
+            "field": "InvoiceCountry",
+            "description": "<p>2-letter ISO 3166-1 alpha-2 country code. This is the country the the company or property owner is located in.</p>"
+          },
+          {
+            "group": "Request",
+            "type": "String",
+            "optional": true,
+            "field": "InvoiceCompanyName",
+            "description": "<p>Name of the company owning the property</p>"
+          },
+          {
+            "group": "Request",
+            "type": "String",
+            "optional": true,
+            "field": "InvoiceMainContactName",
+            "description": "<p>Name of the main contact for the property</p>"
+          },
+          {
+            "group": "Request",
+            "type": "String",
+            "optional": true,
+            "field": "InvoiceAccountManagerName",
+            "description": "<p>Name of the account manager responsible for the property</p>"
+          },
+          {
+            "group": "Request",
+            "type": "String",
+            "optional": true,
+            "field": "InvoiceVatID",
+            "description": "<p>Tax ID for the property</p>"
+          },
+          {
+            "group": "Request",
+            "type": "URL",
+            "optional": true,
+            "field": "Website",
+            "description": "<p>Homepage of the property</p>"
           },
           {
             "group": "Request",
             "type": "Enumeration",
-            "optional": false,
+            "optional": true,
             "field": "Breakfast",
-            "description": "<p>Can be IN (included), EX (excluded) or empty.</p>"
+            "description": "<p>Can be IN (included), EX (excluded) or empty (not applicable). Defaults to &quot;not applicable&quot;.</p>"
           },
           {
             "group": "Request",
             "type": "Integer",
-            "optional": false,
+            "optional": true,
             "field": "BookingAdjust",
-            "description": "<p>The state of booking auto-adjust config (0 = disabled, 1 = enabled).</p>"
+            "description": "<p>The state of booking auto-adjust config (0 = disabled, 1 = enabled). Defaults to 1.</p>"
           },
           {
             "group": "Request",
             "type": "Integer",
-            "optional": false,
+            "optional": true,
             "field": "BookingAdjustCancellation",
-            "description": "<p>The state of booking auto-adjust cancellation config (0 = HOLD, 1 = RESTORE).</p>"
+            "description": "<p>The state of booking auto-adjust cancellation config (0 = HOLD, 1 = RESTORE). Defaults to 0.</p>"
           },
           {
             "group": "Request",
             "type": "Integer",
-            "optional": false,
+            "optional": true,
             "field": "BookingAdjustModification",
-            "description": "<p>Whether to adjust for modifications (0 = disabled, 1 = enabled).</p>"
+            "description": "<p>Whether to adjust for modifications (0 = disabled, 1 = enabled). Defaults to 1.</p>"
           },
           {
             "group": "Request",
             "type": "Integer",
-            "optional": false,
+            "optional": true,
             "field": "BookingDownload",
-            "description": "<p>The state of channel booking download config (0 = do not download, 1 = download).</p>"
+            "description": "<p>The state of channel booking download config (0 = do not download, 1 = download). Defaults to 1.</p>"
           },
           {
             "group": "Request",
             "type": "String",
-            "optional": false,
+            "optional": true,
             "field": "EmailDefault",
-            "description": "<p>The default property email address. Uses default user* email if not configured.</p>"
+            "description": "<p>The default property email address. Defaults to default user email.</p>"
           },
           {
             "group": "Request",
             "type": "String",
-            "optional": false,
+            "optional": true,
             "field": "EmailChannelBooking",
-            "description": "<p>The email address used when forwarding channel booking emails. Uses default user* email if not configured.</p>"
+            "description": "<p>The email address used when forwarding channel booking emails. Defaults to default user email.</p>"
           },
           {
             "group": "Request",
             "type": "String",
-            "optional": false,
+            "optional": true,
             "field": "EmailBookNow",
-            "description": "<p>The email address used when forwarding booknow booking emails. Uses default user* email if not configured.</p>"
+            "description": "<p>The email address used when forwarding booknow booking emails. Defaults to default user email.</p>"
+          }
+        ],
+        "Response": [
+          {
+            "group": "Response",
+            "type": "Boolean",
+            "optional": false,
+            "field": "Success",
+            "description": "<p>true|false</p>"
           },
           {
-            "group": "Request",
-            "type": "String",
+            "group": "Response",
+            "type": "Integer",
             "optional": false,
-            "field": "PaymentProviders/id",
-            "description": "<p>A unique identifier for this (useful if migrating/updating accounts)</p>"
+            "field": "PropertyId",
+            "description": "<p>Property ID as passed in</p>"
           },
           {
-            "group": "Request",
-            "type": "String",
+            "group": "Response",
+            "type": "Object",
             "optional": false,
-            "field": "PaymentProviders/type",
-            "description": "<p>an enumeration for provider tokenx|stripe|braintree|shift4</p>"
-          },
-          {
-            "group": "Request",
-            "type": "String",
-            "optional": false,
-            "field": "PaymentProviders/key1",
-            "description": "<p>a value required by the specific payment provider. (not validated)</p>"
+            "field": "Property",
+            "description": "<p>Changes as they have been applied</p>"
           }
         ]
       }
@@ -2893,19 +3161,19 @@ define({ "api": [
     "examples": [
       {
         "title": "XML Request - Modifying a property",
-        "content": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<PropertyModify>\n <Auth>\n   <VendorId>Your Vendor ID</VendorId>\n   <VendorPassword>Your Vendor Password</VendorPassword>\n </Auth>\n <PropertyName>Name of property</PropertyName>\n <Currency>EUR</Currency>\n <Country>DE</Country>\n <Breakfast>IN</Breakfast>\n <BookingAdjust>1</BookingAdjust>\n <BookingAdjustCancellation>1</BookingAdjustCancellation>\n <BookingAdjustModification>1</BookingAdjustModification>\n <BookingDownload>1</BookingDownload>\n <EmailDefault>default@email.com</EmailDefault>\n <EmailChannelBooking>channel@email.com</EmailChannelBooking>\n <EmailBookNow>booknow@email.com</EmailBookNow>\n <PaymentProviders>\n    <Provider id=\"xxx\" type=\"stripe|tokenx|braintree\" key1=\"value1\" key2=\"value2\" />\n </PaymentProviders>\n</PropertyModify>",
+        "content": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<PropertyModify>\n <Auth>\n   <VendorId>Your Vendor ID</VendorId>\n   <VendorPassword>Your Vendor Password</VendorPassword>\n </Auth>\n <PropertyName>Name of property</PropertyName>\n <Currency>EUR</Currency>\n <Country>DE</Country>\n <Breakfast>IN</Breakfast>\n <BookingAdjust>1</BookingAdjust>\n <BookingAdjustCancellation>1</BookingAdjustCancellation>\n <BookingAdjustModification>1</BookingAdjustModification>\n <BookingDownload>1</BookingDownload>\n <EmailDefault>default@email.com</EmailDefault>\n <EmailChannelBooking>channel@email.com</EmailChannelBooking>\n <EmailBookNow>booknow@email.com</EmailBookNow>\n</PropertyModify>",
         "type": "json"
       },
       {
         "title": "curl w/ JSON",
-        "content": "curl https://api.myallocator.com/pms/v201408/json/PropertyModify -d@- <<EOJSON\njson={\n  \"Auth/UserToken\":\"User's auth token\",\n  \"Auth/VendorId\":\"your vendor id\",\n  \"Auth/VendorPassword\":\"your vendor password\",\n  \"Auth/PropertyId\":\"?\",\n  \"PropertyName\":\"Name of property\",\n  \"Currency\":\"###\",\n  \"Country\":\"##\",\n  \"Breakfast\":\"|IN|EX\",\n  \"BookingAdjust\":\"0|1\",\n  \"BookingAdjustCancellation\":\"0|1\",\n  \"BookingAdjustModification\":\"0|1\",\n  \"BookingDownload\":\"0|1\",\n  \"EmailDefault\":\"contact@property.com\",\n  \"EmailChannelBooking\":\"booking@property.com\",\n  \"EmailBookNow\":\"booknow@property.com\"\n  \"PaymentProviders\":[\n      { \"id\":\"xxx\", type:\"stripe|tokenx|braintree\", key1:\"value1\", key2:\"value2\" }\n  ]\n}\nEOJSON",
+        "content": "curl https://api.myallocator.com/pms/v201804/json/PropertyModify -d@- <<EOJSON\njson={\n  \"Auth/UserToken\":\"User's auth token\",\n  \"Auth/VendorId\":\"your vendor id\",\n  \"Auth/VendorPassword\":\"your vendor password\",\n  \"Auth/PropertyId\": 12345,\n  \"PropertyName\":\"Example Hostel\",\n  \"Currency\":\"USD\",\n  \"AddressLine1\":\"Main St\",\n  \"AddressLine2\":\"Main Building\",\n  \"City\":\"San Diego\",\n  \"PostCode\":\"92101\",\n  \"State\":\"CA\",\n  \"Country\":\"us\",\n  \"Timezone\":\"UTC\",\n  \"Phone\":\"+1 123456789\",\n  \"Fax\":\"+2 987654332\",\n  \"MinLengthOfStay\":\"2\",\n  \"MaxLengthOfStay\":\"0\",\n  \"Latitude\":\"10.123\",\n  \"Longitude\":\"55.111\",\n  \"Breakfast\":\"IN\",\n  \"Website\":\"https://mopage.de\",\n  \"EmailDefault\":\"contact@property.com\",\n  \"EmailChannelBooking\":\"booking@property.com\",\n  \"EmailBookNow\":\"booknow@property.com\",\n  \"InvoiceAddressLine1\":\"invoice street 1\",\n  \"InvoiceAddressLine2\":\"invoice street 2\",\n  \"InvoiceCity\":\"invoice city\",\n  \"InvoicePostCode\":\"invoice zip\",\n  \"InvoiceState\":\"invoice state\",\n  \"InvoiceCountry\":\"de\",\n  \"InvoiceCompanyName\":\"invoice company name\",\n  \"InvoiceMainContactName\":\"invoice main contact name\",\n  \"InvoiceAccountManagerName\":\"invoice account manager name\",\n  \"InvoiceVatID\":\"invoice vat id\"\n  \"BookingAdjust\":\"0|1\",\n  \"BookingAdjustCancellation\":\"0|1\",\n  \"BookingAdjustModification\":\"0|1\",\n  \"BookingDownload\":\"0|1\",\n  \"EmailDefault\":\"contact@property.com\",\n  \"EmailChannelBooking\":\"booking@property.com\",\n  \"EmailBookNow\":\"booknow@property.com\"\n}\nEOJSON",
         "type": "json"
       }
     ],
     "success": {
       "examples": [
         {
-          "title": "Response - Updating a login and property",
+          "title": "Response - Updating a property",
           "content": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<PropertyModifyResponse>\n <Success>true</Success>\n <PropertyId>70</PropertyId>\n</PropertyModifyResponse>",
           "type": "json"
         }
@@ -2920,8 +3188,8 @@ define({ "api": [
     "url": "/RoomAvailabilityList",
     "title": "RoomAvailabilityList",
     "name": "RoomAvailabilityList",
-    "version": "201601.0.0",
-    "description": "<p>This call can be used to query for all data that we hold for a specific property and date range. The date range can only be 31 days as the maximum. You can query multiple times if you need a longer date range.</p> <p>A MaxStay setting of 0 means &quot;unrestricted&quot;. The 48 and 49 in the response example below refer to the room ID as returned by GetRooms (XML API).</p> <p>** Compatibility: ** this was formerly available at: https://myallocator.com/en/api/data</p>",
+    "version": "201804.0.1",
+    "description": "<p>This call can be used to query for all data that we hold for a specific property and date range. The date range can only be 31 days as the maximum. You can query multiple times if you need a longer date range.</p> <p>A MaxStay setting of 0 means &quot;unrestricted&quot;. The 48 and 49 in the response example below refer to the room ID as returned by GetRooms (XML API).</p>",
     "parameter": {
       "fields": {
         "Request": [
@@ -2978,7 +3246,7 @@ define({ "api": [
       },
       {
         "title": "curl w/ JSON",
-        "content": "curl https://api.myallocator.com/pms/v201408/json/RoomAvailabilityList -d@- <<EOJSON\njson=\n{\n  \"Auth/VendorId\":\"\",\n  \"Auth/VendorPassword\":\"\",\n  \"Auth/UserToken\":\"\",\n  \"Auth/PropertyId\":\"\",\n  \"StartDate\":\"2015-01-01\",\n  \"EndDate\":\"2017-01-01\"\n}\nEOJSON",
+        "content": "curl https://api.myallocator.com/pms/v201804/json/RoomAvailabilityList -d@- <<EOJSON\njson=\n{\n  \"Auth/VendorId\":\"\",\n  \"Auth/VendorPassword\":\"\",\n  \"Auth/UserToken\":\"\",\n  \"Auth/PropertyId\":\"\",\n  \"StartDate\":\"2015-01-01\",\n  \"EndDate\":\"2017-01-01\"\n}\nEOJSON",
         "type": "json"
       },
       {
@@ -3010,7 +3278,7 @@ define({ "api": [
     "url": "/RoomCreate",
     "title": "RoomCreate",
     "name": "RoomCreate",
-    "version": "201601.0.0",
+    "version": "201804.0.1",
     "description": "<p>This method allows you to create, update or remove rooms on myallocator.com. Please note that you can only send a single RoomCreate, RoomUpdate, or RoomRemove</p>",
     "parameter": {
       "fields": {
@@ -3140,7 +3408,7 @@ define({ "api": [
       },
       {
         "title": "curl w/ JSON",
-        "content": "curl https://api.myallocator.com/pms/v201408/json/RoomCreate -d@- <<EOJSON\njson={\n    \"Auth/VendorId\":\"Your Vendor ID\",\n    \"Auth/VendorPassword\":\"Your Vendor Password\",\n    \"Auth/UserToken\":\"User token\",\n    \"Auth/PropertyId\":\"Property ID on myallocator.com\",\n    \"ValidateOnly\":false,\n    \"AuthorizeBilling\":true,\n    \"Rooms\": [\n        {\n            \"PMSRoomId\":\"IdOfRoomOnPMS\",\n            \"Label\":\"Double Room\",\n            \"Units\":4,\n            \"Occupancy\":2,\n            \"PrivateRoom\":\"true\",\n            \"Gender\":\"MI\"\n        },\n        {\n            \"PMSRoomId\":\"IdOfRoomOnPMS\",\n            \"Label\":\"Female dorm\",\n            \"Units\":3,\n            \"Occupancy\":6,\n            \"PrivateRoom\":\"false\",\n            \"Gender\":\"FE\"\n        }\n    ]\n}\nEOJSON",
+        "content": "curl https://api.myallocator.com/pms/v201804/json/RoomCreate -d@- <<EOJSON\njson={\n    \"Auth/VendorId\":\"Your Vendor ID\",\n    \"Auth/VendorPassword\":\"Your Vendor Password\",\n    \"Auth/UserToken\":\"User token\",\n    \"Auth/PropertyId\":\"Property ID on myallocator.com\",\n    \"ValidateOnly\":false,\n    \"AuthorizeBilling\":true,\n    \"Rooms\": [\n        {\n            \"PMSRoomId\":\"IdOfRoomOnPMS\",\n            \"Label\":\"Double Room\",\n            \"Units\":4,\n            \"Occupancy\":2,\n            \"PrivateRoom\":\"true\",\n            \"Gender\":\"MI\"\n        },\n        {\n            \"PMSRoomId\":\"IdOfRoomOnPMS\",\n            \"Label\":\"Female dorm\",\n            \"Units\":3,\n            \"Occupancy\":6,\n            \"PrivateRoom\":\"false\",\n            \"Gender\":\"FE\"\n        }\n    ]\n}\nEOJSON",
         "type": "json"
       }
     ],
@@ -3167,7 +3435,7 @@ define({ "api": [
     "url": "/RoomImageCreate",
     "title": "RoomImageCreate",
     "name": "RoomImageCreate",
-    "version": "201601.0.0",
+    "version": "201804.0.1",
     "description": "<p>This method allows you to create or remove room type images on myallocator.com. Please note that you can only send a single RoomImageCreate or RoomImageRemove</p>",
     "parameter": {
       "fields": {
@@ -3237,7 +3505,7 @@ define({ "api": [
       },
       {
         "title": "curl w/ JSON",
-        "content": "curl https://api.myallocator.com/pms/v201408/json/RoomImageCreate -d@- <<EOJSON\njson={\n    \"Auth/VendorId\":\"Your Vendor ID\",\n    \"Auth/VendorPassword\":\"Your Vendor Password\",\n    \"Auth/UserToken\":\"User token\",\n    \"Auth/PropertyId\":\"Property ID on myallocator.com\",\n    \"RoomImages\": [\n      {\n        \"RoomId\": 5532,\n        \"Filename\": \"double-room.jpg\",\n        \"Data\": \"oAAAANSUhEUgAAG2QAABPqCAYAAA[...]\"\n      }\n    ]\n}\nEOJSON",
+        "content": "curl https://api.myallocator.com/pms/v201804/json/RoomImageCreate -d@- <<EOJSON\njson={\n    \"Auth/VendorId\":\"Your Vendor ID\",\n    \"Auth/VendorPassword\":\"Your Vendor Password\",\n    \"Auth/UserToken\":\"User token\",\n    \"Auth/PropertyId\":\"Property ID on myallocator.com\",\n    \"RoomImages\": [\n      {\n        \"RoomId\": 5532,\n        \"Filename\": \"double-room.jpg\",\n        \"Data\": \"oAAAANSUhEUgAAG2QAABPqCAYAAA[...]\"\n      }\n    ]\n}\nEOJSON",
         "type": "json"
       }
     ],
@@ -3282,7 +3550,7 @@ define({ "api": [
     "url": "/RoomImageList",
     "title": "RoomImageList",
     "name": "RoomImageList",
-    "version": "201601.0.0",
+    "version": "201804.0.1",
     "description": "<p>Returns a list of uploaded images by room type.</p>",
     "parameter": {
       "fields": {
@@ -3331,7 +3599,7 @@ define({ "api": [
       },
       {
         "title": "curl w/ JSON",
-        "content": "curl https://api.myallocator.com/pms/v201408/json/RoomImageList -d@- <<EOJSON\njson={\n    \"Auth/VendorId\":\"Your Vendor ID\",\n    \"Auth/VendorPassword\":\"Your Vendor Password\",\n    \"Auth/UserToken\":\"User token\",\n    \"Auth/PropertyId\":\"Property ID on myallocator.com\"\n}\nEOJSON",
+        "content": "curl https://api.myallocator.com/pms/v201804/json/RoomImageList -d@- <<EOJSON\njson={\n    \"Auth/VendorId\":\"Your Vendor ID\",\n    \"Auth/VendorPassword\":\"Your Vendor Password\",\n    \"Auth/UserToken\":\"User token\",\n    \"Auth/PropertyId\":\"Property ID on myallocator.com\"\n}\nEOJSON",
         "type": "json"
       }
     ],
@@ -3383,7 +3651,7 @@ define({ "api": [
     "url": "/RoomImageRemove",
     "title": "RoomImageRemove",
     "name": "RoomImageRemove",
-    "version": "201601.0.0",
+    "version": "201804.0.1",
     "description": "<p>Remove a room type image</p>",
     "parameter": {
       "fields": {
@@ -3460,7 +3728,7 @@ define({ "api": [
     "examples": [
       {
         "title": "curl w/ JSON",
-        "content": "curl https://api.myallocator.com/pms/v201408/json/RoomImageRemove -d@- <<EOJSON\njson={\n    \"Auth/UserToken\":\"\",\n    \"Auth/VendorId\":\"\",\n    \"Auth/VendorPassword\":\"\",\n    \"RoomImage\":{ \"RoomImageId\":### }\n}\nEOJSON",
+        "content": "curl https://api.myallocator.com/pms/v201804/json/RoomImageRemove -d@- <<EOJSON\njson={\n    \"Auth/UserToken\":\"\",\n    \"Auth/VendorId\":\"\",\n    \"Auth/VendorPassword\":\"\",\n    \"RoomImage\":{ \"RoomImageId\":### }\n}\nEOJSON",
         "type": "json"
       }
     ],
@@ -3473,7 +3741,7 @@ define({ "api": [
     "url": "/RoomList",
     "title": "RoomList",
     "name": "RoomList",
-    "version": "201601.0.0",
+    "version": "201804.0.1",
     "description": "<p>returns a list of configured room types for a property. Formerly GetRoomTypes (v1).</p>",
     "parameter": {
       "fields": {
@@ -3512,7 +3780,7 @@ define({ "api": [
     "examples": [
       {
         "title": "curl w/ JSON",
-        "content": "curl https://api.myallocator.com/pms/v201408/json/RoomList -d@- <<EOJSON\njson={\n  \"Auth/UserToken\":\"User's auth token\",\n  \"Auth/PropertyId\":\"Property ID on myallocator.com\",\n  \"Auth/VendorId\":\"your vendor id\",\n  \"Auth/VendorPassword\":\"your vendor password\"\n}\nEOJSON",
+        "content": "curl https://api.myallocator.com/pms/v201804/json/RoomList -d@- <<EOJSON\njson={\n  \"Auth/UserToken\":\"User's auth token\",\n  \"Auth/PropertyId\":\"Property ID on myallocator.com\",\n  \"Auth/VendorId\":\"your vendor id\",\n  \"Auth/VendorPassword\":\"your vendor password\"\n}\nEOJSON",
         "type": "json"
       },
       {
@@ -3599,12 +3867,12 @@ define({ "api": [
       "examples": [
         {
           "title": "XML RoomList v1 Success Response",
-          "content": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<RoomListResponse>\n <RoomTypes>\n   <RoomType>\n     <Id>59</Id>\n     <Label>1-bed private ensuite</Label>\n     <Units>3</Units>\n     <Occupancy>1</Occupancy>\n     <Beds>1</Beds>\n     <Gender>MI</Gender>\n     <DoubleBed>false</DoubleBed>\n     <Ensuite>false</Ensuite>\n     <PrivateRoom>true</PrivateRoom>\n     <Disabled>false</Disabled>\n     <ICalLink>https://api.myallocator.com/callback/ota/air/v201506/ical?pid=1&rid=59&hash=726ed</ICalLink>\n   </RoomType>\n\n   <RoomType>\n     <Id>63</Id>\n     <Label>2-bed private</Label>\n     <Units>4</Units>\n     <Occupancy>2</Occupancy>\n     <Beds>2</Beds>\n     <Gender>MI</Gender>\n     <DoubleBed>false</DoubleBed>\n     <Ensuite>false</Ensuite>\n     <PrivateRoom>true</PrivateRoom>\n     <Disabled>false</Disabled>\n     <ICalLink>https://api.myallocator.com/callback/ota/air/v201506/ical?pid=1&rid=63&hash=foo12</ICalLink>\n   </RoomType>\n\n   <RoomType>\n     <Id>49</Id>\n     <Label>5-bed female shared</Label>\n     <Units>3</Units>\n     <Occupancy>5</Occupancy>\n     <Beds>5</Beds>\n     <Gender>FE</Gender>\n     <DoubleBed>false</DoubleBed>\n     <Ensuite>false</Ensuite>\n     <PrivateRoom>false</PrivateRoom>\n     <Disabled>false</Disabled>\n     <ICalLink>https://api.myallocator.com/callback/ota/air/v201506/ical?pid=1&rid=49&hash=9fe41</ICalLink>\n   </RoomType>\n  </RoomTypes>\n</RoomListResponse>",
+          "content": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<RoomListResponse>\n <RoomTypes>\n   <RoomType>\n     <Id>59</Id>\n     <Label>1-bed private ensuite</Label>\n     <Units>3</Units>\n     <Occupancy>1</Occupancy>\n     <Beds>1</Beds>\n     <Gender>MI</Gender>\n     <DoubleBed>false</DoubleBed>\n     <Ensuite>false</Ensuite>\n     <PrivateRoom>true</PrivateRoom>\n     <Disabled>false</Disabled>\n     <ICalLink>https://api.myallocator.com/callback/ota/air/v201804/ical?pid=1&rid=59&hash=726ed</ICalLink>\n   </RoomType>\n\n   <RoomType>\n     <Id>63</Id>\n     <Label>2-bed private</Label>\n     <Units>4</Units>\n     <Occupancy>2</Occupancy>\n     <Beds>2</Beds>\n     <Gender>MI</Gender>\n     <DoubleBed>false</DoubleBed>\n     <Ensuite>false</Ensuite>\n     <PrivateRoom>true</PrivateRoom>\n     <Disabled>false</Disabled>\n     <ICalLink>https://api.myallocator.com/callback/ota/air/v201804/ical?pid=1&rid=63&hash=foo12</ICalLink>\n   </RoomType>\n\n   <RoomType>\n     <Id>49</Id>\n     <Label>5-bed female shared</Label>\n     <Units>3</Units>\n     <Occupancy>5</Occupancy>\n     <Beds>5</Beds>\n     <Gender>FE</Gender>\n     <DoubleBed>false</DoubleBed>\n     <Ensuite>false</Ensuite>\n     <PrivateRoom>false</PrivateRoom>\n     <Disabled>false</Disabled>\n     <ICalLink>https://api.myallocator.com/callback/ota/air/v201804/ical?pid=1&rid=49&hash=9fe41</ICalLink>\n   </RoomType>\n  </RoomTypes>\n</RoomListResponse>",
           "type": "json"
         },
         {
           "title": "JSON Success Response",
-          "content": "{\n    \"Success\": true,\n    \"RoomTypes\": [\n        {\n            \"Gender\": \"MI\",\n            \"Occupancy\": 1,\n            \"Description\": \"Longer description about the room\",\n            \"Label\": \"Short room name\",\n            \"Disabled\": \"false\",\n            \"ICalLink\": \"https://api.myallocator.com/callback/ota/air/v201506/ical?pid=1&rid=63&hash=foo12\",\n            \"Units\": 2,\n            \"RoomId\": 45844,\n            \"PrivateRoom\": \"true\",\n            \"PMSRoomId\": null\n        },\n        {\n            \"Gender\": \"MI\",\n            \"Occupancy\": 2,\n            \"Description\": \"yet another description of another room\",\n            \"Label\": \"test\",\n            \"Disabled\": \"true\",\n            \"ICalLink\": \"https://api.myallocator.com/callback/ota/air/v201506/ical?pid=1&rid=49&hash=9fe41\",\n            \"Units\": 1,\n            \"RoomId\": 45841,\n            \"PrivateRoom\": \"true\",\n            \"PMSRoomId\": null\n        },\n    ]\n}",
+          "content": "{\n    \"Success\": true,\n    \"RoomTypes\": [\n        {\n            \"Gender\": \"MI\",\n            \"Occupancy\": 1,\n            \"Description\": \"Longer description about the room\",\n            \"Label\": \"Short room name\",\n            \"Disabled\": \"false\",\n            \"ICalLink\": \"https://api.myallocator.com/callback/ota/air/v201804/ical?pid=1&rid=63&hash=foo12\",\n            \"Units\": 2,\n            \"RoomId\": 45844,\n            \"PrivateRoom\": \"true\",\n            \"PMSRoomId\": null\n        },\n        {\n            \"Gender\": \"MI\",\n            \"Occupancy\": 2,\n            \"Description\": \"yet another description of another room\",\n            \"Label\": \"test\",\n            \"Disabled\": \"true\",\n            \"ICalLink\": \"https://api.myallocator.com/callback/ota/air/v201804/ical?pid=1&rid=49&hash=9fe41\",\n            \"Units\": 1,\n            \"RoomId\": 45841,\n            \"PrivateRoom\": \"true\",\n            \"PMSRoomId\": null\n        },\n    ]\n}",
           "type": "json"
         }
       ]
@@ -3618,7 +3886,7 @@ define({ "api": [
     "url": "/RoomRemove",
     "title": "RoomRemove",
     "name": "RoomRemove",
-    "version": "201601.0.0",
+    "version": "201804.0.1",
     "description": "<p>Remove a room.</p>",
     "parameter": {
       "fields": {
@@ -3660,7 +3928,7 @@ define({ "api": [
     "examples": [
       {
         "title": "curl w/ JSON",
-        "content": "curl https://api.myallocator.com/pms/v201408/json/RoomRemove -d@- <<EOJSON\njson={\n    \"Auth/UserToken\":\"\",\n    \"Auth/VendorId\":\"\",\n    \"Auth/VendorPassword\":\"\",\n    \"Room\":{ \"RoomId\":### }\n}\nEOJSON",
+        "content": "curl https://api.myallocator.com/pms/v201804/json/RoomRemove -d@- <<EOJSON\njson={\n    \"Auth/UserToken\":\"\",\n    \"Auth/VendorId\":\"\",\n    \"Auth/VendorPassword\":\"\",\n    \"Room\":{ \"RoomId\":### }\n}\nEOJSON",
         "type": "json"
       }
     ],
@@ -3673,12 +3941,12 @@ define({ "api": [
     "url": "/RoomUpdate",
     "title": "RoomUpdate",
     "name": "RoomUpdate",
-    "version": "201601.0.0",
+    "version": "201804.0.1",
     "description": "<p>Uses the same parameters (and response) as &quot;RoomCreate&quot;, with the addition of RoomId to specifiy which room to update.</p>",
     "examples": [
       {
         "title": "curl w/ JSON",
-        "content": "curl https://api.myallocator.com/pms/v201408/json/RoomUpdate -d@- <<EOJSON\njson={\n...\n}\nEOJSON",
+        "content": "curl https://api.myallocator.com/pms/v201804/json/RoomUpdate -d@- <<EOJSON\njson={\n...\n}\nEOJSON",
         "type": "json"
       }
     ],
@@ -3691,7 +3959,7 @@ define({ "api": [
     "url": "/UserCreate",
     "title": "UserCreate",
     "name": "UserCreate",
-    "version": "201601.0.0",
+    "version": "201804.0.1",
     "parameter": {
       "fields": {
         "Request": [
@@ -3777,7 +4045,7 @@ define({ "api": [
         ]
       }
     },
-    "description": "<p>This method allows you to create customer accounts on myallocator.com. Before you can use this method we'll have to explicitly enable you for this functionality, as some aspects with regards to customer payment will need to be discussed. Previously known as SetLogin/CreateLogin.</p>",
+    "description": "<p>This method allows you to create customer accounts on myallocator.com. Before you can use this method we'll have to explicitly enable you for this functionality, as some aspects with regards to customer payment will need to be discussed.</p>",
     "examples": [
       {
         "title": "XML Request - Creating a customer account",
@@ -3786,7 +4054,7 @@ define({ "api": [
       },
       {
         "title": "curl w/ JSON",
-        "content": "curl https://api.myallocator.com/pms/v201408/json/UserCreate -d@- <<EOJSON\njson={\n  \"Auth/VendorId\":\"your vendor id\",\n  \"Auth/VendorPassword\":\"your vendor password\",\n  \"UserId\":\"Requested User ID\",\n  \"UserPassword\":\"New Customer Password\",\n  \"CustomerFirstName\":\"Customer's first name\",\n  \"CustomerLastName\":\"Customer's last name\",\n  \"CustomerEmail\":\"Customer's email address\",\n  \"SendWelcome\":\"1|0\"\n}\nEOJSON",
+        "content": "curl https://api.myallocator.com/pms/v201804/json/UserCreate -d@- <<EOJSON\njson={\n  \"Auth/VendorId\":\"your vendor id\",\n  \"Auth/VendorPassword\":\"your vendor password\",\n  \"UserId\":\"Requested User ID\",\n  \"UserPassword\":\"New Customer Password\",\n  \"CustomerFirstName\":\"Customer's first name\",\n  \"CustomerLastName\":\"Customer's last name\",\n  \"CustomerEmail\":\"Customer's email address\",\n  \"SendWelcome\":\"1|0\"\n}\nEOJSON",
         "type": "json"
       }
     ],
@@ -3808,7 +4076,7 @@ define({ "api": [
     "url": "/UserExists",
     "title": "UserExists",
     "name": "UserExists",
-    "version": "201601.0.0",
+    "version": "201804.0.1",
     "description": "<p>This method checks to see if a User or Email is already registered.</p>",
     "parameter": {
       "fields": {
@@ -3891,7 +4159,7 @@ define({ "api": [
       },
       {
         "title": "curl w/ JSON",
-        "content": "curl https://api.myallocator.com/pms/v201408/json/UserExists -d@- <<EOJSON\njson={\n  \"Auth/VendorId\":\"Your Vendor ID\",\n  \"Auth/VendorPassword\":\"Your Vendor Password\",\n  \"UserId\":\"requested-username\",\n  \"Email\":\"user@domain.com\"\n}\nEOJSON",
+        "content": "curl https://api.myallocator.com/pms/v201804/json/UserExists -d@- <<EOJSON\njson={\n  \"Auth/VendorId\":\"Your Vendor ID\",\n  \"Auth/VendorPassword\":\"Your Vendor Password\",\n  \"UserId\":\"requested-username\",\n  \"Email\":\"user@domain.com\"\n}\nEOJSON",
         "type": "json"
       }
     ],
@@ -3904,7 +4172,7 @@ define({ "api": [
     "url": "/UserModify",
     "title": "UserModify",
     "name": "UserModify",
-    "version": "201601.0.0",
+    "version": "201804.0.1",
     "description": "<p>This method allows vendors to change a myallocator user's first name, last name and general contact email address.</p>",
     "parameter": {
       "fields": {
@@ -3962,7 +4230,7 @@ define({ "api": [
       },
       {
         "title": "curl w/ JSON",
-        "content": "    curl https://api.myallocator.com/pms/v201408/json/UserModify -d@- <<EOJSON\n    json={\n      \"Auth/UserToken\"      : \"User's auth token\",\n      \"Auth/VendorId\"       : \"Your vendor id\",\n      \"Auth/VendorPassword\" : \"Your vendor password\",\n      \"CustomerFirstName\"   : \"Customer's first name\",\n      \"CustomerLastName\"    : \"Customer's last name\",\n      \"CustomerEmail\"       : \"Customer's email address\"\n    }\nEOJSON",
+        "content": "    curl https://api.myallocator.com/pms/v201804/json/UserModify -d@- <<EOJSON\n    json={\n      \"Auth/UserToken\"      : \"User's auth token\",\n      \"Auth/VendorId\"       : \"Your vendor id\",\n      \"Auth/VendorPassword\" : \"Your vendor password\",\n      \"CustomerFirstName\"   : \"Customer's first name\",\n      \"CustomerLastName\"    : \"Customer's last name\",\n      \"CustomerEmail\"       : \"Customer's email address\"\n    }\nEOJSON",
         "type": "json"
       }
     ],
@@ -3984,7 +4252,7 @@ define({ "api": [
     "url": "/VendorSet",
     "title": "VendorSet",
     "name": "VendorSet",
-    "version": "201601.0.0",
+    "version": "201804.0.1",
     "parameter": {
       "fields": {
         "Request": [
@@ -4070,7 +4338,7 @@ define({ "api": [
       },
       {
         "title": "curl w/ JSON",
-        "content": "curl https://api.myallocator.com/pms/v201408/json/VendorSet -d@- <<EOJSON\njson={\n   \"Auth/VendorId\":\"Your Vendor ID\",\n   \"Auth/VendorPassword\":\"Your Vendor Password\",\n   \"Callback/URL\":\"http://www.yourdomain.com/myallocator/callback.cgi\",\n   \"Callback/Password\":\"very secret password\"\n}\nEOJSON",
+        "content": "curl https://api.myallocator.com/pms/v201804/json/VendorSet -d@- <<EOJSON\njson={\n   \"Auth/VendorId\":\"Your Vendor ID\",\n   \"Auth/VendorPassword\":\"Your Vendor Password\",\n   \"Callback/URL\":\"http://www.yourdomain.com/myallocator/callback.cgi\",\n   \"Callback/Password\":\"very secret password\"\n}\nEOJSON",
         "type": "json"
       }
     ],
@@ -4097,8 +4365,30 @@ define({ "api": [
     "url": "{}",
     "title": "Channel Codes",
     "name": "Channel_Codes",
-    "version": "201601.0.0",
-    "description": "<p>For the most up to date information please use the ChannelList API call.</p> <p>We also have prepared the following summary: https://github.com/MyAllocator/apidocs/blob/gh-pages/channel-list.md</p>",
+    "version": "201804.0.1",
+    "description": "<p>For the most up to date information please use the ChannelList API call.</p> <p>We also have prepared a <a href=\"https://github.com/MyAllocator/apidocs/blob/gh-pages/channel-list.md\">summary on Github</a></p>",
+    "filename": "perllib/MAAPI.pm",
+    "groupTitle": "4_Appendix"
+  },
+  {
+    "group": "4_Appendix",
+    "type": "",
+    "url": "{}",
+    "title": "Country Codes",
+    "name": "Country_Codes",
+    "version": "201804.0.1",
+    "description": "<p>Check <a href=\"https://github.com/MyAllocator/apidocs/blob/gh-pages/country-list.md\">this document on Github</a> for the complete list.</p>",
+    "filename": "perllib/MAAPI.pm",
+    "groupTitle": "4_Appendix"
+  },
+  {
+    "group": "4_Appendix",
+    "type": "",
+    "url": "{}",
+    "title": "Currency Codes",
+    "name": "Currency_Codes",
+    "version": "201804.0.1",
+    "description": "<p>Check <a href=\"https://github.com/MyAllocator/apidocs/blob/gh-pages/currency-list.md\">this document on Github</a> for the complete list.</p>",
     "filename": "perllib/MAAPI.pm",
     "groupTitle": "4_Appendix"
   },
@@ -4108,8 +4398,8 @@ define({ "api": [
     "url": "{}",
     "title": "FAQ",
     "name": "FAQ",
-    "version": "201601.0.0",
-    "description": "<p>This section contains frequently asked questions.</p> <ul> <li><strong>How should I deal with failed channel updates?</strong> If the error is noted as non-fatal on the Error Code page then retry the update after a few minutes. Failing updates are not as rare as you would think because channels do go down and become unresponsive. Fatal errors should not be automatically retried as they need user intervention. Make sure to show the error message to the customer.</li> <li><strong>Are there any limits on how many updates can be send at once?</strong> There is (currently) no limit, but you're strongly advised to split large updates (especially full refreshes) into smaller chunks of 30-60 days. This has the advantage that you can easily re-run failed chunks and it will make debugging problems easier.</li> <li><strong>I cannot log in to myallocator with the test credentials. Why?</strong> This is to avoid the settings for the test properties from being changed. You can however just register your own test property. Should you need more than the 30-day trial period let us know and we will extend it.</li> <li><strong>Callback: how do you know which customers belong to us?</strong> The first time you send an update on behalf of a customer through our API this customer will be marked as a user of your PMS. From then on you will receive callbacks for this customer.</li> <li><strong>Callback: why do I not receive any bookings?</strong> Make sure the property is associated with your vendor account. You can check this by going to the <a href=\"https://inbox.myallocator.com/en/manage/vendors\">&quot;PMS Connections&quot; page</a> inside the myallocator website for the property in question to check that your PMS is listed. Also make sure to set your callback URL with the <em>VendorSet</em> call <strong>and</strong> set <em>Callback/NotifyBooking</em> to true.</li> <li><strong>Callback: how do I test the callback?</strong> You can use the free BookNow widget inside the myallocator website. Add availability and rates, go to MANAGE, enable BookNow and then create bookings through the preview.</li> <li><strong>Can I send updates in parallel?</strong> You can for different properties. What you should never do is send an update for a property without waiting for the previous update for this property to succeed/fail. Otherwise you can run into race-conditions where the later update succeeds before the first update, opening up availability on the channel unintentionally.</li> <li><strong>Why can there be multiple RoomTypeIds for a booking?</strong> The same channel room can be assigned to multiple myallocator rooms. For this scenario we send the sum of available rooms/beds and the highest price of any available room that is mapped to this channel room. So the list of RoomTypeIds represents all matching rooms, but it does not mean that all of them were actually booked. Check out the warning on the Automatic Adjustments developer page for more details on how to adjust for this scenario.</li> <li><strong>Do I need PCI Certification for BookingPaymentDownload?</strong> Yes. We require a PCI compliance certificate from you. Most hostel and small PMS companies (those with less than $10m year in revenue) can use a Level 3 &quot;self&quot; certification. Level 3 PCI Compliance simply requires you attest that you are following secure coding practices in your application, and server hosting environment. In most cases it will require you attain attestation from your server hosting and gateway vendors to ensure a complete web of trust. More information: http://www.pcicompliance101.net/pci-dss-compliance.htm</li> <li><strong>For our testing purpose, will you give us an appropriate account?</strong> You are welcome to create a trial account and use that for testing, if you would like it extended you can talk to your relationship manager. (devhelp can't give you a free account, only the relationship manager can do that)</li> <li><strong>In some Methods the <em>PropertyId</em> is required, where can we get this?</strong> It is returned when a property is created, or via: PropertyList</li> <li><strong>Some API calls found in the documentation require special vendor permissions. How may we acquiring them?</strong> Speak with your relationship manager, very few integrations need those, only very deep integrations with thousands of users. It is much better (and more common) to have your user sign up on www.myallocator.com, create property, setup channels, etc. then provide you with a username+password which you exchange for a UserToken (that doesn't expire).</li> <li><strong>What API calls should absolutely be implemented?</strong> The minimum we recommend to integrate is <em>RoomList</em>, <em>ARIUpdate</em> and <em>ARIUpdateStatus</em>. If you don't use booking callbacks (which you really should) you also need <em>BookingList</em>. <em>PropertyList</em> is highly recommended to retrieve the <em>PropertyId</em> for the properties that each user has.</li> </ul>",
+    "version": "201804.0.1",
+    "description": "<p>This section contains frequently asked questions.</p> <ul> <li><strong>How should I deal with failed channel updates?</strong> If the error is noted as non-fatal on the Error Code page then retry the update after a few minutes. Failing updates are not as rare as you would think because channels do go down and become unresponsive. Fatal errors should not be automatically retried as they need user intervention. Make sure to show the error message to the customer.</li> <li><strong>Are there any limits on how many updates can be send at once?</strong> There is (currently) no limit, but you're strongly advised to split large updates (especially full refreshes) into smaller chunks of 30-60 days. This has the advantage that you can easily re-run failed chunks and it will make debugging problems easier.</li> <li><strong>I cannot log in to myallocator with the test credentials. Why?</strong> This is to avoid the settings for the test properties from being changed. You can however just register your own test property. Should you need more than the 30-day trial period let us know and we will extend it.</li> <li><strong>Callback: how do you know which customers belong to us?</strong> The first time you send an update on behalf of a customer through our API this customer will be marked as a user of your PMS. From then on you will receive callbacks for this customer.</li> <li><strong>Callback: why do I not receive any bookings?</strong> Make sure the property is associated with your vendor account. You can check this by going to the <a href=\"https://inbox.myallocator.com/en/manage/vendors\">&quot;PMS Connections&quot; page</a> inside the myallocator website for the property in question to check that your PMS is listed. Also make sure to set your callback URL with the <em>VendorSet</em> call <strong>and</strong> set <em>Callback/NotifyBooking</em> to true.</li> <li><strong>Callback: how do I test the callback?</strong> You can use the free BookNow widget inside the myallocator website. Add availability and rates, go to MANAGE, enable BookNow and then create bookings through the preview.</li> <li><strong>Can I send updates in parallel?</strong> You can for different properties. What you should never do is send an update for a property without waiting for the previous update for this property to succeed/fail. Otherwise you can run into race-conditions where the later update succeeds before the first update, opening up availability on the channel unintentionally.</li> <li><strong>Why can there be multiple RoomTypeIds for a booking?</strong> The same channel room can be assigned to multiple myallocator rooms. For this scenario we send the sum of available rooms/beds and the highest price of any available room that is mapped to this channel room. So the list of RoomTypeIds represents all matching rooms, but it does not mean that all of them were actually booked. Check out the warning on the Automatic Adjustments developer page for more details on how to adjust for this scenario.</li> <li><strong>Do I need PCI Certification for BookingPaymentDownload?</strong> Yes. We require a PCI compliance certificate from you. Most hostel and small PMS companies (those with less than $10m year in revenue) can use a Level 3 &quot;self&quot; certification. Level 3 PCI Compliance simply requires you attest that you are following secure coding practices in your application, and server hosting environment. In most cases it will require you attain attestation from your server hosting and gateway vendors to ensure a complete web of trust. <a href=\"http://www.pcicompliance101.net/pci-dss-compliance.htm\">Click for more information</a>.</li> <li><strong>For our testing purpose, will you give us an appropriate account?</strong> You are welcome to create a trial account and use that for testing, if you would like it extended you can talk to your relationship manager. (devhelp can't give you a free account, only the relationship manager can do that)</li> <li><strong>In some Methods the <em>PropertyId</em> is required, where can we get this?</strong> It is returned when a property is created, or via: PropertyList</li> <li><strong>Some API calls found in the documentation require special vendor permissions. How may we acquiring them?</strong> Speak with your relationship manager, very few integrations need those, only very deep integrations with thousands of users. It is much better (and more common) to have your user sign up on www.myallocator.com, create property, setup channels, etc. then provide you with a username+password which you exchange for a UserToken (that doesn't expire).</li> <li><strong>What API calls should absolutely be implemented?</strong> The minimum we recommend to integrate is <em>RoomList</em>, <em>ARIUpdate</em> and <em>ARIUpdateStatus</em>. If you don't use booking callbacks (which you really should) you also need <em>BookingList</em>. <em>PropertyList</em> is highly recommended to retrieve the <em>PropertyId</em> for the properties that each user has.</li> </ul>",
     "filename": "perllib/MAAPI.pm",
     "groupTitle": "4_Appendix"
   },
@@ -4119,7 +4409,7 @@ define({ "api": [
     "url": "{}",
     "title": "Global Error Codes",
     "name": "Global_Error_Codes",
-    "version": "201601.0.0",
+    "version": "201804.0.1",
     "description": "<p>Errors are divided into three categories. A global error will have a single Errors tag with no further encapsulation and only a single Error tag.</p> <p>An API method specific error will be included in the method name. Again, there will only be a single Error tag. The third type of error is channel specific. The Errors tag is included in the method name and there may be multiple Error tags.</p> <table> <thead> <tr> <th>Code</th> <th>Description</th> </tr> </thead> <tbody> <tr> <td>2</td> <td>Missing authentication tags</td> </tr> <tr> <td>3</td> <td>Invalid user or user password</td> </tr> <tr> <td>4</td> <td>Invalid vendor or vendor password</td> </tr> <tr> <td>5</td> <td>Vendor disabled</td> </tr> <tr> <td>6</td> <td>User has no credit left</td> </tr> <tr> <td>7</td> <td>User has no permission to change availability for this property</td> </tr> <tr> <td>8</td> <td>No such API method</td> </tr> <tr> <td>9</td> <td>Unsupported channel</td> </tr> <tr> <td>10</td> <td>No channels selected</td> </tr> <tr> <td>11</td> <td>No allocations submitted</td> </tr> <tr> <td>12</td> <td>Invalid room type id (does not exist or not assigned to this property)</td> </tr> <tr> <td>13</td> <td>Missing allocation info (price, dates, units)</td> </tr> <tr> <td>14</td> <td>Internal error. Support has been notified!</td> </tr> <tr> <td>15</td> <td>Missing or wrong channel credentials on myallocator.com</td> </tr> <tr> <td>16</td> <td>End date before start date</td> </tr> <tr> <td>17</td> <td>Start date too far in the future (&gt;4 years)</td> </tr> <tr> <td>18</td> <td>Invalid property id</td> </tr> <tr> <td>19</td> <td>Vendor not enabled to use this method</td> </tr> <tr> <td>20</td> <td>Missing required XML fields</td> </tr> <tr> <td>21</td> <td>No applicable dates submitted</td> </tr> <tr> <td>22</td> <td>Invalid update id</td> </tr> <tr> <td>301</td> <td>Invalid characters in new username</td> </tr> <tr> <td>302</td> <td>Username exists already</td> </tr> <tr> <td>303</td> <td>Invalid values (check Breakfast, Currency, ExpiryDate)</td> </tr> <tr> <td>401</td> <td>Invalid date format</td> </tr> <tr> <td>402</td> <td>Missing or invalid search criteria</td> </tr> <tr> <td>450</td> <td>Payment password is invalid</td> </tr> </tbody> </table> <p><em>Channel Specific errors and warnings</em></p> <table> <thead> <tr> <th>Code</th> <th>Description</th> </tr> </thead> <tbody> <tr> <td>202</td> <td>Channel skipped (not setup)</td> </tr> <tr> <td>203</td> <td>Channel did not respond</td> </tr> <tr> <td>204</td> <td>Channel skipped (no applicable rooms)</td> </tr> <tr> <td>205</td> <td>Incorrect room setup. The room type mapping needs to be updated on myallocator.com.</td> </tr> <tr> <td>206</td> <td>Channel only updates up to a certain period in the future. Some dates were skipped.</td> </tr> <tr> <td>207</td> <td>Skipped room type (not setup with channel)</td> </tr> <tr> <td>208</td> <td>Partial success: ...</td> </tr> <tr> <td>209</td> <td>No channels are setup, only myallocator database was updated</td> </tr> <tr> <td>99</td> <td>Check/Display ErrMsg or WarningMsg content</td> </tr> </tbody> </table>",
     "filename": "perllib/MAAPI.pm",
     "groupTitle": "4_Appendix"
@@ -4130,7 +4420,7 @@ define({ "api": [
     "url": "{}",
     "title": "Reporting Issues/Bugs",
     "name": "Reporting_Issues_Bugs",
-    "version": "201601.0.0",
+    "version": "201804.0.1",
     "description": "<p>If you are having an issue with a particular API call please open a ticket by emailing devhelp@myallocator.com. Please be sure to ALWAYS include the request ID (RUID).</p>",
     "filename": "perllib/MAAPI.pm",
     "groupTitle": "4_Appendix"
@@ -4141,8 +4431,19 @@ define({ "api": [
     "url": "{}",
     "title": "Terminology",
     "name": "Terminology",
-    "version": "201601.0.0",
+    "version": "201804.0.1",
     "description": "<table> <thead> <tr> <th>Term</th> <th>Description</th> </tr> </thead> <tbody> <tr> <td>Vendor</td> <td>You as the owner and developer of the front desk software.</td> </tr> <tr> <td>User/Customer</td> <td>Someone using your product and who is also registered on myallocator.com.</td> </tr> <tr> <td>Allocation</td> <td>A number indicating how many available beds or rooms there are.</td> </tr> <tr> <td>ARI</td> <td>Availablity (Allocation) along with Rate Information</td> </tr> </tbody> </table>",
+    "filename": "perllib/MAAPI.pm",
+    "groupTitle": "4_Appendix"
+  },
+  {
+    "group": "4_Appendix",
+    "type": "",
+    "url": "{}",
+    "title": "Timezone Codes",
+    "name": "Timezone_Codes",
+    "version": "201804.0.1",
+    "description": "<p>Check <a href=\"https://github.com/MyAllocator/apidocs/blob/gh-pages/timezone-list.md\">this document on Github</a> for the complete list.</p>",
     "filename": "perllib/MAAPI.pm",
     "groupTitle": "4_Appendix"
   },
@@ -4152,7 +4453,7 @@ define({ "api": [
     "url": "{}",
     "title": "Version History",
     "name": "Version_History",
-    "version": "201601.0.0",
+    "version": "201804.0.1",
     "description": "<table> <thead> <tr> <th>Date</th> <th>Version</th> <th>Change</th> </tr> </thead> <tbody> <tr> <td>2018-04-02</td> <td>201804.0.1</td> <td>Success flag guaranteed to be returned in every response</td> </tr> <tr> <td>2018-03-20</td> <td>201803.0.2</td> <td>Unique request ID (RUID) included in every response</td> </tr> <tr> <td>2018-03-08</td> <td>201803.0.1</td> <td>ARI updates 4 years into the future now possible</td> </tr> <tr> <td>2018-01-24</td> <td>201801.0.2</td> <td>Simplified token usage</td> </tr> <tr> <td>2018-01-22</td> <td>201801.0.1</td> <td>PropertyChannelList able to limit by property ID</td> </tr> <tr> <td>2017-04-12</td> <td>201710.0.1</td> <td>New API call: PropertyChannelImportARI</td> </tr> <tr> <td>2017-04-12</td> <td>201610.0.2</td> <td>ICalLink field added to call RoomList</td> </tr> <tr> <td>2016-10-09</td> <td>201610.0.1</td> <td>Changes to ARIRules</td> </tr> <tr> <td>2016-05-26</td> <td>201605.0.2</td> <td>New API call: BookingCancel</td> </tr> <tr> <td>2016-05-25</td> <td>201605.0.1</td> <td>Removed CANCEL/UNCANCEL from BookingAction, added more options to BookingList</td> </tr> <tr> <td>2016-03-15</td> <td>201603.0.1</td> <td>New API calls: RatePlanCreate, RatePlanUpdate, RatePlanRemove</td> </tr> <tr> <td>2016-02-04</td> <td>201601.0.2</td> <td>VERSIONED JSON response format PropertyChannelList to include currency (and future fields)</td> </tr> <tr> <td>2016-01-08</td> <td>201601.0.1</td> <td>Fixed documentation for ARIUpdate to include Auth/VendorId Auth/VendorPassword</td> </tr> <tr> <td>2015-10-13</td> <td>201501.0.13</td> <td>Fix BookingList ModificationEndDate so it goes until 11:59pm</td> </tr> <tr> <td>2015-10-01</td> <td>201501.0.12</td> <td>Fix various documentation issues</td> </tr> <tr> <td>2015-07-24</td> <td>201501.0.11</td> <td>added BookingPaymentPasswordValidate</td> </tr> <tr> <td>2015-07-09</td> <td>201501.0.10</td> <td>added IncludeArchived to BookingList</td> </tr> <tr> <td>2015-05-27</td> <td>201501.0.9</td> <td>new BookingList parameters ModificationStartDateTime, ModificationEndDateTime, CreationStartDateTime, CreationEndDateTime</td> </tr> <tr> <td>2015-05-18</td> <td>201501.0.8</td> <td>new BookingAction commands</td> </tr> <tr> <td>2015-03-20</td> <td>201501.0.7</td> <td>Corrected explanation of Units on RoomCreate (thanks Petr T.)</td> </tr> <tr> <td>2015-02-19</td> <td>201501.0.6</td> <td>Add Options.NormalizeToCurrency to BookingList</td> </tr> <tr> <td>2015-02-19</td> <td>201501.0.5</td> <td>Added more documentation to Booking Samples</td> </tr> <tr> <td>2015-02-03</td> <td>201501.0.4</td> <td>Added .Options.IgnoreInvalidRooms to MAAPI</td> </tr> <tr> <td>2015-02-02</td> <td>201501.0.3</td> <td>Improved documentation for multiple overlapping Allocations in ARIUpdate</td> </tr> <tr> <td>2015-01-22</td> <td>201501.0.2</td> <td>Improved documentation with Booking samples</td> </tr> <tr> <td>2015-01-09</td> <td>201501.0.1</td> <td>Initial release of 201601[beta] (new functions: ARIRules)</td> </tr> <tr> <td>2015-01-08</td> <td>201408.0.13</td> <td>Corrected validation logic issue with ARIUpdate (properly validates Rooms)</td> </tr> <tr> <td>2015-01-07</td> <td>201408.0.12</td> <td>Corrected issue with AssociateUserToPMS requiring Auth/PropertyId</td> </tr> <tr> <td>2015-01-06</td> <td>201408.0.11</td> <td>Modified FailIfUpdateActive default to &quot;false&quot;</td> </tr> <tr> <td>2015-01-05</td> <td>201408.0.10</td> <td>fixed doc, Price-Weekend is &quot;PriceWeekend&quot;</td> </tr> <tr> <td>2015-01-05</td> <td>201408.0.9</td> <td>added JSON raw input mode - application/json</td> </tr> <tr> <td>2014-12-28</td> <td>201408.0.8</td> <td>added Auth/Debug</td> </tr> <tr> <td>2014-12-28</td> <td>201408.0.7</td> <td>fixed bug in ARIUpdate where zero unit updates would not be applied</td> </tr> <tr> <td>2014-12-26</td> <td>201408.0.6</td> <td>added more documentation to ChannelList and curl example to HelloWorld</td> </tr> <tr> <td>2014-12-24</td> <td>201408.0.5</td> <td>added error logging with ticket responses</td> </tr> <tr> <td>2014-12-23</td> <td>201408.0.4</td> <td>added VendorId to various docs, and propertyid, unified error handling</td> </tr> <tr> <td>2014-12-19</td> <td>201408.0.3</td> <td>fixed bug in RoomCreate (did not return RoomId)</td> </tr> <tr> <td>2014-12-15</td> <td>201408.0.2</td> <td>renamed LoopBookingAction into BookingAction</td> </tr> <tr> <td>2014-12-04</td> <td>201408.0.1</td> <td>initial release of new API</td> </tr> <tr> <td>2012-10-24</td> <td>1.6.2</td> <td>Updated booking information (new: CommissionIncludedInTotal).</td> </tr> <tr> <td>2012-10-24</td> <td>1.6.1</td> <td>Updated booking information and updated channel list (new: eb,air, orb, boo, tra).</td> </tr> <tr> <td>2012-10-24</td> <td>1.6</td> <td>New feature Booking Callback and updated channel list (new: max).</td> </tr> <tr> <td>2012-09-20</td> <td>1.5.2</td> <td>Updated channel list (new: exp, ysh, eb). Get/Set property country.</td> </tr> <tr> <td>2012-07-04</td> <td>1.5.1</td> <td>Updated channel list. Added MinStay/MaxStay example.</td> </tr> <tr> <td>2011-09-17</td> <td>1.5</td> <td>New method SetRoomTypes to add/update/remove rooms.</td> </tr> <tr> <td>2011-09-17</td> <td>1.4.1</td> <td>GetBookings: Minor correction regarding the end date. It's not the departure date but rather the departure date - 1.</td> </tr> <tr> <td>2011-01-15</td> <td>1.4</td> <td>New methods SetAllocation (non-blocking), SetLogin, GetUpdateStatus, GetBookings. Support for MinStay and MaxStay.</td> </tr> <tr> <td>2010-11-09</td> <td>1.3.1</td> <td>Updated channel list. GetRoomTypes: Obsoleted &quot;Ensuite&quot;, &quot;DoubleBed&quot; and &quot;Beds&quot; (replaced by new property &quot;Occupancy&quot;). GetProperties: shows which days are configure for weekends.</td> </tr> <tr> <td>2010-05-30</td> <td>1.3</td> <td>GetRoomTypes includes a room description (Label). Removed need to list channels to update to and ability to exclude channels. Skipped channels now warnings rather than errors.</td> </tr> <tr> <td>2010-05-05</td> <td>1.2</td> <td>Added links to XML samples. New channel: hb</td> </tr> <tr> <td>2010-04-30</td> <td>1.1</td> <td>Changed Room to \\textit{RoomType} to clarify matters</td> </tr> <tr> <td>2010-04-27</td> <td>1.0</td> <td>Initial release</td> </tr> </tbody> </table> <hr> <p>v201601 : ARIRules, v201408 : new JSON format, all call names switched to NounPronounVerb format. v1 : the original api (which didn't support versioning)</p>",
     "filename": "perllib/MAAPI.pm",
     "groupTitle": "4_Appendix"
