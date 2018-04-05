@@ -2431,6 +2431,13 @@ define({ "api": [
             "optional": false,
             "field": "Data",
             "description": "<p>Base64 encoded raw image data</p>"
+          },
+          {
+            "group": "Request",
+            "type": "String",
+            "optional": false,
+            "field": "Description",
+            "description": "<p>Description of the image to show on a channel (max. 512 characters)</p>"
           }
         ]
       }
@@ -2438,17 +2445,17 @@ define({ "api": [
     "examples": [
       {
         "title": "XML Request:",
-        "content": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<PropertyImageCreate>\n <Auth>\n   <UserToken>User token</UserToken>\n   <PropertyId>Property ID on myallocator.com</PropertyId>\n   <VendorId>Your Vendor ID</VendorId>\n   <VendorPassword>Your Vendor Password</VendorPassword>\n </Auth>\n <CreatePropertyImage>\n   <PropertyImages>\n       <PropertyImage>\n         <Filename>double-room.jpg</Filename>\n         <Data>oAAAANSUhEUgAAG2QAABPqCAYAAA[...]</Data>\n       </PropertyImage>\n   </PropertyImages>\n </CreatePropertyImage>\n</PropertyImageCreate>",
+        "content": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<PropertyImageCreate>\n <Auth>\n   <UserToken>User token</UserToken>\n   <PropertyId>Property ID on myallocator.com</PropertyId>\n   <VendorId>Your Vendor ID</VendorId>\n   <VendorPassword>Your Vendor Password</VendorPassword>\n </Auth>\n <CreatePropertyImage>\n   <PropertyImages>\n       <PropertyImage>\n         <Filename>double-room.jpg</Filename>\n         <Data>oAAAANSUhEUgAAG2QAABPqCAYAAA[...]</Data>\n         <Description>The Spa</Description>\n       </PropertyImage>\n   </PropertyImages>\n </CreatePropertyImage>\n</PropertyImageCreate>",
         "type": "json"
       },
       {
         "title": "JSON Request:",
-        "content": "{\n    \"Auth/VendorId\":\"Your Vendor ID\",\n    \"Auth/VendorPassword\":\"Your Vendor Password\",\n    \"Auth/UserToken\":\"User token\",\n    \"Auth/PropertyId\":\"Property ID on myallocator.com\",\n    \"PropertyImages\": [\n      {\n        \"Filename\": \"double-room.jpg\",\n        \"Data\": \"oAAAANSUhEUgAAG2QAABPqCAYAAA[...]\"\n      }\n    ]\n}",
+        "content": "{\n    \"Auth/VendorId\":\"Your Vendor ID\",\n    \"Auth/VendorPassword\":\"Your Vendor Password\",\n    \"Auth/UserToken\":\"User token\",\n    \"Auth/PropertyId\":\"Property ID on myallocator.com\",\n    \"PropertyImages\": [\n      {\n        \"Filename\": \"double-room.jpg\",\n        \"Data\": \"oAAAANSUhEUgAAG2QAABPqCAYAAA[...]\",\n        \"Description\": \"The Spa\"\n      }\n    ]\n}",
         "type": "json"
       },
       {
         "title": "curl w/ JSON",
-        "content": "curl https://api.myallocator.com/pms/v201804/json/PropertyImageCreate -d@- <<EOJSON\njson={\n    \"Auth/VendorId\":\"Your Vendor ID\",\n    \"Auth/VendorPassword\":\"Your Vendor Password\",\n    \"Auth/UserToken\":\"User token\",\n    \"Auth/PropertyId\":\"Property ID on myallocator.com\",\n    \"PropertyImages\": [\n      {\n        \"Filename\": \"double-room.jpg\",\n        \"Data\": \"oAAAANSUhEUgAAG2QAABPqCAYAAA[...]\"\n      }\n    ]\n}\nEOJSON",
+        "content": "curl https://api.myallocator.com/pms/v201804/json/PropertyImageCreate -d@- <<EOJSON\njson={\n    \"Auth/VendorId\":\"Your Vendor ID\",\n    \"Auth/VendorPassword\":\"Your Vendor Password\",\n    \"Auth/UserToken\":\"User token\",\n    \"Auth/PropertyId\":\"Property ID on myallocator.com\",\n    \"PropertyImages\": [\n      {\n        \"Filename\": \"double-room.jpg\",\n        \"Data\": \"oAAAANSUhEUgAAG2QAABPqCAYAAA[...]\",\n        \"Description\": \"The Spa\"\n      }\n    ]\n}\nEOJSON",
         "type": "json"
       }
     ],
@@ -2457,17 +2464,31 @@ define({ "api": [
         "Response": [
           {
             "group": "Response",
-            "type": "String",
+            "type": "Boolean",
             "optional": false,
-            "field": "Filename",
-            "description": "<p>Will be replaced by us with a random string, but the extension is taken from this filename</p>"
+            "field": "Success",
+            "description": "<p>Whether the upload was succesful</p>"
+          },
+          {
+            "group": "Response",
+            "type": "Object",
+            "optional": false,
+            "field": "PropertyImage",
+            "description": "<p>Object containing more details about the uploaded image</p>"
+          },
+          {
+            "group": "Response",
+            "type": "Integer",
+            "optional": false,
+            "field": "PropertyImageId",
+            "description": "<p>ID of the newly uploaded image</p>"
           },
           {
             "group": "Response",
             "type": "String",
             "optional": false,
-            "field": "Data",
-            "description": "<p>Base64 encoded raw image data</p>"
+            "field": "SavedFilename",
+            "description": "<p>Filename as stored on server</p>"
           }
         ]
       },
@@ -2554,7 +2575,7 @@ define({ "api": [
             "type": "String",
             "optional": false,
             "field": "Id",
-            "description": "<p>The property image ID which will reference the property image.</p>"
+            "description": "<p>The property image ID which will reference the property image</p>"
           },
           {
             "group": "Response",
@@ -2562,18 +2583,25 @@ define({ "api": [
             "optional": false,
             "field": "SavedFilename",
             "description": "<p>Filename in our system</p>"
+          },
+          {
+            "group": "Response",
+            "type": "String",
+            "optional": false,
+            "field": "Description",
+            "description": "<p>Image description as provided by the customer</p>"
           }
         ]
       },
       "examples": [
         {
           "title": "XML Response",
-          "content": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<PropertyImageListResponse>\n <PropertyImages>\n   <PropertyImage>\n     <ImageId>343</ImageId>\n     <SavedFilename>d4790aaafdf4512dad0c4f2eafe72946.png</SavedFilename>\n   </PropertyImage>\n\n   <PropertyImage>\n     <ImageId>344</ImageId>\n     <SavedFilename>a92714654b7486ba6ca010f23bf4c0b6.jpg</SavedFilename>\n   </PropertyImage>\n  </PropertyImages>\n</PropertyImageListResponse>",
+          "content": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<PropertyImageListResponse>\n <PropertyImages>\n   <PropertyImage>\n     <ImageId>343</ImageId>\n     <SavedFilename>d4790aaafdf4512dad0c4f2eafe72946.png</SavedFilename>\n     <Description>The Spa</Description>\n   </PropertyImage>\n\n   <PropertyImage>\n     <ImageId>344</ImageId>\n     <SavedFilename>a92714654b7486ba6ca010f23bf4c0b6.jpg</SavedFilename>\n     <Description>The Lobby</Description>\n   </PropertyImage>\n  </PropertyImages>\n</PropertyImageListResponse>",
           "type": "json"
         },
         {
           "title": "JSON Response",
-          "content": "{\n  \"PropertyImages\" : [\n    {\n      \"URL\" : \"https://inbox.myallocator.com/n/user_image.xt?pid=4304&img=01D0FAB8-5BF6-11E5-8767-3120FD8AEA94.jpg\",\n      \"Thumbnail\" : \"https://inbox.myallocator.com/n/user_image_tb.xt?pid=4304&img=01D0FAB8-5BF6-11E5-8767-3120FD8AEA94.jpg\",\n      \"ImageId\" : \"343\",\n      \"SavedFilename\" : \"01D0FAB8-5BF6-11E5-8767-3120FD8AEA94.jpg\"\n    },\n    {\n      \"URL\" : \"https://inbox.myallocator.com/n/user_image.xt?pid=4304&img=4257D9FE-687A-11E5-B908-DDCC3C83E8DD.jpg\",\n      \"Thumbnail\" : \"https://inbox.myallocator.com/n/user_image_tb.xt?pid=4304&img=4257D9FE-687A-11E5-B908-DDCC3C83E8DD.jpg\",\n      \"ImageId\" : \"466\",\n      \"SavedFilename\" : \"4257D9FE-687A-11E5-B908-DDCC3C83E8DD.jpg\"\n    }\n  ]\n}",
+          "content": "{\n  \"PropertyImages\" : [\n    {\n      \"URL\" : \"https://inbox.myallocator.com/n/user_image.xt?pid=4304&img=01D0FAB8-5BF6-11E5-8767-3120FD8AEA94.jpg\",\n      \"Thumbnail\" : \"https://inbox.myallocator.com/n/user_image_tb.xt?pid=4304&img=01D0FAB8-5BF6-11E5-8767-3120FD8AEA94.jpg\",\n      \"ImageId\" : \"343\",\n      \"SavedFilename\" : \"01D0FAB8-5BF6-11E5-8767-3120FD8AEA94.jpg\",\n      \"Description\":\"The Spa\"\n    },\n    {\n      \"URL\" : \"https://inbox.myallocator.com/n/user_image.xt?pid=4304&img=4257D9FE-687A-11E5-B908-DDCC3C83E8DD.jpg\",\n      \"Thumbnail\" : \"https://inbox.myallocator.com/n/user_image_tb.xt?pid=4304&img=4257D9FE-687A-11E5-B908-DDCC3C83E8DD.jpg\",\n      \"ImageId\" : \"466\",\n      \"SavedFilename\" : \"4257D9FE-687A-11E5-B908-DDCC3C83E8DD.jpg\",\n      \"Description\":\"The Lobby\"\n    }\n  ]\n}",
           "type": "json"
         }
       ]
@@ -2625,25 +2653,25 @@ define({ "api": [
             "type": "String",
             "optional": false,
             "field": "PropertyImageId",
-            "description": "<p>of image to be removed.</p>"
+            "description": "<p>ID of image to be removed</p>"
           }
         ]
       }
     },
     "examples": [
       {
-        "title": "JSON Request (single property image)",
-        "content": "{\n    \"Auth/VendorId\":\"Your Vendor ID\",\n    \"Auth/VendorPassword\":\"Your Vendor Password\",\n    \"Auth/UserToken\":\"User token\",\n    \"Auth/PropertyId\":\"Property ID on myallocator.com\",\n    'PropertyImage':{ 'PropertyImageId':### }\n}",
+        "title": "JSON Request (remove single property image)",
+        "content": "{\n    \"Auth/VendorId\":\"Your Vendor ID\",\n    \"Auth/VendorPassword\":\"Your Vendor Password\",\n    \"Auth/UserToken\":\"User token\",\n    \"Auth/PropertyId\":\"Property ID on myallocator.com\",\n    \"PropertyImage\":{ \"PropertyImageId\": \"1234\" }\n}",
         "type": "json"
       },
       {
-        "title": "JSON Request (multiple property images)",
-        "content": "{\n    \"Auth/VendorId\":\"Your Vendor ID\",\n    \"Auth/VendorPassword\":\"Your Vendor Password\",\n    \"Auth/UserToken\":\"User token\",\n    \"Auth/PropertyId\":\"Property ID on myallocator.com\",\n    'PropertyImages': [\n        { 'PropertyImageId':## },\n        { 'PropertyImageId':## }\n    ]\n}",
+        "title": "JSON Request (remove multiple property images)",
+        "content": "{\n    \"Auth/VendorId\":\"Your Vendor ID\",\n    \"Auth/VendorPassword\":\"Your Vendor Password\",\n    \"Auth/UserToken\":\"User token\",\n    \"Auth/PropertyId\":\"Property ID on myallocator.com\",\n    \"PropertyImages\": [\n        { \"PropertyImageId\": \"1234\" },\n        { \"PropertyImageId\": \"1234\" }\n    ]\n}",
         "type": "json"
       },
       {
         "title": "curl w/ JSON",
-        "content": "curl https://api.myallocator.com/pms/v201804/json/PropertyImageRemove -d@- <<EOJSON\njson={\n    \"Auth/VendorId\":\"Your Vendor ID\",\n    \"Auth/VendorPassword\":\"Your Vendor Password\",\n    \"Auth/UserToken\":\"User token\",\n    \"Auth/PropertyId\":\"Property ID on myallocator.com\",\n    'PropertyImage':{ 'PropertyImageId':### }\n}\nEOJSO\nN",
+        "content": "curl https://api.myallocator.com/pms/v201804/json/PropertyImageRemove -d@- <<EOJSON\njson={\n    \"Auth/VendorId\":\"Your Vendor ID\",\n    \"Auth/VendorPassword\":\"Your Vendor Password\",\n    \"Auth/UserToken\":\"User token\",\n    \"Auth/PropertyId\":\"Property ID on myallocator.com\",\n    \"PropertyImage\":{ \"PropertyImageId\": \"1234\" }\n}\nEOJSON",
         "type": "json"
       },
       {
@@ -3470,7 +3498,7 @@ define({ "api": [
           },
           {
             "group": "Request",
-            "type": "String",
+            "type": "Integer",
             "optional": false,
             "field": "RoomId",
             "description": "<p>RoomId for which the image is uploaded for</p>"
@@ -3488,6 +3516,13 @@ define({ "api": [
             "optional": false,
             "field": "Data",
             "description": "<p>Base64 encoded raw image data</p>"
+          },
+          {
+            "group": "Request",
+            "type": "String",
+            "optional": false,
+            "field": "Description",
+            "description": "<p>Description of the image to show on a channel (max. 512 characters)</p>"
           }
         ]
       }
@@ -3495,17 +3530,17 @@ define({ "api": [
     "examples": [
       {
         "title": "XML Request",
-        "content": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<RoomImageCreate>\n <Auth>\n   <UserToken>User token</UserToken>\n   <PropertyId>Property ID on myallocator.com</PropertyId>\n   <VendorId>Your Vendor ID</VendorId>\n   <VendorPassword>Your Vendor Password</VendorPassword>\n </Auth>\n <CreateRoomImage>\n   <RoomImages>\n     <RoomImage>\n       <RoomId>5532</RoomId>\n       <Filename>double-room.jpg</Filename>\n       <Data>oAAAANSUhEUgAAG2QAABPqCAYAAA[...]</Data>\n     </RoomImage>\n   </RoomImages>\n </CreateRoomImage>\n</RoomImageCreate>",
+        "content": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<RoomImageCreate>\n <Auth>\n   <UserToken>User token</UserToken>\n   <PropertyId>Property ID on myallocator.com</PropertyId>\n   <VendorId>Your Vendor ID</VendorId>\n   <VendorPassword>Your Vendor Password</VendorPassword>\n </Auth>\n <CreateRoomImage>\n   <RoomImages>\n     <RoomImage>\n       <RoomId>5532</RoomId>\n       <Filename>double-room.jpg</Filename>\n       <Data>oAAAANSUhEUgAAG2QAABPqCAYAAA[...]</Data>\n       <Description>The Bedroom</Description>\n     </RoomImage>\n   </RoomImages>\n </CreateRoomImage>\n</RoomImageCreate>",
         "type": "json"
       },
       {
         "title": "JSON Request",
-        "content": "{\n    \"Auth/VendorId\":\"Your Vendor ID\",\n    \"Auth/VendorPassword\":\"Your Vendor Password\",\n    \"Auth/UserToken\":\"User token\",\n    \"Auth/PropertyId\":\"Property ID on myallocator.com\",\n    \"RoomImages\": [\n      {\n        \"RoomId\": 5532,\n        \"Filename\": \"double-room.jpg\",\n        \"Data\": \"oAAAANSUhEUgAAG2QAABPqCAYAAA[...]\"\n      }\n    ]\n}",
+        "content": "{\n    \"Auth/VendorId\":\"Your Vendor ID\",\n    \"Auth/VendorPassword\":\"Your Vendor Password\",\n    \"Auth/UserToken\":\"User token\",\n    \"Auth/PropertyId\":\"Property ID on myallocator.com\",\n    \"RoomImages\": [\n      {\n        \"RoomId\": 5532,\n        \"Filename\": \"double-room.jpg\",\n        \"Data\": \"oAAAANSUhEUgAAG2QAABPqCAYAAA[...]\",\n        \"Description\": \"The Bedroom\"\n      }\n    ]\n}",
         "type": "json"
       },
       {
         "title": "curl w/ JSON",
-        "content": "curl https://api.myallocator.com/pms/v201804/json/RoomImageCreate -d@- <<EOJSON\njson={\n    \"Auth/VendorId\":\"Your Vendor ID\",\n    \"Auth/VendorPassword\":\"Your Vendor Password\",\n    \"Auth/UserToken\":\"User token\",\n    \"Auth/PropertyId\":\"Property ID on myallocator.com\",\n    \"RoomImages\": [\n      {\n        \"RoomId\": 5532,\n        \"Filename\": \"double-room.jpg\",\n        \"Data\": \"oAAAANSUhEUgAAG2QAABPqCAYAAA[...]\"\n      }\n    ]\n}\nEOJSON",
+        "content": "curl https://api.myallocator.com/pms/v201804/json/RoomImageCreate -d@- <<EOJSON\njson={\n    \"Auth/VendorId\":\"Your Vendor ID\",\n    \"Auth/VendorPassword\":\"Your Vendor Password\",\n    \"Auth/UserToken\":\"User token\",\n    \"Auth/PropertyId\":\"Property ID on myallocator.com\",\n    \"RoomImages\": [\n      {\n        \"RoomId\": 5532,\n        \"Filename\": \"double-room.jpg\",\n        \"Data\": \"oAAAANSUhEUgAAG2QAABPqCAYAAA[...]\",\n        \"Description\": \"The Bedroom\"\n      }\n    ]\n}\nEOJSON",
         "type": "json"
       }
     ],
@@ -3514,17 +3549,31 @@ define({ "api": [
         "Response": [
           {
             "group": "Response",
-            "type": "String",
+            "type": "Boolean",
             "optional": false,
-            "field": "Filename",
-            "description": "<p>Will be replaced by us with a random string, but the extension is taken from this filename</p>"
+            "field": "Success",
+            "description": "<p>Whether the upload was succesful</p>"
+          },
+          {
+            "group": "Response",
+            "type": "Object",
+            "optional": false,
+            "field": "RoomImage",
+            "description": "<p>Object containing more details about the uploaded image</p>"
+          },
+          {
+            "group": "Response",
+            "type": "Integer",
+            "optional": false,
+            "field": "RoomImageId",
+            "description": "<p>ID of the newly uploaded image</p>"
           },
           {
             "group": "Response",
             "type": "String",
             "optional": false,
-            "field": "Data",
-            "description": "<p>Base64 encoded raw image data</p>"
+            "field": "SavedFilename",
+            "description": "<p>Filename as stored on server</p>"
           }
         ]
       },
@@ -3626,18 +3675,25 @@ define({ "api": [
             "optional": false,
             "field": "SavedFilename",
             "description": "<p>Filename in our system</p>"
+          },
+          {
+            "group": "Response",
+            "type": "String",
+            "optional": false,
+            "field": "Description",
+            "description": "<p>Image description as provided by the customer</p>"
           }
         ]
       },
       "examples": [
         {
           "title": "XML Response",
-          "content": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<RoomImageListResponse>\n <RoomImages>\n   <RoomImage>\n     <ImageId>343</ImageId>\n     <RoomId>49</RoomId>\n     <SavedFilename>d4790aaafdf4512dad0c4f2eafe72946.png</SavedFilename>\n   </RoomImage>\n\n   <RoomImage>\n     <ImageId>344</ImageId>\n     <RoomId>49</RoomId>\n     <SavedFilename>a92714654b7486ba6ca010f23bf4c0b6.jpg</SavedFilename>\n   </RoomImage>\n  </RoomImages>\n</RoomImageListResponse>",
+          "content": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<RoomImageListResponse>\n <RoomImages>\n   <RoomImage>\n     <ImageId>343</ImageId>\n     <RoomId>49</RoomId>\n     <SavedFilename>d4790aaafdf4512dad0c4f2eafe72946.png</SavedFilename>\n     <Description>The bedroom</Description>\n   </RoomImage>\n\n   <RoomImage>\n     <ImageId>344</ImageId>\n     <RoomId>49</RoomId>\n     <SavedFilename>a92714654b7486ba6ca010f23bf4c0b6.jpg</SavedFilename>\n     <Description>The kitchen</Description>\n   </RoomImage>\n  </RoomImages>\n</RoomImageListResponse>",
           "type": "json"
         },
         {
           "title": "JSON Response",
-          "content": "{\n    \"RoomImages\" : [\n        {\n            \"URL\" : \"https://inbox.myallocator.com/n/user_image.xt?pid=4304&img=64CC674C-5AFC-11E5-8C0B-1DCDF6E4DDB5.jpg\",\n            \"RoomId\" : \"23651\",\n            \"Thumbnail\" : \"https://inbox.myallocator.com/n/user_image_tb.xt?pid=4304&img=64CC674C-5AFC-11E5-8C0B-1DCDF6E4DDB5.jpg\",\n            \"ImageId\" : \"3221\",\n            \"SavedFilename\" : \"64CC674C-5AFC-11E5-8C0B-1DCDF6E4DDB5.jpg\"\n        },\n        {\n            \"URL\" : \"https://inbox.myallocator.com/n/user_image.xt?pid=4304&img=AF559588-5B04-11E5-A038-10A36E043024.jpg\",\n            \"RoomId\" : \"22905\",\n            \"Thumbnail\" : \"https://inbox.myallocator.com/n/user_image_tb.xt?pid=4304&img=AF559588-5B04-11E5-A038-10A36E043024.jpg\",\n            \"ImageId\" : \"3222\",\n            \"SavedFilename\" : \"AF559588-5B04-11E5-A038-10A36E043024.jpg\"\n        }\n    ]\n}",
+          "content": "{\n    \"RoomImages\" : [\n        {\n            \"URL\" : \"https://inbox.myallocator.com/n/user_image.xt?pid=4304&img=64CC674C-5AFC-11E5-8C0B-1DCDF6E4DDB5.jpg\",\n            \"RoomId\" : \"23651\",\n            \"Thumbnail\" : \"https://inbox.myallocator.com/n/user_image_tb.xt?pid=4304&img=64CC674C-5AFC-11E5-8C0B-1DCDF6E4DDB5.jpg\",\n            \"ImageId\" : \"3221\",\n            \"SavedFilename\" : \"64CC674C-5AFC-11E5-8C0B-1DCDF6E4DDB5.jpg\",\n            \"Description\" : \"The bedroom\"\n        },\n        {\n            \"URL\" : \"https://inbox.myallocator.com/n/user_image.xt?pid=4304&img=AF559588-5B04-11E5-A038-10A36E043024.jpg\",\n            \"RoomId\" : \"22905\",\n            \"Thumbnail\" : \"https://inbox.myallocator.com/n/user_image_tb.xt?pid=4304&img=AF559588-5B04-11E5-A038-10A36E043024.jpg\",\n            \"ImageId\" : \"3222\",\n            \"SavedFilename\" : \"AF559588-5B04-11E5-A038-10A36E043024.jpg\",\n            \"Description\" : \"The kitchen\"\n        }\n    ]\n}",
           "type": "json"
         }
       ]
@@ -3710,7 +3766,7 @@ define({ "api": [
         },
         {
           "title": "JSON Request (multiple room images)",
-          "content": "{\n    \"Auth/UserId\":\"\",\n    \"Auth/Userassword\":\"\",\n    \"Auth/VendorId\":\"\",\n    \"Auth/VendorPassword\":\"\",\n    \"RoomImages\": [\n        { \"RoomImageId\":##, \"RoomId\":## },\n        { \"RoomImageId\":##, \"RoomId\":## }\n        ]\n}",
+          "content": "{\n    \"Auth/UserId\":\"\",\n    \"Auth/Userassword\":\"\",\n    \"Auth/VendorId\":\"\",\n    \"Auth/VendorPassword\":\"\",\n    \"RoomImages\": [\n        { \"RoomImageId\":##, \"RoomId\":## },\n        { \"RoomImageId\":##, \"RoomId\":## }\n    ]\n}",
           "type": "json"
         },
         {
