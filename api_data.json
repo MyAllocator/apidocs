@@ -4419,6 +4419,17 @@
     "group": "4_Appendix",
     "type": "",
     "url": "{}",
+    "title": "Card Codes",
+    "name": "Card_Codes",
+    "version": "201804.0.1",
+    "description": "<p>Check <a href=\"https://github.com/MyAllocator/apidocs/blob/gh-pages/card-list.md\">this document on Github</a> for the complete list of debit and credit cards.</p>",
+    "filename": "perllib/MAAPI.pm",
+    "groupTitle": "4_Appendix"
+  },
+  {
+    "group": "4_Appendix",
+    "type": "",
+    "url": "{}",
     "title": "Channel Codes",
     "name": "Channel_Codes",
     "version": "201804.0.1",
