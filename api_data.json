@@ -953,20 +953,6 @@
             "group": "Request",
             "type": "String",
             "optional": true,
-            "field": "NotificationQueuedStartDateTime",
-            "description": "<p>for querying QueuedNotifications (will always return latest version of booking)</p>"
-          },
-          {
-            "group": "Request",
-            "type": "String",
-            "optional": true,
-            "field": "NotificationQueuedEndDateTime",
-            "description": "<p>see NotificationQueuedStartDate</p>"
-          },
-          {
-            "group": "Request",
-            "type": "String",
-            "optional": true,
             "field": "OrderId",
             "description": "<p>Query for a specific order ID (assigned by channel). Be aware that order IDs are not guaranteed to be unique across different channels! Using BookingId below is strongly recommended for individual booking retrievals.</p>"
           },
@@ -2207,7 +2193,14 @@
             "description": "<p>identifiers of update jobs that have been created</p>"
           }
         ]
-      }
+      },
+      "examples": [
+        {
+          "title": "PropertyFullRefresh Response",
+          "content": "{\n    \"Error\": {},\n    \"UpdateIds\": {\n        \"exp\": [\n            108\n        ],\n        \"loop\": [\n            107\n        ]\n    },\n    \"Success\": true\n}",
+          "type": "json"
+        }
+      ]
     },
     "examples": [
       {
@@ -2216,8 +2209,8 @@
         "type": "json"
       },
       {
-        "title": "PropertyFullRefresh Response",
-        "content": "{\n    \"Error\": {},\n    \"UpdateIds\": {\n        \"exp\": [\n            108\n        ],\n        \"loop\": [\n            107\n        ]\n    },\n    \"Success\": true\n}",
+        "title": "curl",
+        "content": "curl https://api.myallocator.com/pms/v201804/json/FullRefresh -d@- <<EOJSON\njson={\n    \"Auth/UserToken\":\"\",\n    \"Auth/VendorId\":\"\",\n    \"Auth/VendorPassword\":\"\",\n    \"Auth/PropertyId\":\"\"\n}\nEOJSON",
         "type": "json"
       }
     ],
