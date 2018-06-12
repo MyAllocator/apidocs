@@ -2224,7 +2224,7 @@
     "title": "PropertyImageCreate",
     "name": "PropertyImageCreate",
     "version": "201804.0.1",
-    "description": "<p>This method allows you to create or remove property images on myallocator.com. Please note that you can only send a single PropertyImageCreate or PropertyImageRemove</p>",
+    "description": "<p>This method allows you to upload property images.</p>",
     "parameter": {
       "fields": {
         "Request": [
@@ -2258,23 +2258,37 @@
           },
           {
             "group": "Request",
+            "type": "Array",
+            "optional": true,
+            "field": "PropertyImages",
+            "description": "<p>List of PropertyImage objects for upload.</p>"
+          },
+          {
+            "group": "Request",
+            "type": "Object",
+            "optional": true,
+            "field": "PropertyImage",
+            "description": "<p>A single property image to be uploaded.</p>"
+          },
+          {
+            "group": "Request",
             "type": "String",
             "optional": false,
-            "field": "Filename",
+            "field": "PropertyImage/Filename",
             "description": "<p>Will be replaced by us with a random string, but the extension is taken from this filename</p>"
           },
           {
             "group": "Request",
             "type": "String",
             "optional": false,
-            "field": "Data",
+            "field": "PropertyImage/Data",
             "description": "<p>Base64 encoded raw image data</p>"
           },
           {
             "group": "Request",
             "type": "String",
             "optional": false,
-            "field": "Description",
+            "field": "PropertyImage/Description",
             "description": "<p>Description of the image to show on a channel (max. 512 characters)</p>"
           }
         ]
@@ -2333,7 +2347,7 @@
         }
       ]
     },
-    "filename": "perllib/MAAPI.pm",
+    "filename": "perllib/MyAllocator/API/Method/Media.pm",
     "groupTitle": "3_API_Methods"
   },
   {
@@ -2381,7 +2395,7 @@
     "examples": [
       {
         "title": "Request",
-        "content": "{\n    \"Auth/VendorId\":\"Your Vendor ID\",\n    \"Auth/VendorPassword\":\"Your Vendor Password\",\n    \"Auth/UserToken\":\"User token\",\n    \"Auth/PropertyId\":\"Property ID on myallocator.com\"\n}",
+        "content": "{\n    \"Auth/VendorId\":\"Your Vendor ID\",\n    \"Auth/VendorPassword\":\"Your Vendor Password\",\n    \"Auth/UserToken\":\"User token\",\n    \"Auth/PropertyId\":\"Property ID on myallocator.com\",\n}",
         "type": "json"
       },
       {
@@ -2424,7 +2438,7 @@
         }
       ]
     },
-    "filename": "perllib/MAAPI.pm",
+    "filename": "perllib/MyAllocator/API/Method/Media.pm",
     "groupTitle": "3_API_Methods"
   },
   {
@@ -2468,10 +2482,24 @@
           },
           {
             "group": "Request",
+            "type": "Array",
+            "optional": true,
+            "field": "PropertyImages",
+            "description": "<p>List of PropertyImage objects. If absent all property images are removed.</p>"
+          },
+          {
+            "group": "Request",
+            "type": "Object",
+            "optional": true,
+            "field": "PropertyImage",
+            "description": "<p>A single property image to be removed.</p>"
+          },
+          {
+            "group": "Request",
             "type": "String",
-            "optional": false,
-            "field": "PropertyImageId",
-            "description": "<p>ID of image to be removed</p>"
+            "optional": true,
+            "field": "PropertyImage/PropertyImageId",
+            "description": "<p>ID of image to be removed.</p>"
           }
         ]
       }
@@ -2488,6 +2516,11 @@
         "type": "json"
       },
       {
+        "title": "Request (remove all property images)",
+        "content": "{\n    \"Auth/VendorId\":\"Your Vendor ID\",\n    \"Auth/VendorPassword\":\"Your Vendor Password\",\n    \"Auth/UserToken\":\"User token\",\n    \"Auth/PropertyId\":\"Property ID on myallocator.com\"\n}",
+        "type": "json"
+      },
+      {
         "title": "curl",
         "content": "curl https://api.myallocator.com/pms/v201804/json/PropertyImageRemove -d@- <<EOJSON\njson={\n    \"Auth/VendorId\":\"Your Vendor ID\",\n    \"Auth/VendorPassword\":\"Your Vendor Password\",\n    \"Auth/UserToken\":\"User token\",\n    \"Auth/PropertyId\":\"Property ID on myallocator.com\",\n    \"PropertyImage\":{ \"PropertyImageId\": \"1234\" }\n}\nEOJSON",
         "type": "json"
@@ -2497,12 +2530,12 @@
       "examples": [
         {
           "title": "Response",
-          "content": "{\n    \"Method\" : \"PropertyImageRemove\",\n    \"Success\" : true\n}",
+          "content": "{\n    \"Success\": true,\n    \"Method\": \"PropertyImageCreate\",\n    \"RUID\": \"B4FC792C-6A40-11E8-A1C4-C85D2E42BFE4\",\n    \"PropertyImages\": [\n        {\n            \"SavedFilename\": \"B4F95E18-...-C85D2E42BFE4.png\",\n            \"ImageId\": \"41212\",\n            \"URL\": \"https://inbox.myallocator.com/n/user_image.xt?pid=1&img=B4F95E18-...-C85D2E42BFE4.png\",\n            \"Thumbnail\": \"https://inbox.myallocator.com/n/user_image_tb.xt?pid=1&img=B4F95E18-...-C85D2E42BFE4.png\",\n            \"Description\": \"myallocator logo\"\n        },\n        {\n            \"Description\": \"myallocator logo again\",\n            \"Thumbnail\": \"https://inbox.myallocator.com/n/user_image_tb.xt?pid=1&img=B4FAC9BA-...-C85D2E42BFE4.png\",\n            \"URL\": \"https://inbox.myallocator.com/n/user_image.xt?pid=1&img=B4FAC9BA-...-C85D2E42BFE4.png\",\n            \"ImageId\": \"41213\",\n            \"SavedFilename\": \"B4FAC9BA-..-C85D2E42BFE4.png\"\n        }\n    ]\n}",
           "type": "json"
         }
       ]
     },
-    "filename": "perllib/MAAPI.pm",
+    "filename": "perllib/MyAllocator/API/Method/Media.pm",
     "groupTitle": "3_API_Methods"
   },
   {
@@ -3217,7 +3250,7 @@
     "title": "RoomImageCreate",
     "name": "RoomImageCreate",
     "version": "201804.0.1",
-    "description": "<p>This method allows you to create or remove room type images on myallocator.com. Please note that you can only send a single RoomImageCreate or RoomImageRemove</p>",
+    "description": "<p>This method allows you to upload room type images.</p>",
     "parameter": {
       "fields": {
         "Request": [
@@ -3251,30 +3284,44 @@
           },
           {
             "group": "Request",
-            "type": "Integer",
-            "optional": false,
-            "field": "RoomId",
-            "description": "<p>RoomId for which the image is uploaded for</p>"
+            "type": "Array",
+            "optional": true,
+            "field": "RoomImages",
+            "description": "<p>List of RoomImage objects for upload.</p>"
+          },
+          {
+            "group": "Request",
+            "type": "Object",
+            "optional": true,
+            "field": "RoomImage",
+            "description": "<p>A single room image to be uploaded.</p>"
           },
           {
             "group": "Request",
             "type": "String",
             "optional": false,
-            "field": "Filename",
+            "field": "RoomImage/RoomId",
+            "description": "<p>Room ID of which the image will be assigned to.</p>"
+          },
+          {
+            "group": "Request",
+            "type": "String",
+            "optional": false,
+            "field": "RoomImage/Filename",
             "description": "<p>Will be replaced by us with a random string, but the extension is taken from this filename</p>"
           },
           {
             "group": "Request",
             "type": "String",
             "optional": false,
-            "field": "Data",
+            "field": "RoomImage/Data",
             "description": "<p>Base64 encoded raw image data</p>"
           },
           {
             "group": "Request",
             "type": "String",
             "optional": false,
-            "field": "Description",
+            "field": "RoomImage/Description",
             "description": "<p>Description of the image to show on a channel (max. 512 characters)</p>"
           }
         ]
@@ -3282,13 +3329,18 @@
     },
     "examples": [
       {
-        "title": "Request",
-        "content": "{\n    \"Auth/VendorId\":\"Your Vendor ID\",\n    \"Auth/VendorPassword\":\"Your Vendor Password\",\n    \"Auth/UserToken\":\"User token\",\n    \"Auth/PropertyId\":\"Property ID on myallocator.com\",\n    \"RoomImages\": [\n      {\n        \"RoomId\": 5532,\n        \"Filename\": \"double-room.jpg\",\n        \"Data\": \"oAAAANSUhEUgAAG2QAABPqCAYAAA[...]\",\n        \"Description\": \"The Bedroom\"\n      }\n    ]\n}",
+        "title": "Single file upload",
+        "content": "{\n    \"Auth/VendorId\":\"\",\n    \"Auth/VendorPassword\":\"\",\n    \"Auth/UserToken\":\"\",\n    \"Auth/PropertyId\":\"\",\n    \"RoomImage\": {\n        \"RoomId\": 5532,\n        \"Filename\": \"double-room.jpg\",\n        \"Data\": \"oAAAANSUhEUgAAG2QAABPqCAYAAA[...]\",\n        \"Description\": \"The Bedroom\"\n    }\n}",
+        "type": "json"
+      },
+      {
+        "title": "Multiple file upload",
+        "content": "{\n    \"Auth/VendorId\":\"\",\n    \"Auth/VendorPassword\":\"\",\n    \"Auth/UserToken\":\"\",\n    \"Auth/PropertyId\":\"\",\n    \"RoomImages\": [\n      {\n        \"RoomId\": 5532,\n        \"Filename\": \"double-room.jpg\",\n        \"Data\": \"oAAAANSUhEUgAAG2QAABPqCAYAAA[...]\",\n        \"Description\": \"The Bedroom\"\n      },\n      {\n        \"RoomId\": 5535,\n        \"Filename\": \"twin-room.jpg\",\n        \"Data\": \"oAAAANSUhEUgAAG2QAABPqCAYAAA[...]\",\n        \"Description\": \"The Twin Room\"\n      }\n    ]\n}",
         "type": "json"
       },
       {
         "title": "curl",
-        "content": "curl https://api.myallocator.com/pms/v201804/json/RoomImageCreate -d@- <<EOJSON\njson={\n    \"Auth/VendorId\":\"Your Vendor ID\",\n    \"Auth/VendorPassword\":\"Your Vendor Password\",\n    \"Auth/UserToken\":\"User token\",\n    \"Auth/PropertyId\":\"Property ID on myallocator.com\",\n    \"RoomImages\": [\n      {\n        \"RoomId\": 5532,\n        \"Filename\": \"double-room.jpg\",\n        \"Data\": \"oAAAANSUhEUgAAG2QAABPqCAYAAA[...]\",\n        \"Description\": \"The Bedroom\"\n      }\n    ]\n}\nEOJSON",
+        "content": "curl https://api.myallocator.com/pms/v201804/json/RoomImageCreate -d@- <<EOJSON\njson={\n    \"Auth/VendorId\":\"\",\n    \"Auth/VendorPassword\":\"\",\n    \"Auth/UserToken\":\"\",\n    \"Auth/PropertyId\":\"\",\n    \"RoomImages\": [\n      {\n        \"RoomId\": 5532,\n        \"Filename\": \"double-room.jpg\",\n        \"Data\": \"oAAAANSUhEUgAAG2QAABPqCAYAAA[...]\",\n        \"Description\": \"The Bedroom\"\n      }\n    ]\n}\nEOJSON",
         "type": "json"
       }
     ],
@@ -3328,12 +3380,12 @@
       "examples": [
         {
           "title": "Response",
-          "content": "{\n  \"Method\": \"RoomImageCreate\",\n  \"RoomImage\": {\n    \"RoomImageId\": 423,\n    \"SavedFilename\": \"576421558171c7f5054966d6b637c37e.jpg\"\n  },\n  \"Success\": true\n}",
+          "content": "{\n    \"RUID\": \"64839402-6A41-11E8-B636-E5F0F1510551\",\n    \"Method\": \"RoomImageCreate\",\n    \"RoomImages\": [\n        {\n            \"RoomId\": 5532,\n            \"URL\": \"https://inbox.myallocator.com/n/user_image.xt?pid=1&img=64801BCE-...-E5F0F1510551.jpg\",\n            \"SavedFilename\": \"64801BCE-...-E5F0F1510551.jpg\",\n            \"ImageId\": \"41214\",\n            \"Thumbnail\": \"https://inbox.myallocator.com/n/user_image_tb.xt?pid=1&img=64801BCE-...-E5F0F1510551.jpg\",\n            \"Description\": \"The Bedroom\"\n        },\n        {\n            \"RoomId\": 5535,\n            \"URL\": \"https://inbox.myallocator.com/n/user_image.xt?pid=1&img=6481C9D8-...-E5F0F1510551.jpg\",\n            \"SavedFilename\": \"6481C9D8-...-E5F0F1510551.jpg\",\n            \"ImageId\": \"41215\",\n            \"Thumbnail\": \"https://inbox.myallocator.com/n/user_image_tb.xt?pid=1&img=6481C9D8-...-E5F0F1510551.jpg\",\n            \"Description\": \"The Twin Room\"\n        }\n    ],\n    \"Success\": true\n}",
           "type": "json"
         }
       ]
     },
-    "filename": "perllib/MAAPI.pm",
+    "filename": "perllib/MyAllocator/API/Method/Media.pm",
     "groupTitle": "3_API_Methods"
   },
   {
@@ -3431,7 +3483,7 @@
         }
       ]
     },
-    "filename": "perllib/MAAPI.pm",
+    "filename": "perllib/MyAllocator/API/Method/Media.pm",
     "groupTitle": "3_API_Methods"
   },
   {
@@ -3475,17 +3527,31 @@
           },
           {
             "group": "Request",
+            "type": "Array",
+            "optional": true,
+            "field": "RoomImages",
+            "description": "<p>List of RoomImage objects. If absent all room images are removed.</p>"
+          },
+          {
+            "group": "Request",
+            "type": "Object",
+            "optional": true,
+            "field": "RoomImage",
+            "description": "<p>A single room image to be removed.</p>"
+          },
+          {
+            "group": "Request",
             "type": "String",
-            "optional": false,
-            "field": "RoomImageId",
+            "optional": true,
+            "field": "RoomImage/RoomImageId",
             "description": "<p>ID of image to be removed.</p>"
           },
           {
             "group": "Request",
             "type": "String",
-            "optional": false,
-            "field": "RoomId",
-            "description": "<p>Room ID of which the image is assigned to</p>"
+            "optional": true,
+            "field": "RoomImage/RoomId",
+            "description": "<p>Room ID of which the image is assigned to. Not optional if RoomImageId is given.</p>"
           }
         ]
       }
@@ -3493,13 +3559,18 @@
     "success": {
       "examples": [
         {
-          "title": "Request (single room image)",
-          "content": "{\n    \"Auth/UserToken\":\"\",\n    \"Auth/VendorId\":\"\",\n    \"Auth/VendorPassword\":\"\",\n    \"RoomImage\":{ \"RoomImageId\":### }\n}",
+          "title": "Request (remove single room image)",
+          "content": "{\n    \"Auth/UserToken\":\"\",\n    \"Auth/VendorId\":\"\",\n    \"Auth/VendorPassword\":\"\",\n    \"RoomImage\":{ \"RoomImageId\":123, \"RoomId\":456 }\n}",
           "type": "json"
         },
         {
-          "title": "Request (multiple room images)",
-          "content": "{\n    \"Auth/UserId\":\"\",\n    \"Auth/Userassword\":\"\",\n    \"Auth/VendorId\":\"\",\n    \"Auth/VendorPassword\":\"\",\n    \"RoomImages\": [\n        { \"RoomImageId\":##, \"RoomId\":## },\n        { \"RoomImageId\":##, \"RoomId\":## }\n    ]\n}",
+          "title": "Request (remove multiple room images)",
+          "content": "{\n    \"Auth/UserId\":\"\",\n    \"Auth/Userassword\":\"\",\n    \"Auth/VendorId\":\"\",\n    \"Auth/VendorPassword\":\"\",\n    \"RoomImages\": [\n        { \"RoomImageId\":123, \"RoomId\":456 },\n        { \"RoomImageId\":789, \"RoomId\":234}\n    ]\n}",
+          "type": "json"
+        },
+        {
+          "title": "Request (remove all room images)",
+          "content": "{\n    \"Auth/UserId\":\"\",\n    \"Auth/Userassword\":\"\",\n    \"Auth/VendorId\":\"\",\n    \"Auth/VendorPassword\":\"\"\n}",
           "type": "json"
         }
       ]
@@ -3507,11 +3578,11 @@
     "examples": [
       {
         "title": "curl",
-        "content": "curl https://api.myallocator.com/pms/v201804/json/RoomImageRemove -d@- <<EOJSON\njson={\n    \"Auth/UserToken\":\"\",\n    \"Auth/VendorId\":\"\",\n    \"Auth/VendorPassword\":\"\",\n    \"RoomImage\":{ \"RoomImageId\":### }\n}\nEOJSON",
+        "content": "curl https://api.myallocator.com/pms/v201804/json/RoomImageRemove -d@- <<EOJSON\njson={\n    \"Auth/UserToken\":\"\",\n    \"Auth/VendorId\":\"\",\n    \"Auth/VendorPassword\":\"\",\n    \"RoomImage\":{ \"RoomImageId\":123, \"RoomId\":456 }\n}\nEOJSON",
         "type": "json"
       }
     ],
-    "filename": "perllib/MAAPI.pm",
+    "filename": "perllib/MyAllocator/API/Method/Media.pm",
     "groupTitle": "3_API_Methods"
   },
   {
