@@ -2287,7 +2287,7 @@
           {
             "group": "Request",
             "type": "String",
-            "optional": false,
+            "optional": true,
             "field": "PropertyImage/Description",
             "description": "<p>Description of the image to show on a channel (max. 512 characters)</p>"
           }
@@ -2601,7 +2601,7 @@
           {
             "group": "Request",
             "type": "String",
-            "optional": false,
+            "optional": true,
             "field": "PropertyImage/Description",
             "description": "<p>Image description as provided by the customer</p>"
           }
@@ -3419,7 +3419,7 @@
           {
             "group": "Request",
             "type": "String",
-            "optional": false,
+            "optional": true,
             "field": "RoomImage/Description",
             "description": "<p>Description of the image to show on a channel (max. 512 characters)</p>"
           }
@@ -3754,7 +3754,7 @@
           {
             "group": "Request",
             "type": "String",
-            "optional": false,
+            "optional": true,
             "field": "RoomImage/Description",
             "description": "<p>Image description as provided by the customer</p>"
           }
