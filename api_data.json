@@ -2448,6 +2448,105 @@
     "title": "PropertyImageRemove",
     "name": "PropertyImageRemove",
     "version": "201804.0.1",
+    "description": "<p>Update the description of a property image.</p>",
+    "parameter": {
+      "fields": {
+        "Request": [
+          {
+            "group": "Request",
+            "type": "String",
+            "optional": false,
+            "field": "Auth/UserToken",
+            "description": "<p>Users auth token (see section <code>iii - Vendor tokens</code>)</p>"
+          },
+          {
+            "group": "Request",
+            "type": "String",
+            "optional": false,
+            "field": "Auth/PropertyId",
+            "description": "<p>Property ID on myallocator.com</p>"
+          },
+          {
+            "group": "Request",
+            "type": "String",
+            "optional": false,
+            "field": "Auth/VendorId",
+            "description": "<p>Your Vendor ID</p>"
+          },
+          {
+            "group": "Request",
+            "type": "String",
+            "optional": false,
+            "field": "Auth/VendorPassword",
+            "description": "<p>Your Vendor Password</p>"
+          },
+          {
+            "group": "Request",
+            "type": "Array",
+            "optional": true,
+            "field": "PropertyImages",
+            "description": "<p>List of PropertyImage objects.</p>"
+          },
+          {
+            "group": "Request",
+            "type": "Object",
+            "optional": true,
+            "field": "PropertyImage",
+            "description": "<p>A single property image to be updated.</p>"
+          },
+          {
+            "group": "Request",
+            "type": "String",
+            "optional": false,
+            "field": "PropertyImage/PropertyImageId",
+            "description": "<p>ID of image to be updated.</p>"
+          },
+          {
+            "group": "Request",
+            "type": "String",
+            "optional": false,
+            "field": "PropertyImage/Description",
+            "description": "<p>Image description as provided by the customer</p>"
+          }
+        ]
+      }
+    },
+    "examples": [
+      {
+        "title": "Request (update single property image)",
+        "content": "{\n    \"Auth/VendorId\":\"Your Vendor ID\",\n    \"Auth/VendorPassword\":\"Your Vendor Password\",\n    \"Auth/UserToken\":\"User token\",\n    \"Auth/PropertyId\":\"Property ID on myallocator.com\",\n    \"PropertyImage\":{ \"PropertyImageId\": \"1234\", \"Description\": \"The garden\" }\n}",
+        "type": "json"
+      },
+      {
+        "title": "Request (update multiple property images)",
+        "content": "{\n    \"Auth/VendorId\":\"Your Vendor ID\",\n    \"Auth/VendorPassword\":\"Your Vendor Password\",\n    \"Auth/UserToken\":\"User token\",\n    \"Auth/PropertyId\":\"Property ID on myallocator.com\",\n    \"PropertyImages\": [\n        { \"PropertyImageId\": \"1234\", \"Description\": \"The garden\" },\n        { \"PropertyImageId\": \"1235\", \"Description\": \"View of the lobby\" }\n    ]\n}",
+        "type": "json"
+      },
+      {
+        "title": "curl",
+        "content": "curl https://api.myallocator.com/pms/v201804/json/PropertyImageUpdate -d@- <<EOJSON\njson={\n    \"Auth/VendorId\":\"Your Vendor ID\",\n    \"Auth/VendorPassword\":\"Your Vendor Password\",\n    \"Auth/UserToken\":\"User token\",\n    \"Auth/PropertyId\":\"Property ID on myallocator.com\",\n    \"PropertyImage\":{ \"PropertyImageId\": \"1234\", \"Description\": \"The garden\" }\n}\nEOJSON",
+        "type": "json"
+      }
+    ],
+    "success": {
+      "examples": [
+        {
+          "title": "Response",
+          "content": "{\n    \"Success\": true,\n    \"RUID\": \"B4FC792C-6A40-11E8-A1C4-C85D2E42BFE4\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "perllib/MyAllocator/API/Method/Media.pm",
+    "groupTitle": "3_API_Methods"
+  },
+  {
+    "group": "3_API_Methods",
+    "type": "POST",
+    "url": "/PropertyImageRemove",
+    "title": "PropertyImageRemove",
+    "name": "PropertyImageRemove",
+    "version": "201804.0.1",
     "description": "<p>Remove a property image.</p>",
     "parameter": {
       "fields": {
@@ -3479,6 +3578,112 @@
         {
           "title": "Response",
           "content": "{\n    \"RoomImages\" : [\n        {\n            \"URL\" : \"https://inbox.myallocator.com/n/user_image.xt?pid=4304&img=64CC674C-5AFC-11E5-8C0B-1DCDF6E4DDB5.jpg\",\n            \"RoomId\" : \"23651\",\n            \"Thumbnail\" : \"https://inbox.myallocator.com/n/user_image_tb.xt?pid=4304&img=64CC674C-5AFC-11E5-8C0B-1DCDF6E4DDB5.jpg\",\n            \"ImageId\" : \"3221\",\n            \"SavedFilename\" : \"64CC674C-5AFC-11E5-8C0B-1DCDF6E4DDB5.jpg\",\n            \"Description\" : \"The bedroom\"\n        },\n        {\n            \"URL\" : \"https://inbox.myallocator.com/n/user_image.xt?pid=4304&img=AF559588-5B04-11E5-A038-10A36E043024.jpg\",\n            \"RoomId\" : \"22905\",\n            \"Thumbnail\" : \"https://inbox.myallocator.com/n/user_image_tb.xt?pid=4304&img=AF559588-5B04-11E5-A038-10A36E043024.jpg\",\n            \"ImageId\" : \"3222\",\n            \"SavedFilename\" : \"AF559588-5B04-11E5-A038-10A36E043024.jpg\",\n            \"Description\" : \"The kitchen\"\n        }\n    ]\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "perllib/MyAllocator/API/Method/Media.pm",
+    "groupTitle": "3_API_Methods"
+  },
+  {
+    "group": "3_API_Methods",
+    "type": "POST",
+    "url": "/RoomImageRemove",
+    "title": "RoomImageRemove",
+    "name": "RoomImageRemove",
+    "version": "201804.0.1",
+    "description": "<p>Update the description of a room image.</p>",
+    "parameter": {
+      "fields": {
+        "Request": [
+          {
+            "group": "Request",
+            "type": "String",
+            "optional": false,
+            "field": "Auth/UserToken",
+            "description": "<p>Users auth token (see section <code>iii - Vendor tokens</code>)</p>"
+          },
+          {
+            "group": "Request",
+            "type": "String",
+            "optional": false,
+            "field": "Auth/PropertyId",
+            "description": "<p>Property ID on myallocator.com</p>"
+          },
+          {
+            "group": "Request",
+            "type": "String",
+            "optional": false,
+            "field": "Auth/VendorId",
+            "description": "<p>Your Vendor ID</p>"
+          },
+          {
+            "group": "Request",
+            "type": "String",
+            "optional": false,
+            "field": "Auth/VendorPassword",
+            "description": "<p>Your Vendor Password</p>"
+          },
+          {
+            "group": "Request",
+            "type": "Array",
+            "optional": true,
+            "field": "RoomImages",
+            "description": "<p>List of RoomImage objects.</p>"
+          },
+          {
+            "group": "Request",
+            "type": "Object",
+            "optional": true,
+            "field": "RoomImage",
+            "description": "<p>A single room image to be updated.</p>"
+          },
+          {
+            "group": "Request",
+            "type": "String",
+            "optional": false,
+            "field": "RoomImage/RoomId",
+            "description": "<p>Room ID of which the image will be assigned to.</p>"
+          },
+          {
+            "group": "Request",
+            "type": "String",
+            "optional": false,
+            "field": "RoomImage/RoomImageId",
+            "description": "<p>ID of image to be updated.</p>"
+          },
+          {
+            "group": "Request",
+            "type": "String",
+            "optional": false,
+            "field": "RoomImage/Description",
+            "description": "<p>Image description as provided by the customer</p>"
+          }
+        ]
+      }
+    },
+    "examples": [
+      {
+        "title": "Request (update single room image)",
+        "content": "{\n    \"Auth/VendorId\":\"Your Vendor ID\",\n    \"Auth/VendorPassword\":\"Your Vendor Password\",\n    \"Auth/UserToken\":\"User token\",\n    \"Auth/PropertyId\":\"Property ID on myallocator.com\",\n    \"RoomImage\":{ \"RoomImageId\": \"1234\", \"Description\": \"Twin room\" }\n}",
+        "type": "json"
+      },
+      {
+        "title": "Request (update multiple room images)",
+        "content": "{\n    \"Auth/VendorId\":\"Your Vendor ID\",\n    \"Auth/VendorPassword\":\"Your Vendor Password\",\n    \"Auth/UserToken\":\"User token\",\n    \"Auth/PropertyId\":\"Property ID on myallocator.com\",\n    \"RoomImages\": [\n        { \"RoomImageId\": \"1234\", \"Description\": \"Twin room\" },\n        { \"RoomImageId\": \"1234\", \"Description\": \"Double room with a view\" }\n    ]\n}",
+        "type": "json"
+      },
+      {
+        "title": "curl",
+        "content": "curl https://api.myallocator.com/pms/v201804/json/RoomImageUpdate -d@- <<EOJSON\njson={\n    \"Auth/VendorId\":\"Your Vendor ID\",\n    \"Auth/VendorPassword\":\"Your Vendor Password\",\n    \"Auth/UserToken\":\"User token\",\n    \"Auth/PropertyId\":\"Property ID on myallocator.com\",\n    \"RoomImage\":{ \"RoomImageId\": \"1234\", \"Description\": \"Twin room\" }\n}\nEOJSON",
+        "type": "json"
+      }
+    ],
+    "success": {
+      "examples": [
+        {
+          "title": "Response",
+          "content": "{\n    \"Success\": true,\n    \"RUID\": \"B4FC792C-6A40-11E8-A1C4-C85D2E42BFE4\"\n}",
           "type": "json"
         }
       ]
