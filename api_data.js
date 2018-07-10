@@ -2290,6 +2290,13 @@ define({ "api": [
             "optional": true,
             "field": "PropertyImage/Description",
             "description": "<p>Description of the image to show on a channel (max. 512 characters)</p>"
+          },
+          {
+            "group": "Request",
+            "type": "Integer",
+            "optional": true,
+            "field": "PropertyImage/SortOrder",
+            "description": "<p>Number indicating the displayed sort order. Lower numbers means further left/top. Defaults to 0.</p>"
           }
         ]
       }
@@ -2297,12 +2304,12 @@ define({ "api": [
     "examples": [
       {
         "title": "Request:",
-        "content": "{\n    \"Auth/VendorId\":\"Your Vendor ID\",\n    \"Auth/VendorPassword\":\"Your Vendor Password\",\n    \"Auth/UserToken\":\"User token\",\n    \"Auth/PropertyId\":\"Property ID on myallocator.com\",\n    \"PropertyImages\": [\n      {\n        \"Filename\": \"double-room.jpg\",\n        \"Data\": \"oAAAANSUhEUgAAG2QAABPqCAYAAA[...]\",\n        \"Description\": \"The Spa\"\n      }\n    ]\n}",
+        "content": "{\n    \"Auth/VendorId\":\"Your Vendor ID\",\n    \"Auth/VendorPassword\":\"Your Vendor Password\",\n    \"Auth/UserToken\":\"User token\",\n    \"Auth/PropertyId\":\"Property ID on myallocator.com\",\n    \"PropertyImages\": [\n      {\n        \"Filename\": \"double-room.jpg\",\n        \"Data\": \"oAAAANSUhEUgAAG2QAABPqCAYAAA[...]\",\n        \"Description\": \"The Spa\",\n        \"SortOrder\": 10\n      }\n    ]\n}",
         "type": "json"
       },
       {
         "title": "curl",
-        "content": "curl https://api.myallocator.com/pms/v201804/json/PropertyImageCreate -d@- <<EOJSON\njson={\n    \"Auth/VendorId\":\"Your Vendor ID\",\n    \"Auth/VendorPassword\":\"Your Vendor Password\",\n    \"Auth/UserToken\":\"User token\",\n    \"Auth/PropertyId\":\"Property ID on myallocator.com\",\n    \"PropertyImages\": [\n      {\n        \"Filename\": \"double-room.jpg\",\n        \"Data\": \"oAAAANSUhEUgAAG2QAABPqCAYAAA[...]\",\n        \"Description\": \"The Spa\"\n      }\n    ]\n}\nEOJSON",
+        "content": "curl https://api.myallocator.com/pms/v201804/json/PropertyImageCreate -d@- <<EOJSON\njson={\n    \"Auth/VendorId\":\"Your Vendor ID\",\n    \"Auth/VendorPassword\":\"Your Vendor Password\",\n    \"Auth/UserToken\":\"User token\",\n    \"Auth/PropertyId\":\"Property ID on myallocator.com\",\n    \"PropertyImages\": [\n      {\n        \"Filename\": \"double-room.jpg\",\n        \"Data\": \"oAAAANSUhEUgAAG2QAABPqCAYAAA[...]\",\n        \"Description\": \"The Spa\",\n        \"SortOrder\": 10\n      }\n    ]\n}\nEOJSON",
         "type": "json"
       }
     ],
@@ -2318,31 +2325,66 @@ define({ "api": [
           },
           {
             "group": "Response",
-            "type": "Object",
+            "type": "Array",
             "optional": false,
-            "field": "PropertyImage",
-            "description": "<p>Object containing more details about the uploaded image</p>"
+            "field": "PropertyImages",
+            "description": "<p>Array containing PropertyImage objects</p>"
           },
           {
             "group": "Response",
-            "type": "Integer",
+            "type": "Object",
             "optional": false,
-            "field": "PropertyImageId",
-            "description": "<p>ID of the newly uploaded image</p>"
+            "field": "PropertyImage",
+            "description": "<p>Object containing more details about the upload image(s)</p>"
           },
           {
             "group": "Response",
             "type": "String",
             "optional": false,
-            "field": "SavedFilename",
-            "description": "<p>Filename as stored on server</p>"
+            "field": "PropertyImage/ImageId",
+            "description": "<p>The image ID which will reference the property image</p>"
+          },
+          {
+            "group": "Response",
+            "type": "String",
+            "optional": false,
+            "field": "PropertyImage/SavedFilename",
+            "description": "<p>Filename in our system</p>"
+          },
+          {
+            "group": "Response",
+            "type": "URL",
+            "optional": false,
+            "field": "PropertyImage/URL",
+            "description": "<p>Publicly accessible URL to the full resolution image</p>"
+          },
+          {
+            "group": "Response",
+            "type": "URL",
+            "optional": false,
+            "field": "PropertyImage/Thumbnail",
+            "description": "<p>Publicly accessible URL to the thumbnail</p>"
+          },
+          {
+            "group": "Response",
+            "type": "String",
+            "optional": false,
+            "field": "PropertyImage/Description",
+            "description": "<p>Image description as provided by the customer</p>"
+          },
+          {
+            "group": "Response",
+            "type": "Integer",
+            "optional": false,
+            "field": "PropertyImage/SortOrder",
+            "description": "<p>Number indicating the displayed sort order. Lower numbers means further left/top.</p>"
           }
         ]
       },
       "examples": [
         {
           "title": "Response",
-          "content": "{\n  \"Method\": \"PropertyImageCreate\",\n  \"PropertyImage\": {\n    \"PropertyImageId\": 423,\n    \"SavedFilename\": \"576421558171c7f5054966d6b637c37e.jpg\"\n  },\n  \"Success\": true\n}",
+          "content": "{\n    \"Success\": true,\n    \"Method\": \"PropertyImageCreate\",\n    \"PropertyImages\": [\n        {\n            \"URL\": \"https://inbox.myallocator.com/n/user_image.xt?pid=1&img=66F96776-...-0DEB0D339365.png\",\n            \"Thumbnail\": \"https://inbox.myallocator.com/n/user_image_tb.xt?pid=1&img=66F96776-...-0DEB0D339365.png\",\n            \"SavedFilename\": \"66F96776-72E7-11E8-9F02-0DEB0D339365.png\",\n            \"ImageId\": \"41222\",\n            \"Description\": \"Reception Area\"\n        }\n    ],\n    \"RUID\": \"66FACBCA-72E7-11E8-9F02-0DEB0D339365\"\n}",
           "type": "json"
         }
       ]
@@ -2409,31 +2451,73 @@ define({ "api": [
         "Response": [
           {
             "group": "Response",
-            "type": "String",
+            "type": "Boolean",
             "optional": false,
-            "field": "Id",
-            "description": "<p>The property image ID which will reference the property image</p>"
+            "field": "Success",
+            "description": "<p>Whether the call was succesful (should always be true)</p>"
+          },
+          {
+            "group": "Response",
+            "type": "Array",
+            "optional": false,
+            "field": "PropertyImages",
+            "description": "<p>Array containing PropertyImage objects</p>"
+          },
+          {
+            "group": "Response",
+            "type": "Object",
+            "optional": false,
+            "field": "PropertyImage",
+            "description": "<p>Object containing more details about the images</p>"
           },
           {
             "group": "Response",
             "type": "String",
             "optional": false,
-            "field": "SavedFilename",
+            "field": "PropertyImage/ImageId",
+            "description": "<p>The image ID which will reference the property image</p>"
+          },
+          {
+            "group": "Response",
+            "type": "String",
+            "optional": false,
+            "field": "PropertyImage/SavedFilename",
             "description": "<p>Filename in our system</p>"
           },
           {
             "group": "Response",
+            "type": "URL",
+            "optional": false,
+            "field": "PropertyImage/URL",
+            "description": "<p>Publicly accessible URL to the full resolution image</p>"
+          },
+          {
+            "group": "Response",
+            "type": "URL",
+            "optional": false,
+            "field": "PropertyImage/Thumbnail",
+            "description": "<p>Publicly accessible URL to the thumbnail</p>"
+          },
+          {
+            "group": "Response",
             "type": "String",
             "optional": false,
-            "field": "Description",
+            "field": "PropertyImage/Description",
             "description": "<p>Image description as provided by the customer</p>"
+          },
+          {
+            "group": "Response",
+            "type": "Integer",
+            "optional": false,
+            "field": "PropertyImage/SortOrder",
+            "description": "<p>Number indicating the displayed sort order. Lower numbers means further left/top.</p>"
           }
         ]
       },
       "examples": [
         {
           "title": "Response",
-          "content": "{\n  \"PropertyImages\" : [\n    {\n      \"URL\" : \"https://inbox.myallocator.com/n/user_image.xt?pid=4304&img=01D0FAB8-5BF6-11E5-8767-3120FD8AEA94.jpg\",\n      \"Thumbnail\" : \"https://inbox.myallocator.com/n/user_image_tb.xt?pid=4304&img=01D0FAB8-5BF6-11E5-8767-3120FD8AEA94.jpg\",\n      \"ImageId\" : \"343\",\n      \"SavedFilename\" : \"01D0FAB8-5BF6-11E5-8767-3120FD8AEA94.jpg\",\n      \"Description\":\"The Spa\"\n    },\n    {\n      \"URL\" : \"https://inbox.myallocator.com/n/user_image.xt?pid=4304&img=4257D9FE-687A-11E5-B908-DDCC3C83E8DD.jpg\",\n      \"Thumbnail\" : \"https://inbox.myallocator.com/n/user_image_tb.xt?pid=4304&img=4257D9FE-687A-11E5-B908-DDCC3C83E8DD.jpg\",\n      \"ImageId\" : \"466\",\n      \"SavedFilename\" : \"4257D9FE-687A-11E5-B908-DDCC3C83E8DD.jpg\",\n      \"Description\":\"The Lobby\"\n    }\n  ]\n}",
+          "content": "{\n  \"PropertyImages\" : [\n    {\n      \"URL\" : \"https://inbox.myallocator.com/n/user_image.xt?pid=4304&img=01D0FAB8-...-3120FD8AEA94.jpg\",\n      \"Thumbnail\" : \"https://inbox.myallocator.com/n/user_image_tb.xt?pid=4304&img=01D0FAB8-...-3120FD8AEA94.jpg\",\n      \"ImageId\" : \"343\",\n      \"SavedFilename\" : \"01D0FAB8-5BF6-11E5-8767-3120FD8AEA94.jpg\",\n      \"Description\":\"The Spa\",\n      \"SortOrder\": 100\n    },\n    {\n      \"URL\" : \"https://inbox.myallocator.com/n/user_image.xt?pid=4304&img=4257D9FE-...-DDCC3C83E8DD.jpg\",\n      \"Thumbnail\" : \"https://inbox.myallocator.com/n/user_image_tb.xt?pid=4304&img=4257D9FE-...-DDCC3C83E8DD.jpg\",\n      \"ImageId\" : \"466\",\n      \"SavedFilename\" : \"4257D9FE-687A-11E5-B908-DDCC3C83E8DD.jpg\",\n      \"Description\":\"The Lobby\",\n      \"SortOrder\": 200\n    }\n  ]\n}",
           "type": "json"
         }
       ]
@@ -2527,10 +2611,21 @@ define({ "api": [
       }
     ],
     "success": {
+      "fields": {
+        "Response": [
+          {
+            "group": "Response",
+            "type": "Boolean",
+            "optional": false,
+            "field": "Success",
+            "description": "<p>Whether the removal was succesful</p>"
+          }
+        ]
+      },
       "examples": [
         {
           "title": "Response",
-          "content": "{\n    \"Success\": true,\n    \"Method\": \"PropertyImageCreate\",\n    \"RUID\": \"B4FC792C-6A40-11E8-A1C4-C85D2E42BFE4\",\n    \"PropertyImages\": [\n        {\n            \"SavedFilename\": \"B4F95E18-...-C85D2E42BFE4.png\",\n            \"ImageId\": \"41212\",\n            \"URL\": \"https://inbox.myallocator.com/n/user_image.xt?pid=1&img=B4F95E18-...-C85D2E42BFE4.png\",\n            \"Thumbnail\": \"https://inbox.myallocator.com/n/user_image_tb.xt?pid=1&img=B4F95E18-...-C85D2E42BFE4.png\",\n            \"Description\": \"myallocator logo\"\n        },\n        {\n            \"Description\": \"myallocator logo again\",\n            \"Thumbnail\": \"https://inbox.myallocator.com/n/user_image_tb.xt?pid=1&img=B4FAC9BA-...-C85D2E42BFE4.png\",\n            \"URL\": \"https://inbox.myallocator.com/n/user_image.xt?pid=1&img=B4FAC9BA-...-C85D2E42BFE4.png\",\n            \"ImageId\": \"41213\",\n            \"SavedFilename\": \"B4FAC9BA-..-C85D2E42BFE4.png\"\n        }\n    ]\n}",
+          "content": "{\n    \"Success\": true,\n    \"Method\": \"PropertyImageRemove\",\n    \"RUID\": \"9C3F6798-72E5-11E8-BE3D-19DB0D339365\"\n}",
           "type": "json"
         }
       ]
@@ -2545,7 +2640,7 @@ define({ "api": [
     "title": "PropertyImageUpdate",
     "name": "PropertyImageUpdate",
     "version": "201804.0.1",
-    "description": "<p>Update the description of a property image.</p>",
+    "description": "<p>Update the description and/or sort order of a property image.</p>",
     "parameter": {
       "fields": {
         "Request": [
@@ -2604,6 +2699,13 @@ define({ "api": [
             "optional": true,
             "field": "PropertyImage/Description",
             "description": "<p>Image description as provided by the customer</p>"
+          },
+          {
+            "group": "Request",
+            "type": "Integer",
+            "optional": true,
+            "field": "PropertyImage/SortOrder",
+            "description": "<p>Number indicating the displayed sort order. Lower numbers means further left/top. Defaults to 0.</p>"
           }
         ]
       }
@@ -2611,21 +2713,32 @@ define({ "api": [
     "examples": [
       {
         "title": "Request (update single property image)",
-        "content": "{\n    \"Auth/VendorId\":\"Your Vendor ID\",\n    \"Auth/VendorPassword\":\"Your Vendor Password\",\n    \"Auth/UserToken\":\"User token\",\n    \"Auth/PropertyId\":\"Property ID on myallocator.com\",\n    \"PropertyImage\":{ \"PropertyImageId\": \"1234\", \"Description\": \"The garden\" }\n}",
+        "content": "{\n    \"Auth/VendorId\":\"Your Vendor ID\",\n    \"Auth/VendorPassword\":\"Your Vendor Password\",\n    \"Auth/UserToken\":\"User token\",\n    \"Auth/PropertyId\":\"Property ID on myallocator.com\",\n    \"PropertyImage\":{ \"PropertyImageId\": \"1234\", \"Description\": \"The garden\", \"SortOrder\": 1 }\n}",
         "type": "json"
       },
       {
         "title": "Request (update multiple property images)",
-        "content": "{\n    \"Auth/VendorId\":\"Your Vendor ID\",\n    \"Auth/VendorPassword\":\"Your Vendor Password\",\n    \"Auth/UserToken\":\"User token\",\n    \"Auth/PropertyId\":\"Property ID on myallocator.com\",\n    \"PropertyImages\": [\n        { \"PropertyImageId\": \"1234\", \"Description\": \"The garden\" },\n        { \"PropertyImageId\": \"1235\", \"Description\": \"View of the lobby\" }\n    ]\n}",
+        "content": "{\n    \"Auth/VendorId\":\"Your Vendor ID\",\n    \"Auth/VendorPassword\":\"Your Vendor Password\",\n    \"Auth/UserToken\":\"User token\",\n    \"Auth/PropertyId\":\"Property ID on myallocator.com\",\n    \"PropertyImages\": [\n        { \"PropertyImageId\": \"1234\", \"Description\": \"The garden\" },\n        { \"PropertyImageId\": \"1235\", \"Description\": \"View of the lobby\", \"SortOrder\": 2 }\n    ]\n}",
         "type": "json"
       },
       {
         "title": "curl",
-        "content": "curl https://api.myallocator.com/pms/v201804/json/PropertyImageUpdate -d@- <<EOJSON\njson={\n    \"Auth/VendorId\":\"Your Vendor ID\",\n    \"Auth/VendorPassword\":\"Your Vendor Password\",\n    \"Auth/UserToken\":\"User token\",\n    \"Auth/PropertyId\":\"Property ID on myallocator.com\",\n    \"PropertyImage\":{ \"PropertyImageId\": \"1234\", \"Description\": \"The garden\" }\n}\nEOJSON",
+        "content": "curl https://api.myallocator.com/pms/v201804/json/PropertyImageUpdate -d@- <<EOJSON\njson={\n    \"Auth/VendorId\":\"Your Vendor ID\",\n    \"Auth/VendorPassword\":\"Your Vendor Password\",\n    \"Auth/UserToken\":\"User token\",\n    \"Auth/PropertyId\":\"Property ID on myallocator.com\",\n    \"PropertyImage\":{ \"PropertyImageId\": \"1234\", \"Description\": \"The garden\", \"SortOrder\": 1 }\n}\nEOJSON",
         "type": "json"
       }
     ],
     "success": {
+      "fields": {
+        "Response": [
+          {
+            "group": "Response",
+            "type": "Boolean",
+            "optional": false,
+            "field": "Success",
+            "description": "<p>Whether the update was succesful</p>"
+          }
+        ]
+      },
       "examples": [
         {
           "title": "Response",
@@ -2815,9 +2928,9 @@ define({ "api": [
   {
     "group": "3_API_Methods",
     "type": "POST",
-    "url": "/PropertyModify",
-    "title": "PropertyModify",
-    "name": "PropertyModify",
+    "url": "/PropertyUpdate",
+    "title": "PropertyUpdate",
+    "name": "PropertyUpdate",
     "version": "201804.0.1",
     "parameter": {
       "fields": {
@@ -3117,7 +3230,7 @@ define({ "api": [
     "examples": [
       {
         "title": "curl",
-        "content": "curl https://api.myallocator.com/pms/v201804/json/PropertyModify -d@- <<EOJSON\njson={\n  \"Auth/UserToken\":\"User's auth token\",\n  \"Auth/VendorId\":\"your vendor id\",\n  \"Auth/VendorPassword\":\"your vendor password\",\n  \"Auth/PropertyId\": 12345,\n  \"PropertyName\":\"Example Hostel\",\n  \"Currency\":\"USD\",\n  \"AddressLine1\":\"Main St\",\n  \"AddressLine2\":\"Main Building\",\n  \"City\":\"San Diego\",\n  \"PostCode\":\"92101\",\n  \"State\":\"CA\",\n  \"Country\":\"us\",\n  \"Timezone\":\"UTC\",\n  \"Phone\":\"+1 123456789\",\n  \"Fax\":\"+2 987654332\",\n  \"MinLengthOfStay\":\"2\",\n  \"MaxLengthOfStay\":\"0\",\n  \"Latitude\":\"10.123\",\n  \"Longitude\":\"55.111\",\n  \"Breakfast\":\"IN\",\n  \"Website\":\"https://myallocator.com\",\n  \"EmailDefault\":\"contact@example.com\",\n  \"EmailChannelBooking\":\"booking@example.com\",\n  \"EmailBookNow\":\"booknow@example.com\",\n  \"InvoiceAddressLine1\":\"invoice street 1\",\n  \"InvoiceAddressLine2\":\"invoice street 2\",\n  \"InvoiceCity\":\"invoice city\",\n  \"InvoicePostCode\":\"invoice zip\",\n  \"InvoiceState\":\"invoice state\",\n  \"InvoiceCountry\":\"de\",\n  \"InvoiceCompanyName\":\"invoice company name\",\n  \"InvoiceMainContactName\":\"invoice main contact name\",\n  \"InvoiceAccountManagerName\":\"invoice account manager name\",\n  \"InvoiceVatID\":\"invoice vat id\"\n  \"BookingAdjust\":\"0|1\",\n  \"BookingAdjustCancellation\":\"0|1\",\n  \"BookingAdjustModification\":\"0|1\",\n  \"BookingDownload\":\"0|1\",\n  \"EmailDefault\":\"contact@example.com\",\n  \"EmailChannelBooking\":\"booking@example.com\",\n  \"EmailBookNow\":\"booknow@example.com\"\n}\nEOJSON",
+        "content": "curl https://api.myallocator.com/pms/v201804/json/PropertyUpdate -d@- <<EOJSON\njson={\n  \"Auth/UserToken\":\"User's auth token\",\n  \"Auth/VendorId\":\"your vendor id\",\n  \"Auth/VendorPassword\":\"your vendor password\",\n  \"Auth/PropertyId\": 12345,\n  \"PropertyName\":\"Example Hostel\",\n  \"Currency\":\"USD\",\n  \"AddressLine1\":\"Main St\",\n  \"AddressLine2\":\"Main Building\",\n  \"City\":\"San Diego\",\n  \"PostCode\":\"92101\",\n  \"State\":\"CA\",\n  \"Country\":\"us\",\n  \"Timezone\":\"UTC\",\n  \"Phone\":\"+1 123456789\",\n  \"Fax\":\"+2 987654332\",\n  \"MinLengthOfStay\":\"2\",\n  \"MaxLengthOfStay\":\"0\",\n  \"Latitude\":\"10.123\",\n  \"Longitude\":\"55.111\",\n  \"Breakfast\":\"IN\",\n  \"Website\":\"https://myallocator.com\",\n  \"EmailDefault\":\"contact@example.com\",\n  \"EmailChannelBooking\":\"booking@example.com\",\n  \"EmailBookNow\":\"booknow@example.com\",\n  \"InvoiceAddressLine1\":\"invoice street 1\",\n  \"InvoiceAddressLine2\":\"invoice street 2\",\n  \"InvoiceCity\":\"invoice city\",\n  \"InvoicePostCode\":\"invoice zip\",\n  \"InvoiceState\":\"invoice state\",\n  \"InvoiceCountry\":\"de\",\n  \"InvoiceCompanyName\":\"invoice company name\",\n  \"InvoiceMainContactName\":\"invoice main contact name\",\n  \"InvoiceAccountManagerName\":\"invoice account manager name\",\n  \"InvoiceVatID\":\"invoice vat id\"\n  \"BookingAdjust\":\"0|1\",\n  \"BookingAdjustCancellation\":\"0|1\",\n  \"BookingAdjustModification\":\"0|1\",\n  \"BookingDownload\":\"0|1\",\n  \"EmailDefault\":\"contact@example.com\",\n  \"EmailChannelBooking\":\"booking@example.com\",\n  \"EmailBookNow\":\"booknow@example.com\"\n}\nEOJSON",
         "type": "json"
       }
     ],
@@ -3422,6 +3535,13 @@ define({ "api": [
             "optional": true,
             "field": "RoomImage/Description",
             "description": "<p>Description of the image to show on a channel (max. 512 characters)</p>"
+          },
+          {
+            "group": "Request",
+            "type": "Integer",
+            "optional": true,
+            "field": "RoomImage/SortOrder",
+            "description": "<p>Number indicating the displayed sort order. Lower numbers means further left/top. Defaults to 0.</p>"
           }
         ]
       }
@@ -3429,17 +3549,17 @@ define({ "api": [
     "examples": [
       {
         "title": "Single file upload",
-        "content": "{\n    \"Auth/VendorId\":\"\",\n    \"Auth/VendorPassword\":\"\",\n    \"Auth/UserToken\":\"\",\n    \"Auth/PropertyId\":\"\",\n    \"RoomImage\": {\n        \"RoomId\": 5532,\n        \"Filename\": \"double-room.jpg\",\n        \"Data\": \"oAAAANSUhEUgAAG2QAABPqCAYAAA[...]\",\n        \"Description\": \"The Bedroom\"\n    }\n}",
+        "content": "{\n    \"Auth/VendorId\":\"\",\n    \"Auth/VendorPassword\":\"\",\n    \"Auth/UserToken\":\"\",\n    \"Auth/PropertyId\":\"\",\n    \"RoomImage\": {\n        \"RoomId\": 5532,\n        \"Filename\": \"double-room.jpg\",\n        \"Data\": \"oAAAANSUhEUgAAG2QAABPqCAYAAA[...]\",\n        \"Description\": \"The Bedroom\",\n        \"SortOrder\": 100\n    }\n}",
         "type": "json"
       },
       {
         "title": "Multiple file upload",
-        "content": "{\n    \"Auth/VendorId\":\"\",\n    \"Auth/VendorPassword\":\"\",\n    \"Auth/UserToken\":\"\",\n    \"Auth/PropertyId\":\"\",\n    \"RoomImages\": [\n      {\n        \"RoomId\": 5532,\n        \"Filename\": \"double-room.jpg\",\n        \"Data\": \"oAAAANSUhEUgAAG2QAABPqCAYAAA[...]\",\n        \"Description\": \"The Bedroom\"\n      },\n      {\n        \"RoomId\": 5535,\n        \"Filename\": \"twin-room.jpg\",\n        \"Data\": \"oAAAANSUhEUgAAG2QAABPqCAYAAA[...]\",\n        \"Description\": \"The Twin Room\"\n      }\n    ]\n}",
+        "content": "{\n    \"Auth/VendorId\":\"\",\n    \"Auth/VendorPassword\":\"\",\n    \"Auth/UserToken\":\"\",\n    \"Auth/PropertyId\":\"\",\n    \"RoomImages\": [\n      {\n        \"RoomId\": 5532,\n        \"Filename\": \"double-room.jpg\",\n        \"Data\": \"oAAAANSUhEUgAAG2QAABPqCAYAAA[...]\",\n        \"Description\": \"The Bedroom\"\n      },\n      {\n        \"RoomId\": 5535,\n        \"Filename\": \"twin-room.jpg\",\n        \"Data\": \"oAAAANSUhEUgAAG2QAABPqCAYAAA[...]\",\n        \"Description\": \"The Twin Room\",\n        \"SortOrder\": 200\n      }\n    ]\n}",
         "type": "json"
       },
       {
         "title": "curl",
-        "content": "curl https://api.myallocator.com/pms/v201804/json/RoomImageCreate -d@- <<EOJSON\njson={\n    \"Auth/VendorId\":\"\",\n    \"Auth/VendorPassword\":\"\",\n    \"Auth/UserToken\":\"\",\n    \"Auth/PropertyId\":\"\",\n    \"RoomImages\": [\n      {\n        \"RoomId\": 5532,\n        \"Filename\": \"double-room.jpg\",\n        \"Data\": \"oAAAANSUhEUgAAG2QAABPqCAYAAA[...]\",\n        \"Description\": \"The Bedroom\"\n      }\n    ]\n}\nEOJSON",
+        "content": "curl https://api.myallocator.com/pms/v201804/json/RoomImageCreate -d@- <<EOJSON\njson={\n    \"Auth/VendorId\":\"\",\n    \"Auth/VendorPassword\":\"\",\n    \"Auth/UserToken\":\"\",\n    \"Auth/PropertyId\":\"\",\n    \"RoomImages\": [\n      {\n        \"RoomId\": 5532,\n        \"Filename\": \"double-room.jpg\",\n        \"Data\": \"oAAAANSUhEUgAAG2QAABPqCAYAAA[...]\",\n        \"Description\": \"The Bedroom\",\n        \"SortOrder\": 1\n      }\n    ]\n}\nEOJSON",
         "type": "json"
       }
     ],
@@ -3455,31 +3575,73 @@ define({ "api": [
           },
           {
             "group": "Response",
-            "type": "Object",
+            "type": "Array",
             "optional": false,
-            "field": "RoomImage",
-            "description": "<p>Object containing more details about the uploaded image</p>"
+            "field": "RoomImages",
+            "description": "<p>Array containing RoomImage objects</p>"
           },
           {
             "group": "Response",
-            "type": "Integer",
+            "type": "Object",
             "optional": false,
-            "field": "RoomImageId",
-            "description": "<p>ID of the newly uploaded image</p>"
+            "field": "RoomImage",
+            "description": "<p>Object containing more details about the upload image(s)</p>"
           },
           {
             "group": "Response",
             "type": "String",
             "optional": false,
-            "field": "SavedFilename",
-            "description": "<p>Filename as stored on server</p>"
+            "field": "RoomImage/ImageId",
+            "description": "<p>The room image ID which will reference the room image.</p>"
+          },
+          {
+            "group": "Response",
+            "type": "String",
+            "optional": false,
+            "field": "RoomImage/RoomId",
+            "description": "<p>Room that the image is stored for</p>"
+          },
+          {
+            "group": "Response",
+            "type": "String",
+            "optional": false,
+            "field": "RoomImage/SavedFilename",
+            "description": "<p>Filename in our system</p>"
+          },
+          {
+            "group": "Response",
+            "type": "URL",
+            "optional": false,
+            "field": "RoomImage/URL",
+            "description": "<p>Publicly accessible URL to the full resolution image</p>"
+          },
+          {
+            "group": "Response",
+            "type": "URL",
+            "optional": false,
+            "field": "RoomImage/Thumbnail",
+            "description": "<p>Publicly accessible URL to the thumbnail</p>"
+          },
+          {
+            "group": "Response",
+            "type": "String",
+            "optional": false,
+            "field": "RoomImage/Description",
+            "description": "<p>Image description as provided by the customer</p>"
+          },
+          {
+            "group": "Response",
+            "type": "Integer",
+            "optional": false,
+            "field": "RoomImage/SortOrder",
+            "description": "<p>Number indicating the displayed sort order. Lower numbers means further left/top.</p>"
           }
         ]
       },
       "examples": [
         {
           "title": "Response",
-          "content": "{\n    \"RUID\": \"64839402-6A41-11E8-B636-E5F0F1510551\",\n    \"Method\": \"RoomImageCreate\",\n    \"RoomImages\": [\n        {\n            \"RoomId\": 5532,\n            \"URL\": \"https://inbox.myallocator.com/n/user_image.xt?pid=1&img=64801BCE-...-E5F0F1510551.jpg\",\n            \"SavedFilename\": \"64801BCE-...-E5F0F1510551.jpg\",\n            \"ImageId\": \"41214\",\n            \"Thumbnail\": \"https://inbox.myallocator.com/n/user_image_tb.xt?pid=1&img=64801BCE-...-E5F0F1510551.jpg\",\n            \"Description\": \"The Bedroom\"\n        },\n        {\n            \"RoomId\": 5535,\n            \"URL\": \"https://inbox.myallocator.com/n/user_image.xt?pid=1&img=6481C9D8-...-E5F0F1510551.jpg\",\n            \"SavedFilename\": \"6481C9D8-...-E5F0F1510551.jpg\",\n            \"ImageId\": \"41215\",\n            \"Thumbnail\": \"https://inbox.myallocator.com/n/user_image_tb.xt?pid=1&img=6481C9D8-...-E5F0F1510551.jpg\",\n            \"Description\": \"The Twin Room\"\n        }\n    ],\n    \"Success\": true\n}",
+          "content": "{\n    \"RUID\": \"64839402-6A41-11E8-B636-E5F0F1510551\",\n    \"Method\": \"RoomImageCreate\",\n    \"RoomImages\": [\n        {\n            \"RoomId\": 5532,\n            \"URL\": \"https://inbox.myallocator.com/n/user_image.xt?pid=1&img=64801BCE-...-E5F0F1510551.jpg\",\n            \"SavedFilename\": \"64801BCE-...-E5F0F1510551.jpg\",\n            \"ImageId\": \"41214\",\n            \"Thumbnail\": \"https://inbox.myallocator.com/n/user_image_tb.xt?pid=1&img=64801BCE-...-E5F0F1510551.jpg\",\n            \"Description\": \"The Bedroom\",\n            \"SortOrder\": 0\n        },\n        {\n            \"RoomId\": 5535,\n            \"URL\": \"https://inbox.myallocator.com/n/user_image.xt?pid=1&img=6481C9D8-...-E5F0F1510551.jpg\",\n            \"SavedFilename\": \"6481C9D8-...-E5F0F1510551.jpg\",\n            \"ImageId\": \"41215\",\n            \"Thumbnail\": \"https://inbox.myallocator.com/n/user_image_tb.xt?pid=1&img=6481C9D8-...-E5F0F1510551.jpg\",\n            \"Description\": \"The Twin Room\",\n            \"SortOrder\": 1\n        }\n    ],\n    \"Success\": true\n}",
           "type": "json"
         }
       ]
@@ -3546,38 +3708,80 @@ define({ "api": [
         "Response": [
           {
             "group": "Response",
-            "type": "String",
+            "type": "Boolean",
             "optional": false,
-            "field": "Id",
-            "description": "<p>The room image ID which will reference the room image.</p>"
+            "field": "Success",
+            "description": "<p>Whether the call was succesful (should always be true)</p>"
+          },
+          {
+            "group": "Response",
+            "type": "Array",
+            "optional": false,
+            "field": "RoomImages",
+            "description": "<p>Array containing RoomImage objects</p>"
+          },
+          {
+            "group": "Response",
+            "type": "Object",
+            "optional": false,
+            "field": "RoomImage",
+            "description": "<p>Object containing more details about the images</p>"
           },
           {
             "group": "Response",
             "type": "String",
             "optional": false,
-            "field": "RoomId",
+            "field": "RoomImage/ImageId",
+            "description": "<p>The image ID which will reference the room image</p>"
+          },
+          {
+            "group": "Response",
+            "type": "String",
+            "optional": false,
+            "field": "RoomImage/RoomId",
             "description": "<p>Room that the image is stored for</p>"
           },
           {
             "group": "Response",
             "type": "String",
             "optional": false,
-            "field": "SavedFilename",
+            "field": "RoomImage/SavedFilename",
             "description": "<p>Filename in our system</p>"
+          },
+          {
+            "group": "Response",
+            "type": "URL",
+            "optional": false,
+            "field": "RoomImage/URL",
+            "description": "<p>Publicly accessible URL to the full resolution image</p>"
+          },
+          {
+            "group": "Response",
+            "type": "URL",
+            "optional": false,
+            "field": "RoomImage/Thumbnail",
+            "description": "<p>Publicly accessible URL to the thumbnail</p>"
           },
           {
             "group": "Response",
             "type": "String",
             "optional": false,
-            "field": "Description",
+            "field": "RoomImage/Description",
             "description": "<p>Image description as provided by the customer</p>"
+          },
+          {
+            "group": "Response",
+            "type": "Integer",
+            "optional": false,
+            "field": "RoomImage/SortOrder",
+            "description": "<p>Number indicating the displayed sort order. Lower numbers means further left/top.</p>"
           }
         ]
       },
       "examples": [
         {
           "title": "Response",
-          "content": "{\n    \"RoomImages\" : [\n        {\n            \"URL\" : \"https://inbox.myallocator.com/n/user_image.xt?pid=4304&img=64CC674C-5AFC-11E5-8C0B-1DCDF6E4DDB5.jpg\",\n            \"RoomId\" : \"23651\",\n            \"Thumbnail\" : \"https://inbox.myallocator.com/n/user_image_tb.xt?pid=4304&img=64CC674C-5AFC-11E5-8C0B-1DCDF6E4DDB5.jpg\",\n            \"ImageId\" : \"3221\",\n            \"SavedFilename\" : \"64CC674C-5AFC-11E5-8C0B-1DCDF6E4DDB5.jpg\",\n            \"Description\" : \"The bedroom\"\n        },\n        {\n            \"URL\" : \"https://inbox.myallocator.com/n/user_image.xt?pid=4304&img=AF559588-5B04-11E5-A038-10A36E043024.jpg\",\n            \"RoomId\" : \"22905\",\n            \"Thumbnail\" : \"https://inbox.myallocator.com/n/user_image_tb.xt?pid=4304&img=AF559588-5B04-11E5-A038-10A36E043024.jpg\",\n            \"ImageId\" : \"3222\",\n            \"SavedFilename\" : \"AF559588-5B04-11E5-A038-10A36E043024.jpg\",\n            \"Description\" : \"The kitchen\"\n        }\n    ]\n}",
+          "content": "{\n    \"RoomImages\" : [\n        {\n            \"URL\" : \"https://inbox.myallocator.com/n/user_image.xt?pid=4304&img=64CC674C-...1DCDF6E4DDB5.jpg\",\n            \"RoomId\" : \"23651\",\n            \"Thumbnail\" : \"https://inbox.myallocator.com/n/user_image_tb.xt?pid=4304&img=64CC674C-...-1DCDF6E4DDB5.jpg\",\n            \"ImageId\" : \"3221\",\n            \"SavedFilename\" : \"64CC674C-5AFC-11E5-8C0B-1DCDF6E4DDB5.jpg\",\n            \"Description\" : \"The bedroom\",\n            \"SortOrder\" : 400\n        },\n        {\n            \"URL\" : \"https://inbox.myallocator.com/n/user_image.xt?pid=4304&img=AF559588-...-10A36E043024.jpg\",\n            \"RoomId\" : \"22905\",\n            \"Thumbnail\" : \"https://inbox.myallocator.com/n/user_image_tb.xt?pid=4304&img=AF559588-...-10A36E043024.jpg\",\n            \"ImageId\" : \"3222\",\n            \"SavedFilename\" : \"AF559588-5B04-11E5-A038-10A36E043024.jpg\",\n            \"Description\" : \"The kitchen\",\n            \"SortOrder\" : 600\n        }\n    ]\n}",
           "type": "json"
         }
       ]
@@ -3671,8 +3875,24 @@ define({ "api": [
           "title": "Request (remove all room images)",
           "content": "{\n    \"Auth/UserId\":\"\",\n    \"Auth/Userassword\":\"\",\n    \"Auth/VendorId\":\"\",\n    \"Auth/VendorPassword\":\"\"\n}",
           "type": "json"
+        },
+        {
+          "title": "Response",
+          "content": "{\n    \"Method\": \"RoomImageRemove\",\n    \"Success\": true,\n    \"RUID\": \"D2CD386C-72E5-11E8-BE3D-19DB0D339365\"\n}",
+          "type": "json"
         }
-      ]
+      ],
+      "fields": {
+        "Response": [
+          {
+            "group": "Response",
+            "type": "Boolean",
+            "optional": false,
+            "field": "Success",
+            "description": "<p>Whether the removal was succesful</p>"
+          }
+        ]
+      }
     },
     "examples": [
       {
@@ -3691,7 +3911,7 @@ define({ "api": [
     "title": "RoomImageUpdate",
     "name": "RoomImageUpdate",
     "version": "201804.0.1",
-    "description": "<p>Update the description of a room image.</p>",
+    "description": "<p>Update the description and/or sort order of a room image.</p>",
     "parameter": {
       "fields": {
         "Request": [
@@ -3757,6 +3977,13 @@ define({ "api": [
             "optional": true,
             "field": "RoomImage/Description",
             "description": "<p>Image description as provided by the customer</p>"
+          },
+          {
+            "group": "Request",
+            "type": "Integer",
+            "optional": true,
+            "field": "RoomImage/SortOrder",
+            "description": "<p>Number indicating the displayed sort order. Lower numbers means further left/top. Defaults to 0.</p>"
           }
         ]
       }
@@ -3764,21 +3991,32 @@ define({ "api": [
     "examples": [
       {
         "title": "Request (update single room image)",
-        "content": "{\n    \"Auth/VendorId\":\"Your Vendor ID\",\n    \"Auth/VendorPassword\":\"Your Vendor Password\",\n    \"Auth/UserToken\":\"User token\",\n    \"Auth/PropertyId\":\"Property ID on myallocator.com\",\n    \"RoomImage\":{ \"RoomImageId\": \"1234\", \"Description\": \"Twin room\" }\n}",
+        "content": "{\n    \"Auth/VendorId\":\"Your Vendor ID\",\n    \"Auth/VendorPassword\":\"Your Vendor Password\",\n    \"Auth/UserToken\":\"User token\",\n    \"Auth/PropertyId\":\"Property ID on myallocator.com\",\n    \"RoomImage\":{ \"RoomImageId\": \"1234\", \"Description\": \"Twin room\", \"SortOrder\": 5 }\n}",
         "type": "json"
       },
       {
         "title": "Request (update multiple room images)",
-        "content": "{\n    \"Auth/VendorId\":\"Your Vendor ID\",\n    \"Auth/VendorPassword\":\"Your Vendor Password\",\n    \"Auth/UserToken\":\"User token\",\n    \"Auth/PropertyId\":\"Property ID on myallocator.com\",\n    \"RoomImages\": [\n        { \"RoomImageId\": \"1234\", \"Description\": \"Twin room\" },\n        { \"RoomImageId\": \"1234\", \"Description\": \"Double room with a view\" }\n    ]\n}",
+        "content": "{\n    \"Auth/VendorId\":\"Your Vendor ID\",\n    \"Auth/VendorPassword\":\"Your Vendor Password\",\n    \"Auth/UserToken\":\"User token\",\n    \"Auth/PropertyId\":\"Property ID on myallocator.com\",\n    \"RoomImages\": [\n        { \"RoomImageId\": \"1234\", \"Description\": \"Twin room\" },\n        { \"RoomImageId\": \"1234\", \"Description\": \"Double room with a view\", \"SortOrder\": 6 }\n    ]\n}",
         "type": "json"
       },
       {
         "title": "curl",
-        "content": "curl https://api.myallocator.com/pms/v201804/json/RoomImageUpdate -d@- <<EOJSON\njson={\n    \"Auth/VendorId\":\"Your Vendor ID\",\n    \"Auth/VendorPassword\":\"Your Vendor Password\",\n    \"Auth/UserToken\":\"User token\",\n    \"Auth/PropertyId\":\"Property ID on myallocator.com\",\n    \"RoomImage\":{ \"RoomImageId\": \"1234\", \"Description\": \"Twin room\" }\n}\nEOJSON",
+        "content": "curl https://api.myallocator.com/pms/v201804/json/RoomImageUpdate -d@- <<EOJSON\njson={\n    \"Auth/VendorId\":\"Your Vendor ID\",\n    \"Auth/VendorPassword\":\"Your Vendor Password\",\n    \"Auth/UserToken\":\"User token\",\n    \"Auth/PropertyId\":\"Property ID on myallocator.com\",\n    \"RoomImage\":{ \"RoomImageId\": \"1234\", \"Description\": \"Twin room\", \"SortOrder\": 1 }\n}\nEOJSON",
         "type": "json"
       }
     ],
     "success": {
+      "fields": {
+        "Response": [
+          {
+            "group": "Response",
+            "type": "Boolean",
+            "optional": false,
+            "field": "Success",
+            "description": "<p>Whether the update was succesful</p>"
+          }
+        ]
+      },
       "examples": [
         {
           "title": "Response",
@@ -4178,9 +4416,9 @@ define({ "api": [
   {
     "group": "3_API_Methods",
     "type": "POST",
-    "url": "/UserModify",
-    "title": "UserModify",
-    "name": "UserModify",
+    "url": "/UserUpdate",
+    "title": "UserUpdate",
+    "name": "UserUpdate",
     "version": "201804.0.1",
     "description": "<p>This method allows vendors to change a myallocator user's first name, last name and general contact email address.</p>",
     "parameter": {
@@ -4234,7 +4472,7 @@ define({ "api": [
     "examples": [
       {
         "title": "curl",
-        "content": "    curl https://api.myallocator.com/pms/v201804/json/UserModify -d@- <<EOJSON\n    json={\n      \"Auth/UserToken\"      : \"User's auth token\",\n      \"Auth/VendorId\"       : \"Your vendor id\",\n      \"Auth/VendorPassword\" : \"Your vendor password\",\n      \"CustomerFirstName\"   : \"Customer's first name\",\n      \"CustomerLastName\"    : \"Customer's last name\",\n      \"CustomerEmail\"       : \"Customer's email address\"\n    }\nEOJSON",
+        "content": "    curl https://api.myallocator.com/pms/v201804/json/UserUpdate -d@- <<EOJSON\n    json={\n      \"Auth/UserToken\"      : \"User's auth token\",\n      \"Auth/VendorId\"       : \"Your vendor id\",\n      \"Auth/VendorPassword\" : \"Your vendor password\",\n      \"CustomerFirstName\"   : \"Customer's first name\",\n      \"CustomerLastName\"    : \"Customer's last name\",\n      \"CustomerEmail\"       : \"Customer's email address\"\n    }\nEOJSON",
         "type": "json"
       }
     ],
@@ -4450,7 +4688,7 @@ define({ "api": [
     "title": "Version History",
     "name": "Version_History",
     "version": "201804.0.1",
-    "description": "<table> <thead> <tr> <th>Date</th> <th>Version</th> <th>Change</th> </tr> </thead> <tbody> <tr> <td>2018-04-02</td> <td>201804.0.1</td> <td>Success flag guaranteed to be returned in every response</td> </tr> <tr> <td>2018-03-20</td> <td>201803.0.2</td> <td>Unique request ID (RUID) included in every response</td> </tr> <tr> <td>2018-03-08</td> <td>201803.0.1</td> <td>ARI updates 4 years into the future now possible</td> </tr> <tr> <td>2018-02-12</td> <td>201802.0.1</td> <td>New API calls: MetaSearch, MetaSearchList</td> </tr> <tr> <td>2018-01-24</td> <td>201801.0.2</td> <td>Simplified token usage</td> </tr> <tr> <td>2018-01-22</td> <td>201801.0.1</td> <td>PropertyChannelList able to limit by property ID</td> </tr> <tr> <td>2017-04-12</td> <td>201710.0.1</td> <td>New API call: PropertyChannelImportARI</td> </tr> <tr> <td>2017-04-12</td> <td>201610.0.2</td> <td>ICalLink field added to call RoomList</td> </tr> <tr> <td>2016-10-09</td> <td>201610.0.1</td> <td>Changes to ARIRules</td> </tr> <tr> <td>2016-05-26</td> <td>201605.0.2</td> <td>New API call: BookingCancel</td> </tr> <tr> <td>2016-05-25</td> <td>201605.0.1</td> <td>Removed CANCEL/UNCANCEL from BookingAction, added more options to BookingList</td> </tr> <tr> <td>2016-03-15</td> <td>201603.0.1</td> <td>New API calls: RatePlanCreate, RatePlanUpdate, RatePlanRemove</td> </tr> <tr> <td>2016-02-04</td> <td>201601.0.2</td> <td>VERSIONED JSON response format PropertyChannelList to include currency (and future fields)</td> </tr> <tr> <td>2016-01-08</td> <td>201601.0.1</td> <td>Fixed documentation for ARIUpdate to include Auth/VendorId Auth/VendorPassword</td> </tr> <tr> <td>2015-10-13</td> <td>201501.0.13</td> <td>Fix BookingList ModificationEndDate so it goes until 11:59pm</td> </tr> <tr> <td>2015-10-01</td> <td>201501.0.12</td> <td>Fix various documentation issues</td> </tr> <tr> <td>2015-07-24</td> <td>201501.0.11</td> <td>added BookingPaymentPasswordValidate</td> </tr> <tr> <td>2015-07-09</td> <td>201501.0.10</td> <td>added IncludeArchived to BookingList</td> </tr> <tr> <td>2015-05-27</td> <td>201501.0.9</td> <td>new BookingList parameters ModificationStartDateTime, ModificationEndDateTime, CreationStartDateTime, CreationEndDateTime</td> </tr> <tr> <td>2015-05-18</td> <td>201501.0.8</td> <td>new BookingAction commands</td> </tr> <tr> <td>2015-03-20</td> <td>201501.0.7</td> <td>Corrected explanation of Units on RoomCreate (thanks Petr T.)</td> </tr> <tr> <td>2015-02-19</td> <td>201501.0.6</td> <td>Add Options.NormalizeToCurrency to BookingList</td> </tr> <tr> <td>2015-02-19</td> <td>201501.0.5</td> <td>Added more documentation to Booking Samples</td> </tr> <tr> <td>2015-02-03</td> <td>201501.0.4</td> <td>Added .Options.IgnoreInvalidRooms to MAAPI</td> </tr> <tr> <td>2015-02-02</td> <td>201501.0.3</td> <td>Improved documentation for multiple overlapping Allocations in ARIUpdate</td> </tr> <tr> <td>2015-01-22</td> <td>201501.0.2</td> <td>Improved documentation with Booking samples</td> </tr> <tr> <td>2015-01-09</td> <td>201501.0.1</td> <td>Initial release of 201601[beta] (new functions: ARIRules)</td> </tr> <tr> <td>2015-01-08</td> <td>201408.0.13</td> <td>Corrected validation logic issue with ARIUpdate (properly validates Rooms)</td> </tr> <tr> <td>2015-01-07</td> <td>201408.0.12</td> <td>Corrected issue with AssociateUserToPMS requiring Auth/PropertyId</td> </tr> <tr> <td>2015-01-06</td> <td>201408.0.11</td> <td>Modified FailIfUpdateActive default to &quot;false&quot;</td> </tr> <tr> <td>2015-01-05</td> <td>201408.0.10</td> <td>fixed doc, Price-Weekend is &quot;PriceWeekend&quot;</td> </tr> <tr> <td>2015-01-05</td> <td>201408.0.9</td> <td>added JSON raw input mode - application/json</td> </tr> <tr> <td>2014-12-28</td> <td>201408.0.8</td> <td>added Auth/Debug</td> </tr> <tr> <td>2014-12-28</td> <td>201408.0.7</td> <td>fixed bug in ARIUpdate where zero unit updates would not be applied</td> </tr> <tr> <td>2014-12-26</td> <td>201408.0.6</td> <td>added more documentation to ChannelList and curl example to HelloWorld</td> </tr> <tr> <td>2014-12-24</td> <td>201408.0.5</td> <td>added error logging with ticket responses</td> </tr> <tr> <td>2014-12-23</td> <td>201408.0.4</td> <td>added VendorId to various docs, and propertyid, unified error handling</td> </tr> <tr> <td>2014-12-19</td> <td>201408.0.3</td> <td>fixed bug in RoomCreate (did not return RoomId)</td> </tr> <tr> <td>2014-12-15</td> <td>201408.0.2</td> <td>renamed LoopBookingAction into BookingAction</td> </tr> <tr> <td>2014-12-04</td> <td>201408.0.1</td> <td>initial release of new API</td> </tr> <tr> <td>2012-10-24</td> <td>1.6.2</td> <td>Updated booking information (new: CommissionIncludedInTotal).</td> </tr> <tr> <td>2012-10-24</td> <td>1.6.1</td> <td>Updated booking information and updated channel list (new: eb,air, orb, boo, tra).</td> </tr> <tr> <td>2012-10-24</td> <td>1.6</td> <td>New feature Booking Callback and updated channel list (new: max).</td> </tr> <tr> <td>2012-09-20</td> <td>1.5.2</td> <td>Updated channel list (new: exp, ysh, eb). Get/Set property country.</td> </tr> <tr> <td>2012-07-04</td> <td>1.5.1</td> <td>Updated channel list. Added MinStay/MaxStay example.</td> </tr> <tr> <td>2011-09-17</td> <td>1.5</td> <td>New method SetRoomTypes to add/update/remove rooms.</td> </tr> <tr> <td>2011-09-17</td> <td>1.4.1</td> <td>GetBookings: Minor correction regarding the end date. It's not the departure date but rather the departure date - 1.</td> </tr> <tr> <td>2011-01-15</td> <td>1.4</td> <td>New methods SetAllocation (non-blocking), SetLogin, GetUpdateStatus, GetBookings. Support for MinStay and MaxStay.</td> </tr> <tr> <td>2010-11-09</td> <td>1.3.1</td> <td>Updated channel list. GetRoomTypes: Obsoleted &quot;Ensuite&quot;, &quot;DoubleBed&quot; and &quot;Beds&quot; (replaced by new property &quot;Occupancy&quot;). GetProperties: shows which days are configure for weekends.</td> </tr> <tr> <td>2010-05-30</td> <td>1.3</td> <td>GetRoomTypes includes a room description (Label). Removed need to list channels to update to and ability to exclude channels. Skipped channels now warnings rather than errors.</td> </tr> <tr> <td>2010-05-05</td> <td>1.2</td> <td>Added links to XML samples. New channel: hb</td> </tr> <tr> <td>2010-04-30</td> <td>1.1</td> <td>Changed Room to \\textit{RoomType} to clarify matters</td> </tr> <tr> <td>2010-04-27</td> <td>1.0</td> <td>Initial release</td> </tr> </tbody> </table>",
+    "description": "<table> <thead> <tr> <th>Date</th> <th>Version</th> <th>Change</th> </tr> </thead> <tbody> <tr> <td>2018-06-07</td> <td>201806.0.1</td> <td>Renamed PropertyModify/UserModify to PropertyUpdate/UserUpdate for consistency. Old API calls will keep working.</td> </tr> <tr> <td>2018-04-02</td> <td>201804.0.1</td> <td>Success flag guaranteed to be returned in every response</td> </tr> <tr> <td>2018-03-20</td> <td>201803.0.2</td> <td>Unique request ID (RUID) included in every response</td> </tr> <tr> <td>2018-03-08</td> <td>201803.0.1</td> <td>ARI updates 4 years into the future now possible</td> </tr> <tr> <td>2018-02-12</td> <td>201802.0.1</td> <td>New API calls: MetaSearch, MetaSearchList</td> </tr> <tr> <td>2018-01-24</td> <td>201801.0.2</td> <td>Simplified token usage</td> </tr> <tr> <td>2018-01-22</td> <td>201801.0.1</td> <td>PropertyChannelList able to limit by property ID</td> </tr> <tr> <td>2017-04-12</td> <td>201710.0.1</td> <td>New API call: PropertyChannelImportARI</td> </tr> <tr> <td>2017-04-12</td> <td>201610.0.2</td> <td>ICalLink field added to call RoomList</td> </tr> <tr> <td>2016-10-09</td> <td>201610.0.1</td> <td>Changes to ARIRules</td> </tr> <tr> <td>2016-05-26</td> <td>201605.0.2</td> <td>New API call: BookingCancel</td> </tr> <tr> <td>2016-05-25</td> <td>201605.0.1</td> <td>Removed CANCEL/UNCANCEL from BookingAction, added more options to BookingList</td> </tr> <tr> <td>2016-03-15</td> <td>201603.0.1</td> <td>New API calls: RatePlanCreate, RatePlanUpdate, RatePlanRemove</td> </tr> <tr> <td>2016-02-04</td> <td>201601.0.2</td> <td>VERSIONED JSON response format PropertyChannelList to include currency (and future fields)</td> </tr> <tr> <td>2016-01-08</td> <td>201601.0.1</td> <td>Fixed documentation for ARIUpdate to include Auth/VendorId Auth/VendorPassword</td> </tr> <tr> <td>2015-10-13</td> <td>201501.0.13</td> <td>Fix BookingList ModificationEndDate so it goes until 11:59pm</td> </tr> <tr> <td>2015-10-01</td> <td>201501.0.12</td> <td>Fix various documentation issues</td> </tr> <tr> <td>2015-07-24</td> <td>201501.0.11</td> <td>added BookingPaymentPasswordValidate</td> </tr> <tr> <td>2015-07-09</td> <td>201501.0.10</td> <td>added IncludeArchived to BookingList</td> </tr> <tr> <td>2015-05-27</td> <td>201501.0.9</td> <td>new BookingList parameters ModificationStartDateTime, ModificationEndDateTime, CreationStartDateTime, CreationEndDateTime</td> </tr> <tr> <td>2015-05-18</td> <td>201501.0.8</td> <td>new BookingAction commands</td> </tr> <tr> <td>2015-03-20</td> <td>201501.0.7</td> <td>Corrected explanation of Units on RoomCreate (thanks Petr T.)</td> </tr> <tr> <td>2015-02-19</td> <td>201501.0.6</td> <td>Add Options.NormalizeToCurrency to BookingList</td> </tr> <tr> <td>2015-02-19</td> <td>201501.0.5</td> <td>Added more documentation to Booking Samples</td> </tr> <tr> <td>2015-02-03</td> <td>201501.0.4</td> <td>Added .Options.IgnoreInvalidRooms to MAAPI</td> </tr> <tr> <td>2015-02-02</td> <td>201501.0.3</td> <td>Improved documentation for multiple overlapping Allocations in ARIUpdate</td> </tr> <tr> <td>2015-01-22</td> <td>201501.0.2</td> <td>Improved documentation with Booking samples</td> </tr> <tr> <td>2015-01-09</td> <td>201501.0.1</td> <td>Initial release of 201601[beta] (new functions: ARIRules)</td> </tr> <tr> <td>2015-01-08</td> <td>201408.0.13</td> <td>Corrected validation logic issue with ARIUpdate (properly validates Rooms)</td> </tr> <tr> <td>2015-01-07</td> <td>201408.0.12</td> <td>Corrected issue with AssociateUserToPMS requiring Auth/PropertyId</td> </tr> <tr> <td>2015-01-06</td> <td>201408.0.11</td> <td>Modified FailIfUpdateActive default to &quot;false&quot;</td> </tr> <tr> <td>2015-01-05</td> <td>201408.0.10</td> <td>fixed doc, Price-Weekend is &quot;PriceWeekend&quot;</td> </tr> <tr> <td>2015-01-05</td> <td>201408.0.9</td> <td>added JSON raw input mode - application/json</td> </tr> <tr> <td>2014-12-28</td> <td>201408.0.8</td> <td>added Auth/Debug</td> </tr> <tr> <td>2014-12-28</td> <td>201408.0.7</td> <td>fixed bug in ARIUpdate where zero unit updates would not be applied</td> </tr> <tr> <td>2014-12-26</td> <td>201408.0.6</td> <td>added more documentation to ChannelList and curl example to HelloWorld</td> </tr> <tr> <td>2014-12-24</td> <td>201408.0.5</td> <td>added error logging with ticket responses</td> </tr> <tr> <td>2014-12-23</td> <td>201408.0.4</td> <td>added VendorId to various docs, and propertyid, unified error handling</td> </tr> <tr> <td>2014-12-19</td> <td>201408.0.3</td> <td>fixed bug in RoomCreate (did not return RoomId)</td> </tr> <tr> <td>2014-12-15</td> <td>201408.0.2</td> <td>renamed LoopBookingAction into BookingAction</td> </tr> <tr> <td>2014-12-04</td> <td>201408.0.1</td> <td>initial release of new API</td> </tr> <tr> <td>2012-10-24</td> <td>1.6.2</td> <td>Updated booking information (new: CommissionIncludedInTotal).</td> </tr> <tr> <td>2012-10-24</td> <td>1.6.1</td> <td>Updated booking information and updated channel list (new: eb,air, orb, boo, tra).</td> </tr> <tr> <td>2012-10-24</td> <td>1.6</td> <td>New feature Booking Callback and updated channel list (new: max).</td> </tr> <tr> <td>2012-09-20</td> <td>1.5.2</td> <td>Updated channel list (new: exp, ysh, eb). Get/Set property country.</td> </tr> <tr> <td>2012-07-04</td> <td>1.5.1</td> <td>Updated channel list. Added MinStay/MaxStay example.</td> </tr> <tr> <td>2011-09-17</td> <td>1.5</td> <td>New method SetRoomTypes to add/update/remove rooms.</td> </tr> <tr> <td>2011-09-17</td> <td>1.4.1</td> <td>GetBookings: Minor correction regarding the end date. It's not the departure date but rather the departure date - 1.</td> </tr> <tr> <td>2011-01-15</td> <td>1.4</td> <td>New methods SetAllocation (non-blocking), SetLogin, GetUpdateStatus, GetBookings. Support for MinStay and MaxStay.</td> </tr> <tr> <td>2010-11-09</td> <td>1.3.1</td> <td>Updated channel list. GetRoomTypes: Obsoleted &quot;Ensuite&quot;, &quot;DoubleBed&quot; and &quot;Beds&quot; (replaced by new property &quot;Occupancy&quot;). GetProperties: shows which days are configure for weekends.</td> </tr> <tr> <td>2010-05-30</td> <td>1.3</td> <td>GetRoomTypes includes a room description (Label). Removed need to list channels to update to and ability to exclude channels. Skipped channels now warnings rather than errors.</td> </tr> <tr> <td>2010-05-05</td> <td>1.2</td> <td>Added links to XML samples. New channel: hb</td> </tr> <tr> <td>2010-04-30</td> <td>1.1</td> <td>Changed Room to \\textit{RoomType} to clarify matters</td> </tr> <tr> <td>2010-04-27</td> <td>1.0</td> <td>Initial release</td> </tr> </tbody> </table>",
     "filename": "perllib/MAAPI.pm",
     "groupTitle": "4_Appendix"
   },
