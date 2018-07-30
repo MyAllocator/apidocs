@@ -1657,6 +1657,83 @@
   {
     "group": "3_API_Methods",
     "type": "POST",
+    "url": "/BookingRemovePII",
+    "title": "BookingRemovePII",
+    "name": "BookingRemovePII",
+    "version": "201804.0.1",
+    "description": "<p>Deletes personally identifiable information (PII) from a booking, like the guest name or email address. This cannot be undone. Only allows removal once the guest has left or the booking is cancelled.</p>",
+    "parameter": {
+      "fields": {
+        "Request": [
+          {
+            "group": "Request",
+            "type": "String",
+            "optional": false,
+            "field": "MyAllocatorId",
+            "description": "<p>Myallocator ID of the booking</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "fields": {
+        "Response": [
+          {
+            "group": "Response",
+            "type": "Boolean",
+            "optional": false,
+            "field": "Success",
+            "description": "<p>True if call was successful</p>"
+          },
+          {
+            "group": "Response",
+            "type": "Array",
+            "optional": false,
+            "field": "Errors",
+            "description": "<p>Array with errors when Success flag is false</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Response (success)",
+          "content": "{\n    \"Success\": true\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "examples": [
+      {
+        "title": "Request",
+        "content": "{\n  \"Auth/VendorId\": \"\",\n  \"Auth/VendorPassword\": \"\",\n  \"Auth/UserToken\":\"\",\n  \"Auth/PropertyId\":\"\",\n  \"MyAllocatorId\":\"57333cd36dbf9a4f114dd781\"\n}",
+        "type": "json"
+      },
+      {
+        "title": "curl",
+        "content": "curl https://api.myallocator.com/pms/v201804/json/BookingRemovePII -d@- <<EOJSON\njson={\n    \"Auth/VendorId\":\"Your Vendor ID\",\n    \"Auth/VendorPassword\":\"Your Vendor Password\",\n    \"Auth/UserToken\":\"User token\",\n    \"Auth/PropertyId\":\"Property ID on myallocator.com\",\n    \"MyAllocatorId\":\"57333cd36dbf9a4f114dd781\"\n}\nEOJSON",
+        "type": "json"
+      }
+    ],
+    "error": {
+      "examples": [
+        {
+          "title": "Response (invalid booking)",
+          "content": "{\n    \"Errors\": [\n        {\n            \"ErrorTicket\": \"D13BAC04-1234-5678-804B-F5140B37646E\",\n            \"ErrorMsg\": \"No such booking id\",\n            \"ErrorId\": \"30\"\n        }\n    ]\n}",
+          "type": "json"
+        },
+        {
+          "title": "Response (booking not departed or cancelled)",
+          "content": "{\n    \"Errors\": [\n        {\n            \"ErrorId\": \"8020\",\n            \"ErrorMsg\": \"Guest details cannot be removed if the booking is not cancelled or the guest not yet departed.\",\n            \"ErrorTicket\": \"D13BAC04-1234-5678-804B-F5140B37646E\"\n        }\n    ]\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "perllib/MyAllocator/API/Method/Bookings.pm",
+    "groupTitle": "3_API_Methods"
+  },
+  {
+    "group": "3_API_Methods",
+    "type": "POST",
     "url": "/ChannelList",
     "title": "ChannelList",
     "name": "ChannelList",
@@ -1678,6 +1755,20 @@
             "optional": false,
             "field": "Auth/VendorPassword",
             "description": "<p>Your Vendor Password</p>"
+          },
+          {
+            "group": "Request",
+            "type": "List",
+            "optional": true,
+            "field": "Channels",
+            "description": "<p>Query specific channels instead of all of them. If such channels aren't present, an error is thrown.</p>"
+          },
+          {
+            "group": "Request",
+            "type": "Boolean",
+            "optional": true,
+            "field": "Extended",
+            "description": "<p>If true, return more details. Currently those would include Capabilities, ChannelExtra, HasExternalId, and Messages</p>"
           }
         ],
         "Response": [
@@ -1686,7 +1777,7 @@
             "type": "Object",
             "optional": false,
             "field": "Channels",
-            "description": "<p>Object keyed by channel ID</p>"
+            "description": "<p>Information about available channels. The key is 2-4 letter channel id (cid). The values are hashes/objects.</p>"
           },
           {
             "group": "Response",
@@ -4644,7 +4735,7 @@
     "title": "Global Error Codes",
     "name": "Global_Error_Codes",
     "version": "201804.0.1",
-    "description": "<p>Errors are divided into three categories. A global error will have a single Errors tag with no further encapsulation and only a single Error tag.</p> <p>An API method specific error will be included in the method name. Again, there will only be a single Error tag. The third type of error is channel specific. The Errors tag is included in the method name and there may be multiple Error tags.</p> <table> <thead> <tr> <th>Code</th> <th>Description</th> </tr> </thead> <tbody> <tr> <td>2</td> <td>Missing authentication tags</td> </tr> <tr> <td>3</td> <td>Invalid user or user password</td> </tr> <tr> <td>4</td> <td>Invalid vendor or vendor password</td> </tr> <tr> <td>5</td> <td>Vendor disabled</td> </tr> <tr> <td>6</td> <td>User has no credit left</td> </tr> <tr> <td>7</td> <td>User has no permission to change availability for this property</td> </tr> <tr> <td>8</td> <td>No such API method</td> </tr> <tr> <td>9</td> <td>Unsupported channel</td> </tr> <tr> <td>10</td> <td>No channels selected</td> </tr> <tr> <td>11</td> <td>No allocations submitted</td> </tr> <tr> <td>12</td> <td>Invalid room type id (does not exist or not assigned to this property)</td> </tr> <tr> <td>13</td> <td>Missing allocation info (price, dates, units)</td> </tr> <tr> <td>14</td> <td>Internal error. Support has been notified!</td> </tr> <tr> <td>15</td> <td>Missing or wrong channel credentials on myallocator.com</td> </tr> <tr> <td>16</td> <td>End date before start date</td> </tr> <tr> <td>17</td> <td>Start date too far in the future (&gt;4 years)</td> </tr> <tr> <td>18</td> <td>Invalid property id</td> </tr> <tr> <td>19</td> <td>Vendor not enabled to use this method</td> </tr> <tr> <td>20</td> <td>Missing required fields</td> </tr> <tr> <td>21</td> <td>No applicable dates submitted</td> </tr> <tr> <td>22</td> <td>Invalid update id</td> </tr> <tr> <td>23</td> <td>Unsupported Metasearch engine</td> </tr> <tr> <td>301</td> <td>Invalid characters in new username</td> </tr> <tr> <td>302</td> <td>Username exists already</td> </tr> <tr> <td>303</td> <td>Invalid values (check Breakfast, Currency, ExpiryDate)</td> </tr> <tr> <td>401</td> <td>Invalid date format</td> </tr> <tr> <td>402</td> <td>Missing or invalid search criteria</td> </tr> <tr> <td>450</td> <td>Payment password is invalid</td> </tr> </tbody> </table> <p><em>Channel Specific errors and warnings</em></p> <table> <thead> <tr> <th>Code</th> <th>Description</th> </tr> </thead> <tbody> <tr> <td>202</td> <td>Channel skipped (not setup)</td> </tr> <tr> <td>203</td> <td>Channel did not respond</td> </tr> <tr> <td>204</td> <td>Channel skipped (no applicable rooms)</td> </tr> <tr> <td>205</td> <td>Incorrect room setup. The room type mapping needs to be updated on myallocator.com.</td> </tr> <tr> <td>206</td> <td>Channel only updates up to a certain period in the future. Some dates were skipped.</td> </tr> <tr> <td>207</td> <td>Skipped room type (not setup with channel)</td> </tr> <tr> <td>208</td> <td>Partial success: ...</td> </tr> <tr> <td>209</td> <td>No channels are setup, only myallocator database was updated</td> </tr> <tr> <td>99</td> <td>Check/Display ErrMsg or WarningMsg content</td> </tr> </tbody> </table>",
+    "description": "<p>Errors are divided into three categories. A global error will have a single Errors tag with no further encapsulation and only a single Error tag.</p> <p>An API method specific error will be included in the method name. Again, there will only be a single Error tag. The third type of error is channel specific. The Errors tag is included in the method name and there may be multiple Error tags.</p> <table> <thead> <tr> <th>Code</th> <th>Description</th> </tr> </thead> <tbody> <tr> <td>2</td> <td>Missing authentication tags</td> </tr> <tr> <td>3</td> <td>Invalid user or user password</td> </tr> <tr> <td>4</td> <td>Invalid vendor or vendor password</td> </tr> <tr> <td>5</td> <td>Vendor disabled</td> </tr> <tr> <td>6</td> <td>User has no credit left</td> </tr> <tr> <td>7</td> <td>User has no permission to change availability for this property</td> </tr> <tr> <td>8</td> <td>No such API method</td> </tr> <tr> <td>9</td> <td>Unsupported channel</td> </tr> <tr> <td>10</td> <td>No channels selected</td> </tr> <tr> <td>11</td> <td>No allocations submitted</td> </tr> <tr> <td>12</td> <td>Invalid room type id (does not exist or not assigned to this property)</td> </tr> <tr> <td>13</td> <td>Missing allocation info (price, dates, units)</td> </tr> <tr> <td>14</td> <td>Internal error. Support has been notified!</td> </tr> <tr> <td>15</td> <td>Missing or wrong channel credentials on myallocator.com</td> </tr> <tr> <td>16</td> <td>End date before start date</td> </tr> <tr> <td>17</td> <td>Start date too far in the future (&gt;4 years)</td> </tr> <tr> <td>18</td> <td>Invalid property id</td> </tr> <tr> <td>19</td> <td>Vendor not enabled to use this method</td> </tr> <tr> <td>20</td> <td>Missing required fields</td> </tr> <tr> <td>21</td> <td>No applicable dates submitted</td> </tr> <tr> <td>22</td> <td>Invalid update id</td> </tr> <tr> <td>23</td> <td>Unsupported Metasearch engine</td> </tr> <tr> <td>301</td> <td>Invalid characters in new username</td> </tr> <tr> <td>302</td> <td>Username exists already</td> </tr> <tr> <td>303</td> <td>Invalid values (check Breakfast, Currency, ExpiryDate)</td> </tr> <tr> <td>401</td> <td>Invalid date format</td> </tr> <tr> <td>402</td> <td>Missing or invalid search criteria</td> </tr> <tr> <td>450</td> <td>Payment password is invalid</td> </tr> <tr> <td>555</td> <td>Invalid JSON passed</td> </tr> <tr> <td>666</td> <td>Internal Processing Error</td> </tr> </tbody> </table> <p><em>Channel Specific errors and warnings</em></p> <table> <thead> <tr> <th>Code</th> <th>Description</th> </tr> </thead> <tbody> <tr> <td>202</td> <td>Channel skipped (not setup)</td> </tr> <tr> <td>203</td> <td>Channel did not respond</td> </tr> <tr> <td>204</td> <td>Channel skipped (no applicable rooms)</td> </tr> <tr> <td>205</td> <td>Incorrect room setup. The room type mapping needs to be updated on myallocator.com.</td> </tr> <tr> <td>206</td> <td>Channel only updates up to a certain period in the future. Some dates were skipped.</td> </tr> <tr> <td>207</td> <td>Skipped room type (not setup with channel)</td> </tr> <tr> <td>208</td> <td>Partial success: ...</td> </tr> <tr> <td>209</td> <td>No channels are setup, only myallocator database was updated</td> </tr> <tr> <td>99</td> <td>Check/Display ErrMsg or WarningMsg content</td> </tr> </tbody> </table>",
     "filename": "perllib/MAAPI.pm",
     "groupTitle": "4_Appendix"
   },
