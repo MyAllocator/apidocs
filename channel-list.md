@@ -1,6 +1,6 @@
 # List of supported channels
 
-Created: 2018-04-04
+Created: 2018-07-30
 
 | Code | Full name | Updates up to | Notes |
 | ---- | --------- | ------------- | ----- |
@@ -11,6 +11,7 @@ Created: 2018-04-04
 | adsh | Ads Hotel | 2 years |  |
 | ago | Agoda | 1 year |  |
 | air | Airbnb (iCal) | 2 years |  |
+| air2 | Airbnb (API) | 2 years | Airbnb API version |
 | apal | Atrapalo |  | Atrapalo.com |
 | art | ArtArsis | 2 years |  |
 | asyo | AsiaYo | 2 years |  |
@@ -24,10 +25,13 @@ Created: 2018-04-04
 | bnb2 | Bedandbreakfast.com | 2 years |  |
 | bon | Hotel Bonanza | 2 years |  |
 | boo | Booking.com | 2 years |  |
-| bp | BudgetPlaces | 2 years | BudgetPlaces cannot be updated anymore. |
+| bp | BudgetPlaces | 2 years | deprecated (do not use); BudgetPlaces cannot be updated anymore. |
 | bud | Bud and Breakfast | 1 year |  |
+| buun | Bakuun | 2 years |  |
 | cb | CityBreak | 2 years | visit.com |
+| ccc | Triple C Hotels & Resorts | 2 years |  |
 | clt | ClearTrip |  |  |
+| cozy | Cozystay | 2 years |  |
 | cs | CanadaStays | 2 years |  |
 | ct | Cultuzz | 2 years | CultBay (eBay). Extra fees apply. |
 | ctr | CTrip | 1 year |  |
@@ -40,20 +44,18 @@ Created: 2018-04-04
 | esc | Escapio | 2 years | deprecated (do not use); As of October 1st 2015 Escapio is no longer maintaing their own inventory. |
 | etb | EasyToBook | 2 years | Cities Only |
 | exp | Expedia | 2 years | Orbitz, Travelocity, Hotels.com, Hotwire, Wotif, Egencia, Ebookers, Lastminute.au, travel.com.au |
-| fam | Famous Hostels | 2 years | deprecated (do not use); Channel not supported any more.l |
-| fk | FlipKey | 2 years | deprecated (do not use); Obsolete. Now updated through TripAdvisor Vacation Rentals. |
 | flh | Feel Like Home | 2 years |  |
 | goho | GoHostels.com | 2 years |  |
 | goi | Ingoibibo (Goibibo) |  | Formerly Goibibo |
 | gom | Gomio | 2 years |  |
-| gr | Dorms.com® Hostels | 2 years |  |
+| gr | Dorms.com® Hostels | 2 years | Dorms.com supports one-click, instant account creation. Try it now! |
 | gta | GTA-Travel | 2 years | GTA-Travel.com |
 | h2h | Hostel2Hostel | 2 years |  |
+| haoq | Haoqiao | 1 year |  |
 | hbe | HotelBeds | 2 years | Liberate, TUI travel |
 | hc | Hostelsclub | 2 years | flashbooking.com |
-| hcu2 | HostelCulture | 2 years |  |
+| hcu2 | HostelCulture | 2 years | HostelCulture supports one-click, instant account creation! |
 | hd | Hosteldeals | 2 years |  |
-| hde | Hotel.de | 2 years | deprecated (do not use); Obsolete. Now updated through HRS. |
 | hhb | HiHostel Brazil | 2 years |  |
 | hi | HI Hostels | 2 years | For members of Hostelling International |
 | hipc | HipCamp | 2 years |  |
@@ -63,10 +65,9 @@ Created: 2018-04-04
 | hopa | HostelPass, Inc. | 2 years |  |
 | hort | ORT Special HA Integration | 2 years |  |
 | hotu | Hotusa | 1 year |  |
-| hou | HouseTrip | 2 years | deprecated (do not use); Obsolete. Now updated through TripAdvisor Vacation Rentals. |
 | hr | Happy Reception | 2 years |  |
 | hrs | HRS | 2 years | hotel.de |
-| ht | HostelTimes | 2 years |  |
+| ht | HostelTimes | 2 years | deprecated (do not use); HostelTimes does not operate anymore. |
 | htrv | HotelTravel |  | hoteltravel.com |
 | hw | Hostelworld | 2 years | deprecated (do not use); Old, slow Hostelworld interface. Obsolete. |
 | hw2 | Hostelworld & Hostelbookers | 2 years |  |
@@ -83,10 +84,11 @@ Created: 2018-04-04
 | loop | Developer Loopback | 2 years |  |
 | lota | LocalOTA | 2 years |  |
 | lr | Laterooms | 2 years | AsiaRooms |
-| mal | MalaPronta | 2 years | deprecated (do not use); Brazil Only |
+| lsbv | LetsStay.net | 2 years |  |
 | max | MaxBooking | 2 years |  |
 | mcs | Madrid Central Suites | 2 years |  |
 | mmt | MakeMyTrip |  |  |
+| mvr | Mountain Vacation Rentals | 2 years |  |
 | myb | mybookings | 2 years |  |
 | net | Net Affinity | 2 years |  |
 | nom | Nomads Spain | 2 years |  |
@@ -108,9 +110,11 @@ Created: 2018-04-04
 | stya | Stayya | 2 years |  |
 | sur | Surf Holidays | 2 years |  |
 | tavr | TripAdvisor Vacation Rentals | 2 years | FlipKey, Housetrip |
+| tgur | Yatra + TravelGuru | 1 year |  |
 | tlok | Traveloka |  | Traveloka.com |
 | tom | TOMAS | 2 years | Booking system used predominantly in Germany and Switzerland on city portals |
 | toqt | HoldInn.com | 2 years |  |
+| trav | Travelanium | 2 years |  |
 | vhh | Hideout Hostels Asia | 2 years |  |
 | vrbo | HomeAway | 2 years | VRBO (Vacation Rentals By Owner) |
 | wanu | Wanup | 2 years |  |
