@@ -1,7 +1,7 @@
 {
-  "name": "myallocator PMS API",
+  "name": "Myallocator PMS API",
   "version": "201804.0.1",
-  "description": "myallocator API for PMS partners.",
-  "title": "myallocator PMS API",
+  "description": "Myallocator API for PMS partners.",
+  "title": "Myallocator PMS API",
   "url" : "https://api.myallocator.com/pms/v<VERSION>/json"
 }
