@@ -17,7 +17,7 @@ define({ "api": [
     "title": "ii - Data Formats",
     "name": "ii___Data_Formats",
     "version": "201804.0.1",
-    "description": "<p>The API operates with the JSON data format.</p> <p>The service URL is: https://api.myallocator.com/pms/v201804.0.1/json/MethodName</p> <p>In the URL above the Version is v201804.0.1, this version will periodically be changed as new features are added.</p> <p>MyAllocator can be accessed via REST by either sending the payload as part of a HTML form, or by placing the JSON in the request body.</p> <p>JSON (form): Offers simplified parsing and low transport overhead and is passed in the field 'json' using standard HTML form encoding (application/x-www-form- urlencoded). In this example data such as space must be encoded to '+' or %20.</p> <p>JSON (raw): Set the HTTP header Content-Type: application/json and pass a raw UTF8 encoded json body.</p>",
+    "description": "<p>The API operates with the JSON data format.</p> <p>The service URL is: https://api.myallocator.com/pms/v201804.0.1/json/MethodName</p> <p>In the URL above the Version is v201804.0.1, this version will periodically be changed as new features are added.</p> <p>Myallocator can be accessed via REST by either sending the payload as part of a HTML form, or by placing the JSON in the request body.</p> <p>JSON (form): Offers simplified parsing and low transport overhead and is passed in the field 'json' using standard HTML form encoding (application/x-www-form- urlencoded). In this example data such as space must be encoded to '+' or %20.</p> <p>JSON (raw): Set the HTTP header Content-Type: application/json and pass a raw UTF8 encoded json body.</p>",
     "filename": "perllib/MAAPI.pm",
     "groupTitle": "1_Introduction"
   },
@@ -137,7 +137,7 @@ define({ "api": [
             "type": "String",
             "optional": false,
             "field": "Auth/PropertyId",
-            "description": "<p>Your Vendor Property ID</p>"
+            "description": "<p>Property ID on myallocator</p>"
           }
         ]
       }
@@ -147,7 +147,7 @@ define({ "api": [
         "Response": [
           {
             "group": "Response",
-            "type": "Array",
+            "type": "Container",
             "optional": false,
             "field": "ARIRules",
             "description": "<p>List of all existing ARIRules</p>"
@@ -157,16 +157,23 @@ define({ "api": [
             "type": "Boolean",
             "optional": false,
             "field": "Success",
-            "description": "<p>true|false</p>"
+            "description": "<p>True unless authentication failed</p>"
           }
         ]
-      }
+      },
+      "examples": [
+        {
+          "title": "Successful response",
+          "content": "{\n    \"Success\": true,\n    \"ARIRules\": [\n        {\n            \"StartDate\": \"2018-04-01\",\n            \"EndDate\": \"2020-04-01\",\n            \"Verb\": \"BLOCK\",\n            \"RoomId\": 5996,\n            \"DaysOfWeek\": \"any\",\n            \"Channel\": \"exp\",\n            \"PMSRuleId\": \"some id\",\n            \"RatePlanId\": 0\n        }\n    ],\n    \"RUID\": \"90AAE394-9667-11E8-93D9-D7FBDD922BDC\"\n}",
+          "type": "json"
+        }
+      ]
     },
-    "description": "<p>Lists all existing ARIRules.  See ARIRulesUpdate for more details.</p>",
+    "description": "<p>Lists all existing ARIRules. See ARIRulesUpdate for more details.</p>",
     "examples": [
       {
         "title": "curl",
-        "content": "curl https://api.myallocator.com/pms/v201804/json/ARIRulesList -d@- <<EOJSON\njson={\n  \"Auth/UserToken\":\"User's auth token\",\n  \"Auth/VendorId\":\"your vendor id\",\n  \"Auth/VendorPassword\":\"your vendor password\"\n}\nEOJSON",
+        "content": "curl https://api.myallocator.com/pms/v201804/json/ARIRulesList -d@- <<EOJSON\njson={\n  \"Auth/UserToken\":\"User's auth token\",\n  \"Auth/VendorId\":\"Your vendor ID\",\n  \"Auth/VendorPassword\":\"Your vendor password\",\n  \"Auth/PropertyId\": \"Property ID on myallocator\",\n}\nEOJSON",
         "type": "json"
       }
     ],
@@ -180,7 +187,7 @@ define({ "api": [
     "title": "ARIRulesUpdate",
     "name": "ARIRulesUpdate",
     "version": "201804.0.1",
-    "description": "<p>ARIRules allow a PMS to communicate channel/OTA business logic to MyAllocator, so auto-adjustments can be safely made by MyAllocator.</p> <p>Currently the ARIRules only support the &quot;BLOCK&quot; Verb which zeros out inventory for a specific channel while the rule is in effect.  This can be used to close out a specific channel/OTA without disabling it.</p> <p>The ARIRulesUpdate and ARIRulesList methods were architected so in future releases we will add additional Verbs to handle other common business cases like reserving rooms for contracted availability, and limited availability.</p> <p>ARIRules for a property can be can be viewed using ARIRulesList or by going into inbox.myallocator.com | Manage | Rules. Each ARIRule must have a unique &quot;PMSRuleId&quot; that corresponds to the rule ID in your system and is used to identify the rule for a property.</p> <p>When new rules are sent or removed a corresponding ARIUpdate is created for the channel and date ranges specified. The UpdateId is returned in the response and can be viewed using ARIUpdateStatus.</p> <p><em>Why are ARIRules so Important</em></p> <p>Before ARIRules if a PMS developer needed to close out a specific channel for a single day it was necessary to send a zero update for a specific channel, then send another update with real inventory for all other channels, and it was necessary to do this after each update. Not only was this incredibly resource intensive. But any AutoAdjustments would still update the closed out channels because there was no logical understanding within MyAllocator of the block.  During the time the blocked date was set to zero any booking would appear like an overbooking (making it impossible to separate signal from noise in diagnosing overbookings) since having &quot;false zero&quot; inventory was part of normal daily operation for many PMS systems.</p>",
+    "description": "<p>The ARI rules allow a PMS to communicate channel business logic to myallocator, so auto-adjustments can be safely made by myallocator.</p> <p>The only verb supported as an ARI rule at this time is &quot;BLOCK&quot; which clears the inventory for a specific channel (*). This can be used to make a channel appear as though it's disabled without actually disabling it.</p> <p>The ARI rules for a property can be can be viewed using ARIRulesList or by going into inbox.myallocator.com | Manage | Rules. Each ARI rule must have a unique &quot;PMSRuleId&quot; that corresponds to the rule ID in your system and is used to identify the rule for a property.</p> <p>When new rules are sent or removed a corresponding ARIUpdate is created for the channel and date ranges specified. The UpdateId is returned in the response and can be viewed using ARIUpdateStatus.</p>",
     "parameter": {
       "fields": {
         "Request": [
@@ -189,7 +196,7 @@ define({ "api": [
             "type": "String",
             "optional": false,
             "field": "Auth/UserToken",
-            "description": "<p>Users auth token (see section <code>iii - Vendor tokens</code>)#</p>"
+            "description": "<p>User's auth token (see section <code>iii - Vendor tokens</code>)</p>"
           },
           {
             "group": "Request",
@@ -207,19 +214,24 @@ define({ "api": [
           },
           {
             "group": "Request",
+            "type": "String",
+            "optional": false,
+            "field": "Auth/PropertyId",
+            "description": "<p>Property ID on myallocator</p>"
+          },
+          {
+            "group": "Request",
             "type": "Boolean",
             "optional": false,
             "field": "Options/Quiet",
-            "description": "<p>suppress output of all rules.</p>"
-          }
-        ],
-        "REquest": [
+            "description": "<p>Suppress output of all rules</p>"
+          },
           {
-            "group": "REquest",
+            "group": "Request",
             "type": "Boolean",
             "optional": false,
             "field": "Options/NoUpdate",
-            "description": "<p>suppress outbound updates of rules to the remote OTA (should be used for testing only)</p>"
+            "description": "<p>Suppress outbound updates of rules to the remote channel (should be used for testing only)</p>"
           }
         ]
       }
@@ -229,10 +241,10 @@ define({ "api": [
         "Response": [
           {
             "group": "Response",
-            "type": "ARIRules",
+            "type": "Container",
             "optional": false,
-            "field": "List",
-            "description": "<p>of all existing ARIRules</p>"
+            "field": "ARIRules",
+            "description": "<p>List of all existing ARIRules</p>"
           },
           {
             "group": "Response",
@@ -245,8 +257,8 @@ define({ "api": [
       },
       "examples": [
         {
-          "title": "ARIRulesActions",
-          "content": "<ARIRulesUpdate>\n    <ARIRules Action=\"Append\">\n        <Rule PMSRuleId=\"\" RatePlanId=\"\" RoomId=\"\" Channel=\"\" Verb=\"BLOCK\" StartDate=\"YYYY-MM-DD\" EndDate=\"YYYY-MM-DD\" DaysOfWeek=\"any,mon,tue,wed,thu,fri,sat,sun\" />\n        <Rule PMSRuleId=\"\" RatePlanId=\"\" RoomId=\"\" Channel=\"\" Verb=\"BLOCK\" StartDate=\"YYYY-MM-DD\" EndDate=\"YYYY-MM-DD\" DaysOfWeek=\"any\"/>\n    </ARIRules>\n    <ARIRules Action=\"Update\">\n        <Rule PMSRuleId=\"\" RoomId=\"\" Channel=\"\" Verb=\"BLOCK\" StartDate=\"YYYY-MM-DD\" EndDate=\"YYYY-MM-DD\" />\n        <Rule PMSRuleId=\"\" RoomId=\"\" Channel=\"\" Verb=\"BLOCK\" StartDate=\"YYYY-MM-DD\" EndDate=\"YYYY-MM-DD\" />\n    </ARIRules>\n    <ARIRules Action=\"Delete\">\n        <Rule PMSRuleId=\"\"/>\n        <Rule RoomId=\"\"/>\n        <Rule RoomId=\"\" Channel=\"\"/>\n    </ARIRules>\n<ARIRulesUpdate>",
+          "title": "Success",
+          "content": "{\n    \"Success\": true,\n    \"ARIRules\": [\n        {\n            \"StartDate\": \"2018-04-01\",\n            \"EndDate\": \"2020-04-01\",\n            \"Verb\": \"BLOCK\",\n            \"RoomId\": 49281,\n            \"DaysOfWeek\": \"any\",\n            \"Channel\": \"loop\",\n            \"PMSRuleId\": \"my-unique-id\",\n            \"RatePlanId\": 0\n        }\n    ],\n    \"RUID\": \"90AAE394-9667-11E8-93D9-D7FBDD922BDC\"\n}",
           "type": "json"
         }
       ]
@@ -254,17 +266,12 @@ define({ "api": [
     "examples": [
       {
         "title": "ARIRulesUpdate",
-        "content": "{\n    \"ARIRules\":[\n        { \"_Action\":\"Append\", PMSRuleId:\"\", RatePlanId:\"\", RoomId:\"\", Channel:\"\", Verb:\"BLOCK\", StartDate:\"YYYY-MM-DD\", EndDate:\"YYYY-MM-DD\", DaysOfWeek:\"any,mon,tue,wed,thu,fri,sat,sun\"   },\n        { \"_Action\":\"Update\", PMSRuleId:\"\", RatePlanId:0, RoomId:\"\", Channel:\"\", Verb:\"BLOCK\", StartDate:\"YYYY-MM-DD\", EndDate:\"YYYY-MM-DD\"  },\n        { \"_Action\":\"Delete\", PMSRuleId:\"\", RoomId:\"\", Channel:\"\"  },\n        { \"_Action\":\"Delete\", PMSRuleId:\"\", RoomId:\"\"  },\n        { \"_Action\":\"Delete\", PMSRuleId:\"\" },\n        ]\n}",
+        "content": "{\n    \"Auth/VendorId\": \"Your Vendor ID\",\n    \"Auth/VendorPassword\": \"Your Vendor Password\",\n    \"Auth/UserToken\": \"User Authentication Token\",\n    \"Auth/PropertyId\": \"Property ID on myallocator\",\n\n    \"ARIRules\": [\n        {\n            \"Channel\": \"exp\",\n            \"StartDate\": \"2018-04-01\",\n            \"EndDate\": \"2020-04-01\",\n            \"PMSRuleId\": \"my-unique-id\",\n            \"RatePlanId\": 0,\n            \"RoomId\": \"49281\",\n            \"Verb\": \"BLOCK\"\n        }\n    ]\n}",
         "type": "json"
       },
       {
         "title": "curl",
-        "content": "curl https://api.myallocator.com/pms/v201804/json/ARIRulesUpdate -d@- <<EOJSON\njson={\n    \"ARIRules\":[\n        { \"_Action\":\"Append\", PMSRuleId:\"\", RoomId:\"\", RatePlanId:\"\", Channel:\"\", Verb:\"BLOCK\", StartDate:\"YYYY-MM-DD\", EndDate:\"YYYY-MM-DD\"  },\n        { \"_Action\":\"Update\", PMSRuleId:\"\", RoomId:\"\", Channel:\"\", Verb:\"BLOCK\", StartDate:\"YYYY-MM-DD\", EndDate:\"YYYY-MM-DD\"  },\n        { \"_Action\":\"Delete\", PMSRuleId:\"\", RoomId:\"\", Channel:\"\"  },\n        { \"_Action\":\"Delete\", PMSRuleId:\"\", RoomId:\"\"  },\n        { \"_Action\":\"Delete\", PMSRuleId:\"\" },\n        ]\n}\nEOJSON",
-        "type": "json"
-      },
-      {
-        "title": "ARIRulesUpdate Response",
-        "content": "{\n   \"Auth/VendorId\":\"Your Vendor ID\",\n   \"Auth/VendorPassword\":\"Your Vendor Password\",\n   \"ARIRules\":[\n       { PMSRuleId: \"\", RoomId:\"\", Channel:\"\", Verb:\"BLOCK\", RatePlanId:\"\", StartDate:YYYY-MM-DD, EndDate:YYYY-MM-DD },\n       { PMSRuleId: \"\", RoomId:\"\", Channel:\"\", Verb:\"BLOCK\", StartDate:YYYY-MM-DD, EndDate:YYYY-MM-DD }\n       ],\n   \"Options\":{\n       \"Quiet\":true\n       }\n}",
+        "content": "curl https://api.myallocator.com/pms/v201804/json/ARIRulesUpdate -d@- <<EOJSON\njson={\n    \"Auth/VendorId\": \"Your Vendor ID\",\n    \"Auth/VendorPassword\": \"Your Vendor Password\",\n    \"Auth/UserToken\": \"User Authentication Token\",\n    \"Auth/PropertyId\": \"Property ID on myallocator\",\n\n    \"ARIRules\": [\n        {\n            \"Channel\": \"exp\",\n            \"StartDate\": \"2018-04-01\",\n            \"EndDate\": \"2020-04-01\",\n            \"PMSRuleId\": \"my-unique-id\",\n            \"RatePlanId\": 0,\n            \"RoomId\": \"49281\",\n            \"Verb\": \"BLOCK\"\n        }\n    ]\n}\nEOJSON",
         "type": "json"
       }
     ],
@@ -293,7 +300,7 @@ define({ "api": [
             "type": "String",
             "optional": false,
             "field": "Auth/PropertyId",
-            "description": "<p>Property ID on myallocator.com</p>"
+            "description": "<p>Property ID on myallocator</p>"
           },
           {
             "group": "Request",
@@ -321,14 +328,7 @@ define({ "api": [
             "type": "Boolean",
             "optional": false,
             "field": ".Options.QueryForStatus",
-            "description": "<p>Default: false, If true the call returns immediately, and the caller should use ARIUpdateStatus to query.</p>"
-          },
-          {
-            "group": "Request",
-            "type": "Boolean",
-            "optional": false,
-            "field": ".Options.FailIfUpdateActive",
-            "description": "<p>Default: false, If true the call will fail if another update is currently running (rather than block with potentially old data)</p>"
+            "description": "<p>Default: false; If true the call returns immediately, and the caller should use ARIUpdateStatus to query. We strongly recommend setting this to &quot;true&quot;.</p>"
           },
           {
             "group": "Request",
@@ -484,26 +484,37 @@ define({ "api": [
             "description": "<p>Might contain the attribute it{channel=&quot;..&quot;} to indicate whether the warning only applies to a specific channel.</p>"
           }
         ]
-      }
+      },
+      "examples": [
+        {
+          "title": "Success",
+          "content": "{\n    \"Success\": true,\n    \"UpdateId\": 1066832352,\n    \"Messages\": [\n        {\n            \"msg\": \"QueryForStatus mode enabled (will not wait)\",\n            \"id\": 99,\n            \"type\": \"info\"\n        }\n    ],\n    \"Errors\": [],\n    \"Channels\": {\n        \"boo\": {\n            \"parts\": 2\n        },\n        \"exp\": {\n            \"parts\": 3\n        }\n    },\n    \"Options\": {\n        \"QueryForStatus\": \"true\"\n    },\n\n    \"RUID\": \"1A2DDA3E-966A-11E8-830F-F807DE922BDC\"\n}",
+          "type": "json"
+        }
+      ]
     },
-    "description": "<p>An allocation sets the number of rooms or beds (depending on whether the room type is a private room or shared/dorm) available during any specific time frame. For more details see below.</p> <p><strong>Excluding Channels</strong></p> <p>Prefix a channel id with a minus (-) to exclude it.   Ex: a series of &quot;all&quot;, &quot;-loop&quot; would update all configured channels except &quot;loop&quot;</p> <p><strong>Handling Errors &amp; Warnings</strong></p> <p>The response will always include the Success, Errors and Warnings tags. If Success is set to &quot;true&quot; the Errors tag will be empty. If Success is set to &quot;partial&quot; or &quot;false&quot; at least one Error tag is included.</p> <p><strong>Sending Overlapping Ranges / Partial updates</strong></p> <p>Overlapping ranges in an ARIUpdate are absolutely allowed. As long as the ranges are sent in the same request body they are applied in sequence as part of the same SQL transaction. Fields such as Units, MinStay, MaxStay, Price are optional so it is possible send different ranges for pricing and availability.</p> <p>How this works: we receive JSON request body and decode it into a neutral format, then write availability directly to the internal MyAllocator database and provision an updateId for a date range plus room-type(s), then create one job per channel, finally we return the updateId to the response (assuming QueryForStatus==True).</p> <p>Each job contains ONLY the propertyid, updateId, and ota (no availability, or pricing). Jobs are picked up one of several auto-scaling &quot;worker tier&quot; servers, each server loads the latest availability from the db (which may have changed since the updateId was issued), and then applies any ARIRules, then transmit to OTA, and flag their portion of the updateId as completed. This ensures the latest availability will always be sent to the OTA.</p> <p>Once an UpdateId has been issued it falls within the scope of my monitoring domain, it should be considered reliable by a developer. The request is broken into a series of jobs (one for each channel). Each job is logged to disk and processed by a pool of servers. It would take a substantial level of failure to be lost. (Jobs are not quite as durable as bookings or configuration data, but it's still highly durable).</p> <p><strong>Submitting to ALL channels</strong></p> <p>You can also submit to all available channels without specifying explicity which channels to update. Use the channel code &quot;all&quot; to do this. Channels that are not set up by the user will be skipped as indicated by a warning.</p> <p>It is also possible to submit to all channels while excluding certain channels. Add the attribute exclude=&quot;true&quot; to skip a channel. See example below. Use the channel code &quot;all&quot; to do this.</p> <p><strong>Running Jobs in the Background (ARIUpdateStatus)</strong></p> <p>You can also run the ARIUpdate update in the background and query for the updates using ARIUpdateStatus. This enables you to show the update progress to the user while it's still running. To enable this feature you need to add the node QueryForStatus (see example)</p> <p>If QueryForStatus is true then the ARIUpdateResponse will contain the additional parameter UpdateId, which is needed for ARIUpdateStatus</p> <p>QueryForStatus TRUE will be much more resilient than attempting to maintain a single persistent connection, and it will free up connection requests on our side.  In the future QueryForStatus FALSE may be removed and/or additional timeouts will be added which may make it unusable. New integrations should avoid using QueryForStatus FALSE.</p> <p><strong>Date Limits</strong></p> <p>You can update a property's availability in myallocator for 4 years into the future. Setting availability and rates for the full four years is encouraged to improve the property's ranking on booking websites. Channels that support less than 4 years will be updated to their individual limit.</p>",
+    "description": "<p>An allocation sets various attributes, each optional, for a specific time frame:</p> <ul> <li>Rates</li> <li>Restrictions</li> <li>Number of private rooms available</li> <li>Number of beds available in a dormitory</li> </ul> <p>For more detail see below.</p> <p><strong>Errors &amp; Warnings</strong></p> <p>The response will always include the Success, Errors and Warnings fields.  If Success is set to &quot;true&quot; the Errors field will be empty. If Success is set to &quot;partial&quot; or &quot;false&quot; the Error field will include at least one item describing what failed.</p> <p><strong>Sending Overlapping Ranges &amp; Partial updates</strong></p> <p>Overlapping date ranges are explicitly allowed in the request body of a single ARI update. They are applied in the order they're listed in the request, so conflicts are resolved by simply sequentially applying each update in turn, overriding any attributes which may have been set by a previous update in the list.</p> <p>Some fields are optional such as Units, MinStay, MaxStay and Price so it's possible to send one date range describing pricing and another describing availability. See above for the full list of which fields are optional.</p> <p><strong>Sending ARI Updates to All Channels</strong></p> <p>You can also send ARI updates to all channels configured for a property without specifying each one individually by using the virtual channel code &quot;all&quot;. Channels that are  not set up by the user will be skipped as indicated by a warning.</p> <p>One or more channels can be excluded from the update by prefixing it with a minus sign (-). For examble a series of &quot;all&quot;, &quot;-exp&quot;, &quot;-boo&quot; would update all channels for the property except booking.com (boo) and Expedia (exp).</p> <p><strong>Running Jobs in the Background (ARIUpdateStatus)</strong></p> <p>Although it's possible send an ARIUpdate request which will not return a response until all of the updates have been sent to all of the named channels, the request may time out if there are a lot of channels or if some of them are slow. For this reason we recommend that the QueryForStatus flag be set to true which will cause the request to return immediately with an update ID. This ID can be used with ARIUpdateStatus to poll myallocator for the status of the update without the risk of an running into a network time out.</p> <p>If QueryForStatus is true then the ARIUpdateResponse will contain the additional parameter UpdateId, which is needed for ARIUpdateStatus.</p> <p>It is extremely likely that blocking updates will be phased out in favour of QueryForStatus so we highly recommend that you send only non-blocking ARIUpdate requests and poll myallocator using ARIUpdateStatus.</p> <p><strong>Date Limits</strong></p> <p>You can update a property's availability in myallocator for 4 years into the future. Setting availability and rates for the full four years is encouraged to improve a property's ranking in the channels. Channels which do not support 4 years of ARI will be updated to their individual limit and the remainder will be ignored.</p>",
     "examples": [
       {
         "title": "ARIUpdate",
-        "content": "{\n \"Auth/UserToken\":\"user token\",\n \"Auth/PropertyId\":\"property id from myallocator\",\n \"Auth/VendorId\":\"your vendor\",\n \"Auth/VendorPassword\":\"vendorpass\",\n \"Channels\": [ \"hc\",\"iwb\" ],\n \"Allocations\": [\n    {\n    \"RoomId\":\"59\",\n    \"StartDate\":\"2010-06-01\",\n    \"EndDate\":\"2010-06-01\",\n    \"Units\":\"3\",\n    \"MinStay\":\"1\",\n    \"MaxStay\":\"30\",\n    \"Price\":\"20.00\"\n    }\n    ]\n}",
+        "content": "{\n  \"Auth/VendorId\": \"Your Vendor ID\",\n  \"Auth/VendorPassword\": \"Your Vendor Password\",\n  \"Auth/UserToken\": \"User Authentication Token\",\n  \"Auth/PropertyId\": \"Property ID on myallocator\",\n\n  \"Channels\": [\n    \"exp\",\n    \"boo\"\n  ],\n  \"Allocations\": [\n    {\n      \"RoomId\": \"59\",\n      \"StartDate\": \"2020-12-02\",\n      \"EndDate\": \"2020-12-13\",\n      \"Price\": 88,\n      \"PriceSingle\": 77,\n      \"Units\": 3,\n      \"ClosedForArrival\": false,\n      \"ClosedForArrival\": false,\n      \"ClosedForDeparture\": false,\n      \"MinStay\": \"2\",\n      \"MaxStay\": \"10\"\n    },\n    {\n      \"RoomId\": \"59\",\n      \"StartDate\": \"2021-12-16\",\n      \"EndDate\": \"2021-12-17\",\n      \"Units\": 3\n    }\n  ],\n  \"Options\": {\n    \"QueryForStatus\": true\n  }\n}",
         "type": "json"
       },
       {
         "title": "curl",
-        "content": "curl https://api.myallocator.com/pms/v201804/json/ARIUpdate -d@- <<EOJSON\njson={\n \"Auth/UserToken\":\"your username\",\n \"Auth/PropertyId\":\"property id from myallocator\",\n \"Auth/VendorId\":\"your vendor\",\n \"Auth/VendorPassword\":\"vendorpass\",\n \"Channels\": [ \"hc\",\"iwb\" ],\n \"Allocations\": [\n    {\n    \"RoomId\":\"59\",\n    \"StartDate\":\"2010-06-01\",\n    \"EndDate\":\"2010-06-01\",\n    \"Units\":\"3\",\n    \"MinStay\":\"1\",\n    \"MaxStay\":\"30\",\n    \"Price\":\"20.00\",\n    \"PriceSingle\":\"15.00\"\n    }\n    ]\n}\nEOJSON",
-        "type": "json"
-      },
-      {
-        "title": "ARIUpdateResponse",
-        "content": "{\n\"Errors\":[\n   { \"err\":100, \"msg\":\"Unhandled Exception\" }\n],\n\"Messages\":[\n      {\n         \"msg\" : \"QueryForStatus mode enabled (will not wait)\",\n         \"id\" : 99,\n         \"type\" : \"info\"\n      }\n],\n\"Channels\":[\n      \"exp\" : {\n         \"msg\" : \"job 123 is queued in tube ariupdates\",\n         \"hold\" : 1,\n         \"parts\" : 1,\n         \"cid\" : \"exp\"\n      },\n      \"boo\" : {\n         \"msg\" : \"job 124 is queued in tube ariupdates\",\n         \"hold\" : 1,\n         \"parts\" : 1,\n         \"cid\" : \"boo\"\n      }\n]\n}",
+        "content": "curl https://api.myallocator.com/pms/v201804/json/ARIUpdate -d@- <<EOJSON\njson={\n  \"Auth/VendorId\": \"Your Vendor ID\",\n  \"Auth/VendorPassword\": \"Your Vendor Password\",\n  \"Auth/UserToken\": \"User Authentication Token\",\n  \"Auth/PropertyId\": \"Property ID on myallocator\",\n\n  \"Channels\": [\n    \"all\",\n    \"-boo\"\n  ],\n  \"Allocations\": [\n    {\n      \"RoomId\": \"59\",\n      \"StartDate\": \"2020-12-02\",\n      \"EndDate\": \"2020-12-13\",\n      \"Price\": 88,\n      \"PriceSingle\": 77,\n      \"Units\": 3,\n      \"ClosedForArrival\": false,\n      \"ClosedForArrival\": false,\n      \"ClosedForDeparture\": false,\n      \"MinStay\": \"2\",\n      \"MaxStay\": \"10\"\n    },\n    {\n      \"RoomId\": \"59\",\n      \"StartDate\": \"2021-12-16\",\n      \"EndDate\": \"2021-12-17\",\n      \"Units\": 3\n    }\n  ],\n  \"Options\": {\n    \"QueryForStatus\": true\n  }\n}\nEOJSON",
         "type": "json"
       }
     ],
+    "error": {
+      "examples": [
+        {
+          "title": "Success with warning",
+          "content": "{\n    \"Success\": false,\n    \"Errors\": [\n        {\n            \"msg\": \"ARIUpdate contains no channels to update\",\n            \"err\": 1012\n        }\n    ],\n    \"Messages\": [],\n    \"Options\": {\n        \"QueryForStatus\": \"true\"\n    },\n\n    \"RUID\": \"13641036-966C-11E8-892C-D219DE922BDC\"\n}",
+          "type": "json"
+        }
+      ]
+    },
     "filename": "perllib/MAAPI.pm",
     "groupTitle": "3_API_Methods"
   },
@@ -529,7 +540,7 @@ define({ "api": [
             "type": "String",
             "optional": false,
             "field": "Auth/PropertyId",
-            "description": "<p>Property ID on myallocator.com</p>"
+            "description": "<p>Property ID on myallocator</p>"
           },
           {
             "group": "Request",
@@ -544,6 +555,13 @@ define({ "api": [
             "optional": false,
             "field": "Auth/VendorPassword",
             "description": "<p>Your Vendor Password</p>"
+          },
+          {
+            "group": "Request",
+            "type": "Integer",
+            "optional": false,
+            "field": "UpdateId",
+            "description": "<p>UpdateId as returned by ARIUpdate</p>"
           }
         ]
       }
@@ -556,23 +574,35 @@ define({ "api": [
             "group": "Response",
             "type": "String",
             "optional": false,
-            "field": "Parts",
+            "field": "parts",
             "description": "<p>A big update can be split into smaller parts. This can be used as a progress indicator. 0 parts mean that the update is completed (or aborted due to an error).</p>"
           },
           {
             "group": "Response",
             "type": "String",
             "optional": false,
-            "field": "ActivePart",
+            "field": "active_part",
             "description": "<p>The current part number being submitted to the channel.</p>"
           }
         ]
-      }
+      },
+      "examples": [
+        {
+          "title": "Success",
+          "content": "{\n    \"Success\": true,\n    \"Channels\": {\n        \"loop\": {\n            \"active_part\": 1,\n            \"parts\": 2,\n            \"@Warnings\": [\n                [\n                    207,\n                    null,\n                    \"Room \\\"[Single Room]\\\" skipped (not mapped).\"\n                ]\n            ],\n            \"success\": 0,\n            \"error\": null\n        },\n        \"air\": {\n            \"active_part\": 0,\n            \"parts\": 0,\n            \"@Warnings\": [],\n            \"success\": 1,\n            \"error\": null\n        }\n    },\n    \"RUID\": \"DAC625E2-966C-11E8-BC96-3C22DE922BDC\",\n}",
+          "type": "json"
+        }
+      ]
     },
     "examples": [
       {
+        "title": "ARIUpdateStatus",
+        "content": "{\n  \"Auth/VendorId\":\"Your Vendor ID\",\n  \"Auth/VendorPassword\":\"Your Vendor Password\",\n  \"Auth/UserToken\":\"User token\",\n  \"Auth/PropertyId\":\"Property ID on myallocator\",\n  \"UpdateId\":106502342\n}",
+        "type": "json"
+      },
+      {
         "title": "curl",
-        "content": "curl https://api.myallocator.com/pms/v201804/json/ARIUpdateStatus -d@- <<EOJSON\njson={\n  \"Auth/UserToken\":\"User's auth token\",\n  \"Auth/PropertyId\":\"Property ID\",\n  \"Auth/VendorId\":\"your vendor id\",\n  \"Auth/VendorPassword\":\"your vendor password\"\n}\nEOJSON",
+        "content": "curl https://api.myallocator.com/pms/v201804/json/ARIUpdateStatus -d@- <<EOJSON\njson={\n  \"Auth/UserToken\":\"User's auth token\",\n  \"Auth/PropertyId\":\"Property ID\",\n  \"Auth/VendorId\":\"your vendor id\",\n  \"Auth/VendorPassword\":\"your vendor password\",\n  \"UpdateId\":106502342\n}\nEOJSON",
         "type": "json"
       }
     ],
@@ -687,83 +717,12 @@ define({ "api": [
     "examples": [
       {
         "title": "AssociateUserToPMS",
-        "content": "{\n  \"Auth/UserId\":\"username for myallocator.com\",\n  \"Auth/UserPassword\":\"password for myallocator.com\",\n  \"Auth/VendorId\":\"your vendor id\",\n  \"Auth/VendorPassword\":\"your vendor password\",\n  \"PMSUserId\":\"username-on-the-remote-pms-system\"\n}",
+        "content": "{\n  \"Auth/UserId\":\"username for myallocator\",\n  \"Auth/UserPassword\":\"password for myallocator\",\n  \"Auth/VendorId\":\"your vendor id\",\n  \"Auth/VendorPassword\":\"your vendor password\",\n  \"PMSUserId\":\"username-on-the-remote-pms-system\"\n}",
         "type": "json"
       },
       {
         "title": "curl",
-        "content": "curl https://api.myallocator.com/pms/v201804/json/AssociateUserToPMS -d@- <<EOJSON\njson={\n  \"Auth/UserId\":\"username for myallocator.com\",\n  \"Auth/UserPassword\":\"password for myallocator.com\",\n  \"Auth/VendorId\":\"your vendor id\",\n  \"Auth/VendorPassword\":\"your vendor password\",\n  \"PMSUserId\":\"username-on-the-remote-pms-system\"\n}\nEOJSON",
-        "type": "json"
-      }
-    ],
-    "filename": "perllib/MAAPI.pm",
-    "groupTitle": "3_API_Methods"
-  },
-  {
-    "group": "3_API_Methods",
-    "type": "POST",
-    "url": "/BookingAction",
-    "title": "BookingAction",
-    "name": "BookingAction",
-    "version": "201804.0.1",
-    "description": "<p>Booking provides the ability to send incremental 'intents' which modify a booking. Currently a limited number of actions are supported, however in the future new actions will be added. Actions are processed in sequence, the first error encountered stops all future actions. After any successful modification to a booking a callback trigger is modified, and the modified timestamp is set. A Response will be returned which provides insight/status on each command. If multiple commands are sent, the first error on any command will stop all further command processing.</p> <h2>Supported Actions</h2> <ul> <li>ACK       mark a booking as acknowledged on myallocator UI</li> <li>UNACK     removes the acknowledgement flag</li> <li>READ      mark a booking as read on myallocator UI</li> <li>UNREAD    remove the read flag</li> <li>ADDNOTE   add a note from the property to be shown on myallocator UI</li> </ul>",
-    "parameter": {
-      "fields": {
-        "Request": [
-          {
-            "group": "Request",
-            "type": "String",
-            "optional": false,
-            "field": "Auth/UserToken",
-            "description": "<p>Users auth token (see section <code>iii - Vendor tokens</code>)@apiParam (Request) {String} Auth/PropertyId      Property ID on myallocator.com</p>"
-          },
-          {
-            "group": "Request",
-            "type": "String",
-            "optional": false,
-            "field": "Auth/PropertyId",
-            "description": "<p>Property Id associated to user.</p>"
-          },
-          {
-            "group": "Request",
-            "type": "String",
-            "optional": false,
-            "field": "Auth/VendorId",
-            "description": "<p>Your Vendor ID</p>"
-          },
-          {
-            "group": "Request",
-            "type": "String",
-            "optional": false,
-            "field": "Auth/VendorPassword",
-            "description": "<p>Your Vendor Password</p>"
-          },
-          {
-            "group": "Request",
-            "type": "String",
-            "optional": false,
-            "field": "MyAllocatorId",
-            "description": "<p>Myallocator Booking ID to which to apply actions</p>"
-          },
-          {
-            "group": "Request",
-            "type": "Array",
-            "optional": false,
-            "field": "Actions",
-            "description": "<p>List of actions to be done on the booking</p>"
-          }
-        ]
-      }
-    },
-    "examples": [
-      {
-        "title": "Request",
-        "content": "{\n    \"Auth/UserToken\":\"\",\n    \"Auth/VendorId\":\"\",\n    \"Auth/VendorPassword\":\"\",\n    \"Auth/PropertyId\":\"\",\n\n    \"MyAllocatorId\":\"XXXXX\",\n    \"Actions\":[\n        \"ACK\",\n        [ \"ADDNOTE\", \"Customer called, they will arrive late\"]\n    ]\n}",
-        "type": "json"
-      },
-      {
-        "title": "curl",
-        "content": "curl https://api.myallocator.com/pms/v201804/json/BookingAction -d@- <<EOJSON\njson={\n    \"Auth/UserToken\":\"\",\n    \"Auth/VendorId\":\"\",\n    \"Auth/VendorPassword\":\"\",\n    \"Auth/PropertyId\":\"\",\n\n    \"MyAllocatorId\":\"XXXXX\",\n    \"Actions\":[\n        \"ACK\",\n        [ \"ADDNOTE\", \"Customer called, they will arrive late\"]\n    ]\n}\nEOJSON",
+        "content": "curl https://api.myallocator.com/pms/v201804/json/AssociateUserToPMS -d@- <<EOJSON\njson={\n  \"Auth/UserId\":\"username for myallocator\",\n  \"Auth/UserPassword\":\"password for myallocator\",\n  \"Auth/VendorId\":\"your vendor id\",\n  \"Auth/VendorPassword\":\"your vendor password\",\n  \"PMSUserId\":\"username-on-the-remote-pms-system\"\n}\nEOJSON",
         "type": "json"
       }
     ],
@@ -856,14 +815,14 @@ define({ "api": [
             "type": "String",
             "optional": false,
             "field": "Auth/UserToken",
-            "description": "<p>Users auth token (see section <code>iii - Vendor tokens</code>)@apiParam (Request) {String} Auth/PropertyId      Property ID on myallocator.com</p>"
+            "description": "<p>Users auth token (see section <code>iii - Vendor tokens</code>)</p>"
           },
           {
             "group": "Request",
             "type": "String",
             "optional": false,
             "field": "Auth/PropertyId",
-            "description": "<p>Property Id associated to user.</p>"
+            "description": "<p>Property ID on myallocator</p>"
           },
           {
             "group": "Request",
@@ -1120,21 +1079,21 @@ define({ "api": [
             "type": "String",
             "optional": false,
             "field": "MyallocatorId",
-            "description": "<p>Booking ID on myallocator.com (hexadecimal number)</p>"
+            "description": "<p>Booking ID on myallocator (hexadecimal number)</p>"
           },
           {
             "group": "Response",
             "type": "String",
             "optional": false,
             "field": "MyallocatorCreationDate",
-            "description": "<p>Date of booking creation on myallocator.com</p>"
+            "description": "<p>Date of booking creation on myallocator</p>"
           },
           {
             "group": "Response",
             "type": "String",
             "optional": false,
             "field": "MyallocatorCreationTime",
-            "description": "<p>Time of booking creation on myallocator.com</p>"
+            "description": "<p>Time of booking creation on myallocator</p>"
           },
           {
             "group": "Response",
@@ -1148,7 +1107,7 @@ define({ "api": [
             "type": "String",
             "optional": false,
             "field": "MyallocatorModificationTime",
-            "description": "<p>Time of booking modification on myallocator.com</p>"
+            "description": "<p>Time of booking modification on myallocator</p>"
           },
           {
             "group": "Response",
@@ -1169,7 +1128,7 @@ define({ "api": [
             "type": "String",
             "optional": false,
             "field": "RoomTypeId",
-            "description": "<p>&amp; List of booked myallocator.com room IDs. Several channel room can mapped to one myallocator.com room. If \\textit{-1} it means that we couldn't match the channel room to one of our rooms.</p>"
+            "description": "<p>&amp; List of booked myallocator room IDs. Several channel room can mapped to one myallocator room. If \\textit{-1} it means that we couldn't match the channel room to one of our rooms.</p>"
           },
           {
             "group": "Response",
@@ -1508,14 +1467,14 @@ define({ "api": [
             "type": "String",
             "optional": false,
             "field": "Auth/UserToken",
-            "description": "<p>Users auth token (see section <code>iii - Vendor tokens</code>)@apiParam (Request) {String} Auth/PropertyId</p>"
+            "description": "<p>Users auth token (see section <code>iii - Vendor tokens</code>)</p>"
           },
           {
             "group": "Request",
             "type": "String",
             "optional": false,
             "field": "Auth/PropertyId",
-            "description": "<p>Required to download a Booking.</p>"
+            "description": ""
           },
           {
             "group": "Request",
@@ -1550,7 +1509,7 @@ define({ "api": [
             "type": "String",
             "optional": true,
             "field": "MyAllocatorId",
-            "description": "<p>Id assigned by MyAllocator (required if no OrderId)</p>"
+            "description": "<p>ID assigned by myallocator (required if no OrderId)</p>"
           },
           {
             "group": "Request",
@@ -1574,7 +1533,7 @@ define({ "api": [
     "examples": [
       {
         "title": "curl",
-        "content": "curl https://api.myallocator.com/pms/v201804/json/BookingPaymentDownload -d@- <<EOJSON\njson=\n{\n    \"Auth/VendorId\":\"Your Vendor ID\",\n    \"Auth/VendorPassword\":\"Your Vendor Password\",\n    \"Auth/UserToken\":\"User token\",\n    \"Auth/PropertyId\":\"Property ID on myallocator.com\",\n    \"CreditCardPassword\":\"some_password\",\n    \"MyAllocatorId\": \"some_ma_id\"\n}\nEOJSON",
+        "content": "curl https://api.myallocator.com/pms/v201804/json/BookingPaymentDownload -d@- <<EOJSON\njson=\n{\n    \"Auth/VendorId\":\"Your Vendor ID\",\n    \"Auth/VendorPassword\":\"Your Vendor Password\",\n    \"Auth/UserToken\":\"User token\",\n    \"Auth/PropertyId\":\"Property ID on myallocator\",\n    \"CreditCardPassword\":\"some_password\",\n    \"MyAllocatorId\": \"some_ma_id\"\n}\nEOJSON",
         "type": "json"
       }
     ],
@@ -1633,12 +1592,12 @@ define({ "api": [
     "examples": [
       {
         "title": "Request",
-        "content": "{\n    \"Auth/VendorId\":\"Your Vendor ID\",\n    \"Auth/VendorPassword\":\"Your Vendor Password\",\n    \"Auth/UserToken\":\"User token\",\n    \"Auth/PropertyId\":\"Property ID on myallocator.com\",\n    \"CreditCardPassword\":\"some_password\"\n}",
+        "content": "{\n    \"Auth/VendorId\":\"Your Vendor ID\",\n    \"Auth/VendorPassword\":\"Your Vendor Password\",\n    \"Auth/UserToken\":\"User token\",\n    \"Auth/PropertyId\":\"Property ID on myallocator\",\n    \"CreditCardPassword\":\"some_password\"\n}",
         "type": "json"
       },
       {
         "title": "curl",
-        "content": "curl https://api.myallocator.com/pms/v201804/json/BookingPaymentPasswordValidate -d@- <<EOJSON\njson=\n{\n    \"Auth/VendorId\":\"Your Vendor ID\",\n    \"Auth/VendorPassword\":\"Your Vendor Password\",\n    \"Auth/UserToken\":\"User token\",\n    \"Auth/PropertyId\":\"Property ID on myallocator.com\",\n    \"CreditCardPassword\":\"some_password\"\n}\nEOJSON",
+        "content": "curl https://api.myallocator.com/pms/v201804/json/BookingPaymentPasswordValidate -d@- <<EOJSON\njson=\n{\n    \"Auth/VendorId\":\"Your Vendor ID\",\n    \"Auth/VendorPassword\":\"Your Vendor Password\",\n    \"Auth/UserToken\":\"User token\",\n    \"Auth/PropertyId\":\"Property ID on myallocator\",\n    \"CreditCardPassword\":\"some_password\"\n}\nEOJSON",
         "type": "json"
       }
     ],
@@ -1887,7 +1846,7 @@ define({ "api": [
             "type": "String",
             "optional": true,
             "field": "Auth/PropertyId",
-            "description": "<p>Property ID on myallocator.com. If not provided, all properties for given user will be returned.</p>"
+            "description": "<p>Property ID on myallocator. If not provided, all properties for given user will be returned.</p>"
           },
           {
             "group": "Request",
@@ -1909,7 +1868,7 @@ define({ "api": [
     "examples": [
       {
         "title": "curl",
-        "content": "curl https://api.myallocator.com/pms/v201804/json/PropertyChannelList -d@- <<EOJSON\njson={\n  \"Auth/UserToken\":\"User's auth token\",\n  \"Auth/PropertyId\":\"Property ID on myallocator.com\",\n  \"Auth/VendorId\":\"your vendor id\",\n  \"Auth/VendorPassword\":\"your vendor password\"\n}\nEOJSON",
+        "content": "curl https://api.myallocator.com/pms/v201804/json/PropertyChannelList -d@- <<EOJSON\njson={\n  \"Auth/UserToken\":\"User's auth token\",\n  \"Auth/PropertyId\":\"Property ID on myallocator\",\n  \"Auth/VendorId\":\"your vendor id\",\n  \"Auth/VendorPassword\":\"your vendor password\"\n}\nEOJSON",
         "type": "json"
       }
     ],
@@ -2222,7 +2181,7 @@ define({ "api": [
             "type": "Integer",
             "optional": false,
             "field": "PropertyId",
-            "description": "<p>the MyAllocator PropertyId of the freshly created property (store this to reference the property in other calls)</p>"
+            "description": "<p>Myallocator PropertyId of the freshly created property (store this to reference the property in other calls)</p>"
           },
           {
             "group": "Response",
@@ -2234,7 +2193,7 @@ define({ "api": [
         ]
       }
     },
-    "description": "<p>This method allows you to create customer accounts on myallocator.com. Before you can use this method we'll have to explicitly enable you for this functionality, as some aspects with regards to customer payment will need to be discussed. Previously known as SetLogin/CreateLogin</p>",
+    "description": "<p>This method allows you to create customer accounts on myallocator. Before you can use this method we'll have to explicitly enable you for this functionality, as some aspects with regards to customer payment will need to be discussed. Previously known as SetLogin/CreateLogin</p>",
     "examples": [
       {
         "title": "curl",
@@ -2848,7 +2807,7 @@ define({ "api": [
     "title": "PropertyList",
     "name": "PropertyList",
     "version": "201804.0.1",
-    "description": "<p>Users on myallocator.com might have more than one property attached to their username. This request lists which properties are associated with the customer and provides a property ID, needed to update the availability of this property. This request was formerly known as GetProperties (v1)</p>",
+    "description": "<p>Users on myallocator might have more than one property attached to their username. This request lists which properties are associated with the customer and provides a property ID, needed to update the availability of this property. This request was formerly known as GetProperties (v1)</p>",
     "parameter": {
       "fields": {
         "Request": [
@@ -2864,7 +2823,7 @@ define({ "api": [
             "type": "String",
             "optional": false,
             "field": "Auth/PropertyId",
-            "description": "<p>Property ID on myallocator.com</p>"
+            "description": "<p>Property ID on myallocator</p>"
           },
           {
             "group": "Request",
@@ -3415,7 +3374,7 @@ define({ "api": [
     "title": "RoomCreate",
     "name": "RoomCreate",
     "version": "201804.0.1",
-    "description": "<p>This method allows you to create, update or remove rooms on myallocator.com. Please note that you can only send a single RoomCreate, RoomUpdate, or RoomRemove</p>",
+    "description": "<p>This method allows you to create, update or remove rooms on myallocator. Please note that you can only send a single RoomCreate, RoomUpdate, or RoomRemove</p>",
     "parameter": {
       "fields": {
         "Request": [
@@ -3431,7 +3390,7 @@ define({ "api": [
             "type": "String",
             "optional": false,
             "field": "Auth/PropertyId",
-            "description": "<p>Property ID on myallocator.com</p>"
+            "description": "<p>Property ID on myallocator</p>"
           },
           {
             "group": "Request",
@@ -3525,12 +3484,12 @@ define({ "api": [
     "examples": [
       {
         "title": "Request",
-        "content": "{\n    \"Auth/VendorId\":\"Your Vendor ID\",\n    \"Auth/VendorPassword\":\"Your Vendor Password\",\n    \"Auth/UserToken\":\"User token\",\n    \"Auth/PropertyId\":\"Property ID on myallocator.com\",\n    \"ValidateOnly\":false,\n    \"AuthorizeBilling\":true,\n    \"Rooms\": [\n        {\n            \"PMSRoomId\":\"IdOfRoomOnPMS\",\n            \"Label\":\"Double Room\",\n            \"Description\": \"Double room with a view over the ocean\",\n            \"Units\":4,\n            \"Occupancy\":2,\n            \"PrivateRoom\":\"true\",\n            \"Gender\":\"MI\"\n        },\n        {\n            \"PMSRoomId\":\"IdOfRoomOnPMS\",\n            \"Label\":\"Female dorm\",\n            \"Units\":3,\n            \"Occupancy\":6,\n            \"PrivateRoom\":\"false\",\n            \"Gender\":\"FE\"\n        }\n    ]\n}",
+        "content": "{\n    \"Auth/VendorId\":\"Your Vendor ID\",\n    \"Auth/VendorPassword\":\"Your Vendor Password\",\n    \"Auth/UserToken\":\"User token\",\n    \"Auth/PropertyId\":\"Property ID on myallocator\",\n    \"ValidateOnly\":false,\n    \"AuthorizeBilling\":true,\n    \"Rooms\": [\n        {\n            \"PMSRoomId\":\"IdOfRoomOnPMS\",\n            \"Label\":\"Double Room\",\n            \"Description\": \"Double room with a view over the ocean\",\n            \"Units\":4,\n            \"Occupancy\":2,\n            \"PrivateRoom\":\"true\",\n            \"Gender\":\"MI\"\n        },\n        {\n            \"PMSRoomId\":\"IdOfRoomOnPMS\",\n            \"Label\":\"Female dorm\",\n            \"Units\":3,\n            \"Occupancy\":6,\n            \"PrivateRoom\":\"false\",\n            \"Gender\":\"FE\"\n        }\n    ]\n}",
         "type": "json"
       },
       {
         "title": "curl",
-        "content": "curl https://api.myallocator.com/pms/v201804/json/RoomCreate -d@- <<EOJSON\njson={\n    \"Auth/VendorId\":\"Your Vendor ID\",\n    \"Auth/VendorPassword\":\"Your Vendor Password\",\n    \"Auth/UserToken\":\"User token\",\n    \"Auth/PropertyId\":\"Property ID on myallocator.com\",\n    \"ValidateOnly\":false,\n    \"AuthorizeBilling\":true,\n    \"Rooms\": [\n        {\n            \"PMSRoomId\":\"IdOfRoomOnPMS\",\n            \"Label\":\"Double Room\",\n            \"Units\":4,\n            \"Occupancy\":2,\n            \"PrivateRoom\":\"true\",\n            \"Gender\":\"MI\"\n        },\n        {\n            \"PMSRoomId\":\"IdOfRoomOnPMS\",\n            \"Label\":\"Female dorm\",\n            \"Units\":3,\n            \"Occupancy\":6,\n            \"PrivateRoom\":\"false\",\n            \"Gender\":\"FE\"\n        }\n    ]\n}\nEOJSON",
+        "content": "curl https://api.myallocator.com/pms/v201804/json/RoomCreate -d@- <<EOJSON\njson={\n    \"Auth/VendorId\":\"Your Vendor ID\",\n    \"Auth/VendorPassword\":\"Your Vendor Password\",\n    \"Auth/UserToken\":\"User token\",\n    \"Auth/PropertyId\":\"Property ID on myallocator\",\n    \"ValidateOnly\":false,\n    \"AuthorizeBilling\":true,\n    \"Rooms\": [\n        {\n            \"PMSRoomId\":\"IdOfRoomOnPMS\",\n            \"Label\":\"Double Room\",\n            \"Units\":4,\n            \"Occupancy\":2,\n            \"PrivateRoom\":\"true\",\n            \"Gender\":\"MI\"\n        },\n        {\n            \"PMSRoomId\":\"IdOfRoomOnPMS\",\n            \"Label\":\"Female dorm\",\n            \"Units\":3,\n            \"Occupancy\":6,\n            \"PrivateRoom\":\"false\",\n            \"Gender\":\"FE\"\n        }\n    ]\n}\nEOJSON",
         "type": "json"
       }
     ],
@@ -4142,7 +4101,7 @@ define({ "api": [
             "type": "String",
             "optional": false,
             "field": "Auth/PropertyId",
-            "description": "<p>Property ID on myallocator.com</p>"
+            "description": "<p>Property ID on myallocator</p>"
           },
           {
             "group": "Request",
@@ -4164,7 +4123,7 @@ define({ "api": [
     "examples": [
       {
         "title": "curl",
-        "content": "curl https://api.myallocator.com/pms/v201804/json/RoomList -d@- <<EOJSON\njson={\n  \"Auth/UserToken\":\"User's auth token\",\n  \"Auth/PropertyId\":\"Property ID on myallocator.com\",\n  \"Auth/VendorId\":\"your vendor id\",\n  \"Auth/VendorPassword\":\"your vendor password\"\n}\nEOJSON",
+        "content": "curl https://api.myallocator.com/pms/v201804/json/RoomList -d@- <<EOJSON\njson={\n  \"Auth/UserToken\":\"User's auth token\",\n  \"Auth/PropertyId\":\"Property ID on myallocator\",\n  \"Auth/VendorId\":\"your vendor id\",\n  \"Auth/VendorPassword\":\"your vendor password\"\n}\nEOJSON",
         "type": "json"
       }
     ],
@@ -4211,14 +4170,14 @@ define({ "api": [
             "type": "String",
             "optional": false,
             "field": "DoubleBed",
-            "description": "<p>!!Obsolete!! Option removed from Myallocator. Now always defaults to false.</p>"
+            "description": "<p>!!Obsolete!! Option removed from myallocator. Now always defaults to false.</p>"
           },
           {
             "group": "Response",
             "type": "String",
             "optional": false,
             "field": "Ensuite",
-            "description": "<p>!!Obsolete!! Option removed from Myallocator. Now always defaults to false;</p>"
+            "description": "<p>!!Obsolete!! Option removed from myallocator. Now always defaults to false;</p>"
           },
           {
             "group": "Response",
@@ -4279,12 +4238,12 @@ define({ "api": [
       "examples": [
         {
           "title": "Request (Remove single room)",
-          "content": "{\n    \"Auth/UserToken\":\"\",\n    \"Auth/VendorId\":\"\",\n    \"Auth/VendorPassword\":\"\",\n    \"Room\":{ \"RoomId\":### }\n}",
+          "content": "{\n    \"Auth/UserToken\":\"\",\n    \"Auth/VendorId\":\"\",\n    \"Auth/VendorPassword\":\"\",\n    \"Auth/PropertyId\": \"\",\n    \"Room\":{ \"RoomId\":### }\n}",
           "type": "json"
         },
         {
           "title": "Request (Remove multiple rooms)",
-          "content": "{\n    \"Auth/UserToken\":\"\",\n    \"Auth/VendorId\":\"\",\n    \"Auth/VendorPassword\":\"\",\n    \"Rooms\": [\n        { \"RoomId\":## },\n        { \"RoomId\":## }\n        ]\n}",
+          "content": "{\n    \"Auth/UserToken\":\"\",\n    \"Auth/VendorId\":\"\",\n    \"Auth/VendorPassword\":\"\",\n    \"Auth/PropertyId\": \"\",\n    \"Rooms\": [\n        { \"RoomId\":## },\n        { \"RoomId\":## }\n        ]\n}",
           "type": "json"
         }
       ]
@@ -4292,7 +4251,7 @@ define({ "api": [
     "examples": [
       {
         "title": "curl",
-        "content": "curl https://api.myallocator.com/pms/v201804/json/RoomRemove -d@- <<EOJSON\njson={\n    \"Auth/UserToken\":\"\",\n    \"Auth/VendorId\":\"\",\n    \"Auth/VendorPassword\":\"\",\n    \"Room\":{ \"RoomId\": 30421 }\n}\nEOJSON",
+        "content": "curl https://api.myallocator.com/pms/v201804/json/RoomRemove -d@- <<EOJSON\njson={\n    \"Auth/UserToken\":\"\",\n    \"Auth/VendorId\":\"\",\n    \"Auth/VendorPassword\":\"\",\n    \"Auth/PropertyId\": \"\",\n    \"Room\":{ \"RoomId\": 30421 }\n}\nEOJSON",
         "type": "json"
       }
     ],
@@ -4397,7 +4356,7 @@ define({ "api": [
             "type": "Integer",
             "optional": false,
             "field": "UserId",
-            "description": "<p>the MyAllocator UserId of the freshly created user</p>"
+            "description": "<p>Myallocator UserId of the freshly created user</p>"
           },
           {
             "group": "Response",
@@ -4409,7 +4368,7 @@ define({ "api": [
         ]
       }
     },
-    "description": "<p>This method allows you to create customer accounts on myallocator.com. Before you can use this method we'll have to explicitly enable you for this functionality, as some aspects with regards to customer payment will need to be discussed.</p>",
+    "description": "<p>This method allows you to create customer accounts on myallocator. Before you can use this method we'll have to explicitly enable you for this functionality, as some aspects with regards to customer payment will need to be discussed.</p>",
     "examples": [
       {
         "title": "curl",
