@@ -79,7 +79,7 @@ define({ "api": [
     "title": "Response Handling",
     "name": "Response_Handling",
     "version": "201804.0.1",
-    "description": "<p>== Response Format == The codes are as follows, the message (msg) is not parsed and can be anything you like (we still recommend something that describes the error).</p> <table> <thead> <tr> <th>Code</th> <th>Cause</th> </tr> </thead> <tbody> <tr> <td>10</td> <td>Password wrong or not set.</td> </tr> <tr> <td>20</td> <td>Error while parsing JSON structure (including the exception message, for example position of not parsable part)</td> </tr> <tr> <td>21</td> <td>Error while parsing JSON structure (exact reason unknown)</td> </tr> <tr> <td>22</td> <td>Error while parsing JSON content</td> </tr> <tr> <td>30</td> <td>PropertyId is NULL or 0</td> </tr> <tr> <td>31</td> <td>Property not used on your PMS anymore</td> </tr> <tr> <td>35</td> <td>MyallocatorId already existing</td> </tr> <tr> <td>40</td> <td>Request a retry (vendor currently unable to process booking notification)</td> </tr> <tr> <td>50+</td> <td>Internal error on your side (for debugging)</td> </tr> </tbody> </table> <p>We record every error and can give you more details if needed. The important codes are really only 10 and 31. The JSON should always be valid and the PropertyId always included.</p> <p>The RUID is an unique identifier for each response that you can reference to us to receive support on a specific request/response.</p>",
+    "description": "<p>The codes are as follows, the message (ErrorMsg) is not parsed and can be anything you like (we still recommend something that describes the error).</p> <table> <thead> <tr> <th>Code</th> <th>Cause</th> </tr> </thead> <tbody> <tr> <td>10</td> <td>Password wrong or not set.</td> </tr> <tr> <td>20</td> <td>Error while parsing JSON structure (including the exception message, for example position of not parsable part)</td> </tr> <tr> <td>21</td> <td>Error while parsing JSON structure (exact reason unknown)</td> </tr> <tr> <td>22</td> <td>Error while parsing JSON content</td> </tr> <tr> <td>30</td> <td>PropertyId is NULL or 0</td> </tr> <tr> <td>31</td> <td>Property not used on your PMS anymore</td> </tr> <tr> <td>35</td> <td>MyallocatorId already existing</td> </tr> <tr> <td>40</td> <td>Request a retry (vendor currently unable to process booking notification)</td> </tr> <tr> <td>50+</td> <td>Internal error on your side (for debugging)</td> </tr> </tbody> </table> <p>We record every error and can give you more details if needed. The important codes are really only 10 and 31. The JSON should always be valid and the PropertyId always included.</p> <p>The RUID is an unique identifier for each response that you can reference to us to receive support on a specific request/response. It's optional.</p>",
     "success": {
       "examples": [
         {
@@ -93,7 +93,7 @@ define({ "api": [
       "examples": [
         {
           "title": "Example of an unsuccessful JSON response",
-          "content": "{\n  \"Success\": false,\n  \"Errors\": [\n      {\n          \"ErrorMsg\": \"Invalid vendor or vendor password\",\n          \"ErrorTicket\": \"19B1242A-3671-11E8-B788-483030B2D601\",\n          \"ErrorId\": 4\n      }\n  ],\n  \"RUID\": \"9C811B86-3684-11E8-B30E-E1EA2FB2D602\"\n}",
+          "content": "{\n  \"Success\": false,\n  \"Errors\": [\n      {\n          \"ErrorMsg\": \"Invalid callback password\",\n          \"ErrorId\": 10\n      }\n  ],\n  \"RUID\": \"9C811B86-3684-11E8-B30E-E1EA2FB2D602\"\n}",
           "type": "json"
         }
       ]
@@ -239,53 +239,64 @@ define({ "api": [
             "optional": false,
             "field": "ARIRules",
             "description": "<p>ARIRules to set (array)</p>"
-          }
-        ],
-        "ARIRules": [
+          },
           {
-            "group": "ARIRules",
+            "group": "Request",
+            "type": "String",
+            "allowedValues": [
+              "\"Upsert\"",
+              "\"Update\"",
+              "\"Append\"",
+              "\"Delete\""
+            ],
+            "optional": false,
+            "field": ".ARIRules.Action",
+            "description": "<p>Whether to update, append, delete or insert/update (upsert) a rule.</p>"
+          },
+          {
+            "group": "Request",
             "type": "String",
             "optional": false,
             "field": ".ARIRules.Channel",
             "description": "<p>Channel to set a rule for</p>"
           },
           {
-            "group": "ARIRules",
+            "group": "Request",
             "type": "Date",
             "optional": false,
             "field": ".ARIRules.StartDate",
             "description": "<p>Date that the rule starts (YYYY-MM-DD)</p>"
           },
           {
-            "group": "ARIRules",
+            "group": "Request",
             "type": "Date",
             "optional": false,
             "field": ".ARIRules.EndDate",
             "description": "<p>Date that the rule starts (YYYY-MM-DD)</p>"
           },
           {
-            "group": "ARIRules",
+            "group": "Request",
             "type": "String",
             "optional": false,
             "field": ".ARIRules.PMSRuleId",
             "description": "<p>Rule ID</p>"
           },
           {
-            "group": "ARIRules",
+            "group": "Request",
             "type": "Integer",
             "optional": false,
             "field": ".ARIRules.RatePlanId",
             "description": "<p>RatePlan that will be assoiated with this rule</p>"
           },
           {
-            "group": "ARIRules",
+            "group": "Request",
             "type": "Integer",
             "optional": false,
             "field": ".ARIRules.RoomId",
             "description": "<p>Room ID for this rule</p>"
           },
           {
-            "group": "ARIRules",
+            "group": "Request",
             "type": "String",
             "allowedValues": [
               "\"BLOCK\""
@@ -327,12 +338,12 @@ define({ "api": [
     "examples": [
       {
         "title": "ARIRulesUpdate",
-        "content": "{\n    \"Auth/VendorId\": \"Your Vendor ID\",\n    \"Auth/VendorPassword\": \"Your Vendor Password\",\n    \"Auth/UserToken\": \"User Authentication Token\",\n    \"Auth/PropertyId\": \"Property ID on myallocator\",\n\n    \"ARIRules\": [\n        {\n            \"Channel\": \"exp\",\n            \"StartDate\": \"2018-04-01\",\n            \"EndDate\": \"2020-04-01\",\n            \"PMSRuleId\": \"my-unique-id\",\n            \"RatePlanId\": 0,\n            \"RoomId\": \"49281\",\n            \"Verb\": \"BLOCK\"\n        }\n    ]\n}",
+        "content": "{\n    \"Auth/VendorId\": \"Your Vendor ID\",\n    \"Auth/VendorPassword\": \"Your Vendor Password\",\n    \"Auth/UserToken\": \"User Authentication Token\",\n    \"Auth/PropertyId\": \"Property ID on myallocator\",\n\n    \"ARIRules\": [\n        {\n            \"Action\": \"Upsert\",\n            \"Channel\": \"exp\",\n            \"StartDate\": \"2018-04-01\",\n            \"EndDate\": \"2020-04-01\",\n            \"PMSRuleId\": \"my-unique-id\",\n            \"RatePlanId\": 0,\n            \"RoomId\": \"49281\",\n            \"Verb\": \"BLOCK\"\n        }\n    ]\n}",
         "type": "json"
       },
       {
         "title": "curl",
-        "content": "curl https://api.myallocator.com/pms/v201804/json/ARIRulesUpdate -d@- <<EOJSON\njson={\n    \"Auth/VendorId\": \"Your Vendor ID\",\n    \"Auth/VendorPassword\": \"Your Vendor Password\",\n    \"Auth/UserToken\": \"User Authentication Token\",\n    \"Auth/PropertyId\": \"Property ID on myallocator\",\n\n    \"ARIRules\": [\n        {\n            \"Channel\": \"exp\",\n            \"StartDate\": \"2018-04-01\",\n            \"EndDate\": \"2020-04-01\",\n            \"PMSRuleId\": \"my-unique-id\",\n            \"RatePlanId\": 0,\n            \"RoomId\": \"49281\",\n            \"Verb\": \"BLOCK\"\n        }\n    ]\n}\nEOJSON",
+        "content": "curl https://api.myallocator.com/pms/v201804/json/ARIRulesUpdate -d@- <<EOJSON\njson={\n    \"Auth/VendorId\": \"Your Vendor ID\",\n    \"Auth/VendorPassword\": \"Your Vendor Password\",\n    \"Auth/UserToken\": \"User Authentication Token\",\n    \"Auth/PropertyId\": \"Property ID on myallocator\",\n\n    \"ARIRules\": [\n        {\n            \"Action\": \"Upsert\",\n            \"Channel\": \"exp\",\n            \"StartDate\": \"2018-04-01\",\n            \"EndDate\": \"2020-04-01\",\n            \"PMSRuleId\": \"my-unique-id\",\n            \"RatePlanId\": 0,\n            \"RoomId\": \"49281\",\n            \"Verb\": \"BLOCK\"\n        }\n    ]\n}\nEOJSON",
         "type": "json"
       }
     ],
