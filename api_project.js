@@ -4,12 +4,16 @@ define({
   "description": "Myallocator API for PMS partners.",
   "title": "Myallocator PMS API",
   "url": "https://api.myallocator.com/pms/v<VERSION>/json",
+  "template": {
+    "withCompare": false,
+    "withGenerator": false
+  },
   "sampleUrl": false,
   "defaultVersion": "0.0.0",
   "apidoc": "0.3.0",
   "generator": {
     "name": "apidoc",
-    "time": "2019-04-11T14:48:08.292Z",
+    "time": "2019-04-15T11:00:20.855Z",
     "url": "http://apidocjs.com",
     "version": "0.2.0"
   }

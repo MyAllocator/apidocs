@@ -3,5 +3,9 @@
   "version": "201804.0.1",
   "description": "Myallocator API for PMS partners.",
   "title": "Myallocator PMS API",
-  "url" : "https://api.myallocator.com/pms/v<VERSION>/json"
+  "url" : "https://api.myallocator.com/pms/v<VERSION>/json",
+  "template": {
+    "withCompare": false,
+    "withGenerator": false
+  }
 }
