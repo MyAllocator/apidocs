@@ -1102,7 +1102,7 @@
         ]
       }
     },
-    "description": "<p>This method allows you to query for bookings made to a specific property by booking date, modification date or arrival date.</p> <p>It is important to know that not every booking that is returned through the API neccessarily resulted in an adjustment of the other channels. If the booking is not mapped to any rooms on our system, or if the channel has just been setup, the adjustment will not be carried out. The requests consists of search criteria by date. Only specify the StartDate/EndDate of one criteria. note: formerly BookingList (v1).</p> <p>** Data Formatting ** Different channels return a different amount of information about a booking, therefore many fields are optional. (Sorry this isn't more useful, we're working on addressing this)</p> <p>** Best Pratices **</p> <ul> <li>Callbacks are the fastest, best, and preferred way of receiving Booking data.</li> <li>Every effort will be made to synchronize the callback data format and this format. (You can/should use the same data parsing code)</li> <li>BookingList method should only be used as a backup to correct errors or lost callbacks. Or to periodically verify integrity of data.</li> <li>Always use ModificationStartDate ModificationEndDate in production.</li> <li>If a change/cancellation is received then the modification date will also be different from the creation date)</li> <li>Do not frequently poll this API, one call, per property, every 30 minutes is considered &quot;Acceptable Usage&quot;.</li> <li>It is acceptable use for a PMS to burst on this API when initially pulling down data for an existing MA client.</li> </ul>",
+    "description": "<p>This method allows you to query for bookings made to a specific property by booking date, modification date or arrival date.</p> <p>It is important to know that not every booking that is returned through the API neccessarily resulted in an adjustment of the other channels. If the booking is not mapped to any rooms on our system, or if the channel has just been setup, the adjustment will not be carried out. The requests consists of search criteria by date. Only specify the StartDate/EndDate of one criteria. note: formerly BookingList (v1).</p> <p>Example JSON files for bookings from different channels can be found here: <a href=\"https://github.com/MyAllocator/bookingsamples\">https://github.com/MyAllocator/bookingsamples</a></p> <p>** Data Formatting ** Different channels return a different amount of information about a booking, therefore many fields are optional. (Sorry this isn't more useful, we're working on addressing this)</p> <p>** Best Pratices **</p> <ul> <li>Callbacks are the fastest, best, and preferred way of receiving Booking data.</li> <li>Every effort will be made to synchronize the callback data format and this format. (You can/should use the same data parsing code)</li> <li>BookingList method should only be used as a backup to correct errors or lost callbacks. Or to periodically verify integrity of data.</li> <li>Always use ModificationStartDate ModificationEndDate in production.</li> <li>If a change/cancellation is received then the modification date will also be different from the creation date)</li> <li>Do not frequently poll this API, one call, per property, every 30 minutes is considered &quot;Acceptable Usage&quot;.</li> <li>It is acceptable use for a PMS to burst on this API when initially pulling down data for an existing MA client.</li> </ul>",
     "examples": [
       {
         "title": "Example of quering for bookings",
@@ -1765,6 +1765,215 @@
   {
     "group": "3_API_Methods",
     "type": "POST",
+    "url": "/BookingReportInvalidCC",
+    "title": "BookingReportInvalidCC",
+    "name": "BookingReportInvalidCC",
+    "version": "201906.0.1",
+    "description": "<p>Reports booking has invalid credit card with option to cancel the booking. Only very few channels support this, check the 'api_report_invalid_cc' flag on the ChannelList call to see which channels support this.</p>",
+    "parameter": {
+      "fields": {
+        "Request": [
+          {
+            "group": "Request",
+            "type": "String",
+            "optional": false,
+            "field": "Auth/UserToken",
+            "description": "<p>Users auth token (see section <code>iii - Vendor tokens</code>)</p>"
+          },
+          {
+            "group": "Request",
+            "type": "String",
+            "optional": false,
+            "field": "Auth/PropertyId",
+            "description": "<p>Property Id associated to user.</p>"
+          },
+          {
+            "group": "Request",
+            "type": "String",
+            "optional": false,
+            "field": "Auth/VendorId",
+            "description": "<p>Your Vendor ID</p>"
+          },
+          {
+            "group": "Request",
+            "type": "String",
+            "optional": false,
+            "field": "Auth/VendorPassword",
+            "description": "<p>Your Vendor Password</p>"
+          },
+          {
+            "group": "Request",
+            "type": "String",
+            "optional": false,
+            "field": "MyAllocatorId",
+            "description": "<p>Myallocator ID of the booking</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "fields": {
+        "Request": [
+          {
+            "group": "Request",
+            "type": "Boolean",
+            "optional": false,
+            "field": "CancelBooking",
+            "description": "<p>True if booking should be cancelled</p>"
+          }
+        ],
+        "Response": [
+          {
+            "group": "Response",
+            "type": "Boolean",
+            "optional": false,
+            "field": "Success",
+            "description": "<p>True if call was successful</p>"
+          },
+          {
+            "group": "Response",
+            "type": "Array",
+            "optional": false,
+            "field": "Errors",
+            "description": "<p>Array with errors when Success flag is false</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Response (success)",
+          "content": "{\n    \"Success\": true\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "examples": [
+      {
+        "title": "Request",
+        "content": "{\n  \"Auth/VendorId\": \"\",\n  \"Auth/VendorPassword\": \"\",\n  \"Auth/UserToken\":\"\",\n  \"Auth/PropertyId\":\"\",\n  \"MyAllocatorId\":\"57333cd36dbf9a4f114dd781\",\n  \"CancelBooking\":true\n}",
+        "type": "json"
+      },
+      {
+        "title": "curl",
+        "content": "curl https://api.myallocator.com/pms/v201804/json/BookingReportBookingInvalidCC -d@- <<EOJSON\njson={\n    \"Auth/VendorId\":\"Your Vendor ID\",\n    \"Auth/VendorPassword\":\"Your Vendor Password\",\n    \"Auth/UserToken\":\"User token\",\n    \"Auth/PropertyId\":\"Property ID on myallocator.com\",\n    \"MyAllocatorId\":\"57333cd36dbf9a4f114dd781\",\n    \"CancelBooking\":true\n}\nEOJSON",
+        "type": "json"
+      }
+    ],
+    "error": {
+      "examples": [
+        {
+          "title": "Response (invalid booking)",
+          "content": "{\n    \"Success\": false,\n    \"Errors\": [\n        {\n            \"ErrorTicket\": \"D13BAC04-1234-5678-804B-F5140B37646E\",\n            \"ErrorMsg\": \"No such booking id\",\n            \"ErrorId\": \"30\"\n        }\n    ]\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "perllib/MyAllocator/API/Method/Bookings.pm",
+    "groupTitle": "3_API_Methods"
+  },
+  {
+    "group": "3_API_Methods",
+    "type": "POST",
+    "url": "/BookingReportNoShow",
+    "title": "BookingReportNoShow",
+    "name": "BookingReportNoShow",
+    "version": "201804.0.1",
+    "description": "<p>Reports booking as no show (a customer didn't come). Only very few channels support this, check the 'api_report_no_show' flag on the ChannelList call to see which channels support this.</p>",
+    "parameter": {
+      "fields": {
+        "Request": [
+          {
+            "group": "Request",
+            "type": "String",
+            "optional": false,
+            "field": "Auth/UserToken",
+            "description": "<p>Users auth token (see section <code>iii - Vendor tokens</code>)</p>"
+          },
+          {
+            "group": "Request",
+            "type": "String",
+            "optional": false,
+            "field": "Auth/PropertyId",
+            "description": "<p>Property Id associated to user.</p>"
+          },
+          {
+            "group": "Request",
+            "type": "String",
+            "optional": false,
+            "field": "Auth/VendorId",
+            "description": "<p>Your Vendor ID</p>"
+          },
+          {
+            "group": "Request",
+            "type": "String",
+            "optional": false,
+            "field": "Auth/VendorPassword",
+            "description": "<p>Your Vendor Password</p>"
+          },
+          {
+            "group": "Request",
+            "type": "String",
+            "optional": false,
+            "field": "MyAllocatorId",
+            "description": "<p>Myallocator ID of the booking</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "fields": {
+        "Response": [
+          {
+            "group": "Response",
+            "type": "Boolean",
+            "optional": false,
+            "field": "Success",
+            "description": "<p>True if call was successful</p>"
+          },
+          {
+            "group": "Response",
+            "type": "Array",
+            "optional": false,
+            "field": "Errors",
+            "description": "<p>Array with errors when Success flag is false</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Response (success)",
+          "content": "{\n    \"Success\": true\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "examples": [
+      {
+        "title": "Request",
+        "content": "{\n  \"Auth/VendorId\": \"\",\n  \"Auth/VendorPassword\": \"\",\n  \"Auth/UserToken\":\"\",\n  \"Auth/PropertyId\":\"\",\n  \"MyAllocatorId\":\"57333cd36dbf9a4f114dd781\"\n}",
+        "type": "json"
+      },
+      {
+        "title": "curl",
+        "content": "curl https://api.myallocator.com/pms/v201804/json/BookingReportBookingNoShow -d@- <<EOJSON\njson={\n    \"Auth/VendorId\":\"Your Vendor ID\",\n    \"Auth/VendorPassword\":\"Your Vendor Password\",\n    \"Auth/UserToken\":\"User token\",\n    \"Auth/PropertyId\":\"Property ID on myallocator.com\",\n    \"MyAllocatorId\":\"57333cd36dbf9a4f114dd781\"\n}\nEOJSON",
+        "type": "json"
+      }
+    ],
+    "error": {
+      "examples": [
+        {
+          "title": "Response (invalid booking)",
+          "content": "{\n    \"Success\": false,\n    \"Errors\": [\n        {\n            \"ErrorTicket\": \"D13BAC04-1234-5678-804B-F5140B37646E\",\n            \"ErrorMsg\": \"No such booking id\",\n            \"ErrorId\": \"30\"\n        }\n    ]\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "perllib/MyAllocator/API/Method/Bookings.pm",
+    "groupTitle": "3_API_Methods"
+  },
+  {
+    "group": "3_API_Methods",
+    "type": "POST",
     "url": "/ChannelList",
     "title": "ChannelList",
     "name": "ChannelList",
@@ -2280,6 +2489,260 @@
   {
     "group": "3_API_Methods",
     "type": "POST",
+    "url": "/PropertyCurrencyOverrideList",
+    "title": "PropertyCurrencyOverrideList",
+    "name": "PropertyCurrencyOverrideList",
+    "version": "201906.0.0",
+    "description": "<p>List which currency exchange rate overrides the property has set.</p> <p><em>Note</em>: currently only returns currency overrides set for the property's default currency!</p>",
+    "parameter": {
+      "fields": {
+        "Request": [
+          {
+            "group": "Request",
+            "type": "Integer",
+            "optional": false,
+            "field": "Auth/VendorId",
+            "description": "<p>Id or the PMS vendor</p>"
+          },
+          {
+            "group": "Request",
+            "type": "String",
+            "optional": false,
+            "field": "Auth/VendorPassword",
+            "description": "<p>Vendor's secret</p>"
+          },
+          {
+            "group": "Request",
+            "type": "Integer",
+            "optional": false,
+            "field": "Auth/PropertyId",
+            "description": "<p>User's Property Id</p>"
+          },
+          {
+            "group": "Request",
+            "type": "String",
+            "optional": false,
+            "field": "Auth/UserToken",
+            "description": "<p>User's secret</p>"
+          },
+          {
+            "group": "Request",
+            "type": "String",
+            "optional": true,
+            "field": "FromCurrency",
+            "description": "<p>Only show exchange rates where the source exchange rate matches FromCurrency.</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "fields": {
+        "Response": [
+          {
+            "group": "Response",
+            "type": "Boolean",
+            "optional": false,
+            "field": "Success",
+            "description": "<p>True if call was successful. There are no call-specific errors.</p>"
+          },
+          {
+            "group": "Response",
+            "type": "Currency",
+            "optional": false,
+            "field": "MinimumRate",
+            "description": "<p>Minimum supported rate. This value is unlikely to change.</p>"
+          },
+          {
+            "group": "Response",
+            "type": "Currency",
+            "optional": false,
+            "field": "MaximumRate",
+            "description": "<p>Maximum supported rate. This value is unlikely to change.</p>"
+          },
+          {
+            "group": "Response",
+            "type": "Currency",
+            "optional": false,
+            "field": "Step",
+            "description": "<p>Smallest supported increment between rates. This value is unlikely to change.</p>"
+          },
+          {
+            "group": "Response",
+            "type": "CurrencyCode",
+            "optional": false,
+            "field": "BaseCurrency",
+            "description": "<p>Property's default currency</p>"
+          },
+          {
+            "group": "Response",
+            "type": "Container",
+            "optional": false,
+            "field": "ExchangeRates",
+            "description": "<p>Container node. Array of objects.</p>"
+          },
+          {
+            "group": "Response",
+            "type": "CurrencyCode",
+            "optional": false,
+            "field": ".ExchangeRates.FromCurrency",
+            "description": "<p>Currency code to convert from. ISO 4217.</p>"
+          },
+          {
+            "group": "Response",
+            "type": "CurrencyCode",
+            "optional": false,
+            "field": ".ExchangeRates.ToCurrency",
+            "description": "<p>Currency code to convert to. ISO 4217.</p>"
+          },
+          {
+            "group": "Response",
+            "type": "Currency",
+            "optional": false,
+            "field": ".ExchangeRates.Rate",
+            "description": "<p>Exchange rate between the two currencies.</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Success",
+          "content": "{\n    \"RUID\": \"F55C6B3E-927C-11E9-8183-B4C95CF77523\",\n    \"ExchangeRates\": [\n        {\n            \"ToCurrency\": \"EUR\",\n            \"FromCurrency\": \"USD\",\n            \"Rate\": \"1.5430000000\"\n        },\n        {\n            \"Rate\": \"356.0000000000\",\n            \"FromCurrency\": \"USD\",\n            \"ToCurrency\": \"INR\"\n        }\n    ],\n    \"BaseCurrency\": \"USD\",\n    \"Step\": \"0.0000000001\",\n    \"MaximumRate\": \"9999999999.9999999999\",\n    \"MinimumRate\": \"0.0000000001\",\n    \"Success\": true\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "examples": [
+      {
+        "title": "JSON Request",
+        "content": "{\n    \"Auth/VendorId\":137,\n    \"Auth/VendorPassword\":\"censored\",\n    \"Auth/PropertyId\":42,\n    \"Auth/UserToken\":\"censored\"\n}",
+        "type": "json"
+      },
+      {
+        "title": "curl",
+        "content": "curl https://api.myallocator.com/pms/201906/json/PropertyCurrencyOverrideList -d@- <<ENDJSON\njson={\n    \"Auth/VendorId\":137,\n    \"Auth/VendorPassword\":\"censored\",\n    \"Auth/PropertyId\":42,\n    \"Auth/UserToken\":\"censored\",\n    \"FromCurrency\": \"USD\"\n}\nENDJSON",
+        "type": "json"
+      }
+    ],
+    "filename": "perllib/MyAllocator/API/Method/PropertyCurrencyOverride.pm",
+    "groupTitle": "3_API_Methods"
+  },
+  {
+    "group": "3_API_Methods",
+    "type": "POST",
+    "url": "/PropertyCurrencyOverrideUpdate",
+    "title": "PropertyCurrencyOverrideUpdate",
+    "name": "PropertyCurrencyOverrideUpdate",
+    "version": "201906.0.0",
+    "description": "<p>Set custom currency exchange rates for a property to be used instead of our automatically updated exchange rates.</p>",
+    "parameter": {
+      "fields": {
+        "Request": [
+          {
+            "group": "Request",
+            "type": "Integer",
+            "optional": false,
+            "field": "Auth/VendorId",
+            "description": "<p>Id or the PMS vendor</p>"
+          },
+          {
+            "group": "Request",
+            "type": "String",
+            "optional": false,
+            "field": "Auth/VendorPassword",
+            "description": "<p>Vendor's secret</p>"
+          },
+          {
+            "group": "Request",
+            "type": "Integer",
+            "optional": false,
+            "field": "Auth/PropertyId",
+            "description": "<p>User's Property Id</p>"
+          },
+          {
+            "group": "Request",
+            "type": "String",
+            "optional": false,
+            "field": "Auth/UserToken",
+            "description": "<p>User's secret</p>"
+          },
+          {
+            "group": "Request",
+            "type": "Container",
+            "optional": true,
+            "field": "ExchangeRates",
+            "description": "<p>Container node. Array of objects.</p>"
+          },
+          {
+            "group": "Request",
+            "type": "CurrencyCode",
+            "optional": false,
+            "field": ".ExchangeRates.FromCurrency",
+            "description": "<p>Currency code to convert from. ISO 4217.</p>"
+          },
+          {
+            "group": "Request",
+            "type": "CurrencyCode",
+            "optional": false,
+            "field": ".ExchangeRates.ToCurrency",
+            "description": "<p>Currency code to convert to. ISO 4217.</p>"
+          },
+          {
+            "group": "Request",
+            "type": "Currency",
+            "optional": false,
+            "field": ".ExchangeRates.Rate",
+            "description": "<p>Exchange rate between the two currencies. Allows 10 decimal places. If you want to reset to automatic conversion set this to <code>auto</code>.</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "fields": {
+        "Response": [
+          {
+            "group": "Response",
+            "type": "Boolean",
+            "optional": false,
+            "field": "Success",
+            "description": "<p>True if call was successful</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Success",
+          "content": "{\n    \"Success\": true,\n    \"RUID\": \"4F712094-9127-11E9-A5D1-B4C95CF77523\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "examples": [
+      {
+        "title": "JSON Request",
+        "content": "{\n    \"Auth/VendorId\":137,\n    \"Auth/VendorPassword\":\"censored\",\n    \"Auth/PropertyId\":42,\n    \"Auth/UserToken\":\"censored\",\n    \"ExchangeRates\": [\n        { \"FromCurrency\": \"EUR\", \"ToCurrency\": \"USD\", \"Rate\": 1.12 },\n        { \"FromCurrency\": \"EUR\", \"ToCurrency\": \"GBP\", \"Rate\": 0.895514 },\n        { \"FromCurrency\": \"EUR\", \"ToCurrency\": \"INR\", \"Rate\": \"auto\" }\n    ]\n}",
+        "type": "json"
+      },
+      {
+        "title": "curl",
+        "content": "curl https://api.myallocator.com/pms/201906/json/PropertyCurrencyOverrideUpdate -d@- <<ENDJSON\njson={\n    \"Auth/VendorId\":137,\n    \"Auth/VendorPassword\":\"censored\",\n    \"Auth/PropertyId\":42,\n    \"Auth/UserToken\":\"censored\",\n    \"ExchangeRates\": [\n        { \"FromCurrency\": \"EUR\", \"ToCurrency\": \"USD\", \"Rate\": 1.12 },\n        { \"FromCurrency\": \"EUR\", \"ToCurrency\": \"GBP\", \"Rate\": 0.895514 },\n        { \"FromCurrency\": \"EUR\", \"ToCurrency\": \"INR\", \"Rate\": \"auto\" }\n    ]\n}\nENDJSON",
+        "type": "json"
+      }
+    ],
+    "error": {
+      "examples": [
+        {
+          "title": "Error",
+          "content": "{\n    \"Success\": false,\n    \"Errors\": [\n        {\n            \"ErrorMsg\": \"Invalid format (check for valid currency codes)\",\n            \"ErrorId\": 24,\n            \"ErrorTicket\": \"45F173C8-9129-11E9-AC70-B3C95CF77523\"\n        }\n    ],\n    \"RUID\": \"45F173C8-9129-11E9-AC70-B3C95CF77523\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "perllib/MyAllocator/API/Method/PropertyCurrencyOverride.pm",
+    "groupTitle": "3_API_Methods"
+  },
+  {
+    "group": "3_API_Methods",
+    "type": "POST",
     "url": "/PropertyFullRefresh",
     "title": "PropertyFullRefresh",
     "name": "PropertyFullRefresh",
@@ -2291,9 +2754,9 @@
           {
             "group": "Request",
             "type": "List",
-            "optional": false,
+            "optional": true,
             "field": "List",
-            "description": "<p>optional. List of specific channels. By default all connected channels will be updated.</p>"
+            "description": "<p>List of specific channels. By default all connected channels will be updated.</p>"
           }
         ]
       }
@@ -4774,7 +5237,7 @@
     "title": "Global Error Codes",
     "name": "Global_Error_Codes",
     "version": "201804.0.1",
-    "description": "<p>Errors are divided into three categories. A global error will have a single Errors tag with no further encapsulation and only a single Error tag.</p> <p>An API method specific error will be included in the method name. Again, there will only be a single Error tag. The third type of error is channel specific. The Errors tag is included in the method name and there may be multiple Error tags.</p> <table> <thead> <tr> <th>Code</th> <th>Description</th> </tr> </thead> <tbody> <tr> <td>2</td> <td>Missing authentication tags</td> </tr> <tr> <td>3</td> <td>Invalid user or user password</td> </tr> <tr> <td>4</td> <td>Invalid vendor or vendor password</td> </tr> <tr> <td>5</td> <td>Vendor disabled</td> </tr> <tr> <td>6</td> <td>User has no credit left</td> </tr> <tr> <td>7</td> <td>User has no permission to change availability for this property</td> </tr> <tr> <td>8</td> <td>No such API method</td> </tr> <tr> <td>9</td> <td>Unsupported channel</td> </tr> <tr> <td>10</td> <td>No channels selected</td> </tr> <tr> <td>11</td> <td>No allocations submitted</td> </tr> <tr> <td>12</td> <td>Invalid room type id (does not exist or not assigned to this property)</td> </tr> <tr> <td>13</td> <td>Missing allocation info (price, dates, units)</td> </tr> <tr> <td>14</td> <td>Internal error. Support has been notified!</td> </tr> <tr> <td>15</td> <td>Missing or wrong channel credentials on myallocator.com</td> </tr> <tr> <td>16</td> <td>End date before start date</td> </tr> <tr> <td>17</td> <td>Start date too far in the future (&gt;4 years)</td> </tr> <tr> <td>18</td> <td>Invalid property id</td> </tr> <tr> <td>19</td> <td>Vendor not enabled to use this method</td> </tr> <tr> <td>20</td> <td>Missing required fields</td> </tr> <tr> <td>21</td> <td>No applicable dates submitted</td> </tr> <tr> <td>22</td> <td>Invalid update id</td> </tr> <tr> <td>23</td> <td>Unsupported Metasearch engine</td> </tr> <tr> <td>24</td> <td>Invalid data format</td> </tr> <tr> <td>25</td> <td>Required field missing data</td> </tr> <tr> <td>301</td> <td>Invalid characters in new username</td> </tr> <tr> <td>302</td> <td>Username exists already</td> </tr> <tr> <td>303</td> <td>Invalid values (check error message)</td> </tr> <tr> <td>401</td> <td>Invalid date format</td> </tr> <tr> <td>402</td> <td>Missing or invalid search criteria</td> </tr> <tr> <td>450</td> <td>Payment password is invalid</td> </tr> <tr> <td>555</td> <td>Invalid JSON passed</td> </tr> <tr> <td>666</td> <td>Internal Processing Error</td> </tr> </tbody> </table> <p><em>Channel Specific errors and warnings</em></p> <table> <thead> <tr> <th>Code</th> <th>Description</th> </tr> </thead> <tbody> <tr> <td>202</td> <td>Channel skipped (not setup)</td> </tr> <tr> <td>203</td> <td>Channel did not respond</td> </tr> <tr> <td>204</td> <td>Channel skipped (no applicable rooms)</td> </tr> <tr> <td>205</td> <td>Incorrect room setup. The room type mapping needs to be updated on myallocator.com.</td> </tr> <tr> <td>206</td> <td>Channel only updates up to a certain period in the future. Some dates were skipped.</td> </tr> <tr> <td>207</td> <td>Skipped room type (not setup with channel)</td> </tr> <tr> <td>208</td> <td>Partial success: ...</td> </tr> <tr> <td>209</td> <td>No channels are setup, only myallocator database was updated</td> </tr> <tr> <td>99</td> <td>Check/Display ErrMsg or WarningMsg content</td> </tr> </tbody> </table>",
+    "description": "<p>Errors are divided into three categories. A global error will have a single Errors tag with no further encapsulation and only a single Error tag.</p> <p>An API method specific error will be included in the method name. Again, there will only be a single Error tag. The third type of error is channel specific. The Errors tag is included in the method name and there may be multiple Error tags.</p> <table> <thead> <tr> <th>Code</th> <th>Description</th> </tr> </thead> <tbody> <tr> <td>2</td> <td>Missing authentication tags</td> </tr> <tr> <td>3</td> <td>Invalid user or user password</td> </tr> <tr> <td>4</td> <td>Invalid vendor or vendor password</td> </tr> <tr> <td>5</td> <td>Vendor disabled</td> </tr> <tr> <td>6</td> <td>User has no credit left</td> </tr> <tr> <td>7</td> <td>User has no permission to change availability for this property</td> </tr> <tr> <td>8</td> <td>No such API method</td> </tr> <tr> <td>9</td> <td>Unsupported channel</td> </tr> <tr> <td>10</td> <td>No channels selected</td> </tr> <tr> <td>11</td> <td>No allocations submitted</td> </tr> <tr> <td>12</td> <td>Invalid room type id (does not exist or not assigned to this property)</td> </tr> <tr> <td>13</td> <td>Missing allocation info (price, dates, units)</td> </tr> <tr> <td>14</td> <td>Internal error. Support has been notified!</td> </tr> <tr> <td>15</td> <td>Missing or wrong channel credentials on myallocator.com</td> </tr> <tr> <td>16</td> <td>End date before start date</td> </tr> <tr> <td>17</td> <td>Start date too far in the future (&gt;4 years)</td> </tr> <tr> <td>18</td> <td>Invalid property id</td> </tr> <tr> <td>19</td> <td>Vendor not enabled to use this method</td> </tr> <tr> <td>20</td> <td>Missing required fields</td> </tr> <tr> <td>21</td> <td>No applicable dates submitted</td> </tr> <tr> <td>22</td> <td>Invalid update id</td> </tr> <tr> <td>23</td> <td>Unsupported Metasearch engine</td> </tr> <tr> <td>24</td> <td>Invalid data format</td> </tr> <tr> <td>25</td> <td>Required field missing data</td> </tr> <tr> <td>301</td> <td>Invalid characters in new username</td> </tr> <tr> <td>302</td> <td>Username exists already</td> </tr> <tr> <td>303</td> <td>Invalid values (check error message)</td> </tr> <tr> <td>401</td> <td>Invalid date format</td> </tr> <tr> <td>402</td> <td>Missing or invalid search criteria</td> </tr> <tr> <td>450</td> <td>Payment password is invalid</td> </tr> <tr> <td>451</td> <td>CC password is expired</td> </tr> <tr> <td>555</td> <td>Invalid JSON passed</td> </tr> <tr> <td>666</td> <td>Internal Processing Error</td> </tr> </tbody> </table> <p><em>Channel Specific errors and warnings</em></p> <table> <thead> <tr> <th>Code</th> <th>Description</th> </tr> </thead> <tbody> <tr> <td>202</td> <td>Channel skipped (not setup)</td> </tr> <tr> <td>203</td> <td>Channel did not respond</td> </tr> <tr> <td>204</td> <td>Channel skipped (no applicable rooms)</td> </tr> <tr> <td>205</td> <td>Incorrect room setup. The room type mapping needs to be updated on myallocator.com.</td> </tr> <tr> <td>206</td> <td>Channel only updates up to a certain period in the future. Some dates were skipped.</td> </tr> <tr> <td>207</td> <td>Skipped room type (not setup with channel)</td> </tr> <tr> <td>208</td> <td>Partial success: ...</td> </tr> <tr> <td>209</td> <td>No channels are setup, only myallocator database was updated</td> </tr> <tr> <td>99</td> <td>Check/Display ErrMsg or WarningMsg content</td> </tr> </tbody> </table>",
     "filename": "perllib/MAAPI.pm",
     "groupTitle": "4_Appendix"
   },
@@ -4821,31 +5284,6 @@
     "description": "<table> <thead> <tr> <th>Date</th> <th>Version</th> <th>Change</th> </tr> </thead> <tbody> <tr> <td>2019-03-12</td> <td>201903.0.1</td> <td>ChannelList: use boolean values for is_beta, is_live, is_calendar_based, locked_login, api_cancellation, hidden</td> </tr> <tr> <td>2018-12-31</td> <td>201812.0.1</td> <td>New API calls: TaxCreate, TaxList, TaxMeta, TaxRemove, TaxUpdate (calls not yet available)</td> </tr> <tr> <td>2018-06-07</td> <td>201806.0.1</td> <td>Renamed PropertyModify/UserModify to PropertyUpdate/UserUpdate for consistency. Old API calls will keep working.</td> </tr> <tr> <td>2018-04-02</td> <td>201804.0.1</td> <td>Success flag guaranteed to be returned in every response</td> </tr> <tr> <td>2018-03-20</td> <td>201803.0.2</td> <td>Unique request ID (RUID) included in every response</td> </tr> <tr> <td>2018-03-08</td> <td>201803.0.1</td> <td>ARI updates 4 years into the future now possible</td> </tr> <tr> <td>2018-02-12</td> <td>201802.0.1</td> <td>New API calls: MetaSearch, MetaSearchList</td> </tr> <tr> <td>2018-01-24</td> <td>201801.0.2</td> <td>Simplified token usage</td> </tr> <tr> <td>2018-01-22</td> <td>201801.0.1</td> <td>PropertyChannelList able to limit by property ID</td> </tr> <tr> <td>2017-04-12</td> <td>201710.0.1</td> <td>New API call: PropertyChannelImportARI</td> </tr> <tr> <td>2017-04-12</td> <td>201610.0.2</td> <td>ICalLink field added to call RoomList</td> </tr> <tr> <td>2016-10-09</td> <td>201610.0.1</td> <td>Changes to ARIRules</td> </tr> <tr> <td>2016-05-26</td> <td>201605.0.2</td> <td>New API call: BookingCancel</td> </tr> <tr> <td>2016-05-25</td> <td>201605.0.1</td> <td>Removed CANCEL/UNCANCEL from BookingAction, added more options to BookingList</td> </tr> <tr> <td>2016-03-15</td> <td>201603.0.1</td> <td>New API calls: RatePlanCreate, RatePlanUpdate, RatePlanRemove</td> </tr> <tr> <td>2016-02-04</td> <td>201601.0.2</td> <td>VERSIONED JSON response format PropertyChannelList to include currency (and future fields)</td> </tr> <tr> <td>2016-01-08</td> <td>201601.0.1</td> <td>Fixed documentation for ARIUpdate to include Auth/VendorId Auth/VendorPassword</td> </tr> <tr> <td>2015-10-13</td> <td>201501.0.13</td> <td>Fix BookingList ModificationEndDate so it goes until 11:59pm</td> </tr> <tr> <td>2015-10-01</td> <td>201501.0.12</td> <td>Fix various documentation issues</td> </tr> <tr> <td>2015-07-24</td> <td>201501.0.11</td> <td>added BookingPaymentPasswordValidate</td> </tr> <tr> <td>2015-07-09</td> <td>201501.0.10</td> <td>added IncludeArchived to BookingList</td> </tr> <tr> <td>2015-05-27</td> <td>201501.0.9</td> <td>new BookingList parameters ModificationStartDateTime, ModificationEndDateTime, CreationStartDateTime, CreationEndDateTime</td> </tr> <tr> <td>2015-05-18</td> <td>201501.0.8</td> <td>new BookingAction commands</td> </tr> <tr> <td>2015-03-20</td> <td>201501.0.7</td> <td>Corrected explanation of Units on RoomCreate (thanks Petr T.)</td> </tr> <tr> <td>2015-02-19</td> <td>201501.0.6</td> <td>Add Options.NormalizeToCurrency to BookingList</td> </tr> <tr> <td>2015-02-19</td> <td>201501.0.5</td> <td>Added more documentation to Booking Samples</td> </tr> <tr> <td>2015-02-03</td> <td>201501.0.4</td> <td>Added .Options.IgnoreInvalidRooms to MAAPI</td> </tr> <tr> <td>2015-02-02</td> <td>201501.0.3</td> <td>Improved documentation for multiple overlapping Allocations in ARIUpdate</td> </tr> <tr> <td>2015-01-22</td> <td>201501.0.2</td> <td>Improved documentation with Booking samples</td> </tr> <tr> <td>2015-01-09</td> <td>201501.0.1</td> <td>Initial release of 201601[beta] (new functions: ARIRules)</td> </tr> <tr> <td>2015-01-08</td> <td>201408.0.13</td> <td>Corrected validation logic issue with ARIUpdate (properly validates Rooms)</td> </tr> <tr> <td>2015-01-07</td> <td>201408.0.12</td> <td>Corrected issue with AssociateUserToPMS requiring Auth/PropertyId</td> </tr> <tr> <td>2015-01-06</td> <td>201408.0.11</td> <td>Modified FailIfUpdateActive default to &quot;false&quot;</td> </tr> <tr> <td>2015-01-05</td> <td>201408.0.10</td> <td>fixed doc, Price-Weekend is &quot;PriceWeekend&quot;</td> </tr> <tr> <td>2015-01-05</td> <td>201408.0.9</td> <td>added JSON raw input mode - application/json</td> </tr> <tr> <td>2014-12-28</td> <td>201408.0.8</td> <td>added Auth/Debug</td> </tr> <tr> <td>2014-12-28</td> <td>201408.0.7</td> <td>fixed bug in ARIUpdate where zero unit updates would not be applied</td> </tr> <tr> <td>2014-12-26</td> <td>201408.0.6</td> <td>added more documentation to ChannelList and curl example to HelloWorld</td> </tr> <tr> <td>2014-12-24</td> <td>201408.0.5</td> <td>added error logging with ticket responses</td> </tr> <tr> <td>2014-12-23</td> <td>201408.0.4</td> <td>added VendorId to various docs, and propertyid, unified error handling</td> </tr> <tr> <td>2014-12-19</td> <td>201408.0.3</td> <td>fixed bug in RoomCreate (did not return RoomId)</td> </tr> <tr> <td>2014-12-15</td> <td>201408.0.2</td> <td>renamed LoopBookingAction into BookingAction</td> </tr> <tr> <td>2014-12-04</td> <td>201408.0.1</td> <td>initial release of new API</td> </tr> <tr> <td>2012-10-24</td> <td>1.6.2</td> <td>Updated booking information (new: CommissionIncludedInTotal).</td> </tr> <tr> <td>2012-10-24</td> <td>1.6.1</td> <td>Updated booking information and updated channel list (new: eb,air, orb, boo, tra).</td> </tr> <tr> <td>2012-10-24</td> <td>1.6</td> <td>New feature Booking Callback and updated channel list (new: max).</td> </tr> <tr> <td>2012-09-20</td> <td>1.5.2</td> <td>Updated channel list (new: exp, ysh, eb). Get/Set property country.</td> </tr> <tr> <td>2012-07-04</td> <td>1.5.1</td> <td>Updated channel list. Added MinStay/MaxStay example.</td> </tr> <tr> <td>2011-09-17</td> <td>1.5</td> <td>New method SetRoomTypes to add/update/remove rooms.</td> </tr> <tr> <td>2011-09-17</td> <td>1.4.1</td> <td>GetBookings: Minor correction regarding the end date. It's not the departure date but rather the departure date - 1.</td> </tr> <tr> <td>2011-01-15</td> <td>1.4</td> <td>New methods SetAllocation (non-blocking), SetLogin, GetUpdateStatus, GetBookings. Support for MinStay and MaxStay.</td> </tr> <tr> <td>2010-11-09</td> <td>1.3.1</td> <td>Updated channel list. GetRoomTypes: Obsoleted &quot;Ensuite&quot;, &quot;DoubleBed&quot; and &quot;Beds&quot; (replaced by new property &quot;Occupancy&quot;). GetProperties: shows which days are configure for weekends.</td> </tr> <tr> <td>2010-05-30</td> <td>1.3</td> <td>GetRoomTypes includes a room description (Label). Removed need to list channels to update to and ability to exclude channels. Skipped channels now warnings rather than errors.</td> </tr> <tr> <td>2010-05-05</td> <td>1.2</td> <td>Added links to XML samples. New channel: hb</td> </tr> <tr> <td>2010-04-30</td> <td>1.1</td> <td>Changed Room to \\textit{RoomType} to clarify matters</td> </tr> <tr> <td>2010-04-27</td> <td>1.0</td> <td>Initial release</td> </tr> </tbody> </table>",
     "filename": "perllib/MAAPI.pm",
     "groupTitle": "4_Appendix"
-  },
-  {
-    "examples": [
-      {
-        "title": "MetaSearchList",
-        "content": "curl https://api.myallocator.com/pms/v201804/json/MetaSearchList -d@- <<ENDJSON\njson={\n    \"Auth/UserToken\": \"qRlscFEnhHG5OsCH/nYX1rfx+JCjIpMPDjF3XqmGV52V8/6Ec9IsX1+uzEo0+g8X\",\n    \"Auth/VendorPassword\": \"QLXAyVvfFbInVuMhNHDNhEoY\",\n    \"Auth/VendorId\": \"rtest\"\n}\nENDJSON",
-        "type": "json"
-      }
-    ],
-    "success": {
-      "examples": [
-        {
-          "title": "MetaSearchList Request",
-          "content": "{\n   \"MetaSearches\" : [\n      {\n         \"name\" : \"Trivago\",\n         \"id\" : \"triv\",\n         \"is_hidden\": false\n      },\n      {\n         \"name\" : \"TripAdvisor\",\n         \"id\" : \"ta\",\n         \"is_hidden\": false\n      }\n   ],\n   \"Success\" : true\n}",
-          "type": "json"
-        }
-      ]
-    },
-    "type": "",
-    "url": "",
-    "version": "0.0.0",
-    "filename": "perllib/MyAllocator/API/Method/MetaSearch.pm",
-    "group": "_myallocator_perllib_MyAllocator_API_Method_MetaSearch_pm",
-    "groupTitle": "_myallocator_perllib_MyAllocator_API_Method_MetaSearch_pm",
-    "name": ""
   },
   {
     "description": "<p>Lists the metasearch details associated with a property.</p>",
@@ -4895,6 +5333,31 @@
         {
           "title": "PropertyMetaSearchList Request",
           "content": "{\n   \"MetaSearches\" : [\n      {\n         \"name\" : \"Trivago\",\n         \"id\" : \"triv\"\n      },\n      {\n         \"name\" : \"TripAdvisor\",\n         \"id\" : \"ta\"\n      }\n   ],\n   \"Success\" : true\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "type": "",
+    "url": "",
+    "version": "0.0.0",
+    "filename": "perllib/MyAllocator/API/Method/MetaSearch.pm",
+    "group": "_myallocator_perllib_MyAllocator_API_Method_MetaSearch_pm",
+    "groupTitle": "_myallocator_perllib_MyAllocator_API_Method_MetaSearch_pm",
+    "name": ""
+  },
+  {
+    "examples": [
+      {
+        "title": "MetaSearchList",
+        "content": "curl https://api.myallocator.com/pms/v201804/json/MetaSearchList -d@- <<ENDJSON\njson={\n    \"Auth/UserToken\": \"qRlscFEnhHG5OsCH/nYX1rfx+JCjIpMPDjF3XqmGV52V8/6Ec9IsX1+uzEo0+g8X\",\n    \"Auth/VendorPassword\": \"QLXAyVvfFbInVuMhNHDNhEoY\",\n    \"Auth/VendorId\": \"rtest\"\n}\nENDJSON",
+        "type": "json"
+      }
+    ],
+    "success": {
+      "examples": [
+        {
+          "title": "MetaSearchList Request",
+          "content": "{\n   \"MetaSearches\" : [\n      {\n         \"name\" : \"Trivago\",\n         \"id\" : \"triv\",\n         \"is_hidden\": false\n      },\n      {\n         \"name\" : \"TripAdvisor\",\n         \"id\" : \"ta\",\n         \"is_hidden\": false\n      }\n   ],\n   \"Success\" : true\n}",
           "type": "json"
         }
       ]
